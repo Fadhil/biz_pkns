@@ -2,6 +2,7 @@
 /db/*.sqlite3
 /log/*.log
 /tmp
+Gemfile
+config/database.yml
 custom_plan.rb
 zeus.json
-config/database.yml
