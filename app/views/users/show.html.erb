@@ -3,36 +3,48 @@
   <h1><%=t '.title', :default => model_class.model_name.human %></h1>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @user.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:ic_number) %>:</strong></dt>
-  <dd><%= @user.ic_number %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:phone) %>:</strong></dt>
-  <dd><%= @user.phone %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:username) %>:</strong></dt>
-  <dd><%= @user.username %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
-  <dd><%= @user.email %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:encrypted_password) %>:</strong></dt>
-  <dd><%= @user.encrypted_password %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:reset_password_token) %>:</strong></dt>
-  <dd><%= @user.reset_password_token %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:reset_password_sent_at) %>:</strong></dt>
-  <dd><%= @user.reset_password_sent_at %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:remember_created_at) %>:</strong></dt>
-  <dd><%= @user.remember_created_at %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:current_sign_in_at) %>:</strong></dt>
-  <dd><%= @user.current_sign_in_at %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:last_sign_in_at) %>:</strong></dt>
-  <dd><%= @user.last_sign_in_at %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:current_sign_in_ip) %>:</strong></dt>
-  <dd><%= @user.current_sign_in_ip %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:last_sign_in_ip) %>:</strong></dt>
-  <dd><%= @user.last_sign_in_ip %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:password) %>:</strong></dt>
-  <dd><%= @user.password %></dd>
-</dl>
+<div>
+  <%= image_tag(@user.avatar) %>
+  <div>
+    <strong>Username:</strong> <%= @user.username %>
+  </div>
+  <div>
+    <strong>Email:</strong> <%= @user.email %>
+  </div>
+  <div>
+     <strong>Name:</strong> <%= @user.name %>
+  </div>
+  <div>
+      <strong>IC Number:</strong> <%= @user.ic_number %>
+  </div>
+  <div>
+      <strong>Phone Number:</strong> <%= @user.phone %>
+  </div>
+  <div>
+      <strong>Address 1:</strong> <%= @user.address1 %>
+  </div>
+  <div>
+      <strong>Address 2:</strong> <%= @user.address2 %>
+  </div>
+  <div>
+      <strong>City:</strong> <%= @user.city %>
+  </div>
+  <div>
+     <strong>Postcode:</strong> <%= @user.postcode %>
+  </div>
+  <div>
+     <strong>State:</strong> <%= @user.state %>
+  </div>
+ 
+
+
+
+
+
+ 
+ 
+
+</div>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
