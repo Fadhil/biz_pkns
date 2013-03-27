@@ -11,4 +11,5 @@ class User < ActiveRecord::Base
   attr_accessible :address1, :address2, :city, :postcode, :state, :avatar
 
   mount_uploader :avatar, AvatarUploader
+  validates :password, :presence => true, :confirmation => true, :if => lambda{ new_record? || !password.nil? }
 end

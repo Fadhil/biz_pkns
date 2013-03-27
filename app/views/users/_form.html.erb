@@ -17,18 +17,20 @@
       <%= f.text_field :email, :class => 'text_field' %>
     </div>
   </div>
-  <div class="control-group">
-    <%= f.label :password, 'Password', :class => 'control-label' %>
-    <div class="controls">
-      <%= f.password_field :password, :class => 'text_field' %>
+  <% if @user.new_record? %>
+    <div class="control-group">
+      <%= f.label :password, 'Password', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.password_field :password, :class => 'text_field' %>
+      </div>
     </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :password_confirmation, 'Password Confirmation', :class => 'control-label' %>
-    <div class="controls">
-      <%= f.password_field :password_confirmation, :class => 'text_field' %>
+    <div class="control-group">
+      <%= f.label :password_confirmation, 'Password Confirmation', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.password_field :password_confirmation, :class => 'text_field' %>
+      </div>
     </div>
-  </div>
+  <% end %>
   <div class="control-group">
     <%= f.label :ic_number, :class => 'control-label' %>
     <div class="controls">
@@ -78,8 +80,6 @@
     </div>
   </div>
   
-  
-
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
