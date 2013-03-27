@@ -6,7 +6,6 @@ one:
   ic_number: MyString
   email: MyString
   phone: MyString
-  username: MyString
 
 two:
   name: MyString
@@ -14,4 +13,3 @@ two:
   ic_number: MyString
   email: MyString
   phone: MyString
-  username: MyString
