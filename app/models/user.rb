@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :ic_number, :first_name, :last_name, :password, :phone
   attr_accessible :address1, :address2, :city, :postcode, :state, :avatar
 
+  validates_uniqueness_of :ic_number
+
   mount_uploader :avatar, AvatarUploader
   validates :password, :presence => true, :confirmation => true, :on => :create
 end

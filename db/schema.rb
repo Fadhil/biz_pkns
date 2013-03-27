@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130327164158) do
+ActiveRecord::Schema.define(:version => 20130327165859) do
 
   create_table "users", :force => true do |t|
     t.string   "ic_number"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20130327164158) do
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["ic_number"], :name => "index_users_on_ic_number", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

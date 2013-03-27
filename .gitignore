@@ -5,4 +5,5 @@
 Gemfile
 config/database.yml
 custom_plan.rb
+public/*
 zeus.json
