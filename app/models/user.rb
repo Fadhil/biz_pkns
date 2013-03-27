@@ -2,6 +2,10 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
+  before_save :default_values
+  def default_values
+    self.confirmed ||= 'false'
+  end
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable#, :confirmable
 
@@ -11,5 +15,5 @@ class User < ActiveRecord::Base
   attr_accessible :address1, :address2, :city, :postcode, :state, :avatar
 
   mount_uploader :avatar, AvatarUploader
-  validates :password, :presence => true, :confirmation => true, :if => lambda{ new_record? || !password.nil? }
+  validates :password, :presence => true, :confirmation => true, :on => :create
 end
