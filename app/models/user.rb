@@ -18,4 +18,6 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
   validates :password, :presence => true, :confirmation => true, :on => :create
+
+  has_one :business_profile
 end
