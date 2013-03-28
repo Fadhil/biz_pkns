@@ -4,7 +4,9 @@
 </div>
 
 <div>
-  <%= image_tag(@user.profile_photo.file) %>
+  <% unless @user.profile_photo.nil? %>
+    <%= image_tag(@user.profile_photo.file) %>
+  <% end %>
   <div>
     <strong>First Name:</strong> <%= @user.first_name %>
   </div>

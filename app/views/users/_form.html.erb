@@ -111,6 +111,40 @@
           <%= bp.text_field :description, class: 'text_field' %>
         </div>
       </div>
+      <div id='address_fields'>
+        <%= bp.fields_for :address do |a| %>'
+          <div class='control-group'>
+            <%= a.label :line1, class: 'control-label' %>
+            <div class='controls'>
+              <%= a.text_field :line1, class: 'text_field' %>
+            </div>
+          </div>
+          <div class='control-group'>
+            <%= a.label :line2, class: 'control-label' %>
+            <div class='controls'>
+              <%= a.text_field :line2, class: 'text_field' %>
+            </div>
+          </div>
+          <div class='control-group'>
+            <%= a.label :city, class: 'control-label' %>
+            <div class='controls'>
+              <%= a.text_field :city, class: 'text_field' %>
+            </div>
+          </div>
+          <div class='control-group'>
+            <%= a.label :postcode, class: 'control-label' %>
+            <div class='controls'>
+              <%= a.text_field :postcode, class: 'text_field' %>
+            </div>
+          </div>
+          <div class='control-group'>
+            <%= a.label :state, class: 'control-label' %>
+            <div class='controls'>
+              <%= a.text_field :state, class: 'text_field' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
       <div class="control-group">
         <%= bp.label :registration_number, class: 'control-label' %>
         <div class="controls">

@@ -37,6 +37,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.business_profile.nil?
       @user.build_business_profile
+      @user.build_business_profile.build_address
+
     end
     if @user.profile_photo.nil?
       @user.build_profile_photo
@@ -48,7 +50,8 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
-    @user.build_business_profile
+    @business_profile = @user.build_business_profile
+
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
