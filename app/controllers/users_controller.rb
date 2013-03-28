@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
-
+    @klass = Class
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @users }
@@ -37,6 +37,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.business_profile.nil?
       @user.build_business_profile
+    end
+    if @user.profile_photo.nil?
+      @user.build_profile_photo
     end
     
   end

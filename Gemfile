@@ -13,6 +13,9 @@ gem 'devise'
 # Photo Upload
 gem 'carrierwave'
 
+# Image manipulation
+gem 'mini_magick'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -26,6 +29,10 @@ group :assets do
   gem 'twitter-bootstrap-rails'
   gem "therubyracer"
   gem "less-rails"
+end
+
+group :development, :test do
+  gem "rspec-rails", "~> 2.0"
 end
 
 group :development do

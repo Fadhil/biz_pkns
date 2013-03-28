@@ -14,12 +14,15 @@ class User < ActiveRecord::Base
   attr_accessible :email, :ic_number, :first_name, :last_name, :password, :phone
   attr_accessible :address1, :address2, :city, :postcode, :state, :avatar
   attr_accessible :has_business_profile, :business_profile_attributes
+  attr_accessible :profile_photo_attributes
 
   validates_uniqueness_of :ic_number
 
-  mount_uploader :avatar, AvatarUploader
   validates :password, :presence => true, :confirmation => true, :on => :create
 
-  has_one :business_profile
+  has_one :business_profile, dependent: :destroy
   accepts_nested_attributes_for :business_profile, allow_destroy: true
+
+  has_one :profile_photo, as: :attachable, dependent: :destroy 
+  accepts_nested_attributes_for :profile_photo, allow_destroy: true
 end
