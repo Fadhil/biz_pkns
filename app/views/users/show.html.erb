@@ -39,6 +39,25 @@
      <strong>Membership status:</strong> <%= @user.confirmed? ? "Confirmed" : "Unconfirmed"  %>
   </div>
 
+  <% if @user.has_business_profile? %>
+    <br/>
+    <div>
+      <strong>Business Profile</strong>
+    </div>
+    <div>
+      <strong>Category:</strong><%= @user.business_profile.category %>
+    </div>
+    <div>
+      <strong>Company Name:</strong><%= @user.business_profile.company_name%>
+    </div>
+    <div>
+      <strong>Description:</strong><%= @user.business_profile.description%>
+    </div>
+    <div>
+      <strong>Company Registration Number:</strong><%= @user.business_profile.registration_number%>
+    </div>
+  <% end %> 
+
 
 
 

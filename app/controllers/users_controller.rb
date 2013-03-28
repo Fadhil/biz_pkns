@@ -35,7 +35,9 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
-    @user.build_business_profile
+    if @user.business_profile.nil?
+      @user.build_business_profile
+    end
     
   end
 
