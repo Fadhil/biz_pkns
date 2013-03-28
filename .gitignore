@@ -6,4 +6,5 @@ Gemfile
 config/database.yml
 custom_plan.rb
 public/*
+tags
 zeus.json
