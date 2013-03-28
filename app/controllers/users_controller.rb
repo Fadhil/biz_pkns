@@ -35,13 +35,15 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    @user.build_business_profile
+    
   end
 
   # POST /users
   # POST /users.json
   def create
     @user = User.new(params[:user])
-
+    @user.build_business_profile
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }

@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :email, :ic_number, :first_name, :last_name, :password, :phone
-  attr_accessible :address1, :address2, :city, :postcode, :state, :avatar
+  attr_accessible :address1, :address2, :city, :postcode, :state, :avatar, :business_profile_attributes
 
   validates_uniqueness_of :ic_number
 
@@ -20,4 +20,5 @@ class User < ActiveRecord::Base
   validates :password, :presence => true, :confirmation => true, :on => :create
 
   has_one :business_profile
+  accepts_nested_attributes_for :business_profile, allow_destroy: true
 end
