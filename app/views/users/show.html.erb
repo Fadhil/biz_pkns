@@ -41,6 +41,13 @@
      <strong>Membership status:</strong> <%= @user.confirmed? ? "Confirmed" : "Unconfirmed"  %>
   </div>
 
+  <% if @user.has_attended_course? %>
+    <br/>
+    <div>
+      <strong>Attended Course:</strong><%= @user.attended_course %>
+    </div>
+  <% end %> 
+
   <% if @user.has_business_profile? %>
     <br/>
     <% unless @user.business_profile.business_photo.nil? %>
