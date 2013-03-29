@@ -16,6 +16,9 @@ gem 'carrierwave'
 # Image manipulation
 gem 'mini_magick'
 
+# Mailjet
+gem 'mailjet'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -45,7 +48,6 @@ end
 
 group :production do
   gem 'pg'
-  gem 'mailjet'
 end
 
 gem 'jquery-rails'
