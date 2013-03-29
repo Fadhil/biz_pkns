@@ -45,6 +45,7 @@ end
 
 group :production do
   gem 'pg'
+  gem 'mailjet'
 end
 
 gem 'jquery-rails'
