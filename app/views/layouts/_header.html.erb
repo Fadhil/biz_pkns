@@ -9,7 +9,6 @@
       <a class="brand" href="#">BizPkns</a>
       <div class="nav-collapse">
         <ul class="nav">
-          <li><%= link_to 'List Users', users_path %></li>
           <li><a href="#">Link</a></li>
           <li><a href="#">Link</a></li>
           <% if current_user %>
@@ -18,6 +17,7 @@
           <% else %>
             <li><%= link_to 'Login', new_user_session_path %></li>
           <% end %>
+          <li><%= link_to 'Administrate Users', users_path %></li>
         </ul>
       </div>
     </div>

@@ -1,5 +1,5 @@
 class BusinessProfile < ActiveRecord::Base
-  attr_accessible :category, :company_name, :description, :registration_number
+  attr_accessible :category, :type_of_business, :company_name, :description, :registration_number
   attr_accessible :business_photo_attributes, :business_logo_attributes, :address_attributes
 
   belongs_to :user

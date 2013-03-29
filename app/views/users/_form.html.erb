@@ -110,7 +110,13 @@
       <div class="control-group">
         <%= bp.label :category, class: 'control-label' %>
         <div class="controls">
-          <%= bp.text_field :category, class: 'text_field' %>
+          <%= select("user[business_profile_attributes]", "category",[['Category1','category1'],['Category2','category2'],  ['Category3','category3'], ['Category4','category4']], {:include_blank => true}) %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= bp.label :type_of_business, class: 'control-label' %>
+        <div class="controls">
+          <%= bp.text_field :type_of_business, class: 'text_field' %>
         </div>
       </div>
       <div class="control-group">

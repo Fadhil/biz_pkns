@@ -58,10 +58,13 @@
       <%= image_tag(@user.business_profile.business_photo.file) %>
     <% end %>
     <div>
-      <strong>Business Profile</strong>
+      <h2>Business Profile</h2><br/>
     </div>
     <div>
       <strong>Category:</strong><%= @user.business_profile.category %>
+    </div>
+    <div>
+      <strong>Type of Business:</strong><%= @user.business_profile.type_of_business %>
     </div>
     <div>
       <strong>Company Name:</strong><%= @user.business_profile.company_name%>
