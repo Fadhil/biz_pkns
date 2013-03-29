@@ -39,7 +39,7 @@ class UsersController < ApplicationController
       @user.build_business_profile
       @user.business_profile.build_business_logo
       @user.business_profile.build_business_photo
-      @user.fbusiness_profile.build_address
+      @user.business_profile.build_address
 
 
     end
