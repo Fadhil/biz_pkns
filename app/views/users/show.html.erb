@@ -38,7 +38,7 @@
      <strong>State:</strong> <%= @user.state %>
   </div>
  <div>
-     <strong>Membership status:</strong> <%= @user.confirmed? ? "Confirmed" : "Unconfirmed"  %>
+     <strong>Membership status:</strong> <%= @user.confirmed? ? "Unconfirmed" : "Confirmed"  %>
   </div>
 
   <% if @user.has_attended_course? %>
