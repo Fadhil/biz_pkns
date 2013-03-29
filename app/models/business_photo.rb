@@ -1,0 +1,3 @@
+class BusinessPhoto < Attachment
+
+end

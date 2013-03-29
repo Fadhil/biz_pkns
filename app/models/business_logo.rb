@@ -1,0 +1,3 @@
+class BusinessLogo < Attachment
+
+end

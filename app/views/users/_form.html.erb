@@ -111,6 +111,26 @@
           <%= bp.text_field :description, class: 'text_field' %>
         </div>
       </div>
+      <div class="control-group">
+        <%= bp.fields_for :business_logo do |bpl| %>
+          <div class='control-group'>
+            <%= bpl.label 'Upload Business Logo', class: 'control-label' %>
+            <div class='controls'>
+              <%= bpl.file_field :file , class: 'text-field' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="control-group">
+        <%= bp.fields_for :business_photo do |bph| %>
+          <div class='control-group'>
+            <%= bph.label 'Upload Business Photo', class: 'control-label' %>
+            <div class='controls'>
+              <%= bph.file_field :file , class: 'text-field' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
       <div id='address_fields'>
         <%= bp.fields_for :address do |a| %>'
           <div class='control-group'>

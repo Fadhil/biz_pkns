@@ -37,13 +37,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.business_profile.nil?
       @user.build_business_profile
-      @user.build_business_profile.build_address
+      @user.business_profile.build_business_logo
+      @user.business_profile.build_business_photo
+      @user.business_profile.build_address
+
 
     end
     if @user.profile_photo.nil?
       @user.build_profile_photo
     end
-    
+
   end
 
   # POST /users

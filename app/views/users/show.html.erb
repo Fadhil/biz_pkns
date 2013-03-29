@@ -43,6 +43,9 @@
 
   <% if @user.has_business_profile? %>
     <br/>
+    <% unless @user.business_profile.business_photo.nil? %>
+      <%= image_tag(@user.business_profile.business_photo.file) %>
+    <% end %>
     <div>
       <strong>Business Profile</strong>
     </div>
