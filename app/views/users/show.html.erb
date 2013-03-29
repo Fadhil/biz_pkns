@@ -22,12 +22,16 @@
   <div>
       <strong>Phone Number:</strong> <%= @user.phone %>
   </div>
-  <div>
-      <strong>Address 1:</strong> <%= @user.address1 %>
-  </div>
-  <div>
-      <strong>Address 2:</strong> <%= @user.address2 %>
-  </div>
+  <% if @user.address2.blank? %>
+    <strong>Address:</strong> <%= @user.address1 %>
+  <% else %>
+    <div>
+        <strong>Address 1:</strong> <%= @user.address1 %>
+    </div>
+    <div>
+        <strong>Address 2:</strong> <%= @user.address2 %>
+    </div>
+  <% end %>
   <div>
       <strong>City:</strong> <%= @user.city %>
   </div>
