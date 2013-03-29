@@ -1,8 +1,10 @@
 BizPkns::Application.routes.draw do
+  get "pages/welcome"
+
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout", sign_up: "signup"}
 
   resources :users
-  root :to => redirect('/users/login')
+  root :to => 'pages#welcome'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
