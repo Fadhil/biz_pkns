@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :ic_number
   validates_format_of :ic_number, with:  /^\d{6}\-\d{2}\-\d{4}$/, :message => "should be in the form 123456-78-9101"
+  validates_format_of :phone, with:  /^\d*$/, :message => "phone number must be in numerical only"
 
   validates :password, :presence => true, :confirmation => true, :on => :create
 
