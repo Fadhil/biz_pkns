@@ -153,8 +153,11 @@
           </div>
         <% end %>
       </div>
+
+      <h5>Business Address</h5>
+
       <div id='address_fields'>
-        <%= bp.fields_for :address do |a| %>'
+        <%= bp.fields_for :address do |a| %>
           <div class='control-group'>
             <%= a.label :line1, class: 'control-label' %>
             <div class='controls'>
