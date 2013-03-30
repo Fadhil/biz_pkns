@@ -77,8 +77,7 @@ ActiveRecord::Schema.define(:version => 20130329120440) do
     t.boolean  "confirmed"
     t.boolean  "has_business_profile"
     t.string   "attended_course"
-    t.string   "has_attended_course"
-    t.boolean  "has_atended_course"
+    t.boolean  "has_attended_course"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
