@@ -74,10 +74,12 @@
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :avatar, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.file_field :avatar, :class => 'text_field' %>
-    </div>
+    <%= f.fields_for :profile_photo do |pp| %>
+      <%= pp.label 'Upload profile photo', :class => 'control-label' %>
+      <div class="controls">
+        <%= pp.file_field :file, :class => 'text_field' %>
+      </div>
+    <% end %>
   </div>
 
   <div>
@@ -110,7 +112,7 @@
       <div class="control-group">
         <%= bp.label :category, class: 'control-label' %>
         <div class="controls">
-          <%= select("user[business_profile_attributes]", "category",[['Category1','category1'],['Category2','category2'],  ['Category3','category3'], ['Category4','category4']], {:include_blank => true}) %>
+          <%= select("user[business_profile_attributes]", "category",[['Category1','category1'],['Category2','category2'],  ['Category3','category3'], ['Category4','category4']], {:selected=> @user.business_profile.category, :include_blank => true}) %>
         </div>
       </div>
       <div class="control-group">

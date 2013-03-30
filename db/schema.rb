@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130329120440) do
+ActiveRecord::Schema.define(:version => 20130330115634) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -71,7 +71,6 @@ ActiveRecord::Schema.define(:version => 20130329120440) do
     t.datetime "confirmed_at"
     t.string   "confirmation_token"
     t.datetime "confirmation_sent_at"
-    t.string   "avatar"
     t.string   "first_name"
     t.string   "last_name"
     t.boolean  "confirmed"

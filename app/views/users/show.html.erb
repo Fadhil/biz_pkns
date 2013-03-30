@@ -57,6 +57,9 @@
     <% unless @user.business_profile.business_photo.nil? %>
       <%= image_tag(@user.business_profile.business_photo.file) %>
     <% end %>
+    <% unless @user.business_profile.business_logo.nil? %>
+      <%= image_tag(@user.business_profile.business_logo.file) %>
+    <% end %>
     <div>
       <h2>Business Profile</h2><br/>
     </div>
