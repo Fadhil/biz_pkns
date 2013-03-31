@@ -1,0 +1,3 @@
+class PreviousCourse < Course
+
+end
