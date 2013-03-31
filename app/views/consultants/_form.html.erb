@@ -1,0 +1,40 @@
+<%= form_for(@consultant) do |f| %>
+  <% if @consultant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@consultant.errors.count, "error") %> prohibited this consultant from being saved:</h2>
+
+      <ul>
+      <% @consultant.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class='field'>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :bio_data %><br />
+    <%= f.text_area :bio_data %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,31 @@
+<h1>Listing consultants</h1>
+
+<table>
+  <tr>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Password</th>
+    <th>Phone</th>
+    <th>Bio data</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @consultants.each do |consultant| %>
+  <tr>
+    <td><%= consultant.first_name %></td>
+    <td><%= consultant.last_name %></td>
+    <td><%= consultant.password %></td>
+    <td><%= consultant.phone %></td>
+    <td><%= consultant.bio_data %></td>
+    <td><%= link_to 'Show', consultant %></td>
+    <td><%= link_to 'Edit', edit_consultant_path(consultant) %></td>
+    <td><%= link_to 'Destroy', consultant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Consultant', new_consultant_path %>

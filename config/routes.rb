@@ -1,4 +1,8 @@
 BizPkns::Application.routes.draw do
+  devise_for :consultants
+
+  resources :consultants
+
   get "pages/welcome"
 
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout", sign_up: "signup"}

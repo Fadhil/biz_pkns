@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>First name:</b>
+  <%= @consultant.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @consultant.last_name %>
+</p>
+
+<p>
+  <b>Password:</b>
+  <%= @consultant.password %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @consultant.phone %>
+</p>
+
+<p>
+  <b>Bio data:</b>
+  <%= @consultant.bio_data %>
+</p>
+
+
+<%= link_to 'Edit', edit_consultant_path(@consultant) %> |
+<%= link_to 'Back', consultants_path %>
