@@ -10,4 +10,6 @@ class Consultant < ActiveRecord::Base
   attr_accessible :bio_data, :first_name, :last_name, :password, :phone
 
   has_many :programs, dependent: :destroy
+
+  has_many :courses, through: :programs
 end
