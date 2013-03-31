@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   attr_accessible :has_attended_course, :attended_course
   attr_accessible :has_business_profile, :business_profile_attributes
   attr_accessible :profile_photo_attributes
+  attr_accessible :created_at
 
   validates_uniqueness_of :ic_number
   validates_format_of :ic_number, with:  /^\d{6}\-\d{2}\-\d{4}$/, :message => "should be in the form 123456-78-9101"
