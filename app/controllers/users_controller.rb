@@ -47,6 +47,10 @@ class UsersController < ApplicationController
       @user.build_profile_photo
     end
 
+    if @user.previous_courses.empty?
+      @user.previous_courses.build
+    end
+
   end
 
   # POST /users
@@ -70,7 +74,6 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update
     @user = User.find(params[:id])
-
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to @user, notice: 'User was successfully updated.' }

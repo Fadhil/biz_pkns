@@ -45,12 +45,12 @@
      <strong>Membership status:</strong> <%= @user.confirmed? ? "Unconfirmed" : "Confirmed"  %>
   </div>
 
-  <% if @user.has_attended_course? %>
+ <!--  <% if @user.has_attended_course? %>
     <br/>
     <div>
       <strong>Attended Course:</strong><%= @user.attended_course %>
     </div>
-  <% end %> 
+  <% end %>  -->
 
   <% if @user.has_business_profile? %>
     <br/>

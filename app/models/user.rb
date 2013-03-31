@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   attr_accessible :address1, :address2, :city, :postcode, :state#, :avatar
   attr_accessible :has_attended_course, :attended_course
   attr_accessible :has_business_profile, :business_profile_attributes
-  attr_accessible :profile_photo_attributes
+  attr_accessible :profile_photo_attributes, :courses_attributes, :previous_courses_attributes
   attr_accessible :created_at
 
   validates_uniqueness_of :ic_number
@@ -29,4 +29,11 @@ class User < ActiveRecord::Base
 
   has_one :profile_photo, as: :attachable, dependent: :destroy 
   accepts_nested_attributes_for :profile_photo, allow_destroy: true
+
+  has_and_belongs_to_many :courses
+  accepts_nested_attributes_for :courses, allow_destroy: true
+
+  has_and_belongs_to_many :previous_courses
+  accepts_nested_attributes_for :previous_courses, allow_destroy: true
+
 end
