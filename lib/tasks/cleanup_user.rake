@@ -5,4 +5,4 @@
 
 # User.where("created_at >= '6.months.ago'")
 
-User.where("created_at <= ?", 6.months.ago).last.delete
+#User.where("created_at <= ?", 6.months.ago).last.delete
