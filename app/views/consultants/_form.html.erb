@@ -26,6 +26,14 @@
     </div>
   </div>
   <div class="control-group">
+    <%= f.fields_for :profile_photo do |pp| %>
+      <%= pp.label 'Upload profile photo', :class => 'control-label' %>
+      <div class="controls">
+        <%= pp.file_field :file, :class => 'text_field' %>
+      </div>
+    <% end %>
+  </div>
+  <div class="control-group">
     <%= f.label :bio_data, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_area :bio_data, :class => 'text_area' %>

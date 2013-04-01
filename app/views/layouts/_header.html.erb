@@ -14,6 +14,9 @@
           <% if current_user %>
             <li><%= link_to 'Edit Profile', edit_user_path(id: current_user.id) %></li>
             <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+          <% elsif current_consultant %>
+            <li><%= link_to 'Edit Consultant Profile', edit_consultant_path(id: current_consultant.id) %></li>
+            <li><%= link_to 'Logout', destroy_consultant_session_path, method: :delete %></li>
           <% else %>
             <li><%= link_to 'Login', new_user_session_path %></li>
           <% end %>

@@ -25,7 +25,6 @@ class ConsultantsController < ApplicationController
   # GET /consultants/new.json
   def new
     @consultant = Consultant.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @consultant }
@@ -35,6 +34,9 @@ class ConsultantsController < ApplicationController
   # GET /consultants/1/edit
   def edit
     @consultant = Consultant.find(params[:id])
+    if @consultant.profile_photo.nil? 
+      @consultant.build_profile_photo
+    end
   end
 
   # POST /consultants
