@@ -8,8 +8,11 @@
   <dd><%= @consultant.first_name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:last_name) %>:</strong></dt>
   <dd><%= @consultant.last_name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:phone) %>:</strong></dt>
-  <dd><%= @consultant.phone %></dd>
+  <% if @consultant.phone.blank? %>
+  <% else %>
+    <dt><strong><%= model_class.human_attribute_name(:phone) %>:</strong></dt>
+    <dd><%= @consultant.phone %></dd>
+  <% end %>
   <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
   <dd><%= @consultant.email %></dd>
 </dl>
