@@ -1,14 +1,13 @@
 BizPkns::Application.routes.draw do
   devise_for :consultants
-
-  resources :consultants
-
-  get "pages/welcome"
-
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout", sign_up: "signup"}
 
+  resources :consultants
   resources :users
+  resources :programs
+  
   root :to => 'pages#welcome'
+  get "pages/welcome"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
