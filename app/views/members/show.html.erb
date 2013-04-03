@@ -1,0 +1,117 @@
+<%- model_class = User -%>
+<div class="page-header">
+  <h1>Member Profile</h1>
+</div>
+
+<div>
+  <% unless @user.profile_photo.nil? %>
+    <%= image_tag(@user.profile_photo.file) %>
+  <% end %>
+  <div>
+    <strong>First Name:</strong> <%= @user.first_name %>
+  </div>
+  <div>
+    <strong>Last Name:</strong> <%= @user.last_name %>
+  </div>
+  <div>
+    <strong>Email:</strong> <%= @user.email %>
+  </div>
+  <div>
+      <strong>IC Number:</strong> <%= @user.ic_number %>
+  </div>
+  <div>
+      <strong>Phone Number:</strong> <%= @user.phone %>
+  </div>
+  <% if @user.address2.blank? %>
+    <strong>Address:</strong> <%= @user.address1 %>
+  <% else %>
+    <div>
+        <strong>Address 1:</strong> <%= @user.address1 %>
+    </div>
+    <div>
+        <strong>Address 2:</strong> <%= @user.address2 %>
+    </div>
+  <% end %>
+  <div>
+      <strong>City:</strong> <%= @user.city %>
+  </div>
+  <div>
+     <strong>Postcode:</strong> <%= @user.postcode %>
+  </div>
+  <div>
+     <strong>State:</strong> <%= @user.state %>
+  </div>
+ <div>
+     <strong>Membership status:</strong> <%= @user.confirmed? ? "Unconfirmed" : "Confirmed"  %>
+  </div>
+
+ <!--  <% if @user.has_attended_course? %>
+    <br/>
+    <div>
+      <strong>Attended Course:</strong><%= @user.attended_course %>
+    </div>
+  <% end %>  -->
+
+  <% if @user.has_business_profile? %>
+    <br/>
+    <% unless @user.business_profile.business_photo.nil? %>
+      <%= image_tag(@user.business_profile.business_photo.file) %>
+    <% end %>
+    <% unless @user.business_profile.business_logo.nil? %>
+      <%= image_tag(@user.business_profile.business_logo.file) %>
+    <% end %>
+    <div>
+      <h2>Business Profile</h2><br/>
+    </div>
+    <div>
+      <strong>Category:</strong><%= @user.business_profile.category %>
+    </div>
+    <div>
+      <strong>Type of Business:</strong><%= @user.business_profile.type_of_business %>
+    </div>
+    <div>
+      <strong>Company Name:</strong><%= @user.business_profile.company_name%>
+    </div>
+    <div>
+      <strong>Description:</strong><%= @user.business_profile.description%>
+    </div>
+    <div>
+      <strong>Company Registration Number:</strong><%= @user.business_profile.registration_number%>
+    </div>
+    <br/>
+    <% if @user.business_profile.address.nil? %>
+    <strong>Address:</strong> 
+  <% else %>
+    <div>
+        <strong>Address 1:</strong> <%= @user.business_profile.address.line1 %>
+    </div>
+    <div>
+        <strong>Address 2:</strong> <%= @user.business_profile.address.line2 %>
+    </div>
+  <% end %>
+  <div>
+      <strong>City:</strong> <%= @user.business_profile.address.city%>
+  </div>
+  <div>
+     <strong>Postcode:</strong> <%= @user.business_profile.address.postcode %>
+  </div>
+  <div>
+     <strong>State:</strong> <%= @user.business_profile.address.state %>
+  </div>
+ <div>
+  <% end %> 
+ 
+
+</div>
+
+<div class="form-actions">
+  <%#= link_to t('.back', :default => t("helpers.links.back")),
+              users_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_user_path(@user), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              user_path(@user),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

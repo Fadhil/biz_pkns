@@ -1,0 +1,241 @@
+<%= form_for @user, :html => { :class => 'form-horizontal', multipart: true } do |f| %>
+  <div class="control-group">
+    <%= f.label :first_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :first_name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :last_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :last_name, :class => 'text_field' %>
+    </div>
+  </div>
+   <div class="control-group">
+    <%= f.label :email, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :email, :class => 'text_field' %>
+    </div>
+  </div>
+  <% if @user.new_record? %>
+    <div class="control-group">
+      <%= f.label :password, 'Password', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.password_field :password, :class => 'text_field' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :password_confirmation, 'Password Confirmation', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.password_field :password_confirmation, :class => 'text_field' %>
+      </div>
+    </div>
+  <% end %>
+  <div class="control-group">
+    <%= f.label :ic_number, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :ic_number, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label 'Phone Number', :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :phone, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :address1, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :address1, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :address2, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :address2, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :city, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :city, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :postcode, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :postcode, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :state, :class => 'control-label' %>
+    <div class="controls">
+          <%= select("user", "state",[
+            ['Johor','Johor'],
+            ['Kedah','Kedah'],
+            ['Kelantan','Kelantan'],
+            ['Negeri Sembilan','Negeri Sembilan'],
+            ['Pahang','Pahang'],
+            ['Perak','Perak'],
+            ['Pulau Pinang','Pulau Pinang'],
+            ['Sabah','Sabah'],
+            ['Sarawak','Sarawak'],
+            ['Selangor','Selangor'],
+            ['Terengganu','Terengganu'],
+            ['Wilayah Persekutuan','Wilayah Persekutuan']
+            ],{:selected=> @user.state, :include_blank => true}) %>
+        </div>
+  </div>
+  <div class="control-group">
+    <%= f.fields_for :profile_photo do |pp| %>
+      <%= pp.label 'Upload profile photo', :class => 'control-label' %>
+      <div class="controls">
+        <%= pp.file_field :file, :class => 'text_field' %>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <div class="control-group">
+      <%= f.label :has_attended_course, class: 'control-label'%>
+      <div class='controls'>
+        <%= f.check_box :has_attended_course, class: 'at_checkbox' %>
+      </div>
+    </div>
+  </div>
+  <div id='attended_course_fields'>
+    <%= f.fields_for :previous_courses do |pc| %>
+      <div class="control-group">
+        <%= pc.label :name, class: 'control-label' %>
+        <div class="controls">
+          <%= pc.collection_select(:id, Program.all, :id, :name) %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= pc.label :venue, class: 'control-label' %>
+        <div class="controls">
+          <%= pc.text_field :venue, class: 'text_field' %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= pc.label :start_date, class: 'control-label' %>
+        <div class="controls">
+          <%= pc.text_field :start_date, class: 'text_field' %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= pc.label :end_date, class: 'control-label' %>
+        <div class="controls">
+          <%= pc.text_field :end_date, class: 'text_field' %>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+
+  <div>
+    <div class="control-group">
+      <%= f.label :has_business_profile, class: 'control-label'%>
+      <div class='controls'>
+        <%= f.check_box :has_business_profile, class: 'bp_checkbox' %>
+      </div>
+    </div>
+  </div>
+  <div id='business_fields'>
+    <%= f.fields_for :business_profile do |bp| %>
+      <div class="control-group">
+        <%= bp.label :category, class: 'control-label' %>
+        <div class="controls">
+          <%= select("user[business_profile_attributes]", "category",[['Category1','category1'],['Category2','category2'],  ['Category3','category3'], ['Category4','category4']], {:selected=> @user.business_profile.category, :include_blank => true}) %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= bp.label :type_of_business, class: 'control-label' %>
+        <div class="controls">
+          <%= bp.text_field :type_of_business, class: 'text_field' %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= bp.label :company_name, class: 'control-label' %>
+        <div class="controls">
+          <%= bp.text_field :company_name, class: 'text_field' %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= bp.label :description, class: 'control-label' %>
+        <div class="controls">
+          <%= bp.text_field :description, class: 'text_field' %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= bp.fields_for :business_logo do |bpl| %>
+          <div class='control-group'>
+            <%= bpl.label 'Upload Business Logo', class: 'control-label' %>
+            <div class='controls'>
+              <%= bpl.file_field :file , class: 'text-field' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="control-group">
+        <%= bp.fields_for :business_photo do |bph| %>
+          <div class='control-group'>
+            <%= bph.label 'Upload Business Photo', class: 'control-label' %>
+            <div class='controls'>
+              <%= bph.file_field :file , class: 'text-field' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <h5>Business Address</h5>
+
+      <div id='address_fields'>
+        <%= bp.fields_for :address do |a| %>
+          <div class='control-group'>
+            <%= a.label :line1, class: 'control-label' %>
+            <div class='controls'>
+              <%= a.text_field :line1, class: 'text_field' %>
+            </div>
+          </div>
+          <div class='control-group'>
+            <%= a.label :line2, class: 'control-label' %>
+            <div class='controls'>
+              <%= a.text_field :line2, class: 'text_field' %>
+            </div>
+          </div>
+          <div class='control-group'>
+            <%= a.label :city, class: 'control-label' %>
+            <div class='controls'>
+              <%= a.text_field :city, class: 'text_field' %>
+            </div>
+          </div>
+          <div class='control-group'>
+            <%= a.label :postcode, class: 'control-label' %>
+            <div class='controls'>
+              <%= a.text_field :postcode, class: 'text_field' %>
+            </div>
+          </div>
+          <div class='control-group'>
+            <%= a.label :state, class: 'control-label' %>
+            <div class='controls'>
+              <%= a.text_field :state, class: 'text_field' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="control-group">
+        <%= bp.label :registration_number, class: 'control-label' %>
+        <div class="controls">
+          <%= bp.text_field :registration_number, class: 'text_field' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                users_path, :class => 'btn' %>
+  </div>
+<% end %>

@@ -7,6 +7,7 @@ BizPkns::Application.routes.draw do
   resources :consultants
   resources :users
   resources :programs
+  resources :members
   
   root :to => 'pages#welcome'
   get "pages/welcome"

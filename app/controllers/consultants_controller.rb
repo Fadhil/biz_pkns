@@ -46,6 +46,7 @@ class ConsultantsController < ApplicationController
 
     respond_to do |format|
       if @consultant.save
+        #Send email here
         format.html { redirect_to @consultant, notice: 'Consultant was successfully created.' }
         format.json { render json: @consultant, status: :created, location: @consultant }
       else

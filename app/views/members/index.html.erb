@@ -1,0 +1,34 @@
+<%- model_class = User -%>
+<div class="page-header">
+  <h1>Members Directory</h1>
+</div>
+
+<%= form_for :users, html: {:id => "searchform", method: :get} do %>
+      <%= text_field_tag :search, '', :placeholder => 'Search member' %>
+      <input type="submit" value="Search" id="searchbtn" />
+<% end %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Index</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Address</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each_with_index do |user,i| %>
+      <tr>
+        <td><%= i+1 %></td>
+        <td><%= link_to "#{user.first_name} #{user.last_name}", user_path(user) %></td>
+        <td><%= user.email %></td>
+        <% if user.city.blank? | user.state.blank? %>
+          <td></td>
+        <% else %>
+          <td><%= "#{user.city}, #{user.state}" %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
