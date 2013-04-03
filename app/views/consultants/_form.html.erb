@@ -10,7 +10,7 @@
     <div class="controls">
       <%= f.text_field :last_name, :class => 'text_field' %>
     </div>
-  </div>
+  </div><
   <% if @consultant.new_record? %>
     <div class="control-group">
       <%= f.label :password, :class => 'control-label' %>
@@ -32,6 +32,12 @@
         <%= pp.file_field :file, :class => 'text_field' %>
       </div>
     <% end %>
+  </div>
+  <div class='control-group'>
+    <%= f.label 'Select a Program', class: 'control-label' %>
+    <div class='controls'>
+      <%= select_tag :program_id, options_for_select(Program.all.map{|a| [a.name,a.id]}) %>
+    </div>
   </div>
   <div class="control-group">
     <%= f.label :bio_data, :class => 'control-label' %>

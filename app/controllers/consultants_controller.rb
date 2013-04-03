@@ -60,7 +60,8 @@ class ConsultantsController < ApplicationController
   # PUT /consultants/1.json
   def update
     @consultant = Consultant.find(params[:id])
-
+    program = Program.find(params[:program_id])
+    @consultant.program = program
     respond_to do |format|
       if @consultant.update_attributes(params[:consultant])
         format.html { redirect_to @consultant, notice: 'Consultant was successfully updated.' }
