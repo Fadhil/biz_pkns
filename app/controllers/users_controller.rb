@@ -74,6 +74,10 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update
     @user = User.find(params[:id])
+    program = Program.find(params[:program_id])
+    previous_course = PreviousCourse.find(params[:user][:previous_courses_attributes]['0'][:id])
+    previous_course.program = program
+    previous_course.save
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
