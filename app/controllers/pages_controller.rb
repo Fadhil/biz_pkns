@@ -16,9 +16,10 @@ class PagesController < ApplicationController
       end
       if category && !state
         @users = User.joins(:business_profile).where('business_profiles.category' => category)
-      # elsif state && !category
-        
-      #   @users = User.joins(:business_profile).where('business_profiles.state' => state)
+      elsif state && !category
+        @users = User.joins(:business_profile=>:address).where('addresses.state' => state)
+      elsif category && state
+        @users = User.joins(:business_profile=>:address).where('addresses.state' => state, 'business_profiles.category' => category)
       end
     else
       @users = User.joins(:business_profile)
