@@ -1,0 +1,35 @@
+
+<div class="page-header">
+  <h1>Business Directory</h1>
+</div>
+<%= form_tag '', method: :get do %>
+  <%= label :search, :category, 'Search by Business Category' %>
+  <%= select :search, :category, BUSINESS_CATEGORIES, {:include_blank => true} %>
+  <%= label :search, :state, 'Search by State' %>
+  <%= select :search, :state, MALAYSIAN_STATES,{:include_blank => true} %>
+
+  <input type="submit" value="Search" id="searchbtn" />
+<% end %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Business Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to "#{user.first_name} #{user.last_name}", user_path(user) %></td>
+        <td><%= user.email %></td>
+        <td><%= user.business_profile.category %></td>
+        <td>
+          <%= link_to 'View',
+                    user_path(user), :class => 'btn btn-mini' %>
+
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

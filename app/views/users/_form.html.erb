@@ -70,20 +70,7 @@
   <div class="control-group">
     <%= f.label :state, :class => 'control-label' %>
     <div class="controls">
-          <%= select("user", "state",[
-            ['Johor','Johor'],
-            ['Kedah','Kedah'],
-            ['Kelantan','Kelantan'],
-            ['Negeri Sembilan','Negeri Sembilan'],
-            ['Pahang','Pahang'],
-            ['Perak','Perak'],
-            ['Pulau Pinang','Pulau Pinang'],
-            ['Sabah','Sabah'],
-            ['Sarawak','Sarawak'],
-            ['Selangor','Selangor'],
-            ['Terengganu','Terengganu'],
-            ['Wilayah Persekutuan','Wilayah Persekutuan']
-            ],{:selected=> @user.state, :include_blank => true}) %>
+          <%= select("user", "state", MALAYSIAN_STATES,{:selected=> @user.state, :include_blank => false}) %>
         </div>
   </div>
   <div class="control-group">
@@ -153,7 +140,7 @@
       <div class="control-group">
         <%= bp.label :category, class: 'control-label' %>
         <div class="controls">
-          <%= select("user[business_profile_attributes]", "category",[['Category1','category1'],['Category2','category2'],  ['Category3','category3'], ['Category4','category4']], {:selected=> @user.business_profile.category, :include_blank => true}) %>
+          <%= select("user[business_profile_attributes]", "category", BUSINESS_CATEGORIES, {:selected=> @user.business_profile.category, :include_blank => false}) %>
         </div>
       </div>
       <div class="control-group">
@@ -226,7 +213,7 @@
           <div class='control-group'>
             <%= a.label :state, class: 'control-label' %>
             <div class='controls'>
-              <%= a.text_field :state, class: 'text_field' %>
+              <%= select("user[business_profile_attributes][address_attributes]", "state", MALAYSIAN_STATES,{:selected=> @user.state, :include_blank => false}) %>
             </div>
           </div>
         <% end %>

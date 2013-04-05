@@ -1,5 +1,7 @@
 BizPkns::Application.routes.draw do
+
   match 'consultation' => "pages#consultation"
+  match 'business_directory' => 'pages#business_directory'
 
   devise_for :consultants
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout", sign_up: "signup"}
@@ -11,6 +13,7 @@ BizPkns::Application.routes.draw do
   
   root :to => 'pages#welcome'
   get "pages/welcome"
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
