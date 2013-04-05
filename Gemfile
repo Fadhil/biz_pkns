@@ -43,6 +43,7 @@ end
 
 group :development do
   gem 'mysql2' 
+  gem "letter_opener"
 end
 
 group :test do 
