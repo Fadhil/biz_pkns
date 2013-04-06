@@ -1,5 +1,5 @@
 class ConsultantMailer < ActionMailer::Base
-  default from: "admin@pknsbizclub.com"
+  default from: "pkns@iedwrites.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
