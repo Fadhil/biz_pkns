@@ -5,6 +5,7 @@ BizPkns::Application.routes.draw do
 
   devise_for :consultants
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout", sign_up: "signup"}
+  devise_for :consultants, path_names: {sign_in: "login"}
 
   resources :consultants
   resources :users
