@@ -1,3 +1,8 @@
 Congratulation <%= @consultant.email %>!
 
 You have been created as a consultant in PKNS Biz Club!
+
+You can login <%= link_to 'here', new_consultant_session_url %> 
+using these details:
+login: <%= @consultant.email %>
+password: <%= @consultant.password %>
