@@ -1,0 +1,39 @@
+
+<div class='control-group'>
+  <%= a.label :line1, class: 'control-label' %>
+  <div class='controls'>
+    <%= a.text_field :line1, class: 'text_field' %>
+  </div>
+</div>
+<div class='control-group'>
+  <%= a.label :line2, class: 'control-label' %>
+  <div class='controls'>
+    <%= a.text_field :line2, class: 'text_field' %>
+  </div>
+</div>
+<div class='city_fields'>
+  <%= a.fields_for :city do |c| %>
+    <div class='control-group'>
+      <%= c.label 'City', class: 'control-label' %>
+      <div class='controls'>
+        <%= select_tag "#{a.object.addressable_type.downcase}_city", options_for_select(City.all.map{ |a| [a.name, a.id]}, selected: c.object.id) %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class='control-group'>
+  <%= a.label :postcode, class: 'control-label' %>
+  <div class='controls'>
+    <%= a.text_field :postcode, class: 'text_field' %>
+  </div>
+</div>
+<div class='state_fields'>
+  <%= a.fields_for :city do |c| %>
+    <div class='control-group'>
+      <%= c.label 'State', class: 'control-label' %>
+      <div class='controls'>
+        <%= select_tag "#{a.object.addressable_type.downcase}_state", options_for_select(City.all.map{ |a| [a.state_name]}.uniq, selected: c.object.state_name) %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -12,11 +12,10 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :email, :ic_number, :first_name, :last_name, :password, :phone
-  attr_accessible :address1, :address2, :city, :postcode, :state#, :avatar
   attr_accessible :has_attended_course, :attended_course
   attr_accessible :has_business_profile, :business_profile_attributes
   attr_accessible :profile_photo_attributes, :courses_attributes, :previous_courses_attributes
-  attr_accessible :created_at
+  attr_accessible :created_at, :address_attributes
 
   validates_uniqueness_of :ic_number
   validates_format_of :ic_number, with:  /^\d{6}\-\d{2}\-\d{4}$/, :message => "should be in the form 123456-78-9101"
@@ -36,4 +35,13 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :previous_courses
   accepts_nested_attributes_for :previous_courses, allow_destroy: true
 
+  has_one :address, as: :addressable, dependent: :destroy
+  accepts_nested_attributes_for :address, allow_destroy: true
+
+  def set_city(city_id)
+    if city = City.find(city_id)
+      self.address.city = city
+      self.save
+    end
+  end
 end

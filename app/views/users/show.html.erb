@@ -22,26 +22,7 @@
   <div>
       <strong>Phone Number:</strong> <%= @user.phone %>
   </div>
-  <% if @user.address2.blank? %>
-    <strong>Address:</strong> <%= @user.address1 %>
-  <% else %>
-    <div>
-        <strong>Address 1:</strong> <%= @user.address1 %>
-    </div>
-    <div>
-        <strong>Address 2:</strong> <%= @user.address2 %>
-    </div>
-  <% end %>
-  <div>
-      <strong>City:</strong> <%= @user.city %>
-  </div>
-  <div>
-     <strong>Postcode:</strong> <%= @user.postcode %>
-  </div>
-  <div>
-     <strong>State:</strong> <%= @user.state %>
-  </div>
- <div>
+ 
      <strong>Membership status:</strong> <%= @user.confirmed? ? "Unconfirmed" : "Confirmed"  %>
   </div>
 
@@ -90,13 +71,13 @@
     </div>
   <% end %>
   <div>
-      <strong>City:</strong> <%= @user.business_profile.address.city%>
+      <strong>City:</strong> <%#= @user.business_profile.address.city.name unless @user.business_profile.address.city.nil? %>
   </div>
   <div>
-     <strong>Postcode:</strong> <%= @user.business_profile.address.postcode %>
+     <strong>Postcode:</strong> <%#= @user.business_profile.address.postcode %>
   </div>
   <div>
-     <strong>State:</strong> <%= @user.business_profile.address.state %>
+     <strong>State:</strong> <%#= @user.business_profile.address.city.state_name unless @user.business_profile.address.city.nil?%>
   </div>
  <div>
   <% end %> 

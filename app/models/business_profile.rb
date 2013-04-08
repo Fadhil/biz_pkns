@@ -13,5 +13,11 @@ class BusinessProfile < ActiveRecord::Base
   has_one :business_photo, as: :attachable, dependent: :destroy 
   accepts_nested_attributes_for :business_photo, allow_destroy: true
 
+  def set_city(city_id)
+    city = City.find(city_id)
+    self.address.city = city
+    self.save
+  end
+
 
 end

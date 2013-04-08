@@ -11,14 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130406053355) do
+ActiveRecord::Schema.define(:version => 20130406064425) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
     t.string   "line2"
-    t.string   "city"
     t.string   "postcode"
-    t.string   "state"
     t.integer  "addressable_id"
     t.string   "addressable_type"
     t.datetime "created_at",       :null => false
@@ -131,11 +129,6 @@ ActiveRecord::Schema.define(:version => 20130406053355) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "password"
-    t.string   "address1"
-    t.string   "address2"
-    t.string   "city"
-    t.string   "postcode"
-    t.string   "state"
     t.datetime "confirmed_at"
     t.string   "confirmation_token"
     t.datetime "confirmation_sent_at"
