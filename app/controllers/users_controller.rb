@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
-    @user.build_address
+    #@user.build_address
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,6 +36,11 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    if @user.address.nil?
+      @user.build_address
+      @user.address.build_city
+    end
+    
     if @user.business_profile.nil?
       @user.build_business_profile
       @user.business_profile.build_business_logo
