@@ -25,7 +25,6 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
-    #@user.build_address
 
     respond_to do |format|
       format.html # new.html.erb
@@ -62,7 +61,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @city_id = params[:user][:city_attributes][:id]
+    city_id = params[:user_city]
     @user = User.new(params[:user].delete(:city_attributes))
     #@business_profile = @user.build_business_profile
 
@@ -84,12 +83,13 @@ class UsersController < ApplicationController
     city_id = params[:user_city]
     business_city_id = params[:businessprofile_city]
 
-    @user.set_city(city_id)
+
     params[:user][:address_attributes].delete :city_attributes
     program = Program.find(params[:program_id])
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
+        @user.set_city(city_id)
         @user.business_profile.set_city(business_city_id)
         previous_course = @user.previous_courses.last
         previous_course.program = program
