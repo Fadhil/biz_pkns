@@ -14,6 +14,8 @@ BizPkns::Application.routes.draw do
   
   root :to => 'pages#welcome'
   get "pages/welcome"
+  get "consultants/:id/contact", :to => "consultants#contact", :as => 'contact_consultant'
+  #get 'new/:id', :to => "entrees#new", :as => 'new'
 
 
   # The priority is based upon order of creation:
