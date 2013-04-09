@@ -92,10 +92,29 @@ class ConsultantsController < ApplicationController
 
   def contact
     @consultant = Consultant.find(params[:id])
+    @sender = current_user.email
 
+    #ConsultantMailer.contact(@consultant).deliver
+    #format.html { redirect_to @consultant, notice: 'Your message has been sent to respective consultant.' }
+  end
+
+  def sent
+    @consultant = Consultant.find(params[:id])
+    @emailname = params[:consultant][:name]
+    @emailsender = params[:consultant][:email]
+    @emailsubject = params[:consultant][:subject]
+    @emailmessage = params[:consultant][:message]
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @consultant }
+      if @consultant.save
+        ConsultantMailer.contact(@consultant, @emailname, @emailsender, @emailsubject, @emailmessage).deliver
+        format.html { redirect_to consultation_path, notice: 'Your message has been sent to respective consultant.' }
+        #contact_consultant_path(consultant)
+        format.json { render json: @consultant, status: :created, location: @consultant }
+      else
+        format.html { render action: "contact" }
+        format.json { render json: @consultant.errors, status: :unprocessable_entity }
+      end
     end
   end
+  
 end

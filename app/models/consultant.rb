@@ -18,4 +18,17 @@ class Consultant < ActiveRecord::Base
 
   has_one :profile_photo, as: :attachable, dependent: :destroy
   accepts_nested_attributes_for :profile_photo, allow_destroy: true
+
+  include MailForm::Delivery
+
+  append :remote_ip, :user_agent, :session
+  attributes :name, :email, :subject, :message, :created_at
+
+  def headers
+    {
+      :to => "your.email@your.domain.com",
+      :from => %("#{User.name}" <#{User.email}>)
+    }
+  end
+
 end

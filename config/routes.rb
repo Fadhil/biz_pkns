@@ -5,6 +5,10 @@ BizPkns::Application.routes.draw do
 
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout", sign_up: "signup"},
                       controllers: {registrations: 'registrations'}
+
+  match 'consultation' => "pages#consultation"
+  match 'business_directory' => 'pages#business_directory'
+  devise_for :users, path_names: {sign_in: "login", sign_out: "logout", sign_up: "signup"}
   devise_for :consultants, path_names: {sign_in: "login"}
 
   resources :consultants
@@ -15,6 +19,8 @@ BizPkns::Application.routes.draw do
   root :to => 'pages#welcome'
   get "pages/welcome"
   get "consultants/:id/contact", :to => "consultants#contact", :as => 'contact_consultant'
+  put "consultants/:id/contact/sent", :to => "consultants#sent", :as => 'contact_sent'
+
   #get 'new/:id', :to => "entrees#new", :as => 'new'
 
 

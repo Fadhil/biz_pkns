@@ -1,6 +1,19 @@
 require "spec_helper"
 
 describe ConsultantMailer do
+  describe "contact" do
+    let(:mail) { ConsultantMailer.contact }
+
+    it "renders the headers" do
+      mail.subject.should eq("Contact")
+      mail.to.should eq(["to@example.org"])
+      mail.from.should eq(["from@example.com"])
+    end
+
+    it "renders the body" do
+      mail.body.encoded.should match("Hi")
+    end
+
   describe "signup_notification" do
     let(:mail) { ConsultantMailer.signup_notification }
 
@@ -15,4 +28,4 @@ describe ConsultantMailer do
     end
   end
 
-end
+  end
