@@ -60,6 +60,10 @@ class ConsultantsController < ApplicationController
   # PUT /consultants/1
   # PUT /consultants/1.json
   def update
+    if params[:consultant][:password].blank? && params[:consultant][:password_confirmation].blank?
+      params[:consultant].delete(:password)
+      params[:consultant].delete(:password_confirmation)
+    end
     @consultant = Consultant.find(params[:id])
     program = Program.find(params[:program_id])
     @consultant.program = program
