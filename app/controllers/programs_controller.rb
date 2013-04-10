@@ -25,7 +25,7 @@ class ProgramsController < ApplicationController
   # GET /programs/new.json
   def new
     @program = Program.new
-
+    @program.build_logo
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @program }
