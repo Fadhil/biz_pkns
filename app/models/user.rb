@@ -44,4 +44,21 @@ class User < ActiveRecord::Base
       self.save
     end
   end
+
+  def age
+    year_of_birth = self.ic_number[0..1]
+    if year_of_birth.to_i >= 60
+      year_of_birth = "19#{year_of_birth}"
+    else
+      year_of_birth = "20#{year_of_birth}"
+    end
+
+    month_of_birth = self.ic_number[2..3]
+    day_of_birth = self.ic_number[4..5]
+    
+    date_of_birth = Time.new(year_of_birth,month_of_birth, day_of_birth)
+
+    seconds_since_birth = Time.now - date_of_birth
+    age = (seconds_since_birth/SECONDS_IN_A_YEAR).floor
+  end
 end

@@ -13,3 +13,5 @@ MALAYSIAN_STATES = [
             ['Terengganu','Terengganu'],
             ['Wilayah Persekutuan','Wilayah Persekutuan']
             ]
+
+SECONDS_IN_A_YEAR = 31556952
