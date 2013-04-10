@@ -37,6 +37,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.address.nil?
       @user.build_address
+    end
+
+    if @user.address.city.nil?
       @user.address.build_city
     end
     
