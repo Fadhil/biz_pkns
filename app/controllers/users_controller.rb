@@ -50,7 +50,9 @@ class UsersController < ApplicationController
       @user.business_profile.build_address
       @user.business_profile.address.build_city
     end
-
+    if @user.business_profile.address.nil?
+      @user.business_profile.build_address
+    end
     if @user.business_profile.address.city.nil?
       @user.business_profile.address.build_city
     end
