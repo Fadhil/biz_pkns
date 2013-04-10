@@ -23,11 +23,12 @@
         <td><%= i+1 %></td>
         <td><%= link_to "#{user.first_name} #{user.last_name}", user_path(user) %></td>
         <td><%= user.email %></td>
-
-        <% if user.address.city.nil? rescue false%>
-          <td></td>
-        <% else %>
-          <td><%= "#{user.address.city.name}, #{user.address.city.state_name}" %></td>
+        <% unless user.address.nil? %>
+          <% if user.address.city.nil? %>
+            <td></td>
+          <% else %>
+            <td><%= "#{user.address.city.name}, #{user.address.city.state_name}" %></td>
+          <% end %>
         <% end %>
       </tr>
     <% end %>
