@@ -54,7 +54,18 @@
       <%= f.text_field :phone, :class => 'text_field' %>
     </div>
   </div>
-
+  <div class='control-group'>
+    <%= f.label t('.twitter_handle'), class: 'control-label' %>
+    <div class='controls'>
+      <%= f.text_field :twitter_handle, class: 'text_field' %>
+    </div>
+  </div>
+  <div class='control-group'>
+    <%= f.label t('.facebook_handle'), class: 'control-label' %>
+    <div class='controls'>
+      <%= f.text_field :facebook_handle, class: 'text_field' %>
+    </div>
+  </div>
   <div class="control-group">
     <%= f.fields_for :profile_photo do |pp| %>
       <%= pp.label 'Upload profile photo', :class => 'control-label' %>

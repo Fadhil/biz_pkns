@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130409143401) do
+ActiveRecord::Schema.define(:version => 20130411153915) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -139,6 +139,8 @@ ActiveRecord::Schema.define(:version => 20130409143401) do
     t.string   "attended_course"
     t.boolean  "has_attended_course"
     t.string   "gender"
+    t.string   "twitter_handle"
+    t.string   "facebook_handle"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

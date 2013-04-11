@@ -4,3 +4,8 @@
 en:
   hello: "Hello world"
   confirmation_sent: 'An email confirmation has been sent to your email %{email}.'
+
+  users:
+    form:
+      twitter_handle: 'Twitter ID'
+      facebook_handle: 'Facebook ID'
