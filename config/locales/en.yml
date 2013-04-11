@@ -9,3 +9,8 @@ en:
     form:
       twitter_handle: 'Twitter ID'
       facebook_handle: 'Facebook ID'
+      current_employment_status: 'Current Employment Status'
+      employment_status:
+        own_business: 'Business Owner'
+        working_studying: 'Working/Studying'
+        part_time_business: 'Working/Studying with part time business'
