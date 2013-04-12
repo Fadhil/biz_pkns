@@ -39,6 +39,10 @@ class User < ActiveRecord::Base
   has_one :address, as: :addressable, dependent: :destroy
   accepts_nested_attributes_for :address, allow_destroy: true
 
+  has_many :users_skills, dependent: :destroy 
+  has_many :skills, through: :users_skills
+
+
   def set_city(city_id)
     if city = City.find(city_id)
       self.address.city = city
