@@ -6,7 +6,8 @@ class MembersController < ApplicationController
 
     if params[:search].present?
       q = params[:search].split(" ").join("%")
-      @users = User.where("first_name LIKE ? or last_name LIKE ? or city LIKE ? or state LIKE ? or concat(last_name, ', ', first_name, ', ', city, ', ', state) LIKE ?", "%#{q}%", "%#{q}%" , "%#{q}%", "%#{q}%" , "%#{q}%")
+      @users = User.where("first_name LIKE ? or last_name LIKE ? or concat(last_name, ', ', first_name, ', ', city, ', ', state) LIKE ?", "%#{q}%", "%#{q}%" , "%#{q}%", "%#{q}%" , "%#{q}%")
+      #@users = User.where("first_name LIKE ? or last_name LIKE ? or concat(last_name, ', ', first_name) LIKE ?", "%#{q}%", "%#{q}%" , "%#{q}%")
     else
       @users = User.order("id desc")
     end
@@ -99,4 +100,5 @@ class MembersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end
