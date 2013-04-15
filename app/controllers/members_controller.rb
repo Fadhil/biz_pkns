@@ -3,7 +3,7 @@ class MembersController < ApplicationController
   # GET /users.json
   def index
 
-
+    @users = User.all
     if params[:search].present?
       if params[:search][:term].blank?
         @users = User.order("id desc")
@@ -20,7 +20,6 @@ class MembersController < ApplicationController
           @users = @users.joins({:address=>:city}).where('cities.state_name'=>params[:search][:state])
         end
       end
-
 
     end
     
