@@ -5,11 +5,25 @@ class MembersController < ApplicationController
 
 
     if params[:search].present?
-      q = params[:search].split(" ").join("%")
-      @users = User.where("first_name LIKE ? or last_name LIKE ? or city LIKE ? or state LIKE ? or concat(last_name, ', ', first_name, ', ', city, ', ', state) LIKE ?", "%#{q}%", "%#{q}%" , "%#{q}%", "%#{q}%" , "%#{q}%")
-    else
-      @users = User.order("id desc")
+      if params[:search][:term].blank?
+        @users = User.order("id desc")
+      else
+        search_terms = params[:search][:term].split(' ').join('%')
+        @users = User.where("concat(first_name, ' ', last_name) like ?","%#{search_terms}%")
+      end
+
+
+      if !params[:search][:state].blank? || !params[:search][:city].blank?
+        if !params[:search][:city].blank?
+          @users = @users.joins({:address=>:city}).where('cities.id' => params[:search][:city])
+        else
+          @users = @users.joins({:address=>:city}).where('cities.state_name'=>params[:search][:state])
+        end
+      end
+
+
     end
+    
 
   end
 

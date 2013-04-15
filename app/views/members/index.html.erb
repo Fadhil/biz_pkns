@@ -3,8 +3,8 @@
   <h1>Members Directory</h1>
 </div>
 
-<%= form_for :users, html: {:id => "searchform", method: :get} do %>
-      <%= text_field_tag :search, '', :placeholder => 'Search member' %>
+<%= form_tag '', method: :get do %>
+      <%= text_field_tag 'search_term','', :placeholder => 'Search member',name: 'search[term]' %>
 
       <%= label :search, :city, 'Search by City' %>
       <%= select :search, :city, City.all.map{|a| [a.name,a.id]}, {:include_blank => true} %>
