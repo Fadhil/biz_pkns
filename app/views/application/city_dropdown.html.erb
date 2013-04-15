@@ -1,0 +1,3 @@
+<% @cities.each do |c| %>
+  <%= content_tag('option', c.name, value: c.id) %>
+<% end %>
