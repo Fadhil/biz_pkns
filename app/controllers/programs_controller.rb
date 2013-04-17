@@ -35,6 +35,8 @@ class ProgramsController < ApplicationController
   # GET /programs/1/edit
   def edit
     @program = Program.find(params[:id])
+    @program.courses.build
+    @courses = Course.new
   end
 
   # POST /programs

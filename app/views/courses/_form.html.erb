@@ -1,0 +1,45 @@
+<%= form_for @course, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :description, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :description, :class => 'text_area' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :venue, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :venue, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :start_date, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :start_date, :class => 'date_select', :include_blank => true %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :end_date, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :end_date, :class => 'date_select', :include_blank => true %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :status, :class => 'control-label' %>
+    <div class="controls">
+      <%= radio_button("course","status", true) %>Active<br />
+      <%= radio_button("course","status", false) %>Not Active<br />
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                courses_path, :class => 'btn' %>
+  </div>
+<% end %>

@@ -12,6 +12,7 @@
 # It's strongly recommended to check this file into your version control system.
 
 ActiveRecord::Schema.define(:version => 20130411172808) do
+ActiveRecord::Schema.define(:version => 20130414100607) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -87,6 +88,7 @@ ActiveRecord::Schema.define(:version => 20130411172808) do
     t.datetime "updated_at",  :null => false
     t.integer  "program_id"
     t.string   "type"
+    t.boolean  "status"
   end
 
   create_table "courses_users", :id => false, :force => true do |t|
