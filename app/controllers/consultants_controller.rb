@@ -43,7 +43,8 @@ class ConsultantsController < ApplicationController
   # POST /consultants.json
   def create
     @consultant = Consultant.new(params[:consultant])
-
+    program = Program.find(params[:program_id])
+    @consultant.program = program
     respond_to do |format|
       if @consultant.save
         #Send email here

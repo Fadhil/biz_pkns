@@ -3,6 +3,11 @@
   <h1>Members Directory</h1>
 </div>
 
+<<<<<<< HEAD
+<%= form_for :users, html: { :id => "searchform", method: :get } do %>
+      <%= text_field_tag :search, '', :placeholder => 'Search member' %>
+      <%#= select :search, :city, City.all.map{|a| [a.name,a.id]}, {:include_blank => "Search City"} %>
+=======
 <%= form_tag '', method: :get do %>
       <%= text_field_tag 'search_term','', :placeholder => 'Search member',name: 'search[term]' %>
 
@@ -10,6 +15,7 @@
       <%= select :search, :city, City.all.map{|a| [a.name,a.id]}, {:include_blank => true} %>
       
       <%= label :search, :state, 'Search by State' %>
+>>>>>>> origin/master
       <%= select :search, :state, City.all.map{|a| [a.state_name,a.state_name]}.uniq, {:include_blank => true} %>
       <%= button_tag "Search", class: 'btn btn-success' %>
 <% end %>

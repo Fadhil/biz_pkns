@@ -16,7 +16,12 @@
     <div class='control-group'>
       <%= c.label 'City', class: 'control-label' %>
       <div class='controls'>
-        <%= select_tag "#{a.object.addressable_type.downcase}_city", options_for_select(City.all.map{ |a| [a.name, a.id]}, selected: c.object.id) %>
+        <% if c.object.id %>
+          <% @cities = City.where(state_name: c.object.state_name).order(:name) %>
+        <% else %>
+          <% @cities = City.where(state_name: 'Selangor').order(:name) %>
+        <% end %>
+        <%= select_tag "#{a.object.addressable_type.downcase}_city", options_for_select(@cities.map{ |a| [a.name, a.id]}, selected: c.object.id ) %>
       </div>
     </div>
   <% end %>
@@ -32,7 +37,12 @@
     <div class='control-group'>
       <%= c.label 'State', class: 'control-label' %>
       <div class='controls'>
-        <%= select_tag "#{a.object.addressable_type.downcase}_state", options_for_select(City.all.map{ |a| [a.state_name]}.uniq, selected: c.object.state_name) %>
+        <% if c.object.state_name %>
+          <% selected_state = c.object.state_name %>
+        <% else %>
+          <% selected_state = 'Selangor' %>
+        <% end %>
+        <%= select_tag "#{a.object.addressable_type.downcase}_state", options_for_select(City.order(:state_name).map{ |a| [a.state_name]}.uniq, selected: selected_state) %>
       </div>
     </div>
   <% end %>

@@ -13,6 +13,7 @@ describe ConsultantMailer do
     it "renders the body" do
       mail.body.encoded.should match("Hi")
     end
+  end
 
   describe "signup_notification" do
     let(:mail) { ConsultantMailer.signup_notification }
@@ -27,5 +28,4 @@ describe ConsultantMailer do
       mail.body.encoded.should match("Hi")
     end
   end
-
-  end
+end
