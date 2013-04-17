@@ -1,4 +1,4 @@
-<%= form_for @program, :html => { :class => 'form-horizontal' } do |f| %>
+<%= nested_form_for @program, :html => { :class => 'form-horizontal' } do |f| %>
   <div class="control-group">
     <%= f.label :name, :class => 'control-label' %>
     <div class="controls">
@@ -18,6 +18,18 @@
     <div class="controls">
       <%= f.text_area :description, :class => 'text_area' %>
     </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :courses, :class => 'control-label' %>
+    <%#= nested_form_for @courses, html: { multipart: true } do |c| %>
+      <div class="controls">
+        <%= f.fields_for :courses do |task_form| %>
+          <p><%= task_form.text_field :name %>
+          <%= task_form.link_to_remove "Remove this course", class: "btn" %></p>
+        <% end %>
+        <p><%= f.link_to_add "Add a course", :courses %></p>
+      </div>
+    <%# end %>
   </div>
 
   <div class="form-actions">

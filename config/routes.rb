@@ -14,6 +14,7 @@ BizPkns::Application.routes.draw do
   resources :consultants
   resources :users
   resources :programs
+  resources :courses
   resources :members
   
   root :to => 'pages#welcome'
