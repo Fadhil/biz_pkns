@@ -21,9 +21,8 @@ gem 'mailjet'
 gem 'whenever', :require => false
 
 gem 'mail_form'
-gem "nested_form"
-
 gem 'nested_form'
+gem 'cancan'
 
 # Gems used only for assets and not required
 # in production environments by default.

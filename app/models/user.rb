@@ -48,6 +48,19 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :educations_users, allow_destroy: true
   has_many :educations, through: :educations_users
 
+  has_and_belongs_to_many :roles
+
+  def super_admin?
+    !self.roles.find_by_name('super admin').nil?
+  end
+
+  def admin?
+    !self.roles.find_by_name('admin').nil?
+  end
+
+  def consultant?
+    !self.roles.find_by_name('consultant').nil?
+  end
 
   def set_city(city_id)
     if city = City.find(city_id)
