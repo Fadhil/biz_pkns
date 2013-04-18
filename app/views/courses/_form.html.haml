@@ -1,0 +1,39 @@
+= form_for @course, :html => { :class => 'form-horizontal' } do |f|
+  .control-group
+    = f.label :name, :class => 'control-label'
+    .controls
+      = f.text_field :name, :class => 'text_field'
+  .control-group
+    = f.label 'Program', class: 'control-label'
+    .controls
+      = f.select :program_id, options_for_select(Program.all.map{|a| [a.name, a.id]}, f.object.program_id)
+
+  .control-group
+    = f.label :description, :class => 'control-label'
+    .controls
+      = f.text_area :description, :class => 'text_area'
+  .control-group
+    = f.label :venue, :class => 'control-label'
+    .controls
+      = f.text_field :venue, :class => 'text_field'
+  .control-group
+    = f.label :start_date, :class => 'control-label'
+    .controls
+      = f.date_select :start_date, :class => 'date_select', :include_blank => true
+  .control-group
+    = f.label :end_date, :class => 'control-label'
+    .controls
+      = f.date_select :end_date, :class => 'date_select', :include_blank => true
+  .control-group
+    = f.label :status, :class => 'control-label'
+    .controls
+      = radio_button("course","status", true)
+      Active
+      %br/
+      = radio_button("course","status", false)
+      Not Active
+      %br/
+  .form-actions
+    = f.submit nil, :class => 'btn btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), |
+      courses_path, :class => 'btn'                                |

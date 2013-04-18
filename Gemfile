@@ -24,6 +24,10 @@ gem 'mail_form'
 gem 'nested_form'
 gem 'cancan'
 
+# Haml
+gem 'haml-rails', '>= 0.3.4'
+gem 'html2haml'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -41,6 +45,7 @@ end
 
 group :development, :test do
   gem "rspec-rails", "~> 2.0"
+  gem "factory_girl_rails", "~> 4.0"
 end
 
 group :development do
