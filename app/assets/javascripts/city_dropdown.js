@@ -24,5 +24,20 @@ $(document).ready(function(){
   });
 });
 
+$(document).ready(function(){
+  $('#search_state').change(function(){
+    $.ajax({
+      type: 'GET',
+      url: '/city_dropdown',
+      data: {state: $('#search_state').val() },
+      success: function (response) {
+        $('#search_city').html(response);
+        $('#search_city').selected('');
+      }
+    });
+  });
+});
+
+
 
 

@@ -15,9 +15,9 @@
       <div class="nav-collapse">
         <ul class="nav">
           <% if current_user %>
-            <li><%= link_to 'Profile', edit_user_path(id: current_user.id) %></li>
+            <li><%= link_to 'View Profile', user_path(id: current_user.id) %></li>
           <% elsif current_consultant %>
-            <li><%= link_to 'Edit Consultant Profile', edit_consultant_path(id: current_consultant.id) %></li>
+            <li><%= link_to 'View Consultant Profile', consultant_path(id: current_consultant.id) %></li>
           <% end %>
           <li><a href=<%= members_path %>>Member Directory</a></li>
           <li><a href=<%= business_directory_path %>>Business Directory</a></li>

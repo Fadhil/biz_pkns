@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   attr_accessible :profile_photo_attributes, :courses_attributes, :previous_courses_attributes
   attr_accessible :created_at, :address_attributes
   attr_accessible :twitter_handle, :facebook_handle, :current_employment_status
+  attr_accessible :users_skills_attributes, :educations_users_attributes
 
   validates_uniqueness_of :ic_number
   validates_format_of :ic_number, with:  /^\d{6}\-\d{2}\-\d{4}$/, :message => "should be in the form 123456-78-9101"
@@ -40,7 +41,12 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :address, allow_destroy: true
 
   has_many :users_skills, dependent: :destroy 
+  accepts_nested_attributes_for :users_skills, allow_destroy: true
   has_many :skills, through: :users_skills
+
+  has_many :educations_users, dependent: :destroy
+  accepts_nested_attributes_for :educations_users, allow_destroy: true
+  has_many :educations, through: :educations_users
 
 
   def set_city(city_id)
