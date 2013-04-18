@@ -11,8 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130411172808) do
-ActiveRecord::Schema.define(:version => 20130414100607) do
+ActiveRecord::Schema.define(:version => 20130417161835) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -23,6 +22,8 @@ ActiveRecord::Schema.define(:version => 20130414100607) do
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
     t.integer  "city_id"
+    t.string   "phone"
+    t.string   "fax"
   end
 
   create_table "attachments", :force => true do |t|
@@ -46,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20130414100607) do
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
     t.string   "type_of_business"
+    t.boolean  "business_registered"
   end
 
   create_table "cities", :force => true do |t|
@@ -98,6 +100,25 @@ ActiveRecord::Schema.define(:version => 20130414100607) do
 
   add_index "courses_users", ["course_id", "user_id"], :name => "index_courses_users_on_course_id_and_user_id"
   add_index "courses_users", ["user_id", "course_id"], :name => "index_courses_users_on_user_id_and_course_id"
+
+  create_table "educations", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "educations_users", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "education_id"
+    t.text     "description"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "educations_users", ["education_id", "user_id"], :name => "index_educations_users_on_education_id_and_user_id"
+  add_index "educations_users", ["user_id", "education_id"], :name => "index_educations_users_on_user_id_and_education_id"
 
   create_table "previous_courses_users", :id => false, :force => true do |t|
     t.integer "previous_course_id"

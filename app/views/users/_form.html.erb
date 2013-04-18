@@ -1,4 +1,4 @@
-<%= form_for @user, :html => { :class => 'form-horizontal', multipart: true } do |f| %>
+<%= nested_form_for @user, :html => { :class => 'form-horizontal', multipart: true } do |f| %>
   <div class="control-group">
     <%= f.label :first_name, :class => 'control-label' %>
     <div class="controls">
@@ -84,13 +84,63 @@
     <% end %>
   </div>
   <div class='control-group'>
+    <%= f.label t('.education') , class: 'control-label' %>
+      <div class='controls'>
+        <%= f.fields_for :educations_users do |s| %>
+        <div>
+          <div>
+            <%= s.select :education_id, options_for_select(Education.all.map{ |a| [a.name,a.id]}, s.object.education_id) %>
+          </div>
+          <div class='control-group'>
+            <%= s.label :description %>
+            <%= s.text_field :description %>
+          </div>
+          <div class='control-group'>
+            <%= s.label :start_date %>
+            <%= s.text_field :start_date %>
+          </div>
+          <div class='control-group'>
+            <%= s.label :end_date %>
+            <%= s.text_field :end_date %>
+          </div>
+        </div>
+          <%= s.link_to_remove t('.remove_education') %>
+        <% end %>
+        <%= f.link_to_add t('.add_education'), :educations_users %>
+      </div>
+
+  </div>
+  <div class='control-group'>
     <%= f.label :current_employment_status, class: 'control-label' %>
     <div class='controls'>
       <%= f.select :current_employment_status, [[t('.employment_status.own_business'),'own business'],
                                                 [t('.employment_status.working_studying'),'working studying'],
                                                 [t('.employment_status.part_time_business'),'part time business']] %>
     </div>
-    </div>
+  </div>
+  <div class='control-group'>
+    <%= f.label t('.skills') , class: 'control-label' %>
+      <div class='controls'>
+        <%= f.fields_for :users_skills do |s| %>
+        <div>
+          <div>
+            <%= s.select :skill_id, options_for_select(Skill.all.map{ |a| [a.name,a.id]}, s.object.skill_id) %>
+          </div>
+          <div class='control-group'>
+            <%= s.label :description %>
+            <%= s.text_field :description %>
+          </div>
+          <div class='control-group'>
+            <%= s.label :experience %>
+            <%= s.text_field :experience, { size: '2', maxlength: '2', class: 'input-mini' } %>
+          </div>
+        </div>
+          <%= s.link_to_remove t('.remove_skill') %>
+        <% end %>
+        <%= f.link_to_add t('.add_skill'), :users_skills %>
+      </div>
+
+  </div>
   <div>
     <div class="control-group">
       <%= f.label :has_attended_course, class: 'control-label'%>
@@ -103,9 +153,9 @@
   <div id='attended_course_fields'>
     <div class="control-group">
       <%= f.label 'Program', class: 'control-label' %>
-      <div class='controls'>
-        <%= select_tag :program_id, options_for_select(Program.all.map{|a| [a.name,a.id]}, @user.previous_courses.first.program.try(:id)) %>
-      </div>
+        <div class='controls'>
+          <%= select_tag :program_id, options_for_select(Program.all.map{|a| [a.name,a.id]}, @user.previous_courses.first.program.try(:id)) %>
+        </div>
     </div>
     <%= f.fields_for :previous_courses do |pc| %>
       <div class="control-group">
@@ -198,7 +248,12 @@
           <%= render partial: 'address_fields', locals: { a: a} %>
         <% end %>
       </div>
-
+      <div class='control-group'>
+        <%= bp.label :business_registered, class: 'control-label' %>
+        <div class='controls'>
+          <%= bp.check_box :business_registered %>
+        </div>
+      </div>
       <div class="control-group">
         <%= bp.label :registration_number, class: 'control-label' %>
         <div class="controls">
