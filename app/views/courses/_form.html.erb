@@ -20,7 +20,7 @@
   <div class="control-group">
     <%= f.label :start_date, :class => 'control-label' %>
     <div class="controls">
-      <%= f.date_select :start_date, :class => 'date_select', :include_blank => true, :discard_day => true %>
+      <%= f.date_select :start_date, :class => 'date_select', :include_blank => true %>
     </div>
   </div>
   <div class="control-group">
@@ -32,8 +32,8 @@
   <div class="control-group">
     <%= f.label :status, :class => 'control-label' %>
     <div class="controls">
-      <%= radio_button("course","status", "1") %>Active<br />
-      <%= radio_button("course","status", "0") %>Not Active<br />
+      <%= radio_button("course","status", true) %>Active<br />
+      <%= radio_button("course","status", false) %>Not Active<br />
     </div>
   </div>
 
