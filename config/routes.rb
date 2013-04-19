@@ -9,7 +9,7 @@ BizPkns::Application.routes.draw do
   match 'consultation' => "pages#consultation"
   match 'business_directory' => 'pages#business_directory'
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout", sign_up: "signup"}
-  devise_for :consultants, path_names: {sign_in: "login"}
+  devise_for :consultants, path_names: {sign_in: "login",  sign_out: "logout"}
 
   resources :consultants
   resources :users

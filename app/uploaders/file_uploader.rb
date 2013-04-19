@@ -50,6 +50,10 @@ class FileUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [145,80]
    end
 
+  version :micro, if: :image? do
+    process :resize_to_fill => [30,30]
+   end
+
 protected
 
     def image?(new_file)

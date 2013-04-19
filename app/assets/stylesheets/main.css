@@ -33,6 +33,39 @@ section > ul li {
   margin: 48px 0 47px;
 }
 
+/* Nav
+-------------------------------------------------- */
+.navbar .brand {
+  float: left;
+  display: block;
+  padding: 10px 20px 10px;
+  margin-left: -20px;
+  font-size: 24px;
+  color: #FFF;
+  height:100%;
+  text-shadow:2px 2px 0 #BBB;
+}
+.navbar .brand:hover,
+.navbar .brand:focus {
+  text-decoration: none;
+  background-color: #3B3B41;
+  text-shadow:0 1px 0px #BBB;
+}
+
+.navbar .nav > li > a {
+  float: none;
+  padding: 10px 15px 10px;
+  color: #EEE;
+  text-decoration: none;
+  text-shadow: 0 0 0 #ffffff;
+}
+
+.navbar .nav > li > a:hover,
+.navbar .nav > li > a:focus {
+  color: #BBB;
+  text-decoration: none;
+}
+
 /* Jumbotrons
 -------------------------------------------------- */
 .jumbotron {

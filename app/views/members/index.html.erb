@@ -6,14 +6,12 @@
 <%= form_tag '', method: :get do %>
       <%= text_field_tag 'search_term','', :placeholder => 'Search member',name: 'search[term]' %>
 
-      <%= label :search, :city, 'Search by City' %>
-
+      <%#= label :search, :city, 'Search by City' %>
       <%= select :search, :city, City.where(state_name: 'Selangor').order(:name).map{|a| [a.name,a.id]}, {:include_blank => true, selected: ''} %>
       
-      <%= label :search, :state, 'Search by State' %>
+      <%#= label :search, :state, 'Search by State' %>
       <%= select :search, :state, City.order(:state_name).map{|a| [a.state_name,a.state_name]}.uniq, {:include_blank => true, selected: ''} %>
       <%= button_tag "Search", class: 'btn btn-success' %>
-
 <% end %>
 
 <table class="table table-striped">

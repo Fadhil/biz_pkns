@@ -3,14 +3,24 @@
   <h1>Business Directory</h1>
 </div>
 <%= form_tag '', method: :get do %>
-  <%= label :search, :category, 'Search by Business Category' %>
-  <%= select :search, :category, BUSINESS_CATEGORIES, {:include_blank => true} %>
-   <%= label :search, :city, 'Search by City' %>
-  <%= select :search, :city, City.all.map{|a| [a.name,a.id]}, {:include_blank => true} %>
-  <%= label :search, :state, 'Search by State' %>
-  <%= select :search, :state, City.all.map{|a| [a.state_name,a.state_name]}.uniq, {:include_blank => true} %>
-
-  <input type="submit" value="Search" id="searchbtn" />
+  <div class="row-fluid">
+    <div class="span3">
+      <%= label :search, :category, 'Search by Business Category' %>
+      <%= select :search, :category, BUSINESS_CATEGORIES, {:include_blank => true} %>
+    </div>
+    <div class="span3">
+      <%= label :search, :city, 'Search by City' %>
+      <%= select :search, :city, City.all.map{|a| [a.name,a.id]}, {:include_blank => true} %>
+    </div>
+    <div class="span3">
+      <%= label :search, :state, 'Search by State' %>
+      <%= select :search, :state, City.all.map{|a| [a.state_name,a.state_name]}.uniq, {:include_blank => true} %>
+    </div>
+    <div class="span3">
+      <br><br>
+      <input type="submit" value="Search" class="btn" />
+    </div>
+  </div>
 <% end %>
 <table class="table table-striped">
   <thead>

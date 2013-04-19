@@ -8,18 +8,26 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css' />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
   <%= render partial: "/layouts/header" %>
   <div class="container">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
     <div class="row">
-      <div class="span9"><%= yield %></div>
-      <div class="span3">
-        <h2>About Us</h2>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      <div class="span9">
+        <p class="notice"><%= notice %></p>
+        <p class=""><%= alert %></p>
+        <%= yield %>
+      </div>
+      <div class="section sidebar span3">
+        <h2>Latest News</h2>
+        <p><small>The Super Bowl will be beamed to astronauts on board the ISS
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small></p>
+
+        <p><small>In this small town, everybody knows somebody who was killed or injured.</small></p>
+
+        <p><small>Dreamliner flights could resume within a week, the agency told members of Congress. Boeing said it has stationed teams around the world to begin installing the fix.</small></p>
       </div>
     </div>
   </div>

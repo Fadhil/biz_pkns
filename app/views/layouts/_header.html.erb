@@ -14,26 +14,56 @@
       <a class="brand" href="<%= home_page %>">BizPkns</a>
       <div class="nav-collapse">
         <ul class="nav">
-          <% if current_user %>
-            <li><%= link_to 'View Profile', user_path(id: current_user.id) %></li>
-          <% elsif current_consultant %>
-            <li><%= link_to 'View Consultant Profile', consultant_path(id: current_consultant.id) %></li>
+          <% unless current_user %>
+            <li><%= link_to 'Administrate Users', users_path %></li>
           <% end %>
           <li><a href=<%= members_path %>>Member Directory</a></li>
           <li><a href=<%= courses_path %>>Courses</a></li>
           <li><a href=<%= business_directory_path %>>Business Directory</a></li>
           <li><a href=<%= consultation_path %>>Consultation</a></li>
+        </ul>
+
+        <ul class="nav pull-right">
           <% if current_user %>
-            <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.first_name %> <%= current_user.last_name %> 
+                <% unless current_user.profile_photo.nil? %><%= image_tag(current_user.profile_photo.file, size: '22x22') %><% end %>
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                
+                <% if current_user %>
+                  <li><%= link_to 'Profile', user_path(id: current_user.id) %></li>
+                <% elsif current_consultant %>
+                  <li><%= link_to 'Consultant Profile', consultant_path(id: current_consultant.id) %></li>
+                <% end %>
+
+                <li><%= link_to 'Setting', edit_user_path(id: current_user.id) %></li>
+                <li class="divider"></li>
+                <% if current_user %>
+                  <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+                <% else %>
+                  <li><%= link_to 'Logout', destroy_consultant_session_path, method: :delete %></li>
+                <% end %>
+              </ul>
+            </li>
           <% elsif current_consultant %>
-            <li><%= link_to 'Logout', destroy_consultant_session_path, method: :delete %></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_consultant.first_name %> <%= current_consultant.last_name %> 
+                <% unless current_consultant.profile_photo.nil? %><%= image_tag(current_consultant.profile_photo.file, size: '22x22') %><% end %>
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to 'Consultant Profile', consultant_path(id: current_consultant.id) %></li>
+                <li><%= link_to 'Setting', edit_consultant_path(id: current_consultant.id) %></li>
+                <li><%= link_to 'Logout', destroy_consultant_session_path, method: :delete %></li>
+              </ul>
+            </li>
           <% else %>
             <li><%= link_to 'Login', new_user_session_path %></li>
           <% end %>
-          <% unless current_user %>
-            <li><%= link_to 'Administrate Users', users_path %></li>
-          <% end %>
         </ul>
+
       </div>
     </div>
   </div>
