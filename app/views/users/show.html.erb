@@ -5,8 +5,10 @@
 
 <div>
   <% unless @user.profile_photo.nil? %>
-    <%= image_tag(@user.profile_photo.file) %>
+    <%= image_tag(@user.profile_photo.file, size: '300x300') %>
   <% end %>
+
+  <h2>Personal Details</h2><br>
   <div>
     <strong>First Name:</strong> <%= @user.first_name %>
   </div>
@@ -21,6 +23,9 @@
   </div>
   <div>
     <strong>Age:</strong> <%= @user.age %>
+  </div>
+  <div>
+      <strong>Address:</strong> <%= @user.address.line1 %> <%= @user.address.line2 %>, <%= @user.address.city.name %> <%= @user.address.postcode %>, <%= @user.address.city.state_name unless @user.address.city.nil?%>
   </div>
   <div>
       <strong>Phone Number:</strong> <%= @user.phone %>
@@ -63,24 +68,24 @@
       <strong>Company Registration Number:</strong><%= @user.business_profile.registration_number%>
     </div>
     <br/>
-    <% if @user.business_profile.address.nil? %>
-    <strong>Address:</strong> 
-  <% else %>
-    <div>
-        <strong>Address 1:</strong> <%= @user.business_profile.address.line1 %>
-    </div>
-    <div>
-        <strong>Address 2:</strong> <%= @user.business_profile.address.line2 %>
-    </div>
-  <% end %>
+    <% if @user.business_profile.address.line2.blank? %>
+      <strong>Address:</strong> <%= @user.business_profile.address.line1 %>
+    <% else %>
+      <div>
+          <strong>Address 1:</strong> <%= @user.business_profile.address.line1 %>
+      </div>
+      <div>
+          <strong>Address 2:</strong> <%= @user.business_profile.address.line2 %>
+      </div>
+    <% end %>
   <div>
-      <strong>City:</strong> <%#= @user.business_profile.address.city.name unless @user.business_profile.address.city.nil? %>
+      <strong>City:</strong> <%= @user.business_profile.address.city.name unless @user.business_profile.address.city.nil? %>
   </div>
   <div>
-     <strong>Postcode:</strong> <%#= @user.business_profile.address.postcode %>
+     <strong>Postcode:</strong> <%= @user.business_profile.address.postcode %>
   </div>
   <div>
-     <strong>State:</strong> <%#= @user.business_profile.address.city.state_name unless @user.business_profile.address.city.nil?%>
+     <strong>State:</strong> <%= @user.business_profile.address.city.state_name unless @user.business_profile.address.city.nil?%>
   </div>
  <div>
   <% end %> 
