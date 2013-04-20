@@ -26,7 +26,7 @@
           %td
             = course.description
           %td
-            = course.program.name
+            = course.program.name unless course.program.nil?
           %td
             = course.start_date
           %td
