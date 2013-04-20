@@ -25,3 +25,9 @@ en:
       upcoming_courses:
         title:  'Upcoming Courses'  
         view:   'View'
+  skills:
+    new:
+      title: 'New Skill'
+  educations:
+    new:
+      title: 'New Education type'
