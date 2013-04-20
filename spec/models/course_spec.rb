@@ -20,4 +20,8 @@ describe Course do
     courses.should == [@course[0],@course[1],@course[2]]
   end
 
+  describe 'has a pax attribute' do
+    it { should respond_to(:pax) }
+  end
+
 end
