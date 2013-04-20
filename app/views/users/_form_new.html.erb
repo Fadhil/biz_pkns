@@ -1,0 +1,74 @@
+<%= nested_form_for @user, :html => { :class => 'form-horizontal', multipart: true } do |f| %>
+  <div class="control-group">
+    <%= f.label :first_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :first_name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :last_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :last_name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class='control-group'>
+    <%= f.label :gender , class: 'control-label' %>
+    <div class='controls'>
+      <span>
+        <%= f.radio_button :gender, 'm' %>
+        Male
+      </span>
+      <br/>
+      <span>
+        <%= f.radio_button :gender, 'f' %>
+        Female
+      </span>
+    </div>
+  </div>
+  <br/>
+   <div class="control-group">
+    <%= f.label :email, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :email, :class => 'text_field' %>
+    </div>
+  </div>
+  <% if @user.new_record? %>
+    <div class="control-group">
+      <%= f.label :password, 'Password', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.password_field :password, :class => 'text_field' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :password_confirmation, 'Password Confirmation', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.password_field :password_confirmation, :class => 'text_field' %>
+      </div>
+    </div>
+  <% end %>
+  <div class="control-group">
+    <%= f.label :ic_number, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :ic_number, :class => 'text_field' %>
+    </div>
+  </div>
+  <div id='user_address_fields'>
+    <%= f.fields_for :address do |a| %>
+      <%= render partial: 'address_fields', locals: { a: a} %>
+    <% end %>
+  </div>
+  <div class="control-group">
+    <%= f.label 'Phone Number', :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :phone, :class => 'text_field' %>
+    </div>
+  </div>
+ 
+ 
+  
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                users_path, :class => 'btn' %>
+  </div>
+<% end %>
