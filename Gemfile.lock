@@ -187,7 +187,7 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 3.2.1)
   devise
-  factory_girl_rails (~> 4.0)
+  factory_girl_rails
   haml-rails (>= 0.3.4)
   html2haml
   jquery-rails

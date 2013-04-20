@@ -1,0 +1,34 @@
+.page-header
+  %h1=t('.title')
+
+= form_tag '', method: :get do
+  = label :search, :terms, 'Search Courses by Title'
+  = text_field :search, :terms, class: 'text_field'
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th
+        Course Name
+      %th
+        Description
+      %th
+        Program Name
+      %th
+        Start Date
+      %th
+    %tbody
+      - @courses.each do |course|
+        %tr
+          %td
+            = course.name
+          %td
+            = course.description
+          %td
+            = course.program.name
+          %td
+            = course.start_date
+          %td
+            = link_to t('.view'), course_path(course), |
+              class: 'btn'
+
