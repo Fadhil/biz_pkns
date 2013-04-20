@@ -17,6 +17,10 @@
     .controls
       = f.text_field :venue, :class => 'text_field'
   .control-group
+    = f.label :pax, class: 'control-label'
+    .controls
+      = f.text_field :pax, class: 'text_field'
+  .control-group
     = f.label :start_date, :class => 'control-label'
     .controls
       = f.date_select :start_date, :class => 'date_select', :include_blank => true

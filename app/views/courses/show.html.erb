@@ -14,6 +14,8 @@
   <dd><%= @course.end_date %></dd>
   <dt><strong><%= model_class.human_attribute_name(:venue) %>:</strong></dt>
   <dd><%= @course.venue %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:pax) %>:</strong><dt>
+  <dd><%= @course.pax %></dd>
   <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
   <dd><%= !@course.status.blank? || @course.status? ? "Active" : "Not active" %></dd>
 </dl>

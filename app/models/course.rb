@@ -1,6 +1,6 @@
 class Course < ActiveRecord::Base
   attr_accessible :description, :end_date, :name, :start_date, :venue, :status
-  attr_accessible :program_id
+  attr_accessible :program_id, :pax
   belongs_to :program
   accepts_nested_attributes_for :program
   has_one :consultant, through: :program
@@ -8,4 +8,6 @@ class Course < ActiveRecord::Base
 
   scope :upcoming, lambda{ where('start_date >= ?', Date.today)}
   scope :active, where(status: true)
+
+  validates_numericality_of :pax
 end
