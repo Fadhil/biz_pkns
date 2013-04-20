@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130418123513) do
+ActiveRecord::Schema.define(:version => 20130420123750) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -182,12 +182,14 @@ ActiveRecord::Schema.define(:version => 20130418123513) do
     t.string   "twitter_handle"
     t.string   "facebook_handle"
     t.string   "current_employment_status"
+    t.integer  "role_id"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["ic_number"], :name => "index_users_on_ic_number", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["role_id"], :name => "index_users_on_role_id"
 
   create_table "users_skills", :force => true do |t|
     t.integer  "user_id"

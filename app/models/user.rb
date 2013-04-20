@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :educations_users, allow_destroy: true
   has_many :educations, through: :educations_users
 
-  has_and_belongs_to_many :roles
+  belongs_to :role
 
   def super_admin?
     !self.roles.find_by_name('super admin').nil?

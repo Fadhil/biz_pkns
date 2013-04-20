@@ -17,7 +17,6 @@ describe Course do
 
   it 'returns array of upcoming courses by date' do
     courses = Course.active.upcoming
-    puts courses[0].inspect
     courses.should == [@course[0],@course[1],@course[2]]
   end
 
