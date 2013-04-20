@@ -16,3 +16,6 @@ doc/
 public/*
 tags
 zeus.json
+/assets/bootstrap
+app/models/role.rb
+app/models/user.rb

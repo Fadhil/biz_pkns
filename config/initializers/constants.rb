@@ -1,12 +1,12 @@
 BUSINESS_CATEGORIES = [
-            ['Agrikultur','agrikultur'],
-            ['Perindustrian','perindustrian'],
-            ['Pembinaan','pembinaan'],
-            ['Kosmetik','kosmetik'],
-            ['Perdagangan','perdagangan'],
-            ['Elektronik','elektronik'],
-            ['Perikanan','perikanan'],
-            ['Makanan','makanan']
+            ['Agrikultur','Agrikultur'],
+            ['Perindustrian','Perindustrian'],
+            ['Pembinaan','Pembinaan'],
+            ['Kosmetik','Kosmetik'],
+            ['Perdagangan','Perdagangan'],
+            ['Elektronik','Elektronik'],
+            ['Perikanan','Perikanan'],
+            ['Makanan','Makanan']
             ]
 MALAYSIAN_STATES = [
             ['Johor','Johor'],

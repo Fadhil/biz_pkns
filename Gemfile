@@ -28,8 +28,8 @@ gem 'cancan'
 gem 'haml-rails', '>= 0.3.4'
 gem 'html2haml'
 
-#twitter bootstrap-rails
-gem 'twitter-bootstrap-rails', "~> 2.0rc0"
+# #twitter bootstrap-rails
+# gem 'twitter-bootstrap-rails', "~> 2.0rc0"
 
 # Gems used only for assets and not required
 # in production environments by default.

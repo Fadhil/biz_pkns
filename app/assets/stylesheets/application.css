@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require_tree .
+ *= require bootstrap.min.css
  *= require style.css
  *= require main.css
  */

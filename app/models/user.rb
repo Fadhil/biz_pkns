@@ -58,10 +58,6 @@ class User < ActiveRecord::Base
     !self.role.name('admin').nil?
   end
 
-  def consultant?
-    !self.role.name('consultant').nil?
-  end
-
   def set_city(city_id)
     if city = City.find(city_id)
       self.address.city = city
