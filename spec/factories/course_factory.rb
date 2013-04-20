@@ -1,9 +1,7 @@
 FactoryGirl.define do
  factory :course do
 
-  sequence :name do |n|
-    "course_#{n}"
-  end
+  name 'test'
 
   description 'Some course descriptions here'
   start_date 2.days.from_now

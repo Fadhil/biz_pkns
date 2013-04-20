@@ -6,6 +6,19 @@ class PagesController < ApplicationController
     @consultants = Consultant.all
   end
 
+  def upcoming_courses
+    if params[:search].present?
+      if params[:search][:terms].present?
+        search_terms = params[:search][:terms].split(' ').join('%')
+        @courses = Course.active.upcoming.where('LOWER(name) like ?',"%#{search_terms}%")
+      else
+        @courses = Course.active.upcoming
+      end
+    else
+      @courses = Course.active.upcoming
+    end
+  end
+
   def business_directory
     if params[:search].present?
       unless params[:search][:state] == ''

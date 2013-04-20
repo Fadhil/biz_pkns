@@ -4,6 +4,7 @@
 = form_tag '', method: :get do
   = label :search, :terms, 'Search Courses by Title'
   = text_field :search, :terms, class: 'text_field'
+  = button_to 'Search'
 
 %table.table.table-striped
   %thead

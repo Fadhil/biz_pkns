@@ -20,3 +20,8 @@ en:
       education: 'Education'
       add_education: 'Add Education'
       remove_education: 'Remove this Education'
+  views:
+    pages:
+      upcoming_courses:
+        title:  'Upcoming Courses'  
+        view:   'View'
