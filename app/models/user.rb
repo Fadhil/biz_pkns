@@ -51,15 +51,15 @@ class User < ActiveRecord::Base
   belongs_to :role
 
   def super_admin?
-    !self.roles.find_by_name('super admin').nil?
+    !self.role.name('super admin').nil?
   end
 
   def admin?
-    !self.roles.find_by_name('admin').nil?
+    !self.role.name('admin').nil?
   end
 
   def consultant?
-    !self.roles.find_by_name('consultant').nil?
+    !self.role.name('consultant').nil?
   end
 
   def set_city(city_id)

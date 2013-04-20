@@ -6,15 +6,21 @@ class Ability
     #
       user ||= User.new # guest user (not logged in)
       
-      if user.super_admin?
-        can :manage, :all
-      elseif user.admin?
-        can :manage, :all
-      elseif user.consultant?
+      if user.admin?
         can :manage, :all
       else
         can :read, :all
       end
+
+      # if user.super_admin?
+      #   can :manage, :all
+      # elseif user.admin?
+      #   can :manage, :all
+      # elseif user.consultant?
+      #   can :manage, :all
+      # else
+      #   can :read, :all
+      # end
     #
     # The first argument to `can` is the action you are giving the user 
     # permission to do.
