@@ -1,5 +1,6 @@
 BizPkns::Application.routes.draw do
 
+
   match 'consultation' => "pages#consultation", as: :consultation
   match 'upcoming_courses' => 'pages#upcoming_courses', as: :course_listing
   match 'business_directory' => 'pages#business_directory', as: :business_directory
@@ -18,6 +19,7 @@ BizPkns::Application.routes.draw do
   resources :courses
   resources :members
   resources :educations
+  resources :skills
   
   root :to => 'pages#welcome'
   get "pages/welcome"
