@@ -155,6 +155,13 @@
 
   <div id='attended_course_fields'>
 
+    <div class="control-group">
+      <%= label '','program_id', class: 'control-label' %>
+      <div class='controls'>
+        <%= select_tag :program_id, options_for_select( Program.all.map{ |a| [a.name,a.id]},  ), class: 'text_field' %>
+      </div>
+    </div>
+
     <%= f.fields_for :previous_courses do |pc| %>
       <div class="control-group">
         <%= pc.label :name, class: 'control-label' %>
@@ -252,7 +259,7 @@
           <%= bp.check_box :business_registered %>
         </div>
       </div>
-      <div class="control-group">
+      <div id='registration_number_field' class="control-group">
         <%= bp.label :registration_number, class: 'control-label' %>
         <div class="controls">
           <%= bp.text_field :registration_number, class: 'text_field' %>
