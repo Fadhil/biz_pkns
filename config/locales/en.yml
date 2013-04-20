@@ -31,3 +31,6 @@ en:
   educations:
     new:
       title: 'New Education type'
+  pages:
+    upcoming_courses:
+      title: 'Upcoming Courses'
