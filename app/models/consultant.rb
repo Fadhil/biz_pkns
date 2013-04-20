@@ -21,14 +21,13 @@ class Consultant < ActiveRecord::Base
 
   include MailForm::Delivery
 
-  append :remote_ip, :user_agent, :session
-  attributes :name, :email, :subject, :message, :created_at
+  #append :remote_ip, :user_agent, :session
+  attributes :name, :from, :subject, :message, :created_at
 
   def headers
     {
       :to => "your.email@your.domain.com",
-      :from => %("#{User.name}" <#{User.email}>)
+      :from => User.name#%("#{User.name}" <#{User.email}>)
     }
   end
-
 end
