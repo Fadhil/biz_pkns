@@ -1,4 +1,13 @@
-BUSINESS_CATEGORIES = [['Category1','Category1'],['Category2','Category2'],  ['Category3','Category3'], ['Category4','Category4']]
+BUSINESS_CATEGORIES = [
+            ['Agrikultur','agrikultur'],
+            ['Perindustrian','perindustrian'],
+            ['Pembinaan','pembinaan'],
+            ['Kosmetik','kosmetik'],
+            ['Perdagangan','perdagangan'],
+            ['Elektronik','elektronik'],
+            ['Perikanan','perikanan'],
+            ['Makanan','makanan']
+            ]
 MALAYSIAN_STATES = [
             ['Johor','Johor'],
             ['Kedah','Kedah'],
