@@ -15,13 +15,13 @@
     <%= f.label :gender , class: 'control-label' %>
     <div class='controls'>
       <span>
-        <%= f.radio_button :gender, 'm' %>
-        Male
+        <p class="radio"><%= f.radio_button :gender, 'm' %>
+        Male</p>
       </span>
       <br/>
       <span>
-        <%= f.radio_button :gender, 'f' %>
-        Female
+        <p class="radio"><%= f.radio_button :gender, 'f' %>
+        Female</p>
       </span>
     </div>
   </div>
@@ -106,7 +106,7 @@
         </div>
           <%= s.link_to_remove t('.remove_education') %>
         <% end %>
-        <%= f.link_to_add t('.add_education'), :educations_users %>
+        <%= f.link_to_add t('.add_education'), :educations_users, class: "btn btn-mini " %>
       </div>
 
   </div>
@@ -137,7 +137,7 @@
         </div>
           <%= s.link_to_remove t('.remove_skill') %>
         <% end %>
-        <%= f.link_to_add t('.add_skill'), :users_skills %>
+        <%= f.link_to_add t('.add_skill'), :users_skills, class: "btn btn-mini" %>
       </div>
 
   </div>
