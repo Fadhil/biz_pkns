@@ -9,7 +9,7 @@ class MembersController < ApplicationController
         @users = User.order("id desc")
       else
         search_terms = params[:search][:term].split(' ').join('%')
-        @users = User.where("concat(LOWER(first_name), ' ', LOWER(last_name))r like ?","%#{search_terms}%")
+        @users = User.where("concat(LOWER(first_name), ' ', LOWER(last_name)) like ?","%#{search_terms}%")
       end
 
 
