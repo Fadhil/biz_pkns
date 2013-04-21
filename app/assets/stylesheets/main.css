@@ -181,12 +181,11 @@ section > ul li {
   margin-top: 48px;
   padding: 36px 0 24px;
   text-align: center;
-  
   position:fixed;
-   left:0px;
-   bottom:0px;
-   height:30px;
-   width:100%;
+  left:0px;
+  bottom:0px;
+  height:30px;
+  width:100%;
 }
 @media (max-width: 767px) {
   .footer {
