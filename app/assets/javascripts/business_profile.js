@@ -14,3 +14,18 @@ $('document').ready(function(){
 
 });
 
+$('document').ready(function(){
+  var rnum_field = $('#registration_number_field')
+  var reg_num_checkbox = $('#user_business_profile_attributes_business_registered')
+  if(reg_num_checkbox.is(':checked') == false){
+    rnum_field.hide();
+  }
+  reg_num_checkbox.change(function(){
+    if(reg_num_checkbox.is(':checked') == true){
+      rnum_field.show();
+    } else {
+      rnum_field.hide();
+    }
+  });
+});
+

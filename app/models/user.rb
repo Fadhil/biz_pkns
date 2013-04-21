@@ -55,7 +55,11 @@ class User < ActiveRecord::Base
   end
 
   def admin?
-    self.role.name == 'admin' ? true : false
+    if !self.role.nil?
+      self.role.name == 'admin' ? true : false
+    else
+      false
+    end
   end
 
   def set_city(city_id)
