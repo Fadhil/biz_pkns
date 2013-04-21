@@ -8,5 +8,5 @@ class Program < ActiveRecord::Base
 
   accepts_nested_attributes_for :logo, allow_destroy: true
   accepts_nested_attributes_for :courses, allow_destroy: true
-  #accepts_nested_attributes_for :previous_courses, allow_destroy: true
+  accepts_nested_attributes_for :previous_courses, allow_destroy: true
 end

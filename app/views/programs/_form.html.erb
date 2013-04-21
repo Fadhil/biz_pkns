@@ -25,9 +25,9 @@
       <div class="controls">
         <%= f.fields_for :courses do |task_form| %>
           <p><%= task_form.text_field :name %>
-          <%= task_form.link_to_remove "Remove this course", class: "btn" %></p>
+          <%= task_form.link_to_remove "x", class: "btn" %></p>
         <% end %>
-        <p><%= f.link_to_add "Add a course", :courses %></p>
+        <p><%= f.link_to_add "Add a new course", :courses, class: "btn btn-mini" %></p>
       </div>
     <%# end %>
   </div>

@@ -6,10 +6,10 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
+      <th>Date</th>
       <th><%= model_class.human_attribute_name(:name) %></th>
+      <th>Program</th>
       <th><%= model_class.human_attribute_name(:venue) %></th>
-      <th><%= model_class.human_attribute_name(:start_date) %></th>
-      <th><%= model_class.human_attribute_name(:end_date) %></th>
       <th><%= model_class.human_attribute_name(:status) %></th>
       <% if can? :manage, @course %>
         <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -20,10 +20,10 @@
     <% @courses.each do |course| %>
       <tr>
         <td><%= link_to course.id, course_path(course) %></td>
-        <td><%= course.name %></td>
-        <td><%= course.venue %></td>
         <td><%= course.start_date %></td>
-        <td><%= course.end_date %></td>
+        <td><%= course.name %></td>
+        <td><%#= course.description %></td>
+        <td><%= course.venue %></td>
         <td><%= !course.status.blank? || course.status? ? "Active" : "Not active" %></td>
         <% if can? :manage, @course %>
           <td>
