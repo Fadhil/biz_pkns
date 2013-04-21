@@ -1,26 +1,26 @@
 <%- model_class = User -%>
 <div class="page-header">
-  <h1>Members Directory</h1>
+  <h1><%= t('.title') %></h1>
 </div>
 
 <%= form_tag '', method: :get do %>
-      <%= text_field_tag 'search_term','', :placeholder => 'Search member',name: 'search[term]' %>
+      <%= text_field_tag 'search_term','', :placeholder =>  t('.search_member') ,name: 'search[term]' %>
 
       <%#= label :search, :city, 'Search by City' %>
       <%= select :search, :city, City.where(state_name: 'Selangor').order(:name).map{|a| [a.name,a.id]}, {:include_blank => true, selected: ''} %>
       
       <%#= label :search, :state, 'Search by State' %>
       <%= select :search, :state, City.order(:state_name).map{|a| [a.state_name,a.state_name]}.uniq, {:include_blank => true, selected: ''} %>
-      <%= button_tag "Search", class: 'btn btn-success' %>
+      <%= button_tag t('search'), class: 'btn btn-success' %>
 <% end %>
 
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Index</th>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Address</th>
+      <th><%= t('index') %></th>
+      <th><%= t('name') %></th>
+      <th><%= t('email') %></th>
+      <th><%= t('address') %></th>
     </tr>
   </thead>
   <tbody>

@@ -1,6 +1,6 @@
 <%- model_class = User -%>
 <div class="page-header">
-  <h1>Member Profile</h1>
+  <h1><%= t('.title') %></h1>
 </div>
 
 <div>
@@ -8,30 +8,30 @@
     <%= image_tag(@user.profile_photo.file, size: '300x300') %>
   <% end %>
 
-  <h2>Personal Details</h2><br>
+  <h2><%= t('.sub_title') %></h2><br>
   <div>
-    <strong>First Name:</strong> <%= @user.first_name %>
+    <strong><%= t('first_name') %>:</strong> <%= @user.first_name %>
   </div>
   <div>
-    <strong>Last Name:</strong> <%= @user.last_name %>
+    <strong><%= t('last_name') %>:</strong> <%= @user.last_name %>
   </div>
   <div>
-    <strong>Email:</strong> <%= @user.email %>
+    <strong><%= t('email') %>:</strong> <%= @user.email %>
   </div>
   <div>
-      <strong>IC Number:</strong> <%= @user.ic_number %>
+      <strong><%= t('ic_number') %>:</strong> <%= @user.ic_number %>
   </div>
   <div>
-    <strong>Age:</strong> <%= @user.age %>
+    <strong><%= t('age') %>:</strong> <%= @user.age %>
   </div>
   <div>
-      <strong>Address:</strong> <%= @user.address.line1 %> <%= @user.address.line2 %>, <%= @user.address.city.name %> <%= @user.address.postcode %>, <%= @user.address.city.state_name unless @user.address.city.nil?%>
+      <strong><%= t('address') %>:</strong> <%= @user.address.line1 %> <%= @user.address.line2 %>, <%= @user.address.city.name %> <%= @user.address.postcode %>, <%= @user.address.city.state_name unless @user.address.city.nil?%>
   </div>
   <div>
-      <strong>Phone Number:</strong> <%= @user.phone %>
+      <strong><%= t('phone_number') %>:</strong> <%= @user.phone %>
   </div>
  
-     <strong>Membership status:</strong> <%= @user.confirmed? ? "Unconfirmed" : "Confirmed"  %>
+     <strong><%= t('membership_status') %>:</strong> <%= @user.confirmed? ? "Unconfirmed" : "Confirmed"  %>
   </div>
 
  <!--  <% if @user.has_attended_course? %>
@@ -50,42 +50,42 @@
       <%= image_tag(@user.business_profile.business_logo.file) %>
     <% end %>
     <div>
-      <h2>Business Profile</h2><br/>
+      <h2><%= t('.business_profile') %></h2><br/>
     </div>
     <div>
-      <strong>Category:</strong><%= @user.business_profile.category %>
+      <strong><%= t('category') %>:</strong><%= @user.business_profile.category %>
     </div>
     <div>
-      <strong>Type of Business:</strong><%= @user.business_profile.type_of_business %>
+      <strong><%= t('.type_of_business') %>:</strong><%= @user.business_profile.type_of_business %>
     </div>
     <div>
-      <strong>Company Name:</strong><%= @user.business_profile.company_name%>
+      <strong><%= t('.company_name') %>:</strong><%= @user.business_profile.company_name%>
     </div>
     <div>
-      <strong>Description:</strong><%= @user.business_profile.description%>
+      <strong><%= t('description') %>:</strong><%= @user.business_profile.description%>
     </div>
     <div>
-      <strong>Company Registration Number:</strong><%= @user.business_profile.registration_number%>
+      <strong><%= t('.company_registration_number') %> :</strong><%= @user.business_profile.registration_number%>
     </div>
     <br/>
     <% if @user.business_profile.address.line2.blank? %>
-      <strong>Address:</strong> <%= @user.business_profile.address.line1 %>
+      <strong><%= t('address') %>:</strong> <%= @user.business_profile.address.line1 %>
     <% else %>
       <div>
-          <strong>Address 1:</strong> <%= @user.business_profile.address.line1 %>
+          <strong><%= t('address') %> 1:</strong> <%= @user.business_profile.address.line1 %>
       </div>
       <div>
-          <strong>Address 2:</strong> <%= @user.business_profile.address.line2 %>
+          <strong><%= t('address') %> 2:</strong> <%= @user.business_profile.address.line2 %>
       </div>
     <% end %>
   <div>
-      <strong>City:</strong> <%= @user.business_profile.address.city.name unless @user.business_profile.address.city.nil? %>
+      <strong><%= t('city') %>:</strong> <%= @user.business_profile.address.city.name unless @user.business_profile.address.city.nil? %>
   </div>
   <div>
-     <strong>Postcode:</strong> <%= @user.business_profile.address.postcode %>
+     <strong><%= t('postcode') %>:</strong> <%= @user.business_profile.address.postcode %>
   </div>
   <div>
-     <strong>State:</strong> <%= @user.business_profile.address.city.state_name unless @user.business_profile.address.city.nil?%>
+     <strong><%= t('state') %>:</strong> <%= @user.business_profile.address.city.state_name unless @user.business_profile.address.city.nil?%>
   </div>
  <div>
   <% end %> 

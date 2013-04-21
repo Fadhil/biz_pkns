@@ -3,8 +3,25 @@
 
 en:
   hello: "Hello world"
+  city: 'City'
+  postcode: 'Postcode'
+  state: 'State'
   confirmation_sent: 'An email confirmation has been sent to your email %{email}.'
+  first_name: 'First Name'
+  last_name: 'Last Name'
+  email: 'Email'
+  ic_number: 'IC Number'
+  age: 'Age'
+  address: 'Address'
+  phone_number: 'Phone Number'
+  membership_status: 'Membership Status'
+  category: 'Category'
+  description: 'Description'
 
+
+  setting: 'Setting'
+  logout: 'Logout'
+  
   users:
     form:
       twitter_handle: 'Twitter ID'
@@ -20,11 +37,15 @@ en:
       education: 'Education'
       add_education: 'Add Education'
       remove_education: 'Remove this Education'
-  views:
-    pages:
-      upcoming_courses:
-        title:  'Upcoming Courses'  
-        view:   'View'
+
+    show:
+      title: 'Member Profile'
+      personal_details: 'Personal Details'
+      business_profile: 'Business Profile'
+      type_of_business: 'Type of Business'
+      company_name: 'Company Name'
+      company_registration_number: 'Company Registration Number'
+
   skills:
     new:
       title: 'New Skill'
@@ -34,3 +55,21 @@ en:
   pages:
     upcoming_courses:
       title: 'Upcoming Courses'
+
+  members:
+    index:
+      title: 'Members Directory'
+      search_member: 'Search member'
+
+  #Stuff in the header
+  layouts:
+    header:
+      member_directory: 'Member Directory'
+      list_of_courses: 'List of Courses'
+      upcoming_courses: 'Upcoming Courses'
+      business_directory: 'Business Directory'
+      consultation: 'Consultation'
+      profile: 'Profile'
+      consultant_profile: 'Consultant Profile'
+
+
