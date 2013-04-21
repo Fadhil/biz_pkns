@@ -11,7 +11,9 @@
       <th><%= model_class.human_attribute_name(:start_date) %></th>
       <th><%= model_class.human_attribute_name(:end_date) %></th>
       <th><%= model_class.human_attribute_name(:status) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <% if can? :manage, @course %>
+        <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -39,6 +41,8 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_course_path,
-            :class => 'btn btn-primary' %>
+<% if can? :manage, @course %>
+  <%= link_to t('.new', :default => t("helpers.links.new")),
+              new_course_path,
+              :class => 'btn btn-primary' %>
+<% end %>
