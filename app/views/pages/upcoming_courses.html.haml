@@ -2,21 +2,21 @@
   %h1=t('.title')
 
 = form_tag '', method: :get do
-  = label :search, :terms, 'Search Courses by Title'
+  = label :search, :terms, t('search_courses_by_title')
   = text_field :search, :terms, class: 'text_field'
-  = button_to 'Search'
+  = button_to t('search')
 
 %table.table.table-striped
   %thead
     %tr
       %th
-        Course Name
+        = t('course_name')
       %th
-        Description
+        = t('description')
       %th
-        Program Name
+        = t('program_name')
       %th
-        Start Date
+        = t('start_date')
       %th
     %tbody
       - @courses.each do |course|
@@ -30,6 +30,6 @@
           %td
             = course.start_date
           %td
-            = link_to t('.view'), course_path(course), |
+            = link_to t('view'), course_path(course), |
               class: 'btn'
 

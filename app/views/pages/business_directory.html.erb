@@ -1,33 +1,33 @@
 
 <div class="page-header">
-  <h1>Business Directory</h1>
+  <h1><%= t('.title') %></h1>
 </div>
 <%= form_tag '', method: :get do %>
   <div class="row-fluid">
     <div class="span3">
-      <%= label :search, :category, 'Search by Business Category' %>
+      <%= label :search, :category, t('.search_by_business_category') %>
       <%= select :search, :category, BUSINESS_CATEGORIES, {:include_blank => true} %>
     </div>
     <div class="span3">
-      <%= label :search, :city, 'Search by City' %>
+      <%= label :search, :city, t('search_by_city') %>
       <%= select :search, :city, City.where(state_name: 'Selangor').order(:name).map{|a| [a.name,a.id]}, {:include_blank => true} %>
     </div>
     <div class="span3">
-      <%= label :search, :state, 'Search by State' %>
+      <%= label :search, :state, t('search_by_state') %>
       <%= select :search, :state, City.order(:state_name).map{|a| [a.state_name,a.state_name]}.uniq, {:include_blank => true} %>
     </div>
     <div class="span3">
       <br><br>
-      <input type="submit" value="Search" class="btn" />
+      <input type="submit" value=<%= t('search') %>  class="btn" />
     </div>
   </div>
 <% end %>
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Business Category</th>
+      <th><%= t('name') %></th>
+      <th><%= t('email') %></th>
+      <th><%= t('.business_category') %></th>
     </tr>
   </thead>
   <tbody>
@@ -37,7 +37,7 @@
         <td><%= user.email %></td>
         <td><%= user.business_profile.category %></td>
         <td>
-          <%= link_to 'View',
+          <%= link_to t('view'),
                     user_path(user), :class => 'btn btn-mini' %>
 
         </td>
