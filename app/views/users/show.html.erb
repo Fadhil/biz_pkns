@@ -10,11 +10,9 @@
 
   <h2><%= t('.sub_title') %></h2><br>
   <div>
-    <strong><%= t('first_name') %>:</strong> <%= @user.first_name %>
+    <strong><%= t('name') %>:</strong> <%= @user.full_name %>
   </div>
-  <div>
-    <strong><%= t('last_name') %>:</strong> <%= @user.last_name %>
-  </div>
+
   <div>
     <strong><%= t('email') %>:</strong> <%= @user.email %>
   </div>
