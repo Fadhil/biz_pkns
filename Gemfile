@@ -28,6 +28,9 @@ gem 'cancan'
 gem 'haml-rails', '>= 0.3.4'
 gem 'html2haml'
 
+# localized routes
+gem 'i18n_routing'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

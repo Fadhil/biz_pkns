@@ -10,6 +10,7 @@ en:
   destroy: 'Delete'
   cancel: 'Cancel'
   confirm: 'Confirm'
+  courses: 'Courses'
   category: 'Category'
   city: 'City'
   confirmation_sent: 'An email confirmation has been sent to your email %{email}.'
@@ -131,3 +132,19 @@ en:
       consultant_profile: 'Consultant Profile'
 
 
+  # i18n Routes
+  named_routes_path:
+    consultation: "consultation"
+    course_listing: "upcoming_courses"
+    business_directory: 'business_directory'
+    'consultants/:id/contact': 'consultants/:id/contact'
+    'consultants/:id/contact/sent': 'consultants/:id/contact/sent'
+
+  resources: 
+    consultants: 'consultants'
+    users: 'users'
+    programs: 'programs'
+    courses: 'courses'
+    members: 'members'
+    educations: 'educations'
+    skills: 'skills'
