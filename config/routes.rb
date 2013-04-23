@@ -1,30 +1,32 @@
 BizPkns::Application.routes.draw do
 
+  localized do
+    match 'consultation' => "pages#consultation", as: :consultation
 
-  match 'consultation' => "pages#consultation", as: :consultation
-  match 'upcoming_courses' => 'pages#upcoming_courses', as: :course_listing
-  match 'business_directory' => 'pages#business_directory', as: :business_directory
-  get 'city_dropdown' => 'application#city_dropdown', as: :city_dropdown
-  devise_for :users, path_names: {sign_in: "login", sign_out: "logout", sign_up: "signup"},
-                      controllers: {registrations: 'registrations'}
+    match 'upcoming_courses' => 'pages#upcoming_courses', as: :course_listing
+    match 'business_directory' => 'pages#business_directory', as: :business_directory
+    get 'city_dropdown' => 'application#city_dropdown', as: :city_dropdown
+    devise_for :users, path_names: {sign_in: "login", sign_out: "logout", sign_up: "signup"},
+                        controllers: {registrations: 'registrations'}
 
-  match 'consultation' => "pages#consultation"
-  match 'business_directory' => 'pages#business_directory'
-  devise_for :users, path_names: {sign_in: "login", sign_out: "logout", sign_up: "signup"}
-  devise_for :consultants, path_names: {sign_in: "login",  sign_out: "logout"}
+    devise_for :users, path_names: {sign_in: "login", sign_out: "logout", sign_up: "signup"}
+    devise_for :consultants, path_names: {sign_in: "login",  sign_out: "logout"}
 
-  resources :consultants
-  resources :users
-  resources :programs
-  resources :courses
-  resources :members
-  resources :educations
-  resources :skills
-  
+    resources :consultants
+    resources :users
+    resources :programs
+    resources :courses
+    resources :members
+    resources :educations
+    resources :skills
+
+    get "pages/welcome", as: 'welcome_page'
+    get "consultants/:id/contact", :to => "consultants#contact", :as => 'contact_consultant'
+    put "consultants/:id/contact/sent", :to => "consultants#sent", :as => 'contact_sent'
+
+  end
+
   root :to => 'pages#welcome'
-  get "pages/welcome"
-  get "consultants/:id/contact", :to => "consultants#contact", :as => 'contact_consultant'
-  put "consultants/:id/contact/sent", :to => "consultants#sent", :as => 'contact_sent'
 
   #get 'new/:id', :to => "entrees#new", :as => 'new'
 

@@ -18,9 +18,15 @@
         <td><%= consultant.first_name %> <%= consultant.last_name %></td>
         <td><%= consultant.program.name unless consultant.program.nil? %></td> 
         <td>
+<<<<<<< HEAD
+          <%= link_to 'View', consultant_path(consultant), :class => 'btn btn-mini' %>
+          <% if can? :contact, consultant %>
+            <%= link_to 'Contact', contact_consultant_path(consultant), :class => 'btn btn-mini btn-info' %>
+=======
           <%= link_to t('view'), consultant_path(consultant), :class => 'btn btn-mini' %>
           <% if can? :manage, @consultant %>
             <%= link_to t('contact'), contact_consultant_path(consultant), :class => 'btn btn-mini btn-info' %>
+>>>>>>> 3cc64892fdde60b1225ea6a15d14a234404af2d7
           <% end %>
         </td>
       </tr>

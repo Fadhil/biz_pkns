@@ -10,7 +10,7 @@ class Ability
         can :manage, :all
 
       else
-        can :read, :all
+        can :manage, :all
         can :manage, User, id: user.id
         can :contact, :all
         # can :contact, Consultant do |c|

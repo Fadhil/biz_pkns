@@ -5,12 +5,12 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th>Date</th>
-      <th>Course</th>
-      <th>Program</th>
-      <th><%= model_class.human_attribute_name(:venue) %></th>
-      <th><%= model_class.human_attribute_name(:status) %></th>
+      <th><%= t('id') %></th>
+      <th><%= t('date') %></th>
+      <th><%= t('name') %></th>
+      <th><%= t('program') %></th>
+      <th><%= t('venue') %></th>
+      <th><%= t('status') %></th>
       <% if can? :manage, @course %>
         <th><%=t '.actions', :default => t("helpers.actions") %></th>
       <% end %>

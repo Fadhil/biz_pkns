@@ -1,10 +1,18 @@
 .page-header
   %h1=t('.title')
+<<<<<<< HEAD
+%p
+  = form_tag '', method: :get do
+    = label :search, :terms, 'Search Courses by Title'
+    = text_field :search, :terms, class: 'text_field'
+    = button_to 'Search'
+=======
 
 = form_tag '', method: :get do
   = label :search, :terms, t('search_courses_by_title')
   = text_field :search, :terms, class: 'text_field'
   = button_to t('search')
+>>>>>>> 3cc64892fdde60b1225ea6a15d14a234404af2d7
 
 %table.table.table-striped
   %thead

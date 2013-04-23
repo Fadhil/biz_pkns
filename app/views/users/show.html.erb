@@ -10,11 +10,9 @@
 
   <h2><%= t('.sub_title') %></h2><br>
   <div>
-    <strong><%= t('first_name') %>:</strong> <%= @user.first_name %>
+    <strong><%= t('name') %>:</strong> <%= @user.full_name %>
   </div>
-  <div>
-    <strong><%= t('last_name') %>:</strong> <%= @user.last_name %>
-  </div>
+
   <div>
     <strong><%= t('email') %>:</strong> <%= @user.email %>
   </div>
@@ -24,13 +22,15 @@
   <div>
     <strong><%= t('age') %>:</strong> <%= @user.age %>
   </div>
-  <div>
-      <strong><%= t('address') %>:</strong> <%= @user.address.line1 %> <%= @user.address.line2 %>, <%= @user.address.city.name %> <%= @user.address.postcode %>, <%= @user.address.city.state_name unless @user.address.city.nil?%>
-  </div>
+  <% unless @user.address.nil? %>
+    <div>
+        <strong><%= t('address') %>:</strong> <%= @user.address.line1 %> <%= @user.address.line2 %>, <%= @user.address.city.name %> <%= @user.address.postcode %>, <%= @user.address.city.state_name unless @user.address.city.nil?%>
+    </div>
+  <% end %>
   <div>
       <strong><%= t('phone_number') %>:</strong> <%= @user.phone %>
   </div>
- 
+  <div>
      <strong><%= t('membership_status') %>:</strong> <%= @user.confirmed? ? "Unconfirmed" : "Confirmed"  %>
   </div>
 
