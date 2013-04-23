@@ -145,7 +145,8 @@ bm:
       invalid: 'Email atau password yang anda masukkan salah.'
       invalid_token: 'Kesalahan pada authentication token.'
       timeout: 'Sesi anda telah tamat, silahkan sign in bagi meneruskan sesi yang baru.'
-      inactive: 'Akun anda belum diaktifkan.'
+      inactive: 'Akaun anda belum diaktifkan.'
+      already_authenticated: 'Anda telah pun berdaftar dengan Biz Club'
     sessions:
       signed_in: 'Proses log masuk berjaya.'
       signed_out: 'Proses log keluar berjaya.'
