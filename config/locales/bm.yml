@@ -54,7 +54,7 @@ bm:
 
   setting: 'Tetapan'
   logout: 'Daftar Keluar'
-  
+
   users:
     form:
       twitter_handle: 'ID Twitter'
@@ -137,6 +137,10 @@ bm:
         already_confirmed: "sudah disahkan"
         not_locked: "tidak dikunci"
 
+  time:
+      formats:
+        default: <%= %m/%d/%Y %I:%M:%S %Z %z %>
+  
   devise:
     failure:
       unauthenticated: 'Anda harus mendaftar atau sign in sebelum meneruskan .'
