@@ -15,7 +15,7 @@ bm:
   city: 'Bandar'
   confirmation_sent: 'Email pengesahan telah dihantar ke email anda %{email}.'
   contact: 'Hubungi'
-  date: 'Tarikh'
+  date_tarikh: 'Tarikh'
   description: 'Huraian'
   name: 'Nama'
   pax: 'Jumlah peserta'
@@ -140,6 +140,14 @@ bm:
   time:
       formats:
         default: <%= %m/%d/%Y %I:%M:%S %Z %z %>
+
+  date:
+      order:
+      - :day
+      - :month
+      - :year
+      formats:
+      default: '%Y-%m-%d'
   
   devise:
     failure:
