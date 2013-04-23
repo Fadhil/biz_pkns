@@ -108,7 +108,7 @@ bm:
 
     business_directory:
       title: 'Direktori Perniagaan'
-      search_by_business_category: 'Carian Mengikut Jenis Perniagaan'
+      search_by_business_category: 'Carian Jenis Perniagaan'
       business_category: 'Jenis Perniagaan'
 
     consultation:
