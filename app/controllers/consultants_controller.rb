@@ -1,5 +1,5 @@
 class ConsultantsController < ApplicationController
-  load_and_authorize_resource
+  #load_and_authorize_resource
   # GET /consultants
   # GET /consultants.json
   def index
@@ -95,7 +95,7 @@ class ConsultantsController < ApplicationController
   def contact
     @consultant = Consultant.find(params[:id])
     @sender = current_user.email
-
+    #authorize! :contact, { unless :current_user }
     #ConsultantMailer.contact(@consultant).deliver
     #format.html { redirect_to @consultant, notice: 'Your message has been sent to respective consultant.' }
   end

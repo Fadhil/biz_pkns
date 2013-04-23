@@ -8,9 +8,14 @@ class Ability
       
       if user.admin?
         can :manage, :all
+
       else
         can :read, :all
         can :manage, User, id: user.id
+        can :contact, :all
+        # can :contact, Consultant do |c|
+        #   unless user.email.nil
+        # end
       end
 
       # if user.super_admin?

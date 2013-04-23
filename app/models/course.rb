@@ -9,5 +9,5 @@ class Course < ActiveRecord::Base
   scope :upcoming, lambda{ where('start_date >= ?', Date.today)}
   scope :active, where(status: true)
 
-  #validates_numericality_of :pax
+  validates_numericality_of :pax
 end
