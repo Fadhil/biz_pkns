@@ -148,6 +148,8 @@ bm:
       - :year
       formats:
       default: '%Y-%m-%d'
+      month_names: [~, Januari, Febuari, Mac, April, Mei, Jun, Julai, Ogos, September, Oktober, November, Disember]
+      abbr_month_names: [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
   
   devise:
     failure:
