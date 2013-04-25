@@ -20,7 +20,7 @@ bm:
   name: 'Nama'
   pax: 'Jumlah peserta'
   password: 'Kata Laluan'
-  password_confirmation: 'Pengesahan Kala Laluan'
+  password_confirmation: 'Pengesahan Kata Laluan'
   phone: 'No. Telefon'
   postcode: 'Poskod'
   program: 'Program'
@@ -108,7 +108,7 @@ bm:
 
     business_directory:
       title: 'Direktori Perniagaan'
-      search_by_business_category: 'Carian Jenis Perniagaan'
+      search_by_business_category: 'Carian mengikut jenis perniagaan'
       business_category: 'Jenis Perniagaan'
 
     consultation:

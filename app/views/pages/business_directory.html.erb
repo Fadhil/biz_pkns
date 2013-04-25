@@ -9,16 +9,16 @@
       <%= select :search, :category, BUSINESS_CATEGORIES, {:include_blank => true} %>
     </div>
     <div class="span3">
-      <%= label :search, :city, t('search_by_city') %>
+      <%= label :search, :city, t('search_by_city') %><br>
       <%= select :search, :city, City.where(state_name: 'Selangor').order(:name).map{|a| [a.name,a.id]}, {:include_blank => true} %>
     </div>
     <div class="span3">
-      <%= label :search, :state, t('search_by_state') %>
+      <%= label :search, :state, t('search_by_state') %><br>
       <%= select :search, :state, City.order(:state_name).map{|a| [a.state_name,a.state_name]}.uniq, {:include_blank => true} %>
     </div>
     <div class="span3">
       <br><br>
-      <input type="submit" value=<%= t('search') %>  class="btn" />
+      <input type="submit" value=<%= t('search') %>  class="btn" style="margin-top:8px;" />
     </div>
   </div>
 <% end %>

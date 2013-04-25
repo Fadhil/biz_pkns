@@ -1,71 +1,64 @@
 <%= nested_form_for @user, :html => { :class => 'form-horizontal', multipart: true } do |f| %>
   <div class="control-group">
-    <%= f.label :first_name, :class => 'control-label' %>
+    <%= f.label t('first_name'), :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :first_name, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :last_name, :class => 'control-label' %>
+    <%= f.label t('last_name'), :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :last_name, :class => 'text_field' %>
     </div>
   </div>
   <div class='control-group'>
-    <%= f.label :gender , class: 'control-label' %>
+    <%= f.label t('gender') , class: 'control-label' %>
     <div class='controls'>
       <span>
-        <%= f.radio_button :gender, 'm' %>
-        Male
+        <p class="radio"><%= f.radio_button :gender, 'm' %>
+        <%= t('male') %></p>
       </span>
-      <br/>
       <span>
-        <%= f.radio_button :gender, 'f' %>
-        Female
+        <p class="radio"><%= f.radio_button :gender, 'f' %>
+        <%= t('female') %></p>
       </span>
     </div>
   </div>
   <br/>
    <div class="control-group">
-    <%= f.label :email, :class => 'control-label' %>
+    <%= f.label t('email'), :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :email, :class => 'text_field' %>
     </div>
   </div>
   <% if @user.new_record? %>
     <div class="control-group">
-      <%= f.label :password, 'Password', :class => 'control-label' %>
+      <%= f.label :password, t('password'), :class => 'control-label' %>
       <div class="controls">
         <%= f.password_field :password, :class => 'text_field' %>
       </div>
     </div>
     <div class="control-group">
-      <%= f.label :password_confirmation, 'Password Confirmation', :class => 'control-label' %>
+      <%= f.label :password_confirmation, t('password_confirmation'), :class => 'control-label' %>
       <div class="controls">
         <%= f.password_field :password_confirmation, :class => 'text_field' %>
       </div>
     </div>
   <% end %>
   <div class="control-group">
-    <%= f.label :ic_number, :class => 'control-label' %>
+    <%= f.label t('ic_number'), :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :ic_number, :class => 'text_field' %>
     </div>
   </div>
-  <div id='user_address_fields'>
-    <%= f.fields_for :address do |a| %>
-      <%= render partial: 'address_fields', locals: { a: a} %>
-    <% end %>
-  </div>
   <div class="control-group">
-    <%= f.label 'Phone Number', :class => 'control-label' %>
+    <%= f.label t('phone'), :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :phone, :class => 'text_field' %>
     </div>
   </div>
  
  
-  
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
