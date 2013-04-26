@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130422044247) do
+ActiveRecord::Schema.define(:version => 20130426185633) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(:version => 20130422044247) do
     t.string   "type"
     t.boolean  "status"
     t.integer  "pax",         :default => 0
+    t.string   "course_type"
   end
 
   create_table "courses_users", :id => false, :force => true do |t|

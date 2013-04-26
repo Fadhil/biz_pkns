@@ -1,6 +1,6 @@
 class Course < ActiveRecord::Base
   attr_accessible :description, :end_date, :name, :start_date, :venue, :status
-  attr_accessible :program_id, :pax
+  attr_accessible :program_id, :pax, :course_type
   belongs_to :program#, inverse_of: :courses
   accepts_nested_attributes_for :program
   has_one :consultant, through: :program
