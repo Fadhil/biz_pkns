@@ -127,6 +127,7 @@ bm:
       member_directory: 'Direktori Ahli'
       list_of_courses: 'Senarai Kursus'
       upcoming_courses: 'Kursus Akan Datang'
+      add_modify_courses: 'Cipta/Edit Kursus'
       business_directory: 'Direktori Perniagaan'
       consultation: 'Perundingan'
       profile: 'Profil'

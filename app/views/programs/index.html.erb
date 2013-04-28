@@ -18,8 +18,10 @@
         <td><%= program.name %></td>
         <td><%= program.description %></td>
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_program_path(program), :class => 'btn btn-mini' %>
+          <% if can? :manage, Program %>
+            <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                        edit_program_path(program), :class => 'btn btn-mini' %>
+          <% end %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       program_path(program),
                       :method => :delete,

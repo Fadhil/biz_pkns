@@ -1,5 +1,5 @@
 class ConsultantsController < ApplicationController
-  #load_and_authorize_resource
+  load_and_authorize_resource
   # GET /consultants
   # GET /consultants.json
   def index
@@ -35,6 +35,7 @@ class ConsultantsController < ApplicationController
   # GET /consultants/1/edit
   def edit
     @consultant = Consultant.find(params[:id])
+    #authorize! if can? :manage, Consultant
     if @consultant.profile_photo.nil? 
       @consultant.build_profile_photo
     end

@@ -4,7 +4,7 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
     @courses = Course.all
-
+    #authorize! :read, @article
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @courses.to_json(:include => [:name]) }
