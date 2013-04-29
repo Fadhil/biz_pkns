@@ -97,6 +97,8 @@ bm:
       company_registration_number: 'No. Pendaftaran Syarikat'
 
   consultants:
+    form:
+
     form_new:
       create_consultant: 'Daftar Perunding'
     show:
@@ -138,6 +140,8 @@ bm:
       consultation: 'Perundingan'
       profile: 'Profil'
       consultant_profile: 'Profil Perunding'
+      administrate_user: 'Urus Ahli'
+      directory: 'Direktori'
 
   errors:
       messages:
