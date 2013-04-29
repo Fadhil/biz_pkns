@@ -18,6 +18,8 @@
       %th
         = t('start_date')
       %th
+        = t('end_date')
+      %th
     %tbody
       - @courses.each do |course|
         %tr
@@ -29,6 +31,8 @@
             = course.program.name unless course.program.nil?
           %td
             = course.start_date
+          %td
+            = course.end_date
           %td
             = link_to t('view'), course_path(course), |
               class: 'btn'
