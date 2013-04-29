@@ -18,26 +18,45 @@
             <!-- <%# unless current_user %>
               <li><%= link_to 'Administrate Users', users_path %></li>
             <%# end %> -->
-            <li><a href=<%= members_path %>><%= t('.member_directory') %></a></li>
-            <li><a href=<%= business_directory_path %>><%= t('.business_directory') %></a></li>
-            <li><a href=<%= course_listing_path %>><%= t('courses') %></a></li>
-            <li><a href=<%= consultation_path %>><%= t('.consultation') %></a></li>
+            <% if !current_user.admin? %>
+              <li><a href=<%= members_path %>><%= t('.member_directory') %></a></li>
+              <li><a href=<%= business_directory_path %>><%= t('.business_directory') %></a></li>
+              <li><a href=<%= course_listing_path %>><%= t('courses') %></a></li>
+              <li><a href=<%= consultation_path %>><%= t('.consultation') %></a></li>
+            <% end %>
             
             <% if current_user.admin? %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t('.members') %><b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href=<%= members_path %>><%= t('.member_directory') %></a></li>
+                <li><a href=<%= users_path %>><%= t('.administrate_user') %></a></li>
+                <li><a href=<%= business_directory_path %>><%= t('.business_directory') %></a></li>
+                <li><a href=<%= programs_path %>><%= t('.program') %></a></li>
+                <li><a href=<%= consultants_path %>><%= t('.consultant') %></a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t('.course') %><b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href=<%= course_listing_path %>><%= t('.course_listing') %></a></li>
+                <li><a href=<%= courses_path %>><%= t('.add_modify_courses') %></a></li>
+              </ul>
+            </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t('.directory') %><b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href=<%= members_path %>><%= t('.member_directory') %></a></li>
                 <li><a href=<%= business_directory_path %>><%= t('.business_directory') %></a></li>
-                <li><a href=<%= courses_path %>><%= t('.list_of_courses') %></a></li>
+                <li><a href=<%= programs_path %>><%= t('.program_listing') %></a></li>
               </ul>
             </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t('admin') %><b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href=<%= courses_path %>><%= t('.list_of_courses') %></a></li>
-                <li><a href=<%= course_listing_path %>><%= t('.upcoming_courses') %></a></li>
-                <li><a href=<%= users_path %>><%= t('.administrate_user') %></a></li>
+                <li><a href=<%= new_consultant_path %>><%= t('.new_consultant') %></a></li>
+                <li><a href=<%= new_education_path %>><%= t('.new_education') %></a></li>
+                <li><a href=<%= new_skill_path %>><%= t('.new_skill') %></a></li>
               </ul>
             </li>
             <% end %>
