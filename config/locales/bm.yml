@@ -83,6 +83,9 @@ bm:
       upload_business_photo: 'Muat Nait Gambar Perniagaan'
       business_registered: 'Perniagaan Berdaftar'
       update_user: 'Mengemaskini Ahli'
+    form_new:  
+      create_user: 'Daftar Ahli'
+      cancel: 'Batal'
 
     show:
       title: 'Profil Ahli'
