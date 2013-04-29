@@ -6,7 +6,7 @@
   .control-group
     = f.label :course_type, :class => 'control-label'
     .controls
-      = f.text_field :course_type, :class => 'text_field'
+      = f.select :course_type, options_for_select([['Seminar','Seminar'],['Bengkel','Bengkel'],['Ceramah','Ceramah']])
   .control-group
     = f.label 'Program', class: 'control-label'
     .controls

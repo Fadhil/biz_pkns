@@ -22,5 +22,10 @@ MALAYSIAN_STATES = [
             ['Terengganu','Terengganu'],
             ['Wilayah Persekutuan','Wilayah Persekutuan']
             ]
+COURSES_TYPE = [
+            ['Seminar','Seminar'],
+            ['Bengkel','Bengkel'],
+            ['Ceramah','Ceramah']
+            ]
 
 SECONDS_IN_A_YEAR = 31556952
