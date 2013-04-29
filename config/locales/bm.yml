@@ -152,7 +152,7 @@ bm:
       default: '%Y-%m-%d'
       month_names: [~, Januari, Febuari, Mac, April, Mei, Jun, Julai, Ogos, September, Oktober, November, Disember]
       abbr_month_names: [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
-  
+
   devise:
     failure:
       unauthenticated: 'Anda harus mendaftar atau sign in sebelum meneruskan .'
@@ -163,6 +163,10 @@ bm:
       timeout: 'Sesi anda telah tamat, silahkan sign in bagi meneruskan sesi yang baru.'
       inactive: 'Akaun anda belum diaktifkan.'
       already_authenticated: 'Anda telah pun berdaftar dengan Biz Club'
+      user:
+        not_found_in_database: 'Pengguna tersebut tidak tersenarai dalam database.'
+      consultant:
+        not_found_in_database: 'Pengguna tersebut tidak tersenarai dalam database.'
     sessions:
       signed_in: 'Proses log masuk berjaya.'
       signed_out: 'Proses log keluar berjaya.'
