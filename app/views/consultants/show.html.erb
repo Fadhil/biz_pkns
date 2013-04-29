@@ -17,19 +17,10 @@
   <dd><%= @consultant.email %></dd>
   <dt><strong><%= t('phone') %>:</strong></dt>
   <dd><%= @consultant.phone %></dd>
-  <dt><strong><%= t('bio_data') %>:</strong></dt>
-  <dd><%= @consultant.bio_data %></dd>
   <dt><strong><%= t('program') %>:</strong></dt>
   <dd><%= @consultant.program.name unless @consultant.program.nil? %></dd>
-  <% unless current_user %>
-    <% if @consultant.phone.blank? %>
-    <% else %>
-      <dt><strong><%= t('phone') %>:</strong></dt>
-      <dd><%= @consultant.phone %></dd>
-    <% end %>
-    <dt><strong><%= t('email') %>:</strong></dt>
-    <dd><%= @consultant.email %></dd>
-  <% end %>
+  <dt><strong><%= t('bio_data') %>:</strong></dt>
+  <dd><%= @consultant.bio_data %></dd>
 </dl>
 
 <% if current_user %>

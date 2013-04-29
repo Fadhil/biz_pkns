@@ -97,6 +97,8 @@ bm:
       company_registration_number: 'No. Pendaftaran Syarikat'
 
   consultants:
+    form_new:
+      create_consultant: 'Daftar Perunding'
     show:
       title: 'Perunding'
 
