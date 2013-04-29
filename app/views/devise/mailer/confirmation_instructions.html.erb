@@ -1,7 +1,7 @@
-<p>Congratulation <%= @email %>!</p>
+<p>Tahniah <%= @email %>!</p>
 
-<p>You have successfully signed up as a PKNS Biz Club member!</p>
+<p>Anda telah berjaya didaftarkan sebagai ahli PKNS BizClub.</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>Sila sahkan email anda melalui pautan di bawah.</p>
 
-<p><%= link_to 'Confirm my account', user_confirmation_url(:confirmation_token => @resource.confirmation_token), :method=>:post %></p>
+<p><%= link_to 'Sahkan akaun saya', user_confirmation_url(:confirmation_token => @resource.confirmation_token), :method=>:post %></p>

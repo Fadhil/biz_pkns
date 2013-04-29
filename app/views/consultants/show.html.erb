@@ -13,7 +13,13 @@
   <dd><%= @consultant.first_name %></dd>
   <dt><strong><%= t('last_name') %>:</strong></dt>
   <dd><%= @consultant.last_name %></dd>
-  <dt><strong><%= t('program') %></strong></dt>
+  <dt><strong><%= t('email') %>:</strong></dt>
+  <dd><%= @consultant.email %></dd>
+  <dt><strong><%= t('phone') %>:</strong></dt>
+  <dd><%= @consultant.phone %></dd>
+  <dt><strong><%= t('bio_data') %>:</strong></dt>
+  <dd><%= @consultant.bio_data %></dd>
+  <dt><strong><%= t('program') %>:</strong></dt>
   <dd><%= @consultant.program.name unless @consultant.program.nil? %></dd>
   <% unless current_user %>
     <% if @consultant.phone.blank? %>
