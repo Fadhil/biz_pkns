@@ -4,14 +4,26 @@
 </div>
 
 <%= form_tag '', method: :get do %>
-      <%= text_field_tag 'search_term','', :placeholder =>  t('.search_member') ,name: 'search[term]' %>
+  <div class="row-fluid">
+    <div class="span3">
+      <%= label :search, :city, t('search_by_name') %>
+      <%= text_field_tag 'search_term','', name: 'search[term]' %>
+    </div>
 
-      <%#= label :search, :city, 'Search by City' %>
+    <div class="span3">
+      <%= label :search, :city, t('search_by_city') %>
       <%= select :search, :city, City.where(state_name: 'Selangor').order(:name).map{|a| [a.name,a.id]}, {:include_blank => true, selected: ''} %>
+    </div>
       
-      <%#= label :search, :state, 'Search by State' %>
+    <div class="span3">
+      <%= label :search, :state, t('search_by_state') %>
       <%= select :search, :state, City.order(:state_name).map{|a| [a.state_name,a.state_name]}.uniq, {:include_blank => true, selected: ''} %>
-      <%= button_tag t('search'), class: 'btn btn-success' %>
+    </div>
+    <div class="span3">
+      <br>
+      <%= button_tag t('search'), class: 'btn btn-success', :style => "margin-top:8px;" %>
+    </div>
+  </div>
 <% end %>
 
 <table class="table table-striped">

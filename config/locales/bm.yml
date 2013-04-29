@@ -25,6 +25,7 @@ bm:
   postcode: 'Poskod'
   program: 'Program'
   search: 'Carian'
+  search_by_name: 'Carian mengikut nama'
   search_by_city: 'Carian mengikut bandar'
   search_by_state: 'Carian mengikut negeri'
   state: 'Negeri'
