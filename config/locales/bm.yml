@@ -58,6 +58,10 @@ bm:
   logout: 'Daftar Keluar'
 
   users:
+    new:
+      title: 'Daftar Pengguna'
+    edit:
+      title: 'Kemaskini Profil'
     form:
       twitter_handle: 'ID Twitter'
       facebook_handle: 'ID Facebook'
