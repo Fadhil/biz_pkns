@@ -98,13 +98,23 @@
 
   <h3>Jaringan Media Sosial</h3>
   <div class="content">
-    <div>
+    <table class="table">
+      <tr>
+        <th><%= t('.twitter_handle') %></th>
+        <td><%= @user.twitter_handle %></td>
+      </tr>
+      <tr>
+        <th><%= t('.facebook_handle') %></th>
+        <td><%= @user.facebook_handle %></td>
+      </tr>
+    </table>
+    <!-- <div>
       <strong><%= t('.twitter_handle') %>:</strong> <%= @user.twitter_handle %>
     </div>
 
     <div>
       <strong><%= t('.facebook_handle') %>:</strong> <%= @user.facebook_handle %>
-    </div>
+    </div> -->
   </div>
 
   <h3>Latar Belakang Pendidikan</h3>
@@ -134,7 +144,34 @@
       <% unless @user.business_profile.business_logo.nil? %>
         <%= image_tag(@user.business_profile.business_logo.file) %>
       <% end %>
-      <div>
+
+      <table class="table">
+        <tr>
+          <th><%= t('.company_name') %></th>
+          <td><%= @user.business_profile.company_name%></td>
+        </tr>
+        <tr>
+          <th><%= t('address') %></th>
+          <td><%= @user.full_business_address %></td>
+        </tr>
+        <tr>
+          <th><%= t('description') %></th>
+          <td><%= @user.business_profile.description%></td>
+        </tr>
+        <tr>
+          <th><%= t('category') %></th>
+          <td><%= @user.business_profile.category %></td>
+        </tr>
+        <tr>
+          <th><%= t('type_of_business') %></th>
+          <td><%= @user.business_profile.type_of_business %></td>
+        </tr>
+        <tr>
+          <th><%= t('.company_registration_number') %></th>
+          <td><%= @user.business_profile.registration_number%></td>
+        </tr>
+      </table>
+      <!-- <div>
         <strong><%= t('.company_name') %>:</strong><%= @user.business_profile.company_name%>
       </div>
       <div>
@@ -151,7 +188,7 @@
       </div>
       <div>
         <strong><%= t('.company_registration_number') %> :</strong><%= @user.business_profile.registration_number%>
-      </div>
+      </div> -->
     <% end %>
   </div>
 
