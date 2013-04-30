@@ -52,7 +52,7 @@
       <%= f.text_field :ic_number, :class => 'text_field' %>
     </div>
   </div>
-  <h5>Home Address</h5>
+  <h5>Alamat Rumah</h5>
   <div id='user_address_fields'>
     <%= f.fields_for :address do |a| %>
       <%= render partial: 'address_fields', locals: { a: a} %>

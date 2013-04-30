@@ -1,23 +1,23 @@
 <div class='control-group'>
-  <%= a.label :line1, class: 'control-label' %>
+  <%= a.label t('.line1'), class: 'control-label' %>
   <div class='controls'>
     <%= a.text_field :line1, class: 'text_field' %>
   </div>
 </div>
 <div class='control-group'>
-  <%= a.label :line2, class: 'control-label' %>
+  <%= a.label t('.line2'), class: 'control-label' %>
   <div class='controls'>
     <%= a.text_field :line2, class: 'text_field' %>
   </div>
 </div>
 <div class='control-group'>
-  <%= a.label :phone, class: 'control-label' %>
+  <%= a.label t('.phone'), class: 'control-label' %>
   <div class='controls'>
     <%= a.text_field :phone, class: 'text_field' %>
   </div>
 </div>
 <div class='control-group'>
-  <%= a.label :fax, class: 'control-label' %>
+  <%= a.label t('.fax'), class: 'control-label' %>
   <div class='controls'>
     <%= a.text_field :fax, class: 'text_field' %>
   </div>
@@ -25,7 +25,7 @@
 <div class='city_fields'>
   <%= a.fields_for :city do |c| %>
     <div class='control-group'>
-      <%= c.label 'City', class: 'control-label' %>
+      <%= c.label t('.city'), class: 'control-label' %>
       <div class='controls'>
         <% if c.object.id %>
           <% @cities = City.where(state_name: c.object.state_name).order(:name) %>
@@ -38,7 +38,7 @@
   <% end %>
 </div>
 <div class='control-group'>
-  <%= a.label :postcode, class: 'control-label' %>
+  <%= a.label t('.postcode'), class: 'control-label' %>
   <div class='controls'>
     <%= a.text_field :postcode, class: 'text_field' %>
   </div>
@@ -46,7 +46,7 @@
 <div class='state_fields'>
   <%= a.fields_for :city do |c| %>
     <div class='control-group'>
-      <%= c.label 'State', class: 'control-label' %>
+      <%= c.label t('.state'), class: 'control-label' %>
       <div class='controls'>
         <% if c.object.state_name %>
           <% selected_state = c.object.state_name %>

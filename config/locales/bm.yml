@@ -83,6 +83,7 @@ bm:
       upload_business_photo: 'Muat Nait Gambar Perniagaan'
       business_registered: 'Perniagaan Berdaftar'
       update_user: 'Mengemaskini Ahli'
+    
     form_new:  
       create_user: 'Daftar Ahli'
       cancel: 'Batal'
@@ -95,6 +96,16 @@ bm:
       type_of_business: 'Jenis Perniagaan'
       company_name: 'Nama Syarikat'
       company_registration_number: 'No. Pendaftaran Syarikat'
+
+  application:
+    address_fields:
+      line1: 'Baris 1'
+      line2: 'Baris 2'
+      phone: 'Telefon'
+      fax: 'Faks'
+      city: 'Bandar'
+      postcode: 'Poskod'
+      state: 'Negeri'
 
   consultants:
     form:
