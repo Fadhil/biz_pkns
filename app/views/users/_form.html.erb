@@ -246,7 +246,7 @@
         <% end %>
       </div>
 
-      <h5>Business Address</h5>
+      <h5>Alamat Perniagaan</h5>
 
       <div id='business_address_fields'>
         <%= bp.fields_for :address do |a| %>
@@ -260,7 +260,7 @@
         </div>
       </div>
       <div id='registration_number_field' class="control-group">
-        <%= bp.label :registration_number, class: 'control-label' %>
+        <%= bp.label t('.registration_number'), class: 'control-label' %>
         <div class="controls">
           <%= bp.text_field :registration_number, class: 'text_field' %>
         </div>

@@ -1,99 +1,161 @@
 <%- model_class = User -%>
+<style>
+  .content{ padding-left: 10px;}
+  table tr th {width: 140px;}
+</style>
 <div class="page-header">
   <h1><%= t('.title') %></h1>
 </div>
 
 <div>
-  <% unless @user.profile_photo.nil? %>
-    <%= image_tag(@user.profile_photo.file, size: '300x300') %>
-  <% end %>
-
-  <h2><%= t('.sub_title') %></h2><br>
-  <div>
-    <strong><%= t('name') %>:</strong> <%= @user.full_name %>
-  </div>
-
-  <div>
-    <strong><%= t('email') %>:</strong> <%= @user.email %>
-  </div>
-  <div>
-      <strong><%= t('ic_number') %>:</strong> <%= @user.ic_number %>
-  </div>
-  <div>
-    <strong><%= t('age') %>:</strong> <%= @user.age %>
-  </div>
-  <% unless @user.address.nil? %>
-    <div>
-        <strong><%= t('address') %>:</strong> <%= @user.address.line1 %> <%= @user.address.line2 %>, <%= @user.address.city.name %> <%= @user.address.postcode %>, <%= @user.address.city.state_name unless @user.address.city.nil?%>
-    </div>
-  <% end %>
-  <div>
-      <strong><%= t('phone_number') %>:</strong> <%= @user.phone %>
-  </div>
-  <div>
-     <strong><%= t('membership_status') %>:</strong> <%= @user.confirmed? ? "Unconfirmed" : "Confirmed"  %>
-  </div>
-
- <!--  <% if @user.has_attended_course? %>
-    <br/>
-    <div>
-      <strong>Attended Course:</strong><%= @user.attended_course %>
-    </div>
-  <% end %>  -->
-
-  <% if @user.has_business_profile? %>
-    <br/>
-    <% unless @user.business_profile.business_photo.nil? %>
-      <%= image_tag(@user.business_profile.business_photo.file) %>
-    <% end %>
-    <% unless @user.business_profile.business_logo.nil? %>
-      <%= image_tag(@user.business_profile.business_logo.file) %>
-    <% end %>
-    <div>
-      <h2><%= t('.business_profile') %></h2><br/>
-    </div>
-    <div>
-      <strong><%= t('category') %>:</strong><%= @user.business_profile.category %>
-    </div>
-    <div>
-      <strong><%= t('.type_of_business') %>:</strong><%= @user.business_profile.type_of_business %>
-    </div>
-    <div>
-      <strong><%= t('.company_name') %>:</strong><%= @user.business_profile.company_name%>
-    </div>
-    <div>
-      <strong><%= t('description') %>:</strong><%= @user.business_profile.description%>
-    </div>
-    <div>
-      <strong><%= t('.company_registration_number') %> :</strong><%= @user.business_profile.registration_number%>
-    </div>
-    <br/>
-    <div>
-      <strong><%= t('address') %>:</strong> <%= @user.full_business_address %>
-    </div>
-    
-  <!--   <% if @user.business_profile.address.line2.blank? %>
-      <strong><%= t('address') %>:</strong> <%= @user.business_profile.address.line1 %>
-      
-    <% else %>
+  
+  <div class="row">
+    <div class="span4">
       <div>
-          <strong><%= t('address') %> 1:</strong> <%= @user.business_profile.address.line1 %>
+        <h1><b><%= @user.full_name %></b></h1>
+      </div>
+      <div class="content">
+        <table class="table">
+          <tr>
+            <th><%= t('membership_status') %></th>
+            <td><%= @user.confirmed? ? "Unconfirmed" : "Confirmed"  %></td>
+          </tr>
+          <tr>
+            <th><%= t('age') %></th>
+            <td><%= @user.age %></td>
+          </tr>
+          <tr>
+            <th><%= t('gender') %></th>
+            <td>
+              <% if @user.gender == 'm' %>
+                Lelaki
+              <% elsif @user.gender == 'f' %>
+                Perempuan
+              <% else %>
+                nil
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th><%= t('ic_number') %></th>
+            <td><%= @user.ic_number %></td>
+          </tr>
+          <tr>
+            <th><%= t('phone_number') %></th>
+            <td><%= @user.phone %></td>
+          </tr>
+          <tr>
+            <th><%= t('address') %></th>
+            <td>
+              <%= @user.address.line1 %> <%= @user.address.line2 %>, <%= @user.address.city.name %> <%= @user.address.postcode %>, <%= @user.address.city.state_name unless @user.address.city.nil?%>
+            </td>
+          </tr>
+          <tr>
+            <th><%= t('.current_employment_status') %></th>
+            <td><%= @user.current_employment_status %></td>
+          </tr>
+        </table>
+
+        <!-- <div>
+           <strong><%= t('membership_status') %>:</strong> <%= @user.confirmed? ? "Unconfirmed" : "Confirmed"  %>
+        </div>
+        <div>
+          <strong><%= t('age') %>:</strong> <%= @user.age %>
+        </div>
+        <div>
+          <strong><%= t('gender') %>:</strong> 
+          <% if @user.gender == 'm' %>
+            Lelaki
+          <% elsif @user.gender == 'f' %>
+            Perempuan
+          <% else %>
+            nil
+          <% end %>
+        </div>
+        <div>
+            <strong><%= t('ic_number') %>:</strong> <%= @user.ic_number %>
+        </div>
+        <div>
+            <strong><%= t('phone_number') %>:</strong> <%= @user.phone %>
+        </div>
+        <% unless @user.address.nil? %>
+          <div>
+              <strong><%= t('address') %>:</strong> <%= @user.address.line1 %> <%= @user.address.line2 %>, <%= @user.address.city.name %> <%= @user.address.postcode %>, <%= @user.address.city.state_name unless @user.address.city.nil?%>
+          </div>
+        <% end %>
+
+        <div>
+          <strong><%= t('.current_employment_status') %>:</strong> <%= @user.current_employment_status %>
+        </div> -->
+      </div>
+    </div>
+    <div class="span3 offset1">
+      <% unless @user.profile_photo.nil? %>
+        <%= image_tag(@user.profile_photo.file, size: '300x300', :style => 'padding: 8px;box-shadow: 0 0 3px #888;') %>
+      <% end %>
+    </div>
+  </div>
+
+  <h3>Jaringan Media Sosial</h3>
+  <div class="content">
+    <div>
+      <strong><%= t('.twitter_handle') %>:</strong> <%= @user.twitter_handle %>
+    </div>
+
+    <div>
+      <strong><%= t('.facebook_handle') %>:</strong> <%= @user.facebook_handle %>
+    </div>
+  </div>
+
+  <h3>Latar Belakang Pendidikan</h3>
+  <div class="content">
+    <div>
+      <%# @user.each do |user| %>
+        <%= @user.educations %>(<%#= @user.skills.experience %> tahun)
+      <%# end %>
+    </div>
+  </div>
+
+  <h3>Kemahiran</h3>
+  <div class="content">
+    <div>
+      <%# @user.each do |user| %>
+        <%= @user.skills %>(<%#= @user.skills.experience %> tahun)
+      <%# end %>
+    </div>
+  </div>
+
+  <h3>Maklumat Perniagaan</h3>
+  <div class="content">
+    <% if @user.has_business_profile? %>
+      <% unless @user.business_profile.business_photo.nil? %>
+        <%= image_tag(@user.business_profile.business_photo.file) %>
+      <% end %>
+      <% unless @user.business_profile.business_logo.nil? %>
+        <%= image_tag(@user.business_profile.business_logo.file) %>
+      <% end %>
+      <div>
+        <strong><%= t('.company_name') %>:</strong><%= @user.business_profile.company_name%>
       </div>
       <div>
-          <strong><%= t('address') %> 2:</strong> <%= @user.business_profile.address.line2 %>
+        <strong><%= t('address') %>:</strong> <%= @user.full_business_address %>
       </div>
-    <% end %> -->
-  <!-- <div>
-      <strong><%= t('city') %>:</strong> <%= @user.business_profile.address.city.name unless @user.business_profile.address.city.nil? %>
+      <div>
+        <strong><%= t('description') %>:</strong><%= @user.business_profile.description%>
+      </div>
+      <div>
+        <strong><%= t('category') %>:</strong><%= @user.business_profile.category %>
+      </div>
+      <div>
+        <strong><%= t('.type_of_business') %>:</strong><%= @user.business_profile.type_of_business %>
+      </div>
+      <div>
+        <strong><%= t('.company_registration_number') %> :</strong><%= @user.business_profile.registration_number%>
+      </div>
+    <% end %>
   </div>
-  <div>
-     <strong><%= t('postcode') %>:</strong> <%= @user.business_profile.address.postcode %>
-  </div>
-  <div>
-     <strong><%= t('state') %>:</strong> <%= @user.business_profile.address.city.state_name unless @user.business_profile.address.city.nil?%>
-  </div> -->
 
-  <% end %> 
+   
 </div>
 
 <% if can? :manage, @user %>

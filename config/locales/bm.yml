@@ -11,7 +11,7 @@ bm:
   cancel: 'Batal'
   confirm: 'Setuju'
   courses: 'Kursus'
-  category: 'Jenis Perniagaan'
+  category: 'Bidang Perniagaan'
   city: 'Bandar'
   confirmation_sent: 'Email pengesahan telah dihantar ke email anda %{email}.'
   contact: 'Hubungi'
@@ -21,7 +21,7 @@ bm:
   pax: 'Jumlah peserta'
   password: 'Kata Laluan'
   password_confirmation: 'Pengesahan Kata Laluan'
-  phone: 'No. Telefon'
+  phone: 'No Tel'
   postcode: 'Poskod'
   program: 'Program'
   search: 'Carian'
@@ -39,8 +39,8 @@ bm:
   course_type: 'Jenis Kursus'
   program_name: 'Nama Program'
 
-  start_date: 'Tarikh Mula'
-  end_date: 'Tarikh Akhir'
+  start_date: 'Tahun Mula'
+  end_date: 'Tahun Akhir'
 
   first_name: 'Nama'
   last_name: 'Nama Bapa'
@@ -49,7 +49,7 @@ bm:
   gender: 'Jantina'
   age: 'Umur'
   address: 'Alamat'
-  phone_number: 'Nombor Telefon'
+  phone_number: 'Nom Tel'
   membership_status: 'Status keahlian'
 
   setting: 'Tetapan'
@@ -63,7 +63,6 @@ bm:
     form:
       twitter_handle: 'ID Twitter'
       facebook_handle: 'ID Facebook'
-      current_employment_status: 'Status Pekerjaan Terkini'
       employment_status:
         own_business: 'Pemilik Perniagaan'
         working_studying: 'Bekerja/Belajar'
@@ -75,16 +74,18 @@ bm:
       add_education: 'Tambah latar belakang pendidikan'
       remove_education: 'Buang latar belakang pendidikan'
       upload_profile_photo: 'Muat Naik Gambar Profil'
-      current_employment_status: 'Status Pekerjaan'
+      current_employment_status: 'Status Semasa'
       experience: 'Pengalaman'
       has_attended_course: 'Pernah Menghadiri Kursus PKNS'
       has_business_profile: 'Memiliki perniagaan'
-      type_of_business: 'Jenis Perniagaan'
+      type_of_business: 'Bidang Perniagaan'
       company_name: 'Nama Syarikat'
       upload_business_logo: 'Muat Naik Logo'
       upload_business_photo: 'Muat Nait Gambar Perniagaan'
       business_registered: 'Perniagaan Berdaftar'
-      update_user: 'Mengemaskini Ahli'
+      registration_number: 'Nombor Pendaftaran Syarikat'
+      update_user: 'Kemaskini'
+
     
     form_new:  
       create_user: 'Daftar Ahli'
@@ -98,12 +99,15 @@ bm:
       type_of_business: 'Jenis Perniagaan'
       company_name: 'Nama Syarikat'
       company_registration_number: 'No. Pendaftaran Syarikat'
+      current_employment_status: 'Status Pekerjaan'
+      twitter_handle: 'ID Twitter'
+      facebook_handle: 'ID Facebook'
 
   application:
     address_fields:
       line1: 'Baris 1'
       line2: 'Baris 2'
-      phone: 'Telefon'
+      phone: 'No Tel'
       fax: 'Faks'
       city: 'Bandar'
       postcode: 'Poskod'
