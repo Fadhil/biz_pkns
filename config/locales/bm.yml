@@ -45,14 +45,12 @@ bm:
   first_name: 'Nama'
   last_name: 'Nama Bapa'
   email: 'Email'
-  ic_number: 'No IC'
+  ic_number: 'No KP'
   gender: 'Jantina'
   age: 'Umur'
   address: 'Alamat'
-  phone_number: 'Nombor telefon'
+  phone_number: 'Nombor Telefon'
   membership_status: 'Status keahlian'
-
-
 
   setting: 'Tetapan'
   logout: 'Daftar Keluar'
