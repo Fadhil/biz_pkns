@@ -11,16 +11,16 @@
     </div>
   <% end %>
   <div class='field'>
-    <%= f.label :email %><br />
+    <%= f.label t('email') %>
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :password %><br />
+    <%= f.label t('password') %>
     <%= f.password_field :password %>
   </div>
 
   <div class='control-group'>
-    <%= f.label 'Select a Program', class: 'control-label' %>
+    <%= f.label t('select_a_program'), class: 'control-label' %>
     <div class='controls'>
       <%= select_tag :program_id, options_for_select(Program.all.map{|a| [a.name,a.id]}) %>
     </div>

@@ -5,16 +5,16 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= t('id') %></th>
-      <th><%= t('name') %></th>
+      <th><%= t('.name') %></th>
+      <th><%= t('company_name') %></th>
       <th><%= t('program') %></th>
     </tr>
   </thead>
   <tbody>
     <% @consultants.each_with_index do |consultant, i| %>
       <tr>
-        <td><%= i+1 %></td>
         <td><%= consultant.first_name %> <%= consultant.last_name %></td>
+        <td><%= consultant.company_name %> </td>
         <td><%= consultant.program.name unless consultant.program.nil? %></td> 
         <td>
           <%= link_to t('view'), consultant_path(consultant), :class => 'btn btn-mini' %>
