@@ -25,6 +25,7 @@ en:
   password_confirmation: 'Password Confirmation'
   phone: 'Phone Number'
   postcode: 'Postcode'
+  profile: 'Profile'
   program: 'Program'
   register: 'Admin'
   search: 'Search'
@@ -54,7 +55,7 @@ en:
   phone_number: 'Phone Number'
   membership_status: 'Membership Status'
 
-
+  successfully_updated: "%{resource} successfully updated."
 
   setting: 'Setting'
   logout: 'Logout'

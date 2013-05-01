@@ -104,7 +104,7 @@ class UsersController < ApplicationController
         previous_course = @user.previous_courses.last
         previous_course.program = program
         previous_course.save
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user, notice: I18n.t('successfully_updated', resource: t('profile'))  }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

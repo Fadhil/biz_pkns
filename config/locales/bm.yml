@@ -25,6 +25,7 @@ bm:
   password_confirmation: 'Pengesahan Kata Laluan'
   phone: 'No Tel'
   postcode: 'Poskod'
+  profile: 'Profile'
   program: 'Program'
   register: 'Daftar'
   search: 'Carian'
@@ -55,6 +56,8 @@ bm:
   address: 'Alamat'
   phone_number: 'Nom Tel'
   membership_status: 'Status keahlian'
+
+  successfully_updated: "%{resource} berjaya dikemaskini."
 
   setting: 'Tetapan'
   logout: 'Daftar Keluar'
