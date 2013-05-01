@@ -5,9 +5,9 @@ class CoursesController < ApplicationController
   def index
     
     if current_user && ( current_user.admin? )
-      @courses = Course.order()
+      @courses = Course.active.order(:start_date).page(params[:page])
     elsif current_consultant && current_consultant.program
-      @courses = current_consultant.program.courses
+      @courses = current_consultant.program.courses.active.order(:start_date).page(params[:page])
     else
       @courses = []
     end
