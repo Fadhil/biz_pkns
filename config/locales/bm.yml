@@ -71,7 +71,7 @@ bm:
   gender: 'Jantina'
   age: 'Umur'
   address: 'Alamat'
-  phone_number: 'Nom Tel'
+  phone_number: 'No Tel'
   membership_status: 'Status keahlian'
 
   successfully_updated: "%{resource} berjaya dikemaskini."

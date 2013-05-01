@@ -2,6 +2,13 @@
 <style>
   .content{ padding-left: 10px;}
   table tr th {width: 140px;}
+  .table td {padding: 8px;
+  line-height: 20px;
+  text-align: left;
+  vertical-align: top;
+  border-top: 0 solid #dddddd;
+}
+  .table th { border-top: 0 solid #dddddd; }
 </style>
 <div class="page-header">
   <h1><%= t('.title') %></h1>
@@ -42,7 +49,12 @@
           </tr>
           <tr>
             <th><%= t('phone_number') %></th>
-            <td><%= @user.phone %></td>
+            <td>
+              <% if @user.phone.blank? %>
+                NIL
+              <% else %>
+                <%= @user.phone %></td>
+              <% end %>
           </tr>
           <tr>
             <th><%= t('address') %></th>
@@ -103,11 +115,23 @@
     <table class="table">
       <tr>
         <th><%= t('.twitter_handle') %></th>
-        <td><%= @user.twitter_handle %></td>
+        <td>
+          <% if @user.twitter_handle.blank? %>
+            NIL
+          <% else %>
+            <a href="http://twitter.com/<%= @user.twitter_handle %>" title=""><%= @user.twitter_handle %></a>
+          <% end %>
+        </td>
       </tr>
       <tr>
         <th><%= t('.facebook_handle') %></th>
-        <td><%= @user.facebook_handle %></td>
+        <td>
+          <% if @user.facebook_handle.blank? %>
+            NIL
+          <% else %>
+            <a href="http://facebook.com/<%= @user.facebook_handle %>" title=""><%= @user.facebook_handle %></a>
+          <% end %>
+        </td>
       </tr>
     </table>
     <!-- <div>
