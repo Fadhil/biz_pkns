@@ -12,6 +12,7 @@ bm:
   destroy: 'Padam'
   cancel: 'Batal'
   confirm: 'Setuju'
+  course: 'Kursus'
   courses: 'Kursus'
   category: 'Bidang Perniagaan'
   city: 'Bandar'
@@ -58,6 +59,7 @@ bm:
   membership_status: 'Status keahlian'
 
   successfully_updated: "%{resource} berjaya dikemaskini."
+  successfully_created: "%{resource} telah berjaya dicipta."
 
   setting: 'Tetapan'
   logout: 'Daftar Keluar'
@@ -118,6 +120,8 @@ bm:
       state: 'Negeri'
 
   consultants:
+    index:
+      title: 'Senarai Perunding'
     form:
 
     form_new:
@@ -134,7 +138,7 @@ bm:
   pages:
     upcoming_courses:
       title: 'Kursus Akan Datang'
-      search_courses_by_title: 'Carian Kursus Mengikut Tajuk'
+      search_courses_by_title: 'Carian Kursus'
 
     business_directory:
       title: 'Direktori Perniagaan'
@@ -149,6 +153,12 @@ bm:
       title: "Senarai Kursus"
       create_course: 'Cipta Kursus'
       edit: 'Papar'
+    new:
+      title: 'Kursus Baru'
+    form:
+      course_name: 'Nama Kursus'
+      course_type: 'Jenis Kursus'
+      create_course: 'Cipta Kursus'
 
   members:
     index:

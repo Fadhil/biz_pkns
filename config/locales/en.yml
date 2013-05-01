@@ -12,6 +12,7 @@ en:
   destroy: 'Delete'
   cancel: 'Cancel'
   confirm: 'Confirm'
+  course: 'Course'
   courses: 'Courses'
   category: 'Category'
   city: 'City'
@@ -56,6 +57,7 @@ en:
   membership_status: 'Membership Status'
 
   successfully_updated: "%{resource} successfully updated."
+  successfully_created: "%{resource} successfully created."
 
   setting: 'Setting'
   logout: 'Logout'
@@ -97,6 +99,8 @@ en:
       company_registration_number: 'Company Registration Number'
 
   consultants:
+    index:
+      title: 'Consultants'
     show:
       title: 'Consultant'
 
@@ -121,8 +125,14 @@ en:
 
   courses:
     index:
-      create_course: 'Cipta Kursus'
-      edit: 'Papar'
+      title: "Course Listing"
+      create_course: 'Create Course'
+      edit: 'Edit'
+    new:
+      title: 'New Course'
+    form:
+      course_name: 'Course Name'
+      course_type: 'Course Type'
 
   members:
     index:
