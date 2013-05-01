@@ -180,6 +180,8 @@ bm:
       courses: 'Kursus'
     show:
       title: "Program %{program_name}"
+    new:
+      title: 'Daftar Program Baru'
 
   courses:
     index:

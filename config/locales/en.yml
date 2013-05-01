@@ -151,6 +151,8 @@ en:
       courses: "Courses"
     show:
       title: "%{program_name} Program"
+    new:
+      title: 'New Program'
 
   courses:
     index:
