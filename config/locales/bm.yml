@@ -2,6 +2,8 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 bm:
+  active: 'Aktif'
+  inactive: 'Tidak Aktif'
   are_you_sure: 'And pasti?'
   back: 'Kembali'
   edit: 'Sunting'
@@ -84,13 +86,10 @@ bm:
       upload_business_photo: 'Muat Nait Gambar Perniagaan'
       business_registered: 'Perniagaan Berdaftar'
       registration_number: 'Nombor Pendaftaran Syarikat'
-      update_user: 'Kemaskini'
-
-    
+      update_user: 'Kemaskini'   
     form_new:  
       create_user: 'Daftar Ahli'
       cancel: 'Batal'
-
     show:
       title: 'Profil Ahli'
       sub_title: 'Personal Details'
@@ -140,6 +139,11 @@ bm:
     consultation:
       title: 'Perundingan'
 
+  courses:
+    index:
+      title: "Senarai Kursus"
+      create_course: 'Cipta Kursus'
+      edit: 'Papar'
 
   members:
     index:

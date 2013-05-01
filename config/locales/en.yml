@@ -2,6 +2,8 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  active: 'Active'
+  inactive: 'Inactive'
   are_you_sure: 'Are you sure?'
   back: 'Back'
   edit: 'Edit'
@@ -114,6 +116,10 @@ en:
     consultation:
       title: 'Consultation'
 
+  courses:
+    index:
+      create_course: 'Cipta Kursus'
+      edit: 'Papar'
 
   members:
     index:

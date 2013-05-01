@@ -5,20 +5,26 @@ class Ability
     # Define abilities for the passed in user here. For example:
     #
 
-      resource ||= User.new # guest user (not logged in)
-      if resource.class == User
+      resource ||= nil # guest user (not logged in)
+      if resource.is_a?(User)
         if resource.admin?
           can :manage, :all
         else
-          can :read, :all
+          #can :read, :all
           can :manage, User, id: resource.id
           can :contact, :all
+          cannot :index, :course
+
           # can :contact, Consultant do |c|
           #   unless user.email.nil
           # end
         end
-      elsif resource.class == Consultant
-        can :manage, Consultant, id: consultant.id
+      elsif resource.is_a?(Consultant)
+        can :manage, Consultant, id: resource.id
+        can :read, Course
+        can :manage, Course, program_id: resource.try(:program).try(:id)
+      else 
+        cannot :index, :course
       end
       # if user.super_admin?
       #   can :manage, :all

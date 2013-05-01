@@ -3,8 +3,14 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.all
-    #authorize! :read, @article
+    
+    if current_user && ( current_user.admin? )
+      @courses = Course.order()
+    elsif current_consultant && current_consultant.program
+      @courses = current_consultant.program.courses
+    else
+      @courses = []
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @courses.to_json(:include => [:name]) }
