@@ -6,7 +6,7 @@ bm:
   inactive: 'Tidak Aktif'
   are_you_sure: 'And pasti?'
   back: 'Kembali'
-  edit: 'Sunting'
+  edit: 'Kemaskini'
   view: 'Papar'
   bio_data: 'Biodata'
   destroy: 'Padam'
@@ -16,11 +16,14 @@ bm:
   courses: 'Kursus'
   category: 'Bidang Perniagaan'
   city: 'Bandar'
+  company_name: 'Nama Syarikat'
   confirmation_sent: 'Email pengesahan telah dihantar ke email anda %{email}.'
+  consultant: 'Perunding'
   contact: 'Hubungi'
   date_tarikh: 'Tarikh'
   description: 'Huraian'
   name: 'Nama'
+  new_consultant: 'Daftar Perunding Baru'
   pax: 'Jumlah peserta'
   password: 'Kata Laluan'
   password_confirmation: 'Pengesahan Kata Laluan'
@@ -36,6 +39,7 @@ bm:
   setting: 'Tetapan'
   state: 'Negeri'
   status: 'Status'
+  update: 'Kemaskini'
   venue: 'Tempat'
 
   male: 'Lelaki'
@@ -60,6 +64,7 @@ bm:
 
   successfully_updated: "%{resource} berjaya dikemaskini."
   successfully_created: "%{resource} telah berjaya dicipta."
+  successfully_registered: "%{resource} telah berjaya didaftar."
 
   setting: 'Tetapan'
   logout: 'Daftar Keluar'
@@ -148,6 +153,19 @@ bm:
     consultation:
       title: 'Perundingan'
 
+  programs:
+    index:
+      title: "Senarai Program"
+      edit: 'Papar'
+      new: 'Daftar Program Baru'
+    edit:
+      title: 'Kemaskini Program'
+    form:
+      add_new_course: 'Tambah Kursus Baru'
+      courses: 'Kursus'
+    show:
+      title: "Program %{program_name}"
+
   courses:
     index:
       title: "Senarai Kursus"
@@ -159,6 +177,7 @@ bm:
       course_name: 'Nama Kursus'
       course_type: 'Jenis Kursus'
       create_course: 'Cipta Kursus'
+
 
   members:
     index:

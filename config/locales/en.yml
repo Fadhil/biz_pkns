@@ -16,11 +16,14 @@ en:
   courses: 'Courses'
   category: 'Category'
   city: 'City'
+  company_name: 'Company Name'
   confirmation_sent: 'An email confirmation has been sent to your email %{email}.'
+  consultant: 'Consultant'
   contact: 'Contact'
   date: 'Date'
   description: 'Description'
   name: 'Name'
+  new_consultant: 'New Consultant'
   pax: 'Pax'
   password: 'Password'
   password_confirmation: 'Password Confirmation'
@@ -35,6 +38,7 @@ en:
   setting: 'Setting'
   state: 'State'
   status: 'Status'
+  update: 'Update'
   venue: 'Venue'
 
   male: 'Male'
@@ -122,6 +126,18 @@ en:
 
     consultation:
       title: 'Consultation'
+
+  programs:
+    index:
+      title: "Programs"
+      edit: 'Edit'
+      new: 'New'
+    edit: 
+      title: 'Edit Program'
+      add_new_course: 'Add New Course'
+      courses: "Courses"
+    show:
+      title: "%{program_name} Program"
 
   courses:
     index:

@@ -51,7 +51,7 @@ class ConsultantsController < ApplicationController
       if @consultant.save
         #Send email here
         ConsultantMailer.signup_notification(@consultant).deliver
-        format.html { redirect_to @consultant, notice: 'Consultant was successfully created.' }
+        format.html { redirect_to @consultant, notice: t('successfully_registered', resource: t('consultant')) }
         format.json { render json: @consultant, status: :created, location: @consultant }
       else
         format.html { render action: "new" }
@@ -72,7 +72,7 @@ class ConsultantsController < ApplicationController
     @consultant.program = program
     respond_to do |format|
       if @consultant.update_attributes(params[:consultant])
-        format.html { redirect_to @consultant, notice: 'Consultant was successfully updated.' }
+        format.html { redirect_to @consultant, notice: t('successfully_updated', resource:t('consultant')) }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

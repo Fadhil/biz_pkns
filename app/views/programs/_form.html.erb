@@ -1,6 +1,6 @@
 <%= nested_form_for @program, html: { multipart: true }, :html => { :class => 'form-horizontal' } do |f| %>
   <div class="control-group">
-    <%= f.label :name, :class => 'control-label' %>
+    <%= f.label t('name'), :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :name, :class => 'text_field' %>
     </div>
@@ -14,27 +14,27 @@
     <% end %>
   </div>
   <div class="control-group">
-    <%= f.label :description, :class => 'control-label' %>
+    <%= f.label t('description'), :class => 'control-label' %>
     <div class="controls">
       <%= f.text_area :description, :class => 'text_area' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :courses, :class => 'control-label' %>
+    <%= f.label t('.courses'), :class => 'control-label' %>
     <%#= nested_form_for @courses, html: { multipart: true } do |c| %>
       <div class="controls">
         <%= f.fields_for :courses do |task_form| %>
           <p><%= task_form.text_field :name %>
           <%= task_form.link_to_remove "x", class: "btn" %></p>
         <% end %>
-        <p><%= f.link_to_add "Add a new course", :courses, class: "btn btn-mini" %></p>
+        <p><%= f.link_to_add t('.add_new_course'), :courses, class: "btn btn-mini" %></p>
       </div>
     <%# end %>
   </div>
 
   <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+    <%= f.submit t('update'), :class => 'btn btn-primary' %>
+    <%= link_to t('cancel', :default => t("helpers.links.cancel")),
                 programs_path, :class => 'btn' %>
   </div>
 <% end %>
