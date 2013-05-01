@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130426185633) do
+ActiveRecord::Schema.define(:version => 20130501153105) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(:version => 20130426185633) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "company_name"
   end
 
   add_index "consultants", ["email"], :name => "index_consultants_on_email", :unique => true

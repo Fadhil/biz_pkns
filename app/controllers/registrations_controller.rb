@@ -15,7 +15,7 @@ class RegistrationsController < Devise::RegistrationsController
     else
 
       flash[:notice] = nice_errors(@user).html_safe
-      redirect_to new_user_registration_path
+      render 'new'
     end
  
   end

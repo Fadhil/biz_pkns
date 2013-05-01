@@ -29,25 +29,32 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= t('index') %></th>
       <th><%= t('name') %></th>
-      <th><%= t('email') %></th>
-      <th><%= t('address') %></th>
+      <th><%= t('city') %></th>
+      <th><%= t('state') %></th>
     </tr>
   </thead>
   <tbody>
     <% @users.each_with_index do |user,i| %>
       <tr>
-        <td><%= i+1 %></td>
         <td><%= link_to "#{user.first_name} #{user.last_name}", user_path(user) %></td>
-        <td><%= user.email %></td>
-        <% unless user.address.nil? %>
+        <% if user.address.nil? %>
+          <td></td>
+          <td></td>
+        <% else %>
           <% if user.address.city.nil? %>
             <td></td>
+            <td></td>
           <% else %>
-            <td><%= "#{user.address.city.name}, #{user.address.city.state_name}" %></td>
+            <td><%= "#{user.address.city.name}" %></td>
+            <td><%= "#{user.address.city.state_name}" %></td>
           <% end %>
         <% end %>
+        <td>
+          <%= link_to t('view'),
+                    user_path(user), :class => 'btn btn-mini' %>
+
+        </td>
       </tr>
     <% end %>
   </tbody>

@@ -1,11 +1,9 @@
 <%- model_class = Course -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+  <h1><%=t @course.name %></h1>
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= t('name') %>:</strong></dt>
-  <dd><%= @course.name %></dd>
   <dt><strong><%= t('course_type') %>:</strong></dt>
   <dd><%= @course.course_type %></dd>
   <dt><strong><%= t('description') %>:</strong></dt>
@@ -19,11 +17,11 @@
   <dt><strong><%= t('pax') %>:</strong><dt>
   <dd><%= @course.pax %></dd>
   <dt><strong><%= t('status') %>:</strong></dt>
-  <dd><%= !@course.status.blank? || @course.status? ? "Active" : "Not active" %></dd>
+  <dd><%= !@course.status.blank? || @course.status? ? t('active') : t('inactive') %></dd>
 </dl>
 
 <div class="form-actions">
-  <%= link_to t('back', :default => t("helpers.links.back")),
+  <%#= link_to t('back', :default => t("helpers.links.back")),
               courses_path, :class => 'btn'  %>
   <% if can? :manage, @course %>
     <%= link_to t('edit', :default => t("helpers.links.edit")),

@@ -6,8 +6,7 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:first_name) %></th>
-      <th><%= model_class.human_attribute_name(:last_name) %></th>
+      <th><%= t('company_name') %></th>
       <th><%= model_class.human_attribute_name(:phone) %></th>
       <th><%= model_class.human_attribute_name(:email) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -17,8 +16,7 @@
     <% @consultants.each do |consultant| %>
       <tr>
         <td><%= link_to consultant.id, consultant_path(consultant) %></td>
-        <td><%= consultant.first_name %></td>
-        <td><%= consultant.last_name %></td>
+        <td><%= consultant.company_name %></td>
         <td><%= consultant.phone %></td>
 
         <td><%= consultant.email %></td>

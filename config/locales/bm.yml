@@ -26,10 +26,12 @@ bm:
   phone: 'No Tel'
   postcode: 'Poskod'
   program: 'Program'
+  register: 'Daftar'
   search: 'Carian'
   search_by_name: 'Carian mengikut nama'
   search_by_city: 'Carian mengikut bandar'
   search_by_state: 'Carian mengikut negeri'
+  setting: 'Tetapan'
   state: 'Negeri'
   status: 'Status'
   venue: 'Tempat'
@@ -41,8 +43,8 @@ bm:
   course_type: 'Jenis Kursus'
   program_name: 'Nama Program'
 
-  start_date: 'Tahun Mula'
-  end_date: 'Tahun Akhir'
+  start_date: 'Tarikh Mula'
+  end_date: 'Tarikh Akhir'
 
   first_name: 'Nama'
   last_name: 'Nama Bapa'
@@ -134,7 +136,7 @@ bm:
     business_directory:
       title: 'Direktori Perniagaan'
       search_by_business_category: 'Carian mengikut jenis perniagaan'
-      business_category: 'Jenis Perniagaan'
+      business_category: 'Bidang Perniagaan'
 
     consultation:
       title: 'Perundingan'
@@ -164,9 +166,10 @@ bm:
       administrate_user: 'Urus Ahli'
       directory: 'Direktori'
       new_consultant: 'Daftar Perunding'
-      new_education: 'Daftar Pelajaran'
+      new_education: 'Daftar Bidang Pendidikan'
       new_skill: 'Daftar Kemahiran'
       new_course: 'Daftar Kursus'
+      new_business_category: 'Daftar Perniagaan'
       members: 'Ahli'
       program: 'Program'
       program_listing: 'Senarai Program'
