@@ -20,10 +20,10 @@ class User < ActiveRecord::Base
   attr_accessible :users_skills_attributes, :educations_users_attributes, :role_id
 
   validates_uniqueness_of :ic_number
-  validates_format_of :ic_number, with:  /^\d{6}\-\d{2}\-\d{4}$/, :message => "should be in the form 123456-78-9101"
-  validates_format_of :phone, with:  /^\d*$/, :message => "phone number must be in numerical only"
+  validates_format_of :ic_number, with:  /^\d{6}\-\d{2}\-\d{4}$/, :message => I18n.t('errors.ic_format')
+  validates_format_of :phone, with:  /^\d*$/, :message => I18n.t('errors.phone_number')
 
-  validates :password, :presence => true, :confirmation => true, :on => :create
+  validates :password, :presence => true, :on => :create
 
   has_one :business_profile, dependent: :destroy
   accepts_nested_attributes_for :business_profile, allow_destroy: true

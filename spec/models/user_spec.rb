@@ -15,4 +15,13 @@ describe User do
     @user.role = Role.where(name: 'admin').first
     @user.role.name.should eq 'admin'
   end
+
+  describe 'phone number' do
+    it 'cannot contain letters or symbols' do
+      user = FactoryGirl.build(:user, 
+                                phone: 'abc')
+
+      user.valid?.should_not be_true
+    end
+  end
 end

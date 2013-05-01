@@ -148,3 +148,24 @@ en:
     members: 'members'
     educations: 'educations'
     skills: 'skills'
+
+  errors:
+    ic_format: "should be in the format 800829-12-5231"
+    phone_number: "number must not contain letters or symbols"
+    failed_to_create_user: "Sorry, the system failed to create your account because:"
+
+  activerecord:
+    models:
+      user: User
+    attributes:
+      user: 
+        ic_number: "IC Number"
+
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "Email cannot be blank"
+            password: 
+              blank: "Password cannot be blank"

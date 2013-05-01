@@ -1,4 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
+
+  include ApplicationHelper
+
   def new
     @user = User.new
   end
@@ -10,7 +13,8 @@ class RegistrationsController < Devise::RegistrationsController
       flash[:notice] = t('confirmation_sent', email: @user.email)
       redirect_to after_sign_up_path_for(@user)
     else
-      flash[:notice] = "Failed to create user"
+
+      flash[:notice] = nice_errors(@user).html_safe
       redirect_to new_user_registration_path
     end
  
@@ -18,7 +22,6 @@ class RegistrationsController < Devise::RegistrationsController
 
 
   def after_sign_up_path_for(resource_or_scope)
-    puts 'here fadhil is in'
     if resource_or_scope.is_a?(User)
       root_path
     else

@@ -242,3 +242,32 @@ bm:
     members: 'ahli'
     educations: 'pendidikan'
     skills: 'kemahiran'
+
+  errors:
+    ic_format: "mesti mengikut format berikut xxxxxx-xx-xxxx"
+    phone_number: "tidak boleh mengandungi huruf atau simbol"
+    failed_to_create_user: "Maaf, sistem gagal mendaftar akaun kerana:"
+
+  activerecord:
+    models:
+      user: Pengguna
+    attributes:
+      user: 
+        ic_number: "No IC"
+        password: "Kata laluan"
+        phone: "No telefon"
+        gender: "Jantina"
+        
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "diperlukan"
+              taken: "yang dimasukkan sudah berdaftar"
+            password: 
+              blank: "diperlukan"
+              confirmation: "yang dimasukkan tidak sama"
+              too_short: "terlalu pendek"
+            ic_number:
+              taken: "yang dimasukkan sudah berdaftar"
