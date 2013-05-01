@@ -120,6 +120,10 @@ en:
     show:
       title: 'Consultant'
 
+  users:
+    index:
+      title: 'Users'
+
   skills:
     new:
       title: 'New Skill'

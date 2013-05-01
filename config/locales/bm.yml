@@ -148,6 +148,9 @@ bm:
     new:
       title: 'Daftar perunding baru'
 
+  users:
+    index:
+      title: 'Senarai Pengguna'
   skills:
     new:
       title: 'Kemahiran Baru'
