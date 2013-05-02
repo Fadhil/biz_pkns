@@ -146,18 +146,31 @@
   <h3>Latar Belakang Pendidikan</h3>
   <div class="content">
     <div>
-      <%# @user.each do |user| %>
-        <%= @user.educations %>(<%#= @user.skills.experience %> tahun)
-      <%# end %>
+      <% unless @user.education_background.empty? %>
+        <ul>
+          <% @user.education_background.each do |background| %>
+            <li>
+              <%= "#{background.education.name}, #{background.start_date.try(:to_date)} - #{background.end_date.try(:to_date)}" %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %> 
     </div>
   </div>
 
   <h3>Kemahiran</h3>
   <div class="content">
     <div>
-      <%# @user.each do |user| %>
-        <%= @user.skills %>(<%#= @user.skills.experience %> tahun)
-      <%# end %>
+      <% unless @user.experience.empty? %>
+        <ul>
+          <% @user.experience.each do |experience| %>
+            <li>
+              <% years = experience.experience.nil? ? '' : ", #{experience.experience} #{t('years')}" %>
+              <%= "#{experience.skill.name} #{years}" %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %> 
     </div>
   </div>
 

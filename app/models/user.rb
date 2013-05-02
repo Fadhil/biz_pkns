@@ -44,9 +44,9 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :experience, allow_destroy: true
   has_many :skills, through: :experience
 
-  has_many :educations_users, dependent: :destroy
-  accepts_nested_attributes_for :educations_users, allow_destroy: true
-  has_many :educations, through: :educations_users
+  has_many :education_background, class_name: EducationsUser, dependent: :destroy
+  accepts_nested_attributes_for :education_background, allow_destroy: true
+  has_many :educations, through: :education_background
 
   belongs_to :role
 

@@ -55,6 +55,7 @@ bm:
   subject: 'Perkara'
   update: 'Kemaskini'
   venue: 'Tempat'
+  years: 'tahun'
 
   male: 'Lelaki'
   female: 'Perempuan'
