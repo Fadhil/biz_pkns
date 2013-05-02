@@ -15,13 +15,13 @@
       <tr>
         <td><%= consultant.first_name %> <%= consultant.last_name %></td>
         <td><%= consultant.company_name %> </td>
-        <td><%= consultant.program.name unless consultant.program.nil? %></td> 
-        <td>
-          <%= link_to t('view'), consultant_path(consultant), :class => 'btn btn-mini' %>
-          <% if current_user %><%# if can? :manage, @consultant %>
-            <%= link_to t('contact'), contact_consultant_path(consultant), :class => 'btn btn-mini btn-info' %>
-          <% end %>
-        </td>
+        <td><%= consultant.program.name unless consultant.program.nil? %></td>
+        <% if current_user %><%# if can? :manage, @consultant %>
+          <td>
+            <%= link_to t('view'), consultant_path(consultant), :class => 'btn btn-mini' %>
+              <%= link_to t('contact'), contact_consultant_path(consultant), :class => 'btn btn-mini btn-info' %>
+          </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
