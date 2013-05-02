@@ -285,7 +285,7 @@ bm:
       signed_in: 'Proses log masuk berjaya.'
       signed_out: 'Proses log keluar berjaya.'
     passwords:
-      send_instructions: 'Anda akan menerima e-mail mengenai langkah mengubah password sebentar lagi.'
+      send_instructions: 'Anda akan menerima e-mail mengenai langkah mengubah kata laluan sebentar lagi.'
       updated: 'Password anda telah berjaya diubah. Anda telah sign in.'
     confirmations:
       send_instructions: 'Anda akan menerima e-mail mengenai langkah proses pengesahan akaun sebentar lagi.'
@@ -301,7 +301,7 @@ bm:
       confirmation_instructions:
         subject: 'Arahan proses pengesahan'
       reset_password_instructions:
-        subject: 'Arahan mengubah password'
+        subject: 'Arahan mengubah kata laluan'
       unlock_instructions:
         subject: 'Arahan membuka akaun kembali'
 
