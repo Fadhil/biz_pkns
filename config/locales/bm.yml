@@ -86,9 +86,9 @@ bm:
 
   users:
     index:
-      title: 'Senarai Pengguna'
+      title: 'Senarai Ahli'
     new:
-      title: 'Daftar Pengguna'
+      title: 'Daftar Ahli'
     edit:
       title: 'Kemaskini Profil'
     form:
@@ -159,7 +159,8 @@ bm:
       password: 'Kata Laluan'
       password_confirmation: 'Pengesahan Kata Laluan'
       bio_data: 'Bio Data'
-      profile_photo: 'Muatnaik gambar'
+      profile_photo: 'Muatnaik gambar'     
+      upload_company_logo: 'Muat Naik Logo Syarikat'
     form_new:
       create_consultant: 'Daftar Perunding'
     edit:

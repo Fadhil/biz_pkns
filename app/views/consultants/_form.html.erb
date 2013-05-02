@@ -16,7 +16,7 @@
 
     <div class="control-group">
       <%= f.fields_for :profile_photo do |pp| %>
-        <%= pp.label 'Muatnaik gambar profil', :class => 'control-label' %>
+        <%= pp.label t('.upload_company_logo'), :class => 'control-label' %>
         <div class="controls">
           <%= pp.file_field :file, :class => 'text_field' %>
         </div>

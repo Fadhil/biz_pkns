@@ -123,6 +123,23 @@ en:
       title: 'Consultants'
     show:
       title: 'Consultant'
+    form:
+      cancel: 'Cancel'
+      update: 'Update'
+      first_name: 'First Name'
+      last_name: 'Last Name'
+      email: 'Email'
+      ic_number: 'IC Number'
+      gender: 'Gender'
+      age: 'Age'
+      address: 'Address'
+      phone_number: 'Tel No'
+      membership_status: 'Membership Status'
+      password: 'Password'
+      password_confirmation: 'Password Confirmation'
+      bio_data: 'Bio Data'
+      profile_photo: 'Upload Photo'     
+      upload_company_logo: 'Upload Company Logo'
 
   skills:
     new:
