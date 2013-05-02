@@ -8,10 +8,11 @@ BizPkns::Application.routes.draw do
     get 'city_dropdown' => 'application#city_dropdown', as: :city_dropdown
     devise_for :users, path_names: {sign_in: "login", sign_out: "logout", sign_up: "signup"},
                         controllers: {registrations: 'registrations'}
-
-    devise_for :users, path_names: {sign_in: "login", sign_out: "logout", sign_up: "signup"}
     devise_for :consultants, path_names: {sign_in: "login",  sign_out: "logout"}
-
+    devise_for :users do
+      get "/admin/login" => "devise/sessions#new"  
+    end
+    
     resources :consultants
     resources :users
     resources :programs
