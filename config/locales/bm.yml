@@ -190,8 +190,9 @@ bm:
   programs:
     index:
       title: "Senarai Program"
-      edit: 'Papar'
+      edit: 'Sunting'
       new: 'Daftar Program Baru'
+      show: 'Papar'
     edit:
       title: 'Kemaskini Program'
     form:
