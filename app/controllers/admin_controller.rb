@@ -1,4 +1,4 @@
-class adminController < ApplicationController
+class AdminController < ApplicationController
   def login
     
   end
