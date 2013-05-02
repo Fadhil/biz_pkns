@@ -84,6 +84,8 @@ bm:
   logout: 'Daftar Keluar'
 
   users:
+    index:
+      title: 'Senarai Pengguna'
     new:
       title: 'Daftar Pengguna'
     edit:
@@ -166,9 +168,7 @@ bm:
     new:
       title: 'Daftar perunding baru'
 
-  users:
-    index:
-      title: 'Senarai Pengguna'
+
   skills:
     new:
       title: 'Kemahiran Baru'

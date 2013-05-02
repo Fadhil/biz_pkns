@@ -80,6 +80,8 @@ en:
   logout: 'Logout'
   
   users:
+    index:
+      title: 'Users'
     form:
       twitter_handle: 'Twitter ID'
       facebook_handle: 'Facebook ID'
@@ -120,10 +122,6 @@ en:
       title: 'Consultants'
     show:
       title: 'Consultant'
-
-  users:
-    index:
-      title: 'Users'
 
   skills:
     new:
