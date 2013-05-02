@@ -287,7 +287,11 @@ bm:
       signed_in: 'Proses log masuk berjaya.'
       signed_out: 'Proses log keluar berjaya.'
     passwords:
+<<<<<<< HEAD
+      send_instructions: 'Anda akan menerima e-mail mengenai langkah mengubah kata laluan sebentar lagi.'
+=======
       send_instructions: 'Anda akan menerima e-mail mengenai langkah mengubah password sebentar lagi.'
+>>>>>>> change password locales
       updated: 'Kata laluan anda telah berjaya diubah. Anda telah didaftar masuk.'
     confirmations:
       send_instructions: 'Anda akan menerima e-mail mengenai langkah proses pengesahan akaun sebentar lagi.'
