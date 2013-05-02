@@ -220,6 +220,8 @@ bm:
       course_name: 'Nama Kursus'
       course_type: 'Jenis Kursus'
       create_course: 'Cipta Kursus'
+    edit: 
+      title: 'Kemaskini kursus'
 
 
   members:
