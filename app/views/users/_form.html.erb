@@ -107,9 +107,11 @@
             <%= s.text_field :end_date %>
           </div>
         </div>
-          <%= s.link_to_remove t('.remove_education') %>
+          <%= s.link_to_remove t('.remove_education'), class: "btn btn-danger btn-mini" %>
+          <br><br>
         <% end %>
-        <%= f.link_to_add t('.add_education'), :education_background, class: "btn btn-mini" %>
+        <%= f.link_to_add t('.add_education'), :education_background, class: "btn btn-mini", :style => "margin-top:12px;" %>
+        <br>
       </div>
 
   </div>
@@ -138,13 +140,15 @@
             <%= s.text_field :experience, { size: '2', maxlength: '2', class: 'input-mini' } %>
           </div>
         </div>
-          <%= s.link_to_remove t('.remove_skill') %>
+          <%= s.link_to_remove t('.remove_skill'), class: "btn btn-danger btn-mini" %>
+          <br><br>
         <% end %>
-        <%= f.link_to_add t('.add_skill'), :experience, class: "btn btn-mini" %>
+        <%= f.link_to_add t('.add_skill'), :experience, class: "btn btn-mini", :style => "margin-top:12px;" %>
+        <br>
       </div>
 
   </div>
-  <div>
+  <!-- <div>
     <div class="control-group">
       <%= f.label t('.has_attended_course'), class: 'control-label'%>
       <div class='controls'>
@@ -189,7 +193,7 @@
       </div>
 
     <% end %>
-  </div>
+  </div> -->
 
   <div>
     <div class="control-group">
@@ -228,7 +232,7 @@
       <div class="control-group">
         <%= bp.fields_for :business_logo do |bpl| %>
           <div class='control-group'>
-            <%= bpl.label t('upload_business_logo'), class: 'control-label' %>
+            <%= bpl.label t('.upload_business_logo'), class: 'control-label' %>
             <div class='controls'>
               <%= bpl.file_field :file , class: 'text-field' %>
             </div>
@@ -238,7 +242,7 @@
       <div class="control-group">
         <%= bp.fields_for :business_photo do |bph| %>
           <div class='control-group'>
-            <%= bph.label t('upload_business_photo'), class: 'control-label' %>
+            <%= bph.label t('.upload_business_photo'), class: 'control-label' %>
             <div class='controls'>
               <%= bph.file_field :file , class: 'text-field' %>
             </div>
