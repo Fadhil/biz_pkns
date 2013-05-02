@@ -45,6 +45,9 @@
       = t('inactive')
       %br/
   .form-actions
-    = f.submit t('.create_course'), :class => 'btn btn-primary'
+    - if @course.new_record?
+      = f.submit t('.create_course'), :class => 'btn btn-primary'
+    - else
+      = f.submit t('update'), class: 'btn btn-primary'
     = link_to t('cancel', :default => t("helpers.links.cancel")), |
       courses_path, :class => 'btn'                                |
