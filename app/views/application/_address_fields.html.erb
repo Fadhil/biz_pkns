@@ -10,18 +10,6 @@
     <%= a.text_field :line2, class: 'text_field' %>
   </div>
 </div>
-<div class='control-group'>
-  <%= a.label t('.phone'), class: 'control-label' %>
-  <div class='controls'>
-    <%= a.text_field :phone, class: 'text_field' %>
-  </div>
-</div>
-<div class='control-group'>
-  <%= a.label t('.fax'), class: 'control-label' %>
-  <div class='controls'>
-    <%= a.text_field :fax, class: 'text_field' %>
-  </div>
-</div>
 <div class='city_fields'>
   <%= a.fields_for :city do |c| %>
     <div class='control-group'>
