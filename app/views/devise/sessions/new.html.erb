@@ -8,7 +8,15 @@
   <%= f.password_field :password %></div>
 
   <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label t('remember_me') %></div>
+    <div class="row" style="padding:0 0 10px 0;">
+      <div class="span">
+        <%= f.check_box :remember_me %>
+      </div>
+      <div class="span3" style="margin-left:10px; padding-top:3px;">
+        <%= f.label t('remember_me') %>
+      </div>
+    </div>
+    <div> </div>
   <% end -%>
 
   <div><%= f.submit t('sign_in') %></div>
