@@ -1,20 +1,20 @@
 <%- model_class = Consultant -%>
 <div class="page-header">
-  <h1><%=t '.title' %></h1>
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= t('.name') %></th>
       <th><%= t('company_name') %></th>
       <th><%= t('program') %></th>
     </tr>
   </thead>
   <tbody>
-    <% @consultants.each do |consultant| %>
+    <% @consultants.each_with_index do |consultant, i| %>
       <tr>
-        <td><%= link_to consultant.id, consultant_path(consultant) %></td>
-        <td><%= consultant.company_name %></td>
+        <td><%= consultant.first_name %> <%= consultant.last_name %></td>
+        <td><%= consultant.company_name %> </td>
         <td><%= consultant.program.name unless consultant.program.nil? %></td> 
         <td>
           <%= link_to t('edit', :default => t("helpers.links.edit")),

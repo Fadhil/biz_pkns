@@ -19,6 +19,10 @@ class PagesController < ApplicationController
     end
   end
 
+  def upcoming_courses_show
+    @course = Course.find(params[:id])
+  end
+
   def business_directory
     if params[:search].present?
       unless params[:search][:state] == ''
