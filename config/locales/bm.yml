@@ -154,7 +154,7 @@ bm:
       password: 'Kata Laluan'
       password_confirmation: 'Pengesahan Kata Laluan'
       bio_data: 'Bio Data'
-      profile_photo: 'Muatnaik gambar profil'
+      profile_photo: 'Muatnaik gambar'
     form_new:
       create_consultant: 'Daftar Perunding'
     edit:
@@ -201,6 +201,7 @@ bm:
       title: "Program %{program_name}"
     new:
       title: 'Daftar Program Baru'
+      register: 'Daftar'
 
   courses:
     index:

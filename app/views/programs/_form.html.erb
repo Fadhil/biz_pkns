@@ -7,7 +7,7 @@
   </div>
   <div class='control-group'>
     <%= f.fields_for :logo do |l| %>
-      <%= l.label 'Upload logo', class: 'control-label' %>
+      <%= l.label 'Muatnaik logo', class: 'control-label' %>
       <div class='controls'>
         <%= l.file_field :file, class: 'text-field' %>
       </div>
@@ -33,7 +33,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.submit t('update'), :class => 'btn btn-primary' %>
+    <%= f.submit t('register'), :class => 'btn btn-primary' %>
     <%= link_to t('cancel', :default => t("helpers.links.cancel")),
                 programs_path, :class => 'btn' %>
   </div>
