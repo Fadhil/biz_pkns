@@ -208,7 +208,7 @@ bm:
     index:
       title: "Senarai Kursus"
       create_course: 'Cipta Kursus'
-      edit: 'Papar'
+      edit: 'Sunting'
     new:
       title: 'Kursus Baru'
     form:
