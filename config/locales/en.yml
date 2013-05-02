@@ -241,3 +241,6 @@ en:
               blank: "Email cannot be blank"
             password: 
               blank: "Password cannot be blank"
+  helpers:
+    links:
+      new_user: 'Create New User'
