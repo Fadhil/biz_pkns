@@ -1,83 +1,94 @@
 <%= form_for @consultant, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
-    <%= f.label :first_name, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :first_name, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :last_name, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :last_name, :class => 'text_field' %>
-    </div>
-  </div>
-  <% if !@consultant.new_record? %>
-    <div>
+<div style="padding-left:30px;">
+    <div class='row-fluid'>
+      <div class='span3'>
+        <%= f.label t('company_name') %>
+        <%= f.text_field :company_name, :class => 'text_field' %>
+      </div>
 
-       <div class="control-group">
-        <%= f.label :password, :class => 'control-label' %>
-        <div class="controls">
-          <%= f.password_field :password, :class => 'text_field' %>
-        </div>
-      </div>
-       <div class="control-group">
-        <%= f.label :password_confirmation, :class => 'control-label' %>
-        <div class="controls">
-          <%= f.password_field :password_confirmation, :class => 'text_field' %>
-        </div>
+      <div class='span3 offset1'>
+        <%= f.label 'Pilih Program' %>
+        <%= select_tag :program_id, options_for_select(Program.order('name').map{|a| [a.name,a.id]}, f.object.try(:program).try(:id))%>
       </div>
     </div>
-  <% end %>
-  <% if @consultant.new_record? %>
+
+    <br>
+
     <div class="control-group">
-      <%= f.label :password, :class => 'control-label' %>
-      <div class="controls">
-        <%= f.text_field :password, :class => 'text_field' %>
+      <%= f.fields_for :profile_photo do |pp| %>
+        <%= pp.label 'Muatnaik gambar profil', :class => 'control-label' %>
+        <div class="controls">
+          <%= pp.file_field :file, :class => 'text_field' %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class='row-fluid'>
+      <div class='span3'>
+        <%= f.label 'Latarbelakang Syarikat' %>
+        <%= f.text_area :bio_data, :style => 'width:500px; height:200px;' %>
       </div>
-    </div>
-  <% end %>
-  <div class="control-group">
-    <%= f.label :phone, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :phone, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :company_name, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :company_name, :class => 'text_field' %>
     </div>
   </div>
 
-  <div class="control-group">
-    <%= f.fields_for :profile_photo do |pp| %>
-      <%= pp.label 'Upload profile photo', :class => 'control-label' %>
-      <div class="controls">
-        <%= pp.file_field :file, :class => 'text_field' %>
+  <br>
+
+  <h2>Pegawai Bertanggungjawab</h2>
+  <div style="padding-left:30px;">
+    <div class='row-fluid'>
+      <div class='span3'>
+        <%= f.label t('first_name') %>
+        <%= f.text_field :first_name, :class => 'text_field' %>
+      </div>
+
+      <div class='span3 offset1'>
+        <%= f.label t('last_name') %>
+        <%= f.text_field :last_name, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <br>
+
+    <div class='row-fluid'>
+      <div class='span3'>
+        <%= f.label t('phone') %>
+        <%= f.text_field :phone, :class => 'text_field' %>
+      </div>
+
+      <div class='span3 offset1'>
+        <%= f.label t('email') %>
+        <%= f.text_field :email, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <br><br>
+
+    <% if !@consultant.new_record? %>
+      <div class='row-fluid'>
+        <div class='span3'>
+          <%= f.label t('password') %>
+          <%= f.text_field :password, :class => 'text_field' %>
+        </div>
+
+        <div class='span3 offset1'>
+          <%= f.label t('password_confirmation') %>
+          <%= f.text_field :password_confirmation, :class => 'text_field' %>
+        </div>
+      </div>
+    <% end %>
+
+    <% if @consultant.new_record? %>
+      <div class='row-fluid'>
+        <div class='span3'>
+          <%= f.label t('password') %>
+          <%= f.text_field :password, :class => 'text_field' %>
+        </div>
       </div>
     <% end %>
   </div>
-  <div class='control-group'>
-    <%= f.label 'Select a Program', class: 'control-label' %>
-    <div class='controls'>
-      <%= select_tag :program_id, options_for_select(Program.order('name').map{|a| [a.name,a.id]}, f.object.try(:program).try(:id))%>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :bio_data, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :bio_data, :class => 'text_area' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :email, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :email, :class => 'text_field' %>
-    </div>
-  </div>
 
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
+  <div class="form-actions" style="margin-left:-150px;">
+    <%= f.submit t('.update'), :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 consultants_path, :class => 'btn' %>
   </div>

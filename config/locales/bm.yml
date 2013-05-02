@@ -140,9 +140,25 @@ bm:
     index:
       title: 'Senarai Perunding'
     form:
-
+      cancel: 'Batal'
+      update: 'Kemaskini'
+      first_name: 'Nama'
+      last_name: 'Nama Bapa'
+      email: 'Emel'
+      ic_number: 'No KP'
+      gender: 'Jantina'
+      age: 'Umur'
+      address: 'Alamat'
+      phone_number: 'No Tel'
+      membership_status: 'Status keahlian'
+      password: 'Kata Laluan'
+      password_confirmation: 'Pengesahan Kata Laluan'
+      bio_data: 'Bio Data'
+      profile_photo: 'Muatnaik gambar profil'
     form_new:
       create_consultant: 'Daftar Perunding'
+    edit:
+      title: 'Kemaskini Profil'
     show:
       title: 'Perunding'
     new:
