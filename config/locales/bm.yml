@@ -199,6 +199,7 @@ bm:
       show: 'Papar'
     edit:
       title: 'Kemaskini Program'
+      update: 'Kemaskini'
     form:
       add_new_course: 'Tambah Kursus Baru'
       courses: 'Kursus'
