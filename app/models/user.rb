@@ -40,13 +40,13 @@ class User < ActiveRecord::Base
   has_one :address, as: :addressable, dependent: :destroy
   accepts_nested_attributes_for :address, allow_destroy: true
 
-  has_many :users_skills, dependent: :destroy 
-  accepts_nested_attributes_for :users_skills, allow_destroy: true
-  has_many :skills, through: :users_skills
+  has_many :experience, class_name: UsersSkill, dependent: :destroy 
+  accepts_nested_attributes_for :experience, allow_destroy: true
+  has_many :skills, through: :experience
 
-  has_many :educations_users, dependent: :destroy
-  accepts_nested_attributes_for :educations_users, allow_destroy: true
-  has_many :educations, through: :educations_users
+  has_many :education_background, class_name: EducationsUser, dependent: :destroy
+  accepts_nested_attributes_for :education_background, allow_destroy: true
+  has_many :educations, through: :education_background
 
   belongs_to :role
 

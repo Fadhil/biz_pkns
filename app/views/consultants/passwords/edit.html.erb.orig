@@ -1,16 +1,30 @@
+<<<<<<< HEAD
+<h2>Tukar kata laluan</h2>
+=======
 <h1><%= t('change_your_password') %></h1>
+>>>>>>> change password locales
 
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
   <%= f.hidden_field :reset_password_token %>
 
+<<<<<<< HEAD
+  <div><%= f.label :password, "Kata laluan baru" %>
+  <%= f.password_field :password, :autofocus => true %></div>
+
+  <div><%= f.label :password_confirmation, "Pengeshan kata laluan" %>
+  <%= f.password_field :password_confirmation %></div>
+
+  <div><%= f.submit "Tukar kata laluan", :class =>"btn" %></div>
+=======
   <div><%= f.label :password, t('password') %><br />
   <%= f.password_field :password, :autofocus => true %></div>
 
   <div><%= f.label :password_confirmation, t('new_password_confirmation') %><br />
   <%= f.password_field :password_confirmation %></div>
 
-  <div><%= f.submit t('change_your_password'), :class =>"btn btn-primary" %></div>
+  <div><%= f.submit t('change_your_password') %></div>
+>>>>>>> change password locales
 <% end %>
 
 <%= render "devise/shared/links" %>

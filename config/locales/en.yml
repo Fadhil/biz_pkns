@@ -11,6 +11,7 @@ en:
   bio_data: 'Bio Data'
   destroy: 'Delete'
   cancel: 'Cancel'
+  change_your_password: 'Change your password'
   confirm: 'Confirm'
   course: 'Course'
   courses: 'Courses'
@@ -52,6 +53,7 @@ en:
   subject: 'Subject'
   update: 'Update'
   venue: 'Venue'
+  years: 'years'
 
   male: 'Male'
   female: 'Female'
@@ -79,6 +81,8 @@ en:
   logout: 'Logout'
   
   users:
+    index:
+      title: 'Users'
     form:
       twitter_handle: 'Twitter ID'
       facebook_handle: 'Facebook ID'
@@ -119,10 +123,6 @@ en:
       title: 'Consultants'
     show:
       title: 'Consultant'
-
-  users:
-    index:
-      title: 'Users'
 
   skills:
     new:
