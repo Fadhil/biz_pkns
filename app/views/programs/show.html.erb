@@ -15,7 +15,7 @@
 
 <div class="form-actions">
 
-  <%= link_to t('back', :default => t("helpers.links.back")),
+  <%#= link_to t('back', :default => t("helpers.links.back")),
               programs_path, :class => 'btn'  %>
   <% if can? :manage, @program %>
     <%= link_to t('edit', :default => t("helpers.links.edit")),
