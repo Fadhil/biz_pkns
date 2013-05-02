@@ -13,6 +13,7 @@ class Ability
           #can :read, :all
           can :manage, User, id: resource.id
           can :contact, :all
+          can :sent, :all
           can :read, Consultant
           cannot :index, :course
 
