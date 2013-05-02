@@ -147,13 +147,18 @@
   <div class="content">
     <div>
       <% unless @user.education_background.empty? %>
-        <ul>
+        <table class="table">
           <% @user.education_background.each do |background| %>
-            <li>
-              <%= "#{background.education.name}, #{background.start_date.try(:to_date)} - #{background.end_date.try(:to_date)}" %>
-            </li>
+            <tr>
+              <td>
+                <%= "#{background.education.name}" %>
+              </td>
+              <td>
+                <%= "#{background.start_date.try(:to_date)} - #{background.end_date.try(:to_date)}" %>
+              </td>
+            </tr>
           <% end %>
-        </ul>
+        </table>
       <% end %> 
     </div>
   </div>
@@ -162,14 +167,16 @@
   <div class="content">
     <div>
       <% unless @user.experience.empty? %>
-        <ul>
+        <table class="table">
           <% @user.experience.each do |experience| %>
-            <li>
-              <% years = experience.experience.nil? ? '' : ", #{experience.experience} #{t('years')}" %>
-              <%= "#{experience.skill.name} #{years}" %>
-            </li>
+            <tr>
+              <td>
+                <% years = experience.experience.nil? ? '' : ", #{experience.experience} #{t('years')}" %>
+                <%= "#{experience.skill.name} #{years}" %>
+              </td>
+            </tr>
           <% end %>
-        </ul>
+        </table>
       <% end %> 
     </div>
   </div>
