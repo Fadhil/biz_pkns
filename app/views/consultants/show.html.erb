@@ -1,12 +1,19 @@
 <%- model_class = Consultant -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human %> : <%= @consultant.company_name %></h1>
+  <h1>
+    <%=t '.title', :default => model_class.model_name.human %> : 
+    <% if @consultant.company_name.blank? %>
+      <%= @consultant.first_name %> <%= @consultant.last_name %>
+    <% else %>
+      <%= @consultant.company_name %>
+    <% end %>
+  </h1>
 </div>
 
 <dl class="dl-horizontal">
   <div>
     <% if !@consultant.profile_photo.nil? %>
-      <%= image_tag (@consultant.profile_photo.file) %>
+      <%= image_tag (@consultant.profile_photo.file), size: '400x400' %>
     <% end %>
   </div>
   <h3>Maklumat Perunding</h3>
@@ -14,16 +21,16 @@
   <dd><%= @consultant.first_name %></dd>
   <dt><strong><%= t('last_name') %>:</strong></dt>
   <dd><%= @consultant.last_name %></dd>
-  <dt><strong><%= t('company_name') %>:</strong></dt>
-  <dd><%= @consultant.company_name %></dd>
+  <% if !@consultant.company_name.blank? %>
+      <dt><strong><%= t('company_name') %>:</strong></dt>
+      <dd><%= @consultant.company_name %></dd>
+    <% end %>
   <dt><strong><%= t('email') %>:</strong></dt>
   <dd><%= @consultant.email %></dd>
   <dt><strong><%= t('phone') %>:</strong></dt>
   <dd><%= @consultant.phone %></dd>
   <dt><strong><%= t('program') %>:</strong></dt>
   <dd><%= @consultant.program.name unless @consultant.program.nil? %></dd>
-  <dt><strong><%= t('bio_data') %>:</strong></dt>
-  <dd><%= @consultant.bio_data %></dd>
 </dl>
 
 <% if current_user %>
