@@ -3,7 +3,10 @@ BizPkns::Application.routes.draw do
   localized do
     match 'consultation' => "pages#consultation", as: :consultation
 
-    match 'upcoming_courses' => 'pages#upcoming_courses', as: :course_listing
+    match '/upcoming_courses' => 'pages#upcoming_courses', as: :course_listing
+    match '/upcoming_courses/:id' => 'pages#upcoming_courses_show', as: :course_details
+
+
     match 'business_directory' => 'pages#business_directory', as: :business_directory
     get 'city_dropdown' => 'application#city_dropdown', as: :city_dropdown
     devise_for :users, path_names: {sign_in: "login", sign_out: "logout", sign_up: "signup"},
