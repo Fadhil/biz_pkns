@@ -110,7 +110,7 @@ class ConsultantsController < ApplicationController
     respond_to do |format|
       if @consultant.save
         ConsultantMailer.contact(@consultant, @emailname, @emailsender, @emailsubject, @emailmessage).deliver
-        format.html { redirect_to consultation_path, notice: 'Your message has been sent to respective consultant.' }
+        format.html { redirect_to consultation_path, notice: 'Emel anda telah dihantar kepada perunding berkenaan.' }
         #contact_consultant_path(consultant)
         format.json { render json: @consultant, status: :created, location: @consultant }
       else
