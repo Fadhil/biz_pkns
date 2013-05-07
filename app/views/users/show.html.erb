@@ -184,11 +184,14 @@
   <h3>Maklumat Perniagaan</h3>
   <div class="content">
     <% if @user.has_business_profile? %>
-      <% unless @user.business_profile.business_photo.nil? %>
-        <%= image_tag(@user.business_profile.business_photo.file) %>
-      <% end %>
       <% unless @user.business_profile.business_logo.nil? %>
+        <h4>Logo Syarikat</h4>
         <%= image_tag(@user.business_profile.business_logo.file) %>
+      <% end %>
+      
+      <% unless @user.business_profile.business_photo.nil? %>
+        <h4>Gambar Perniagaan</h4>
+        <%= image_tag(@user.business_profile.business_photo.file) %>
       <% end %>
 
       <table class="table">
