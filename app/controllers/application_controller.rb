@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  before_filter :authenticate
+
   protect_from_forgery
   rescue_from CanCan::AccessDenied do |exception|
     flash[:alert] = "Access denied."
@@ -25,6 +27,13 @@ class ApplicationController < ActionController::Base
       Ability.new(current_user)
     end
   end
+  #Temp authentication. Removed this before sign off.
+  protected
 
+  def authenticate
+    authenticate_or_request_with_http_basic do |username, password|
+      username == "big" && password == "boss"
+    end
+  end
 
 end
