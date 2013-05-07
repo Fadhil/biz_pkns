@@ -97,7 +97,9 @@ bm:
       employment_status:
         own_business: 'Pemilik Perniagaan'
         working_studying: 'Bekerja/Belajar'
-        part_time_business: 'Bekerja/Belajar dengan Perniagaan Sampingan'
+        studying: 'Belajar'
+        working_business: 'Bekerja/Perniagaan Sendiri'
+        part_time_business: 'Belajar/Perniagaan Sampingan'
       skills: 'Kemahiran'
       remove_skill: 'Buang kemahiran ini'
       add_skill: 'Tambah Kemahiran'
