@@ -254,6 +254,12 @@
               <%= bph.file_field :file , class: 'text-field' %>
             </div>
           </div>
+          <div class='control-group'>
+            <%= bp.label "Penerangan Gambar", class: 'control-label' %>
+            <div class='controls'>
+              <%= bp.text_area :caption, class: 'text_area', :"data-limit" => 200 %>
+            </div>
+          </div>
         <% end %>
       </div>
 
