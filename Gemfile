@@ -23,6 +23,7 @@ gem 'whenever', :require => false
 gem 'mail_form'
 gem 'nested_form'
 gem 'cancan'
+gem 'fog'
 
 # Haml
 gem 'haml-rails', '>= 0.3.4'
