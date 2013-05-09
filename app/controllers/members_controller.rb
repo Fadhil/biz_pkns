@@ -13,7 +13,6 @@ class MembersController < ApplicationController
         @users = User.where("concat(LOWER(first_name), ' ', LOWER(last_name)) like ?","%#{search_terms}%")
       end
 
-
       if !params[:search][:state].blank? || !params[:search][:skill].blank?
         if !params[:search][:skill].blank?
           @users = @users.joins(:skills).where('skills.id' => params[:search][:skill])
@@ -21,7 +20,6 @@ class MembersController < ApplicationController
           @users = @users.joins({:address=>:city}).where('cities.state_name'=>params[:search][:state])
         end
       end
-
     end
     
 

@@ -192,6 +192,7 @@
       <% unless @user.business_profile.business_photo.nil? %>
         <h4>Gambar Perniagaan</h4>
         <%= image_tag(@user.business_profile.business_photo.file) %>
+        <br>Penerangan Gambar : <%= @user.business_profile.business_photo.caption %>
       <% end %>
 
       <table class="table">
