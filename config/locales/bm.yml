@@ -28,6 +28,7 @@ bm:
   forgot_your_password: 'Lupa kata laluan?'
   message: 'Mesej'
   name: 'Nama'
+  membership_num: 'No Keahlian'
   new_consultant: 'Daftar Perunding Baru'
   pax: 'Jumlah peserta'
   password: 'Kata Laluan'
@@ -44,6 +45,7 @@ bm:
   search_by_name: 'Carian mengikut nama'
   search_by_city: 'Carian mengikut bandar'
   search_by_state: 'Carian mengikut negeri'
+  search_by_skill: 'Carian mengikut kemahiran'
   select_a_program: 'Pilih Program'
   send: 'Hantar'
   send_password_instructions: "Hantarkan arahan tukar kata laluan"

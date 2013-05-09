@@ -11,8 +11,9 @@
     </div>
 
     <div class="span3">
-      <%= label :search, :city, t('search_by_city') %>
-      <%= select :search, :city, City.where(state_name: 'Selangor').order(:name).map{|a| [a.name,a.id]}, {:include_blank => true, selected: ''} %>
+      <%= label :search, :skill, t('search_by_skill') %>
+      <%= select :search, :skill, Skill.order(:name).map{|a| [a.name,a.id]}, {:include_blank => true, selected: ''} %>
+      <%#= select :search, :city, City.where(state_name: 'Selangor').order(:name).map{|a| [a.name,a.id]}, {:include_blank => true, selected: ''} %>
     </div>
       
     <div class="span3">
@@ -30,26 +31,42 @@
   <thead>
     <tr>
       <th><%= t('name') %></th>
-      <th><%= t('city') %></th>
-      <th><%= t('state') %></th>
+      <th><%= t('membership_num') %></th>
+      <th><%= t('program') %></th>
+      <th><%= t('status') %></th>
     </tr>
   </thead>
   <tbody>
     <% @users.each_with_index do |user,i| %>
       <tr>
         <td><%= link_to "#{user.first_name} #{user.last_name}", user_path(user) %></td>
-        <% if user.address.nil? %>
-          <td></td>
-          <td></td>
-        <% else %>
-          <% if user.address.city.nil? %>
-            <td></td>
-            <td></td>
+        <%# if user.address.nil? %>
+          <!-- <td></td>
+          <td></td> -->
+        <%# else %>
+          <%# if user.address.city.nil? %>
+            <!-- <td></td>
+            <td></td> -->
+          <%# else %>
+            <!-- <td><%#= "#{user.address.city.name}" %></td>
+            <td><%#= "#{user.address.city.state_name}" %></td> -->
+          <%# end %>
+        <%# end %>
+        <td><%= "#{user.confirmed}" %></td>
+        <td><%= "#{user.courses}" %></td>
+          <% if user.current_employment_status == 'own business' %>
+            <td>Pemilik Perniagaan</td>
+          <% elsif user.current_employment_status == 'working studying' %>
+            <td>Bekerja/Belajar</td>
+          <% elsif user.current_employment_status == 'studying' %>
+            <td>Belajar</td>
+          <% elsif user.current_employment_status == 'working self business' %>
+            <td>Bekerja/Perniagaan Sendiri</td>
+          <% elsif user.current_employment_status == 'Belajar/Perniagaan Sampingan' %>
+            <td>Pemilik Perniagaan</td>
           <% else %>
-            <td><%= "#{user.address.city.name}" %></td>
-            <td><%= "#{user.address.city.state_name}" %></td>
+            <td>Nil</td>
           <% end %>
-        <% end %>
         <td>
           <%= link_to t('view'),
                     user_path(user), :class => 'btn btn-mini' %>
