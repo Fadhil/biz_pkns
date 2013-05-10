@@ -186,12 +186,12 @@
     <% if @user.has_business_profile? %>
       <% unless @user.business_profile.business_logo.nil? %>
         <h4>Logo Syarikat</h4>
-        <%= image_tag(@user.business_profile.business_logo.file) %>
+        <%= image_tag(@user.business_profile.business_logo.file, :size => '150x150') %>
       <% end %>
       
       <% unless @user.business_profile.business_photo.nil? %>
         <h4>Gambar Perniagaan</h4>
-        <%= image_tag(@user.business_profile.business_photo.file) %>
+        <%= image_tag(@user.business_profile.business_photo.file, :size => '200x200') %>
         <br>Penerangan Gambar : <%= @user.business_profile.business_photo.caption %>
       <% end %>
 
@@ -213,7 +213,7 @@
           <td><%= @user.business_profile.category %></td>
         </tr>
         <tr>
-          <th><%= t('type_of_business') %></th>
+          <th><%= t('.type_of_business') %></th>
           <td><%= @user.business_profile.type_of_business %></td>
         </tr>
         <tr>

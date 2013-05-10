@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   attr_accessible :profile_photo_attributes, :courses_attributes, :previous_courses_attributes
   attr_accessible :created_at, :address_attributes
   attr_accessible :twitter_handle, :facebook_handle, :current_employment_status
-  attr_accessible :users_skills_attributes, :educations_users_attributes, :role_id
+  attr_accessible :users_skills_attributes, :educations_users_attributes, :businesses_attributes, :role_id
 
   validates_uniqueness_of :ic_number
   validates_format_of :ic_number, with:  /^\d{6}\-\d{2}\-\d{4}$/, :message => I18n.t('errors.ic_format')
@@ -47,6 +47,9 @@ class User < ActiveRecord::Base
   has_many :education_background, class_name: EducationsUser, dependent: :destroy
   accepts_nested_attributes_for :education_background, allow_destroy: true
   has_many :educations, through: :education_background
+
+  has_one :name, class_name: Business, dependent: :destroy 
+  accepts_nested_attributes_for :name, allow_destroy: true
 
   belongs_to :role
 

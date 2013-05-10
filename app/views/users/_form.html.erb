@@ -221,7 +221,7 @@
       <div class="control-group">
         <%= bp.label t('.type_of_business'), class: 'control-label' %>
         <div class="controls">
-          <%= bp.text_field :type_of_business, class: 'text_field' %>
+          <%= bp.select :type_of_business, Business.order(:name).map{|a| [a.name,a.name]}, { :include_blank => true } %>
         </div>
       </div>
       <div class="control-group">

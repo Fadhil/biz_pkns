@@ -1,5 +1,7 @@
 BizPkns::Application.routes.draw do
 
+  resources :businesses
+
   localized do
     match 'consultation' => "pages#consultation", as: :consultation
 

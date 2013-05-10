@@ -194,6 +194,15 @@ bm:
     consultation:
       title: 'Perundingan'
       name: 'Nama Perunding'
+  businesses:
+    index:
+
+    new:
+      title: 'Bidang Perniagaan Baru'
+    form:
+      name: 'Nama bidang'
+      create: 'Tambah'
+      cancel: 'Batal'
 
   programs:
     index:
@@ -248,6 +257,7 @@ bm:
       directory: 'Direktori'
       new_consultant: 'Daftar Perunding'
       new_education: 'Daftar Bidang Pendidikan'
+      new_business: 'Daftar Bidang Perniagaan'
       new_skill: 'Daftar Kemahiran'
       new_course: 'Daftar Kursus'
       new_business_category: 'Daftar Perniagaan'
@@ -330,6 +340,7 @@ bm:
     members: 'ahli'
     educations: 'pendidikan'
     skills: 'kemahiran'
+    businesses: 'perniagaan'
 
   errors:
     ic_format: "mesti mengikut format berikut xxxxxx-xx-xxxx"
