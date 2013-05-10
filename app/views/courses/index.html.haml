@@ -10,7 +10,7 @@
     %tr
       %th
         = t('course_name')
-      %th
+      %th(width="30%")
         = t('description')
       %th
         = t('program_name')
@@ -19,7 +19,9 @@
       %th
         = t('end_date')
       %th
-        = t('active') 
+        = t('active')
+      %th
+        = t('.share') 
       %th
       
     %tbody
@@ -28,7 +30,8 @@
           %td
             = link_to course.name, course_path(course)
           %td
-            = course.description
+            =# course.description
+            = truncate(course.description, :length => 80)
           %td
             = course.program.name unless course.program.nil?
           %td
@@ -37,6 +40,10 @@
             = course.end_date
           %td
             = course.status? ? t('active') : t('inactive')
+          %td
+            =# mail_to t('share', :default => t("helpers.links.share")),
+                          course_path(course), :class => 'btn btn-mini' 
+            = mail_to "example@example.com", t('.share'), :subject => "Ada kursus menarik dari PKNS - #{course.program.name}", :body => "Ada kursus menarik dari PKNS. Sila lewati #{"http://"+request.host+course_path(course)}. \n\nAnda perlu berdaftar dengan BizClub untuk hadiri kursus. \n\nMaklumat Kursus \nKursus : #{course.program.name} \nHuraian : #{course.program.description} \nTarikh : #{course.start_date}", :class => 'btn btn-mini', :encode => "javascript"
           %td
             = link_to t('view', :default => t("helpers.links.edit")),
                           course_path(course), :class => 'btn btn-mini' 

@@ -227,6 +227,7 @@ bm:
       title: "Senarai Kursus"
       create_course: 'Cipta Kursus'
       edit: 'Sunting'
+      share: 'Kongsi'
     new:
       title: 'Kursus Baru'
     form:
