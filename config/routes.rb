@@ -8,14 +8,13 @@ BizPkns::Application.routes.draw do
     match '/upcoming_courses' => 'pages#upcoming_courses', as: :course_listing
     match '/upcoming_courses/:id' => 'pages#upcoming_courses_show', as: :course_details
 
-
     match 'business_directory' => 'pages#business_directory', as: :business_directory
     get 'city_dropdown' => 'application#city_dropdown', as: :city_dropdown
     devise_for :users, path_names: {sign_in: "login", sign_out: "logout", sign_up: "signup"},
                         controllers: {registrations: 'registrations'}
     devise_for :consultants, path_names: {sign_in: "login",  sign_out: "logout"}
     devise_for :users do
-      get "/admin/login" => "devise/sessions#new"  
+      get "/admin/login" => "devise/sessions#new"
     end
     
     resources :admin
@@ -30,6 +29,7 @@ BizPkns::Application.routes.draw do
     get "pages/welcome", as: 'welcome_page'
     get "consultants/:id/contact", :to => "consultants#contact", :as => 'contact_consultant'
     put "consultants/:id/contact/sent", :to => "consultants#sent", :as => 'contact_sent'
+    put "admin/:id/update", :to => "admin#update", :as => "update_admin"
 
   end
 
