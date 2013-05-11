@@ -231,6 +231,16 @@
         </div>
       </div>
       <div class="control-group">
+        <%= bp.label t('.customers'), class: 'control-label' %>
+        <div class="controls">
+          <%= bp.text_field :customer1 %>
+          <br/>
+          <%= bp.text_field :customer2 %>
+          <br/>
+          <%= bp.text_field :customer3 %>
+        </div>
+      </div>    
+      <div class="control-group">
         <%= bp.fields_for :business_logo do |bpl| %>
           <div class='control-group'>
             <%= bpl.label t('.upload_business_logo'), class: 'control-label' %>

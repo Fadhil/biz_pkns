@@ -13,3 +13,7 @@
 .right-padding-small {
   margin-right: 20px;
 }
+
+.text-field-longish {
+  width:500px !important;
+}
