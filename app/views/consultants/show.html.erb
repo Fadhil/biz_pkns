@@ -46,9 +46,10 @@
 <div class="form-actions">
   <%#= link_to t('back', :default => t("helpers.links.back")),
               consultants_path, :class => 'btn'  %>
-
-  <%#= link_to t('edit', :default => t("helpers.links.edit")),
+<% if can? :manage, Consultant %>
+  <%= link_to t('edit', :default => t("helpers.links.edit")),
               edit_consultant_path(@consultant), :class => 'btn' %>
+<% end %>
  <!--  <%= link_to t('destroy', :default => t("helpers.links.destroy")),
               consultant_path(@consultant),
               :method => 'delete',
