@@ -135,6 +135,14 @@ bm:
       twitter_handle: 'ID Twitter'
       facebook_handle: 'ID Facebook'
 
+  admin:
+    index:
+      title: 'Senarai Pangkat'
+      view: 'Jadikan Admin'
+      role: 'Pangkat'
+    edit:
+      title: 'Lantik sebagai admin'
+      role_id: 'Lantik'
   application:
     address_fields:
       line1: 'Baris 1'

@@ -18,6 +18,7 @@ BizPkns::Application.routes.draw do
       get "/admin/login" => "devise/sessions#new"  
     end
     
+    resources :admin
     resources :consultants
     resources :users
     resources :programs

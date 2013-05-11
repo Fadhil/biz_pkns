@@ -93,7 +93,6 @@ class UsersController < ApplicationController
     city_id = params[:user_city]
     business_city_id = params[:businessprofile_city]
 
-
     params[:user][:address_attributes].delete :city_attributes
     program = Program.find(params[:program_id])
 
