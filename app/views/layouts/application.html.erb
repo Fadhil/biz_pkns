@@ -6,7 +6,7 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
   <![endif]-->
   <style type="text/css" media="screen">
-    padding-top:60px;
+
   </style>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
@@ -18,17 +18,9 @@
   <%= render partial: "/layouts/header" %>
   <div class="container">
     <div class="row">
-      <div class="span9">
+      <div class="span12">
         <%= render partial: "/layouts/flash" %>
         <%= yield %>
-      </div>
-      <div class="section sidebar span3">
-        <h2>Latest News</h2>
-        <p><small>Integer sollicitudin justo vel lectus dapibus ut egestas tortor condimentum. Suspendisse ac odio vitae erat varius fringilla ut eget enim.</small></p>
-
-        <p><small>Maecenas tempor auctor purus non dignissim. Cras sit amet diam vitae urna pulvinar consectetur nec eu turpis. Praesent venenatis justo ac libero suscipit id pellentesque ipsum pellentesque.</small></p>
-
-        <p><small>Donec commodo luctus magna, id vestibulum urna porta sollicitudin. Nullam turpis ipsum, hendrerit vitae tincidunt id, tincidunt ut felis. Proin tempor ligula eget dui faucibus ornare. Phasellus id sem id tellus dictum luctus at pretium ante.</small></p>
       </div>
     </div>
   </div>
