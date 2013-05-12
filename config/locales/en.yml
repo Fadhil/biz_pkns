@@ -92,8 +92,9 @@ en:
       current_employment_status: 'Current Employment Status'
       employment_status:
         own_business: 'Business Owner'
-        working_studying: 'Working/Studying'
-        part_time_business: 'Working/Studying with part time business'
+        studying: 'Studying'
+        working_studying: 'Working/Own Business'
+        part_time_business: 'Studying/Own Business'
       skills: 'Skills'
       remove_skill: 'Remove this Skill'
       add_skill: 'Add another Skill'

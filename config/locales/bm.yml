@@ -104,7 +104,7 @@ bm:
         working_studying: 'Bekerja/Belajar'
         studying: 'Belajar'
         working_business: 'Bekerja/Perniagaan Sendiri'
-        part_time_business: 'Belajar/Perniagaan Sampingan'
+        part_time_business: 'Belajar/Perniagaan Sendiri'
       skills: 'Kemahiran'
       remove_skill: 'Buang kemahiran ini'
       add_skill: 'Tambah Kemahiran'
