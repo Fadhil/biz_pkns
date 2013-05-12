@@ -17,8 +17,8 @@
         <td><%= consultant.company_name %> </td>
         <td><%= consultant.program.name unless consultant.program.nil? %></td> 
         <td>
-          <%= link_to t('edit', :default => t("helpers.links.edit")),
-                      edit_consultant_path(consultant), :class => 'btn btn-mini' %>
+          <%= link_to t('view', :default => t("helpers.links.edit")),
+                      consultant_path(consultant), :class => 'btn btn-mini' %>
           <%= link_to t('destroy', :default => t("helpers.links.destroy")),
                       consultant_path(consultant),
                       :method => :delete,

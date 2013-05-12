@@ -22,6 +22,7 @@ bm:
   consultant: 'Perunding'
   contact: 'Hubungi'
   contact_consultant: 'Email kepada perunding'
+  customers: 'Pelanggan'
   date_tarikh: 'Tarikh'
   description: 'Huraian'
   did_not_receive_confirmation: "Tidak terima arahan pengesahan?"
@@ -42,10 +43,12 @@ bm:
   remember_me: 'Simpan Maklumat Saya'
   resend_confirmation: 'Hantar arahan pengesahan'
   search: 'Carian'
-  search_by_name: 'Carian mengikut nama'
+  search_by_name: 'Carian Nama'
   search_by_city: 'Carian mengikut bandar'
+  search_by_category: 'Carian Bidang Perniagaan'
   search_by_state: 'Carian mengikut negeri'
   search_by_skill: 'Carian mengikut kemahiran'
+  search_by_company_name: 'Carian Nama Syarikat'
   select_a_program: 'Pilih Program'
   send: 'Hantar'
   send_password_instructions: "Hantarkan arahan tukar kata laluan"
@@ -120,6 +123,7 @@ bm:
       business_registered: 'Perniagaan Berdaftar'
       registration_number: 'Nombor Pendaftaran Syarikat'
       update_user: 'Kemaskini'   
+      customers: 'Pelanggan'
     form_new:  
       create_user: 'Daftar Ahli'
       cancel: 'Batal'

@@ -2,6 +2,7 @@ class BusinessProfile < ActiveRecord::Base
   attr_accessible :category, :type_of_business, :company_name, :description, :registration_number
   attr_accessible :business_photo_attributes, :business_logo_attributes, :address_attributes, :caption
   attr_accessible :business_registered
+  attr_accessible :customer1, :customer2, :customer3
 
   belongs_to :user
 

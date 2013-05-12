@@ -5,16 +5,16 @@
 <%= form_tag '', method: :get do %>
   <div class="row-fluid">
     <div class="span3">
-      <%= label :search, :category, t('.search_by_business_category') %>
-      <%= select :search, :category, BUSINESS_CATEGORIES, {:include_blank => true} %>
+      <%= label :search, :name, t('search_by_name') %>
+      <%= text_field :search, :name %>
     </div>
     <div class="span3">
-      <%= label :search, :city, t('search_by_city') %><br>
-      <%= select :search, :city, City.where(state_name: 'Selangor').order(:name).map{|a| [a.name,a.id]}, {:include_blank => true} %>
+      <%= label :search, :category, t('search_by_category') %>
+      <%= select :search, :category, BusinessProfile.all.map(&:category).uniq, {:include_blank => true} %>
     </div>
     <div class="span3">
-      <%= label :search, :state, t('search_by_state') %><br>
-      <%= select :search, :state, City.order(:state_name).map{|a| [a.state_name,a.state_name]}.uniq, {:include_blank => true} %>
+      <%= label :search, :business_name, t('search_by_company_name') %>
+      <%= text_field :search, :business_name %>
     </div>
     <div class="span3">
       <br><br>
@@ -27,24 +27,30 @@
     <tr>
       <th><%= t('name') %></th>
       <th><%= t('.business_category') %></th>
-      <th><%= t('city') %></th>
-      <th><%= t('state') %></th>
+      <th><%= t('company_name') %></th>
+      <th><%= t('customers') %></th>
     </tr>
   </thead>
   <tbody>
     <% @users.each do |user| %>
       <tr>
         <td><%= link_to "#{user.first_name} #{user.last_name}", user_path(user) %></td>
-        <td><%= user.business_profile.category %></td>
-        <% if user.address.nil? %>
-          <td></td>
-          <td></td>
-        <% elsif user.address.city.nil? %>
-          <td></td>
-          <td></td>
+        <% if !user.business_profile.nil? %>
+          <td><%= user.business_profile.category %></td>
+          <td><%= user.try(:business_profile).try(:company_name) %></td>
+          <td><%= user.business_profile.customer1 %>
+              <% if user.business_profile.customer1 %>
+                <br/>
+              <% end %>
+              <%= user.business_profile.customer2 %>
+              <% if user.business_profile.customer2 %>
+                <br/>
+              <% end %>
+              <%= user.business_profile.customer3 %>
         <% else %>
-          <td><%= user.address.city.name %></td>
-          <td><%= user.address.city.state_name %></td>
+          <td></td>
+          <td></td>
+          <td></td>
         <% end %>
         <td>
           <%= link_to t('view'),
