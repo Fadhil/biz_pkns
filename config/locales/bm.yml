@@ -373,6 +373,8 @@ bm:
         gender: "Jantina"
         
     errors:
+      messages: 
+        record_invalid: 'rekod tidak sah'
       models:
         user:
           attributes:
