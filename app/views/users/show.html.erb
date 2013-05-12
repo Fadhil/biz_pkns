@@ -70,37 +70,7 @@
           </tr>
         </table>
 
-        <!-- <div>
-           <strong><%= t('membership_status') %>:</strong> <%= @user.confirmed? ? "Unconfirmed" : "Confirmed"  %>
-        </div>
-        <div>
-          <strong><%= t('age') %>:</strong> <%= @user.age %>
-        </div>
-        <div>
-          <strong><%= t('gender') %>:</strong> 
-          <% if @user.gender == 'm' %>
-            Lelaki
-          <% elsif @user.gender == 'f' %>
-            Perempuan
-          <% else %>
-            nil
-          <% end %>
-        </div>
-        <div>
-            <strong><%= t('ic_number') %>:</strong> <%= @user.ic_number %>
-        </div>
-        <div>
-            <strong><%= t('phone_number') %>:</strong> <%= @user.phone %>
-        </div>
-        <% unless @user.address.nil? %>
-          <div>
-              <strong><%= t('address') %>:</strong> <%= @user.address.line1 %> <%= @user.address.line2 %>, <%= @user.address.city.name %> <%= @user.address.postcode %>, <%= @user.address.city.state_name unless @user.address.city.nil?%>
-          </div>
-        <% end %>
-
-        <div>
-          <strong><%= t('.current_employment_status') %>:</strong> <%= @user.current_employment_status %>
-        </div> -->
+     
       </div>
     </div>
     <div class="span3 offset1">
