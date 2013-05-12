@@ -24,5 +24,13 @@ describe User do
       user.valid?.should_not be_true
     end
   end
+
+  describe 'has and belong to many courses' do
+    it { should have_and_belong_to_many(:courses) }
+  end
+
+  describe 'has many programs through courses' do
+    it { should have_many(:programs).through(:courses)}
+  end
 end
 
