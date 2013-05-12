@@ -4,9 +4,11 @@ BizPkns::Application.routes.draw do
 
   localized do
     match 'consultation' => "pages#consultation", as: :consultation
-
-    match '/upcoming_courses' => 'pages#upcoming_courses', as: :course_listing
-    match '/upcoming_courses/:id' => 'pages#upcoming_courses_show', as: :course_details
+    get  '/upcoming_courses' => 'pages#upcoming_courses', as: :course_listing
+    scope '/upcoming_courses' do 
+       match '/:id' => 'pages#upcoming_courses_show', as: :course_details
+       match '/:id/user/:user_id' => 'pages#register_user', as: :user_course_registration
+    end
 
     match 'business_directory' => 'pages#business_directory', as: :business_directory
     get 'city_dropdown' => 'application#city_dropdown', as: :city_dropdown

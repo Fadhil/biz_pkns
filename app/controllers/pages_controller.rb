@@ -19,6 +19,20 @@ class PagesController < ApplicationController
     end
   end
 
+  def register_user
+    user = User.find(params[:user_id]) rescue nil
+    course = Course.find(params[:id]) rescue nil
+
+    if user && course 
+      user.courses.push course unless user.courses.include?(course)
+      user.save
+      redirect_to course_details_path(course), alert: t('successfully_registered_course')
+    else
+      
+      redirect_to course_details_path(course), alert: t('invalid_request')
+    end
+  end
+  
   def upcoming_courses_show
     @course = Course.find(params[:id])
   end
