@@ -24,14 +24,30 @@ class PagesController < ApplicationController
     course = Course.find(params[:id]) rescue nil
 
     if user && course 
-      user.courses.push course unless user.courses.include?(course)
-      user.save
-      redirect_to course_details_path(course), alert: t('successfully_registered_course')
+      if course.attendance_list.attendees.count < course.attendance_list.max_attendees
+        user.courses.push course unless user.courses.include?(course)
+        user.save
+        update_attendance_list(course, user)
+        redirect_to course_details_path(course), alert: t('successfully_registered_course')
+      else
+        redirect_to course_details_path(course), alert: t('course_is_full')
+      end
+
     else
       
       redirect_to course_details_path(course), alert: t('invalid_request')
     end
   end
+
+  def update_attendance_list(course,user)
+    attendee = Attendee.create( user_id: user.id, 
+                                name: user.full_name, 
+                                email: user.email, 
+                                ic_number: user.ic_number)
+    if course.attendance_list.attendees.count < course.attendance_list.max_attendees
+      course.attendance_list.attendees.push attendee
+    end
+  end 
   
   def upcoming_courses_show
     @course = Course.find(params[:id])

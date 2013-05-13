@@ -16,6 +16,7 @@ en:
   confirm_register_course: 'Are you sure you want to register for this course?'
   course: 'Course'
   courses: 'Courses'
+  course_is_full: 'Course Registration is Full'
   category: 'Category'
   city: 'City'
   company_name: 'Company Name'

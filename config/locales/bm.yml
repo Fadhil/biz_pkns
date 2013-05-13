@@ -16,6 +16,7 @@ bm:
   confirm_register_course: 'Adakah anda pasti untuk menghadiri kursus ini?'
   course: 'Kursus'
   courses: 'Kursus'
+  course_is_full: 'Maaf, Kursus ini sudah penuh'
   category: 'Bidang Perniagaan'
   city: 'Bandar'
   company_name: 'Nama Syarikat'
