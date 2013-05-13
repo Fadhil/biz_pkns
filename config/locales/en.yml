@@ -30,6 +30,7 @@ en:
   did_not_receive_confirmation: "Didn't receive confirmation instructions?"
   forgot_your_password: 'Forgot your password?'
   message: 'Message'
+  my_courses: 'My Courses'
   name: 'Name'
   new_consultant: 'New Consultant'
   number_of_attendees: 'Number of Attendees'
@@ -169,6 +170,8 @@ en:
     consultation:
       title: 'Consultation'
       name: 'Consultant Name'
+    my_courses:
+      title: "Courses I Have Attended"
 
   programs:
     index:
@@ -220,6 +223,7 @@ en:
     business_directory: 'business_directory'
     'consultants/:id/contact': 'consultants/:id/contact'
     'consultants/:id/contact/sent': 'consultants/:id/contact/sent'
+    my_courses: 'my_courses'
 
   resources: 
     consultants: 'consultants'

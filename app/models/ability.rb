@@ -16,7 +16,7 @@ class Ability
           can :sent, :all
           can :read, Consultant
           cannot :index, :course
-
+          can :my_courses, :pages
           # can :contact, Consultant do |c|
           #   unless user.email.nil
           # end

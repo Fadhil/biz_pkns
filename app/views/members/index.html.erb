@@ -53,7 +53,11 @@
           <%# end %>
         <%# end %>
         <td><%= "#{user.confirmed}" %></td>
-        <td><%= "#{user.courses}" %></td>
+        <td>
+          <% user.programs.each do |program| %>
+            <p><%= program.name %></p>
+          <% end %>
+        </td>
           <% if user.current_employment_status == 'own business' %>
             <td>Pemilik Perniagaan</td>
           <% elsif user.current_employment_status == 'working studying' %>
