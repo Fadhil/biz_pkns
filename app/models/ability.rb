@@ -25,6 +25,7 @@ class Ability
         can :manage, Consultant, id: resource.id
         can :read, Course
         can :manage, Course, program_id: resource.try(:program).try(:id)
+        can :manage, AttendanceList, program_id: resource.try(:program).try(:id)
       else 
         cannot :index, :course
       end
