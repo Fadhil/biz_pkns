@@ -92,7 +92,79 @@
           </tr>
         </table><br><br><br><br>
 
+<<<<<<< HEAD
+        </div>
+        <div class="span3" style="margin-left:-5px;">
+          <% unless @user.education_background.empty? %>
+            <table class="table">
+              <tr><th colspan="2" class="header">Latar Belakang Pendidikan</th></tr>
+              <% @user.education_background.each do |background| %>
+                <tr>
+                  <td>
+                    <%= "#{background.education.name}" %>
+                  </td>
+                  <td>
+                    <%= "#{background.start_date.try(:to_date)} - #{background.end_date.try(:to_date)}" %>
+                  </td>
+                </tr>
+              <% end %>
+            </table>
+          <% end %> 
+=======
      
+      </div>
+    </div>
+    <div class="span3 offset1">
+      <% unless @user.profile_photo.nil? %>
+        <%= image_tag(@user.profile_photo.file, size: '300x300', :style => 'padding: 8px;box-shadow: 0 0 3px #888;') %>
+      <% end %>
+    </div>
+  </div>
+
+  <h3>Jaringan Media Sosial</h3>
+  <div class="content">
+    <table class="table">
+      <tr>
+        <th><%= t('.twitter_handle') %></th>
+        <td>
+          <% if @user.twitter_handle.blank? %>
+            NIL
+          <% else %>
+            <a href="http://twitter.com/<%= @user.twitter_handle %>" title=""><%= @user.twitter_handle %></a>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= t('.facebook_handle') %></th>
+        <td>
+          <% if @user.facebook_handle.blank? %>
+            NIL
+          <% else %>
+            <a href="http://facebook.com/<%= @user.facebook_handle %>" title=""><%= @user.facebook_handle %></a>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+    <!-- <div>
+      <strong><%= t('.twitter_handle') %>:</strong> <%= @user.twitter_handle %>
+    </div>
+>>>>>>> 4ada598d12bae4a39895d4160b0be85227590316
+
+          <% unless @user.experience.empty? %>
+          <table class="table">
+            <tr><th colspan="2" class="header">Kemahiran</th></tr>
+            <% @user.experience.each do |experience| %>
+              <tr>
+                <td>
+                  <% years = experience.experience.nil? ? '' : ", #{experience.experience} #{t('years')}" %>
+                  <%= "#{experience.skill.name} #{years}" %>
+                </td>
+              </tr>
+            <% end %>
+          </table>
+        <% end %> 
+
+        </div>
       </div>
     </div>
     <div class="span4">

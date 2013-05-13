@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130510200322) do
+ActiveRecord::Schema.define(:version => 20130512161533) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -36,6 +36,26 @@ ActiveRecord::Schema.define(:version => 20130510200322) do
     t.datetime "updated_at",      :null => false
     t.string   "file"
     t.string   "type"
+  end
+
+  create_table "attendance_lists", :force => true do |t|
+    t.integer  "course_id"
+    t.integer  "program_id"
+    t.integer  "max_attendees"
+    t.integer  "attendee_counter"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  create_table "attendees", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "email"
+    t.string   "ic_number"
+    t.boolean  "attended"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.integer  "attendance_list_id"
   end
 
   create_table "business_profiles", :force => true do |t|

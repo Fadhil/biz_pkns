@@ -43,7 +43,7 @@
           %td
             =# mail_to t('share', :default => t("helpers.links.share")),
                           course_path(course), :class => 'btn btn-mini' 
-            = mail_to "example@example.com", t('.share'), :subject => "Ada kursus menarik dari PKNS - #{course.program.name}", :body => "Ada kursus menarik dari PKNS. Sila lewati #{"http://"+request.host+course_path(course)}. \n\nAnda perlu berdaftar dengan BizClub untuk hadiri kursus. \n\nMaklumat Kursus \nKursus : #{course.program.name} \nHuraian : #{course.program.description} \nTarikh : #{course.start_date}", :class => 'btn btn-mini'
+            = mail_to "example@example.com", t('.share'), :subject => "Ada kursus menarik dari PKNS - #{course.try(:program).try(:name)}", :body => "Ada kursus menarik dari PKNS. Sila lewati #{"http://"+request.host+course_path(course)}. \n\nAnda perlu berdaftar dengan BizClub untuk hadiri kursus. \n\nMaklumat Kursus \nKursus : #{course.try(:program).try(:name)} \nHuraian : #{course.try(:program).try(:description)} \nTarikh : #{course.start_date}", :class => 'btn btn-mini'
           %td
             = link_to t('view', :default => t("helpers.links.edit")),
                           course_path(course), :class => 'btn btn-mini' 

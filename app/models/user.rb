@@ -32,7 +32,9 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profile_photo, allow_destroy: true
 
   has_and_belongs_to_many :courses
-  accepts_nested_attributes_for :courses, allow_destroy: true
+  accepts_nested_attributes_for :courses
+
+  has_many :programs, through: :courses
 
   has_and_belongs_to_many :previous_courses
   accepts_nested_attributes_for :previous_courses, allow_destroy: true
