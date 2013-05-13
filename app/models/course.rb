@@ -18,6 +18,7 @@ class Course < ActiveRecord::Base
     self.attendance_list = AttendanceList.new
     self.attendance_list.max_attendees = self.pax
     self.attendance_list.attendee_counter = 0
+    self.attendance_list.program_id = self.program_id
     self.attendance_list.save
     self.save
   end

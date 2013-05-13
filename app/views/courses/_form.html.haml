@@ -13,7 +13,8 @@
       - if can? :manage, :all
         = f.select :program_id, options_for_select(Program.all.map{|a| [a.name, a.id]}, f.object.program_id)
       - elsif current_consultant
-        = f.select :program_id, options_for_select(Program.all.map{|a| [a.name, a.id]}, current_consultant.try(:program).try(:id)),{}, { disabled: true }
+        = select 'disabled', 'program_id', options_for_select(Program.all.map{|a| [a.name, a.id]}, current_consultant.try(:program).try(:id)),{}, { disabled: true }
+        = hidden_field_tag :course_program_id, current_consultant.try(:program).try(:id), name: 'course[program_id]'
 
   .control-group
     = f.label t('description'), :class => 'control-label'
