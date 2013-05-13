@@ -38,6 +38,7 @@ bm:
   password: 'Kata Laluan'
   password_confirmation: 'Pengesahan Kata Laluan'
   new_password_confirmation: 'Sahkan kata laluan baru'
+  number_of_attendees: 'Jumlah Peserta'
   phone: 'No Tel'
   postcode: 'Poskod'
   profile: 'Profile'

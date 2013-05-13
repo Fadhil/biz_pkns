@@ -32,6 +32,7 @@ en:
   message: 'Message'
   name: 'Name'
   new_consultant: 'New Consultant'
+  number_of_attendees: 'Number of Attendees'
   pax: 'Pax'
   password: 'Password'
   password_confirmation: 'Password Confirmation'

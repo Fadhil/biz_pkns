@@ -51,6 +51,7 @@ class PagesController < ApplicationController
   
   def upcoming_courses_show
     @course = Course.find(params[:id])
+    
   end
 
   def business_directory
