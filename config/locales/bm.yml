@@ -31,6 +31,7 @@ bm:
   forgot_your_password: 'Lupa kata laluan?'
   invalid_request: 'Permintaan Tidak Sah'
   message: 'Mesej'
+  my_courses: 'Kursus Saya'
   name: 'Nama'
   membership_num: 'No Keahlian'
   new_consultant: 'Daftar Perunding Baru'
@@ -212,6 +213,9 @@ bm:
     consultation:
       title: 'Perundingan'
       name: 'Nama Perunding'
+    my_courses:
+      title: 'Kursus Yang Saya Hadiri'
+
   businesses:
     index:
 
@@ -350,6 +354,7 @@ bm:
     consultation: "perundingan"
     course_listing: "kursus_akan_datang"
     business_directory: 'direktori'
+    my_courses: 'kursus_saya'
 
   resources: 
     consultants: 'perunding'

@@ -54,6 +54,14 @@ class PagesController < ApplicationController
     
   end
 
+  def my_courses
+    @courses = []
+    if current_user
+      @courses = current_user.courses
+    end
+
+  end
+
   def business_directory
     @users = User.joins(:business_profile)
 
@@ -80,25 +88,6 @@ class PagesController < ApplicationController
         business_name = business_name.split(' ').join('%')
         @users = @users.joins(:business_profile).where('LOWER(business_profiles.company_name) like ?', "%#{business_name}%")
       end
-
-
-      # if category && !(state || city)
-      #   @users = User.joins(:business_profile).where('business_profiles.category' => category)
-      # elsif (state || city) && !category
-      #   if !city
-      #     @users = User.joins(:business_profile=>{:address=>:city}).where('cities.state_name'=>state)
-      #   else
-      #     @users = User.joins(:business_profile=>{:address=>:city}).where('cities.id'=>city)
-      #   end
-      # elsif category && (state || city)
-      #   if !city
-      #     @users = User.joins(:business_profile=>{:address=>:city}).where('cities.state_name' => state, 'business_profiles.category' => category)
-      #   else
-      #     @users = User.joins(:business_profile=>{:address=>:city}).where('cities.id' => city, 'business_profiles.category' => category)          
-      #   end
-      # else
-      #   @users = User.all
-      # end
     else
       @users = User.joins(:business_profile)
     end

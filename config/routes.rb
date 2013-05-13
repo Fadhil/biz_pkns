@@ -4,6 +4,7 @@ BizPkns::Application.routes.draw do
 
   localized do
     match 'consultation' => "pages#consultation", as: :consultation
+    match 'my_courses' => "pages#my_courses", as: :user_course_listing
     get  '/upcoming_courses' => 'pages#upcoming_courses', as: :course_listing
     scope '/upcoming_courses' do 
        match '/:id' => 'pages#upcoming_courses_show', as: :course_details

@@ -1,0 +1,37 @@
+.page-header
+  %h1=t('.title')
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th
+        No.
+      %th
+        = t('course_name')
+      %th
+        = t('program_name')
+      %th
+        = t('venue')
+      %th
+        = t('start_date')
+      %th
+        = t('end_date')
+      %th
+    %tbody
+      - current_user.courses.each_with_index do |course,index|
+        %tr
+          %td
+            = index + 1
+          %td
+            = course.name
+          %td
+            = course.program.name unless course.program.nil?
+          %td
+            = course.venue
+          %td
+            = course.start_date
+          %td
+            = course.end_date
+          %td
+            = link_to t('view'), course_details_path(course), |
+              class: 'btn'
