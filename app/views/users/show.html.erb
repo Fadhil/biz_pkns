@@ -91,6 +91,39 @@
             <td><%= @user.current_employment_status %></td>
           </tr>
         </table><br><br><br><br>
+        </div>
+        <div class="span3" style="margin-left:-5px;">
+          <% unless @user.education_background.empty? %>
+            <table class="table">
+              <tr><th colspan="2" class="header">Latar Belakang Pendidikan</th></tr>
+              <% @user.education_background.each do |background| %>
+                <tr>
+                  <td>
+                    <%= "#{background.education.name}" %>
+                  </td>
+                  <td>
+                    <%= "#{background.start_date.try(:to_date)} - #{background.end_date.try(:to_date)}" %>
+                  </td>
+                </tr>
+              <% end %>
+            </table>
+          <% end %> 
+
+          <% unless @user.experience.empty? %>
+          <table class="table">
+            <tr><th colspan="2" class="header">Kemahiran</th></tr>
+            <% @user.experience.each do |experience| %>
+              <tr>
+                <td>
+                  <% years = experience.experience.nil? ? '' : ", #{experience.experience} #{t('years')}" %>
+                  <%= "#{experience.skill.name} #{years}" %>
+                </td>
+              </tr>
+            <% end %>
+          </table>
+        <% end %> 
+
+        </div>
 
      
       </div>
