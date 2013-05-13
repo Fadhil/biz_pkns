@@ -4,6 +4,7 @@
 bm:
   active: 'Aktif'
   inactive: 'Tidak Aktif'
+  is_active: 'Aktif'
   are_you_sure: 'And pasti?'
   back: 'Kembali'
   edit: 'Kemaskini'

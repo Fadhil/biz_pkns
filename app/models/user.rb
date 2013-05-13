@@ -98,4 +98,8 @@ class User < ActiveRecord::Base
   def full_business_address
     self.business_profile.address.line1 + ' ' + self.business_profile.address.line2 + ', ' + self.business_profile.address.city.name + ' ' + self.business_profile.address.postcode + ', ' + self.business_profile.address.city.state_name unless self.business_profile.address.city.nil?
   end
+
+  def active_for_authentication?
+    super && self.is_active?
+  end
 end

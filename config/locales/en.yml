@@ -4,6 +4,7 @@
 en:
   active: 'Active'
   inactive: 'Inactive'
+  is_active: 'Active'
   are_you_sure: 'Are you sure?'
   back: 'Back'
   edit: 'Edit'
