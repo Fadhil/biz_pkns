@@ -112,4 +112,27 @@ class MembersController < ApplicationController
     end
   end
 
+  def program_member_list
+
+    @users = current_consultant.users
+    if params[:search].present?
+      if params[:search][:term].blank?
+        @users = User.order("id desc")
+      else
+        search_terms = params[:search][:term].split(' ').join('%')
+        @users = User.where("concat(LOWER(first_name), ' ', LOWER(last_name)) like ?","%#{search_terms}%")
+      end
+
+      if !params[:search][:state].blank? || !params[:search][:skill].blank?
+        if !params[:search][:skill].blank?
+          @users = @users.joins(:skills).where('skills.id' => params[:search][:skill])
+        else
+          @users = @users.joins({:address=>:city}).where('cities.state_name'=>params[:search][:state])
+        end
+      end
+    end
+    
+
+  end
+
 end

@@ -13,8 +13,10 @@ class Consultant < ActiveRecord::Base
   has_one :program
   accepts_nested_attributes_for :program
   
-  has_many :courses, through: :programs
+  has_many :courses, through: :program
   validates :password, :presence => true, :confirmation => true, :on => :create
+
+  has_many :users, through: :courses
 
   has_one :profile_photo, as: :attachable, dependent: :destroy
   accepts_nested_attributes_for :profile_photo, allow_destroy: true

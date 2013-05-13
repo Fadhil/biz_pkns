@@ -33,6 +33,7 @@ bm:
   message: 'Mesej'
   my_courses: 'Kursus Saya'
   name: 'Nama'
+  member: 'Ahli'
   membership_num: 'No Keahlian'
   new_consultant: 'Daftar Perunding Baru'
   pax: 'Jumlah peserta'
@@ -264,6 +265,10 @@ bm:
     index:
       title: 'Direktori Ahli'
       search_member: 'Carian Ahli'
+    program_member_list: 
+      title: 'Ahli Program'
+      search_member: 'Carian Ahli'
+
 
   #Stuff in the header
   layouts:
@@ -290,6 +295,7 @@ bm:
       consultant: 'Perunding'
       course: 'Kursus'
       course_listing: 'Senarai Kursus'
+      program_member: 'Ahli Program'
 
   errors:
       messages:

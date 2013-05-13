@@ -30,6 +30,7 @@ en:
   did_not_receive_confirmation: "Didn't receive confirmation instructions?"
   forgot_your_password: 'Forgot your password?'
   message: 'Message'
+  member: 'Member'
   my_courses: 'My Courses'
   name: 'Name'
   new_consultant: 'New Consultant'
@@ -202,6 +203,9 @@ en:
     index:
       title: 'Members Directory'
       search_member: 'Search member'
+    program_member_list: 
+      title: 'Program Members'
+      search_member: 'Search Member'
 
   #Stuff in the header
   layouts:
