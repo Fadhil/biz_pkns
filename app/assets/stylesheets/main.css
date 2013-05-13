@@ -130,20 +130,47 @@ a.dropdown-toggle span { }
 
 /* Button
 -------------------------------------------------- */
+.btn {
+  background: #34495e;
+  color: #FFF;
+  text-decoration: none;
+  text-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: 0.25s;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  transition: 0.25s;
+  -webkit-backface-visibility: hidden;
+  border-radius:2px; 
+}
+
+.btn:hover, .btn:focus {
+  background-color: #FF8668;
+  color:#FFF;
+  -webkit-transition: 0.25s;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  transition: 0.25s;
+  -webkit-backface-visibility: hidden; 
+}
+  
 .btn-flat {
-  border:1px solid #dcdcdc;
   display:inline-block;
   color:#FFF;
-  padding:10px 30px;
-  -moz-box-shadow:inset 0px -1px 0px 0px #ffffff;
-  -webkit-box-shadow:inset 0px -1px 0px 0px #ffffff;
-  box-shadow:inset 0px -1px 0px 0px #ffffff;
+  padding:12px 40px;
+  -moz-box-shadow:inset 0px -1px 0px 0px #646C6D;
+  -webkit-box-shadow:inset 0px -1px 0px 0px #646C6D;
+  box-shadow:inset 0px -1px 0px 0px #646C6D;
   background-color:#848789;
   -moz-border-radius:2px;
   -webkit-border-radius:2px;
-  border-radius:2px;
+  
   text-transform:uppercase;
-  font-size: 12px;
+  font-size: 10px;
+  font-family: 'Open-Sans', sans-serif;
+  
 }
 
 
