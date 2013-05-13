@@ -304,7 +304,7 @@ bm:
   devise:
     failure:
       unauthenticated: 'Anda harus mendaftar atau sign in sebelum meneruskan .'
-      unconfirmed: 'Anda harus melakukan proses pengesahan sebalum meneruskan.'
+      unconfirmed: 'Anda harus melakukan proses pengesahan sebelum meneruskan.'
       locked: 'Akaun anda terkunci.'
       invalid: 'Email atau password yang anda masukkan salah.'
       invalid_token: 'Kesalahan pada authentication token.'
