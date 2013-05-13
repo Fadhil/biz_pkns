@@ -14,47 +14,69 @@
   <h1><%= t('.title') %></h1>
 </div>
 
-<div>
-  
-  <div class="row">
-    <div class="span4">
-      <div>
-        <h1><b><%= @user.full_name %></b></h1>
-      </div>
-      <div class="content">
-        <table class="table">
-          <tr>
-            <th><%= t('membership_status') %></th>
-            <td><%= @user.confirmed? ? "Unconfirmed" : "Confirmed"  %></td>
-          </tr>
-          <tr>
-            <th><%= t('age') %></th>
-            <td><%= @user.age %></td>
-          </tr>
-          <tr>
-            <th><%= t('gender') %></th>
-            <td>
+<div class="container">
+  <div class="row wrapper">
+    <div class="span7 border-right">
+      <div class="row border-bottom">
+        <div class="span3 border-right container">
+          <div class="whitespace">
+            <span class="aleft">
+              <% unless @user.profile_photo.nil? %>
+                <%= image_tag(@user.profile_photo.file, size: '70x70') %>
+              <% end %>
+            </span>
+            <span class="aright">
+              <div id="name"><%= @user.full_name %></div>
+              <span>
+              <b><%= t('gender') %></b> 
               <% if @user.gender == 'm' %>
                 Lelaki
               <% elsif @user.gender == 'f' %>
                 Perempuan
               <% else %>
                 nil
-              <% end %>
-            </td>
+              <% end %><br>
+              <b><%= t('age') %></b> <%= @user.age %>
+              </span>
+            </span>
+          </div>
+          
+        </div>
+        <div class="span3">
+          <div class="whitespace">
+              <b>T</b>
+                <% if @user.twitter_handle.blank? %>
+                  NIL
+                <% else %>
+                  <a href="http://twitter.com/<%= @user.twitter_handle %>" title=""><%= @user.twitter_handle %></a>
+                <% end %><br>
+           
+              <b>F</b>
+                <% if @user.facebook_handle.blank? %>
+                  NIL
+                <% else %>
+                  <a href="http://facebook.com/<%= @user.facebook_handle %>" title=""><%= @user.facebook_handle %></a>
+                <% end %><br>
+              
+              <b>P</b>
+                <% if @user.phone.blank? %>
+                <% else %>
+                  <%= @user.phone %></td>
+                <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span4">
+          <table class="table">
+          <tr><th colspan="2" class="header">Latar Belakang Individu</th></tr>
+          <tr>
+            <th><%= t('membership_status') %></th>
+            <td><%= @user.confirmed? ? "Unconfirmed" : "Confirmed"  %></td>
           </tr>
           <tr>
             <th><%= t('ic_number') %></th>
             <td><%= @user.ic_number %></td>
-          </tr>
-          <tr>
-            <th><%= t('phone_number') %></th>
-            <td>
-              <% if @user.phone.blank? %>
-
-              <% else %>
-                <%= @user.phone %></td>
-              <% end %>
           </tr>
           <tr>
             <th><%= t('address') %></th>
@@ -68,134 +90,47 @@
             <th><%= t('.current_employment_status') %></th>
             <td><%= @user.current_employment_status %></td>
           </tr>
-        </table>
+        </table><br><br><br><br>
 
-        <!-- <div>
-           <strong><%= t('membership_status') %>:</strong> <%= @user.confirmed? ? "Unconfirmed" : "Confirmed"  %>
         </div>
-        <div>
-          <strong><%= t('age') %>:</strong> <%= @user.age %>
-        </div>
-        <div>
-          <strong><%= t('gender') %>:</strong> 
-          <% if @user.gender == 'm' %>
-            Lelaki
-          <% elsif @user.gender == 'f' %>
-            Perempuan
-          <% else %>
-            nil
-          <% end %>
-        </div>
-        <div>
-            <strong><%= t('ic_number') %>:</strong> <%= @user.ic_number %>
-        </div>
-        <div>
-            <strong><%= t('phone_number') %>:</strong> <%= @user.phone %>
-        </div>
-        <% unless @user.address.nil? %>
-          <div>
-              <strong><%= t('address') %>:</strong> <%= @user.address.line1 %> <%= @user.address.line2 %>, <%= @user.address.city.name %> <%= @user.address.postcode %>, <%= @user.address.city.state_name unless @user.address.city.nil?%>
-          </div>
-        <% end %>
+        <div class="span3" style="margin-left:-5px;">
+          <% unless @user.education_background.empty? %>
+            <table class="table">
+              <tr><th colspan="2" class="header">Latar Belakang Pendidikan</th></tr>
+              <% @user.education_background.each do |background| %>
+                <tr>
+                  <td>
+                    <%= "#{background.education.name}" %>
+                  </td>
+                  <td>
+                    <%= "#{background.start_date.try(:to_date)} - #{background.end_date.try(:to_date)}" %>
+                  </td>
+                </tr>
+              <% end %>
+            </table>
+          <% end %> 
 
-        <div>
-          <strong><%= t('.current_employment_status') %>:</strong> <%= @user.current_employment_status %>
-        </div> -->
+          <% unless @user.experience.empty? %>
+          <table class="table">
+            <tr><th colspan="2" class="header">Kemahiran</th></tr>
+            <% @user.experience.each do |experience| %>
+              <tr>
+                <td>
+                  <% years = experience.experience.nil? ? '' : ", #{experience.experience} #{t('years')}" %>
+                  <%= "#{experience.skill.name} #{years}" %>
+                </td>
+              </tr>
+            <% end %>
+          </table>
+        <% end %> 
+
+        </div>
       </div>
     </div>
-    <div class="span3 offset1">
-      <% unless @user.profile_photo.nil? %>
-        <%= image_tag(@user.profile_photo.file, size: '300x300', :style => 'padding: 8px;box-shadow: 0 0 3px #888;') %>
-      <% end %>
-    </div>
-  </div>
-
-  <h3>Jaringan Media Sosial</h3>
-  <div class="content">
-    <table class="table">
-      <tr>
-        <th><%= t('.twitter_handle') %></th>
-        <td>
-          <% if @user.twitter_handle.blank? %>
-            NIL
-          <% else %>
-            <a href="http://twitter.com/<%= @user.twitter_handle %>" title=""><%= @user.twitter_handle %></a>
-          <% end %>
-        </td>
-      </tr>
-      <tr>
-        <th><%= t('.facebook_handle') %></th>
-        <td>
-          <% if @user.facebook_handle.blank? %>
-            NIL
-          <% else %>
-            <a href="http://facebook.com/<%= @user.facebook_handle %>" title=""><%= @user.facebook_handle %></a>
-          <% end %>
-        </td>
-      </tr>
-    </table>
-    <!-- <div>
-      <strong><%= t('.twitter_handle') %>:</strong> <%= @user.twitter_handle %>
-    </div>
-
-    <div>
-      <strong><%= t('.facebook_handle') %>:</strong> <%= @user.facebook_handle %>
-    </div> -->
-  </div>
-
-  <h3>Latar Belakang Pendidikan</h3>
-  <div class="content">
-    <div>
-      <% unless @user.education_background.empty? %>
+    <div class="span4">
+      <div class="">
         <table class="table">
-          <% @user.education_background.each do |background| %>
-            <tr>
-              <td>
-                <%= "#{background.education.name}" %>
-              </td>
-              <td>
-                <%= "#{background.start_date.try(:to_date)} - #{background.end_date.try(:to_date)}" %>
-              </td>
-            </tr>
-          <% end %>
-        </table>
-      <% end %> 
-    </div>
-  </div>
-
-  <h3>Kemahiran</h3>
-  <div class="content">
-    <div>
-      <% unless @user.experience.empty? %>
-        <table class="table">
-          <% @user.experience.each do |experience| %>
-            <tr>
-              <td>
-                <% years = experience.experience.nil? ? '' : ", #{experience.experience} #{t('years')}" %>
-                <%= "#{experience.skill.name} #{years}" %>
-              </td>
-            </tr>
-          <% end %>
-        </table>
-      <% end %> 
-    </div>
-  </div>
-
-  <h3>Maklumat Perniagaan</h3>
-  <div class="content">
-    <% if @user.has_business_profile? %>
-      <% unless @user.business_profile.business_logo.nil? %>
-        <h4>Logo Syarikat</h4>
-        <%= image_tag(@user.business_profile.business_logo.file, :size => '150x150') %>
-      <% end %>
-      
-      <% unless @user.business_profile.business_photo.nil? %>
-        <h4>Gambar Perniagaan</h4>
-        <%= image_tag(@user.business_profile.business_photo.file, :size => '200x200') %>
-        <br>Penerangan Gambar : <%= @user.business_profile.business_photo.caption %>
-      <% end %>
-
-      <table class="table">
+        <tr><th colspan="2" class="header">Maklumat Perniagaan</th></tr>
         <tr>
           <th><%= t('.company_name') %></th>
           <td><%= @user.business_profile.company_name%></td>
@@ -221,36 +156,19 @@
           <td><%= @user.business_profile.registration_number%></td>
         </tr>
       </table>
-      <!-- <div>
-        <strong><%= t('.company_name') %>:</strong><%= @user.business_profile.company_name%>
       </div>
-      <div>
-        <strong><%= t('address') %>:</strong> <%= @user.full_business_address %>
-      </div>
-      <div>
-        <strong><%= t('description') %>:</strong><%= @user.business_profile.description%>
-      </div>
-      <div>
-        <strong><%= t('category') %>:</strong><%= @user.business_profile.category %>
-      </div>
-      <div>
-        <strong><%= t('.type_of_business') %>:</strong><%= @user.business_profile.type_of_business %>
-      </div>
-      <div>
-        <strong><%= t('.company_registration_number') %> :</strong><%= @user.business_profile.registration_number%>
-      </div> -->
-    <% end %>
+    </div>
   </div>
-
-   
 </div>
+
+
 
 <% if can? :manage, @user %>
   <div class="form-actions">
     <%#= link_to t('.back', :default => t("helpers.links.back")),
                 users_path, :class => 'btn'  %>
     <%= link_to t('edit', :default => t("helpers.links.edit")),
-                edit_user_path(@user), :class => 'btn' %>
+                edit_user_path(@user), :class => 'btn btn-flat' %>
     <%#= link_to t('destroy', :default => t("helpers.links.destroy")),
                 user_path(@user),
                 :method => 'delete',

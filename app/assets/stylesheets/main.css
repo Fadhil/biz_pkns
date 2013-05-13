@@ -3,6 +3,7 @@
 body {
   position: relative;
   padding-top:120px;
+  padding-bottom: 80px;
   background-color: #EBEAEA;
 }
 
@@ -79,6 +80,72 @@ a.dropdown-toggle span { }
   color: #555555;
   background-color: transparent;
 }
+
+/* Layout
+-------------------------------------------------- */
+.page-header {
+  padding-bottom: 9px;
+  margin: 20px 0 30px;
+  border-bottom: 0 solid #eeeeee;
+}
+.page-header h1 {
+  font-size: 24px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-style:normal;
+  margin-bottom: -10px;
+}
+
+.wrapper{
+  background-color: #FFF;
+  border-radius: 4px;
+  margin: 2px;
+  border: 1px solid #D9DBDB;
+}
+.border-right { border-right: 1px solid #D9DBDB; }
+.border-bottom { border-bottom: 1px solid #D9DBDB; }
+
+.nomargin {
+  margin-bottom: -30px;
+}
+.whitespace{ padding:15px; }
+.aleft{ float:left; }
+.aleft img { margin:0 17px 12px 0; border-radius: 3px; }
+.aright #name { font-size: 17px; color:#808585; font-family: 'Open-Sans', sans-serif; font-weight: 100;}
+.aright span { font-size: 11px; color:#808585; font-family: 'Open-Sans', sans-serif; font-weight: 100; }
+
+.form-actions {
+  padding: 5px 0 20px;
+  background-color: transparent;
+  border-top: 0 solid #e5e5e5;
+  *zoom: 1;
+  float:right;
+}
+/* Table
+-------------------------------------------------- */
+.table { font-size: 12px; font-family: 'Open-Sans', sans-serif; font-weight: 400; margin-top: 15px; margin-left: -5px; }
+.table th { color:#808585; font-size: 12px; width:45%;}
+.table td { color:#808585;font-size: 12px; width:auto;}
+.table .header { color: #585A5A; text-transform:uppercase; width:100%; }
+
+/* Button
+-------------------------------------------------- */
+.btn-flat {
+  border:1px solid #dcdcdc;
+  display:inline-block;
+  color:#FFF;
+  padding:10px 30px;
+  -moz-box-shadow:inset 0px -1px 0px 0px #ffffff;
+  -webkit-box-shadow:inset 0px -1px 0px 0px #ffffff;
+  box-shadow:inset 0px -1px 0px 0px #ffffff;
+  background-color:#848789;
+  -moz-border-radius:2px;
+  -webkit-border-radius:2px;
+  border-radius:2px;
+  text-transform:uppercase;
+  font-size: 12px;
+}
+
 
 /* Footer
 -------------------------------------------------- */
