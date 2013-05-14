@@ -4,7 +4,7 @@ class MembersController < ApplicationController
   # GET /users.json
   def index
 
-    @users = User.nonadmin.all
+    @users = User.all
     if params[:search].present?
       if params[:search][:term].blank?
         @users = User.order("id desc")
