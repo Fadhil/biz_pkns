@@ -15,7 +15,7 @@
     %tr
       %th
         = t('course_name')
-      %th
+      %th(width="30%")
         = t('description')
       %th
         = t('program_name')
@@ -24,13 +24,19 @@
       %th
         = t('end_date')
       %th
+        = t('active')
+      %th
+        = t('share') 
+      %th
+      
     %tbody
       - @courses.each do |course|
         %tr
           %td
-            = course.name
+            = link_to course.name, course_path(course)
           %td
-            = course.description
+            =# course.description
+            = truncate(course.description, :length => 80)
           %td
             = course.program.name unless course.program.nil?
           %td
@@ -38,6 +44,23 @@
           %td
             = course.end_date
           %td
-            = link_to t('view'), course_details_path(course), |
-              class: 'btn'
+            = course.status? ? t('active') : t('inactive')
+          %td
+            =# mail_to t('share', :default => t("helpers.links.share")),
+                          course_path(course), :class => 'btn btn-mini' 
+            = mail_to "example@example.com", t('share'), :subject => "Ada kursus menarik dari PKNS - #{course.try(:program).try(:name)}", :body => "Ada kursus menarik dari PKNS. Sila lewati #{"http://"+request.host+course_path(course)}. \n\nAnda perlu berdaftar dengan BizClub untuk hadiri kursus. \n\nMaklumat Kursus \nKursus : #{course.try(:program).try(:name)} \nHuraian : #{course.try(:program).try(:description)} \nTarikh : #{course.start_date}", :class => 'btn btn-mini'
+          %td
+            = link_to t('view', :default => t("helpers.links.edit")),
+                          course_path(course), :class => 'btn btn-mini' 
+            - if can? :destroy, Course
+              =link_to t('destroy', :default => t("helpers.links.destroy")),
+                              course_path(course),
+                              :method => :delete,
+                              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => t('are_you_sure'))) },
+                              :class => 'btn btn-mini btn-danger'
 
+.pagination-left
+  = paginate @courses
+
+- if can? :manage, Course
+  = link_to t('.create_course', :default => t("helpers.links.new")), new_course_path, :class => 'btn btn-primary' 

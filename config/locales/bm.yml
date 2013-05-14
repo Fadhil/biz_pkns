@@ -64,6 +64,7 @@ bm:
   send: 'Hantar'
   send_password_instructions: "Hantarkan arahan tukar kata laluan"
   setting: 'Tetapan'
+  share: 'Kongsi'
   sign_up: 'Daftar Sebagai Ahli'
   sign_in: 'Daftar Masuk'
   staff_number: 'Nombor Staf'
