@@ -119,10 +119,10 @@
               <tr>
                 <th><%= f.label t('.current_employment_status') %></th>
                 <td><%= f.select :current_employment_status, [[t('.employment_status.own_business'),'own business'],
-                                                  [t('.employment_status.working_studying'),'working studying'],
+                                                  [t('.employment_status.working_studying'),'working_studying'],
                                                   [t('.employment_status.studying'),'studying'],
-                                                  [t('.employment_status.working_business'),'working self business'],
-                                                  [t('.employment_status.part_time_business'),'part time business']] %>
+                                                  [t('.employment_status.working_business'),'working_business'],
+                                                  [t('.employment_status.part_time_business'),'part_time_business']] %>
                 </td>
               </tr>
             <% end %>
