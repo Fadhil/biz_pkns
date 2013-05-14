@@ -128,9 +128,11 @@ bm:
       upload_business_logo: 'Muat Naik Logo Syarikat'
       upload_business_photo: 'Muat Naik Gambar Perniagaan'
       business_registered: 'Perniagaan Berdaftar'
-      registration_number: 'Nombor Pendaftaran Syarikat'
+      registration_number: 'No. Pendaftaran Syarikat'
       update_user: 'Kemaskini'   
-      customers: 'Pelanggan'
+      customers1: 'Pelanggan 1'
+      customers2: 'Pelanggan 2'
+      customers3: 'Pelanggan 3'
     form_new:  
       create_user: 'Daftar Ahli'
       cancel: 'Batal'

@@ -1,15 +1,4 @@
 <%- model_class = User -%>
-<style>
-  .content{ padding-left: 10px;}
-  table tr th {width: 140px;}
-  .table td {padding: 8px;
-  line-height: 20px;
-  text-align: left;
-  vertical-align: top;
-  border-top: 0 solid #dddddd;
-}
-  .table th { border-top: 0 solid #dddddd; }
-</style>
 <div class="page-header">
   <h1><%= t('.title') %></h1>
 </div>
@@ -132,6 +121,9 @@
       <div class="">
         <table class="table">
         <tr><th colspan="2" class="header">Maklumat Perniagaan</th></tr>
+        <% unless @user.business_profile.business_logo.nil? %>
+          <center><%= image_tag(@user.business_profile.business_logo.file, :size => '150x150') %></center>
+        <% end %>
         <tr>
           <th><%= t('.company_name') %></th>
           <td><%= @user.business_profile.company_name%></td>
@@ -156,8 +148,18 @@
           <th><%= t('.company_registration_number') %></th>
           <td><%= @user.business_profile.registration_number%></td>
         </tr>
+
+        <% unless @user.business_profile.business_photo.nil? %>
+          <tr><td colspan="2"><%= image_tag(@user.business_profile.business_photo.file, :size => '250x250') %></td></tr>
+          <tr>
+            <th>Penerangan Gambar</th>
+            <td><%= @user.business_profile.business_photo.caption %></td>
+          </tr>
+        <% end %>
       </table>
       </div>
+
+      
     </div>
   </div>
 </div>

@@ -113,6 +113,7 @@ a.dropdown-toggle span { }
 .aleft img { margin:0 17px 12px 0; border-radius: 3px; }
 .aright #name { font-size: 17px; color:#F7845F; font-family: 'Open-Sans', sans-serif; font-weight: bold;}
 .aright span { font-size: 11px; color:#808585; font-family: 'Open-Sans', sans-serif; font-weight: 100; }
+.aright table { width:80%; margin: -7px 0 -10px 0;}
 
 .form-actions {
   padding: 5px 0 20px;
@@ -121,11 +122,21 @@ a.dropdown-toggle span { }
   *zoom: 1;
   float:right;
 }
+
+label, input, button, select, textarea {
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 20px;
+}
+
+.content{ padding-left: 10px;}
 /* Table
 -------------------------------------------------- */
 .table { font-size: 12px; font-family: 'Open-Sans', sans-serif; font-weight: 400; margin-top: 15px; margin-left: -5px; }
-.table th { color:#808585; font-size: 12px; width:45%;}
-.table td { color:#808585;font-size: 12px; width:auto;}
+.table th { color:#808585; font-size: 12px; width:45%; border-top: 0 solid #dddddd;}
+.table tr th {width: 140px;}
+.table td { }
+.table td { color:#808585;font-size: 12px; width:auto; padding: 8px; line-height: 20px; text-align: left; vertical-align: top; border-top: 0 solid #dddddd; }
 .table .header { color: #585A5A; text-transform:uppercase; width:100%; }
 
 /* Button

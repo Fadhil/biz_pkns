@@ -1,129 +1,362 @@
 <%= nested_form_for @user, :html => { :class => 'form-horizontal', multipart: true } do |f| %>
-  <div class="control-group">
-    <%= f.label t('first_name'), :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :first_name, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label t('last_name'), :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :last_name, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class='control-group'>
-    <%= f.label t('gender') , class: 'control-label' %>
-    <div class='controls'>
-      <span>
-        <p class="radio"><%= f.radio_button :gender, 'm' %>
-        <%= t('male') %></p>
-      </span>
-      <br/>
-      <span>
-        <p class="radio"><%= f.radio_button :gender, 'f' %>
-        <%= t('female') %></p>
-      </span>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label t('email'), :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :email, :class => 'text_field' %>
-    </div>
-  </div>
-  <% if @user.new_record? %>
-    <div class="control-group">
-      <%= f.label :password, t('password'), :class => 'control-label' %>
-      <div class="controls">
-        <%= f.password_field :password, :class => 'text_field' %>
+
+  <div class="container">
+    <div class="row wrapper">
+      <div class="span7 border-right">
+        <div class="row border-bottom">
+            <div class="whitespace">
+              <span class="aleft">
+                <% unless @user.profile_photo.nil? %>
+                  <%= image_tag(@user.profile_photo.file, size: '70x70') %>
+                <% end %>
+              </span>
+              <span class="aright">
+                <span>
+                <table class="table">
+                  <tr><th colspan="2" class="header">Gambar Profil</th></tr>
+                  <tr>
+                    <%= f.fields_for :profile_photo do |pp| %>
+                    <td><%= pp.label t('.upload_profile_photo') %></td>
+                    <td><%= pp.file_field :file %></td>
+                    <% end %>
+                  </tr>
+                </table>
+                </span>
+              </span>
+            </div>
+            
+        </div>
+        <div class="row">
+          <div class="span4">
+            <table class="table">
+            <tr><th colspan="2" class="header">Latar Belakang Individu</th></tr>
+            <tr>
+              <th><%= f.label t('first_name') %></th>
+              <td><%= f.text_field :first_name, :class => 'input-medium' %></td>
+            </tr>
+            <tr>
+              <th><%= f.label t('last_name') %></th>
+              <td><%= f.text_field :last_name, :class => 'input-medium' %></td>
+            </tr>
+            <tr>
+              <th><%= f.label t('gender') %></th>
+              <td>
+                <span>
+                  <p class="radio"><%= f.radio_button :gender, 'm' %>
+                  <%= t('male') %></p>
+                  <p class="radio"><%= f.radio_button :gender, 'f' %>
+                  <%= t('female') %></p>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <th><%= f.label t('email') %></th>
+              <td><%= f.text_field :email, :class => 'input-medium' %></td>
+            </tr>
+            <tr>
+              <th><%= f.label t('ic_number') %></th>
+              <td><%= f.text_field :ic_number, :class => 'input-medium' %></td>
+            </tr>
+            <tr>
+              <th><%= f.label t('phone') %></th>
+              <td><%= f.text_field :phone, :class => 'input-medium' %></td>
+            </tr>
+            <tr>
+              <th><%= f.label t('.twitter_handle') %></th>
+              <td><%= f.text_field :twitter_handle, :class => 'input-medium' %></td>
+            </tr>
+            <tr>
+              <th><%= f.label t('.facebook_handle') %></th>
+              <td><%= f.text_field :facebook_handle, :class => 'input-medium' %></td>
+            </tr>
+            <tr><th colspan="2" class="header"><br>Alamat Individu</th></tr>
+
+            <%= f.fields_for :address do |a| %>
+              <tr>
+                <th><%= f.label t('address') %></th>
+                <td>
+                  <%= a.text_field :line1 %>
+                </td>
+              </tr>
+              <tr>
+                <th></th>
+                <td>
+                  <%= a.text_field :line2 %>
+                </td>
+              </tr>
+              <tr>
+                <th><%= f.label t('postcode') %></th>
+                <td>
+                  <%= a.text_field :postcode %>
+                </td>
+              </tr>
+              <tr>
+                <th><%= f.label t('city') %></th>
+                <td>
+                  <%= a.fields_for :city do |c| %>
+                    <% if c.object.id %>
+                      <% @cities = City.where(state_name: c.object.state_name).order(:name) %>
+                    <% else %>
+                      <% @cities = City.where(state_name: 'Selangor').order(:name) %>
+                    <% end %>
+                    <%= select_tag "#{a.object.addressable_type.downcase}_city", options_for_select(@cities.map{ |a| [a.name, a.id]}, selected: c.object.id ) %>
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <th><%= f.label t('state') %></th>
+                <td>
+                  <%= a.fields_for :city do |c| %>
+                    <% if c.object.state_name %>
+                      <% selected_state = c.object.state_name %>
+                    <% else %>
+                      <% selected_state = 'Selangor' %>
+                    <% end %>
+                    <%= select_tag "#{a.object.addressable_type.downcase}_state", options_for_select(City.order(:state_name).map{ |a| [a.state_name]}.uniq, selected: selected_state) %>
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <th><%= f.label t('.current_employment_status') %></th>
+                <td><%= f.select :current_employment_status, [[t('.employment_status.own_business'),'own business'],
+                                                  [t('.employment_status.working_studying'),'working studying'],
+                                                  [t('.employment_status.studying'),'studying'],
+                                                  [t('.employment_status.working_business'),'working self business'],
+                                                  [t('.employment_status.part_time_business'),'part time business']] %>
+                </td>
+              </tr>
+            <% end %>
+            
+          </table><br><br><br><br>
+          </div>
+          <div class="span3" style="margin-left:-5px;">
+           
+            <table class="table">
+              <tr><th class="header">Latar Belakang Pendidikan</th></tr>
+            </table>
+
+            <% unless @user.education_background.empty? %>
+              <%#= f.label t('.education') , class: 'control-label' %>
+                <%= f.fields_for :education_background do |s| %>
+                  <div>
+                    <div>
+                      <%= s.select :education_id, options_for_select(Education.all.map{ |a| [a.name,a.id]}, s.object.education_id) %>
+                    </div>
+                    <div class='control-group'>
+                      <%= s.label t('description') %>
+                      <%= s.text_field :description %>
+                    </div>
+                    <div class='control-group'>
+                      <%= s.label t('start_date') %>
+                      <%= s.text_field :start_date %>
+                    </div>
+                    <div class='control-group'>
+                      <%= s.label t('end_date') %>
+                      <%= s.text_field :end_date %>
+                    </div>
+                  </div>
+                  <%= s.link_to_remove t('.remove_education'), class: "btn btn-danger btn-mini" %><br><br>
+                <% end %>
+            <% end %>
+            <%= f.link_to_add "+", :education_background, class: "btn btn-mini", :style => "margin: -35px 0 0 4px;" %>
+            <br>
+
+            <table class="table">
+              <tr><th colspan="2" class="header">Kemahiran</th></tr>
+            </table>
+
+            <% unless @user.experience.empty? %>
+              <%= f.fields_for :experience do |s| %>
+                <div>
+                  <div>
+                    <%= s.select :skill_id, options_for_select(Skill.all.map{ |a| [a.name,a.id]}, s.object.skill_id) %>
+                  </div>
+                  <div class='control-group'>
+                    <%= s.label t('description') %>
+                    <%= s.text_field :description %>
+                  </div>
+                  <div class='control-group'>
+                    <%= s.label t('.experience') %>
+                    <%= s.text_field :experience, { size: '2', maxlength: '2', class: 'input-mini' } %>
+                  </div>
+                </div>
+                  <%= s.link_to_remove t('.remove_skill'), class: "btn btn-danger btn-mini" %>
+                  <br><br>
+                <% end %>
+              <% end %> 
+
+              <%= f.link_to_add "+", :experience, class: "btn btn-mini", :style => "margin: -35px 0 0 4px;" %>
+              <br>
+            </div>
+       
+        </div>
+      </div>
+      <div class="span4">
+        <div class="">
+          <table class="table">
+            
+              <tr><th colspan="2" class="header">Maklumat Perniagaan</th></tr>
+              <!-- <tr>
+                <th><%= f.label t('.has_business_profile') %></th>
+                <td><%= f.check_box :has_business_profile, class: 'bp_checkbox' %></td>
+              </tr> -->
+
+            <%= f.fields_for :business_profile do |bp| %>
+              <tr>
+                <th><%= bp.label t('company_name') %></th>
+                <td><%= bp.text_field :company_name, class: 'text_field' %></td>
+              </tr>
+              <tr>
+                <th><%= bp.label t('.type_of_business') %></th>
+                <td><%= bp.select :type_of_business, Business.order(:name).map{|a| [a.name,a.name]}, { :include_blank => true } %></td>
+              </tr>
+              <tr>
+                <th><%= bp.label t('.registration_number') %></th>
+                <td>
+                  <%= bp.text_field :registration_number %>
+                </td>
+              </tr>
+              <tr>
+                <th><%= bp.label t('category') %></th>
+                <td><%= select("user[business_profile_attributes]", "category", BUSINESS_CATEGORIES, {:selected=> @user.business_profile.category, :include_blank => false}) %></td>
+              </tr>
+              <tr>
+                <th><%= bp.label t('description') %></th>
+                <td><%= bp.text_area :description, class: 'text_area', style: 'height:200px;' %></td>
+              </tr>
+
+              <%= bp.fields_for :business_logo do |bpl| %>
+                <tr>
+                    <th><%= bpl.label t('.upload_business_logo') %></th>
+                    <td><%= bpl.file_field :file, class: 'text-field' %></td>
+                </tr>
+              <% end %>
+
+              <%= bp.fields_for :business_photo do |bph| %>
+                <tr>
+                    <th><%= bph.label t('.upload_business_photo') %></th>
+                    <td><%= bph.file_field :file, class: 'text-field' %></td>
+                  
+                </tr>
+                <tr>
+                    <th><%= bp.label "Penerangan Gambar" %></th>
+                    <td><%= bph.text_field :caption, class: 'text_area', :"data-limit" => 200 %></td>
+                </tr>
+              <% end %>
+
+
+              <tr><th colspan="2" class="header"><br>Alamat Syarikat</th></tr>
+              <%#= bp.fields_for :address do |a| %>
+                <%#= render partial: 'address_fields', locals: { a: a} %>
+              <%# end %>
+                <%= bp.fields_for :address do |a| %>
+                  <tr>
+                    <th><%= a.label t('address') %></th>
+                    <td>
+                      <%= a.text_field :line1 %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th></th>
+                    <td>
+                      <%= a.text_field :line2 %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th><%= a.label t('postcode') %></th>
+                    <td>
+                      <%= a.text_field :postcode %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th><%= a.label t('city') %></th>
+                    <td>
+                      <%= a.fields_for :city do |c| %>
+                        <% if c.object.id %>
+                          <% @cities = City.where(state_name: c.object.state_name).order(:name) %>
+                        <% else %>
+                          <% @cities = City.where(state_name: 'Selangor').order(:name) %>
+                        <% end %>
+                        <%= select_tag "#{a.object.addressable_type.downcase}_city", options_for_select(@cities.map{ |a| [a.name, a.id]}, selected: c.object.id ) %>
+                      <% end %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th><%= a.label t('state') %></th>
+                    <td>
+                      <%= a.fields_for :city do |c| %>
+                        <% if c.object.state_name %>
+                          <% selected_state = c.object.state_name %>
+                        <% else %>
+                          <% selected_state = 'Selangor' %>
+                        <% end %>
+                        <%= select_tag "#{a.object.addressable_type.downcase}_state", options_for_select(City.order(:state_name).map{ |a| [a.state_name]}.uniq, selected: selected_state) %>
+                      <% end %>
+                    </td>
+                  </tr>
+                
+                <% end %>
+              
+              <tr><th colspan="2" class="header"><br>Pelanggan</th></tr>
+              <tr>
+                <th><%= bp.label t('.customers1') %></th>
+                <td>
+                  <%= bp.text_field :customer1 %>
+                </td>
+              </tr>
+              <tr>
+                <th><%= bp.label t('.customers2') %></th>
+                <td>
+                  <%= bp.text_field :customer2 %>
+                </td>
+              </tr>
+              <tr>
+                <th><%= bp.label t('.customers3') %></th>
+                <td>
+                  <%= bp.text_field :customer3 %>
+                </td>
+              </tr>
+          <% end %>
+        </table>
+        </div>
       </div>
     </div>
-    <div class="control-group">
-      <%= f.label :password_confirmation, t('password_confirmation'), :class => 'control-label' %>
-      <div class="controls">
-        <%= f.password_field :password_confirmation, :class => 'text_field' %>
-      </div>
-    </div>
-  <% end %>
-  <div class="control-group">
-    <%= f.label t('ic_number'), :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :ic_number, :class => 'text_field' %>
-    </div>
   </div>
-  <h5>Alamat Rumah</h5>
-  <div id='user_address_fields'>
-    <%= f.fields_for :address do |a| %>
-      <%= render partial: 'address_fields', locals: { a: a} %>
-    <% end %>
-  </div>
-  <div class="control-group">
-    <%= f.label t('phone'), :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :phone, :class => 'text_field' %>
-    </div>
-  </div>
-  <br>
-  <div class='control-group'>
-    <%= f.label t('.twitter_handle'), class: 'control-label' %>
-    <div class='controls'>
-      <%= f.text_field :twitter_handle, class: 'text_field' %>
-    </div>
-  </div>
-  <div class='control-group'>
-    <%= f.label t('.facebook_handle'), class: 'control-label' %>
-    <div class='controls'>
-      <%= f.text_field :facebook_handle, class: 'text_field' %>
-    </div>
-  </div>
-  <br>
-  <div class="control-group">
-    <%= f.fields_for :profile_photo do |pp| %>
-      <%= pp.label t('.upload_profile_photo'), :class => 'control-label' %>
-      <div class="controls">
-        <%= pp.file_field :file, :class => 'text_field' %>
-      </div>
-    <% end %>
-  </div>
-  <div class='control-group'>
+
+  
+  
+ 
+ <!--  <div class='control-group'>
     <%= f.label t('.education') , class: 'control-label' %>
       <div class='controls'>
         <%= f.fields_for :education_background do |s| %>
-        <div>
           <div>
-            <%= s.select :education_id, options_for_select(Education.all.map{ |a| [a.name,a.id]}, s.object.education_id) %>
+            <div>
+              <%= s.select :education_id, options_for_select(Education.all.map{ |a| [a.name,a.id]}, s.object.education_id) %>
+            </div>
+            <div class='control-group'>
+              <%= s.label t('description') %>
+              <%= s.text_field :description %>
+            </div>
+            <div class='control-group'>
+              <%= s.label t('start_date') %>
+              <%= s.text_field :start_date %>
+            </div>
+            <div class='control-group'>
+              <%= s.label t('end_date') %>
+              <%= s.text_field :end_date %>
+            </div>
           </div>
-          <div class='control-group'>
-            <%= s.label t('description') %>
-            <%= s.text_field :description %>
-          </div>
-          <div class='control-group'>
-            <%= s.label t('start_date') %>
-            <%= s.text_field :start_date %>
-          </div>
-          <div class='control-group'>
-            <%= s.label t('end_date') %>
-            <%= s.text_field :end_date %>
-          </div>
-        </div>
-          <%= s.link_to_remove t('.remove_education'), class: "btn btn-danger btn-mini" %>
-          <br><br>
+
+          <%= s.link_to_remove t('.remove_education'), class: "btn btn-danger btn-mini" %><br><br>
         <% end %>
+
         <%= f.link_to_add t('.add_education'), :education_background, class: "btn btn-mini", :style => "margin-top:12px;" %>
         <br>
       </div>
 
   </div>
-  <div class='control-group'>
-    <%= f.label t('.current_employment_status'), class: 'control-label' %>
-    <div class='controls'>
-      <%= f.select :current_employment_status, [[t('.employment_status.own_business'),'own business'],
-                                                [t('.employment_status.working_studying'),'working studying'],
-                                                [t('.employment_status.studying'),'studying'],
-                                                [t('.employment_status.working_business'),'working self business'],
-                                                [t('.employment_status.part_time_business'),'part time business']] %>
-    </div>
-  </div>
+
   <div class='control-group'>
     <%= f.label t('.skills') , class: 'control-label' %>
       <div class='controls'>
@@ -147,147 +380,7 @@
         <%= f.link_to_add t('.add_skill'), :experience, class: "btn btn-mini", :style => "margin-top:12px;" %>
         <br>
       </div>
-
-  </div>
-  <!-- <div>
-    <div class="control-group">
-      <%= f.label t('.has_attended_course'), class: 'control-label'%>
-      <div class='controls'>
-        <%= f.check_box :has_attended_course, class: 'at_checkbox' %>
-      </div>
-    </div>
   </div> -->
-
-  <div id='attended_course_fields'>
-
-    <div class="control-group">
-      <%= label '','program_id', class: 'control-label' %>
-      <div class='controls'>
-        <%= select_tag :program_id, options_for_select( Program.all.map{ |a| [a.name,a.id]},  ), class: 'text_field' %>
-      </div>
-    </div>
-
-    <%= f.fields_for :previous_courses do |pc| %>
-      <div class="control-group">
-        <%= pc.label t('name'), class: 'control-label' %>
-        <div class="controls">
-          <%= pc.text_field :name, class: 'text_field' %>
-        </div>
-      </div>
-      <div class="control-group">
-        <%= pc.label t('venue'), class: 'control-label' %>
-        <div class="controls">
-          <%= pc.text_field :venue, class: 'text_field' %>
-        </div>
-      </div>
-      <div class="control-group">
-        <%= pc.label t('start_date'), class: 'control-label' %>
-        <div class="controls">
-          <%= pc.text_field :start_date, class: 'text_field' %>
-        </div>
-      </div>
-      <div class="control-group">
-        <%= pc.label t('end_date'), class: 'control-label' %>
-        <div class="controls">
-          <%= pc.text_field :end_date, class: 'text_field' %>
-        </div>
-      </div>
-
-    <% end %>
-  </div>
-
-  <div>
-    <div class="control-group">
-      <%= f.label t('.has_business_profile'), class: 'control-label'%>
-      <div class='controls'>
-        <%= f.check_box :has_business_profile, class: 'bp_checkbox' %>
-      </div>
-    </div>
-  </div>
-  <div id='business_fields'>
-    <%= f.fields_for :business_profile do |bp| %>
-      <div class="control-group">
-        <%= bp.label t('category'), class: 'control-label' %>
-        <div class="controls">
-          <%= select("user[business_profile_attributes]", "category", BUSINESS_CATEGORIES, {:selected=> @user.business_profile.category, :include_blank => false}) %>
-        </div>
-      </div>
-      <div class="control-group">
-        <%= bp.label t('.type_of_business'), class: 'control-label' %>
-        <div class="controls">
-          <%= bp.select :type_of_business, Business.order(:name).map{|a| [a.name,a.name]}, { :include_blank => true } %>
-        </div>
-      </div>
-      <div class="control-group">
-        <%= bp.label t('.company_name'), class: 'control-label' %>
-        <div class="controls">
-          <%= bp.text_field :company_name, class: 'text_field' %>
-        </div>
-      </div>
-      <div class="control-group">
-        <%= bp.label t('description'), class: 'control-label' %>
-        <div class="controls">
-          <%= bp.text_area :description, class: 'text_area' %>
-        </div>
-      </div>
-      <div class="control-group">
-        <%= bp.label t('.customers'), class: 'control-label' %>
-        <div class="controls">
-          <%= bp.text_field :customer1 %>
-          <br/>
-          <%= bp.text_field :customer2 %>
-          <br/>
-          <%= bp.text_field :customer3 %>
-        </div>
-      </div>    
-      <div class="control-group">
-        <%= bp.fields_for :business_logo do |bpl| %>
-          <div class='control-group'>
-            <%= bpl.label t('.upload_business_logo'), class: 'control-label' %>
-            <div class='controls'>
-              <%= bpl.file_field :file , class: 'text-field' %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-      <div class="control-group">
-        <%= bp.fields_for :business_photo do |bph| %>
-          <div class='control-group'>
-            <%= bph.label t('.upload_business_photo'), class: 'control-label' %>
-            <div class='controls'>
-              <%= bph.file_field :file , class: 'text-field' %>
-            </div>
-          </div>
-          <div class='control-group'>
-            <%= bp.label "Penerangan Gambar", class: 'control-label' %>
-            <div class='controls'>
-              <%= bph.text_field :caption, class: 'text_area', :"data-limit" => 200 %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-
-      <h5>Alamat Perniagaan</h5>
-
-      <div id='business_address_fields'>
-        <%= bp.fields_for :address do |a| %>
-          <%= render partial: 'address_fields', locals: { a: a} %>
-        <% end %>
-      </div>
-      <div class='control-group'>
-        <%= bp.label t('.business_registered'), class: 'control-label' %>
-        <div class='controls'>
-          <%= bp.check_box :business_registered %>
-        </div>
-      </div>
-      <div id='registration_number_field' class="control-group">
-        <%= bp.label t('.registration_number'), class: 'control-label' %>
-        <div class="controls">
-          <%= bp.text_field :registration_number, class: 'text_field' %>
-        </div>
-      </div>
-    <% end %>
-  </div>
   
   <div class="form-actions">
     <%= f.submit t('update'), :class => 'btn btn-primary' %>
