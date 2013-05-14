@@ -4,7 +4,7 @@
 %table.table.table-striped
   %thead
     %tr
-      %th
+      %th{:style => 'width:auto;'}
         No.
       %th
         = t('course_name')
@@ -48,4 +48,4 @@
                 = t('not_present')
           %td
             = link_to t('view'), course_details_path(course), |
-              class: 'btn'
+              class: 'btn-mini btn btn-secondary'
