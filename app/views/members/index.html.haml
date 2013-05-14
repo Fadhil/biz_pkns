@@ -14,7 +14,8 @@
       = select :search, :state, City.order(:state_name).map{|a| [a.state_name,a.state_name]}.uniq, {:include_blank => true, selected: ''}
     .span3
       %br/
-      = button_tag t('search'), class: 'btn btn-success', :style => "margin-top:8px;"
+      = button_tag t('search'), class: 'btn btn-success', :style => "margin-top:8px;" 
+      %br/
   .row-fluid
     .span12
       %table.table.table-striped
