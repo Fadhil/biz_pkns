@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     respond_to do |format|
-      if @user.role.name == 'admin'
+      if @user.try(:role).try(:name) == 'admin'
         format.html { render 'admin_show'}
       else
         format.html # show.html.erb
