@@ -53,8 +53,13 @@
           <td></td>
         <% end %>
         <td>
-          <%= link_to t('view'),
-                    user_path(user), :class => 'btn btn-mini' %>
+          <% if cannot? :show, User %>
+            <%= link_to t('view'),
+                      '#', :class => 'btn btn-mini', disabled: true%>
+          <% else %>
+            <%= link_to t('view'),
+                      user_path(user), :class => 'btn btn-mini' %>
+          <% end %>
 
         </td>
       </tr>

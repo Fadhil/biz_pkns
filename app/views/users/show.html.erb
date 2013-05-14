@@ -76,8 +76,9 @@
             </td>
           </tr>
           <tr>
-            <th><%= t('.current_employment_status') %></th>
-            <td><%= @user.current_employment_status %></td>
+            <th><%= t('..current_employment_status') %></th>
+            <% status = @user.current_employment_status %>
+            <td><%= t(".employment_status.#{status}") %></td>
           </tr>
         </table><br><br><br><br>
         </div>
