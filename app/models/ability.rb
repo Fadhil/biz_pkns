@@ -18,6 +18,7 @@ class Ability
           can :read, Consultant
           cannot :index, :course
           can :my_courses, :pages
+          can :consultation, :pages
           # can :contact, Consultant do |c|
           #   unless user.email.nil
           # end
@@ -29,7 +30,8 @@ class Ability
           can :read, Consultant
           can :read, :all
           can :my_courses, :pages
-
+          cannot :show, User
+          cannot :consultation, :pages
         end
       elsif resource.is_a?(Consultant)
         can :manage, Consultant, id: resource.id

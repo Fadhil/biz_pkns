@@ -156,9 +156,15 @@ bm:
       type_of_business: 'Jenis Perniagaan'
       company_name: 'Nama Syarikat'
       company_registration_number: 'No. Pendaftaran Syarikat'
-      current_employment_status: 'Status Pekerjaan'
+      current_employment_status: 'Status Semasa'
       twitter_handle: 'ID Twitter'
       facebook_handle: 'ID Facebook'
+      employment_status:
+        own_business: 'Pemilik Perniagaan'
+        working_studying: 'Bekerja/Belajar'
+        studying: 'Belajar'
+        working_business: 'Bekerja/Perniagaan Sendiri'
+        part_time_business: 'Belajar/Perniagaan Sendiri'
     admin_edit:
       title: 'Kemaskini Profil Admin'
     admin_show:

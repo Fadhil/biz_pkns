@@ -115,8 +115,11 @@
                   <li><a href=<%= user_course_listing_path %>><%= t('my_courses') %></a></li>
                 </ul>
               </li>
-              <li><a href=<%= consultation_path %>><%= t('.consultation') %></a></li>
-
+              <% if cannot? :consultation, :pages %>
+                <li><a href='#' style="color:gray"%><%= t('.consultation') %></a></li>
+              <% else %>
+                <li><a href=<%= consultation_path %>><%= t('.consultation') %></a></li>
+              <% end %>
             <% end %>
             
             <% if current_user.admin? %>
