@@ -34,6 +34,7 @@ class Ability
       elsif resource.is_a?(Consultant)
         can :manage, Consultant, id: resource.id
         can :read, Course
+        can :read, User
         can :manage, Course, program_id: resource.try(:program).try(:id)
         can :manage, AttendanceList, program_id: resource.try(:program).try(:id)
       else 
