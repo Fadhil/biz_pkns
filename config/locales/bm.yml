@@ -163,7 +163,7 @@ bm:
         own_business: 'Pemilik Perniagaan'
         working_studying: 'Bekerja/Belajar'
         studying: 'Belajar'
-        working_business: 'Bekerja/Perniagaan Sendiri'
+        working_self_business: 'Bekerja/Perniagaan Sendiri'
         part_time_business: 'Belajar/Perniagaan Sendiri'
     admin_edit:
       title: 'Kemaskini Profil Admin'
