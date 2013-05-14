@@ -14,7 +14,7 @@
         %td= business.name
 
         %td
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_business_path(business), :class => 'btn btn-mini'
+          = link_to t('.edit', :default => t("helpers.links.edit")), edit_business_path(business), :class => 'btn btn-secondary btn-mini'
           = link_to t('.destroy', :default => t("helpers.links.destroy")), business_path(business), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
 
 = link_to t('.new', :default => t("helpers.links.new")), new_business_path, :class => 'btn btn-primary'
