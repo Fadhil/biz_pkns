@@ -11,10 +11,8 @@
       <% else %>
         <% home_page = new_user_session_path %>
       <% end %>
-      <a class="brand" href="<%= home_page %>">BizClub</a>
+      <a class="brand" href="<%= home_page %>"><%= image_tag('brandlogo.png', size: '230x230') %></a>
       <div class="nav-collapse">
-
-        
 
         <ul class="nav pull-right">
           <% if current_user %>
