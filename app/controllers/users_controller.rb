@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.nonadmin.all
     @klass = Class
     respond_to do |format|
       format.html # index.html.erb
@@ -17,7 +17,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      if @user.role.name == 'admin'
+        format.html { render 'admin_show'}
+      else
+        format.html # show.html.erb
+      end
       format.json { render json: @user }
     end
   end
@@ -66,6 +70,14 @@ class UsersController < ApplicationController
       @user.previous_courses.build
     end
 
+    respond_to do |format|
+      if @user.role.name == 'admin'
+        format.html { render 'admin_edit'}
+      else
+        format.html # edit.html.erb
+      end
+      format.json { render json: @user }
+    end
   end
 
   # POST /users

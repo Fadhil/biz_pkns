@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
+
+  scope :nonadmin, includes(:role).where('roles.name != ?','admin')
   before_save :default_values
   def default_values
     self.confirmed ||= 'false'
