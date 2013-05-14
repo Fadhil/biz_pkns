@@ -53,8 +53,8 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :education_background, allow_destroy: true
   has_many :educations, through: :education_background
 
-  has_one :name, class_name: Business, dependent: :destroy 
-  accepts_nested_attributes_for :name, allow_destroy: true
+  # has_one :name, class_name: Business, dependent: :destroy 
+  # accepts_nested_attributes_for :name, allow_destroy: true
 
   has_many :attendances,  class_name: Attendee, dependent: :destroy
 
