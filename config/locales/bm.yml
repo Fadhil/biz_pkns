@@ -385,6 +385,7 @@ bm:
     course_listing: "kursus_akan_datang"
     business_directory: 'direktori'
     my_courses: 'kursus_saya'
+    upcoming_courses: 'kursus_akan_datang'
 
   resources: 
     consultants: 'perunding'

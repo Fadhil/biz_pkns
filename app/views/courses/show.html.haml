@@ -38,59 +38,59 @@
       = t('status')
       \:
   %dd= !@course.status.blank? || @course.status? ? t('active') : t('inactive')
-- if can? :manage, :course
+- if can? :manage, @course
   .form-actions
-  - if can? :manage, @course
-    = link_to t('edit', :default => t("helpers.links.edit")), |
-      edit_course_path(@course), :class => 'btn'              |
-    -#
-    = link_to t('destroy', :default => t("helpers.links.destroy")),                                                 |
-      course_path(@course),                                                                                         |
-      :method => 'delete',                                                                                          |
-      :data => { :confirm => t('confirm', :default => t("helpers.links.confirm", :default => t('are_you_sure'))) }, |
-      :class => 'btn btn-danger'                                                                                                                      
+  = link_to t('edit', :default => t("helpers.links.edit")), |
+    edit_course_path(@course), :class => 'btn'              |
+  -#
+  = link_to t('destroy', :default => t("helpers.links.destroy")),                                                 |
+    course_path(@course),                                                                                         |
+    :method => 'delete',                                                                                          |
+    :data => { :confirm => t('confirm', :default => t("helpers.links.confirm", :default => t('are_you_sure'))) }, |
+    :class => 'btn btn-danger'                                                                                                                      
 
   %br
   %br    
-  - if @course.attendance_list.attendees.count > 0                     
-    .preattendance
-      %h4
-        Preattendance List
-      %table.table.table-striped
-        %thead
-          %tr
-            %th
-              ID
-            %th
-              Name
-            %th
-              Email
-            %th
-              IC Number
-        %tbody
-          - @course.attendance_list.attendees.each_with_index do |attendee, index|
+  - if @course.attendance_list
+    - if @course.attendance_list.attendees.count > 0                     
+      .preattendance
+        %h4
+          Preattendance List
+        %table.table.table-striped
+          %thead
             %tr
-              %td
-                = index + 1
-              %td
-                = attendee.name
-              %td
-                = attendee.email
-              %td
-                = attendee.ic_number
-              %td
-                - if !attendee.attended.nil?
-                  = attendee.attended? ? t('present') : t('not_present')
-                - else
-                  = button_to t('present'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: true)
-                  = button_to t('not_present'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: false)                  
+              %th
+                ID
+              %th
+                Name
+              %th
+                Email
+              %th
+                IC Number
+          %tbody
+            - @course.attendance_list.attendees.each_with_index do |attendee, index|
+              %tr
+                %td
+                  = index + 1
+                %td
+                  = attendee.name
+                %td
+                  = attendee.email
+                %td
+                  = attendee.ic_number
+                %td
+                  - if !attendee.attended.nil?
+                    = attendee.attended? ? t('present') : t('not_present')
+                  - else
+                    = button_to t('present'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: true)
+                    = button_to t('not_present'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: false)                  
 
-      .span2
-        %h5 
-          = t('number_of_attendees')
-      .span2
-        %h5
-          = "#{@course.attendance_list.attendees.count}/#{@course.attendance_list.max_attendees}"
+        .span2
+          %h5 
+            = t('number_of_attendees')
+        .span2
+          %h5
+            = "#{@course.attendance_list.attendees.count}/#{@course.attendance_list.max_attendees}"
 
 
 

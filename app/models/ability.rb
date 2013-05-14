@@ -10,7 +10,6 @@ class Ability
         if resource.admin?
           can :manage, :all
         elsif resource.confirmed
-          puts 'the shit'
           can :manage, User, id: resource.id
           can :read, :all
           can :contact, :all
@@ -23,7 +22,6 @@ class Ability
           #   unless user.email.nil
           # end
         else
-          puts 'feck'
           can :read, :all
           can :manage, User, id: resource.id
           can :contact, :all
@@ -34,7 +32,6 @@ class Ability
         end
       elsif resource.is_a?(Consultant)
         can :manage, Consultant, id: resource.id
-        can :read, Course
         can :read, User
         can :manage, Course, program_id: resource.try(:program).try(:id)
         can :manage, AttendanceList, program_id: resource.try(:program).try(:id)
