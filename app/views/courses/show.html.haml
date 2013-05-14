@@ -1,6 +1,6 @@
 - model_class = Course
 .page-header
-  %h1= t @course.name
+  %h1= @course.name
 %dl.dl-horizontal
   %dt
     %strong
@@ -38,13 +38,7 @@
       = t('status')
       \:
   %dd= !@course.status.blank? || @course.status? ? t('active') : t('inactive')
-
--if current_user
-  - if !current_user.courses.include?(@course)
-    = form_tag user_course_registration_path({id: @course.id, user_id: current_user.id}), method: :put do
-      = button_tag t('register_course'), confirm: t('confirm_register_course')
-
-- if can? :manage, @course
+- if can? :manage, :course
   .form-actions
   - if can? :manage, @course
     = link_to t('edit', :default => t("helpers.links.edit")), |
@@ -54,7 +48,19 @@
       course_path(@course),                                                                                         |
       :method => 'delete',                                                                                          |
       :data => { :confirm => t('confirm', :default => t("helpers.links.confirm", :default => t('are_you_sure'))) }, |
-      :class => 'btn btn-danger'                                                           
+      :class => 'btn btn-danger'                                                                                    
+
+- if can? :manage, @course
+  .form-actions
+
+  = link_to t('edit', :default => t("helpers.links.edit")), |
+    edit_course_path(@course), :class => 'btn'              |
+  -#
+  = link_to t('destroy', :default => t("helpers.links.destroy")),                                                 |
+    course_path(@course),                                                                                         |
+    :method => 'delete',                                                                                          |
+    :data => { :confirm => t('confirm', :default => t("helpers.links.confirm", :default => t('are_you_sure'))) }, |
+    :class => 'btn btn-danger'                                                           
 
   %br
   %br    
@@ -97,3 +103,9 @@
       .span2
         %h5
           = "#{@course.attendance_list.attendees.count}/#{@course.attendance_list.max_attendees}"
+
+
+
+
+
+

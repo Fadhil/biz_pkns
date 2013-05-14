@@ -25,6 +25,7 @@ bm:
   consultant: 'Perunding'
   contact: 'Hubungi'
   contact_consultant: 'Email kepada perunding'
+  create_course: 'Cipta Kursus'
   customers: 'Pelanggan'
   date_tarikh: 'Tarikh'
   description: 'Huraian'

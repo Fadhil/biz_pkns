@@ -63,4 +63,4 @@
   = paginate @courses
 
 - if can? :manage, Course
-  = link_to t('.create_course', :default => t("helpers.links.new")), new_course_path, :class => 'btn btn-primary' 
+  = link_to t('create_course', :default => t("helpers.links.new")), new_course_path, :class => 'btn btn-primary' 

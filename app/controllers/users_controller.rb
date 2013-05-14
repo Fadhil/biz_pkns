@@ -115,8 +115,10 @@ class UsersController < ApplicationController
         @user.business_profile.set_city(business_city_id) unless business_city_id.blank?
         unless @user.try(:role).try(:name) == 'admin'
           previous_course = @user.previous_courses.last
-          previous_course.program = program unless program.nil?
-          previous_course.save
+          unless previous_course.nil?
+            previous_course.program = program unless program.nil?
+            previous_course.save
+          end
         end
         format.html { redirect_to @user, notice: I18n.t('successfully_updated', resource: t('profile'))  }
         format.json { head :no_content }
