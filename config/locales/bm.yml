@@ -139,9 +139,9 @@ bm:
       business_registered: 'Perniagaan Berdaftar'
       registration_number: 'No. Pendaftaran Syarikat'
       update_user: 'Kemaskini'   
-      customers1: 'Pelanggan 1'
-      customers2: 'Pelanggan 2'
-      customers3: 'Pelanggan 3'
+      customers1: ' #1'
+      customers2: ' #2'
+      customers3: ' #3'
     form_new:  
       create_user: 'Daftar Ahli'
       cancel: 'Batal'

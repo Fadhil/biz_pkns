@@ -126,8 +126,20 @@
                 </td>
               </tr>
             <% end %>
-            
-          </table><br><br><br><br>
+            <tr>
+              <th></th>
+              <td>
+                <% if can? :manage, :all %>
+                    <div class='span3'>
+                      <%= f.radio_button :is_active, true %>
+                      <%= t('active') %>&nbsp;&nbsp;
+                      <%= f.radio_button :is_active, false %>
+                      <%= t('inactive') %>
+                    </div>
+                <% end %>
+              </td>
+            </tr>
+          </table><br><br><br><br><br><br><br><br><br><br><br>
           </div>
           <div class="span3" style="margin-left:-5px;">
            
@@ -381,150 +393,7 @@
         <br>
       </div>
   </div> -->
-
-  <div id='attended_course_fields'>
-
-    <div class="control-group">
-      <%= label '','program_id', class: 'control-label' %>
-      <div class='controls'>
-        <%= select_tag :program_id, options_for_select( Program.all.map{ |a| [a.name,a.id]},  ), class: 'text_field' %>
-      </div>
-    </div>
-
-    <%= f.fields_for :previous_courses do |pc| %>
-      <div class="control-group">
-        <%= pc.label t('name'), class: 'control-label' %>
-        <div class="controls">
-          <%= pc.text_field :name, class: 'text_field' %>
-        </div>
-      </div>
-      <div class="control-group">
-        <%= pc.label t('venue'), class: 'control-label' %>
-        <div class="controls">
-          <%= pc.text_field :venue, class: 'text_field' %>
-        </div>
-      </div>
-      <div class="control-group">
-        <%= pc.label t('start_date'), class: 'control-label' %>
-        <div class="controls">
-          <%= pc.text_field :start_date, class: 'text_field' %>
-        </div>
-      </div>
-      <div class="control-group">
-        <%= pc.label t('end_date'), class: 'control-label' %>
-        <div class="controls">
-          <%= pc.text_field :end_date, class: 'text_field' %>
-        </div>
-      </div>
-
-    <% end %>
-  </div>
-
-  <div>
-    <div class="control-group">
-      <%= f.label t('.has_business_profile'), class: 'control-label'%>
-      <div class='controls'>
-        <%= f.check_box :has_business_profile, class: 'bp_checkbox' %>
-      </div>
-    </div>
-  </div>
-  <div id='business_fields'>
-    <%= f.fields_for :business_profile do |bp| %>
-      <div class="control-group">
-        <%= bp.label t('category'), class: 'control-label' %>
-        <div class="controls">
-          <%= select("user[business_profile_attributes]", "category", BUSINESS_CATEGORIES, {:selected=> @user.business_profile.category, :include_blank => false}) %>
-        </div>
-      </div>
-      <div class="control-group">
-        <%= bp.label t('.type_of_business'), class: 'control-label' %>
-        <div class="controls">
-          <%= bp.select :type_of_business, Business.order(:name).map{|a| [a.name,a.name]}, { :include_blank => true } %>
-        </div>
-      </div>
-      <div class="control-group">
-        <%= bp.label t('.company_name'), class: 'control-label' %>
-        <div class="controls">
-          <%= bp.text_field :company_name, class: 'text_field' %>
-        </div>
-      </div>
-      <div class="control-group">
-        <%= bp.label t('description'), class: 'control-label' %>
-        <div class="controls">
-          <%= bp.text_area :description, class: 'text_area' %>
-        </div>
-      </div>
-      <div class="control-group">
-        <%= bp.label t('.customers'), class: 'control-label' %>
-        <div class="controls">
-          <%= bp.text_field :customer1 %>
-          <br/>
-          <%= bp.text_field :customer2 %>
-          <br/>
-          <%= bp.text_field :customer3 %>
-        </div>
-      </div>    
-      <div class="control-group">
-        <%= bp.fields_for :business_logo do |bpl| %>
-          <div class='control-group'>
-            <%= bpl.label t('.upload_business_logo'), class: 'control-label' %>
-            <div class='controls'>
-              <%= bpl.file_field :file , class: 'text-field' %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-      <div class="control-group">
-        <%= bp.fields_for :business_photo do |bph| %>
-          <div class='control-group'>
-            <%= bph.label t('.upload_business_photo'), class: 'control-label' %>
-            <div class='controls'>
-              <%= bph.file_field :file , class: 'text-field' %>
-            </div>
-          </div>
-          <div class='control-group'>
-            <%= bp.label "Penerangan Gambar", class: 'control-label' %>
-            <div class='controls'>
-              <%= bph.text_field :caption, class: 'text_area', :"data-limit" => 200 %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-
-      <h5>Alamat Perniagaan</h5>
-
-      <div id='business_address_fields'>
-        <%= bp.fields_for :address do |a| %>
-          <%= render partial: 'address_fields', locals: { a: a} %>
-        <% end %>
-      </div>
-      <div class='control-group'>
-        <%= bp.label t('.business_registered'), class: 'control-label' %>
-        <div class='controls'>
-          <%= bp.check_box :business_registered %>
-        </div>
-      </div>
-      <div id='registration_number_field' class="control-group">
-        <%= bp.label t('.registration_number'), class: 'control-label' %>
-        <div class="controls">
-          <%= bp.text_field :registration_number, class: 'text_field' %>
-        </div>
-      </div>
-    <% end %>
-
-        <br><br>
-    <% if can? :manage, :all %>
-      <div class="row-fluid">
-        <div class='span3'>
-
-          <%= f.radio_button :is_active, true%>
-          <%= t('active') %>
-          <%= f.radio_button :is_active, false%>
-          <%= t('inactive') %>
-        </div>
-      </div>
-    <% end %>
-  </div>
+  
   
   <div class="form-actions">
     <%= f.submit t('update'), :class => 'btn btn-primary' %>
