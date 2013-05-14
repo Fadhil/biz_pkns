@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
 
-  scope :nonadmin, includes(:role).where('roles.name != ?','admin')
+  scope :nonadmin, where(:role_id=> nil)
   before_save :default_values
   def default_values
     self.confirmed ||= 'false'
@@ -103,7 +103,9 @@ class User < ActiveRecord::Base
   end
 
   def full_business_address
-    self.business_profile.address.line1 + ' ' + self.business_profile.address.line2 + ', ' + self.business_profile.address.city.name + ' ' + self.business_profile.address.postcode + ', ' + self.business_profile.address.city.state_name unless self.business_profile.address.city.nil?
+    unless self.business_profile.nil?
+      self.business_profile.address.line1 + ' ' + self.business_profile.address.line2 + ', ' + self.business_profile.address.city.name + ' ' + self.business_profile.address.postcode + ', ' + self.business_profile.address.city.state_name unless self.business_profile.address.city.nil?
+    end
   end
 
   def active_for_authentication?
