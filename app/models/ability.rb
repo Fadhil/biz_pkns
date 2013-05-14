@@ -9,8 +9,9 @@ class Ability
       if resource.is_a?(User)
         if resource.admin?
           can :manage, :all
-        elsif resource.confirmed?
-          #can :read, :all
+        elsif resource.confirmed
+          puts 'not in here'
+          can :read, :all
           can :manage, User, id: resource.id
           can :contact, :all
           can :sent, :all
@@ -21,7 +22,14 @@ class Ability
           #   unless user.email.nil
           # end
         else
-          cannot :all, User
+          puts 'but in here'
+          can :manage, User, id: resource.id
+          can :contact, :all
+          can :sent, :all
+          can :read, Consultant
+          can :read, :all
+          can :my_courses, :pages
+
         end
       elsif resource.is_a?(Consultant)
         can :manage, Consultant, id: resource.id
