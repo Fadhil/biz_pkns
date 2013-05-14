@@ -5,9 +5,10 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= t('.name') %></th>
-      <th><%= t('company_name') %></th>
-      <th><%= t('program') %></th>
+      <th style="width:auto;"><%= t('.name') %></th>
+      <th style="width:auto;"><%= t('company_name') %></th>
+      <th style="width:auto;"><%= t('program') %></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -18,7 +19,7 @@
         <td><%= consultant.program.name unless consultant.program.nil? %></td> 
         <td>
           <%= link_to t('view', :default => t("helpers.links.edit")),
-                      consultant_path(consultant), :class => 'btn btn-mini' %>
+                      consultant_path(consultant), :class => 'btn btn-secondary btn-mini' %>
           <%= link_to t('destroy', :default => t("helpers.links.destroy")),
                       consultant_path(consultant),
                       :method => :delete,

@@ -165,7 +165,7 @@ label, input, button, select, textarea {
   border-radius:2px; 
 }
 
-.btn:hover, .btn:focus {
+.btn:hover, .btn:focus, .btn:visited {
   background-color: #FF8668;
   color:#FFF;
   -webkit-transition: 0.25s;
@@ -205,10 +205,16 @@ label, input, button, select, textarea {
   padding-bottom: 12px;
   padding-top: 13px; }
 .btn.btn-primary {
-  background-color: #1abc9c; }
+  background-color: #34495E; }
   .btn.btn-primary:hover, .btn.btn-primary:focus {
     background-color: #2fe2bf; }
   .btn.btn-primary:active, .btn.btn-primary.active {
+    background-color: #344900; }
+.btn.btn-secondary {
+  background-color: #1abc9c; }
+  .btn.btn-secondary:hover, .btn.btn-secondary:focus {
+    background-color: #2fe2bf; }
+  .btn.btn-secondary:active, .btn.btn-secondary.active {
     background-color: #16a085; }
 .btn.btn-info {
   background-color: #3498db; }
