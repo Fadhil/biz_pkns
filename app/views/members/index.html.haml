@@ -15,43 +15,39 @@
     .span3
       %br/
       = button_tag t('search'), class: 'btn btn-success', :style => "margin-top:8px;"
-%table.table.table-striped
-  %thead
-    %tr
-      %th= t('name')
-      %th= t('membership_num')
-      %th= t('program')
-      %th= t('status')
-  %tbody
-    - @users.each_with_index do |user,i|
-      %tr
-        %td= link_to "#{user.first_name} #{user.last_name}", user_path(user)
-        %td
-          - if user.confirmed? && user.membership
-            = user.membership.member_number
-          - else
-            NIL
-        %td
-          - user.programs.uniq.each do |program|
-            %p= program.name
-        - if user.current_employment_status == 'own business'
-          %td Pemilik Perniagaan
-        - elsif user.current_employment_status == 'working studying'
-          %td Bekerja/Belajar
-        - elsif user.current_employment_status == 'studying'
-          %td Belajar
-        - elsif user.current_employment_status == 'working self business'
-          %td Bekerja/Perniagaan Sendiri
-        - elsif user.current_employment_status == 'Belajar/Perniagaan Sampingan'
-          %td Pemilik Perniagaan
-        - else
-          %td Nil
-        %td
-          = link_to t('view'),                        |
-            user_path(user), :class => 'btn btn-mini' 
-          -if can? :manage, @user
-            =  link_to t('destroy', :default => t("helpers.links.destroy")),
-                        user_path(user),
-                        :method => :delete,
-                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                        :class => 'btn btn-mini btn-danger'
+  .row-fluid
+    .span12
+      %table.table.table-striped
+        %thead
+          %tr
+            %th{:style => "width:auto"}= t('name')
+            %th= t('membership_num')
+            %th{:style => "width:250px;"}= t('program')
+            %th{:style => "width:200px;"}= t('status')
+        %tbody
+          - @users.each_with_index do |user,i|
+            %tr
+              %td= link_to "#{user.first_name} #{user.last_name}", user_path(user)
+              %td
+                - if user.confirmed? && user.membership
+                  = user.membership.member_number
+                - else
+                  NIL
+              %td
+                - user.programs.each do |program|
+                  %p= program.name
+              - if user.current_employment_status == 'own business'
+                %td Pemilik Perniagaan
+              - elsif user.current_employment_status == 'working studying'
+                %td Bekerja/Belajar
+              - elsif user.current_employment_status == 'studying'
+                %td Belajar
+              - elsif user.current_employment_status == 'working self business'
+                %td Bekerja/Perniagaan Sendiri
+              - elsif user.current_employment_status == 'Belajar/Perniagaan Sampingan'
+                %td Pemilik Perniagaan
+              - else
+                %td Nil
+              %td
+                = link_to t('view'),                        |
+                  user_path(user), :class => 'btn btn-mini' |
