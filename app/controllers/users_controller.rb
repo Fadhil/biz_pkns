@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.nonadmin.all
+    @users = User.all
     @klass = Class
     respond_to do |format|
       format.html # index.html.erb
