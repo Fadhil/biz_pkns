@@ -128,4 +128,20 @@ class User < ActiveRecord::Base
     biz_id_string = "BIZ" + "0"*(MEMBER_NUMBER_DIGITS - biz_id.size) + biz_id
     biz_id_string
   end
+
+  def self.remove_inactive_users
+    inactive_users = User.where('confirmed <> ? and created_at < ?', true, 30.days.ago)
+    puts "Found #{inactive_users.count} inactive users\n"
+    puts "About to delete them...\n"
+    inactive_users.each do |i|
+      i.unit = "Uniteless"
+      i.save
+    end
+    if inactive_users.empty?
+      puts "Inactive users all deleted\n"
+    end
+
+    puts "Finished task remove inactive users"
+
+  end
 end
