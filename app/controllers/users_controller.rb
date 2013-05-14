@@ -71,7 +71,7 @@ class UsersController < ApplicationController
     end
 
     respond_to do |format|
-      if @user.role.name == 'admin'
+      if @user.try(:role).try(:name) == 'admin'
         format.html { render 'admin_edit'}
       else
         format.html # edit.html.erb
