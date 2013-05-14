@@ -58,6 +58,8 @@ class User < ActiveRecord::Base
 
   has_many :attendances,  class_name: Attendee, dependent: :destroy
 
+  has_one :membership, dependent: :destroy
+
   belongs_to :role
 
   def super_admin?
@@ -108,7 +110,20 @@ class User < ActiveRecord::Base
     super && self.is_active?
   end
 
-  def generate_member_id
-    
+  def make_member
+    if self.membership.nil?
+      self.membership = Membership.create
+      self.membership.member_number = generate_member_id(self.membership.id)
+      self.membership.save
+      self.confirmed = true
+    end
+  end
+
+  def generate_member_id(id)
+    puts 'in here mate'
+    puts "the id: #{id}"
+    biz_id = (id + 499).to_s #start at 500
+    biz_id_string = "BIZ" + "0"*(MEMBER_NUMBER_DIGITS - biz_id.size) + biz_id
+    biz_id_string
   end
 end

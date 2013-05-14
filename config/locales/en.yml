@@ -66,6 +66,7 @@ en:
   status: 'Status'
   subject: 'Subject'
   successfully_registered_course: 'Successfully Registered Course'
+  successfully_updated_attendance: 'Successfully Updated Attendance'
   unit: 'Unit'
   update: 'Update'
   upload_profile_photo: 'Upload Profile Photo'

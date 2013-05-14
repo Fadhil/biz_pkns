@@ -133,16 +133,27 @@ class MembersController < ApplicationController
   end
 
   def update_attendance
-    @user = User.find(params[:user_id]) rescue nil 
-    @attendance = Attendee.find(params[:attendee_id]) rescue nil
-    @course = Course.find(params[:course_id]) rescue nil
-    @attended = params[:attended]
+    user = User.find(params[:user_id]) rescue nil 
+    attendance = Attendee.find(params[:attendee_id]) rescue nil
+    course = Course.find(params[:course_id]) rescue nil
+    attended = params[:attended]
 
-    @attendance.attended = @attended
-    @attendance.save
+    attendance.attended = attended
 
-    if @attended
-      @user.generate_member_id
+    if attended
+      puts 'inside here fucer'
+      user.make_member
+    end
+
+    if user.save && attendance.save
+      respond_to do |format|
+        format.html do
+          @course = course
+          flash[:notice] = t('successfully_updated_attendance')
+          redirect_to course_details_path(course)
+          #render action: '../pages/upcoming_courses_show'
+        end
+      end
     end
 
   end

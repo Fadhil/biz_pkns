@@ -71,6 +71,7 @@ bm:
   status: 'Status'
   subject: 'Perkara'
   successfully_registered_course: 'Pendaftaran Kursus Berjaya.'
+  successfully_updated_attendance: 'Kehadiran Berjaya Dikemaskini'
   unit: 'Unit'
   update: 'Kemaskini'
   upload_profile_photo: 'Muat Naik Gambar Profil'
