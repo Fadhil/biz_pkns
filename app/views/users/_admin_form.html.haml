@@ -1,0 +1,46 @@
+= nested_form_for @user, :html => { :class => 'form-horizontal', multipart: true } do |f|
+  .control-group
+    = f.label t('first_name'), :class => 'control-label'
+    .controls
+      = f.text_field :first_name, :class => 'text_field'
+  .control-group
+    = f.label t('last_name'), :class => 'control-label'
+    .controls
+      = f.text_field :last_name, :class => 'text_field'
+  .control-group
+    = f.label t('staff_number'), class: 'control-label'
+    .controls
+      = f.text_field :staff_number, class: 'text_field'
+  .control-group
+    = f.label t('section'), class: 'control-label'
+    .controls
+      = f.text_field :section, class: 'text_field'
+  .control-group
+    = f.label t('unit'), class: 'control-label'
+    .controls
+      = f.text_field :unit, class: 'text_field'
+  .control-group
+    = f.label t('ic_number'), :class => 'control-label'
+    .controls
+      = f.text_field :ic_number, :class => 'text_field'
+  .control-group
+    = f.label t('phone'), :class => 'control-label'
+    .controls
+      = f.text_field :phone, :class => 'text_field'
+  %br/
+  .control-group
+    = f.label t('email'), :class => 'control-label'
+    .controls
+      = f.text_field :email, :class => 'text_field'
+  .control-group
+    = f.fields_for :profile_photo do |pp|
+      = pp.label t('upload_profile_photo'), :class => 'control-label'
+      .controls
+        = pp.file_field :file, :class => 'text_field'
+ 
+    %br/
+    %br/
+  .form-actions
+    = f.submit t('update'), :class => 'btn btn-primary'
+    = link_to t('cancel', :default => t("helpers.links.cancel")), |
+      users_path, :class => 'btn btn-primary'                     |

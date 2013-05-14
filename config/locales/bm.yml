@@ -57,17 +57,21 @@ bm:
   search_by_state: 'Carian mengikut negeri'
   search_by_skill: 'Carian mengikut kemahiran'
   search_by_company_name: 'Carian Nama Syarikat'
+  section: 'Bahagian'
   select_a_program: 'Pilih Program'
   send: 'Hantar'
   send_password_instructions: "Hantarkan arahan tukar kata laluan"
   setting: 'Tetapan'
   sign_up: 'Daftar Sebagai Ahli'
   sign_in: 'Daftar Masuk'
+  staff_number: 'Nombor Staf'
   state: 'Negeri'
   status: 'Status'
   subject: 'Perkara'
   successfully_registered_course: 'Pendaftaran Kursus Berjaya.'
+  unit: 'Unit'
   update: 'Kemaskini'
+  upload_profile_photo: 'Muat Naik Gambar Profil'
   venue: 'Tempat'
   years: 'tahun'
 
@@ -147,6 +151,11 @@ bm:
       current_employment_status: 'Status Pekerjaan'
       twitter_handle: 'ID Twitter'
       facebook_handle: 'ID Facebook'
+    admin_edit:
+      title: 'Kemaskini Profil Admin'
+    admin_show:
+      title: 'Profil Admin'
+      staff_details: 'Maklumat Staf'
 
   admin:
     index:

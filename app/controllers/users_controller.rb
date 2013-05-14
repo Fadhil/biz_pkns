@@ -104,17 +104,20 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     city_id = params[:user_city]
     business_city_id = params[:businessprofile_city]
-
-    params[:user][:address_attributes].delete :city_attributes
-    program = Program.find(params[:program_id])
+    if params[:user][:address_attributes]
+      params[:user][:address_attributes].delete :city_attributes
+    end
+    program = Program.find(params[:program_id]) rescue nil
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        @user.set_city(city_id)
-        @user.business_profile.set_city(business_city_id)
-        previous_course = @user.previous_courses.last
-        previous_course.program = program
-        previous_course.save
+        @user.set_city(city_id) unless city_id.blank?
+        @user.business_profile.set_city(business_city_id) unless business_city_id.blank?
+        unless @user.role.name == 'admin'
+          previous_course = @user.previous_courses.last
+          previous_course.program = program unless program.nil?
+          previous_course.save
+        end
         format.html { redirect_to @user, notice: I18n.t('successfully_updated', resource: t('profile'))  }
         format.json { head :no_content }
       else
