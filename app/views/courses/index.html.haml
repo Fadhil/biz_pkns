@@ -10,7 +10,7 @@
     %tr
       %th
         = t('course_name')
-      %th(width="30%")
+      %th{:style => "width:100px;"}
         = t('description')
       %th
         = t('program_name')
@@ -20,8 +20,6 @@
         = t('end_date')
       %th
         = t('active')
-      %th
-        = t('.share') 
       %th
       
     %tbody
@@ -40,11 +38,8 @@
             = course.end_date
           %td
             = course.status? ? t('active') : t('inactive')
-          %td
-            =# mail_to t('share', :default => t("helpers.links.share")),
-                          course_path(course), :class => 'btn btn-mini' 
+          %td{:style => "width:220px;"}
             = mail_to "example@example.com", t('.share'), :subject => "Ada kursus menarik dari PKNS - #{course.try(:program).try(:name)}", :body => "Ada kursus menarik dari PKNS. Sila lewati #{"http://"+request.host+course_path(course)}. \n\nAnda perlu berdaftar dengan BizClub untuk hadiri kursus. \n\nMaklumat Kursus \nKursus : #{course.try(:program).try(:name)} \nHuraian : #{course.try(:program).try(:description)} \nTarikh : #{course.start_date}", :class => 'btn btn-mini'
-          %td
             = link_to t('view', :default => t("helpers.links.edit")),
                           course_path(course), :class => 'btn btn-mini' 
             - if can? :destroy, Course
