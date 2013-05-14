@@ -381,6 +381,8 @@
         <br>
       </div>
   </div> -->
+<<<<<<< HEAD
+=======
 
   <div id='attended_course_fields'>
 
@@ -525,6 +527,7 @@
       </div>
     <% end %>
   </div>
+>>>>>>> 8db1ec315ff5cf001845acc02056817df479026d
   
   <div class="form-actions">
     <%= f.submit t('update'), :class => 'btn btn-primary' %>

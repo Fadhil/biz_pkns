@@ -85,6 +85,19 @@
         </div>
       </div>
     <% end %>
+
+    <br><br>
+    <% if can? :manage, :all %>
+      <div class="row-fluid">
+        <div class='span3'>
+
+          <%= f.radio_button :is_active, true%>
+          <%= t('active') %>
+          <%= f.radio_button :is_active, false%>
+          <%= t('inactive') %>
+        </div>
+      </div>
+    <% end %>
   </div>
 
   <div class="form-actions" style="margin-left:-150px;">

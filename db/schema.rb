@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130512161533) do
+ActiveRecord::Schema.define(:version => 20130514060639) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(:version => 20130512161533) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "company_name"
+    t.boolean  "is_active"
   end
 
   add_index "consultants", ["email"], :name => "index_consultants_on_email", :unique => true
@@ -151,6 +152,13 @@ ActiveRecord::Schema.define(:version => 20130512161533) do
 
   add_index "educations_users", ["education_id", "user_id"], :name => "index_educations_users_on_education_id_and_user_id"
   add_index "educations_users", ["user_id", "education_id"], :name => "index_educations_users_on_user_id_and_education_id"
+
+  create_table "memberships", :force => true do |t|
+    t.string   "member_number"
+    t.integer  "user_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "previous_courses_users", :id => false, :force => true do |t|
     t.integer "previous_course_id"
@@ -215,6 +223,10 @@ ActiveRecord::Schema.define(:version => 20130512161533) do
     t.string   "facebook_handle"
     t.string   "current_employment_status"
     t.integer  "role_id"
+    t.boolean  "is_active"
+    t.string   "staff_number"
+    t.string   "section"
+    t.string   "unit"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

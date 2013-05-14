@@ -4,6 +4,7 @@
 en:
   active: 'Active'
   inactive: 'Inactive'
+  is_active: 'Active'
   are_you_sure: 'Are you sure?'
   back: 'Back'
   edit: 'Edit'
@@ -30,6 +31,7 @@ en:
   did_not_receive_confirmation: "Didn't receive confirmation instructions?"
   forgot_your_password: 'Forgot your password?'
   message: 'Message'
+  member: 'Member'
   my_courses: 'My Courses'
   name: 'Name'
   new_consultant: 'New Consultant'
@@ -39,6 +41,8 @@ en:
   password_confirmation: 'Password Confirmation'
   phone: 'Phone Number'
   postcode: 'Postcode'
+  present: 'Present'
+  not_present: 'Not Present'
   profile: 'Profile'
   program: 'Program'
   register: 'Admin'
@@ -49,6 +53,7 @@ en:
   search_by_city: 'Search by City'
   search_by_category: 'Search by Business Category'
   search_by_state: 'Search by State'
+  section: 'Section'
   select_a_program: 'Select a Program'
   search_by_company_name: 'Search by Business Name'
   send: 'Send'
@@ -56,11 +61,15 @@ en:
   setting: 'Setting'
   sign_up: 'Sign Up'
   sign_in: 'Sign In'
+  staff_number: 'Staff Number'
   state: 'State'
   status: 'Status'
   subject: 'Subject'
   successfully_registered_course: 'Successfully Registered Course'
+  successfully_updated_attendance: 'Successfully Updated Attendance'
+  unit: 'Unit'
   update: 'Update'
+  upload_profile_photo: 'Upload Profile Photo'
   venue: 'Venue'
   years: 'years'
 
@@ -127,6 +136,11 @@ en:
       type_of_business: 'Type of Business'
       company_name: 'Company Name'
       company_registration_number: 'Company Registration Number'
+    admin_edit:
+      title: 'Edit Admin Profile'
+    admin_show:
+      title: 'Admin Profile'
+      staff_details: 'Staff Details'
 
   consultants:
     index:
@@ -202,6 +216,9 @@ en:
     index:
       title: 'Members Directory'
       search_member: 'Search member'
+    program_member_list: 
+      title: 'Program Members'
+      search_member: 'Search Member'
 
   #Stuff in the header
   layouts:

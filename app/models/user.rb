@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
+
+  scope :nonadmin, where(:role_id=> nil)
   before_save :default_values
   def default_values
     self.confirmed ||= 'false'
@@ -18,6 +20,7 @@ class User < ActiveRecord::Base
   attr_accessible :created_at, :address_attributes
   attr_accessible :twitter_handle, :facebook_handle, :current_employment_status
   attr_accessible :education_background_attributes, :experience_attributes, :businesses_attributes, :role_id
+  attr_accessible :staff_number, :section, :unit
 
   validates_uniqueness_of :ic_number
   validates_format_of :ic_number, with:  /^\d{6}\-\d{2}\-\d{4}$/, :message => I18n.t('errors.ic_format')
@@ -52,6 +55,10 @@ class User < ActiveRecord::Base
 
   has_one :name, class_name: Business, dependent: :destroy 
   accepts_nested_attributes_for :name, allow_destroy: true
+
+  has_many :attendances,  class_name: Attendee, dependent: :destroy
+
+  has_one :membership, dependent: :destroy
 
   belongs_to :role
 
@@ -96,6 +103,29 @@ class User < ActiveRecord::Base
   end
 
   def full_business_address
-    self.business_profile.address.line1 + ' ' + self.business_profile.address.line2 + ', ' + self.business_profile.address.city.name + ' ' + self.business_profile.address.postcode + ', ' + self.business_profile.address.city.state_name unless self.business_profile.address.city.nil?
+    unless self.business_profile.nil?
+      self.business_profile.address.line1 + ' ' + self.business_profile.address.line2 + ', ' + self.business_profile.address.city.name + ' ' + self.business_profile.address.postcode + ', ' + self.business_profile.address.city.state_name unless self.business_profile.address.city.nil?
+    end
+  end
+
+  def active_for_authentication?
+    super && self.is_active?
+  end
+
+  def make_member
+    if self.membership.nil?
+      self.membership = Membership.create
+      self.membership.member_number = generate_member_id(self.membership.id)
+      self.membership.save
+      self.confirmed = true
+    end
+  end
+
+  def generate_member_id(id)
+    puts 'in here mate'
+    puts "the id: #{id}"
+    biz_id = (id + 499).to_s #start at 500
+    biz_id_string = "BIZ" + "0"*(MEMBER_NUMBER_DIGITS - biz_id.size) + biz_id
+    biz_id_string
   end
 end

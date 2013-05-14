@@ -126,7 +126,7 @@
         <% end %>
         <tr>
           <th><%= t('.company_name') %></th>
-          <td><%= @user.business_profile.company_name%></td>
+          <td><%= @user.business_profile.company_name unless @user.business_profile.nil? %></td>
         </tr>
         <tr>
           <th><%= t('address') %></th>
@@ -134,19 +134,19 @@
         </tr>
         <tr>
           <th><%= t('description') %></th>
-          <td><%= @user.business_profile.description%></td>
+          <td><%= @user.business_profile.description unless @user.business_profile.nil? %></td>
         </tr>
         <tr>
           <th><%= t('category') %></th>
-          <td><%= @user.business_profile.category %></td>
+          <td><%= @user.business_profile.category unless @user.business_profile.nil?%></td>
         </tr>
         <tr>
           <th><%= t('.type_of_business') %></th>
-          <td><%= @user.business_profile.type_of_business %></td>
+          <td><%= @user.business_profile.type_of_business unless @user.business_profile.nil?%></td>
         </tr>
         <tr>
           <th><%= t('.company_registration_number') %></th>
-          <td><%= @user.business_profile.registration_number%></td>
+          <td><%= @user.business_profile.registration_number unless @user.business_profile.nil?%></td>
         </tr>
 
         <% unless @user.business_profile.business_photo.nil? %>

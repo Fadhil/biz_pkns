@@ -4,13 +4,13 @@ class MembersController < ApplicationController
   # GET /users.json
   def index
 
-    @users = User.all
+    @users = User.nonadmin.all
     if params[:search].present?
       if params[:search][:term].blank?
-        @users = User.order("id desc")
+        @users = User.nonadmin.order("id desc")
       else
         search_terms = params[:search][:term].split(' ').join('%')
-        @users = User.where("concat(LOWER(first_name), ' ', LOWER(last_name)) like ?","%#{search_terms}%")
+        @users = User.nonadmin.where("concat(LOWER(first_name), ' ', LOWER(last_name)) like ?","%#{search_terms}%")
       end
 
       if !params[:search][:state].blank? || !params[:search][:skill].blank?
@@ -110,6 +110,52 @@ class MembersController < ApplicationController
       format.html { redirect_to users_url }
       format.json { head :no_content }
     end
+  end
+
+  def program_member_list
+    @users = current_consultant.users
+    if params[:search].present?
+      if params[:search][:term].blank?
+        @users = User.order("id desc")
+      else
+        search_terms = params[:search][:term].split(' ').join('%')
+        @users = User.where("concat(LOWER(first_name), ' ', LOWER(last_name)) like ?","%#{search_terms}%")
+      end
+
+      if !params[:search][:state].blank? || !params[:search][:skill].blank?
+        if !params[:search][:skill].blank?
+          @users = @users.joins(:skills).where('skills.id' => params[:search][:skill])
+        else
+          @users = @users.joins({:address=>:city}).where('cities.state_name'=>params[:search][:state])
+        end
+      end
+    end
+  end
+
+  def update_attendance
+    user = User.find(params[:user_id]) rescue nil 
+    attendance = Attendee.find(params[:attendee_id]) rescue nil
+    course = Course.find(params[:course_id]) rescue nil
+    attended = params[:attended]
+
+    attendance.attended = attended
+
+    if attended
+      puts 'inside here fucer'
+      user.make_member
+    end
+
+    if user.save && attendance.save
+      respond_to do |format|
+        format.html do
+          @course = course
+          flash[:notice] = t('successfully_updated_attendance')
+          redirect_to course_details_path(course)
+          #render action: '../pages/upcoming_courses_show'
+        end
+      end
+    end
+
   end
 
 end

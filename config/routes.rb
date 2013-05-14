@@ -3,8 +3,10 @@ BizPkns::Application.routes.draw do
   resources :businesses
 
   localized do
+    post 'update_attendance', to: 'members#update_attendance', as: 'update_attendance'
     match 'consultation' => "pages#consultation", as: :consultation
     match 'my_courses' => "pages#my_courses", as: :user_course_listing
+    match 'program_users' => "members#program_member_list", as: :program_user_listing
     get  '/upcoming_courses' => 'pages#upcoming_courses', as: :course_listing
     scope '/upcoming_courses' do 
        match '/:id' => 'pages#upcoming_courses_show', as: :course_details

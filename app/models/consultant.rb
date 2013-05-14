@@ -8,13 +8,15 @@ class Consultant < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :bio_data, :first_name, :last_name, :password, :phone
-  attr_accessible :profile_photo_attributes, :company_name
+  attr_accessible :profile_photo_attributes, :company_name, :is_active
 
   has_one :program
   accepts_nested_attributes_for :program
   
-  has_many :courses, through: :programs
+  has_many :courses, through: :program
   validates :password, :presence => true, :confirmation => true, :on => :create
+
+  has_many :users, through: :courses
 
   has_one :profile_photo, as: :attachable, dependent: :destroy
   accepts_nested_attributes_for :profile_photo, allow_destroy: true
@@ -29,5 +31,9 @@ class Consultant < ActiveRecord::Base
       :to => "your.email@your.domain.com",
       :from => User.name#%("#{User.name}" <#{User.email}>)
     }
+  end
+
+  def active_for_authentication?
+    super && self.is_active?
   end
 end
