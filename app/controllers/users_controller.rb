@@ -113,7 +113,7 @@ class UsersController < ApplicationController
       if @user.update_attributes(params[:user])
         @user.set_city(city_id) unless city_id.blank?
         @user.business_profile.set_city(business_city_id) unless business_city_id.blank?
-        unless @user.role.name == 'admin'
+        unless @user.try(:role).try(:name) == 'admin'
           previous_course = @user.previous_courses.last
           previous_course.program = program unless program.nil?
           previous_course.save

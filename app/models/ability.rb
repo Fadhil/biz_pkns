@@ -9,7 +9,7 @@ class Ability
       if resource.is_a?(User)
         if resource.admin?
           can :manage, :all
-        else
+        elsif resource.confirmed?
           #can :read, :all
           can :manage, User, id: resource.id
           can :contact, :all
@@ -20,6 +20,8 @@ class Ability
           # can :contact, Consultant do |c|
           #   unless user.email.nil
           # end
+        else
+          cannot :all, User
         end
       elsif resource.is_a?(Consultant)
         can :manage, Consultant, id: resource.id

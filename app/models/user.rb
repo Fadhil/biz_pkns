@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   attr_accessible :created_at, :address_attributes
   attr_accessible :twitter_handle, :facebook_handle, :current_employment_status
   attr_accessible :education_background_attributes, :experience_attributes, :businesses_attributes, :role_id
-  attr_accessible :staff_number, :section, :unit
+  attr_accessible :staff_number, :section, :unit, :is_active
 
   validates_uniqueness_of :ic_number
   validates_format_of :ic_number, with:  /^\d{6}\-\d{2}\-\d{4}$/, :message => I18n.t('errors.ic_format')
