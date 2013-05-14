@@ -133,10 +133,7 @@ class User < ActiveRecord::Base
     inactive_users = User.where('confirmed <> ? and created_at < ?', true, 30.days.ago)
     puts "Found #{inactive_users.count} inactive users\n"
     puts "About to delete them...\n"
-    inactive_users.each do |i|
-      i.unit = "Uniteless"
-      i.save
-    end
+    inactive_users.delete_all
     if inactive_users.empty?
       puts "Inactive users all deleted\n"
     end
