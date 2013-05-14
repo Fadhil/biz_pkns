@@ -56,6 +56,8 @@ class User < ActiveRecord::Base
   has_one :name, class_name: Business, dependent: :destroy 
   accepts_nested_attributes_for :name, allow_destroy: true
 
+  has_many :attendances,  class_name: Attendee, dependent: :destroy
+
   belongs_to :role
 
   def super_admin?
@@ -104,5 +106,9 @@ class User < ActiveRecord::Base
 
   def active_for_authentication?
     super && self.is_active?
+  end
+
+  def generate_member_id
+    
   end
 end

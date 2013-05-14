@@ -6,6 +6,7 @@ class Course < ActiveRecord::Base
   has_one :consultant, through: :program
   has_and_belongs_to_many :users
   has_one :attendance_list, dependent: :destroy
+  has_many :attendees, through: :attendance_list
 
   after_create :add_attendance_list
 

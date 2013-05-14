@@ -41,6 +41,8 @@ en:
   password_confirmation: 'Password Confirmation'
   phone: 'Phone Number'
   postcode: 'Postcode'
+  present: 'Present'
+  not_present: 'Not Present'
   profile: 'Profile'
   program: 'Program'
   register: 'Admin'

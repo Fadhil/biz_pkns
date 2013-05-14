@@ -113,7 +113,6 @@ class MembersController < ApplicationController
   end
 
   def program_member_list
-
     @users = current_consultant.users
     if params[:search].present?
       if params[:search][:term].blank?
@@ -131,7 +130,20 @@ class MembersController < ApplicationController
         end
       end
     end
-    
+  end
+
+  def update_attendance
+    @user = User.find(params[:user_id]) rescue nil 
+    @attendance = Attendee.find(params[:attendee_id]) rescue nil
+    @course = Course.find(params[:course_id]) rescue nil
+    @attended = params[:attended]
+
+    @attendance.attended = @attended
+    @attendance.save
+
+    if @attended
+      @user.generate_member_id
+    end
 
   end
 
