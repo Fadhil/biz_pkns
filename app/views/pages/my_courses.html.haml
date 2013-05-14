@@ -17,6 +17,8 @@
       %th
         = t('end_date')
       %th
+        = t('status')
+      %th
     %tbody
       - current_user.courses.each_with_index do |course,index|
         %tr
@@ -32,6 +34,18 @@
             = course.start_date
           %td
             = course.end_date
+          %td
+            - attended = course.attendees.where('user_id = ?',current_user.id).first.attended?
+            - case attended
+              - when nil?
+                - if course.start_date < Date.today
+                  = t('not_present')
+                - else
+                  = t('upcoming')
+              - when true
+                = t('present')
+              - when false
+                = t('not_present')
           %td
             = link_to t('view'), course_details_path(course), |
               class: 'btn'

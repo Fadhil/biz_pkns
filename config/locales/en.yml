@@ -25,6 +25,7 @@ en:
   consultant: 'Consultant'
   contact: 'Contact'
   contact_consultant: 'Contact'
+  create_course: 'Create Course'
   customers: 'Customers'
   date: 'Date'
   description: 'Description'
@@ -59,6 +60,7 @@ en:
   send: 'Send'
   send_password_instructions: "Send me reset password instructions"
   setting: 'Setting'
+  share: 'Share'
   sign_up: 'Sign Up'
   sign_in: 'Sign In'
   staff_number: 'Staff Number'
@@ -69,6 +71,7 @@ en:
   successfully_updated_attendance: 'Successfully Updated Attendance'
   unit: 'Unit'
   update: 'Update'
+  upcoming: 'Upcoming'
   upload_profile_photo: 'Upload Profile Photo'
   venue: 'Venue'
   years: 'years'

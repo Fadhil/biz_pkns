@@ -25,6 +25,7 @@ bm:
   consultant: 'Perunding'
   contact: 'Hubungi'
   contact_consultant: 'Email kepada perunding'
+  create_course: 'Cipta Kursus'
   customers: 'Pelanggan'
   date_tarikh: 'Tarikh'
   description: 'Huraian'
@@ -64,6 +65,7 @@ bm:
   send: 'Hantar'
   send_password_instructions: "Hantarkan arahan tukar kata laluan"
   setting: 'Tetapan'
+  share: 'Kongsi'
   sign_up: 'Daftar Sebagai Ahli'
   sign_in: 'Daftar Masuk'
   staff_number: 'Nombor Staf'
@@ -74,6 +76,7 @@ bm:
   successfully_updated_attendance: 'Kehadiran Berjaya Dikemaskini'
   unit: 'Unit'
   update: 'Kemaskini'
+  upcoming: 'Akan Datang'
   upload_profile_photo: 'Muat Naik Gambar Profil'
   venue: 'Tempat'
   years: 'tahun'

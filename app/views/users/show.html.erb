@@ -121,12 +121,12 @@
       <div class="">
         <table class="table">
         <tr><th colspan="2" class="header">Maklumat Perniagaan</th></tr>
-        <tr>
-          <% unless @user.business_profile.business_logo.nil? %>
-            <th><%= t('logo') %></th>
-            <td><%= image_tag(@user.business_profile.business_logo.file, :size => '150x150') %></td>
-            <% end %></td>
-        </tr>
+        <tr><th colspan="2"><center>
+          <% unless @user.business_profile.nil? %>
+            <% unless @user.business_profile.business_logo.nil? %><%= image_tag(@user.business_profile.business_logo.file, :size => '150x150') %>
+            <% end %>
+          <% end %>
+        </center></th></tr>
         <tr>
           <th><%= t('.company_name') %></th>
           <td><%= @user.business_profile.company_name unless @user.business_profile.nil? %></td>
@@ -151,16 +151,14 @@
           <th><%= t('.company_registration_number') %></th>
           <td><%= @user.business_profile.registration_number unless @user.business_profile.nil?%></td>
         </tr>
-
-        <% unless @user.business_profile.business_photo.nil? %>
-          <tr>
-            <th>Business Photo</th>
-            <td><%= image_tag(@user.business_profile.business_photo.file, :size => '250x250') %></td>
-          </tr>
-          <tr>
-            <th>Penerangan Gambar</th>
-            <td><%= @user.business_profile.business_photo.caption %></td>
-          </tr>
+        <% unless @user.business_profile.nil? %>
+          <% unless @user.business_profile.business_photo.nil? %>
+            <tr><td colspan="2"><%= image_tag(@user.business_profile.business_photo.file, :size => '250x250') %></td></tr>
+            <tr>
+              <th>Penerangan Gambar</th>
+              <td><%= @user.business_profile.business_photo.caption %></td>
+            </tr>
+          <% end %>
         <% end %>
       </table>
       </div>
