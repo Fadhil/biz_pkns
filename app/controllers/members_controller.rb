@@ -150,7 +150,7 @@ class MembersController < ApplicationController
         format.html do
           @course = course
           flash[:notice] = t('successfully_updated_attendance')
-          redirect_to course_details_path(course)
+          redirect_to request.referrer
           #render action: '../pages/upcoming_courses_show'
         end
       end

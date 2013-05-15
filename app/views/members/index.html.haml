@@ -35,7 +35,7 @@
                 - else
                   NIL
               %td
-                - user.programs.each do |program|
+                - user.programs.uniq.each do |program|
                   %p= program.name
               - if user.current_employment_status == 'own business'
                 %td Pemilik Perniagaan
@@ -52,3 +52,9 @@
               %td
                 = link_to t('view'),                        |
                   user_path(user), :class => 'btn btn-secondary btn-mini' |
+                - if can? :manage, User
+                  =link_to t('destroy', :default => t("helpers.links.destroy")),
+                              user_path(user),
+                              :method => :delete,
+                              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => t('are_you_sure'))) },
+                              :class => 'btn btn-mini btn-danger'
