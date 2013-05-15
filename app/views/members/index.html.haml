@@ -35,7 +35,7 @@
                 - else
                   NIL
               %td
-                - user.programs.each do |program|
+                - user.programs.uniq.each do |program|
                   %p= program.name
               - if user.current_employment_status == 'own business'
                 %td Pemilik Perniagaan
