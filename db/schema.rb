@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130514103728) do
+ActiveRecord::Schema.define(:version => 20130516075109) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -111,6 +111,14 @@ ActiveRecord::Schema.define(:version => 20130514103728) do
 
   add_index "consultants", ["email"], :name => "index_consultants_on_email", :unique => true
   add_index "consultants", ["reset_password_token"], :name => "index_consultants_on_reset_password_token", :unique => true
+
+  create_table "consultants_programs", :id => false, :force => true do |t|
+    t.integer "consultant_id"
+    t.integer "program_id"
+  end
+
+  add_index "consultants_programs", ["consultant_id"], :name => "index_consultants_programs_on_consultant_id"
+  add_index "consultants_programs", ["program_id"], :name => "index_consultants_programs_on_program_id"
 
   create_table "courses", :force => true do |t|
     t.string   "name"

@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+
   def welcome
   end
 
@@ -55,6 +56,7 @@ class PagesController < ApplicationController
   end
 
   def my_courses
+    authorize! :all, :pages
     @courses = []
     if current_user
       @courses = current_user.courses

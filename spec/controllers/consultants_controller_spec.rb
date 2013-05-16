@@ -19,7 +19,10 @@ require 'spec_helper'
 # that an instance is receiving a specific message.
 
 describe ConsultantsController do
-
+include AuthHelper
+before(:each) do
+  http_login
+end
   # This should return the minimal set of attributes required to create a valid
   # Consultant. As you add validations to Consultant, be sure to
   # update the return value of this method accordingly.

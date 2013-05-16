@@ -10,8 +10,8 @@ class Consultant < ActiveRecord::Base
   attr_accessible :bio_data, :first_name, :last_name, :password, :phone
   attr_accessible :profile_photo_attributes, :company_name, :is_active
 
-  has_one :program
-  accepts_nested_attributes_for :program
+  has_and_belongs_to_many :programs
+  accepts_nested_attributes_for :programs
   
   has_many :courses, through: :program
   validates :password, :presence => true, :confirmation => true, :on => :create
