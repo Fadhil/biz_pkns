@@ -220,8 +220,25 @@ bm:
 
 
   skills:
+    index:
+      edit: 'Sunting'
+      destroy: 'Padam'
+      new: 'Cipta Kemahiran Baru'
     new:
       title: 'Kemahiran Baru'
+    index:
+      title: 'Kemahiran'
+      name: 'Nama Kemahiran'
+    show:
+      title: 'Kemahiran'
+      name: 'Nama'
+    edit:
+      title: 'Sunting kemahiran'
+    form:
+      back: 'Balik'
+      edit: 'Kemaskini'
+      name: 'Nama'
+
   educations:
     new:
       title: 'Jenis Bidang Pembelajaran'
