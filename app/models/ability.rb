@@ -29,6 +29,7 @@ class Ability
           can :read, Consultant
           can :my_courses, :pages
           cannot :consultation, :pages
+          cannot :all, :pages
         end
       elsif resource.is_a?(Consultant)
         can :manage, Consultant, id: resource.id
