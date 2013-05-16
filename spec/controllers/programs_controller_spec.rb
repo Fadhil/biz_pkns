@@ -19,7 +19,16 @@ require 'spec_helper'
 # that an instance is receiving a specific message.
 
 describe ProgramsController do
+include AuthHelper
+before(:each) do
+  http_login
 
+  controller.stub(:current_consultant){FactoryGirl.build(:consultant)}
+  @ability = Object.new
+  @ability.extend(CanCan::Ability)
+  controller.stub(:current_ability) { @ability }
+  @ability.can :manage, :all
+end
   # This should return the minimal set of attributes required to create a valid
   # Program. As you add validations to Program, be sure to
   # update the return value of this method accordingly.

@@ -19,7 +19,11 @@ require 'spec_helper'
 # that an instance is receiving a specific message.
 
 describe CoursesController do
-
+include AuthHelper
+before(:each) do
+  http_login
+  controller.stub(:current_user).and_return(FactoryGirl.build(:user))
+end
   # This should return the minimal set of attributes required to create a valid
   # Course. As you add validations to Course, be sure to
   # update the return value of this method accordingly.

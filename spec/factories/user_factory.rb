@@ -5,7 +5,8 @@ FactoryGirl.define do
     password 'password'
     password_confirmation 'password'
     phone '0126893949'
-    
+    is_active true
+    confirmed true
     association :role, factory: :admin_role
   end
 end

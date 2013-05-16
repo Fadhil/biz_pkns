@@ -3,11 +3,17 @@ require 'spec_helper'
 describe PagesController do
 require 'rake'
 
+include AuthHelper
+before :each do
+  http_login
+end
 
   describe "GET 'welcome'" do
     it "returns http success" do
+
       get 'welcome'
       response.should be_success
+      #response.should eq 200
     end
   end
 
