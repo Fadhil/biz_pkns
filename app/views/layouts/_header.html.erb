@@ -29,23 +29,15 @@
               <ul class="dropdown-menu">
                 
                 <% if current_user %>
-                  <% if current_user.admin? %>
-                    <li><%= link_to t('.profile'), user_path(id: current_user.id) %><%#= content_tag(:span,"&nbsp&nbsp#{t('.profile')}".html_safe, style: "color: #333") %></li>
-                  <% else %>
-                    <li><%= link_to t('.profile'), user_path(id: current_user.id) %></li>
-                  <% end %>
-                <% elsif current_consultant %>
-                  <li><%= link_to 'Consultant Profile', consultant_path(id: current_consultant.id) %></li>
+                  <li><%= link_to t('.profile'), user_path(id: current_user.id) %></li>
                 <% end %>
 
                 <li>
                   <%= content_tag(:span,"&nbsp&nbsp#{t('setting')}".html_safe, style: "color: #333") %>
-                  <%#= link_to t('setting'), edit_user_path(id: current_user.id) %></li>
-                <% if current_user %>
-                  <li><%= link_to t('logout'), destroy_user_session_path, method: :delete %></li>
-                <% else %>
-                  <li><%= link_to t('logout'), destroy_consultant_session_path, method: :delete %></li>
-                <% end %>
+                </li>
+
+                <li><%= link_to t('logout'), destroy_user_session_path, method: :delete %></li>
+
               </ul>
             </li>
           <% elsif current_consultant %>
@@ -57,8 +49,10 @@
               </a>
               <ul class="dropdown-menu">
                 <li><%= link_to t('.consultant_profile'), consultant_path(id: current_consultant.id) %></li>
-                <li><%= content_tag(:span,"&nbsp&nbsp#{t('setting')}".html_safe, style: "color: #333") %>
-                  <%#= link_to t('setting'), edit_user_path(id: current_user.id) %></li>
+                <%#= todo session[:current_program_id] %>
+                <li><%= link_to 'test', select_program_path(7) %></li>
+                <li><%= link_to 'Electronics and stuff', select_program_path(9) %> </li>
+                <li><%= content_tag(:span,"&nbsp&nbsp#{t('setting')}".html_safe, style: "color: #333") %></li>
                 <li><%= link_to t('logout'), destroy_consultant_session_path, method: :delete %></li>
               </ul>
             </li>
@@ -76,16 +70,9 @@
       <div class="nav-collapse">
         <% if current_consultant %>
           <ul class="nav">
-<!--             <li class="dropdown">
 
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <%= t('member') %>
-                <b class="caret"></b>
-              </a>
-                <ul class="dropdown-menu"> -->
-                  <li><a href=<%= members_path %>><%= t('.member_directory') %></a></li>
-<!--                   <li><a href=<%= program_user_listing_path %>><%= t('.program_member') %></a></li>  -->
-<!--                 </ul> -->
+            <li><a href=<%= members_path %>><%= t('.member_directory') %></a></li>
+
             </li>
             <li><a href=<%= business_directory_path %>><%= t('.business_directory') %></a></li>
             <li class="dropdown">
@@ -100,9 +87,6 @@
         <% end %>
         <% if current_user %>
           <ul class="nav">
-            <!-- <%# unless current_user %>
-              <li><%= link_to 'Administrate Users', users_path %></li>
-            <%# end %> -->
             <% if !current_user.admin? %>
               <li><a href=<%= members_path %>><%= t('.member_directory') %></a></li>
               <li><a href=<%= business_directory_path %>><%= t('.business_directory') %></a></li>
@@ -123,12 +107,9 @@
             <% end %>
             
             <% if current_user.admin? %>
-<!--             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t('.members') %> <b class="caret"></b></a>
-              <ul class="dropdown-menu"> -->
+
                 <li><a href=<%= members_path %>><%= t('.member_directory') %></a></li>
-<!--                 <li><a href=<%= users_path %>><%= t('.administrate_user') %></a></li> -->
-<!--               </ul> -->
+
             </li>
             <li><a href=<%= business_directory_path %>><%= t('.business_directory') %></a></li>
             <li><a href=<%= programs_path %>><%= t('.program') %></a></li>
@@ -140,14 +121,7 @@
                 <li><a href=<%= courses_path %>><%= t('.add_modify_courses') %></a></li>
               </ul>
             </li>
-            <!-- <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t('.directory') %><b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href=<%= members_path %>><%= t('.member_directory') %></a></li>
-                <li><a href=<%= business_directory_path %>><%= t('.business_directory') %></a></li>
-                <li><a href=<%= programs_path %>><%= t('.program_listing') %></a></li>
-              </ul>
-            </li> -->
+
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t('register') %> <b class="caret"></b></a>
               <ul class="dropdown-menu">

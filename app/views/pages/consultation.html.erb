@@ -13,9 +13,10 @@
   <tbody>
     <% @consultants.each_with_index do |consultant, i| %>
       <tr>
+        <% #todo session[:current_program_id] %>
         <td><%= consultant.first_name %> <%= consultant.last_name %></td>
         <td><%= consultant.company_name %> </td>
-        <td><%= consultant.program.name unless consultant.program.nil? %></td>
+        <td><%= consultant.programs.first.name unless consultant.programs.first.nil? %></td>
         <% if current_user %><%# if can? :manage, @consultant %>
           <td>
             <%= link_to t('view'), consultant_path(consultant), :class => 'btn btn-mini' %>
