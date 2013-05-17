@@ -130,7 +130,7 @@ class User < ActiveRecord::Base
   end
 
   def self.remove_inactive_users
-    inactive_users = User.where('confirmed <> ? and created_at < ?', true, 30.days.ago)
+    inactive_users = User.where('confirmed <> ? and created_at < ?', true, 90.days.ago)
     logger.info "Found #{inactive_users.count} inactive users\n"
     if !inactive_users.empty?
       logger.info "These users are about to be deleted:\n"
