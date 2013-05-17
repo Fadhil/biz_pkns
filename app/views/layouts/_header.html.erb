@@ -50,8 +50,7 @@
               <ul class="dropdown-menu">
                 <li><%= link_to t('.consultant_profile'), consultant_path(id: current_consultant.id) %></li>
                 <%#= todo session[:current_program_id] %>
-                <li><%= link_to 'test', select_program_path(7) %></li>
-                <li><%= link_to 'Electronics and stuff', select_program_path(9) %> </li>
+                <%= program_switch_menu.html_safe %>
                 <li><%= content_tag(:span,"&nbsp&nbsp#{t('setting')}".html_safe, style: "color: #333") %></li>
                 <li><%= link_to t('logout'), destroy_consultant_session_path, method: :delete %></li>
               </ul>
