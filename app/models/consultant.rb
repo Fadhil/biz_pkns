@@ -8,9 +8,12 @@ class Consultant < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :bio_data, :first_name, :last_name, :password, :phone
-  attr_accessible :profile_photo_attributes, :company_name, :is_active
+  attr_accessible :profile_photo_attributes, :company_name, :is_active, :programs_attributes, :consultants_programs_attributes
 
-  has_and_belongs_to_many :programs
+  has_many :consultants_programs, dependent: :destroy
+  accepts_nested_attributes_for :consultants_programs, allow_destroy: true
+
+  has_many :programs, through: :consultants_programs
   accepts_nested_attributes_for :programs
   
   has_many :courses, through: :program

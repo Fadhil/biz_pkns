@@ -1,0 +1,29 @@
+= nested_form_for(@consultant) do |f|
+  - if @consultant.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@consultant.errors.count, "error")
+        prohibited this consultant from being saved:
+      %ul
+        - @consultant.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label t('email')
+    = f.text_field :email
+  .field
+    = f.label t('password')
+    = f.password_field :password
+  .control-group
+    %div
+      %div
+        = f.label 'Pilih Program'
+        = f.fields_for :consultants_programs do |program| 
+          .row-fluid
+            .span
+              = program.select :program_id, options_for_select(Program.all.map{ |a| [a.name, a.id]}, program.object.program_id)
+            .span
+              = program.link_to_remove t('remove_program'), class: 'btn btn-danger btn-mini'
+      = f.link_to_add t('add_program'), :consultants_programs, class: 'btn btn-mini'
+    = f.hidden_field :is_active, value: 1
+  .actions
+    = f.submit t('.create_consultant'), :class => 'btn btn-primary'

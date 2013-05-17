@@ -3,6 +3,7 @@
 
 bm:
   active: 'Aktif'
+  add_program: 'Tambah Program'
   inactive: 'Tidak Aktif'
   is_active: 'Aktif'
   are_you_sure: 'And pasti?'
@@ -52,6 +53,7 @@ bm:
   register: 'Daftar'
   register_course: 'Daftar Kursus'
   remember_me: 'Simpan Maklumat Saya'
+  remove_program: 'Padam Program'
   resend_confirmation: 'Hantar arahan pengesahan'
   search: 'Carian'
   search_by_name: 'Carian Nama'

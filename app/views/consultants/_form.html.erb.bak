@@ -1,4 +1,4 @@
-<%= form_for @consultant, :html => { :class => 'form-horizontal' } do |f| %>
+<%= nested_form_for @consultant, :html => { :class => 'form-horizontal' } do |f| %>
 <div style="padding-left:30px;">
     <div class='row-fluid'>
       <div class='span3'>
@@ -8,7 +8,9 @@
 
       <div class='span3 offset1'>
         <%= f.label 'Pilih Program' %>
-        <%= select_tag :program_id, options_for_select(Program.order('name').map{|a| [a.name,a.id]}, f.object.try(:program).try(:id))%>
+        <%= f.fields_for :programs do |program|%>
+        
+        <%#= select_tag :program_id, options_for_select(Program.order('name').map{|a| [a.name,a.id]}, f.object.try(:program).try(:id))%>
       </div>
     </div>
 

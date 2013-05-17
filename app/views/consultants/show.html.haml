@@ -1,0 +1,67 @@
+- model_class = Consultant
+.page-header
+  %h1
+    = t '.title', :default => model_class.model_name.human
+    \:
+    - if @consultant.company_name.blank?
+      = @consultant.first_name
+      = @consultant.last_name
+    - else
+      = @consultant.company_name
+%dl.dl-horizontal
+  %div
+    - if !@consultant.profile_photo.nil?
+      = image_tag (@consultant.profile_photo.file), size: '400x400'
+  %h3 Maklumat Perunding
+  %dt
+    %strong
+      = t('first_name')
+      \:
+  %dd= @consultant.first_name
+  %dt
+    %strong
+      = t('last_name')
+      \:
+  %dd= @consultant.last_name
+  - if !@consultant.company_name.blank?
+    %dt
+      %strong
+        = t('company_name')
+        \:
+    %dd= @consultant.company_name
+  %dt
+    %strong
+      = t('email')
+      \:
+  %dd= @consultant.email
+  %dt
+    %strong
+      = t('phone')
+      \:
+  %dd= @consultant.phone
+  %dt
+    %strong
+      = t('program')
+      \:
+  %dd
+    %ul
+      - @consultant.programs.each do |program|
+        %li
+          = program.name
+- if current_user
+  .row
+    .span4
+      %h3= t('bio_data')
+      %p= @consultant.bio_data
+.form-actions
+  - if can? :manage, Consultant
+    = link_to t('edit', :default => t("helpers.links.edit")), |
+      edit_consultant_path(@consultant), :class => 'btn'      |
+  /
+    <haml:loud> link_to t('destroy', :default =&amp;gt; t(&amp;quot;helpers.links.destroy&amp;quot;)),
+    consultant_path(@consultant),
+    \:method =&amp;gt; 'delete',
+    \:data =&amp;gt; { :confirm =&amp;gt; t('confirm', :default =&amp;gt; t(&amp;quot;helpers.links.confirm&amp;quot;, :default =&amp;gt; t('are_you_sure'))) },
+    \:class =&amp;gt; 'btn btn-danger' </haml:loud>
+  - if current_user
+    = link_to t('contact'), contact_consultant_path(@consultant), :class => 'btn btn-info'

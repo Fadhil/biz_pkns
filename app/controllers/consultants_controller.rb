@@ -45,8 +45,7 @@ class ConsultantsController < ApplicationController
   # POST /consultants.json
   def create
     @consultant = Consultant.new(params[:consultant])
-    program = Program.find(params[:program_id])
-    @consultant.program = program
+    
     respond_to do |format|
       if @consultant.save
         #Send email here
@@ -68,8 +67,6 @@ class ConsultantsController < ApplicationController
       params[:consultant].delete(:password_confirmation)
     end
     @consultant = Consultant.find(params[:id])
-    program = Program.find(params[:program_id])
-    @consultant.program = program
     respond_to do |format|
       if @consultant.update_attributes(params[:consultant])
         format.html { redirect_to @consultant, notice: t('successfully_updated', resource:t('consultant')) }

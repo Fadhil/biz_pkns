@@ -3,6 +3,7 @@
 
 en:
   active: 'Active'
+  add_program: 'Add Program'
   inactive: 'Inactive'
   is_active: 'Active'
   are_you_sure: 'Are you sure?'
@@ -49,6 +50,7 @@ en:
   register: 'Admin'
   register_course: 'Register For This Course'
   remember_me: 'Remember Me'
+  remove_program: 'Remove Program'
   resend_confirmation: 'Resend confirmation instructions'
   search: 'Search'
   search_by_city: 'Search by City'
