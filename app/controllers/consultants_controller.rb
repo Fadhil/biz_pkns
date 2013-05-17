@@ -116,5 +116,12 @@ class ConsultantsController < ApplicationController
       end
     end
   end
+
+  def select_program
+    if program = Program.find(params[:program_id]) rescue nil
+      session[:current_program_id] = program.id
+      session[:current_program_name] = program.name
+    end
+  end
   
 end

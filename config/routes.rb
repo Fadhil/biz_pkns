@@ -3,6 +3,7 @@ BizPkns::Application.routes.draw do
   resources :businesses
 
   localized do
+    match 'select_program/:program_id' => 'consultants#select_program', as: :select_program
     post 'update_attendance', to: 'members#update_attendance', as: 'update_attendance'
     match 'consultation' => "pages#consultation", as: :consultation
     match 'my_courses' => "pages#my_courses", as: :user_course_listing

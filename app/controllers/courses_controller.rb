@@ -6,8 +6,9 @@ class CoursesController < ApplicationController
     
     if current_user && ( current_user.admin? )
       @courses = Course.order(:start_date).order(:status).page(params[:page])
-    elsif current_consultant && current_consultant.program
-      @courses = current_consultant.program.courses.order(:start_date).order(:status).page(params[:page])
+    elsif current_consultant 
+      #todo use session[:current_program_id]
+      @courses = current_consultant.programs.first.courses.order(:start_date).order(:status).page(params[:page])
     else
       @courses = []
     end

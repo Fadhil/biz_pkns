@@ -39,6 +39,7 @@ bm:
   member: 'Ahli'
   membership_num: 'No Keahlian'
   new_consultant: 'Daftar Perunding Baru'
+  office_phone: 'No Tel Ofis'
   pax: 'Jumlah peserta'
   password: 'Kata Laluan'
   password_confirmation: 'Pengesahan Kata Laluan'
