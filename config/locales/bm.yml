@@ -245,6 +245,25 @@ bm:
   educations:
     new:
       title: 'Jenis Bidang Pembelajaran'
+    index:
+      title: 'Pendidikan'
+      name: 'Nama Pendidikan'
+      edit: 'Sunting'
+      destroy: 'Padam'
+      new: 'Cipta Pendidikan Baru'
+    show:
+      title: 'Pendidikan'
+      name: 'Nama'
+      back: 'Balik'
+      edit: 'Kemaskini'
+      destroy: 'Padam'
+    edit:
+      title: 'Sunting Pendidikan'
+    form:
+      back: 'Balik'
+      edit: 'Kemaskini'
+      name: 'Nama'
+      cancel: 'Batal'
   pages:
     upcoming_courses:
       title: 'Kursus Akan Datang'

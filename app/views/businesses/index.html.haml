@@ -5,7 +5,7 @@
   %thead
     %tr
       %th= model_class.human_attribute_name(:id)
-      %th= model_class.human_attribute_name(:name)
+      %th= t('name')
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
     - @businesses.each do |business|
