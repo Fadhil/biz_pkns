@@ -137,6 +137,10 @@
           <td><%= @user.full_business_address %></td>
         </tr>
         <tr>
+          <th><%= t('office_phone') %></th>
+          <td><%= @user.office_phone %></td>
+        </tr>
+        <tr>
           <th><%= t('description') %></th>
           <td><%= @user.business_profile.description unless @user.business_profile.nil? %></td>
         </tr>
