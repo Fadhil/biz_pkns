@@ -247,7 +247,7 @@ bm:
     new:
       title: 'Jenis Bidang Pembelajaran'
     index:
-      title: 'Pendidikan'
+      title: 'Senarai Bidang Pendidikan'
       name: 'Nama Pendidikan'
       edit: 'Sunting'
       destroy: 'Padam'
