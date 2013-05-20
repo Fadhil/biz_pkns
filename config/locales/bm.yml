@@ -227,11 +227,11 @@ bm:
       edit: 'Sunting'
       destroy: 'Padam'
       new: 'Cipta Kemahiran Baru'
+      title: 'Senarai Kemahiran'
+      name: 'Nama Kemahiran'
     new:
       title: 'Kemahiran Baru'
-    index:
-      title: 'Kemahiran'
-      name: 'Nama Kemahiran'
+      new: 'Tambah Kemahiran Baru'
     show:
       title: 'Kemahiran'
       name: 'Nama'
@@ -241,6 +241,7 @@ bm:
       back: 'Balik'
       edit: 'Kemaskini'
       name: 'Nama'
+      create: 'Tambah Kemahiran Baru'
 
   educations:
     new:
