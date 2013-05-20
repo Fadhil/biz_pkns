@@ -284,13 +284,26 @@ bm:
 
   businesses:
     index:
-
+      title: 'Senarai Bidang Perniagaan'
+      name: 'Nama Bidang Perniagaan'
+      edit: 'Sunting'
+      destroy: 'Padam'
+      new: 'Tambah Bidang Perniagaan Baru'
     new:
       title: 'Bidang Perniagaan Baru'
+    edit:
+      title: 'Sunting Bidang Perniagaan'
+      create: 'Kemaskini'
     form:
       name: 'Nama bidang'
       create: 'Tambah'
       cancel: 'Batal'
+    show:
+      title: 'Bidang Perniagaan'
+      name: 'Nama'
+      back: 'Balik'
+      edit: 'Kemaskini'
+      destroy: 'Padam'
 
   programs:
     index:
