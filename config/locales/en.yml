@@ -59,6 +59,7 @@ en:
   search_by_state: 'Search by State'
   section: 'Section'
   select_a_program: 'Select a Program'
+  select_a_program_to_manage: 'Select a Program to Manage First'
   search_by_company_name: 'Search by Business Name'
   send: 'Send'
   send_password_instructions: "Send me reset password instructions"

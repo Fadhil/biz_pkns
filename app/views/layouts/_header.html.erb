@@ -14,10 +14,13 @@
       <a class="brand" href="<%= home_page %>"><%= image_tag('brandlogo.png', size: '230x230') %></a>
       <div class="nav-collapse">
 
+
         <ul class="nav pull-right">
           <% if current_user %>
             <li class="dropdown">
+
               <a href="#" class="dropdown-toggle user" data-toggle="dropdown">
+
                 <div id="user-avatar">
                   <% unless current_user.profile_photo.nil? %><%= image_tag(current_user.profile_photo.file, size: '33x33') %><% end %>
                 </div>
@@ -41,7 +44,9 @@
               </ul>
             </li>
           <% elsif current_consultant %>
+
             <li class="dropdown">
+              <div class='clear-left'><a href="#"><%= session[:current_program_name] unless session[:current_program_name].nil? %></a></div>
               <a href="#" class="dropdown-toggle user" data-toggle="dropdown">
                 <% unless current_consultant.profile_photo.nil? %><%= image_tag(current_consultant.profile_photo.file, size: '33x33') %><% end %>
                 <%= current_consultant.first_name %> <%= current_consultant.last_name %> 

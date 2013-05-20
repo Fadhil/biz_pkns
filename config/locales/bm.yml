@@ -65,6 +65,7 @@ bm:
   search_by_company_name: 'Carian Nama Syarikat'
   section: 'Bahagian'
   select_a_program: 'Pilih Program'
+  select_a_program_to_manage: 'Sila Pilih Program Untuk Diurus Dahulu'
   send: 'Hantar'
   send_password_instructions: "Hantarkan arahan tukar kata laluan"
   setting: 'Tetapan'

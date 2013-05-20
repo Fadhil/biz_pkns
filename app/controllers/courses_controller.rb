@@ -8,7 +8,11 @@ class CoursesController < ApplicationController
       @courses = Course.order(:start_date).order(:status).page(params[:page])
     elsif current_consultant 
       #todo use session[:current_program_id]
-      @courses = current_consultant.programs.first.courses.order(:start_date).order(:status).page(params[:page])
+      if session[:current_program_id].nil?
+        @courses = []
+      else
+        @courses = current_consultant.programs.find(session[:current_program_id]).courses.order(:start_date).order(:status).page(params[:page])
+      end
     else
       @courses = []
     end
