@@ -41,6 +41,7 @@ class ApplicationController < ActionController::Base
     if current_user
       if current_user.walk_in_first_time?
         current_user.walk_in_first_time = false
+        current_user.save
         flash[:notice] = t('please_change_default_password')
       end
     end

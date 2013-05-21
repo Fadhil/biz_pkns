@@ -108,6 +108,7 @@ class UsersController < ApplicationController
   def update
     params[:user].delete(:password) if params[:user][:password].blank?
     params[:user].delete(:password_confirmation) if params[:user][:password_confirmation].blank?
+
     @user = User.find(params[:id])
     city_id = params[:user_city]
     business_city_id = params[:businessprofile_city]
@@ -127,6 +128,8 @@ class UsersController < ApplicationController
             previous_course.save
           end
         end
+        sign_in @user, :bypass => true
+      
         format.html { redirect_to @user, notice: I18n.t('successfully_updated', resource: t('profile'))  }
         format.json { head :no_content }
       else
