@@ -31,6 +31,7 @@ BizPkns::Application.routes.draw do
     resources :members
     resources :educations
     resources :skills
+    resources :attendance_list
 
     get "pages/welcome", as: 'welcome_page'
     get "consultants/:id/contact", :to => "consultants#contact", :as => 'contact_consultant'

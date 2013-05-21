@@ -73,7 +73,7 @@
                 %td
                   = index + 1
                 %td
-                  = attendee.name
+                  = attendee.full_name
                 %td
                   = attendee.email
                 %td
@@ -83,7 +83,18 @@
                     = attendee.attended? ? t('present') : t('not_present')
                   - else
                     = link_to t('present'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: true), method: :post, class: 'btn btn-mini'
-                    = link_to t('not_present'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: false), method: :post, class: 'btn btn-mini'              
+                    = link_to t('not_present'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: false), method: :post, class: 'btn btn-mini'    
+
+        .row-fluid
+          = nested_form_for @course.attendance_list do |f|
+            = f.fields_for :attendees do |a|
+              = a.text_field :first_name, value: t('first_name') if a.object.new_record?
+              = a.text_field :last_name, value: t('last_name') if a.object.new_record?
+              = a.text_field :email, value: t('email') if a.object.new_record?
+              = a.text_field :ic_number, value: t('ic_number') if a.object.new_record?
+              = a.hidden_field :attended, value: 1
+            = f.link_to_add t('add_attendee'), :attendees, class: 'btn btn-mini'   
+            = f.submit t('update')     
 
         .span2
           %h5 

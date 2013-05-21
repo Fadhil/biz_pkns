@@ -4,6 +4,7 @@
 bm:
   active: 'Aktif'
   add_program: 'Tambah Program'
+  add_attendee: 'Daftar Ahli'
   inactive: 'Tidak Aktif'
   is_active: 'Aktif'
   are_you_sure: 'And pasti?'

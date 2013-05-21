@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
 
   scope :nonadmin, where(:role_id=> nil)
+  scope :members, joins(:membership)
+  scope :nonmembers, !joins(:membership)
   before_save :default_values
   def default_values
     self.confirmed ||= 'false'
@@ -118,12 +120,11 @@ class User < ActiveRecord::Base
       self.membership.member_number = generate_member_id(self.membership.id)
       self.membership.save
       self.confirmed = true
+      logger.info "Made user with ID: #{self.id} a member with member_id: #{self.membership.id}\n"
     end
   end
 
   def generate_member_id(id)
-    puts 'in here mate'
-    puts "the id: #{id}"
     biz_id = (id + 499).to_s #start at 500
     biz_id_string = "BIZ" + "0"*(MEMBER_NUMBER_DIGITS - biz_id.size) + biz_id
     biz_id_string

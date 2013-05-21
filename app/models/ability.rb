@@ -35,6 +35,7 @@ class Ability
         can :manage, Consultant, id: resource.id
         can :read, User
         can :manage, Course, program_id: resource.programs.all.map(&:id)
+        can :create, Course
         can :manage, AttendanceList, program_id: resource.programs.all.map(&:id)
       else 
         cannot :index, :course

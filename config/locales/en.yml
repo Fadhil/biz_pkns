@@ -4,6 +4,7 @@
 en:
   active: 'Active'
   add_program: 'Add Program'
+  add_attendee: 'Add Attendee'
   inactive: 'Inactive'
   is_active: 'Active'
   are_you_sure: 'Are you sure?'
