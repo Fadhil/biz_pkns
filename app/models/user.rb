@@ -151,4 +151,51 @@ class User < ActiveRecord::Base
     logger.info "Finished task remove inactive users"
 
   end
+
+  def self.import(file)
+    spreadsheet = open_spreadsheet(file)
+    header = spreadsheet.row(3)
+    (4..spreadsheet.last_row).each do |i|
+      row = Hash[[header, spreadsheet.row(i)].transpose]
+      
+      # spreadsheet.each(
+      #   :no => 'index',
+      #   :program => 'program_name',
+      #   :namakursus => 'course_name',
+      #   :tarikhmula => 'start_date',
+      #   :tarikhakhir => 'end_date',
+      #   :tempat => 'venue',
+      #   :nama => 'first_name',
+      #   :namabapa => 'last_name',
+      #   :nokp => 'ic_number',
+      #   :notel => 'phone',
+      #   :email => 'email'
+      #   ) {|hash| arr << hash}
+
+      # index = spreadsheet.cell(line,'A')
+      # program_name = spreadsheet.cell(line,'B')
+      # course_name = spreadsheet.cell(line,'C')
+      # start_date = spreadsheet.cell(line,'D')
+      # end_date = spreadsheet.cell(line,'E')
+      # venue = spreadsheet.cell(line,'F')
+      # first_name = spreadsheet.cell(line,'G')
+      # last_name = spreadsheet.cell(line,'H')
+      # ic_number = spreadsheet.cell(line,'I')
+      # phone = spreadsheet.cell(line,'J')
+      # email = spreadsheet.cell(line,'K')
+
+      user = find_by_id(row["no"]) || new
+      user.attributes = row.to_hash.slice(*accessible_attributes)
+      user.save!
+    end
+  end
+
+  def self.open_spreadsheet(file)
+    case File.extname(file.original_filename)
+    when ".csv" then Csv.new(file.path, nil, :ignore)
+    when ".xls" then Excel.new(file.path, nil, :ignore)
+    when ".xlsx" then Excelx.new(file.path, nil, :ignore)
+    else raise "Unknown file type: #{file.original_filename}"
+    end
+  end
 end

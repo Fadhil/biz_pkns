@@ -32,6 +32,10 @@ BizPkns::Application.routes.draw do
     resources :educations
     resources :skills
 
+    resources :users do
+      collection { post :import }
+    end
+
     get "pages/welcome", as: 'welcome_page'
     get "consultants/:id/contact", :to => "consultants#contact", :as => 'contact_consultant'
     put "consultants/:id/contact/sent", :to => "consultants#sent", :as => 'contact_sent'

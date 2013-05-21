@@ -34,6 +34,9 @@ gem 'kaminari'
 # localized routes
 gem 'i18n_routing'
 
+# Portal
+gem 'refinerycms'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -70,6 +73,7 @@ group :production do
 end
 
 gem 'jquery-rails'
+gem 'roo', '~> 1.9.5'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
