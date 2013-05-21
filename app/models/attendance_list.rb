@@ -5,7 +5,7 @@ class AttendanceList < ActiveRecord::Base
   has_many :attendees
   accepts_nested_attributes_for :attendees
 
-  #after_update :create_walk_in_user
+  #after_update Attendee.create_walk_in_user
 
 
 end

@@ -92,6 +92,7 @@
               = a.text_field :last_name, value: t('last_name') if a.object.new_record?
               = a.text_field :email, value: t('email') if a.object.new_record?
               = a.text_field :ic_number, value: t('ic_number') if a.object.new_record?
+              = a.link_to_remove t('remove'), class: 'btn btn-mini btn-danger' if a.object.new_record?
               = a.hidden_field :attended, value: 1
             = f.link_to_add t('add_attendee'), :attendees, class: 'btn btn-mini'   
             = f.submit t('update')     

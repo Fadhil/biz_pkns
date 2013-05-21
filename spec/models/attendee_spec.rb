@@ -16,21 +16,27 @@ describe Attendee do
   describe '#create_walk_in_user' do
     it 'creates a new User' do
       expect {
-        Attendee.create_walk_in_user
-      }.to change(User,:count).by(2)
+        @attendee2.create_walk_in_user
+      }.to change(User,:count).by(1)
     end
 
     it 'should no longer have attendees without user_id' do
       expect {
-        Attendee.create_walk_in_user
-      }.to change(Attendee.non_members,:count).by(-2)
+        @attendee2.create_walk_in_user
+      }.to change(Attendee.non_members,:count).by(-1)
       
     end
 
     it 'adds two new memberships with member ids' do
       expect {
-        Attendee.create_walk_in_user
-      }.to change(User.members,:count).by(2)
+        @attendee2.create_walk_in_user
+      }.to change(User.members,:count).by(1)
+    end
+
+    it 'sends emails to new membrers' do
+      expect {
+        @attendee2.create_walk_in_user
+      }.to change(ActionMailer::Base.deliveries, :count).by(1)
     end
   end
 
