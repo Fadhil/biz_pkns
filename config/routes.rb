@@ -3,6 +3,7 @@ BizPkns::Application.routes.draw do
   resources :businesses
 
   localized do
+    put 'make_member/:id' => 'users#make_member', as: :make_member
     match 'select_program/:program_id' => 'consultants#select_program', as: :select_program
     post 'update_attendance', to: 'members#update_attendance', as: 'update_attendance'
     match 'consultation' => "pages#consultation", as: :consultation

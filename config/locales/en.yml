@@ -33,6 +33,9 @@ en:
   description: 'Description'
   did_not_receive_confirmation: "Didn't receive confirmation instructions?"
   forgot_your_password: 'Forgot your password?'
+  filter_by_member: "Show Members"
+  filter_by_non_member: 'Show Non Members'
+  make_member: 'Make Member'
   message: 'Message'
   member: 'Member'
   my_courses: 'My Courses'

@@ -3,7 +3,12 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.nonadmin.all
+    if params[:filter].present?
+      @users = User.nonadmin.send(params[:filter].to_s)
+    else
+      @users = User.nonadmin
+    end 
+
     @klass = Class
     respond_to do |format|
       format.html # index.html.erb
@@ -138,8 +143,17 @@ class UsersController < ApplicationController
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to members_path }
+      format.html { redirect_to request.referrer }
       format.json { head :no_content }
+    end
+  end
+
+  def make_member
+    @user = User.find(params[:id])
+    @user.make_member
+
+    respond_to do |format|
+        format.html { redirect_to request.referrer }
     end
   end
 end

@@ -1,0 +1,42 @@
+- model_class = User
+.page-header
+  %h1= t '.title'
+= form_tag '', method: :get do
+  .row-fluid
+    .span3
+      = label :filter, :city, t('filter_by_member')
+      = select_tag 'filter', options_for_select([[t('filter_all'),''],[t('filter_by_member'), "members"],[t('filter_by_non_member'), "nonmembers"]], params[:filter])
+    .span3
+      %br/
+      = button_tag t('search'), class: 'btn btn-success', :style => "margin-top:8px;" 
+      %br/
+%table.table.table-striped
+  %thead
+    %tr
+      %th= t('name')
+      %th= t('city')
+      %th= t('state')
+  %tbody
+    - @users.each_with_index do |user,i|
+      %tr
+        %td= link_to "#{user.first_name} #{user.last_name}", user_path(user)
+        - if user.address.nil?
+          %td
+          %td
+        - else
+          - if user.address.city.nil?
+            %td
+            %td
+          - else
+            %td= "#{user.address.city.name}"
+            %td= "#{user.address.city.state_name}"
+
+        - if can? :manage, @user
+          %td
+            = link_to t('view', :default => t("helpers.links.edit")), user_path(user), :class => 'btn btn-mini'
+            -#
+            = link_to t('destroy', :default => t("helpers.links.destroy")), user_path(user),:method => :delete,:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+            - if user.membership.nil?
+              = link_to t('make_member'), make_member_path(user), method: :put, :class => 'btn btn-mini btn-red'
+= link_to t('new', :default => t("helpers.links.new_user")), new_user_path, :class => 'btn btn-primary'  
+

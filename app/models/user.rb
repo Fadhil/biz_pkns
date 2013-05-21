@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
   scope :nonadmin, where(:role_id=> nil)
   scope :members, joins(:membership)
-  scope :nonmembers, !joins(:membership)
+  scope :nonmembers, joins('left outer join memberships on users.id = memberships.user_id').where('memberships.id is null')
   before_save :default_values
   def default_values
     self.confirmed ||= 'false'
