@@ -57,7 +57,7 @@ class PagesController < ApplicationController
   end
 
   def my_courses
-    authorize! :all, :pages
+    authorize! :my_courses, :pages
     @courses = []
     if current_user
       @courses = current_user.courses

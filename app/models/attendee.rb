@@ -37,7 +37,7 @@ class Attendee < ActiveRecord::Base
     user_with_existing_ic = User.find_by_ic_number(self.ic_number)
 
     new_user = user_with_existing_ic ||
-                User.create(first_name: self.first_name, last_name: self.last_name, email: self.email, ic_number: self.ic_number, password: 'password', password_confirmation: 'password', is_active: true, walk_in_first_time: true)
+                User.create(first_name: self.first_name, last_name: self.last_name, email: self.email, ic_number: self.ic_number, password: 'password', password_confirmation: 'password', is_active: true, walk_in_first_time: true, confirmed: true)
 
     
     unless new_user.nil?
