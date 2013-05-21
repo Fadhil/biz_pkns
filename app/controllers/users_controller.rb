@@ -101,6 +101,8 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.json
   def update
+    params[:user].delete(:password) if params[:user][:password].blank?
+    params[:user].delete(:password_confirmation) if params[:user][:password_confirmation].blank?
     @user = User.find(params[:id])
     city_id = params[:user_city]
     business_city_id = params[:businessprofile_city]
