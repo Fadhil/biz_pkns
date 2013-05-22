@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe User do
   before :each do
-    @user = FactoryGirl.create(:user)
+    @user = FactoryGirl.create(:admin)
   end
 
   describe 'should belong to one role' do

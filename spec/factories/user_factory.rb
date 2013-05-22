@@ -7,6 +7,8 @@ FactoryGirl.define do
     phone '0126893949'
     is_active true
     confirmed true
-    association :role, factory: :admin_role
+    factory :admin do
+        association :role, factory: :admin_role
+    end
   end
 end
