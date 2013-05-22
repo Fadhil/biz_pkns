@@ -128,6 +128,7 @@ class UsersController < ApplicationController
             previous_course.save
           end
         end
+        
         sign_in @user, :bypass => true
       
         format.html { redirect_to @user, notice: I18n.t('successfully_updated', resource: t('profile'))  }

@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :user do
-    ic_number '800829-12-5231'
+    ic_number '800829-12-4444'
     email 'fadhil.luqman@gmail.com'
     password 'password'
     password_confirmation 'password'

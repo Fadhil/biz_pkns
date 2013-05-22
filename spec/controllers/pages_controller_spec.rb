@@ -6,6 +6,7 @@ require 'rake'
 include AuthHelper
 before :each do
   http_login
+  controller.stub(:walk_in_first_time){ false }
 end
 
   describe "GET 'welcome'" do
@@ -13,6 +14,7 @@ end
 
       get 'welcome'
       response.should be_success
+
       #response.should eq 200
     end
   end
@@ -23,7 +25,7 @@ end
       3.times do |i|
         @course << FactoryGirl.create(:course, name: "Course #{i}", start_date: Date.today.to_date, end_date: 1.month.from_now.to_date, status: true)
       end
-
+      controller.stub(:current_user){ FactoryGirl.create(:user)}
       get 'upcoming_courses'
     end
     it 'returns http success' do

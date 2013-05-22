@@ -36,11 +36,10 @@ class Attendee < ActiveRecord::Base
   def create_walk_in_user
     user_with_existing_ic = User.find_by_ic_number(self.ic_number)
 
-    new_user = user_with_existing_ic ||
-                User.create(first_name: self.first_name, last_name: self.last_name, email: self.email, ic_number: self.ic_number, password: 'password', password_confirmation: 'password', is_active: true, walk_in_first_time: true, confirmed: true)
+    new_user = User.create(first_name: self.first_name, last_name: self.last_name, email: self.email, ic_number: self.ic_number, password: 'password', password_confirmation: 'password', is_active: true, walk_in_first_time: true, confirmed: true)
 
     
-    unless new_user.nil?
+    unless new_user.nil? || user_with_existing_ic
       self.user_id = new_user.id
       new_user.make_member
       self.save

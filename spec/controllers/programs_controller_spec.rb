@@ -23,6 +23,7 @@ include AuthHelper
 before(:each) do
   http_login
 
+  controller.stub(:walk_in_first_time){ false }
   controller.stub(:current_consultant){FactoryGirl.build(:consultant)}
   @ability = Object.new
   @ability.extend(CanCan::Ability)
