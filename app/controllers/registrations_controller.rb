@@ -10,8 +10,13 @@ class RegistrationsController < Devise::RegistrationsController
     @user = User.new(params[:user])
     #@business_profile = @user.build_business_profile
     if @user.save
-      flash[:notice] = t('confirmation_sent', email: @user.email)
-      redirect_to after_sign_up_path_for(@user)
+      if request.referrer == courses_path
+        flash[:notice] = 'successfully added walk ins'
+        redirect_to request.referrer
+      else
+        flash[:notice] = t('confirmation_sent', email: @user.email)
+        redirect_to after_sign_up_path_for(@user)
+      end
     else
 
       flash[:notice] = nice_errors(@user).html_safe

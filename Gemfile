@@ -73,7 +73,7 @@ group :production do
 end
 
 gem 'jquery-rails'
-gem 'roo', '~> 1.9.5'
+# gem 'roo', '~> 1.9.5'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

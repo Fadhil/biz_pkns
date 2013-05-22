@@ -121,6 +121,10 @@ class ConsultantsController < ApplicationController
     if program = Program.find(params[:program_id]) rescue nil
       session[:current_program_id] = program.id
       session[:current_program_name] = program.name
+
+      respond_to do |format|
+        format.html { redirect_to request.referrer }
+      end
     end
   end
   

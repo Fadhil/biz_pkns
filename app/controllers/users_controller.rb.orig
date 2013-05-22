@@ -148,6 +148,11 @@ class UsersController < ApplicationController
     end
   end
 
+<<<<<<< HEAD
+  def import
+    User.import(params[:file])
+    redirect_to root_url, notice: "Users imported."
+=======
   def make_member
     @user = User.find(params[:id])
     @user.make_member
@@ -155,5 +160,6 @@ class UsersController < ApplicationController
     respond_to do |format|
         format.html { redirect_to request.referrer }
     end
+>>>>>>> b16274b74ba803af733c95b97c357cab6377e9f4
   end
 end

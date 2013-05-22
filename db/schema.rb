@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130517105435) do
+ActiveRecord::Schema.define(:version => 20130521121939) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -56,6 +56,8 @@ ActiveRecord::Schema.define(:version => 20130517105435) do
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.integer  "attendance_list_id"
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   create_table "business_profiles", :force => true do |t|
@@ -236,6 +238,7 @@ ActiveRecord::Schema.define(:version => 20130517105435) do
     t.string   "section"
     t.string   "unit"
     t.string   "office_phone"
+    t.boolean  "walk_in_first_time"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

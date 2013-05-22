@@ -50,9 +50,10 @@
               - else
                 %td Nil
               %td
-                = link_to t('view'),                        |
+                - if current_user || current_consultant
+                  = link_to t('view'),                        |
                   user_path(user), :class => 'btn btn-secondary btn-mini' |
-                - if can? :manage, User
+                - if can? :manage, :all
                   =link_to t('destroy', :default => t("helpers.links.destroy")),
                               user_path(user),
                               :method => :delete,

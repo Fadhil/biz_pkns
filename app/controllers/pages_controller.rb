@@ -42,7 +42,8 @@ class PagesController < ApplicationController
 
   def update_attendance_list(course,user)
     attendee = Attendee.create( user_id: user.id, 
-                                name: user.full_name, 
+                                first_name: user.first_name,
+                                last_name: user.last_name,
                                 email: user.email, 
                                 ic_number: user.ic_number)
     if course.attendance_list.attendees.count < course.attendance_list.max_attendees
@@ -56,7 +57,7 @@ class PagesController < ApplicationController
   end
 
   def my_courses
-    authorize! :all, :pages
+    authorize! :my_courses, :pages
     @courses = []
     if current_user
       @courses = current_user.courses

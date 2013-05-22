@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_filter :authenticate
+  before_filter :walk_in_first_time
 
   protect_from_forgery
   rescue_from CanCan::AccessDenied do |exception|
@@ -33,6 +34,15 @@ class ApplicationController < ActionController::Base
   def authenticate
     authenticate_or_request_with_http_basic do |username, password|
       username == "big" && password == "boss"
+    end
+  end
+
+  def walk_in_first_time
+    if current_user
+      if current_user.walk_in_first_time?
+        current_user.walk_in_first_time = false
+        flash[:notice] = t('please_change_default_password')
+      end
     end
   end
 

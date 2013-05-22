@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
 
   scope :nonadmin, where(:role_id=> nil)
+  scope :members, joins(:membership)
+  scope :nonmembers, joins('left outer join memberships on users.id = memberships.user_id').where('memberships.id is null')
   before_save :default_values
   def default_values
     self.confirmed ||= 'false'
@@ -21,6 +23,7 @@ class User < ActiveRecord::Base
   attr_accessible :twitter_handle, :facebook_handle, :current_employment_status
   attr_accessible :education_background_attributes, :experience_attributes, :businesses_attributes, :role_id
   attr_accessible :staff_number, :section, :unit, :is_active, :office_phone
+  attr_accessible :walk_in_first_time, :confirmed
 
   validates_uniqueness_of :ic_number
   validates_format_of :ic_number, with:  /^\d{6}\-\d{2}\-\d{4}$/, :message => I18n.t('errors.ic_format')
@@ -118,12 +121,11 @@ class User < ActiveRecord::Base
       self.membership.member_number = generate_member_id(self.membership.id)
       self.membership.save
       self.confirmed = true
+      logger.info "Made user with ID: #{self.id} a member with member_id: #{self.membership.id}\n"
     end
   end
 
   def generate_member_id(id)
-    puts 'in here mate'
-    puts "the id: #{id}"
     biz_id = (id + 499).to_s #start at 500
     biz_id_string = "BIZ" + "0"*(MEMBER_NUMBER_DIGITS - biz_id.size) + biz_id
     biz_id_string

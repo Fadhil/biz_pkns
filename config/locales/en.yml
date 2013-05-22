@@ -4,6 +4,7 @@
 en:
   active: 'Active'
   add_program: 'Add Program'
+  add_attendee: 'Add Attendee'
   inactive: 'Inactive'
   is_active: 'Active'
   are_you_sure: 'Are you sure?'
@@ -32,6 +33,9 @@ en:
   description: 'Description'
   did_not_receive_confirmation: "Didn't receive confirmation instructions?"
   forgot_your_password: 'Forgot your password?'
+  filter_by_member: "Show Members"
+  filter_by_non_member: 'Show Non Members'
+  make_member: 'Make Member'
   message: 'Message'
   member: 'Member'
   my_courses: 'My Courses'
@@ -43,6 +47,7 @@ en:
   password: 'Password'
   password_confirmation: 'Password Confirmation'
   phone: 'Phone Number'
+  please_change_default_password: "Your password is now defaulted to 'password'. Please change it in your Profile settings."
   postcode: 'Postcode'
   present: 'Present'
   not_present: 'Not Present'
@@ -59,6 +64,7 @@ en:
   search_by_state: 'Search by State'
   section: 'Section'
   select_a_program: 'Select a Program'
+  select_a_program_to_manage: 'Select a Program to Manage First'
   search_by_company_name: 'Search by Business Name'
   send: 'Send'
   send_password_instructions: "Send me reset password instructions"

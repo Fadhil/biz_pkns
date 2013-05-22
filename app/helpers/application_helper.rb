@@ -14,4 +14,19 @@ module ApplicationHelper
 
     error_message
   end
+
+  def program_switch_menu
+    menu_html = ''
+    if current_consultant
+      programs = current_consultant.programs
+      unless programs.empty?
+        programs.each do |p|
+          menu_html += content_tag(:li, link_to(p.name,select_program_path(p)))
+        end
+      end
+    end
+    menu_html = content_tag(:ul, menu_html.html_safe)
+
+    menu_html
+  end
 end

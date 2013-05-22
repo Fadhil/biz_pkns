@@ -4,6 +4,7 @@
 bm:
   active: 'Aktif'
   add_program: 'Tambah Program'
+  add_attendee: 'Daftar Ahli'
   inactive: 'Tidak Aktif'
   is_active: 'Aktif'
   are_you_sure: 'And pasti?'
@@ -32,7 +33,11 @@ bm:
   description: 'Huraian'
   did_not_receive_confirmation: "Tidak terima arahan pengesahan?"
   forgot_your_password: 'Lupa kata laluan?'
+  filter_all: "Paparkan Semua Pengguna" 
+  filter_by_member: "Paparkan Ahli"
+  filter_by_non_member: 'Paparkan Bukan Ahli'
   invalid_request: 'Permintaan Tidak Sah'
+  make_member: 'Jadikan Ahli'
   message: 'Mesej'
   my_courses: 'Kursus Saya'
   name: 'Nama'
@@ -47,6 +52,7 @@ bm:
   number_of_attendees: 'Jumlah Peserta'
   phone: 'No Tel'
   postcode: 'Poskod'
+  please_change_default_password: "Kata Laluan anda sekarang ialah 'password'. Sila tukarkan kata laluan di Profil anda"
   present: 'Hadir'
   not_present: 'Tidak Hadir'
   profile: 'Profile'
@@ -65,6 +71,7 @@ bm:
   search_by_company_name: 'Carian Nama Syarikat'
   section: 'Bahagian'
   select_a_program: 'Pilih Program'
+  select_a_program_to_manage: 'Sila Pilih Program Untuk Diurus Dahulu'
   send: 'Hantar'
   send_password_instructions: "Hantarkan arahan tukar kata laluan"
   setting: 'Tetapan'
