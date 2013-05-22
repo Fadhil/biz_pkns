@@ -20,11 +20,6 @@ end
     end
   end
 
-  describe "POST 'create'" do
-    it "redirects to new skill path" do
-      post 'create'
-      response.should redirect_to(new_skill_path)
-    end
-  end
+
 
 end

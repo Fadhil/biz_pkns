@@ -6,7 +6,11 @@ class AttendanceListController < ApplicationController
     
     @attendance_list.save
     respond_to do |format|
+<<<<<<< HEAD
+      format.html { redirect_to request.referrer }
+=======
       format.html { redirect_to request.referrer || root_path }
+>>>>>>> acfa3d7500784a3803d350bd9569af2537924609
     end
   end
 end

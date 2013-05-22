@@ -4,7 +4,7 @@ module AuthRequestHelper
   #
   # GET '/labels', {}, @env
   #
-  def http_login
+  def http_request_login
     @env ||= {}
     user = 'big'
     pw = 'boss'

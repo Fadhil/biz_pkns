@@ -108,6 +108,10 @@ class UsersController < ApplicationController
   def update
     params[:user].delete(:password) if params[:user][:password].blank?
     params[:user].delete(:password_confirmation) if params[:user][:password_confirmation].blank?
+<<<<<<< HEAD
+=======
+
+>>>>>>> acfa3d7500784a3803d350bd9569af2537924609
     @user = User.find(params[:id])
     city_id = params[:user_city]
     business_city_id = params[:businessprofile_city]
@@ -127,6 +131,9 @@ class UsersController < ApplicationController
             previous_course.save
           end
         end
+        
+        sign_in @user, :bypass => true
+      
         format.html { redirect_to @user, notice: I18n.t('successfully_updated', resource: t('profile'))  }
         format.json { head :no_content }
       else
@@ -148,11 +155,6 @@ class UsersController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
-  def import
-    User.import(params[:file])
-    redirect_to root_url, notice: "Users imported."
-=======
   def make_member
     @user = User.find(params[:id])
     @user.make_member
@@ -160,6 +162,5 @@ class UsersController < ApplicationController
     respond_to do |format|
         format.html { redirect_to request.referrer }
     end
->>>>>>> b16274b74ba803af733c95b97c357cab6377e9f4
   end
 end
