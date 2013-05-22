@@ -2,6 +2,8 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
+require 'capybara/rails'
+require 'database_cleaner'
 
 # This causes zeus to run tests twice on single spec files.
 #require 'rspec/autorun'
