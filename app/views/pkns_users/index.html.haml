@@ -1,15 +1,7 @@
 - model_class = User
 .page-header
   %h1= t '.title'
-= form_tag '', method: :get do
-  .row-fluid
-    .span3
-      = label :filter, :city, t('filter_by_member')
-      = select_tag 'filter', options_for_select([[t('filter_all'),''],[t('filter_by_member'), "members"],[t('filter_by_non_member'), "nonmembers"]], params[:filter])
-    .span3
-      %br/
-      = button_tag t('search'), class: 'btn btn-success', :style => "margin-top:8px;" 
-      %br/
+
 %table.table.table-striped
   %thead
     %tr
