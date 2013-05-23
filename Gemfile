@@ -36,6 +36,10 @@ gem 'i18n_routing'
 
 # Portal
 gem 'refinerycms'
+gem 'refinerycms-dashboard', '~> 2.0.0'
+gem 'refinerycms-images', '~> 2.0.0'
+gem 'refinerycms-pages', '~> 2.0.0'
+gem 'refinerycms-resources', '~> 2.0.0'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -72,7 +76,7 @@ group :production do
   gem 'fog'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 2.0.0'
 # gem 'roo', '~> 1.9.5'
 
 # To use ActiveModel has_secure_password
