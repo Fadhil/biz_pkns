@@ -7,7 +7,7 @@ describe Course do
 
     # First three courses that should show up
     3.times do |i|
-      @course[i] = FactoryGirl.create(:course, name: "Course #{i}", start_date: i.days.from_now, end_date: i.months.from_now, status: true)
+      @course[i] = FactoryGirl.create(:course, name: "Course #{i}", start_date: (i+1).days.from_now, end_date: i.months.from_now, status: true)
     end
     # Old course - shouldn't show
     @course << FactoryGirl.create(:course, name:"old course", start_date: 2.days.ago, end_date: 2.weeks.from_now, status: true)

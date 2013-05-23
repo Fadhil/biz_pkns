@@ -6,7 +6,7 @@ require 'rake'
 include AuthHelper
 before :each do
   http_login
-  controller.stub(:walk_in_first_time){ false }
+  controller.stub(:check_status){ true }
 end
 
   describe "GET 'welcome'" do

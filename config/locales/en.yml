@@ -48,6 +48,7 @@ en:
   password_confirmation: 'Password Confirmation'
   phone: 'Phone Number'
   please_change_default_password: "Your password is now defaulted to 'password'. Please change it in your Profile settings."
+  please_complete_your_profile: 'Please complete your profile to full utilize this website'
   postcode: 'Postcode'
   present: 'Present'
   not_present: 'Not Present'

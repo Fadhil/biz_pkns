@@ -4,6 +4,7 @@ class PagesController < ApplicationController
   end
 
   def consultation
+    authorize! :consultation, :pages, message: 'Anda perlu menjadi ahli untuk menggunakan perkhidmatan ini.'
     @consultants = Consultant.all
   end
 
@@ -57,7 +58,7 @@ class PagesController < ApplicationController
   end
 
   def my_courses
-    authorize! :my_courses, :pages
+    authorize! :my_courses, :pages, message: 'Anda perlu menjadi ahli untuk menggunakan perkhidmatan ini.'
     @courses = []
     if current_user
       @courses = current_user.courses

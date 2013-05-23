@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   scope :members, joins(:membership)
   scope :nonmembers, joins('left outer join memberships on users.id = memberships.user_id').where('memberships.id is null')
   before_save :default_values
+  before_save :complete_profile
+
   def default_values
     self.confirmed ||= 'false'
   end
@@ -198,6 +200,24 @@ class User < ActiveRecord::Base
     when ".xls" then Excel.new(file.path, nil, :ignore)
     when ".xlsx" then Excelx.new(file.path, nil, :ignore)
     else raise "Unknown file type: #{file.original_filename}"
+    end
+  end
+
+  def complete_profile
+    unless self.profile_complete?
+      required_attributes = ['first_name','last_name','ic_number', 'phone', 'email', 'gender', 'current_employment_status', 'experience', 'education_background']
+      @complete = true
+      
+      required_attributes.each do |r| 
+
+        if self.send(r).nil? || self.send(r).empty?
+          @complete = false
+        end
+
+      end
+      if @complete
+        self.profile_complete = true
+      end
     end
   end
 end

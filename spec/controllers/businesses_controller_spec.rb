@@ -23,7 +23,7 @@ describe BusinessesController do
 include AuthHelper
 before(:each) do
   http_login
-  controller.stub(:walk_in_first_time){ false }
+  controller.stub(:check_status){ true }
 end
   # This should return the minimal set of attributes required to create a valid
   # Business. As you add validations to Business, be sure to

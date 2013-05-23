@@ -1,12 +1,9 @@
 class ApplicationController < ActionController::Base
   before_filter :authenticate
-  before_filter :walk_in_first_time
+  before_filter :check_status
 
   protect_from_forgery
-  rescue_from CanCan::AccessDenied do |exception|
-    flash[:alert] = "Access denied."
-    redirect_to root_url
-  end
+
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
@@ -37,12 +34,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def walk_in_first_time
+  def check_status
     if current_user
       if current_user.walk_in_first_time?
-        current_user.walk_in_first_time = false
-        current_user.save
-        flash[:notice] = t('please_change_default_password')
+        flash.now[:notice] = t('please_change_default_password')
+      elsif current_user.confirmed && !current_user.profile_complete?
+        flash.now[:notice] = t('please_complete_your_profile')
       end
     end
   end

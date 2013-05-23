@@ -9,7 +9,7 @@ class Ability
       if resource.is_a?(User)
         if resource.admin?
           can :manage, :all
-        elsif resource.confirmed
+        elsif resource.confirmed && resource.profile_complete?
           can :manage, User, id: resource.id
           can :read, :all
           can :contact, :all
@@ -19,10 +19,8 @@ class Ability
           cannot :index, :course
 
           can :consultation, :pages
-          #cannot :index, User
-          # can :contact, Consultant do |c|
-          #   unless user.email.nil
-          # end
+          cannot :index, User
+
         else
           #can :read, :all
           can :manage, User, id: resource.id

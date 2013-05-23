@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe AttendanceListController do
   before :each do
-    #@user = FactoryGirl.create(:user, ic_number: '111111-11-1111')
+    @user = FactoryGirl.create(:user,profile_complete: true, walk_in_first_time: false)
     http_login
-    controller.stub(:walk_in_first_time){ false }
+    controller.stub(:current_user){ @user }
   end
   describe '#update' do
     it 'should create a new user' do
