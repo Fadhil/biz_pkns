@@ -1,5 +1,7 @@
 BizPkns::Application.routes.draw do
 
+  
+
   resources :businesses
 
   localized do
@@ -33,7 +35,7 @@ BizPkns::Application.routes.draw do
     resources :educations
     resources :skills
     resources :attendance_list
-
+    resources :pkns_users
     # resources :users do
     #   collection { post :import }
     # end

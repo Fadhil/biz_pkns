@@ -28,6 +28,7 @@ bm:
   contact: 'Hubungi'
   contact_consultant: 'Email kepada perunding'
   create_course: 'Cipta Kursus'
+  create_user: 'Daftar Ahli'
   customers: 'Pelanggan'
   date_tarikh: 'Tarikh'
   description: 'Huraian'
@@ -85,6 +86,7 @@ bm:
   subject: 'Perkara'
   successfully_registered_course: 'Pendaftaran Kursus Berjaya.'
   successfully_updated_attendance: 'Kehadiran Berjaya Dikemaskini'
+  successfully_created_pkns_user: 'Berjaya mendaftarkan pengguna PKNS'
   unit: 'Unit'
   update: 'Kemaskini'
   upcoming: 'Akan Datang'
@@ -368,6 +370,7 @@ bm:
       profile: 'Profil'
       consultant_profile: 'Profil Perunding'
       administrate_user: 'Urus Ahli'
+      administrate_pkns_user: 'Urus Ahli PKNS'
       directory: 'Direktori'
       new_consultant: 'Daftar Perunding'
       new_education: 'Daftar Bidang Pendidikan'
@@ -448,6 +451,7 @@ bm:
     business_directory: 'direktori'
     my_courses: 'kursus_saya'
     upcoming_courses: 'kursus_akan_datang'
+    pkns_users: 'pengguna_pkns'
 
   resources: 
     consultants: 'perunding'

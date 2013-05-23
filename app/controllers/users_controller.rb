@@ -3,12 +3,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    if params[:filter].present?
-      @users = User.nonadmin.send(params[:filter].to_s)
-    else
-      @users = User.nonadmin
-    end 
-
+    @users = User.nonadmin
     @klass = Class
     respond_to do |format|
       format.html # index.html.erb
@@ -130,7 +125,9 @@ class UsersController < ApplicationController
         end
 
         @user.save
-        sign_in @user, :bypass => true
+        unless current_user.admin?
+          sign_in @user, :bypass => true
+        end
         format.html { redirect_to @user, notice: I18n.t('successfully_updated', resource: t('profile'))  }
         format.json { head :no_content }
       else
