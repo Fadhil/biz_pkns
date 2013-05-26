@@ -4,5 +4,8 @@
     .controls
       = f.text_field :name, :class => 'text_field'
   .form-actions
-    = f.submit nil, :class => 'btn btn-primary'
+    - if f.object.new_record?
+      = f.submit t('.add_new_business'), :class => 'btn btn-primary'
+    - else
+      = f.submit t('update'), class: 'btn btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), businesses_path, :class => 'btn'

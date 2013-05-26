@@ -298,26 +298,29 @@ bm:
 
   businesses:
     index:
-      title: 'Senarai Bidang Perniagaan'
+      title: 'Senarai Jenis Perniagaan'
       name: 'Nama Bidang Perniagaan'
       edit: 'Sunting'
       destroy: 'Padam'
-      new: 'Tambah Bidang Perniagaan Baru'
+      new: 'Tambah Jenis Perniagaan Baru'
     new:
       title: 'Bidang Perniagaan Baru'
     edit:
       title: 'Sunting Bidang Perniagaan'
       create: 'Kemaskini'
+
     form:
       name: 'Nama bidang'
       create: 'Tambah'
       cancel: 'Batal'
+      add_new_business: 'Tambah Jenis Perniagaan Baru'
     show:
       title: 'Bidang Perniagaan'
       name: 'Nama'
       back: 'Balik'
       edit: 'Kemaskini'
       destroy: 'Padam'
+      update: 'Kemaskini'
 
   programs:
     index:
@@ -382,6 +385,7 @@ bm:
       new_skill: 'Daftar Kemahiran'
       new_course: 'Daftar Kursus'
       new_business_category: 'Daftar Perniagaan'
+      new_program: 'Daftar Program'
       members: 'Ahli'
       program: 'Program'
       program_listing: 'Senarai Program'
