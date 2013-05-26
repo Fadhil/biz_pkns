@@ -3,7 +3,11 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.nonadmin
+    if params[:filter].present?
+      @users = User.nonadmin.send(params[:filter])
+    else
+      @users = User.nonadmin
+    end
     @klass = Class
     respond_to do |format|
       format.html # index.html.erb
@@ -157,4 +161,16 @@ class UsersController < ApplicationController
         format.html { redirect_to request.referrer }
     end
   end
+
+  def update_membership
+    @user = User.find(params[:id])
+
+    @user.membership.category = params[:membership][:category]
+
+    if @user.membership.save && @user.save
+      respond_to do |format|
+          format.html { redirect_to request.referrer, notice: I18n.t('successfully_updated', resource: t('profile')) }
+      end
+    end
+  end 
 end

@@ -19,12 +19,17 @@ FactoryGirl.define do
     current_employment_status 'part_time_business'
 
 
+
     factory :admin do
         association :role, factory: :admin_role
     end
 
 
   end
+  trait :member do
+    association :membership, factory: :membership
+  end
+  
   trait :profile_completed do
     walk_in_first_time false
     profile_complete true

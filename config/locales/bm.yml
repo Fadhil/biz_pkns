@@ -17,6 +17,7 @@ bm:
   change_your_password: 'Tukar kata laluan'
   confirm: 'Setuju'
   confirm_register_course: 'Adakah anda pasti untuk menghadiri kursus ini?'
+  confirm_category_change: 'Adakah anda pasti untuk menukar kategori ahli?'
   course: 'Kursus'
   courses: 'Kursus'
   course_is_full: 'Maaf, Kursus ini sudah penuh'
@@ -37,6 +38,7 @@ bm:
   filter_all: "Paparkan Semua Pengguna" 
   filter_by_member: "Paparkan Ahli"
   filter_by_non_member: 'Paparkan Bukan Ahli'
+  gold: 'Gold'
   invalid_request: 'Permintaan Tidak Sah'
   make_member: 'Jadikan Ahli'
   message: 'Mesej'
@@ -53,6 +55,7 @@ bm:
   number_of_attendees: 'Jumlah Peserta'
   phone: 'No Tel'
   postcode: 'Poskod'
+  platinum: 'Platinum'
   please_change_default_password: "Kata Laluan anda sekarang ialah 'password'. Sila tukarkan kata laluan di Profil anda"
   please_complete_your_profile: 'Sila lengkapkan profil anda untuk menikmati sistem ini sepenuhnya.'
   present: 'Hadir'
@@ -80,6 +83,7 @@ bm:
   share: 'Kongsi'
   sign_up: 'Daftar Sebagai Ahli'
   sign_in: 'Daftar Masuk'
+  silver: 'Silver'
   staff_number: 'Nombor Staf'
   state: 'Negeri'
   status: 'Status'

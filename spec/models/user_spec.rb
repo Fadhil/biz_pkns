@@ -66,5 +66,13 @@ describe User do
       end
     end
   end
+
+  describe '#make_member' do
+    it 'should default membership.category to silver' do
+      @user = FactoryGirl.build(:user)
+      @user.make_member
+      @user.membership.category.should eq 'silver'
+    end
+  end
 end
 

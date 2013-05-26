@@ -35,8 +35,15 @@
           %td
             = link_to t('view', :default => t("helpers.links.edit")), user_path(user), :class => 'btn btn-mini'
             -#
-            = link_to t('destroy', :default => t("helpers.links.destroy")), user_path(user),:method => :delete,:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+            = link_to t('destroy', :default => t("helpers.links.destroy")), user_path(user),:method => :delete,:data => { :confirm => t('confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
             - if user.membership.nil?
               = link_to t('make_member'), make_member_path(user), method: :put, :class => 'btn btn-mini btn-red'
+            - else
+
+              = nested_form_for '', url: update_membership_user_path(user), method: :put do |f|
+                = f.fields_for :membership do |m|
+                  = select_tag 'membership[category]', options_for_select((MEMBER_CATEGORIES.map{|a| [t(a),a]}), user.membership.category), class: "membership", onchange: "$('#submit#{i}').click();"
+                  = f.submit( confirm: t('confirm_category_change'), id: "submit#{i}", class: 'hidden')
+
 = link_to t('new', :default => t("helpers.links.new_user")), new_user_path, :class => 'btn btn-primary'  
 

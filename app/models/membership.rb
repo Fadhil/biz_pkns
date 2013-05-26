@@ -1,4 +1,11 @@
 class Membership < ActiveRecord::Base
-  attr_accessible :member_number, :user_id
+  attr_accessible :member_number, :user_id, :category
   #belongs_to :user
-end
+
+  after_initialize :set_default_category
+
+  def set_default_category
+    self.category = 'silver'
+    
+  end
+end 

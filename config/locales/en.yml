@@ -17,6 +17,7 @@ en:
   change_your_password: 'Change your password'
   confirm: 'Confirm'
   confirm_register_course: 'Are you sure you want to register for this course?'
+  confirm_category_change: 'Are you sure you want to change this users category?'
   course: 'Course'
   courses: 'Courses'
   course_is_full: 'Course Registration is Full'

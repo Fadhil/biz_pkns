@@ -28,7 +28,11 @@ BizPkns::Application.routes.draw do
     
     resources :admin
     resources :consultants
-    resources :users
+    resources :users do
+      member do
+        put 'update_membership' => 'users#update_membership'#, as: :update_membership
+      end 
+    end
     resources :programs
     resources :courses
     resources :members

@@ -31,3 +31,9 @@ COURSES_TYPE = [
 SECONDS_IN_A_YEAR = 31556952
 
 MEMBER_NUMBER_DIGITS = 6
+
+MEMBER_CATEGORIES = [
+      'silver',
+      'gold',
+      'platinum'
+]
