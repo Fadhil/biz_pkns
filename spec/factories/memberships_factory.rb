@@ -4,5 +4,6 @@ FactoryGirl.define do
   factory :membership do
     member_number "MyString"
     user_id 1
+    category 'silver'
   end
 end

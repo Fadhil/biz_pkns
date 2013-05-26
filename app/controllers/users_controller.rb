@@ -164,9 +164,11 @@ class UsersController < ApplicationController
 
   def update_membership
     @user = User.find(params[:id])
-
+    puts "I'm in here!\n"
+    puts params[:membership]
+    puts "\nMembership = #{@user.membership.category}}\n\n"
     @user.membership.category = params[:membership][:category]
-
+    puts "\nMembership After= #{@user.membership.category}}\n\n"
     if @user.membership.save && @user.save
       respond_to do |format|
           format.html { redirect_to request.referrer, notice: I18n.t('successfully_updated', resource: t('profile')) }

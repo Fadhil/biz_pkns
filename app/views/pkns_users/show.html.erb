@@ -31,7 +31,7 @@
           </div>
           
         </div>
-        <div class="span2">
+        <div class="span3">
           <div class="whitespace">
               <b>T</b>
                 <% if @user.twitter_handle.blank? %>
@@ -52,13 +52,6 @@
                 <% else %>
                   <%= @user.phone %></td>
                 <% end %>
-          </div>
-        </div>
-        <div class='span1'>
-          <div class="whitespace">
-            <% if @user.membership %>
-              <%= image_tag("#{@user.membership.category}.png") %>
-            <% end %>
           </div>
         </div>
       </div>
