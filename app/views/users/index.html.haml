@@ -14,23 +14,23 @@
   %thead
     %tr
       %th= t('name')
-      %th= t('city')
-      %th= t('state')
+      %th= t('membership_num')
+      %th= t('program')
   %tbody
     - @users.each_with_index do |user,i|
       %tr
         %td= link_to "#{user.first_name} #{user.last_name}", user_path(user)
-        - if user.address.nil?
-          %td
+        - if user.membership.nil?
           %td
         - else
-          - if user.address.city.nil?
-            %td
-            %td
-          - else
-            %td= "#{user.address.city.name}"
-            %td= "#{user.address.city.state_name}"
+          %td= "#{user.membership.member_number}"
 
+        - if user.programs.empty?
+          %td
+        -else
+          %td
+            - user.programs.uniq.each do |p|
+              %p= "#{p.name}"
         - if can? :manage, @user
           %td
             = link_to t('view', :default => t("helpers.links.edit")), user_path(user), :class => 'btn btn-mini'
