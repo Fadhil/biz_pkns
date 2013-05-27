@@ -89,6 +89,7 @@ bm:
   status: 'Status'
   subject: 'Perkara'
   successfully_registered_course: 'Pendaftaran Kursus Berjaya.'
+  successfully_registered_pkns_user: 'Pendaftaran Ahli PKNS berjaya'
   successfully_updated_attendance: 'Kehadiran Berjaya Dikemaskini'
   successfully_created_pkns_user: 'Berjaya mendaftarkan pengguna PKNS'
   unit: 'Unit'
@@ -364,6 +365,11 @@ bm:
       title: 'Ahli Program'
       search_member: 'Carian Ahli'
 
+  pkns_users:
+    index:
+      title: 'Operator PKNS'
+    new:
+      title: 'Tambah Operator PKNS'
 
   #Stuff in the header
   layouts:
