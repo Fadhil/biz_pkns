@@ -34,12 +34,14 @@ gem 'kaminari'
 # localized routes
 gem 'i18n_routing'
 
-# Portal
-gem 'refinerycms'
-gem 'refinerycms-dashboard', '~> 2.0.0'
-gem 'refinerycms-images', '~> 2.0.0'
-gem 'refinerycms-pages', '~> 2.0.0'
-gem 'refinerycms-resources', '~> 2.0.0'
+#Refinery
+git 'git://github.com/resolve/refinerycms.git' do
+  gem 'refinerycms-core'
+  gem 'refinerycms-dashboard'
+  gem 'refinerycms-images'
+  gem 'refinerycms-pages'
+  gem 'refinerycms-resources'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.

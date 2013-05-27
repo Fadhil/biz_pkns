@@ -27,13 +27,17 @@ BizPkns::Application.configure do
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.
-  config.action_mailer.delivery_method = :test
+  if config.respond_to?(:action_mailer)
+    config.action_mailer.delivery_method = :test
+  end
 
   # Raise exception on mass assignment protection for Active Record models
   config.active_record.mass_assignment_sanitizer = :strict
 
   # Print deprecation notices to the stderr
-  config.active_support.deprecation = :stderr
+  if config.respond_to?(:action_mailer)
+    config.active_support.deprecation = :stderr
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  end
 end

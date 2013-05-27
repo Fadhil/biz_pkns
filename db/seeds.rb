@@ -250,3 +250,5 @@ malaysia_cities = [
 
 malaysia_cities.each {|c| City.find_or_create_by_name(c)}
 # --- city and state for malaysia END here ---
+# Added by Refinery CMS Pages extension
+Refinery::Pages::Engine.load_seed

@@ -14,7 +14,9 @@ BizPkns::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = true
+  if config.respond_to?(:action_mailer)
+    config.action_mailer.raise_delivery_errors = true
+  end
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
@@ -33,8 +35,10 @@ BizPkns::Application.configure do
   config.assets.compress = false
 
   # Expands the lines which load the assets
-  config.assets.debug = true
+  if config.respond_to?(:action_mailer)
+    config.assets.debug = true
   config
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  end
 end

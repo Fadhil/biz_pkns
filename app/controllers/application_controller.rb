@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  #include Refinery::AuthenticatedSystem
   before_filter :authenticate
   before_filter :walk_in_first_time
 
