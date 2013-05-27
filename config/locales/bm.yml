@@ -376,6 +376,7 @@ bm:
       consultation: 'Perundingan'
       profile: 'Profil'
       consultant_profile: 'Profil Perunding'
+      my_program: 'Program Saya'
       administrate_user: 'Urus Ahli'
       administrate_pkns_user: 'Urus Ahli PKNS'
       directory: 'Direktori'

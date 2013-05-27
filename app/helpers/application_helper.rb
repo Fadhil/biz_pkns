@@ -25,7 +25,7 @@ module ApplicationHelper
         end
       end
     end
-    menu_html = content_tag(:ul, menu_html.html_safe)
+    #menu_html = content_tag(:ul, menu_html.html_safe)
 
     menu_html
   end
