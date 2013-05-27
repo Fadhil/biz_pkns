@@ -298,11 +298,11 @@ bm:
 
   businesses:
     index:
-      title: 'Senarai Jenis Perniagaan'
+      title: 'Senarai Bidang Perniagaan'
       name: 'Nama Bidang Perniagaan'
       edit: 'Sunting'
       destroy: 'Padam'
-      new: 'Tambah Jenis Perniagaan Baru'
+      new: 'Tambah Bidang Perniagaan Baru'
     new:
       title: 'Bidang Perniagaan Baru'
     edit:
