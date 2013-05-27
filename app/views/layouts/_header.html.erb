@@ -6,7 +6,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <% if current_user %>
+      <% if current_user || current_consultant %>
         <% home_page = root_path %>
       <% else %>
         <% home_page = new_user_session_path %>
