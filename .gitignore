@@ -1,5 +1,7 @@
 *.swp
 *~
+*.orig
+*.bak
 .DS_Store
 .gitkeep
 .idea/

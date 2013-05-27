@@ -35,18 +35,49 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= link_to "#{user.first_name} #{user.last_name}", user_path(user) %></td>
-        <% if !user.business_profile.nil? %>
-          <td><%= user.business_profile.category %></td>
-          <td><%= user.try(:business_profile).try(:company_name) %></td>
-          <td><%= user.business_profile.customer1 %>
-              <% if user.business_profile.customer1 %>
-                <br/>
-              <% end %>
-              <%= user.business_profile.customer2 %>
-              <% if user.business_profile.customer2 %>
-                <br/>
-              <% end %>
-              <%= user.business_profile.customer3 %>
+        <% if !user.business_profiles.empty? %>
+
+           <td>
+              <ul>
+                <% user.business_profiles.each do |b| %>
+                  <li>
+                    <%= b.category %>
+                  </li>
+                <% end %>
+              </ul>
+
+           </td>
+            <td>
+              <ul>
+                <% user.business_profiles.each do |b| %>
+                  <li>
+                    <%= b.company_name %>
+                  </li>
+                <% end %>
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <% user.business_profiles.each do |b| %>
+                  <% unless b.customer1.blank? %>
+                    <li>
+                      <%= b.customer1 %>
+                    </li>
+                  <% end %>
+                  <% unless b.customer2.blank? %>
+                    <li>
+                      <%= b.customer2 %>
+                    </li>
+                  <% end %>
+                  <% unless b.customer3.blank? %>
+                    <li>
+                      <%= b.customer3 %>
+                    </li>
+                  <% end %>
+                <% end %>
+              </ul>
+            </td>
+       
         <% else %>
             <td></td>
             <td></td>
