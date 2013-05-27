@@ -1,7 +1,19 @@
 require 'spec_helper'
 
 describe PknsUsersController do
+include AuthHelper
+before(:each) do
+  http_login
+  @user = FactoryGirl.create( :user, type: 'PknsUser', id: 1)
+  controller.stub(:check_status){ true }
+  controller.stub(:current_consultant){FactoryGirl.build(:consultant)}
+  @ability = Object.new
+  @ability.extend(CanCan::Ability)
+  controller.stub(:current_ability) { @ability }
+  @ability.can :manage, :all
 
+
+end
   describe "GET 'index'" do
     it "returns http success" do
       get 'index'
@@ -11,7 +23,7 @@ describe PknsUsersController do
 
   describe "GET 'show'" do
     it "returns http success" do
-      get 'show'
+      get 'show', id: 1
       response.should be_success
     end
   end
@@ -25,7 +37,7 @@ describe PknsUsersController do
 
   describe "GET 'edit'" do
     it "returns http success" do
-      get 'edit'
+      get 'edit', id: 1
       response.should be_success
     end
   end
@@ -37,18 +49,5 @@ describe PknsUsersController do
     end
   end
 
-  describe "GET 'update'" do
-    it "returns http success" do
-      get 'update'
-      response.should be_success
-    end
-  end
-
-  describe "GET 'destroy'" do
-    it "returns http success" do
-      get 'destroy'
-      response.should be_success
-    end
-  end
 
 end
