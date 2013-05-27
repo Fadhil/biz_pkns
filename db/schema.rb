@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130523200015) do
+ActiveRecord::Schema.define(:version => 20130527114740) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -171,6 +171,22 @@ ActiveRecord::Schema.define(:version => 20130523200015) do
     t.string   "category"
   end
 
+  create_table "past_attendances", :force => true do |t|
+    t.string   "program"
+    t.string   "course"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "venue"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "ic_number"
+    t.string   "phone"
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.boolean  "successful"
+  end
+
   create_table "previous_courses_users", :id => false, :force => true do |t|
     t.integer "previous_course_id"
     t.integer "user_id"
@@ -194,6 +210,7 @@ ActiveRecord::Schema.define(:version => 20130523200015) do
     t.integer  "image_width"
     t.integer  "image_height"
     t.string   "image_uid"
+    t.string   "image_ext"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
@@ -272,12 +289,18 @@ ActiveRecord::Schema.define(:version => 20130523200015) do
 
   create_table "roles", :force => true do |t|
     t.string "name"
+    t.string "title"
   end
 
   create_table "roles_users", :force => true do |t|
-    t.integer "role_id"
-    t.integer "user_id"
+    t.integer  "user_id"
+    t.integer  "role_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
+
+  add_index "roles_users", ["role_id"], :name => "index_roles_users_on_role_id"
+  add_index "roles_users", ["user_id"], :name => "index_roles_users_on_user_id"
 
   create_table "seo_meta", :force => true do |t|
     t.integer  "seo_meta_id"

@@ -1,9 +1,5 @@
 BizPkns::Application.routes.draw do
 
-  
-
-  resources :businesses
-
   localized do
     put 'make_member/:id' => 'users#make_member', as: :make_member
     match 'select_program/:program_id' => 'consultants#select_program', as: :select_program
@@ -20,7 +16,7 @@ BizPkns::Application.routes.draw do
     match 'business_directory' => 'pages#business_directory', as: :business_directory
     get 'city_dropdown' => 'application#city_dropdown', as: :city_dropdown
     devise_for :users, path_names: {sign_in: "login", sign_out: "logout", sign_up: "signup"},
-                        controllers: {registrations: 'registrations'}
+                        controllers: {registrations: 'registrations', confirmations: 'confirmations'}
     devise_for :consultants, path_names: {sign_in: "login",  sign_out: "logout"}
     devise_for :users do
       get "/admin/login" => "devise/sessions#new"
@@ -40,6 +36,8 @@ BizPkns::Application.routes.draw do
     resources :skills
     resources :attendance_list
     resources :pkns_users
+    resources :businesses
+    resources :past_attendances, except: [ :update, :destroy, :edit ]
     # resources :users do
     #   collection { post :import }
     # end

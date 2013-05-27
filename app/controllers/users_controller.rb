@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     respond_to do |format|
-      if @user.try(:role).try(:name) == 'admin'
+      if @user.has_role?('Admin')
         format.html { render 'admin_show'}
       else
         format.html # show.html.erb
@@ -75,7 +75,7 @@ class UsersController < ApplicationController
     end
 
     respond_to do |format|
-      if @user.try(:role).try(:name) == 'admin'
+      if @user.has_role?('Admin')
         format.html { render 'admin_edit'}
       else
         format.html # edit.html.erb
@@ -120,7 +120,7 @@ class UsersController < ApplicationController
       if @user.update_attributes(params[:user])
         @user.set_city(city_id) unless city_id.blank?
         @user.business_profile.set_city(business_city_id) unless business_city_id.blank?
-        unless @user.try(:role).try(:name) == 'admin'
+        unless @user.has_role?('Admin')
           previous_course = @user.previous_courses.last
           unless previous_course.nil?
             previous_course.program = program unless program.nil?
@@ -164,11 +164,7 @@ class UsersController < ApplicationController
 
   def update_membership
     @user = User.find(params[:id])
-    puts "I'm in here!\n"
-    puts params[:membership]
-    puts "\nMembership = #{@user.membership.category}}\n\n"
     @user.membership.category = params[:membership][:category]
-    puts "\nMembership After= #{@user.membership.category}}\n\n"
     if @user.membership.save && @user.save
       respond_to do |format|
           format.html { redirect_to request.referrer, notice: I18n.t('successfully_updated', resource: t('profile')) }
