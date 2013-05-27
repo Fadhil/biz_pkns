@@ -141,7 +141,6 @@ class MembersController < ApplicationController
     attendance.attended = attended
 
     if attended
-      puts 'inside here fucer'
       user.make_member
     end
 

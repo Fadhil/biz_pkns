@@ -1,7 +1,18 @@
 <p>Tahniah <%= @email %>!</p>
 
-<p>Anda telah berjaya didaftarkan sebagai ahli PKNS BizClub.</p>
+<% if @resource.walk_in_first_time %>
+  <p>Anda dijemput untuk menjadi ahli PKNS BizClub kerana anda pernah menyertai kursus kelolaan PKNS.</p>
 
-<p>Sila sahkan email anda melalui pautan di bawah.</p>
+  <p>Sila sahkan email anda melalui pautan di bawah.</p>
 
-<p><%= link_to 'Sahkan akaun saya', user_confirmation_url(:confirmation_token => @resource.confirmation_token), :method=>:post %></p>
+  <p><%= link_to 'Sahkan akaun saya', user_confirmation_url(:confirmation_token => @resource.confirmation_token, make_member: true), :method=>:post %></p>
+
+<% else %>
+
+  <p>Anda telah berjaya didaftarkan sebagai ahli PKNS BizClub.</p>
+
+  <p>Sila sahkan email anda melalui pautan di bawah.</p>
+
+  <p><%= link_to 'Sahkan akaun saya', user_confirmation_url(:confirmation_token => @resource.confirmation_token), :method=>:post %></p>
+
+<% end %>

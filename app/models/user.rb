@@ -65,18 +65,27 @@ class User < ActiveRecord::Base
 
   has_one :membership, dependent: :destroy
 
-  belongs_to :role
+  has_many :roles_user
+  has_many :roles, through: :roles_user
 
   def super_admin?
-    !self.role.name('super admin').nil?
+    !self.role.title('superadmin').nil?
+  end
+
+  def has_role?(title)
+    roles.any? { |a| a.title == title.camelize }
+  end
+
+  def add_role(title)
+      roles << Role[title] unless has_role?(title)
+  end
+
+  def remove_role(title)
+      roles.delete Role[title]
   end
 
   def admin?
-    if !self.role.nil?
-      self.role.name == 'admin' ? true : false
-    else
-      false
-    end
+    has_role?('Admin')
   end
 
   def set_city(city_id)

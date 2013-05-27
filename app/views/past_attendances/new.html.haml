@@ -1,0 +1,4 @@
+= form_for :past_attendance,  :url=>{:controller=>"past_attendances", :action=>"create"}, :html => { :multipart => true } do |f|
+  = f.label 'Select a CSV file'
+  = f.file_field :file
+  = f.submit
