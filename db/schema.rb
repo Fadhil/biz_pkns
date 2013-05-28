@@ -11,11 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20130527160411) do
-=======
-ActiveRecord::Schema.define(:version => 20130527114740) do
->>>>>>> merged and fixed conflicts.
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -220,7 +216,6 @@ ActiveRecord::Schema.define(:version => 20130527114740) do
     t.integer  "image_width"
     t.integer  "image_height"
     t.string   "image_uid"
-    t.string   "image_ext"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
@@ -303,14 +298,9 @@ ActiveRecord::Schema.define(:version => 20130527114740) do
   end
 
   create_table "roles_users", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "role_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer "role_id"
+    t.integer "user_id"
   end
-
-  add_index "roles_users", ["role_id"], :name => "index_roles_users_on_role_id"
-  add_index "roles_users", ["user_id"], :name => "index_roles_users_on_user_id"
 
   create_table "seo_meta", :force => true do |t|
     t.integer  "seo_meta_id"

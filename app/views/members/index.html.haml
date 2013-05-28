@@ -50,10 +50,13 @@
               - else
                 %td Nil
               %td
-                - if can? :read, :all
-
-                  = link_to t('view'),                        |
-                  user_path(user), :class => 'btn btn-secondary btn-mini' |
+                -# if can? :read, :all
+                - if cannot? :consultation, :pages
+                  = link_to t('view'),                        
+                  '', :class => 'btn btn-mini disabled'
+                - else 
+                  = link_to t('view'),                        
+                  user_path(user), :class => 'btn btn-secondary btn-mini'
                 - if can? :manage, :all
                   =link_to t('destroy', :default => t("helpers.links.destroy")),
                               user_path(user),
