@@ -77,8 +77,10 @@
           <tr>
             <th><%= t('address') %></th>
             <td>
-              <% unless @user.address.nil? %>
-                <%= @user.address.line1 %> <%= @user.address.line2 %>, <%= unless @user.address.city.nil? then @user.address.city.name end %> <%= @user.address.postcode %>, <%= @user.address.city.state_name unless @user.address.city.nil?%>
+              <% if !@user.address.line1.blank? %>
+              <%= @user.address.line1 %> <%= @user.address.line2 %> <%= unless @user.address.city.nil? then @user.address.city.name end %> <%= @user.address.postcode %> <%= @user.address.city.state_name unless @user.address.city.nil?%>
+              <% else %>
+              NIL
               <% end %>
             </td>
           </tr>
