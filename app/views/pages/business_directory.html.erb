@@ -53,9 +53,13 @@
           <td></td>
         <% end %>
         <td>
-          <%= link_to t('view'),
+          <% if cannot? :consultation, :pages %>
+            <%= link_to t('view'),
+                    '', :class => 'btn btn-mini disabled' %>
+          <% else %>
+            <%= link_to t('view'),
                     user_path(user), :class => 'btn btn-secondary btn-mini' %>
-
+          <% end %>
         </td>
       </tr>
     <% end %>
