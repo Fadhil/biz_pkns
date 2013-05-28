@@ -1,5 +1,6 @@
 BizPkns::Application.routes.draw do
 
+
   localized do
     put 'make_member/:id' => 'users#make_member', as: :make_member
     match 'select_program/:program_id' => 'consultants#select_program', as: :select_program
@@ -38,6 +39,7 @@ BizPkns::Application.routes.draw do
     resources :pkns_users
     resources :businesses
     resources :past_attendances, except: [ :update, :destroy, :edit ]
+    resources :business_categories
     # resources :users do
     #   collection { post :import }
     # end

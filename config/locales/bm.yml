@@ -49,6 +49,7 @@ bm:
   member: 'Ahli'
   membership_num: 'No Keahlian'
   new_consultant: 'Daftar Perunding Baru'
+  new_business_category: 'Daftar Bidang Perniagaan'
   office_phone: 'No Tel Pejabat'
   pax: 'Jumlah peserta'
   password: 'Kata Laluan'
@@ -210,6 +211,16 @@ bm:
       city: 'Bandar'
       postcode: 'Poskod'
       state: 'Negeri'
+
+  business_categories:
+    new:
+      title: 'Bidang Perniagaan'
+    index:
+      title: 'Senarai Bidang Perniagaan'
+    form:
+      add_new_business_category: 'Daftar Bidang Perniagaan'
+    show:
+      title: 'Bidang Perniagaan'
 
   consultants:
     index:
@@ -480,6 +491,7 @@ bm:
     my_courses: 'kursus_saya'
     upcoming_courses: 'kursus_akan_datang'
     pkns_users: 'pengguna_pkns'
+    business_categories: 'bidang_perniagaan'
 
   resources: 
     consultants: 'perunding'
