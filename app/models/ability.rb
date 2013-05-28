@@ -17,7 +17,7 @@ class Ability
           can :read, Consultant
           can :my_courses, :pages
           cannot :index, :course
-
+          cannot :all, :admins
           can :consultation, :pages
           cannot :index, User
 
@@ -30,6 +30,7 @@ class Ability
           can :my_courses, :pages
           cannot :consultation, :pages
           cannot :all, :pages
+          cannot :all, :admins
           cannot :index, User
         end
       elsif resource.is_a?(Consultant)

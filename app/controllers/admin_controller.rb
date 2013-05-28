@@ -1,9 +1,11 @@
 class AdminController < ApplicationController
+
   def login
     
   end
 
   def index
+    authorize! :all, :admins
     @users = User.all
     respond_to do |format|
       format.html # index.html.erb
