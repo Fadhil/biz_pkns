@@ -299,15 +299,15 @@ bm:
 
   businesses:
     index:
-      title: 'Senarai Bidang Perniagaan'
-      name: 'Nama Bidang Perniagaan'
+      title: 'Senarai Jenis Perniagaan'
+      name: 'Nama Jenis Perniagaan'
       edit: 'Sunting'
       destroy: 'Padam'
-      new: 'Tambah Bidang Perniagaan Baru'
+      new: 'Tambah Jenis Perniagaan Baru'
     new:
-      title: 'Bidang Perniagaan Baru'
+      title: 'Jenis Perniagaan Baru'
     edit:
-      title: 'Sunting Bidang Perniagaan'
+      title: 'Sunting Jenis Perniagaan'
       create: 'Kemaskini'
 
     form:
@@ -367,9 +367,14 @@ bm:
 
   pkns_users:
     index:
-      title: 'Operator PKNS'
+      title: 'Urus Operator PKNS'
     new:
       title: 'Tambah Operator PKNS'
+      ic_number: 'No KP'
+    show:
+      title: 'Operator PKNS'
+    form:
+      ic_number: 'No KP'
 
   #Stuff in the header
   layouts:
@@ -384,11 +389,11 @@ bm:
       consultant_profile: 'Profil Perunding'
       my_program: 'Program Saya'
       administrate_user: 'Urus Ahli'
-      administrate_pkns_user: 'Urus Ahli PKNS'
+      administrate_pkns_user: 'Urus Operator PKNS'
       directory: 'Direktori'
       new_consultant: 'Daftar Perunding'
       new_education: 'Daftar Bidang Pendidikan'
-      new_business: 'Daftar Bidang Perniagaan'
+      new_business: 'Daftar Jenis Perniagaan'
       new_skill: 'Daftar Kemahiran'
       new_course: 'Daftar Kursus'
       new_business_category: 'Daftar Perniagaan'

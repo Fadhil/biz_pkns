@@ -7,6 +7,11 @@ body {
   background-color: #EBEAEA;
 }
 
+.nocap { text-transform:none; }
+.allcap { text-transform:capitalize; }
+.inheritcap { text-transform:inherit; }
+.uppercap { text-transform:uppercase; }
+
 /* Nav
 -------------------------------------------------- */
 .navbar .brand {
