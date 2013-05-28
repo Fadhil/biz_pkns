@@ -118,8 +118,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        @user.set_city(city_id) unless city_id.blank?
-        @user.business_profile.set_city(business_city_id) unless business_city_id.blank?
+        #@user.set_city(city_id) unless city_id.blank?
+        #@user.business_profile.set_city(business_city_id) unless business_city_id.blank?
         unless @user.has_role?('Admin')
           previous_course = @user.previous_courses.last
           unless previous_course.nil?
