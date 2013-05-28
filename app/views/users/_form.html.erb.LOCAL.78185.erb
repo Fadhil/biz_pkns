@@ -216,16 +216,19 @@
           <table class="table">
             
               <tr><th colspan="2" class="header">Maklumat Perniagaan</th></tr>
+              <!-- <tr>
+                <th><%= f.label t('.has_business_profile') %></th>
+                <td><%= f.check_box :has_business_profile, class: 'bp_checkbox' %></td>
+              </tr> -->
 
-
-            <%= f.fields_for :business_profiles do |bp| %>
+            <%= f.fields_for :business_profile do |bp| %>
               <tr>
                 <th><%= bp.label t('company_name') %></th>
                 <td><%= bp.text_field :company_name, class: 'text_field' %></td>
               </tr>
               <tr>
                 <th><%= bp.label t('.type_of_business') %></th>
-                <td><%= bp.select :type_of_business, Business.order(:name).map{|a| [a.name,a.name]}, { selected: bp.object.try(:type_of_business), :include_blank => true } %></td>
+                <td><%= bp.select :type_of_business, Business.order(:name).map{|a| [a.name,a.name]}, { selected: @user.try(:business_profile).try(:type_of_business), :include_blank => true } %></td>
               </tr>
               <tr>
                 <th><%= label_tag t('.registration_number') %></th>
@@ -235,7 +238,7 @@
               </tr>
               <tr>
                 <th><%= bp.label t('category') %></th>
-                <td><%= bp.select(:category, BUSINESS_CATEGORIES, {:selected=> bp.object.try(:category), :include_blank => false}) %></td>
+                <td><%= select("user[business_profile_attributes]", "category", BUSINESS_CATEGORIES, {:selected=> @user.try(:business_profile).try(:category), :include_blank => false}) %></td>
               </tr>
               <tr>
                 <th><%= bp.label t('description') %></th>
@@ -263,49 +266,52 @@
 
 
               <tr><th colspan="2" class="header"><br>Alamat Syarikat</th></tr>
-
-
+              <%#= bp.fields_for :address do |a| %>
+                <%#= render partial: 'address_fields', locals: { a: a} %>
+              <%# end %>
+                <%= bp.fields_for :address do |a| %>
                   <tr>
-                    <th><%= bp.label t('address') %></th>
+                    <th><%= a.label t('address') %></th>
                     <td>
-                      <%= bp.text_field :line1 %>
+                      <%= a.text_field :line1 %>
                     </td>
                   </tr>
                   <tr>
                     <th></th>
                     <td>
-                      <%= bp.text_field :line2 %>
+                      <%= a.text_field :line2 %>
                     </td>
                   </tr>
                   <tr>
-                    <th><%= bp.label t('postcode') %></th>
+                    <th><%= a.label t('postcode') %></th>
                     <td>
-                      <%= bp.text_field :postcode %>
+                      <%= a.text_field :postcode %>
                     </td>
                   </tr>
                   <tr>
-                    <th><%= bp.label t('city') %></th>
+                    <th><%= a.label t('city') %></th>
                     <td>
-                        <% if bp.object.city_id %>
-                          <% @cities = City.where(state_name: bp.object.city.state_name).order(:name) %>
+                      <%= a.fields_for :city do |c| %>
+                        <% if c.object.id %>
+                          <% @cities = City.where(state_name: c.object.state_name).order(:name) %>
                         <% else %>
                           <% @cities = City.where(state_name: 'Selangor').order(:name) %>
                         <% end %>
-                        <%= bp.select :city_id, options_for_select(@cities.map{ |a| [a.name, a.id]}, selected: bp.object.city_id ) %>
-                     
+                        <%= select_tag "#{a.object.addressable_type.downcase}_city", options_for_select(@cities.map{ |a| [a.name, a.id]}, selected: c.object.id ), :include_blank => true %>
+                      <% end %>
                     </td>
                   </tr>
                   <tr>
-                    <th><%= bp.label t('state') %></th>
+                    <th><%= a.label t('state') %></th>
                     <td>
-                  
-                        <% if bp.object.try(:city).try(:state_name) %>
-                          <% selected_state = bp.object.city.state_name %>
+                      <%= a.fields_for :city do |c| %>
+                        <% if c.object.state_name %>
+                          <% selected_state = c.object.state_name %>
                         <% else %>
                           <% selected_state = 'Selangor' %>
                         <% end %>
-                        <%= select_tag "businessprofile_state", options_for_select(City.order(:state_name).map{ |a| [a.state_name]}.uniq, selected: selected_state) %>
-                   
+                        <%= select_tag "#{a.object.addressable_type.downcase}_state", options_for_select(City.order(:state_name).map{ |a| [a.state_name]}.uniq, selected: selected_state), :include_blank => true, :default => '' %>
+                      <% end %>
                     </td>
                   </tr>
                   <tr>
@@ -313,7 +319,7 @@
                     <td><%= f.text_field :office_phone %></td>
                   </tr>
                 
-   
+                <% end %>
               
               <tr><th colspan="2" class="header"><br>Pelanggan</th></tr>
               <tr>
@@ -334,9 +340,7 @@
                   <%= bp.text_field :customer3 %>
                 </td>
               </tr>
-              <%= bp.link_to_remove 'Remove Business Profile' %>
           <% end %>
-          <%= f.link_to_add "+", :business_profiles %>
         </table>
         </div>
       </div>

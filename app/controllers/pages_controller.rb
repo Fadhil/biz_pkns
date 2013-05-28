@@ -67,7 +67,7 @@ class PagesController < ApplicationController
   end
 
   def business_directory
-    @users = User.joins(:business_profile)
+    @users = User.joins(:business_profiles)
 
     if params[:search].present?
 
@@ -83,17 +83,17 @@ class PagesController < ApplicationController
 
       if name
         name = name.split(' ').join('%')
-        @users = @users.joins(:business_profile).where("concat(LOWER(first_name), ' ', LOWER(last_name)) like ?","%#{name}%")
+        @users = @users.joins(:business_profiles).where("concat(LOWER(first_name), ' ', LOWER(last_name)) like ?","%#{name}%")
       end
       if category
-        @users = @users.joins(:business_profile).where('business_profiles.category = ?',category)
+        @users = @users.joins(:business_profiles).where('business_profiles.category = ?',category)
       end
       if business_name
         business_name = business_name.split(' ').join('%')
-        @users = @users.joins(:business_profile).where('LOWER(business_profiles.company_name) like ?', "%#{business_name}%")
+        @users = @users.joins(:business_profiles).where('LOWER(business_profiles.company_name) like ?', "%#{business_name}%")
       end
     else
-      @users = User.joins(:business_profile)
+      @users = User.joins(:business_profiles)
     end
   end
 end

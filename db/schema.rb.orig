@@ -12,10 +12,10 @@
 # It's strongly recommended to check this file into your version control system.
 
 <<<<<<< HEAD
-ActiveRecord::Schema.define(:version => 20130523200015) do
-=======
 ActiveRecord::Schema.define(:version => 20130527114740) do
->>>>>>> Past Attendance + User creation and member making.
+=======
+ActiveRecord::Schema.define(:version => 20130527160411) do
+>>>>>>> businessprofile
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -77,6 +77,12 @@ ActiveRecord::Schema.define(:version => 20130527114740) do
     t.string   "customer1"
     t.string   "customer2"
     t.string   "customer3"
+    t.string   "line1"
+    t.string   "line2"
+    t.string   "postcode"
+    t.integer  "city_id"
+    t.string   "phone"
+    t.string   "fax"
   end
 
   create_table "businesses", :force => true do |t|
@@ -214,10 +220,7 @@ ActiveRecord::Schema.define(:version => 20130527114740) do
     t.integer  "image_width"
     t.integer  "image_height"
     t.string   "image_uid"
-<<<<<<< HEAD
-=======
     t.string   "image_ext"
->>>>>>> Past Attendance + User creation and member making.
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
@@ -304,14 +307,12 @@ ActiveRecord::Schema.define(:version => 20130527114740) do
     t.integer  "role_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+<<<<<<< HEAD
   end
 
-<<<<<<< HEAD
-=======
   add_index "roles_users", ["role_id"], :name => "index_roles_users_on_role_id"
   add_index "roles_users", ["user_id"], :name => "index_roles_users_on_user_id"
 
->>>>>>> Past Attendance + User creation and member making.
   create_table "seo_meta", :force => true do |t|
     t.integer  "seo_meta_id"
     t.string   "seo_meta_type"
@@ -322,6 +323,23 @@ ActiveRecord::Schema.define(:version => 20130527114740) do
     t.datetime "updated_at",       :null => false
   end
 
+=======
+  end
+
+  add_index "roles_users", ["role_id"], :name => "index_roles_users_on_role_id"
+  add_index "roles_users", ["user_id"], :name => "index_roles_users_on_user_id"
+
+  create_table "seo_meta", :force => true do |t|
+    t.integer  "seo_meta_id"
+    t.string   "seo_meta_type"
+    t.string   "browser_title"
+    t.string   "meta_keywords"
+    t.text     "meta_description"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+>>>>>>> businessprofile
   add_index "seo_meta", ["id"], :name => "index_seo_meta_on_id"
   add_index "seo_meta", ["seo_meta_id", "seo_meta_type"], :name => "index_seo_meta_on_seo_meta_id_and_seo_meta_type"
 
