@@ -32,4 +32,12 @@ class BusinessProfile < ActiveRecord::Base
     self.save
   end
 
+  def full_business_address
+    full_name = "#{( self.line1 )}" + ( ', ' unless self.line1.blank? ).to_s + "#{( self.line2 )}"
+    full_name = full_name +  "#{( ', ' unless self.line1.blank? && self.line2.blank? )}".to_s + 
+              ( self.city.name +  ( ', ' ) + self.city.state_name ) unless self.city.nil?
+
+    full_name
+  end
+
 end
