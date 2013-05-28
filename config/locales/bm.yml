@@ -12,6 +12,7 @@ bm:
   edit: 'Kemaskini'
   view: 'Papar'
   bio_data: 'Biodata'
+  business: 'Perniagaan'
   destroy: 'Padam'
   cancel: 'Batal'
   change_your_password: 'Tukar kata laluan'
