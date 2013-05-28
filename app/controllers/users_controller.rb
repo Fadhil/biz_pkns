@@ -52,19 +52,19 @@ class UsersController < ApplicationController
       @user.address.build_city
     end
     
-    if @user.business_profile.nil?
-      @user.build_business_profile
-      @user.business_profile.build_business_logo
-      @user.business_profile.build_business_photo
-      @user.business_profile.build_address
-      @user.business_profile.address.build_city
-    end
-    if @user.business_profile.address.nil?
-      @user.business_profile.build_address
-    end
-    if @user.business_profile.address.city.nil?
-      @user.business_profile.address.build_city
-    end
+    # if @user.business_profiles.nil?
+    #   @user.build_business_profile
+    #   @user.business_profile.build_business_logo
+    #   @user.business_profile.build_business_photo
+    #   @user.business_profile.build_address
+    #   @user.business_profile.address.build_city
+    # end
+    # if @user.business_profile.address.nil?
+    #   @user.business_profile.build_address
+    # end
+    # if @user.business_profile.address.city.nil?
+    #   @user.business_profile.address.build_city
+    # end
 
     if @user.profile_photo.nil?
       @user.build_profile_photo
@@ -110,7 +110,7 @@ class UsersController < ApplicationController
     params[:user][:walk_in_first_time] = false
     @user = User.find(params[:id])
     city_id = params[:user_city]
-    business_city_id = params[:businessprofile_city]
+    #business_city_id = params[:businessprofile_city]
     if params[:user][:address_attributes]
       params[:user][:address_attributes].delete :city_attributes
     end
@@ -118,8 +118,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        @user.set_city(city_id) unless city_id.blank?
-        @user.business_profile.set_city(business_city_id) unless business_city_id.blank?
+        # @user.set_city(city_id) unless city_id.blank?
+        # @user.business_profile.set_city(business_city_id) unless business_city_id.blank?
         unless @user.has_role?('Admin')
           previous_course = @user.previous_courses.last
           unless previous_course.nil?

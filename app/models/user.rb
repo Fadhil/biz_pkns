@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :gender, :ic_number, :first_name, :last_name, :password, :phone
   attr_accessible :has_attended_course, :attended_course
-  attr_accessible :has_business_profile, :business_profile_attributes
+  attr_accessible :has_business_profile, :business_profiles_attributes
   attr_accessible :profile_photo_attributes, :courses_attributes, :previous_courses_attributes
   attr_accessible :created_at, :address_attributes
   attr_accessible :twitter_handle, :facebook_handle, :current_employment_status
@@ -33,8 +33,8 @@ class User < ActiveRecord::Base
 
   validates :password, :presence => true, :on => :create
 
-  has_one :business_profile, dependent: :destroy
-  accepts_nested_attributes_for :business_profile, allow_destroy: true
+  has_many :business_profiles, dependent: :destroy
+  accepts_nested_attributes_for :business_profiles, allow_destroy: true
 
   has_one :profile_photo, as: :attachable, dependent: :destroy 
   accepts_nested_attributes_for :profile_photo, allow_destroy: true
