@@ -137,8 +137,9 @@ class User < ActiveRecord::Base
   end
 
   def generate_member_id(id)
+    year = Date.today.year.to_s[2..4]
     biz_id = (id + 499).to_s #start at 500
-    biz_id_string = "BIZ" + "0"*(MEMBER_NUMBER_DIGITS - biz_id.size) + biz_id
+    biz_id_string = "BIZ" + year + "0"*(MEMBER_NUMBER_DIGITS - biz_id.size) + biz_id
     biz_id_string
   end
 
