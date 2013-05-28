@@ -21,9 +21,7 @@ FactoryGirl.define do
 
 
     factory :admin do
-        after :create do
-          add_role('Admin')
-        end
+
     end
 
 

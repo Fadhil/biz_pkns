@@ -3,18 +3,18 @@ require 'spec_helper'
 describe User do
   before :each do
 
-    @user = FactoryGirl.create(:admin)
+    @user = FactoryGirl.create(:user)
   end
 
   describe 'should belong to one role' do
-    it { should belong_to(:role) }
+    it { should have_many(:roles) }
   end
 
 
 
   it 'has a role' do
-    @user.role = Role.where(name: 'admin').first
-    @user.role.name.should eq 'admin'
+    @user.add_role('Admin')
+    @user.has_role?('Admin').should be_true
   end
 
   describe 'phone number' do

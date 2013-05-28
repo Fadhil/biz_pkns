@@ -22,7 +22,9 @@ describe CoursesController do
 include AuthHelper
 before(:each) do
   http_login
-  controller.stub(:current_user).and_return(FactoryGirl.build(:admin))
+  @user = FactoryGirl.build(:user)
+  @user.add_role('Admin')
+  controller.stub(:current_user).and_return(@user)
 end
   # This should return the minimal set of attributes required to create a valid
   # Course. As you add validations to Course, be sure to
