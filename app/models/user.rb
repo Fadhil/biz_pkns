@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :gender, :ic_number, :first_name, :last_name, :password, :phone
   attr_accessible :has_attended_course, :attended_course
-  attr_accessible :has_business_profile, :business_profile_attributes
+  attr_accessible :has_business_profile, :business_profiles_attributes
   attr_accessible :profile_photo_attributes, :courses_attributes, :previous_courses_attributes
   attr_accessible :created_at, :address_attributes
   attr_accessible :twitter_handle, :facebook_handle, :current_employment_status
@@ -33,8 +33,8 @@ class User < ActiveRecord::Base
 
   validates :password, :presence => true, :on => :create
 
-  has_one :business_profile, dependent: :destroy
-  accepts_nested_attributes_for :business_profile, allow_destroy: true
+  has_many :business_profiles, dependent: :destroy
+  accepts_nested_attributes_for :business_profiles, allow_destroy: true
 
   has_one :profile_photo, as: :attachable, dependent: :destroy 
   accepts_nested_attributes_for :profile_photo, allow_destroy: true
@@ -65,18 +65,27 @@ class User < ActiveRecord::Base
 
   has_one :membership, dependent: :destroy
 
-  belongs_to :role
+  has_many :roles_user
+  has_many :roles, through: :roles_user
 
   def super_admin?
-    !self.role.name('super admin').nil?
+    !self.role.title('superadmin').nil?
+  end
+
+  def has_role?(title)
+    roles.any? { |a| a.title == title.camelize }
+  end
+
+  def add_role(title)
+      roles << Role[title] unless has_role?(title)
+  end
+
+  def remove_role(title)
+      roles.delete Role[title]
   end
 
   def admin?
-    if !self.role.nil?
-      self.role.name == 'admin' ? true : false
-    else
-      false
-    end
+    has_role?('Admin')
   end
 
   def set_city(city_id)

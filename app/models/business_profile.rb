@@ -3,17 +3,22 @@ class BusinessProfile < ActiveRecord::Base
   attr_accessible :business_photo_attributes, :business_logo_attributes, :address_attributes, :caption
   attr_accessible :business_registered
   attr_accessible :customer1, :customer2, :customer3
+  attr_accessible :line1, :line2, :postcode, :city_id, :phone, :fax
 
+  #after_initialize :initialize_photos
   belongs_to :user
 
-  has_one :address, as: :addressable, dependent: :destroy
-  accepts_nested_attributes_for :address, allow_destroy: true
+  # has_one :address, as: :addressable, dependent: :destroy
+  # accepts_nested_attributes_for :address, allow_destroy: true
 
+  belongs_to :city 
   has_one :business_logo, as: :attachable, dependent: :destroy
   accepts_nested_attributes_for :business_logo, allow_destroy: true
 
   has_one :business_photo, as: :attachable, dependent: :destroy 
   accepts_nested_attributes_for :business_photo, allow_destroy: true
+
+  #after_initialize :initialize_address
 
   def set_city(city_id)
     city = City.find(city_id)
@@ -21,5 +26,10 @@ class BusinessProfile < ActiveRecord::Base
     self.save
   end
 
+  def initialize_photos
+    self.build_business_photo
+    self.build_business_logo
+    self.save
+  end
 
 end

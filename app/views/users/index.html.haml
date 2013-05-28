@@ -43,7 +43,7 @@
               = nested_form_for '', url: update_membership_user_path(user), method: :put do |f|
                 = f.fields_for :membership do |m|
                   = select_tag 'membership[category]', options_for_select((MEMBER_CATEGORIES.map{|a| [t(a),a]}), user.membership.category), class: "membership", onchange: "$('#submit#{i}').click();"
-                  = f.submit( confirm: t('confirm_category_change'), id: "submit#{i}", class: 'hidden')
+                  = f.submit( data: {confirm: t('confirm_category_change') }, id: "submit#{i}", class: 'hidden')
 
 = link_to t('new', :default => t("helpers.links.new_user")), new_user_path, :class => 'btn btn-primary'  
 

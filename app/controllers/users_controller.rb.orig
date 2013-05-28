@@ -4,11 +4,10 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     if params[:filter].present?
-      @users = User.nonadmin.send(params[:filter].to_s)
+      @users = User.nonadmin.send(params[:filter])
     else
       @users = User.nonadmin
-    end 
-
+    end
     @klass = Class
     respond_to do |format|
       format.html # index.html.erb
@@ -22,7 +21,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     respond_to do |format|
-      if @user.try(:role).try(:name) == 'admin'
+      if @user.has_role?('Admin')
         format.html { render 'admin_show'}
       else
         format.html # show.html.erb
@@ -53,19 +52,19 @@ class UsersController < ApplicationController
       @user.address.build_city
     end
     
-    if @user.business_profile.nil?
-      @user.build_business_profile
-      @user.business_profile.build_business_logo
-      @user.business_profile.build_business_photo
-      @user.business_profile.build_address
-      @user.business_profile.address.build_city
-    end
-    if @user.business_profile.address.nil?
-      @user.business_profile.build_address
-    end
-    if @user.business_profile.address.city.nil?
-      @user.business_profile.address.build_city
-    end
+    # if @user.business_profiles.nil?
+    #   @user.build_business_profile
+    #   @user.business_profile.build_business_logo
+    #   @user.business_profile.build_business_photo
+    #   @user.business_profile.build_address
+    #   @user.business_profile.address.build_city
+    # end
+    # if @user.business_profile.address.nil?
+    #   @user.business_profile.build_address
+    # end
+    # if @user.business_profile.address.city.nil?
+    #   @user.business_profile.address.build_city
+    # end
 
     if @user.profile_photo.nil?
       @user.build_profile_photo
@@ -76,7 +75,7 @@ class UsersController < ApplicationController
     end
 
     respond_to do |format|
-      if @user.try(:role).try(:name) == 'admin'
+      if @user.has_role?('Admin')
         format.html { render 'admin_edit'}
       else
         format.html # edit.html.erb
@@ -108,13 +107,10 @@ class UsersController < ApplicationController
   def update
     params[:user].delete(:password) if params[:user][:password].blank?
     params[:user].delete(:password_confirmation) if params[:user][:password_confirmation].blank?
-<<<<<<< HEAD
-=======
-
->>>>>>> acfa3d7500784a3803d350bd9569af2537924609
+    params[:user][:walk_in_first_time] = false
     @user = User.find(params[:id])
     city_id = params[:user_city]
-    business_city_id = params[:businessprofile_city]
+    #business_city_id = params[:businessprofile_city]
     if params[:user][:address_attributes]
       params[:user][:address_attributes].delete :city_attributes
     end
@@ -122,18 +118,25 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
+<<<<<<< HEAD
         @user.set_city(city_id) unless city_id.blank?
         @user.business_profile.set_city(business_city_id) unless business_city_id.blank?
-        unless @user.try(:role).try(:name) == 'admin'
+=======
+        # @user.set_city(city_id) unless city_id.blank?
+        # @user.business_profile.set_city(business_city_id) unless business_city_id.blank?
+>>>>>>> businessprofile
+        unless @user.has_role?('Admin')
           previous_course = @user.previous_courses.last
           unless previous_course.nil?
             previous_course.program = program unless program.nil?
             previous_course.save
           end
         end
-        
-        sign_in @user, :bypass => true
-      
+
+        @user.save
+        unless current_user.admin?
+          sign_in @user, :bypass => true
+        end
         format.html { redirect_to @user, notice: I18n.t('successfully_updated', resource: t('profile'))  }
         format.json { head :no_content }
       else
@@ -163,4 +166,14 @@ class UsersController < ApplicationController
         format.html { redirect_to request.referrer }
     end
   end
+
+  def update_membership
+    @user = User.find(params[:id])
+    @user.membership.category = params[:membership][:category]
+    if @user.membership.save && @user.save
+      respond_to do |format|
+          format.html { redirect_to request.referrer, notice: I18n.t('successfully_updated', resource: t('profile')) }
+      end
+    end
+  end 
 end

@@ -96,6 +96,8 @@ bm:
   update: 'Kemaskini'
   upcoming: 'Akan Datang'
   upload_profile_photo: 'Muat Naik Gambar Profil'
+  upload_successful: 'Muat naik berjaya'
+  upload_unsuccessful: 'Muat naik tidak berjaya, sila semak data anda'
   venue: 'Tempat'
   years: 'tahun'
 
@@ -323,6 +325,10 @@ bm:
       destroy: 'Padam'
       update: 'Kemaskini'
 
+  past_attendances:
+    index:
+      title: 'Senarai Kehadiran Lama'
+      
   programs:
     index:
       title: "Senarai Program"
