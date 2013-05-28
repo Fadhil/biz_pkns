@@ -52,7 +52,7 @@
   %br
   %br    
   - if @course.attendance_list
-    - if @course.attendance_list.attendees.count > 0                     
+    - if @course.attendance_list.attendees.count > 0 && !@course.attendance_list.completed                   
       .preattendance
         %h4
           Preattendance List
@@ -96,7 +96,9 @@
               = a.hidden_field :attended, value: 1
             = f.link_to_add t('add_attendee'), :attendees, class: 'btn btn-mini'   
             = f.submit t('update')     
-
+          = form_for @course.attendance_list do |f|
+            = f.hidden_field :completed, value: 1
+            = f.submit t('end_course')
         .span2
           %h5 
             = t('number_of_attendees')
@@ -104,7 +106,35 @@
           %h5
             = "#{@course.attendance_list.attendees.count}/#{@course.attendance_list.max_attendees}"
 
-
+    - elsif @course.attendance_list.attendees.count > 0 && @course.attendance_list.completed                  
+      .preattendance
+        %h4
+          Attendance List
+        %table.table.table-striped
+          %thead
+            %tr
+              %th
+                ID
+              %th
+                Name
+              %th
+                Email
+              %th
+                IC Number
+          %tbody
+            - @course.attendance_list.attendees.each_with_index do |attendee, index|
+              %tr
+                %td
+                  = index + 1
+                %td
+                  = attendee.full_name
+                %td
+                  = attendee.email
+                %td
+                  = attendee.ic_number
+                %td
+                  = attendee.attended? ? t('present') : t('not_present')
+           
 
 
 

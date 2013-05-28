@@ -10,6 +10,7 @@ bm:
   are_you_sure: 'And pasti?'
   back: 'Kembali'
   edit: 'Kemaskini'
+  end_course: 'Kursus Tamat'
   view: 'Papar'
   bio_data: 'Biodata'
   business: 'Perniagaan'

@@ -6,7 +6,9 @@ describe 'user index page' do
 
     page.driver.browser.basic_authorize('big', 'boss')
 
-    @admin = FactoryGirl.build(:admin)
+    @admin = FactoryGirl.build(:user)
+    @admin.add_role('Admin')
+    @admin.save
     @admin.confirm!
     visit root_path
     click_link 'Daftar Masuk'
@@ -18,7 +20,7 @@ describe 'user index page' do
   end
   describe 'when there are users who are members' do
     it 'shows dropdown selection to update membership category' do
-      @user = FactoryGirl.create(:user, :member)
+      @user = FactoryGirl.create(:user, :member, profile_complete:true, walk_in_first_time: false)
       visit users_path
       page.should have_selector("select", text: 'SilverGoldPlatinum')
     end
@@ -31,6 +33,8 @@ describe 'user show page' do
     page.driver.browser.basic_authorize('big', 'boss')
 
     @admin = FactoryGirl.build(:admin)
+    @admin.add_role('Admin')
+    @admin.save
     @admin.confirm!
     visit root_path
     click_link 'Daftar Masuk'
