@@ -20,6 +20,8 @@ class AdminController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    @user.add_role('Admin')
+  
 
     respond_to do |format|
       if @user.update_attributes(params[:user])

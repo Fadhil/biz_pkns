@@ -16,7 +16,7 @@
         <td><%= i+1 %></td>
         <td><%= link_to "#{user.first_name} #{user.last_name}", user_path(user) %></td>
         <td>
-          <% if !user.role_id.blank? %>
+          <% if user.has_role?('Admin') %>
             Admin
           <% else %>
 
