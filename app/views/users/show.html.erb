@@ -87,7 +87,7 @@
           <tr>
             <th><%= t('.current_employment_status') %></th>
             <% status = @user.current_employment_status %>
-            <td><%= t(".employment_status.#{status}") %></td>
+            <td><%= t(".employment_status.#{status}") unless @user.current_employment_status.blank? %></td>
           </tr>
         </table><br><br><br><br>
         </div>
@@ -146,11 +146,11 @@
             </tr>
             <tr>
               <th><%= t('address') %></th>
-              <td><%= "@user.full_business_address" %></td>
+              <td><%= bp.full_business_address%></td>
             </tr>
             <tr>
               <th><%= t('office_phone') %></th>
-              <td><%= "@user.office_phone" %></td>
+              <td><%= bp.phone %></td>
             </tr>
             <tr>
               <th><%= t('description') %></th>
