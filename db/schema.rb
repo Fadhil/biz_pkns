@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130528134807) do
+ActiveRecord::Schema.define(:version => 20130529180347) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -176,6 +176,15 @@ ActiveRecord::Schema.define(:version => 20130528134807) do
   add_index "educations_users", ["education_id", "user_id"], :name => "index_educations_users_on_education_id_and_user_id"
   add_index "educations_users", ["user_id", "education_id"], :name => "index_educations_users_on_user_id_and_education_id"
 
+  create_table "letters", :force => true do |t|
+    t.string   "subject"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "message"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "memberships", :force => true do |t|
     t.string   "member_number"
     t.integer  "user_id"
@@ -223,7 +232,6 @@ ActiveRecord::Schema.define(:version => 20130528134807) do
     t.integer  "image_width"
     t.integer  "image_height"
     t.string   "image_uid"
-    t.string   "image_ext"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
@@ -306,14 +314,9 @@ ActiveRecord::Schema.define(:version => 20130528134807) do
   end
 
   create_table "roles_users", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "role_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer "role_id"
+    t.integer "user_id"
   end
-
-  add_index "roles_users", ["role_id"], :name => "index_roles_users_on_role_id"
-  add_index "roles_users", ["user_id"], :name => "index_roles_users_on_user_id"
 
   create_table "seo_meta", :force => true do |t|
     t.integer  "seo_meta_id"

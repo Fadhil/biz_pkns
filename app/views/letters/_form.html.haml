@@ -1,0 +1,20 @@
+= form_for @letter, :html => { :class => 'form-horizontal' } do |f|
+  .control-group
+    = f.label :subject, :class => 'control-label'
+    .controls
+      = f.text_field :subject, :class => 'text_field'
+  .control-group
+    = f.label :first_name, :class => 'control-label'
+    .controls
+      = f.text_field :first_name, :class => 'text_field'
+  .control-group
+    = f.label :last_name, :class => 'control-label'
+    .controls
+      = f.text_field :last_name, :class => 'text_field'
+  .control-group
+    = f.label :message, :class => 'control-label'
+    .controls
+      = f.text_field :message, :class => 'text_field'
+  .form-actions
+    = f.submit nil, :class => 'btn btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), letters_path, :class => 'btn'
