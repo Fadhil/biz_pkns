@@ -57,7 +57,8 @@
         <div class='span1'>
           <div class="whitespace">
             <% if @user.membership %>
-              <%= image_tag("#{@user.membership.category}.png") %>
+
+              <%= image_tag("#{@user.membership.category}.png") unless @user.membership.category.nil? %>
             <% end %>
           </div>
         </div>
@@ -139,8 +140,9 @@
           <% @user.business_profiles.each do |bp| %>
             <tr><th colspan="2"><center>
 
-
-                <% unless bp.business_logo.nil? %><%= image_tag(bp.business_logo.file, :size => '150x150') %>
+                <% if bp.business_logo %>
+                  <% unless bp.business_logo.file.nil? %><%= image_tag(bp.business_logo.file, :size => '150x150') %>
+                  <% end %>
                 <% end %>
 
             </center></th></tr>
@@ -172,15 +174,14 @@
               <th><%= t('.company_registration_number') %></th>
               <td><%= bp.registration_number unless bp.nil?%></td>
             </tr>
-              <% unless bp.nil? %>
-                <% unless bp.business_photo.nil? %>
+                <% unless bp.business_photo.file.size == 0 %>
+                <% puts "This shit is #{bp.business_photo.file}" %>
                   <tr><td colspan="2"><%= image_tag(bp.business_photo.file, :size => '250x250') %></td></tr>
                   <tr>
                     <th>Penerangan Gambar</th>
                     <td><%= bp.business_photo.caption %></td>
                   </tr>
                 <% end %>
-              <% end %>
             <% end %>
         <% end %>
       </table>

@@ -219,6 +219,10 @@ textarea {
   h3 {
     page-break-after: avoid;
   }
+
+  .fad-table {
+    border: 1px solid black;"
+  }
 }
 
 body {

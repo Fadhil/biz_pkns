@@ -41,13 +41,13 @@
 - if can? :manage, @course
   .form-actions
   = link_to t('edit', :default => t("helpers.links.edit")), |
-    edit_course_path(@course), :class => 'btn'              |
+    edit_course_path(@course), :class => 'btn hidden-print'              |
   -#
   = link_to t('destroy', :default => t("helpers.links.destroy")),                                                 |
     course_path(@course),                                                                                         |
     :method => 'delete',                                                                                          |
     :data => { :confirm => t('confirm', :default => t("helpers.links.confirm", :default => t('are_you_sure'))) }, |
-    :class => 'btn btn-danger'                                                                                                                      
+    :class => 'btn btn-danger hidden-print'                                                                                                                      
 
   %br
   %br    
@@ -56,6 +56,7 @@
       .preattendance
         %h4
           Preattendance List
+        = button_tag 'Print', onclick:"print();", class: 'hidden-print'
         %table.table.table-striped
           %thead
             %tr
@@ -82,9 +83,22 @@
                   - if !attendee.attended.nil?
                     = attendee.attended? ? t('present') : t('not_present')
                   - else
-                    = link_to t('present'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: true), method: :post, class: 'btn btn-mini'
-                    = link_to t('not_present'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: false), method: :post, class: 'btn btn-mini'    
-
+                    = link_to t('present'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: true), method: :post, class: 'btn btn-mini hidden-print'
+                    = link_to t('not_present'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: false), method: :post, class: 'btn btn-mini hidden-print'    
+          %table.visible-print
+            %tbody
+              - 10.times do |n|
+                %tr
+                  %td{style:"border: 1px solid black;"}
+                    =@course.attendance_list.attendees.count + n + 1
+                  %td{style:"border: 1px solid black; width: 150px;"}
+                
+                  %td{style:"border: 1px solid black;width: 140px;"}
+                                  
+                  %td{style:"border: 1px solid black;width: 140px;"}
+                                  
+                  %td{style:"border: 1px solid black;width: 140px;"}
+                  
         .row-fluid
           = nested_form_for @course.attendance_list do |f|
             = f.fields_for :attendees do |a|
@@ -94,11 +108,11 @@
               = a.text_field :ic_number, value: t('ic_number') if a.object.new_record?
               = a.link_to_remove t('remove'), class: 'btn btn-mini btn-danger' if a.object.new_record?
               = a.hidden_field :attended, value: 1
-            = f.link_to_add t('add_attendee'), :attendees, class: 'btn btn-mini'   
-            = f.submit t('update')     
+            = f.link_to_add t('add_attendee'), :attendees, class: 'btn btn-mini hidden-print'   
+            = f.submit t('update'), class: 'hidden-print'   
           = form_for @course.attendance_list do |f|
             = f.hidden_field :completed, value: 1
-            = f.submit t('end_course')
+            = f.submit t('end_course'), class: 'hidden-print'
         .span2
           %h5 
             = t('number_of_attendees')
@@ -135,7 +149,18 @@
                 %td
                   = attendee.attended? ? t('present') : t('not_present')
            
-
+            - 10.times do 
+              %tr
+                %td
+                  test
+                %td
+                  asd
+                %td
+                  asdasdf
+                %td
+                  asdf
+                %td
+                  asdf
 
 
 

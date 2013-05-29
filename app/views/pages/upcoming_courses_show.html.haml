@@ -91,6 +91,7 @@
                   = link_to t('present'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: true), method: :post, class: 'btn btn-mini'
                   = link_to t('not_present'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: false), method: :post, class: 'btn btn-mini'  
 
+
       .span2
         %h5 
           = t('number_of_attendees')
