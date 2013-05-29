@@ -12,7 +12,7 @@ class Role < ActiveRecord::Base
   end
 
   def self.[](title)
-    find_or_create_by_title(title.downcase)
+    find_or_create_by_title(title.camelize)
   end
 
 end
