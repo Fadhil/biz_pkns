@@ -34,9 +34,6 @@ gem 'kaminari'
 # localized routes
 gem 'i18n_routing'
 
-# Portal
-gem 'refinerycms'
-
 # Rails ERD
 gem 'rails-erd'
 
