@@ -6,6 +6,11 @@
   height: 200px;
 }
 
+.text-area-medium {
+  width: 420px;
+  height: 100px;
+}
+
 .left-padding {
   margin-left: 80px;
 }
@@ -16,4 +21,12 @@
 
 .text-field-longish {
   width:500px !important;
+}
+
+.questions {
+
+
+}
+
+.questions .controls {
 }

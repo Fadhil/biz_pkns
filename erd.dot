@@ -1,0 +1,353 @@
+digraph BizPkns {
+rankdir = "LR";
+ranksep = "0.5";
+nodesep = "0.4";
+pad = "0.4,0.4";
+margin = "0,0";
+concentrate = "true";
+labelloc = "t";
+fontsize = "13";
+fontname = "Arial Bold";
+node[ shape  =  "Mrecord" , fontsize  =  "10" , fontname  =  "Arial" , margin  =  "0.07,0.05" , penwidth  =  "1.0"];
+edge[ fontname  =  "Arial" , fontsize  =  "7" , dir  =  "both" , arrowsize  =  "0.9" , penwidth  =  "1.0" , labelangle  =  "32" , labeldistance  =  "1.8"];
+label = "BizPkns domain model\n\n";
+m_Address [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Address</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="addressable_type">addressable_type <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="fax">fax <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="line1">line1 <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="line2">line2 <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="phone">phone <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="postcode">postcode <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_Attachment [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Attachment</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="attachable_type">attachable_type <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="caption">caption <font face="Arial Italic" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="category">category <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="file">file <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="title">title <font face="Arial Italic" color="grey60">text</font></td></tr>
+</table>
+>];
+m_AttendanceList [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">AttendanceList</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="attendee_counter">attendee_counter <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="completed">completed <font face="Arial Italic" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="max_attendees">max_attendees <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="program_id">program_id <font face="Arial Italic" color="grey60">integer</font></td></tr>
+</table>
+>];
+m_Attendee [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Attendee</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="attended">attended <font face="Arial Italic" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="email">email <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="first_name">first_name <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="ic_number">ic_number <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="last_name">last_name <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="name">name <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_Business [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Business</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="business_profile_id">business_profile_id <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="name">name <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_BusinessCategory [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">BusinessCategory</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="name">name <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_BusinessProfile [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">BusinessProfile</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="business_registered">business_registered <font face="Arial Italic" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="category">category <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="company_name">company_name <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="customer1">customer1 <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="customer2">customer2 <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="customer3">customer3 <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="description">description <font face="Arial Italic" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="fax">fax <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="line1">line1 <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="line2">line2 <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="phone">phone <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="postcode">postcode <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="registration_number">registration_number <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="type_of_business">type_of_business <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_City [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">City</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="name">name <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="state_name">state_name <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_CompletedSurvey [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">CompletedSurvey</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="completed">completed <font face="Arial Italic" color="grey60">boolean</font></td></tr>
+</table>
+>];
+m_Consultant [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Consultant</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="bio_data">bio_data <font face="Arial Italic" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="company_name">company_name <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="current_sign_in_at">current_sign_in_at <font face="Arial Italic" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="current_sign_in_ip">current_sign_in_ip <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="email">email <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="encrypted_password">encrypted_password <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="first_name">first_name <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="is_active">is_active <font face="Arial Italic" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="last_name">last_name <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="last_sign_in_at">last_sign_in_at <font face="Arial Italic" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="last_sign_in_ip">last_sign_in_ip <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="password">password <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="phone">phone <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="remember_created_at">remember_created_at <font face="Arial Italic" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="reset_password_sent_at">reset_password_sent_at <font face="Arial Italic" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="reset_password_token">reset_password_token <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="sign_in_count">sign_in_count <font face="Arial Italic" color="grey60">integer</font></td></tr>
+</table>
+>];
+m_ConsultantsProgram [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">ConsultantsProgram</font></td></tr>
+</table>
+>];
+m_Course [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Course</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="course_type">course_type <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="description">description <font face="Arial Italic" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="end_date">end_date <font face="Arial Italic" color="grey60">date</font></td></tr>
+  <tr><td align="left" width="130" port="name">name <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="pax">pax <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="start_date">start_date <font face="Arial Italic" color="grey60">date</font></td></tr>
+  <tr><td align="left" width="130" port="status">status <font face="Arial Italic" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="venue">venue <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_Education [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Education</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="name">name <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_EducationsUser [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">EducationsUser</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="description">description <font face="Arial Italic" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="end_date">end_date <font face="Arial Italic" color="grey60">date</font></td></tr>
+  <tr><td align="left" width="130" port="start_date">start_date <font face="Arial Italic" color="grey60">date</font></td></tr>
+</table>
+>];
+m_Membership [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Membership</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="category">category <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="member_number">member_number <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_PastAttendance [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">PastAttendance</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="course">course <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="email">email <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="end_date">end_date <font face="Arial Italic" color="grey60">date</font></td></tr>
+  <tr><td align="left" width="130" port="first_name">first_name <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="ic_number">ic_number <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="last_name">last_name <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="phone">phone <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="program">program <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="start_date">start_date <font face="Arial Italic" color="grey60">date</font></td></tr>
+  <tr><td align="left" width="130" port="successful">successful <font face="Arial Italic" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="venue">venue <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_Program [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Program</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="description">description <font face="Arial Italic" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="name">name <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_Question [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Question</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="option1">option1 <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="option2">option2 <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="option3">option3 <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="option4">option4 <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="question_type">question_type <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="title">title <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_Response [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Response</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="answer">answer <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_Role [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Role</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="name">name <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="title">title <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_RolesUser [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">RolesUser</font></td></tr>
+</table>
+>];
+m_Skill [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Skill</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="description">description <font face="Arial Italic" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="experience">experience <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="name">name <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_Survey [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Survey</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="title">title <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_User [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">User</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="attended_course">attended_course <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="confirmation_sent_at">confirmation_sent_at <font face="Arial Italic" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="confirmation_token">confirmation_token <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="confirmed">confirmed <font face="Arial Italic" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="confirmed_at">confirmed_at <font face="Arial Italic" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="current_employment_status">current_employment_status <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="current_sign_in_at">current_sign_in_at <font face="Arial Italic" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="current_sign_in_ip">current_sign_in_ip <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="email">email <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="encrypted_password">encrypted_password <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="facebook_handle">facebook_handle <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="first_name">first_name <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="gender">gender <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="has_attended_course">has_attended_course <font face="Arial Italic" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="has_business_profile">has_business_profile <font face="Arial Italic" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="ic_number">ic_number <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="is_active">is_active <font face="Arial Italic" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="last_name">last_name <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="last_sign_in_at">last_sign_in_at <font face="Arial Italic" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="last_sign_in_ip">last_sign_in_ip <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="office_phone">office_phone <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="password">password <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="phone">phone <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="profile_complete">profile_complete <font face="Arial Italic" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="remember_created_at">remember_created_at <font face="Arial Italic" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="reset_password_sent_at">reset_password_sent_at <font face="Arial Italic" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="reset_password_token">reset_password_token <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="section">section <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="sign_in_count">sign_in_count <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="staff_number">staff_number <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="twitter_handle">twitter_handle <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="unit">unit <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="walk_in_first_time">walk_in_first_time <font face="Arial Italic" color="grey60">boolean</font></td></tr>
+</table>
+>];
+m_UsersSkill [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">UsersSkill</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="des">des <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="description">description <font face="Arial Italic" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="experience">experience <font face="Arial Italic" color="grey60">integer</font></td></tr>
+</table>
+>];
+  m_User -> m_EducationsUser [arrowhead = "normal", arrowtail = "none", weight = "3"];
+  m_Education -> m_EducationsUser [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_Role -> m_RolesUser [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_Role -> m_User [style = "dotted", arrowhead = "normal", arrowtail = "none", weight = "3", constraint = "false"];
+  m_User -> m_BusinessProfile [arrowhead = "normal", arrowtail = "none", weight = "3"];
+  m_Course -> m_User [arrowhead = "normal", arrowtail = "normal", weight = "4"];
+  m_User -> m_Program [style = "dotted", arrowhead = "normal", arrowtail = "none", weight = "2", constraint = "false"];
+  m_User -> m_Address [arrowhead = "none", arrowtail = "none", weight = "1"];
+  m_User -> m_UsersSkill [arrowhead = "normal", arrowtail = "none", weight = "3"];
+  m_User -> m_Skill [style = "dotted", arrowhead = "normal", arrowtail = "none", weight = "3", constraint = "false"];
+  m_User -> m_Education [style = "dotted", arrowhead = "normal", arrowtail = "none", weight = "2", constraint = "false"];
+  m_User -> m_Attendee [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_User -> m_Membership [arrowhead = "none", arrowtail = "none", weight = "2"];
+  m_User -> m_RolesUser [arrowhead = "normal", arrowtail = "none", weight = "3"];
+  m_User -> m_CompletedSurvey [arrowhead = "normal", arrowtail = "none", weight = "3"];
+  m_User -> m_Survey [style = "dotted", arrowhead = "normal", arrowtail = "none", weight = "3", constraint = "false"];
+  m_User -> m_Response [arrowhead = "normal", arrowtail = "none", weight = "3"];
+  m_User -> m_Question [style = "dotted", arrowhead = "normal", arrowtail = "none", weight = "2", constraint = "false"];
+  m_Skill -> m_UsersSkill [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_Attendee -> m_Course [style = "dotted", arrowhead = "normal", arrowtail = "none", weight = "3", constraint = "false"];
+  m_AttendanceList -> m_Attendee [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_Consultant -> m_ConsultantsProgram [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_Consultant -> m_Program [style = "dotted", arrowhead = "normal", arrowtail = "none", weight = "2", constraint = "false"];
+  m_Course -> m_AttendanceList [arrowhead = "none", arrowtail = "none", weight = "3"];
+  m_Program -> m_Course [arrowhead = "normal", arrowtail = "none", weight = "3"];
+  m_Education -> m_User [style = "dotted", arrowhead = "normal", arrowtail = "none", weight = "1", constraint = "false"];
+  m_Program -> m_ConsultantsProgram [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_City -> m_Address [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_BusinessProfile -> m_Attachment [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Consultant -> m_Attachment [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Program -> m_Attachment [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_User -> m_Attachment [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_City -> m_BusinessProfile [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Survey -> m_CompletedSurvey [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_Survey -> m_Question [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_Question -> m_Response [arrowhead = "normal", arrowtail = "none", weight = "2"];
+}

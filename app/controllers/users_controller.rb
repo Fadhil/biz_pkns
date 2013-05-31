@@ -89,7 +89,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     city_id = params[:user_city]
-    #@user = User.new(params[:user].delete(:city_attributes))
+    @user = User.new(params[:user].delete(:city_attributes))
     #@business_profile = @user.build_business_profile
 
     respond_to do |format|
