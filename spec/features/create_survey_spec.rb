@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'admin' do      
   before :each do
     User.delete_all
-
+    Survey.delete_all
     page.driver.browser.basic_authorize('big', 'boss')
 
     @admin = FactoryGirl.build(:user)
@@ -25,6 +25,22 @@ describe 'admin' do
 
       page.should have_content('Daftar Survey Baru')
       page.should have_xpath("//input[@value='Daftar Survey']")
+    end
+  end
+
+  describe 'surveys#show' do
+    before :each do
+      @survey = FactoryGirl.create(:survey)
+      visit survey_path(@survey)
+    end
+    it 'should have a title' do
+      page.should have_content(@survey.title)
+    end
+    it 'should have content Hantar Survey Ke' do
+      page.should have_selector('h5', text: 'Hantar Survey Ke')
+    end
+    it 'should have a dropdown to choose users' do
+      page.should have_xpath("//select[@name='user_select']")
     end
   end
 end 

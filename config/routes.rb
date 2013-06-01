@@ -40,7 +40,11 @@ BizPkns::Application.routes.draw do
     resources :past_attendances, except: [ :update, :destroy, :edit ]
     resources :business_categories
     resources :letters
-    resources :surveys
+    resources :surveys do
+      member do
+        post 'send_survey' => 'surveys#send_survey', as: :send_user
+      end
+    end
     # resources :users do
     #   collection { post :import }
     # end

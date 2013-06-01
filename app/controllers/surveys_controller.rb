@@ -36,4 +36,34 @@ class SurveysController < ApplicationController
 
   def destroy
   end
+
+  def send_survey
+    the_notice=''
+    users = []
+    @survey = Survey.find(params[:id])
+    if params[:user_select].present?
+      case params[:user_select]
+      when 'all_users'
+        the_notice = "ALL THE USERS!"
+        users = User.nonadmin
+      when 'members'
+        the_notice = "THE MEMBERS"
+        users = User.nonadmin.members
+      when 'nonmembers'
+        the_notice = "THE NONMEMBERS"
+        users = User.nonadmin.nonmembers
+      else
+        the_notice = "NOthing doing"
+        users = User.nonadmin
+      end
+    end
+    if !users.empty?
+      users.each do |user|
+        @survey.users << user unless @survey.users.include?(user)
+      end
+    end
+    respond_to do |format|
+      format.html { redirect_to @survey, notice: the_notice }
+    end
+  end
 end

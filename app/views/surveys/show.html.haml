@@ -5,9 +5,25 @@
   %strong= t('name') + ':'
   %br
   = @survey.title
-
+%p
+  %strong= t('description') + ':'
+  %br
+  = @survey.description
 
 .form-actions
-  = link_to t('back', :default => t("helpers.links.back")), survey_path, :class => 'btn'
+  = link_to t('back', :default => t("helpers.links.back")), surveys_path, :class => 'btn'
   = link_to t('edit', :default => t("helpers.links.edit")), edit_survey_path(@survey), :class => 'btn'
   = link_to t('destroy', :default => t("helpers.links.destroy")), survey_path(@survey), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+%br
+%br
+%br
+.row-fluid
+  %h5
+    Hantar Survey Ke
+  = form_for '',url: send_user_survey_path do |f|
+    - if current_user.admin?
+      = select_tag 'user_select', options_for_select([[t('.all_users'),'all_users'],[t('.members'),'members'], [t('.nonmembers'),'nonmembers'],[t('.users_by_program'), 'users_by_program'],[t('.users_by_course'),'users_by_course']])
+    - elsif current_consultant
+      = select_tag 'user_select', options_for_select([[t('.users_by_program'), 'users_by_program'],[t('.users_by_course'),'users_by_course']])
+
+    = f.submit

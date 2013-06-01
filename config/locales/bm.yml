@@ -417,6 +417,11 @@ bm:
     edit: 
       title: 'Kemaskini Survey'
     show:
+      all_users: 'Semua Pengguna'
+      members: 'Ahli'
+      nonmembers: 'Bukan Ahli'
+      users_by_program: 'Pengguna mengikut Program'
+      users_by_course: 'Pengguna mengikut Kursus'
     
 
 
