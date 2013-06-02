@@ -16,6 +16,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def course_dropdown
+    @courses = Course.where(program_id: params[:program_id])
+    respond_to do |format|
+      format.html {render layout: false }
+    end
+  end
+
   def current_ability
     if current_user
       @current_ability ||= Ability.new(current_user)

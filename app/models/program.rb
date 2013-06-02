@@ -7,6 +7,8 @@ class Program < ActiveRecord::Base
   has_many :consultants_programs
   accepts_nested_attributes_for :consultants_programs
 
+  has_many :users, through: :courses
+
   has_many :consultants, through: :consultants_programs
   accepts_nested_attributes_for :consultants
 

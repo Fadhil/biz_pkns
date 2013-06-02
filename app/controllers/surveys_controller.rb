@@ -41,8 +41,8 @@ class SurveysController < ApplicationController
     the_notice=''
     users = []
     @survey = Survey.find(params[:id])
-    if params[:user_select].present?
-      case params[:user_select]
+    if params[:survey_user_select].present?
+      case params[:survey_user_select]
       when 'all_users'
         the_notice = "ALL THE USERS!"
         users = User.nonadmin
@@ -52,13 +52,25 @@ class SurveysController < ApplicationController
       when 'nonmembers'
         the_notice = "THE NONMEMBERS"
         users = User.nonadmin.nonmembers
+      when 'users_by_program'
+        if params[:survey_program_select].present?
+          the_program = Program.find(params[:survey_program_select])
+          the_notice = "Users for program: #{the_program.name}"
+          users = the_program.users
+        end
+      when 'users_by_course'
+        if params[:survey_course_select].present?
+          the_course = Course.find(params[:survey_course_select])
+          the_notice = "Users for course: #{the_course.name}"
+          users = the_course.users
+        end
       else
         the_notice = "NOthing doing"
         users = User.nonadmin
       end
     end
     if !users.empty?
-      users.each do |user|
+      users.uniq.each do |user|
         @survey.users << user unless @survey.users.include?(user)
       end
     end

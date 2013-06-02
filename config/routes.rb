@@ -15,6 +15,7 @@ BizPkns::Application.routes.draw do
 
     match 'business_directory' => 'pages#business_directory', as: :business_directory
     get 'city_dropdown' => 'application#city_dropdown', as: :city_dropdown
+    get 'course_dropdown' => 'application#course_dropdown', as: :course_dropdown
     devise_for :users, path_names: {sign_in: "login", sign_out: "logout", sign_up: "signup"},
                         controllers: {registrations: 'registrations', confirmations: 'confirmations'}
     devise_for :consultants, path_names: {sign_in: "login",  sign_out: "logout"}
