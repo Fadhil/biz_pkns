@@ -109,4 +109,9 @@ class SurveysController < ApplicationController
       end
     end
   end
+
+
+  def report
+    @survey = Survey.find(params[:id])
+  end
 end

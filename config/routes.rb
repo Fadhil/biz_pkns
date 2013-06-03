@@ -52,6 +52,7 @@ BizPkns::Application.routes.draw do
       member do 
         get 'take'
         post 'take' => 'surveys#finish_survey'
+        get 'report'
       end
     end
     # resources :users do

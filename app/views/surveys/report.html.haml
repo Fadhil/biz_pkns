@@ -1,0 +1,96 @@
+.page-header
+  %h1=@survey.title + " - Report"
+
+
+%table.table-striped
+  %thead
+    %tr
+      %th
+        %h4
+          = t('.answered')
+      %th
+        %h4
+          ="/#{t('.requested')}"
+  %tbody
+    %tr
+      %td
+        %strong
+          = @survey.users.where('completed_surveys.completed is true').count
+      %td
+        %strong
+          = @survey.users.count
+
+%br
+%br
+
+%h5
+  = t('.question_breakdown')
+
+- @survey.questions.each_with_index do |q,index|
+  %h6
+    = t('.question') + " #{index + 1}"
+  %table.table.table-striped{ style: "width: 400px;"}
+    - case q.question_type
+      - when 'yes_no'
+        %thead
+          %tr
+            %th
+              Yes
+            %th
+              No
+        %tbody
+          %tr
+            %td
+              = q.responses.where('answer = ?','yes').count
+            %td
+              = q.responses.where('answer = ?','no').count
+      - when 'multiple_choice'
+        %thead
+          %tr
+            %th
+              A
+            %th
+              B
+            %th
+              C
+            %th
+              D
+        %tbody
+          %tr
+            %td
+              = q.responses.where('answer = ?','A').count
+            %td
+              = q.responses.where('answer = ?','B').count
+            %td
+              = q.responses.where('answer = ?','C').count
+            %td
+              = q.responses.where('answer = ?','D').count
+      - when 'scale'
+        %thead
+          %tr
+            %th
+              1
+            %th
+              2
+            %th
+              3
+            %th
+              4
+            %th
+              5
+        %tbody
+          %tr
+            %td
+              = q.responses.where('answer = ?','1').count
+            %td
+              = q.responses.where('answer = ?','2').count
+            %td
+              = q.responses.where('answer = ?','3').count
+            %td
+              = q.responses.where('answer = ?','4').count
+            %td
+              = q.responses.where('answer = ?','5').count
+
+
+
+  
