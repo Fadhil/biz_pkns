@@ -1,6 +1,6 @@
 
 .page-header
-  %h1=@survey.title + " - Report"
+  %h1="Laporan " + @survey.title
 
 
 %table.table-striped
@@ -37,9 +37,9 @@
         %thead
           %tr
             %th
-              Yes
+              = t('yes_answer')
             %th
-              No
+              = t('no_answer')
         %tbody
           %tr
             %td
@@ -49,7 +49,7 @@
       %div
         = image_tag( Gchart.bar(data: [0,q.responses.where('answer = ?','yes').count,
                                         q.responses.where('answer = ?','no').count],
-                                        labels: ['','Yes','No'],
+                                        labels: ['',t('yes_answer'),t('no_answer')],
                                         axis_with_labels: 'y'))
     - when 'multiple_choice'
       %table.table.table-striped{ style: "width: 400px;"}

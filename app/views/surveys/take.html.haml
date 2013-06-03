@@ -32,7 +32,7 @@
               = radio_button "question[#{q.id}]", :answer, 5
               = f.label 'Very No'
       = hidden_field "question[#{q.id}]", 'question_id', value: q.id
-    = f.submit 'Submit', :class => 'btn btn-primary'
+    = f.submit t('submit'), :class => 'btn btn-primary'
     / .control-group
     /   = f.label :name, :class => 'control-label'
     /   .controls
