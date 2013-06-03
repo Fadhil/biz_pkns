@@ -1,3 +1,4 @@
+
 .page-header
   %h1=@survey.title + " - Report"
 
@@ -29,9 +30,10 @@
 - @survey.questions.each_with_index do |q,index|
   %h6
     = t('.question') + " #{index + 1}"
-  %table.table.table-striped{ style: "width: 400px;"}
-    - case q.question_type
-      - when 'yes_no'
+
+  - case q.question_type
+    - when 'yes_no'
+      %table.table.table-striped{ style: "width: 250px;"}
         %thead
           %tr
             %th
@@ -44,7 +46,13 @@
               = q.responses.where('answer = ?','yes').count
             %td
               = q.responses.where('answer = ?','no').count
-      - when 'multiple_choice'
+      %div
+        = image_tag( Gchart.bar(data: [0,q.responses.where('answer = ?','yes').count,
+                                        q.responses.where('answer = ?','no').count],
+                                        labels: ['','Yes','No'],
+                                        axis_with_labels: 'y'))
+    - when 'multiple_choice'
+      %table.table.table-striped{ style: "width: 400px;"}
         %thead
           %tr
             %th
@@ -65,7 +73,15 @@
               = q.responses.where('answer = ?','C').count
             %td
               = q.responses.where('answer = ?','D').count
-      - when 'scale'
+      %div
+        = image_tag( Gchart.bar(data: [0, q.responses.where('answer = ?','A').count,
+                                        q.responses.where('answer = ?','B').count,
+                                        q.responses.where('answer = ?','C').count,
+                                        q.responses.where('answer = ?','D').count],
+                                        labels: ['','A','B','C','D'],
+                                        axis_with_labels: 'y'))
+    - when 'scale'
+      %table.table.table-striped{ style: "width: 400px;"}
         %thead
           %tr
             %th
@@ -90,6 +106,14 @@
               = q.responses.where('answer = ?','4').count
             %td
               = q.responses.where('answer = ?','5').count
+      %div
+        = image_tag( Gchart.bar(data: [0,q.responses.where('answer = ?','1').count,
+                                        q.responses.where('answer = ?','2').count,
+                                        q.responses.where('answer = ?','3').count,
+                                        q.responses.where('answer = ?','4').count,
+                                        q.responses.where('answer = ?','5').count],
+                                        labels: ['','1','2','3','4','5'],
+                                        axis_with_labels: 'y'))
 
 
 
