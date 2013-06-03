@@ -1,0 +1,20 @@
+.page-header
+  %h1=t '.title'
+%table.table.table-striped
+  %thead
+    %tr
+      %th
+        ID
+      %th= t('name')
+      %th
+  %tbody
+    - @surveys.each do |survey|
+      %tr
+        %td= link_to survey.id, survey_path(survey)
+        %td= survey.title
+
+        %td
+          = link_to t('take_survey'), take_survey_path(survey), :class => 'btn btn-secondary btn-mini'
+          =# link_to t('.destroy', :default => t("helpers.links.destroy")), survey_path(survey), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+
+=# link_to t('.new', :default => t("helpers.links.new")), new_survey_path, :class => 'btn btn-primary'

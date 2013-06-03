@@ -174,4 +174,9 @@ class UsersController < ApplicationController
       end
     end
   end 
+
+  def surveys
+    @user = User.find(params[:id])
+    @surveys = @user.unfinished_surveys
+  end
 end

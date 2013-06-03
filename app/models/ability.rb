@@ -9,7 +9,7 @@ class Ability
       if resource.is_a?(User)
         if resource.admin?
           can :manage, :all
-        elsif resource.confirmed && resource.profile_complete?
+        elsif resource.confirmed && resource.profile_complete? # Member
           can :manage, User, id: resource.id
           can :read, :all
           can :contact, :all
@@ -20,10 +20,13 @@ class Ability
           cannot :all, :admins
           can :consultation, :pages
           cannot :index, User
-
+          can [:take], Survey
+          can :finish_survey, Survey
+          cannot [:index, :edit, :update, :destroy], Survey
+          #cannot :all, :surveys, except: [:take]
         else
           #can :read, :all
-          can :manage, User, id: resource.id
+          can :manage, User, id: resource.id # Non Member
           can :contact, :all
           can :sent, :all
           can :read, Consultant
@@ -32,6 +35,10 @@ class Ability
           cannot :all, :pages
           cannot :all, :admins
           cannot :index, User
+          can [:take], Survey
+          can :finish_survey, Survey
+          cannot [:index, :edit, :update, :destroy], Survey
+          #cannot :all, :surveys, except: [:take]
         end
       elsif resource.is_a?(Consultant)
         can :manage, Consultant, id: resource.id

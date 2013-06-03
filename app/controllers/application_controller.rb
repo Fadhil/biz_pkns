@@ -49,6 +49,10 @@ class ApplicationController < ActionController::Base
         unless current_user.admin?
           flash.now[:notice] = t('please_complete_your_profile')
         end
+      elsif !current_user.unfinished_surveys.empty?
+        unless current_user.admin?
+          flash.now[:notice] = t('you_have_new_surveys_here') + " <a href='#{surveys_user_path(current_user)}''>Jawab Survey</a>"
+        end
       end
     end
   end

@@ -30,6 +30,8 @@ BizPkns::Application.routes.draw do
     resources :users do
       member do
         put 'update_membership' => 'users#update_membership'#, as: :update_membership
+        get 'surveys'
+        
       end 
     end
     resources :programs
@@ -46,6 +48,10 @@ BizPkns::Application.routes.draw do
     resources :surveys do
       member do
         post 'send_survey' => 'surveys#send_survey', as: :send_user
+      end
+      member do 
+        get 'take'
+        post 'take' => 'surveys#finish_survey'
       end
     end
     # resources :users do

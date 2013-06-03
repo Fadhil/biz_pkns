@@ -103,6 +103,8 @@ bm:
   successfully_created_pkns_user: 'Berjaya mendaftarkan pengguna PKNS'
   successfully_created_survey: 'Berjaya mendaftarkan survey'
   successfully_updated_survey: 'Berjaya mengemaskini survey'
+  take_survey: 'Ambil Survey'
+  thanks_for_completing_our_survey: 'Terima kasih kerana sudi menjawab survey kami.'
   unit: 'Unit'
   update: 'Kemaskini'
   upcoming: 'Akan Datang'
@@ -111,6 +113,8 @@ bm:
   upload_unsuccessful: 'Muat naik tidak berjaya, sila semak data anda'
   venue: 'Tempat'
   years: 'tahun'
+  you_have_new_surveys_here: 'Jawab survey terbaru anda di sini:'
+  you_were_invited_to_do_a_survey: 'Anda telah dijemput untuk menjawab survey'
 
   yes_no: 'Ya/Tidak'
   multiple_choice: 'Aneka Pilihan'
@@ -205,6 +209,8 @@ bm:
     admin_show:
       title: 'Profil Admin'
       staff_details: 'Maklumat Staf'
+    surveys:
+      title: 'Survey Saya'
 
   admin:
     index:
@@ -430,6 +436,8 @@ bm:
       nonmembers: 'Bukan Ahli'
       users_by_program: 'Pengguna mengikut Program'
       users_by_course: 'Pengguna mengikut Kursus'
+    take:
+      title: 'Jawab Survey'
     
 
 
