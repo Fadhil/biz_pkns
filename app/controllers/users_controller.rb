@@ -179,4 +179,14 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @surveys = @user.unfinished_surveys
   end
+
+  def letters
+    @user = User.find(params[:id])
+    @letters = Letter.where(:user_id => @user.id)
+    # respond_to do |format|
+    #   format.html # index.html.erb
+    #   format.json { render json: @letters }
+    # end
+
+  end
 end

@@ -31,7 +31,7 @@ BizPkns::Application.routes.draw do
       member do
         put 'update_membership' => 'users#update_membership'#, as: :update_membership
         get 'surveys'
-        
+        get 'letters', as: :letter_user
       end 
     end
     resources :programs

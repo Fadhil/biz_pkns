@@ -3,7 +3,7 @@ class LettersController < ApplicationController
   # GET /letters.json
   def index
     @letters = User.all
-
+    @users = User.all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @letters }

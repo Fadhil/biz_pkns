@@ -211,6 +211,9 @@ bm:
       staff_details: 'Maklumat Staf'
     surveys:
       title: 'Survey Saya'
+    letters:
+      title: 'Arkib Surat'
+      subject: 'Perkara Surat'
 
   admin:
     index:
@@ -273,10 +276,41 @@ bm:
     index:
       send_letter: 'Karang Surat'
       title: 'Surat Baru'
+      history: 'Arkib'
     new:
     show:
+      print: 'Cetak PDF'
+      edit: 'Kemaskini'
+      destroy: 'Padam'
     edit:
+      title: 'Kemaskini Surat'
     form:
+      recipient: 'Penerima'
+      address: 'Alamat'
+      compose: 'Karang Surat'
+      name: 'Nama'
+      address: 'Alamat'
+      postcode: 'Poskod'
+      city: 'Bandar'
+      state: 'Negeri'
+      subject: 'Perkara'
+      message: 'Kandungan Surat'
+      update: 'Kemaskini Surat'
+      cancel: 'Batal'
+    compose:
+      title: 'Karang Surat'
+      recipient: 'Penerima'
+      address: 'Alamat'
+      compose: 'Karang Surat'
+      name: 'Nama'
+      address: 'Alamat'
+      postcode: 'Poskod'
+      city: 'Bandar'
+      state: 'Negeri'
+      subject: 'Perkara'
+      message: 'Kandungan Surat'
+      send: 'Prebiu'
+      cancel: 'Batal'
 
   skills:
     index:
