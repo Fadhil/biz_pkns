@@ -185,7 +185,7 @@
                   = bp.text_field :registration_number
               %tr
                 %th= bp.label t('category')
-                %td= bp.select(:category, BUSINESS_CATEGORIES, {:selected=> bp.object.try(:category), :include_blank => false})
+                %td= bp.select(:category, BUSINESS_CATEGORIES, {:selected=> bp.object.try(:category), :include_blank => true})
               %tr
                 %th= bp.label t('description')
                 %td= bp.text_area :description, class: 'text_area', style: 'height:200px;'
@@ -223,7 +223,7 @@
                     - @cities = City.where(state_name: bp.object.city.state_name).order(:name)
                   - else
                     - @cities = City.where(state_name: 'Selangor').order(:name)
-                  = bp.select :city_id, options_for_select(@cities.map{ |a| [a.name, a.id]}, selected: bp.object.city_id )
+                  = bp.select :city_id, options_for_select(@cities.map{ |a| [a.name, a.id]}, {selected: bp.object.city_id} )
               %tr
                 %th= bp.label t('state')
                 %td
@@ -231,7 +231,7 @@
                     - selected_state = bp.object.city.state_name
                   - else
                     - selected_state = 'Selangor'
-                  = select_tag "businessprofile_state", options_for_select(City.order(:state_name).map{ |a| [a.state_name]}.uniq, selected: selected_state)
+                  = select_tag "businessprofile_state", options_for_select(City.order(:state_name).map{ |a| [a.state_name]}.uniq, {selected: selected_state})
               - i = i + 1
               %tr
                 %th= f.label t('office_phone')
