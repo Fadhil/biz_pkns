@@ -1,5 +1,7 @@
 BizPkns::Application.routes.draw do
 
+  mount RedactorRails::Engine => '/redactor_rails'
+
   localized do
     put 'make_member/:id' => 'users#make_member', as: :make_member
     match 'select_program/:program_id' => 'consultants#select_program', as: :select_program

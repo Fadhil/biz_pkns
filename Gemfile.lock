@@ -165,6 +165,10 @@ GEM
     rake (10.0.3)
     rdoc (3.12.2)
       json (~> 1.4)
+    redactor-rails (0.3.3)
+      devise
+      mime-types
+      orm_adapter
     ref (1.0.4)
     rspec-core (2.13.1)
     rspec-expectations (2.13.0)
@@ -246,6 +250,7 @@ DEPENDENCIES
   pg
   rails (= 3.2.6)
   rails-erd
+  redactor-rails
   rspec-rails (~> 2.0)
   sass-rails (~> 3.2.3)
   shoulda-matchers
