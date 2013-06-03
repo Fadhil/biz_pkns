@@ -6,6 +6,7 @@ class PastAttendance < ActiveRecord::Base
  
   scope :unsuccessful, where('successful = false OR successful is null')
   scope :successful , where(successful: true)
+  scope :latest, where(latest_uploaded: true)
  
   def make_successful
     self.successful = true
@@ -14,13 +15,24 @@ class PastAttendance < ActiveRecord::Base
 
   def create_member
     user = User.where('ic_number = ? OR email = ?', self.ic_number, self.email).first || User.new(first_name: self.first_name, last_name: self.last_name, ic_number: self.ic_number, email: self.email, password: 'password', password_confirmation: 'password', is_active: true, walk_in_first_time: true, confirmed: true)
-
+    if user.new_record?
+      self.newly_generated = true
+      self.save
+    end
     user.save
     program = Program.where(name: self.program).first
     course = Course.where(name: self.course, program_id: program.try(:id)).first
 
     if course
       user.courses << course
+    end
+  end
+
+  def self.make_all_old # Set 'latest_uploaded' to false, so older records don't show
+    self.latest.each do |p|
+      p.latest_uploaded = false
+      p.newly_generated = false
+      p.save
     end
   end
 end

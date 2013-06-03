@@ -51,9 +51,11 @@ bm:
   name: 'Nama'
   member: 'Ahli'
   membership_num: 'No Keahlian'
+  new: 'Baru'
   new_consultant: 'Daftar Perunding Baru'
   new_business_category: 'Daftar Bidang Perniagaan'
   office_phone: 'No Tel Pejabat'
+  old: 'Lama'
   pax: 'Jumlah peserta'
   password: 'Kata Laluan'
   password_confirmation: 'Pengesahan Kata Laluan'
@@ -375,6 +377,8 @@ bm:
   past_attendances:
     index:
       title: 'Senarai Kehadiran Lama'
+    uploaded:
+      title: 'Senarai Kehadiran Yang Baru Dimuatnaik'
       
   programs:
     index:

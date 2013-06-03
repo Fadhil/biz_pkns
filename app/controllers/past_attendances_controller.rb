@@ -6,6 +6,9 @@ class PastAttendancesController < ApplicationController
     @past_attendances = PastAttendance.successful
   end
 
+  def uploaded
+    @past_attendances = PastAttendance.latest
+  end
   def new
 
   end
@@ -13,7 +16,7 @@ class PastAttendancesController < ApplicationController
 
 
   def create
-
+    PastAttendance.make_all_old
     data = params[:past_attendance][:file].read
     @parsed_file=CSV.parse(data)
     n=0
@@ -32,6 +35,7 @@ class PastAttendancesController < ApplicationController
         c.phone = row[9]
         c.email = row[10]
         c.successful = false
+        c.latest_uploaded = true
         if c.save
           n=n+1
           GC.start if n%50==0
@@ -44,6 +48,7 @@ class PastAttendancesController < ApplicationController
       PastAttendance.unsuccessful.each do |p|
         p.make_successful
         p.create_member
+        
       end
       notice = t('upload_successful')
     else 
@@ -51,7 +56,7 @@ class PastAttendancesController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { redirect_to past_attendances_path, notice: notice }
+      format.html { redirect_to uploaded_past_attendances_path, notice: notice }
     end
   end
 
