@@ -37,6 +37,9 @@ gem 'i18n_routing'
 # Rails ERD
 gem 'rails-erd'
 
+# Google Charts
+gem 'googlecharts', :require => "gchart"
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

@@ -11,8 +11,14 @@
   = @survey.description
 
 .form-actions
-  = link_to t('back', :default => t("helpers.links.back")), surveys_path, :class => 'btn'
-  = link_to t('edit', :default => t("helpers.links.edit")), edit_survey_path(@survey), :class => 'btn'
+  - if !@survey.completed
+    = form_for @survey do |f|
+      = f.hidden_field :completed, value: 1
+      = f.submit t('end_survey'), class: 'btn'
+  - else
+    = link_to t('report'), report_survey_path, :class => 'btn'
+  - unless @survey.completed
+    = link_to t('edit', :default => t("helpers.links.edit")), edit_survey_path(@survey), :class => 'btn'
   = link_to t('destroy', :default => t("helpers.links.destroy")), survey_path(@survey), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
 %br
 %br

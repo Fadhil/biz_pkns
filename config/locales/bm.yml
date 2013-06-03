@@ -12,6 +12,7 @@ bm:
   back: 'Kembali'
   edit: 'Kemaskini'
   end_course: 'Kursus Tamat'
+  end_survey: 'Survey Tamat'
   extra: 'Tambahan'
   view: 'Papar'
   bio_data: 'Biodata'
@@ -75,6 +76,7 @@ bm:
   register_course: 'Daftar Kursus'
   remember_me: 'Simpan Maklumat Saya'
   remove_program: 'Padam Program'
+  report: 'Report'
   resend_confirmation: 'Hantar arahan pengesahan'
   search: 'Carian'
   search_by_name: 'Carian Nama'
@@ -472,8 +474,11 @@ bm:
       users_by_course: 'Pengguna mengikut Kursus'
     take:
       title: 'Jawab Survey'
-    
-
+    report:
+      answered: 'Dijawab'
+      requested: 'Requested'
+      question_breakdown: 'Analisa Soalan'
+      question: 'Soalan'
 
     
   #Stuff in the header

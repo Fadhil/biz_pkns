@@ -81,6 +81,7 @@ GEM
       nokogiri (~> 1.5.0)
       ruby-hmac
     formatador (0.2.4)
+    googlecharts (1.6.8)
     haml (4.0.2)
       tilt
     haml-rails (0.4)
@@ -249,6 +250,7 @@ DEPENDENCIES
   devise
   factory_girl_rails
   fog
+  googlecharts
   haml-rails (>= 0.3.4)
   html2haml
   i18n_routing
