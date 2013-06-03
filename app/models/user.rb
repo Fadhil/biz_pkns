@@ -68,7 +68,13 @@ class User < ActiveRecord::Base
   has_many :roles_user
   has_many :roles, through: :roles_user
 
-  has_many :letters
+  has_many :completed_surveys
+  has_many :surveys, through: :completed_surveys
+
+
+
+  has_many :responses
+  has_many :questions, through: :responses
 
   def super_admin?
     !self.role.title('superadmin').nil?

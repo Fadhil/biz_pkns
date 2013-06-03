@@ -5,12 +5,14 @@ bm:
   active: 'Aktif'
   add_program: 'Tambah Program'
   add_attendee: 'Daftar Ahli'
+  add_questions: 'Tambah Soalan'
   inactive: 'Tidak Aktif'
   is_active: 'Aktif'
   are_you_sure: 'And pasti?'
   back: 'Kembali'
   edit: 'Kemaskini'
   end_course: 'Kursus Tamat'
+  extra: 'Tambahan'
   view: 'Papar'
   bio_data: 'Biodata'
   business: 'Perniagaan'
@@ -56,6 +58,10 @@ bm:
   password_confirmation: 'Pengesahan Kata Laluan'
   new_password_confirmation: 'Sahkan kata laluan baru'
   number_of_attendees: 'Jumlah Peserta'
+  option1: 'Pilihan Jawapan 1'
+  option2: 'Pilihan Jawapan 2'
+  option3: 'Pilihan Jawapan 3'
+  option4: 'Pilihan Jawapan 4'
   phone: 'No Tel'
   postcode: 'Poskod'
   platinum: 'Platinum'
@@ -95,6 +101,8 @@ bm:
   successfully_registered_pkns_user: 'Pendaftaran Ahli PKNS berjaya'
   successfully_updated_attendance: 'Kehadiran Berjaya Dikemaskini'
   successfully_created_pkns_user: 'Berjaya mendaftarkan pengguna PKNS'
+  successfully_created_survey: 'Berjaya mendaftarkan survey'
+  successfully_updated_survey: 'Berjaya mengemaskini survey'
   unit: 'Unit'
   update: 'Kemaskini'
   upcoming: 'Akan Datang'
@@ -104,6 +112,10 @@ bm:
   venue: 'Tempat'
   years: 'tahun'
 
+  yes_no: 'Ya/Tidak'
+  multiple_choice: 'Aneka Pilihan'
+  scale: 'Skala'
+  
   male: 'Lelaki'
   female: 'Perempuan'
 
@@ -383,7 +395,6 @@ bm:
     edit: 
       title: 'Kemaskini kursus'
 
-
   members:
     index:
       title: 'Direktori Ahli'
@@ -403,6 +414,26 @@ bm:
     form:
       ic_number: 'No KP'
 
+  surveys:
+    index:
+      title: 'Senarai Survey'
+    new:
+      title: 'Daftar Survey Baru'
+    form:
+      title: 'Daftar Survey Baru'
+      create: 'Daftar Survey'
+    edit: 
+      title: 'Kemaskini Survey'
+    show:
+      all_users: 'Semua Pengguna'
+      members: 'Ahli'
+      nonmembers: 'Bukan Ahli'
+      users_by_program: 'Pengguna mengikut Program'
+      users_by_course: 'Pengguna mengikut Kursus'
+    
+
+
+    
   #Stuff in the header
   layouts:
     header:
@@ -432,6 +463,8 @@ bm:
       course: 'Kursus'
       course_listing: 'Senarai Kursus'
       program_member: 'Ahli Program'
+      list_surveys: 'Senarai Survey'
+      new_survey: 'Daftar Survey Baru'
 
   errors:
       messages:
@@ -527,6 +560,8 @@ bm:
         password: "Kata laluan"
         phone: "No telefon"
         gender: "Jantina"
+      survey:
+        title: 'Nama'
         
     errors:
       messages: 

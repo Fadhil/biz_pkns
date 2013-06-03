@@ -1,0 +1,96 @@
+= nested_form_for @survey, :html => { :class => 'form-horizontal' } do |f|
+  .control-group
+    = f.label t("name"), :class => 'control-label'
+    .controls
+      = f.text_field :title, :class => 'text_field'
+  .control-group
+    = f.label t('description'), class: 'control-label'
+    .controls  
+      = f.text_area :description, class: 'text-area-medium'
+  .control-group.questions
+    %h4= t('.add_questions')
+    = f.fields_for :questions do |q|
+      - if q.object.new_record?
+        - question_id = q.options[:child_index]
+      - else
+        - question_id = q.object.id
+      .control-group
+        = q.label :title, class: 'control-label'
+        .controls  
+          = q.text_area :title, class: 'text-area-medium'
+      .control-group
+        = q.label :question_type, class: 'control-label'
+        .controls
+          = q.select :question_type, options_for_select([[t('yes_no'),'yes_no'],[t('multiple_choice'),'multiple_choice'],[t('scale'),'scale']], q.object.question_type), {},{ onchange: "change_question_type(this.value, #{question_id});", class: "question_#{question_id}" }
+      - if q.object.new_record?
+        .question_options.hide{ class: "#{question_id}" }
+          .control-group
+            = q.label t('option1'), class: 'control-label'
+            .controls 
+              = q.text_field :option1, class: 'text_field'
+          .control-group
+            = q.label t('option2'), class: 'control-label'
+            .controls 
+              = q.text_field :option2, class: 'text_field'
+          .control-group
+            = q.label t('option3'), class: 'control-label'
+            .controls 
+              = q.text_field :option3, class: 'text_field'
+          .control-group
+            = q.label t('option4'), class: 'control-label'
+            .controls 
+              = q.text_field :option4, class: 'text_field'
+      - else
+        - if q.object.question_type == 'multiple_choice'
+          .question_options{ class: "#{question_id}" }
+            .control-group
+              = q.label t('option1'), class: 'control-label'
+              .controls 
+                = q.text_field :option1, class: 'text_field'
+            .control-group
+              = q.label t('option2'), class: 'control-label'
+              .controls 
+                = q.text_field :option2, class: 'text_field'
+            .control-group
+              = q.label t('option3'), class: 'control-label'
+              .controls 
+                = q.text_field :option3, class: 'text_field'
+            .control-group
+              = q.label t('option4'), class: 'control-label'
+              .controls 
+                = q.text_field :option4, class: 'text_field'
+        - else
+          .question_options.hide{ class: "#{question_id}" }
+            .control-group
+              = q.label t('option1'), class: 'control-label'
+              .controls 
+                = q.text_field :option1, class: 'text_field'
+            .control-group
+              = q.label t('option2'), class: 'control-label'
+              .controls 
+                = q.text_field :option2, class: 'text_field'
+            .control-group
+              = q.label t('option3'), class: 'control-label'
+              .controls 
+                = q.text_field :option3, class: 'text_field'
+            .control-group
+              = q.label t('option4'), class: 'control-label'
+              .controls 
+                = q.text_field :option4, class: 'text_field'
+
+        = q.link_to_remove 'Remove'
+    = f.link_to_add 'Add', :questions
+  .form-actions
+    - if f.object.new_record?
+      = f.submit t('.create'), :class => 'btn btn-primary'
+    - else
+      = f.submit t('update'), class: 'btn btn-primary'
+
+:javascript
+  var change_question_type
+  change_question_type = function(question, options_id) {
+  if(question =='multiple_choice')
+  $('.' + options_id).show();
+  else
+  $('.' + options_id).hide();
+  };

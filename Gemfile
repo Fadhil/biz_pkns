@@ -34,8 +34,8 @@ gem 'kaminari'
 # localized routes
 gem 'i18n_routing'
 
-# Portal
-gem 'refinerycms'
+# Rails ERD
+gem 'rails-erd'
 
 # Gems used only for assets and not required
 # in production environments by default.

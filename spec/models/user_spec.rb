@@ -34,6 +34,16 @@ describe User do
     it { should have_many(:programs).through(:courses) }
   end
 
+  describe 'has many surveys through completed surveys' do
+    it { should have_many(:completed_surveys) }
+    it { should have_many(:surveys).through(:completed_surveys) }
+  end
+
+  describe 'has many questions through responses' do 
+    it { should have_many(:responses) }
+    it { should have_many(:questions).through(:responses)}
+  end
+
   describe '#complete_profile' do
     context 'when user updates profile and does not have all required fields' do
       it "does not change 'profile_complete'" do
