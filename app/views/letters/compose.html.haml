@@ -26,11 +26,11 @@
   .control-group
     = f.label :city, :class => 'control-label'
     .controls
-      = f.text_field :line2, :class => 'text_field', :placeholder => 'Bandar', :value => @user.address.city.name
+      = f.text_field :city, :class => 'text_field', :placeholder => 'Bandar', :value => @user.address.city.name
   .control-group
     = f.label :state, :class => 'control-label'
     .controls
-      = f.text_field :line2, :class => 'text_field', :placeholder => 'Negeri', :value => @user.address.city.state_name
+      = f.text_field :state, :class => 'text_field', :placeholder => 'Negeri', :value => @user.address.city.state_name
 
   %h4=t '.compose'
   .control-group

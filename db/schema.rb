@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130531095117) do
+ActiveRecord::Schema.define(:version => 20130603142038) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -191,7 +191,7 @@ ActiveRecord::Schema.define(:version => 20130531095117) do
     t.string   "subject"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "message"
+    t.text     "message"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "line1"
@@ -199,6 +199,8 @@ ActiveRecord::Schema.define(:version => 20130531095117) do
     t.string   "postcode"
     t.integer  "city_id"
     t.integer  "user_id"
+    t.string   "city"
+    t.string   "state"
   end
 
   create_table "memberships", :force => true do |t|
@@ -254,6 +256,23 @@ ActiveRecord::Schema.define(:version => 20130531095117) do
     t.string   "question_type"
   end
 
+  create_table "redactor_assets", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "data_file_name",                  :null => false
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.integer  "assetable_id"
+    t.string   "assetable_type",    :limit => 30
+    t.string   "type",              :limit => 30
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  add_index "redactor_assets", ["assetable_type", "assetable_id"], :name => "idx_redactor_assetable"
+  add_index "redactor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_redactor_assetable_type"
+
   create_table "refinery_images", :force => true do |t|
     t.string   "image_mime_type"
     t.string   "image_name"
@@ -261,7 +280,6 @@ ActiveRecord::Schema.define(:version => 20130531095117) do
     t.integer  "image_width"
     t.integer  "image_height"
     t.string   "image_uid"
-    t.string   "image_ext"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
@@ -352,14 +370,9 @@ ActiveRecord::Schema.define(:version => 20130531095117) do
   end
 
   create_table "roles_users", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "role_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer "role_id"
+    t.integer "user_id"
   end
-
-  add_index "roles_users", ["role_id"], :name => "index_roles_users_on_role_id"
-  add_index "roles_users", ["user_id"], :name => "index_roles_users_on_user_id"
 
   create_table "seo_meta", :force => true do |t|
     t.integer  "seo_meta_id"
@@ -378,28 +391,6 @@ ActiveRecord::Schema.define(:version => 20130531095117) do
     t.string   "name"
     t.text     "description"
     t.integer  "experience"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "survey_sections", :force => true do |t|
-    t.integer  "survey_id"
-    t.string   "title"
-    t.text     "description"
-    t.string   "reference_identifier"
-    t.string   "data_export_identifier"
-    t.string   "common_namespace"
-    t.string   "common_identifier"
-    t.integer  "display_order"
-    t.string   "custom_class"
-    t.datetime "created_at",             :null => false
-    t.datetime "updated_at",             :null => false
-  end
-
-  create_table "survey_translations", :force => true do |t|
-    t.integer  "survey_id"
-    t.string   "locale"
-    t.text     "translation"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -481,32 +472,6 @@ ActiveRecord::Schema.define(:version => 20130531095117) do
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-  end
-
-  create_table "validation_conditions", :force => true do |t|
-    t.integer  "validation_id"
-    t.string   "rule_key"
-    t.string   "operator"
-    t.integer  "question_id"
-    t.integer  "answer_id"
-    t.datetime "datetime_value"
-    t.integer  "integer_value"
-    t.float    "float_value"
-    t.string   "unit"
-    t.text     "text_value"
-    t.string   "string_value"
-    t.string   "response_other"
-    t.string   "regexp"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-  end
-
-  create_table "validations", :force => true do |t|
-    t.integer  "answer_id"
-    t.string   "rule"
-    t.string   "message"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
 end
