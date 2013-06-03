@@ -1,0 +1,6 @@
+Tahniah <%= @user.email %>!
+
+Anda telah dijemput untuk mengambil survey kami bertajuk <%= @survey.title %>
+
+Sila log masuk di: <%= new_user_session_url %> 
+atau terus ke survey di <%= take_survey_url(@survey) %>

@@ -238,4 +238,12 @@ class User < ActiveRecord::Base
       end
     end
   end
+
+  def finished_surveys
+    self.surveys.where('completed_surveys.completed = ?',true)
+  end
+
+  def unfinished_surveys
+    self.surveys.where('completed_surveys.completed <> ? OR completed_surveys.completed is null',true)
+  end
 end

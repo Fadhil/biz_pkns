@@ -1,4 +1,5 @@
 class SurveysController < ApplicationController
+  load_and_authorize_resource
   def index
     @surveys = Survey.all
   end
@@ -35,6 +36,13 @@ class SurveysController < ApplicationController
   end
 
   def destroy
+    @survey = Survey.find(params[:id])
+    @survey.destroy
+
+    respond_to do |format|
+      format.html { redirect_to request.referrer }
+      format.json { head :no_content }
+    end
   end
 
   def send_survey
@@ -72,10 +80,33 @@ class SurveysController < ApplicationController
     if !users.empty?
       users.uniq.each do |user|
         @survey.users << user unless @survey.users.include?(user)
+        UserMailer.mail_survey_invite(user, @survey).deliver
       end
     end
     respond_to do |format|
       format.html { redirect_to @survey, notice: the_notice }
+    end
+  end
+
+  def take
+    @survey = Survey.find(params[:id])
+    @questions = @survey.questions
+  end
+
+  def finish_survey
+    params[:question].each do |q|
+      current_user.responses << Response.create(question_id: q[1][:question_id], answer: q[1][:answer])
+    end
+    survey = Survey.find(params[:id])
+    completed_survey = current_user.completed_surveys.where(survey_id: survey).first
+    completed_survey.completed = true
+    completed_survey.save
+    respond_to do |format|
+      if !current_user.unfinished_surveys.empty?
+        format.html { redirect_to surveys_user_path(current_user), notice: t('thanks_for_completing_our_survey') }
+      else
+        format.html { redirect_to root_path, notice: t('thanks_for_completing_our_survey')}
+      end
     end
   end
 end

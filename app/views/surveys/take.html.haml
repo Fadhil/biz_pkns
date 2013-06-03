@@ -1,0 +1,50 @@
+.page-header
+  %h1=t '.title'
+  %br
+  %br
+  = form_for '', :html => { :class => 'form-horizontal' } do |f|
+    - @questions.each do |q|
+      .control-group
+        = f.label q.title, :class => 'control-label'
+        .controls
+          - the_field = ''
+          - case q.question_type
+            - when 'yes_no'
+              = f.label 'Yes'
+              = radio_button "question[#{q.id}]", :answer, 'yes'
+              = f.label 'No'
+              = radio_button "question[#{q.id}]",:answer, 'no'
+            - when 'multiple_choice'
+              = f.label q.option1
+              = radio_button "question[#{q.id}]", :answer, 'A'
+              = f.label q.option2
+              = radio_button "question[#{q.id}]", :answer, 'B'
+              = f.label q.option3
+              = radio_button "question[#{q.id}]", :answer, 'C'
+              = f.label q.option4
+              = radio_button "question[#{q.id}]", :answer, 'D'
+            - when 'scale'
+              = f.label 'Very Yes'
+              = radio_button "question[#{q.id}]", :answer, 1
+              = radio_button "question[#{q.id}]", :answer, 2
+              = radio_button "question[#{q.id}]", :answer, 3
+              = radio_button "question[#{q.id}]", :answer, 4
+              = radio_button "question[#{q.id}]", :answer, 5
+              = f.label 'Very No'
+      = hidden_field "question[#{q.id}]", 'question_id', value: q.id
+    = f.submit 'Submit', :class => 'btn btn-primary'
+    / .control-group
+    /   = f.label :name, :class => 'control-label'
+    /   .controls
+    /     = f.text_field :name, :class => 'text_field'
+    / .control-group
+    /   = f.label :description, :class => 'control-label'
+    /   .controls
+    /     = f.text_area :description, :class => 'text_area'
+    / .control-group
+    /   = f.label :experience, :class => 'control-label'
+    /   .controls
+    /     = f.number_field :experience, :class => 'number_field'
+    / .form-actions
+    /   
+    /   = link_to t('.cancel', :default => t("helpers.links.cancel")), skill_path, :class => 'btn'
