@@ -457,6 +457,7 @@ bm:
       administrate_user: 'Urus Ahli'
       administrate_pkns_user: 'Urus Operator PKNS'
       directory: 'Direktori'
+      new_letter: 'Karang Surat'
       new_consultant: 'Daftar Perunding'
       new_education: 'Daftar Bidang Pendidikan'
       new_business: 'Daftar Jenis Perniagaan'
