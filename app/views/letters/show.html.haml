@@ -22,6 +22,8 @@
   = @letter.city 
   = @letter.state
   %br
+%br
+  = @letter.date
 %p
   %br
   %strong= 'Subjek :'
@@ -33,9 +35,9 @@
   Regards,
 
 %p
-  = @letter.full_name
+  = "PKNS Biz Club"
 
 .form-actions
-  = link_to t('.print'), '', :class => 'btn btn-secondary'
+  = link_to t('.print'), letter_path(@letter, format: "pdf"), :class => 'btn btn-secondary'
   = link_to t('.edit', :default => t("helpers.links.edit")), edit_letter_path(@letter), :class => 'btn'
   = link_to t('.destroy', :default => t("helpers.links.destroy")), letter_path(@letter), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

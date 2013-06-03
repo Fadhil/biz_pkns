@@ -18,6 +18,13 @@ class LettersController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @letter }
+      format.pdf do
+      #pdf = Prawn::Document.new
+      pdf = LetterPdf.new(@letter)
+      send_data pdf.render, filename: "surat_#{@letter.full_name}".downcase.gsub(' ', '_'),
+                              type: "application/pdf",
+                              disposition: "inline"
+    end
     end
   end
 
@@ -34,6 +41,7 @@ class LettersController < ApplicationController
 
   # GET /letters/1/edit
   def edit
+    @user = User.find(params[:id])
     @letter = Letter.find(params[:id])
   end
 

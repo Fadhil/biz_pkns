@@ -13,4 +13,8 @@ class Letter < ActiveRecord::Base
     "#{self.line1} #{self.line2} #{self.postcode} #{self.city} #{self.state}"
   end
 
+  def date
+    created_at.strftime("%d %b %Y")
+  end
+
 end
