@@ -2,7 +2,7 @@ class LettersController < ApplicationController
   # GET /letters
   # GET /letters.json
   def index
-    @letters = Letter.all
+    @letters = User.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -42,6 +42,8 @@ class LettersController < ApplicationController
   def create
     @letter = Letter.new(params[:letter])
 
+    city_id = params[:user_city]
+
     respond_to do |format|
       if @letter.save
         format.html { redirect_to @letter, notice: 'Letter was successfully created.' }
@@ -79,5 +81,19 @@ class LettersController < ApplicationController
       format.html { redirect_to letters_url }
       format.json { head :no_content }
     end
+  end
+
+  def compose
+    @user = User.find(params[:id])
+    #@sender = current_user.email
+    @letter = Letter.create(params[:letter])
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @letter }
+    end
+    #authorize! :contact, { unless :current_user }
+    #ConsultantMailer.contact(@consultant).deliver
+    #format.html { redirect_to @consultant, notice: 'Your message has been sent to respective consultant.' }
   end
 end

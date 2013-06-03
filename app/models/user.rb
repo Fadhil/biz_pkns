@@ -68,6 +68,8 @@ class User < ActiveRecord::Base
   has_many :roles_user
   has_many :roles, through: :roles_user
 
+  has_many :letters
+
   def super_admin?
     !self.role.title('superadmin').nil?
   end

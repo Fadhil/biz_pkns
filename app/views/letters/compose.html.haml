@@ -1,0 +1,46 @@
+- model_class = Letter
+.page-header
+  %h1=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human
+
+= form_for @letter, :html => { :class => 'form-horizontal' } do |f|
+  
+  %h4=t '.recipient'
+  .control-group
+    = f.label :name, :class => 'control-label'
+    .controls
+      = f.text_field :first_name, :class => 'text_field', :value => @user.first_name
+      = f.text_field :last_name, :class => 'text_field', :value => @user.last_name
+      = f.text_field :user_id, :value => @user.id
+
+  %h4=t '.address'
+  .control-group
+    = f.label :address, :class => 'control-label'
+    .controls
+      = f.text_field :line1, :class => 'text_field', :placeholder => 'Baris 1', :value => @user.address.line1
+  .control-group
+    .controls
+      = f.text_field :line2, :class => 'text_field', :placeholder => 'Baris 2', :value => @user.address.line2
+  .control-group
+    .controls
+      = f.text_field :postcode, :class => 'text_field input-mini', :placeholder => 'Poskod', :value => @user.address.postcode
+  .control-group
+    = f.label :city, :class => 'control-label'
+    .controls
+      = f.text_field :line2, :class => 'text_field', :placeholder => 'Bandar', :value => @user.address.city.name
+  .control-group
+    = f.label :state, :class => 'control-label'
+    .controls
+      = f.text_field :line2, :class => 'text_field', :placeholder => 'Negeri', :value => @user.address.city.state_name
+
+  %h4=t '.compose'
+  .control-group
+    = f.label :subject, :class => 'control-label'
+    .controls
+      = f.text_field :subject, :class => 'text_field input-xlarge'
+  .control-group
+    = f.label :message, :class => 'control-label'
+    .controls
+      = f.text_area :message, :class => 'text_area input-xlarge'
+  .form-actions
+    = f.submit nil, :class => 'btn btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), letters_path, :class => 'btn'

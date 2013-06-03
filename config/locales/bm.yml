@@ -251,6 +251,14 @@ bm:
     new:
       title: 'Daftar perunding baru'
 
+  letters:
+    index:
+      send_letter: 'Karang Surat'
+      title: 'Surat Baru'
+    new:
+    show:
+    edit:
+    form:
 
   skills:
     index:
