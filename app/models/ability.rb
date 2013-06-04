@@ -46,6 +46,7 @@ class Ability
         can :manage, Course, program_id: resource.programs.all.map(&:id)
         can :create, Course
         can :manage, AttendanceList, program_id: resource.programs.all.map(&:id)
+        can :manage, Survey
       else 
         cannot :index, :course
       end

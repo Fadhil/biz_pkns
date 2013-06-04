@@ -6,5 +6,5 @@ class Survey < ActiveRecord::Base
   has_many :completed_surveys
   has_many :users, through: :completed_surveys
 
-  scope :active, where('start_date < ? AND end_date > ?', Date.today, Date.today)
+  scope :active, where('start_date <= ? AND end_date > ?', Date.today, Date.today)
 end
