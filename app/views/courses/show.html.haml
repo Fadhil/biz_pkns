@@ -9,6 +9,11 @@
   %dd= @course.course_type
   %dt
     %strong
+      = t('program')
+      \:
+  %dd= @course.program.name
+  %dt
+    %strong
       = t('description')
       \:
   %dd= @course.description
