@@ -26,7 +26,6 @@ class Letter < ActiveRecord::Base
   end
 
   def sender_name
-    current_user.full_name
+    self.full_name
   end
-
 end

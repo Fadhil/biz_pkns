@@ -21,7 +21,7 @@ class LetterPdf < Prawn::Document
     text "Yang Bertugas,".html_safe
 
     move_down 30
-    #text "#{@letter.sender_name}"
+    #text @letter.sender_name
   end
 
   def message
