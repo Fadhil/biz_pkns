@@ -42,7 +42,7 @@ class BusinessCategoriesController < ApplicationController
 
     respond_to do |format|
       if @business_category.save
-        format.html { redirect_to @business_category, notice: 'Business was successfully created.' }
+        format.html { redirect_to @business_category, notice: t('successfully_created_business_category') }
         format.json { render json: @business_category, status: :created, location: @business_category }
       else
         format.html { render action: "new" }
@@ -58,7 +58,7 @@ class BusinessCategoriesController < ApplicationController
 
     respond_to do |format|
       if @business_category.update_attributes(params[:business_category])
-        format.html { redirect_to @business_category, notice: 'Business was successfully updated.' }
+        format.html { redirect_to @business_category, notice: t('successfully_updated_business_category')}
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

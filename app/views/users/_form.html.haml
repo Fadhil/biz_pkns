@@ -185,7 +185,7 @@
                   = bp.text_field :registration_number
               %tr
                 %th= bp.label t('category')
-                %td= bp.select(:category, BUSINESS_CATEGORIES, {:selected=> bp.object.try(:category), :include_blank => true})
+                %td= bp.select(:category, BusinessCategory.order(:name).map{|a| [a.name,a.name]}, {:selected=> bp.object.try(:category), :include_blank => true})
               %tr
                 %th= bp.label t('description')
                 %td= bp.text_area :description, class: 'text_area', style: 'height:200px;'
