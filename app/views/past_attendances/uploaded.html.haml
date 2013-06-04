@@ -1,0 +1,44 @@
+- model_class = PastAttendance
+.page-header
+  %h1= t '.title', :default => model_class.model_name.human.pluralize
+%table.table.table-striped
+  %thead
+    %tr
+      %th{:style => "width:auto;"}= t('program')
+      %th{:style => "width:auto;"}= t('course')
+      %th{:style => "width:auto;"}= t('start_date')
+      %th{:style => "width:auto;"}= t('end_date')
+      %th{:style => "width:auto;"}= t('venue')   
+      %th{:style => "width:auto;"}= t('first_name')
+      %th{:style => "width:auto;"}= t('last_name')
+      %th{:style => "width:auto;"}= t('ic_number') 
+      %th{:style => "width:auto;"}= t('phone') 
+      %th{:style => "width:auto;"}= t('email')  
+      %th
+
+      / %th
+  %tbody
+    - @past_attendances.each_with_index do |past_attendance, i|
+      %tr
+        %td
+          = past_attendance.program
+        %td
+          = past_attendance.course
+        %td
+          = past_attendance.start_date
+        %td
+          = past_attendance.end_date
+        %td
+          = past_attendance.venue
+        %td
+          = past_attendance.first_name
+        %td
+          = past_attendance.last_name
+        %td
+          = past_attendance.ic_number
+        %td
+          = past_attendance.phone
+        %td
+          = past_attendance.email
+        %td
+          = past_attendance.newly_generated? ? t('new') : t('old')

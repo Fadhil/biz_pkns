@@ -42,7 +42,11 @@ BizPkns::Application.routes.draw do
     resources :attendance_list
     resources :pkns_users
     resources :businesses
-    resources :past_attendances, except: [ :update, :destroy, :edit ]
+    resources :past_attendances, except: [ :update, :destroy, :edit ] do
+      collection do
+        get 'uploaded'
+      end
+    end
     resources :business_categories
     resources :letters
     resources :surveys do

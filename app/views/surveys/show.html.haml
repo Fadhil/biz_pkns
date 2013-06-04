@@ -38,4 +38,4 @@
     - else
       = select_tag 'survey_program_select', options_for_select(Program.all.map{|a| [a.name, a.id]}), disabled: true, class: 'hide'
       = select_tag 'survey_course_select', options_for_select(Course.where(program_id: Program.first.id).map{ |a| [a.name,a.id]}), disabled: true, class: 'hide'
-    = f.submit
+    = f.submit t('submit')

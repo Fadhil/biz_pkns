@@ -17,18 +17,18 @@
       = f.date_select :end_date, :class => 'date_select', :include_blank => true
 
   .control-group.questions
-    %h4= t('.add_questions')
+    %h4= t('questions')
     = f.fields_for :questions do |q|
       - if q.object.new_record?
         - question_id = q.options[:child_index]
       - else
         - question_id = q.object.id
       .control-group
-        = q.label :title, class: 'control-label'
+        = q.label t('questions'), class: 'control-label'
         .controls  
           = q.text_area :title, class: 'text-area-medium'
       .control-group
-        = q.label :question_type, class: 'control-label'
+        = q.label t('question_type'), class: 'control-label'
         .controls
           = q.select :question_type, options_for_select([[t('yes_no'),'yes_no'],[t('multiple_choice'),'multiple_choice'],[t('scale'),'scale']], q.object.question_type), {},{ onchange: "change_question_type(this.value, #{question_id});", class: "question_#{question_id}" }
       - if q.object.new_record?
@@ -88,7 +88,7 @@
                 = q.text_field :option4, class: 'text_field'
 
         = q.link_to_remove 'Remove'
-    = f.link_to_add 'Add', :questions
+    = f.link_to_add t('add_questions'), :questions
   .form-actions
     - if f.object.new_record?
       = f.submit t('.create'), :class => 'btn btn-primary'

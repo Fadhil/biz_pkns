@@ -51,9 +51,11 @@ bm:
   name: 'Nama'
   member: 'Ahli'
   membership_num: 'No Keahlian'
+  new: 'Baru'
   new_consultant: 'Daftar Perunding Baru'
   new_business_category: 'Daftar Bidang Perniagaan'
   office_phone: 'No Tel Pejabat'
+  old: 'Lama'
   pax: 'Jumlah peserta'
   password: 'Kata Laluan'
   password_confirmation: 'Pengesahan Kata Laluan'
@@ -72,11 +74,13 @@ bm:
   not_present: 'Tidak Hadir'
   profile: 'Profile'
   program: 'Program'
+  question_type: 'Jenis Soalan'
+  questions: 'Soalan'
   register: 'Daftar'
   register_course: 'Daftar Kursus'
   remember_me: 'Simpan Maklumat Saya'
   remove_program: 'Padam Program'
-  report: 'Report'
+  report: 'Laporan'
   resend_confirmation: 'Hantar arahan pengesahan'
   search: 'Carian'
   search_by_name: 'Carian Nama'
@@ -99,12 +103,14 @@ bm:
   state: 'Negeri'
   status: 'Status'
   subject: 'Perkara'
+  submit: 'Hantar'
   successfully_registered_course: 'Pendaftaran Kursus Berjaya.'
   successfully_registered_pkns_user: 'Pendaftaran Ahli PKNS berjaya'
   successfully_updated_attendance: 'Kehadiran Berjaya Dikemaskini'
   successfully_created_pkns_user: 'Berjaya mendaftarkan pengguna PKNS'
   successfully_created_survey: 'Berjaya mendaftarkan survey'
   successfully_updated_survey: 'Berjaya mengemaskini survey'
+  successfully_sent_survey: 'Survey berjaya dihantar'
   take_survey: 'Ambil Survey'
   thanks_for_completing_our_survey: 'Terima kasih kerana sudi menjawab survey kami.'
   unit: 'Unit'
@@ -119,6 +125,8 @@ bm:
   you_were_invited_to_do_a_survey: 'Anda telah dijemput untuk menjawab survey'
 
   yes_no: 'Ya/Tidak'
+  yes_answer: 'Ya'
+  no_answer: 'Tidak'
   multiple_choice: 'Aneka Pilihan'
   scale: 'Skala'
   
@@ -403,6 +411,8 @@ bm:
   past_attendances:
     index:
       title: 'Senarai Kehadiran Lama'
+    uploaded:
+      title: 'Senarai Kehadiran Yang Baru Dimuatnaik'
       
   programs:
     index:
@@ -459,6 +469,7 @@ bm:
   surveys:
     index:
       title: 'Senarai Survey'
+      new: 'Daftar Survey Baru'
     new:
       title: 'Daftar Survey Baru'
     form:
@@ -476,7 +487,7 @@ bm:
       title: 'Jawab Survey'
     report:
       answered: 'Dijawab'
-      requested: 'Requested'
+      requested: 'Dihantar'
       question_breakdown: 'Analisa Soalan'
       question: 'Soalan'
 

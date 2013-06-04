@@ -244,6 +244,6 @@ class User < ActiveRecord::Base
   end
 
   def unfinished_surveys
-    self.surveys.active.where('completed_surveys.completed <> ? AND surveys.completed <>  ?',true, true)
+    self.surveys.active.where('completed_surveys.completed is not true AND surveys.completed is not true')
   end
 end

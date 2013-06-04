@@ -17,12 +17,12 @@
     %strong
       = t('first_name')
       \:
-  %dd= @consultant.first_name
+  %dd= @consultant.first_name.blank? ? "<br/>".html_safe : @consultant.first_name
   %dt
     %strong
       = t('last_name')
       \:
-  %dd= @consultant.last_name
+  %dd= @consultant.last_name.blank? ? "<br/>".html_safe : @consultant.last_name
   - if !@consultant.company_name.blank?
     %dt
       %strong
@@ -38,7 +38,7 @@
     %strong
       = t('phone')
       \:
-  %dd= @consultant.phone
+  %dd= @consultant.phone.blank? ? "<br/>".html_safe : @consultant.phone
   %dt
     %strong
       = t('program')
