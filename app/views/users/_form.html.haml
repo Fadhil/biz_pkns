@@ -135,14 +135,14 @@
                       = s.text_field :description
                     .control-group
                       = s.label t('start_date')
-                      = s.text_field :start_date
+                      = s.text_field :start_date, id: 'datepicker'
                     .control-group
                       = s.label t('end_date')
-                      = s.text_field :end_date
-                  = s.link_to_remove t('.remove_education'), class: "btn btn-danger btn-mini"
-                %br/
-                %br/
-                = f.link_to_add "+", :education_background, class: "btn btn-mini", :style => "margin: -35px 0 0 4px;"
+                      = s.text_field :end_date, id: 'datepicker'
+                    = s.link_to_remove t('.remove_education'), class: "btn btn-danger btn-mini"
+                  %br
+                  %br
+            = f.link_to_add "+", :education_background, class: "btn btn-mini", :style => "margin: -35px 0 0 4px;"
             %br/
             %table.table
               %tr
@@ -159,10 +159,10 @@
                       = s.label t('.experience')
                       = s.text_field :experience, { size: '2', maxlength: '2', class: 'input-mini' }
                       tahun
-                  = s.link_to_remove t('.remove_skill'), class: "btn btn-danger btn-mini"
-                %br/
-                %br/
-                = f.link_to_add "+", :experience, class: "btn btn-mini", :style => "margin: -35px 0 0 4px;"
+                    = s.link_to_remove t('.remove_skill'), class: "btn btn-danger btn-mini"
+                  %br/
+                  %br/
+            = f.link_to_add "+", :experience, class: "btn btn-mini", :style => "margin: -35px 0 0 4px;"
             %br/
       .span4
         %div
