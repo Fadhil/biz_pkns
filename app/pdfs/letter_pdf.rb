@@ -18,10 +18,10 @@ class LetterPdf < Prawn::Document
     text "#{@letter.message}".html_safe,:inline_format => true
 
     move_down 20
-    text "Yang benar,".html_safe
+    text "Yang Bertugas,".html_safe
 
     move_down 30
-    text "PKNS Biz Club"
+    #text "#{@letter.sender_name}"
   end
 
   def message

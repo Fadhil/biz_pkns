@@ -35,7 +35,7 @@
   Regards,
 
 %p
-  = "PKNS Biz Club"
+  = current_user.full_name
 
 .form-actions
   = link_to t('.print'), letter_path(@letter, format: "pdf"), :class => 'btn btn-secondary'

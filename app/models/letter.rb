@@ -25,4 +25,8 @@ class Letter < ActiveRecord::Base
     created_at.strftime("%d %b %Y")
   end
 
+  def sender_name
+    current_user.full_name
+  end
+
 end
