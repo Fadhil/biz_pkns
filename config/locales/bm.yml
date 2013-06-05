@@ -12,7 +12,7 @@ bm:
   back: 'Kembali'
   edit: 'Kemaskini'
   end_course: 'Kursus Tamat'
-  end_survey: 'Survey Tamat'
+  end_survey: 'Kajiselidik Tamat'
   extra: 'Tambahan'
   view: 'Papar'
   bio_data: 'Biodata'
@@ -108,15 +108,15 @@ bm:
   successfully_registered_pkns_user: 'Pendaftaran Ahli PKNS berjaya'
   successfully_updated_attendance: 'Kehadiran Berjaya Dikemaskini'
   successfully_created_pkns_user: 'Berjaya mendaftarkan pengguna PKNS'
-  successfully_created_survey: 'Berjaya mendaftarkan survey'
-  successfully_updated_survey: 'Berjaya mengemaskini survey'
-  successfully_sent_survey: 'Survey berjaya dihantar'
+  successfully_created_survey: 'Berjaya mendaftarkan kajiselidik'
+  successfully_updated_survey: 'Berjaya mengemaskini kajiselidik'
+  successfully_sent_survey: 'Kajiselidik berjaya dihantar'
   successfully_created_business: 'Jenis perniagaan berjaya didaftar'
   successfully_updated_business: 'Jenis perniagaan berjaya dikemaskini'  
   successfully_created_business_category: 'Bidang perniagaan berjaya didaftar'
   successfully_updated_business_category: 'Bidang perniagaan berjaya dikemaskini'
   take_survey: 'Ambil Survey'
-  thanks_for_completing_our_survey: 'Terima kasih kerana sudi menjawab survey kami.'
+  thanks_for_completing_our_survey: 'Terima kasih kerana sudi menjawab kajiselidik kami.'
   unit: 'Unit'
   update: 'Kemaskini'
   upcoming: 'Akan Datang'
@@ -125,8 +125,8 @@ bm:
   upload_unsuccessful: 'Muat naik tidak berjaya, sila semak data anda'
   venue: 'Tempat'
   years: 'tahun'
-  you_have_new_surveys_here: 'Jawab survey terbaru anda di sini:'
-  you_were_invited_to_do_a_survey: 'Anda telah dijemput untuk menjawab survey'
+  you_have_new_surveys_here: 'Jawab kajiselidik terbaru anda di sini:'
+  you_were_invited_to_do_a_survey: 'Anda telah dijemput untuk menjawab kajiselidik'
 
   yes_no: 'Ya/Tidak'
   yes_answer: 'Ya'
@@ -224,7 +224,7 @@ bm:
       title: 'Profil Admin'
       staff_details: 'Maklumat Staf'
     surveys:
-      title: 'Survey Saya'
+      title: 'Kajiselidik Saya'
     letters:
       title: 'Arkib Surat'
       subject: 'Perkara Surat'
@@ -473,15 +473,15 @@ bm:
 
   surveys:
     index:
-      title: 'Senarai Survey'
-      new: 'Daftar Survey Baru'
+      title: 'Senarai kajiselidik'
+      new: 'Daftar kajiselidik Baru'
     new:
-      title: 'Daftar Survey Baru'
+      title: 'Daftar kajiselidik Baru'
     form:
-      title: 'Daftar Survey Baru'
-      create: 'Daftar Survey'
+      title: 'Daftar kajiselidik Baru'
+      create: 'Daftar kajiselidik'
     edit: 
-      title: 'Kemaskini Survey'
+      title: 'Kemaskini kajiselidik'
     show:
       all_users: 'Semua Pengguna'
       members: 'Ahli'
@@ -489,7 +489,7 @@ bm:
       users_by_program: 'Pengguna mengikut Program'
       users_by_course: 'Pengguna mengikut Kursus'
     take:
-      title: 'Jawab Survey'
+      title: 'Jawab kajiselidik'
     report:
       answered: 'Dijawab'
       requested: 'Dihantar'
@@ -527,8 +527,8 @@ bm:
       course: 'Kursus'
       course_listing: 'Senarai Kursus'
       program_member: 'Ahli Program'
-      list_surveys: 'Senarai Survey'
-      new_survey: 'Daftar Survey Baru'
+      list_surveys: 'Senarai kajiselidik'
+      new_survey: 'Daftar kajiselidik Baru'
 
   errors:
       messages:
