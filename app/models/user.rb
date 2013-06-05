@@ -76,6 +76,8 @@ class User < ActiveRecord::Base
 
   has_many :letters
 
+  has_many :created_surveys, class_name: Survey, as: :creator
+
   def super_admin?
     !self.role.title('superadmin').nil?
   end

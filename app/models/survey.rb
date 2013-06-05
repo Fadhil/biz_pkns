@@ -6,5 +6,7 @@ class Survey < ActiveRecord::Base
   has_many :completed_surveys
   has_many :users, through: :completed_surveys
 
+  belongs_to :creator, class_name: User
+
   scope :active, where('start_date <= ? AND end_date > ?', Date.today, Date.today)
 end
