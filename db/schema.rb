@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130604051857) do
+ActiveRecord::Schema.define(:version => 20130605105653) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -211,6 +211,13 @@ ActiveRecord::Schema.define(:version => 20130604051857) do
     t.string   "category"
   end
 
+  create_table "newsletters", :force => true do |t|
+    t.string   "subject"
+    t.text     "message"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "past_attendances", :force => true do |t|
     t.string   "program"
     t.string   "course"
@@ -282,7 +289,6 @@ ActiveRecord::Schema.define(:version => 20130604051857) do
     t.integer  "image_width"
     t.integer  "image_height"
     t.string   "image_uid"
-    t.string   "image_ext"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
@@ -373,14 +379,9 @@ ActiveRecord::Schema.define(:version => 20130604051857) do
   end
 
   create_table "roles_users", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "role_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer "role_id"
+    t.integer "user_id"
   end
-
-  add_index "roles_users", ["role_id"], :name => "index_roles_users_on_role_id"
-  add_index "roles_users", ["user_id"], :name => "index_roles_users_on_user_id"
 
   create_table "seo_meta", :force => true do |t|
     t.integer  "seo_meta_id"
@@ -399,28 +400,6 @@ ActiveRecord::Schema.define(:version => 20130604051857) do
     t.string   "name"
     t.text     "description"
     t.integer  "experience"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "survey_sections", :force => true do |t|
-    t.integer  "survey_id"
-    t.string   "title"
-    t.text     "description"
-    t.string   "reference_identifier"
-    t.string   "data_export_identifier"
-    t.string   "common_namespace"
-    t.string   "common_identifier"
-    t.integer  "display_order"
-    t.string   "custom_class"
-    t.datetime "created_at",             :null => false
-    t.datetime "updated_at",             :null => false
-  end
-
-  create_table "survey_translations", :force => true do |t|
-    t.integer  "survey_id"
-    t.string   "locale"
-    t.text     "translation"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -507,32 +486,6 @@ ActiveRecord::Schema.define(:version => 20130604051857) do
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-  end
-
-  create_table "validation_conditions", :force => true do |t|
-    t.integer  "validation_id"
-    t.string   "rule_key"
-    t.string   "operator"
-    t.integer  "question_id"
-    t.integer  "answer_id"
-    t.datetime "datetime_value"
-    t.integer  "integer_value"
-    t.float    "float_value"
-    t.string   "unit"
-    t.text     "text_value"
-    t.string   "string_value"
-    t.string   "response_other"
-    t.string   "regexp"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-  end
-
-  create_table "validations", :force => true do |t|
-    t.integer  "answer_id"
-    t.string   "rule"
-    t.string   "message"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
 end
