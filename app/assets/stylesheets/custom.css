@@ -30,3 +30,11 @@
 
 .questions .controls {
 }
+
+.short-column {
+  width: 30px !important;
+}
+
+.short-select {
+  width: 50px;
+}

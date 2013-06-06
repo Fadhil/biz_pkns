@@ -1,0 +1,46 @@
+%dt
+  %strong
+    = t('program')
+    \:
+%dd= @advert.program_name.blank? ? "<br/>".html_safe : @advert.program_name
+%dt
+  %strong
+    = t('course_type')
+    \:
+%dd= @advert.course_type.blank? ? "<br/>".html_safe : @advert.course_type
+%dt
+  %strong
+    = t('description')
+    \:
+%dd= @advert.description.blank? ? "<br/>".html_safe : @advert.description
+%dt
+  %strong
+    = t('venue')
+    \:
+%dd= @advert.location.blank? ? "<br/>".html_safe : @advert.location
+%dt
+  %strong
+    = t('pax')
+    \:
+%dd= @advert.capacity.blank? ? "<br/>".html_safe : @advert.capacity
+%dt
+  %strong
+    = t('course_start_date')
+    \:
+%dd= @advert.course_start_date.blank? ? "<br/>".html_safe : @advert.course_start_date
+%dt
+  %strong
+    = t('course_end_date')
+    \:
+%dd= @advert.course_end_date.blank? ? "<br/>".html_safe : @advert.course_end_date
+%dt
+  %strong
+    = t('start_date')
+    \:
+%dd= @advert.start_date.blank? ? "<br/>".html_safe : @advert.course_start_date
+%dt
+  %strong
+    = t('end_date')
+    \:
+%dd= @advert.end_date.blank? ? "<br/>".html_safe : @advert.course_end_date
+

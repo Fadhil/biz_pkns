@@ -1,0 +1,30 @@
+- model_class = Advert
+.page-header
+  %h1
+    = t '.title'
+    \:
+    = @advert.title
+%dl.dl-horizontal
+  %div
+    - if @advert.photo
+      - if !@advert.photo.file.nil?
+        = image_tag (@advert.photo.file)#, size: '100x100'
+  %h3=t('.advert_information')
+  %dt
+    %strong
+      Jenis Iklan
+      \:
+  %dd= @advert.advert_type.blank? ? "<br/>".html_safe : @advert.advert_type
+  %dt
+    %strong
+      = t('name')
+      \:
+  %dd= @advert.title.blank? ? "<br/>".html_safe : @advert.title
+  - if @advert.advert_type == 'Course'  
+    = render partial: 'course_advert'
+  - else
+    = render partial: 'product_advert'
+
+.form-actions
+  - if can? :manage, Advert
+    = link_to t('edit', :default => t("helpers.links.edit")), edit_advert_path(@advert), :class => 'btn'

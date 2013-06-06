@@ -26,6 +26,12 @@ BizPkns::Application.routes.draw do
     end
     
     resources :admin
+    resources :adverts do
+      member do 
+        put 'activate' 
+        put 'assign_weight'
+      end
+    end
     resources :consultants
     resources :users do
       member do

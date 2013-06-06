@@ -37,3 +37,5 @@ MEMBER_CATEGORIES = [
       'gold',
       'platinum'
 ]
+
+NUM_ACTIVE_ADVERTS = 10
