@@ -41,7 +41,9 @@ class NewslettersController < ApplicationController
   # POST /newsletters.json
   def create
     @newsletter = Newsletter.new(params[:newsletter])
-
+    @emailsubject = params[:newsletter][:subject]
+    @emailmessage = params[:newsletter][:message]
+    NewsletterMailer.mailer_newsletter(@user, @emailsubject, @emailmessage).deliver
     respond_to do |format|
       if @newsletter.save
         format.html { redirect_to @newsletter, notice: 'Newsletter was successfully created.' }

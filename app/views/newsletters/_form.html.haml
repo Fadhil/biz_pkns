@@ -6,7 +6,7 @@
   .control-group
     = f.label :message, :class => 'control-label'
     .controls
-      = f.text_area :message, :class => 'text_area'
+      = f.text_area :message, :class => 'text_area redactor'
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), newsletters_path, :class => 'btn'
