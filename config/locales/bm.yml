@@ -3,6 +3,11 @@
 
 bm:
   active: 'Aktif'
+  active_adverts: 'Senarai Iklan Aktif'
+  activated_adverts_full: 'Senarai Iklan Aktif Sudah Penuh'
+  inactive_adverts: 'Senarai Iklan Tidak Aktif'
+  pending_adverts: 'Senarai Iklan Menunggu'
+  activate: 'Aktifkan'
   add_program: 'Tambah Program'
   add_attendee: 'Daftar Ahli'
   add_questions: 'Tambah Soalan'
@@ -24,6 +29,8 @@ bm:
   confirm_register_course: 'Adakah anda pasti untuk menghadiri kursus ini?'
   confirm_category_change: 'Adakah anda pasti untuk menukar kategori ahli?'
   course: 'Kursus'
+  course_start_date: 'Tarikh Mula Kursus'
+  course_end_date: 'Tarikh Akhir Kursus'
   courses: 'Kursus'
   course_is_full: 'Maaf, Kursus ini sudah penuh'
   category: 'Bidang Perniagaan'
@@ -33,6 +40,7 @@ bm:
   consultant: 'Perunding'
   contact: 'Hubungi'
   contact_consultant: 'Email kepada perunding'
+  create_advert: 'Daftar Iklan'
   create_course: 'Cipta Kursus'
   create_user: 'Daftar Ahli'
   customers: 'Pelanggan'
@@ -56,6 +64,7 @@ bm:
   new_business_category: 'Daftar Bidang Perniagaan'
   office_phone: 'No Tel Pejabat'
   old: 'Lama'
+  paid_for: 'Berbayar'
   pax: 'Jumlah peserta'
   password: 'Kata Laluan'
   password_confirmation: 'Pengesahan Kata Laluan'
@@ -115,6 +124,9 @@ bm:
   successfully_updated_business: 'Jenis perniagaan berjaya dikemaskini'  
   successfully_created_business_category: 'Bidang perniagaan berjaya didaftar'
   successfully_updated_business_category: 'Bidang perniagaan berjaya dikemaskini'
+  successfully_created_advert: 'Berjaya mendaftarkan iklan'
+  successfully_updated_advert: 'Berjaya mengemaskini iklan'
+  successfully_activated_advert: 'Berjaya mengaktifkan iklan'
   take_survey: 'Ambil Survey'
   thanks_for_completing_our_survey: 'Terima kasih kerana sudi menjawab kajiselidik kami.'
   unit: 'Unit'
@@ -124,6 +136,7 @@ bm:
   upload_successful: 'Muat naik berjaya'
   upload_unsuccessful: 'Muat naik tidak berjaya, sila semak data anda'
   venue: 'Tempat'
+  weight: 'Turutan'
   years: 'tahun'
   you_have_new_surveys_here: 'Jawab kajiselidik terbaru anda di sini:'
   you_were_invited_to_do_a_survey: 'Anda telah dijemput untuk menjawab kajiselidik'
@@ -496,6 +509,24 @@ bm:
       question_breakdown: 'Analisa Soalan'
       question: 'Soalan'
 
+  adverts:
+    form:
+      upload_photo: 'Muatnaik gambar iklan'
+      content: 'Kandungan Iklan'
+      course_advert: 'Iklan Kursus'
+      product_advert: 'Iklan Produk/Servis'
+      select_advert_type: 'Pilih Jenis Iklan'
+      select_course: 'Pilih Kursus'
+    new:
+      title: 'Daftar Iklan Baru'
+    edit:
+      title: 'Kemaskini Iklan'
+    index:
+      title: 'Senarai Iklan'
+      new: 'Daftar Iklan Baru'
+    show:
+      title: 'Iklan'
+      advert_information: 'Maklumat Iklan'
     
   #Stuff in the header
   layouts:
@@ -529,6 +560,7 @@ bm:
       program_member: 'Ahli Program'
       list_surveys: 'Senarai kajiselidik'
       new_survey: 'Daftar kajiselidik Baru'
+      list_adverts: 'Senarai Iklan'
 
   errors:
       messages:
@@ -598,6 +630,7 @@ bm:
     pkns_users: 'pengguna_pkns'
     business_categories: 'bidang_perniagaan'
 
+
   resources: 
     consultants: 'perunding'
     users: 'pengguna'
@@ -607,6 +640,7 @@ bm:
     educations: 'pendidikan'
     skills: 'kemahiran'
     businesses: 'perniagaan'
+    adverts: 'iklan'
 
   errors:
     ic_format: "mesti mengikut format berikut xxxxxx-xx-xxxx"

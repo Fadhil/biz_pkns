@@ -1,0 +1,23 @@
+%dd= @advert.course_type.blank? ? "<br/>".html_safe : @advert.course_type
+%dt
+  %strong
+    = t('description')
+    \:
+%dd= @advert.description.blank? ? "<br/>".html_safe : @advert.description
+
+%dt
+  %strong
+    = t('content')
+    \:
+%dd= @advert.content.blank? ? "<br/>".html_safe : @advert.content
+%dt
+  %strong
+    = t('start_date')
+    \:
+%dd= @advert.start_date.blank? ? "<br/>".html_safe : @advert.course_start_date
+%dt
+  %strong
+    = t('end_date')
+    \:
+%dd= @advert.end_date.blank? ? "<br/>".html_safe : @advert.course_end_date
+
