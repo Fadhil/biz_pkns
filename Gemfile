@@ -79,7 +79,7 @@ end
 
 gem 'jquery-rails'
 gem 'redactor-rails'
-gem 'prawn' , :git => 'git@github.com:epireve/prawn.git'
+gem 'prawn'
 # gem 'roo', '~> 1.9.5'
 
 # To use ActiveModel has_secure_password

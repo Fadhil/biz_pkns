@@ -38,3 +38,7 @@
 .short-select {
   width: 50px;
 }
+
+.wide-dt {
+  width: 250px !important;
+}

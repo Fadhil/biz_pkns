@@ -22,6 +22,7 @@ bm:
   view: 'Papar'
   bio_data: 'Biodata'
   business: 'Perniagaan'
+  business_categories: 'Bidang Perniagaan'
   destroy: 'Padam'
   cancel: 'Batal'
   change_your_password: 'Tukar kata laluan'
@@ -551,6 +552,29 @@ bm:
       select_advert_type: 'Pilih Jenis Iklan'
       select_course: 'Pilih Kursus'  
 
+  reports:
+    users:
+      title: 'Laporan Pengguna'
+      number_of_members: 'Jumlah Ahli'
+      number_of_nonmembers: 'Jumlah Bukan Ahli'
+      number_of_users: 'Jumlah Pengguna'
+      user_details: 'Pecahan Pengguna'
+      business_details: 'Pecahan Perniagaan'
+      education_details: 'Pecahan Pendidikan'
+      current_status_details: 'Pecahan Status Semasa'
+      users_with_business: 'Pengguna Yang Berniaga'
+      number_of_business_categories: 'Jumlah Bidang Perniagaan'
+      details_by_business_category: 'Pecahan mengikut Bidang Perniagaan'
+      business_categories: 'Bidang Perniagaan'
+      employment:
+        own_business: 'Pemilik Perniagaan'
+        working_studying: 'Bekerja/Belajar'
+        studying: 'Belajar'
+        working_self_business: 'Bekerja/Perniagaan Sendiri'
+        part_time_business: 'Belajar/Perniagaan Sendiri'
+        unknown: 'Tidak Diketahui'
+      current_employment_status: 'Status Semasa'
+
   #Stuff in the header
   layouts:
     header:
@@ -584,6 +608,7 @@ bm:
       list_surveys: 'Senarai kajiselidik'
       new_survey: 'Daftar kajiselidik Baru'
       list_adverts: 'Senarai Iklan'
+      user_reports: 'Laporan Pengguna'
 
   errors:
       messages:
@@ -653,7 +678,7 @@ bm:
     pkns_users: 'pengguna_pkns'
     business_categories: 'bidang_perniagaan'
     my_adverts: 'iklan_saya'
-
+    reports: 'laporan'
 
   resources: 
     consultants: 'perunding'

@@ -1,8 +1,19 @@
 BizPkns::Application.routes.draw do
 
-  resources :businesses
+<<<<<<< HEAD
+  namespace :newsletters do resources :templates end
+=======
+
+>>>>>>> 48ad9e0ab61d5ed188fce21ed8dbc3b9d64a738c
+
+  resources :newsletters
+
+  mount RedactorRails::Engine => '/redactor_rails'
 
   localized do
+    get "reports/users" => 'reports#users'
+    get "reports/consultants" => 'reports#consultants'
+    get "reports/programs" => 'reports#programs'
     put 'make_member/:id' => 'users#make_member', as: :make_member
     match 'select_program/:program_id' => 'consultants#select_program', as: :select_program
     post 'update_attendance', to: 'members#update_attendance', as: 'update_attendance'
@@ -17,33 +28,72 @@ BizPkns::Application.routes.draw do
 
     match 'business_directory' => 'pages#business_directory', as: :business_directory
     get 'city_dropdown' => 'application#city_dropdown', as: :city_dropdown
+    get 'course_dropdown' => 'application#course_dropdown', as: :course_dropdown
     devise_for :users, path_names: {sign_in: "login", sign_out: "logout", sign_up: "signup"},
-                        controllers: {registrations: 'registrations'}
+                        controllers: {registrations: 'registrations', confirmations: 'confirmations'}
     devise_for :consultants, path_names: {sign_in: "login",  sign_out: "logout"}
     devise_for :users do
       get "/admin/login" => "devise/sessions#new"
     end
     
     resources :admin
-    resources :consultants
-    resources :users
+    resources :adverts do
+      member do 
+        put 'activate' 
+        put 'assign_weight'
+      end
+    end
+    resources :consultants do
+      member do
+        get 'my_adverts'
+      end
+    end
+    resources :users do
+      member do
+        put 'update_membership' => 'users#update_membership'#, as: :update_membership
+        get 'surveys'
+        get 'letters', as: :letter_user
+        get 'my_adverts'
+      end 
+    end
     resources :programs
     resources :courses
     resources :members
     resources :educations
     resources :skills
     resources :attendance_list
-<<<<<<< HEAD
-
+    resources :pkns_users
+    resources :businesses
+    resources :newsletters do
+      member do
+        post 'send_newsletter', as: :send_user
+      end
+    end
+    resources :past_attendances, except: [ :update, :destroy, :edit ] do
+      collection do
+        get 'uploaded'
+      end
+    end
+    resources :business_categories
+    resources :letters
+    resources :surveys do
+      member do
+        post 'send_survey' => 'surveys#send_survey', as: :send_user
+      end
+      member do 
+        get 'take'
+        post 'take' => 'surveys#finish_survey'
+        get 'report'
+      end
+    end
     # resources :users do
     #   collection { post :import }
     # end
-=======
->>>>>>> acfa3d7500784a3803d350bd9569af2537924609
 
     get "pages/welcome", as: 'welcome_page'
     get "consultants/:id/contact", :to => "consultants#contact", :as => 'contact_consultant'
     put "consultants/:id/contact/sent", :to => "consultants#sent", :as => 'contact_sent'
+    get "letters/:id/compose", :to => "letters#compose", :as => 'compose_letter'
     put "admin/:id/update", :to => "admin#update", :as => "update_admin"
 
   end
