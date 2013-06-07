@@ -56,6 +56,7 @@ bm:
   make_member: 'Jadikan Ahli'
   message: 'Mesej'
   my_courses: 'Kursus Saya'
+  my_adverts: 'Iklan Saya'
   name: 'Nama'
   member: 'Ahli'
   membership_num: 'No Keahlian'
@@ -241,6 +242,11 @@ bm:
     letters:
       title: 'Arkib Surat'
       subject: 'Perkara Surat'
+    my_adverts:
+      title: 'Iklan Saya'
+      new: 'Daftar Iklan'
+
+
 
   admin:
     index:
@@ -299,6 +305,8 @@ bm:
       title: 'Perunding'
     new:
       title: 'Daftar perunding baru'
+    my_adverts:
+      title: 'Iklan Saya'
 
   letters:
     index:
@@ -527,7 +535,22 @@ bm:
     show:
       title: 'Iklan'
       advert_information: 'Maklumat Iklan'
-    
+    consultant_form:
+      upload_photo: 'Muatnaik gambar iklan'
+      content: 'Kandungan Iklan'
+      course_advert: 'Iklan Kursus'
+      product_advert: 'Iklan Produk/Servis'
+      select_advert_type: 'Pilih Jenis Iklan'
+      select_course: 'Pilih Kursus'
+      
+    user_form:
+      upload_photo: 'Muatnaik gambar iklan'
+      content: 'Kandungan Iklan'
+      course_advert: 'Iklan Kursus'
+      product_advert: 'Iklan Produk/Servis'
+      select_advert_type: 'Pilih Jenis Iklan'
+      select_course: 'Pilih Kursus'  
+
   #Stuff in the header
   layouts:
     header:
@@ -629,6 +652,7 @@ bm:
     upcoming_courses: 'kursus_akan_datang'
     pkns_users: 'pengguna_pkns'
     business_categories: 'bidang_perniagaan'
+    my_adverts: 'iklan_saya'
 
 
   resources: 

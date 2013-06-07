@@ -16,14 +16,29 @@ class AdvertsController < ApplicationController
   end
 
   def create
+    @the_params = params[:advert]
     @advert = Advert.new(params[:advert])
+    if params[:advert_course_select].present?
+      course = Course.find(params[:advert_course_select])
+      @the_params = {  title: course.name, 
+                  location: course.venue,
+                  course_start_date: course.start_date,
+                  course_end_date: course.end_date,
+                  capacity: course.pax,
+                  program_name: course.try(:program).try(:name),
+                  course_type: course.course_type}
+    end
+    
+
     respond_to do |format|
-      if @advert.save
-        format.html { redirect_to @advert, notice: t('successfully_created_advert')}
-      
-      else 
-        format.html { render action: :new }
-      end 
+      if @advert.save && @advert.update_attributes(@the_params)
+        
+        format.html { redirect_to @advert, notice: t('successfully_created_advert') }
+        format.json { head :no_content }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @advert.errors, status: :unprocessable_entity }
+      end
     end
   end
 

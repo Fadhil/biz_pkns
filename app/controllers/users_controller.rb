@@ -189,4 +189,10 @@ class UsersController < ApplicationController
     # end
 
   end
+
+  def my_adverts
+    if current_user
+      @my_adverts = current_user.adverts.all
+    end
+  end
 end

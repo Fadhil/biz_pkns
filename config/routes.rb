@@ -34,12 +34,17 @@ BizPkns::Application.routes.draw do
         put 'assign_weight'
       end
     end
-    resources :consultants
+    resources :consultants do
+      member do
+        get 'my_adverts'
+      end
+    end
     resources :users do
       member do
         put 'update_membership' => 'users#update_membership'#, as: :update_membership
         get 'surveys'
         get 'letters', as: :letter_user
+        get 'my_adverts'
       end 
     end
     resources :programs

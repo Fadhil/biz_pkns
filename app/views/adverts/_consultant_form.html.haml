@@ -1,0 +1,35 @@
+= form_for @advert, :html => { :class => 'form-horizontal' } do |f|
+  - if !f.object.new_record?
+    - if !@advert.photo.new_record?
+      .control-group
+        .controls
+          = image_tag(f.object.photo.file)
+  = f.fields_for :photo do |p|
+    .control-group
+      = p.label t('.upload_photo'), class: 'control-label'
+      .controls
+        = p.file_field :file
+
+  .control-group
+    = f.label t('.select_course'), class: 'control-label'
+    .controls
+      = select_tag 'advert_program_select', options_for_select(current_consultant.programs.all.map{|a| [a.name, a.id]})#, disabled: true, class: 'hide'
+      = select_tag 'advert_course_select', options_for_select(Course.where(program_id: current_consultant.programs.first.id).map{ |a| [a.name,a.id]})
+
+  .control-group
+    = f.label t('start_date'), :class => 'control-label'
+    .controls
+      = f.text_field :start_date, :class => 'text_field'
+  .control-group
+    = f.label t('end_date'), :class => 'control-label'
+    .controls
+      = f.text_field :end_date, :class => 'text_field'
+      = f.hidden_field :advert_type, value: 'Course'
+      = f.hidden_field :consultant_id, value: current_consultant.id
+  .form-actions
+    - if f.object.new_record?
+      = f.submit t('create_advert'), :class => 'btn btn-primary'
+    - else
+      = f.submit t('update'), :class => 'btn btn-primary'
+    = link_to t('cancel', :default => t("helpers.links.cancel")), adverts_path, :class => 'btn'
+

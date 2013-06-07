@@ -1,0 +1,44 @@
+- model_class = Advert
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.pluralize
+%br
+= link_to t('.new', :default => t("helpers.links.new")), new_advert_path, :class => 'btn btn-primary'
+%br
+%br
+%table.table.table-striped
+  %thead
+    %h4= t('my_adverts')
+    %tr
+      %th.short-column
+        No
+      %th
+        = t('name')
+      %th
+        = t('advert_type')
+      %th
+        = t('start_date')
+      %th
+        = t('end_date')
+      %th.short-column
+        = t('active')
+      %th.short-column
+        = t('paid_for')
+      %th
+  %tbody
+
+    - @my_adverts.each_with_index do |advert, index|
+      %tr
+        %td= index + 1
+        %td= advert.title
+        %td= advert.advert_type
+        %td
+          = advert.start_date
+        %td
+          = advert.end_date
+        %td.short-column
+          = advert.active? ? 'YA' : ''
+        %td.short-column
+          = advert.paid_for? ? 'YA' : ''
+        %td
+          = link_to t('view'), advert_path(advert), class: 'btn btn-mini'
+        

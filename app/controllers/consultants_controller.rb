@@ -128,4 +128,9 @@ class ConsultantsController < ApplicationController
     end
   end
   
+  def my_adverts
+    if current_consultant
+      @my_adverts = current_consultant.adverts.all
+    end
+  end
 end
