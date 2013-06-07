@@ -1,0 +1,123 @@
+.page-header
+  %h1= t('.title')
+
+.users-section
+  %h4
+    = t('.user_details')
+  .row-fluid
+    .span3
+      %dl.dl-horizontal
+        %dt.wide-dt
+          %strong
+            = t('.number_of_members')
+            \:
+        %dd
+          = @number_of_members
+        %dt.wide-dt
+          %strong
+            = t('.number_of_non_members')
+            \:
+        %dd
+          = @number_of_nonmembers
+        %dt.wide-dt
+          %strong
+            = t('.number_of_users')
+            \:
+        %dd
+          = @number_of_users
+    .span4
+      - labels = [ @percent_members, @percent_nonmembers ]
+      - legend = [ t('.number_of_members'), t('.number_of_nonmembers')]
+      = image_tag Gchart.pie(title: 'Jumlah Pengguna', |
+                            labels: labels, |
+                            legend: legend, |
+                            data: [@number_of_members.to_i, |
+                            @number_of_nonmembers.to_i], |
+                            size: '500x200')
+
+%br
+%br
+.current-status-section  
+  %h4
+    = t('.current_status_details')
+  .row-fluid
+    .span3
+      %dl.dl-horizontal
+        %dt.wide-dt
+          %strong
+            = t('.employment.own_business')
+            \:
+        %dd
+          = @employment_own_business
+        %dt.wide-dt
+          %strong
+            = t('.employment.working_studying')
+            \:
+        %dd
+          = @employment_working_studying
+        %dt.wide-dt
+          %strong
+            = t('.employment.studying')
+            \:
+        %dd
+          = @employment_studying
+        %dt.wide-dt
+          %strong
+            = t('.employment.working_self_business')
+            \:
+        %dd
+          = @employment_working_self_business
+        %dt.wide-dt
+          %strong
+            = t('.employment.part_time_business')
+            \:
+        %dd
+          = @employment_part_time_business
+        %dt.wide-dt
+          %strong
+            = t('.employment.unknown')
+            \:
+        %dd
+          = @employment_unknown
+    .span4
+      - labels = [ @percent_employment_own_business, @percent_employment_working_studying, @percent_employment_studying, @percent_employment_working_self_business, @percent_employment_part_time_business, @percent_employment_unknown ]
+      - legend = [ t('.employment.own_business'), t('.employment.working_studying'), t('.employment.studying'), t('.employment.working_self_business'), t('.employment.part_time_business'),t('.employment.unknown')]
+      - data = [ @employment_own_business, @employment_working_studying, @employment_studying, @employment_working_self_business, @employment_part_time_business, @employment_unknown ]
+      = image_tag Gchart.pie(title: t('.current_employment_status'), labels: labels,legend: legend, data: data, size: '500x200')
+
+%br
+%br
+.business-profile-section  
+  %h4
+    = t('.business_details')
+  .row-fluid
+    .span3
+      %dl.dl-horizontal
+        %dt.wide-dt
+          %strong
+            = t('.users_with_business')
+            \:
+        %dd
+          = @users_with_business
+        %dt.wide-dt
+          %strong
+            = t('.number_of_business_categories')
+            \:
+        %dd
+          = @business_categories.count
+
+        %h5
+          = t('.details_by_business_category')
+        - @business_categories.each_with_index do |b,i|
+          %dt.wide-dt
+            %strong
+              = b
+              \:
+          %dd
+            = @business_categories_users[i]
+          
+    .span4
+      - labels = @business_categories_percentages
+      - legend = @business_categories
+      - data = @business_categories_users
+      = image_tag Gchart.pie(title: t('.current_employment_status'), labels: labels,legend: legend, data: data, size: '500x200')

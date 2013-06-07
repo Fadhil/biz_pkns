@@ -37,13 +37,13 @@
               %td
                 - user.programs.uniq.each do |program|
                   %p= program.name
-              - if user.current_employment_status == 'own business'
+              - if user.current_employment_status == 'own_business'
                 %td Pemilik Perniagaan
-              - elsif user.current_employment_status == 'working studying'
+              - elsif user.current_employment_status == 'working_studying'
                 %td Bekerja/Belajar
               - elsif user.current_employment_status == 'studying'
                 %td Belajar
-              - elsif user.current_employment_status == 'working self business'
+              - elsif user.current_employment_status == 'working_self_business'
                 %td Bekerja/Perniagaan Sendiri
               - elsif user.current_employment_status == 'Belajar/Perniagaan Sampingan'
                 %td Pemilik Perniagaan
