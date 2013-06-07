@@ -13,7 +13,7 @@
       %tr
         %td= link_to newsletter.id, newsletter_path(newsletter)
         %td= newsletter.subject
-        %td= newsletter.created_at
+        %td= newsletter.created_at.strftime("%d %b %y, %M:%S")
         %td
           =# link_to t('.edit', :default => t("helpers.links.edit")), edit_newsletter_path(newsletter), :class => 'btn btn-mini'
           = link_to t('.view'), newsletter_path(newsletter), :class => 'btn btn-mini'

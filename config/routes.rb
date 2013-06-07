@@ -1,9 +1,5 @@
 BizPkns::Application.routes.draw do
 
-
-
-  resources :newsletters
-
   mount RedactorRails::Engine => '/redactor_rails'
 
   localized do
@@ -60,11 +56,8 @@ BizPkns::Application.routes.draw do
     resources :attendance_list
     resources :pkns_users
     resources :businesses
-    resources :newsletters do
-      member do
-        post 'send_newsletter', as: :send_user
-      end
-    end
+    namespace :newsletters do resources :templates end
+    resources :newsletters
     resources :past_attendances, except: [ :update, :destroy, :edit ] do
       collection do
         get 'uploaded'

@@ -73,7 +73,7 @@ class NewslettersController < ApplicationController
     if !users.empty?
       users.uniq.each do |user|
         #@newsletter.users << user unless @newsletter.users.include?(user)
-        NewsletterMailer.mailer_newsletter(@user, @emailsubject, @emailmessage).deliver
+        NewsletterMailer.mailer_newsletter(user, @emailsubject, @emailmessage).deliver
       end
     end
     respond_to do |format|
