@@ -1,0 +1,21 @@
+.page-header
+  %h1= t('.title')
+
+%table.table.table-striped
+  %tr
+    %th= t('.name')
+    %th
+    %th
+    %th
+
+  - @newsletters_templates.each do |newsletters_template|
+    %tr
+      %td= newsletters_template.name
+      %td= link_to 'Show', newsletters_template, :class => 'btn btn-mini'
+      %td= link_to 'Edit', edit_newsletters_template_path(newsletters_template), :class => 'btn btn-secondary btn-mini' |
+      %td= link_to 'Destroy', newsletters_template, :method => :delete, :data => { :confirm => 'Are you sure?' },
+                                                    :class => 'btn btn-mini btn-danger'
+
+%br
+
+= link_to 'New Template', new_newsletters_template_path, :class => 'btn'

@@ -1,0 +1,15 @@
+%style
+  html{ margin-top: 130px; }
+  
+%p#notice= notice
+
+%p
+  %b Name:
+  = @newsletters_template.name
+%p
+  %b Template:
+  = @newsletters_template.template.html_safe
+
+= link_to 'Edit', edit_newsletters_template_path(@newsletters_template)
+\|
+= link_to 'Back', newsletters_templates_path

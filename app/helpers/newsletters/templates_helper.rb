@@ -1,0 +1,2 @@
+module Newsletters::TemplatesHelper
+end

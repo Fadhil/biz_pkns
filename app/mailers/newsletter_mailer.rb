@@ -5,6 +5,6 @@ class NewsletterMailer < ActionMailer::Base
     @user = user
     @emailsubject = subject
     @emailmessage = message
-    mail(:to => "epi.skywalker@gmail.com", subject: @emailsubject)
+    mail(:to => user.email, subject: @emailsubject)
   end
 end

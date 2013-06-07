@@ -1,0 +1,16 @@
+= form_for @newsletters_template do |f|
+  - if @newsletters_template.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@newsletters_template.errors.count, "error")} prohibited this newsletters_template from being saved:"
+      %ul
+        - @newsletters_template.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :template
+    = f.text_area :template
+  .actions
+    = f.submit 'Save'
