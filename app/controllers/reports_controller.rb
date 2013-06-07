@@ -30,7 +30,7 @@ class ReportsController < ApplicationController
 
     bpu_sum = @business_categories_users.sum
     @business_categories_users.each do |b| 
-      @business_categories_percentages << (( b.to_f / bpu_sum.to_f )* 100 ).to_s + "%"
+      @business_categories_percentages << (( b.to_f / bpu_sum.to_f )* 100 ).round(2).to_s + "%"
     end
 
   end
