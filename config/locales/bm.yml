@@ -22,6 +22,7 @@ bm:
   view: 'Papar'
   bio_data: 'Biodata'
   business: 'Perniagaan'
+  business_categories: 'Bidang Perniagaan'
   destroy: 'Padam'
   cancel: 'Batal'
   change_your_password: 'Tukar kata laluan'
@@ -564,6 +565,7 @@ bm:
       users_with_business: 'Pengguna Yang Berniaga'
       number_of_business_categories: 'Jumlah Bidang Perniagaan'
       details_by_business_category: 'Pecahan mengikut Bidang Perniagaan'
+      business_categories: 'Bidang Perniagaan'
       employment:
         own_business: 'Pemilik Perniagaan'
         working_studying: 'Bekerja/Belajar'
