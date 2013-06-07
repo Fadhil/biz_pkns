@@ -20,12 +20,12 @@ class ReportsController < ApplicationController
     @percent_employment_unknown = (( @employment_unknown.to_f / @number_of_users.to_f ) * 100 ).round(2).to_s + "%"
 
     @business_categories = BusinessCategory.all.map(&:name).uniq
-    
+
     @users_with_business = User.joins(:business_profiles).where('business_profiles.category in (?)',@business_categories).count
     @business_categories_users = []
     @business_categories_percentages = []
     @business_categories.each do |b|
-      @business_categories_users << User.joins(:business_profiles).where('business_profiles.category = ?','Bidang Perniagaan').count
+      @business_categories_users << User.joins(:business_profiles).where('business_profiles.category = ?', b ).count
     end
 
     bpu_sum = @business_categories_users.sum
