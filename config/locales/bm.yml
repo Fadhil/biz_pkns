@@ -459,6 +459,44 @@ bm:
       title: 'Daftar Program Baru'
       register: 'Daftar'
 
+  newsletters:
+    index:
+      title: 'Bulletin'
+      name: 'Nama'
+    edit:
+    new:
+      title: 'Karang Bulletin baru'
+      subject: 'Subjek'
+      message: 'Mesej'
+      send_to: 'Hantar bulletin kepada'
+      all_users: 'Semua Pengguna'
+      members: 'Ahli'
+      nonmembers: 'Bukan Ahli'
+      users_by_program: 'Pengguna mengikut Program'
+      users_by_course: 'Pengguna mengikut Kursus'
+    show:
+      title: 'Bulletin'
+      subject: 'Subjek'
+      message: 'Mesej'
+      edit: 'Kemaskini'
+      destroy: 'Padam'
+    form:
+    history:
+      title: 'Arkib Bulletin'
+      subject: 'Subjek'
+      created_at: 'Dihantar pada'
+      view: 'Papar'
+    use_template:
+      title: 'Karang Bulletin baru'
+      subject: 'Subjek'
+      message: 'Mesej'
+      send_to: 'Hantar bulletin kepada'
+      all_users: 'Semua Pengguna'
+      members: 'Ahli'
+      nonmembers: 'Bukan Ahli'
+      users_by_program: 'Pengguna mengikut Program'
+      users_by_course: 'Pengguna mengikut Kursus'
+
   courses:
     index:
       title: "Senarai Kursus"
@@ -609,6 +647,10 @@ bm:
       new_survey: 'Daftar kajiselidik Baru'
       list_adverts: 'Senarai Iklan'
       user_reports: 'Laporan Pengguna'
+      newsletters: 'Bulletin'
+      history: 'Arkib'
+      create_newsletter: 'Karang Bulletin'
+      create_newsletter_template: 'Karang Bulletin'
 
   errors:
       messages:
