@@ -165,4 +165,14 @@ class NewslettersController < ApplicationController
       format.html { redirect_to @newsletter, notice: the_notice }
     end
   end
+
+  def use_template
+    @newsletters_template = Newsletters::Template.find(params[:id])
+    @newsletter = Newsletter.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @newsletter }
+    end
+  end
 end
