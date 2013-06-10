@@ -3,6 +3,7 @@ class NewslettersController < ApplicationController
   # GET /newsletters.json
   def index
     @newsletters = Newsletter.all
+    @newsletters_templates = Newsletters::Template.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -116,6 +117,15 @@ class NewslettersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to newsletters_url }
       format.json { head :no_content }
+    end
+  end
+
+  def history
+    @newsletters = Newsletter.all
+    #@newsletters_templates = Newsletters::Template.all
+
+    respond_to do |format|
+      format.html # index.html.erb
     end
   end
 
