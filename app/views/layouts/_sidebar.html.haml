@@ -1,3 +1,105 @@
 - if current_user or current_consultant
-aside#sidebar
-  %p This is sidebar
+  %aside#sidebar
+    %nav#sidebar-nav-holder.vertical-nav.fixed
+      - if current_consultant
+        %ul#sidebar-nav
+          %li
+            = link_to t('member_directory'), members_path
+          %li
+            = link_to t('business_directory'), business_directory_path
+            %ul.dropdown-menu
+              %li
+                = link_to t('list_of_courses'), course_listing_path
+              %li
+                = link_to t('add_modify_courses'), courses_path
+          %li
+            = link_to t('course'), courses_path
+          %li
+            = link_to t('extra'), courses_path
+            %ul.dropdown-menu
+              %li
+                = link_to t('list_surveys'), surveys_path
+              %li
+                = link_to t('new_survey'), new_survey_path
+              %li
+                = link_to t('my_adverts'), my_adverts_consultant_path(current_consultant)
+      - if current_user
+        %ul#sidebar-nav
+          - if !current_user.admin?
+            %li
+              = link_to t('member_directory'), members_path
+            %li
+              = link_to t('business_directory'), business_directory_path
+            %li
+              = link_to 'Kursus', '#'
+              %ul.dropdown-menu
+                %li
+                  = link_to t('course_listing'), course_listing_path
+                %li
+                  = link_to t('my_courses'), user_course_listing_path
+            - if cannot? :consultation, :pages
+              %li
+                = link_to t('consultation'), '#'
+            - else
+              %li
+                = link_to t('consultation'), consultation_path
+              %li
+                = link_to t('my_adverts'), my_adverts_user_path(current_user)
+          - if current_user.admin?
+            %li
+              = link_to t('administrate_user'), '#'
+              %ul.dropdown-menu
+                %li
+                  = link_to t('member_directory'), members_path
+                %li
+                  = link_to t('administrate_user'), users_path
+                %li
+                  = link_to t('administrate_pkns_user'), pkns_users_path
+                %li
+                  = link_to 'Database', past_attendances_path
+            %li
+              = link_to t('business_directory'), business_directory_path
+            %li
+              = link_to t('program'), programs_path
+            %li
+              = link_to t('consultant'), consultants_path
+            %li
+              = link_to t('course'), '#'
+              %ul.dropdown-menu
+                %li
+                  = link_to t('course_listing'), course_listing_path
+                %li
+                  = link_to t('add_modify_courses'), courses_path
+            %li
+              = link_to t('register'), '#'
+              %ul.dropdown-menu
+                %li
+                  = link_to t('new_skill'), skills_path
+                %li
+                  = link_to t('new_education'), educations_path
+                %li
+                  = link_to t('new_business'), businesses_path
+                %li
+                  = link_to t('new_business_category'), business_categories_path
+                %li
+                  = link_to t('new_consultant'), new_consultant_path
+            %li
+              = link_to t('extra'), '#'
+              %ul.dropdown-menu
+                %li
+                  = link_to t('list_surveys'), surveys_path
+                %li
+                  = link_to t('new_survey'), new_survey_path
+                %li
+                  = link_to t('new_letter'), letters_path
+                %li
+                  = link_to t('list_adverts'), adverts_path
+                %li
+                  = link_to t('user_reports'), reports_users_path
+            %li
+              = link_to t('.newsletters'), '#'
+              %ul.dropdown-menu
+                %li
+                  = link_to t('history'), history_path
+                %li
+                  = link_to t('create_newsletter_template'), newsletters_path
