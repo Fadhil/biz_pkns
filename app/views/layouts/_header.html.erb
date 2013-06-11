@@ -95,10 +95,15 @@
             </li>
             
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t('extra') %> <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t('.surveys') %> <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href=<%= surveys_path %>><%= t('.list_surveys') %></a></li>
                 <li><a href=<%= new_survey_path %>><%= t('.new_survey') %></a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t('extra') %> <b class="caret"></b></a>
+              <ul class="dropdown-menu">
                 <li><a href=<%= my_adverts_consultant_path(current_consultant) %>><%= t('.my_adverts') %></a></li>
               </ul>
             </li>
@@ -169,15 +174,7 @@
                 <li><a href=<%= new_survey_path %>><%= t('.new_survey') %></a></li>
                 <li><a href=<%= letters_path %>><%= t('.new_letter') %></a></li>
                 <li><a href=<%= adverts_path %>><%= t('.list_adverts')%></a></li>
-                <li><a href=<%= reports_users_path %>><%= t('.user_reports') %> </a></li>
-                <li class="dropdown-submenu">
-                  <%= link_to t('.newsletters') %>
-                  <ul class="dropdown-menu">
-                   <!--<li><a href=<%= new_newsletter_path %>><%= t('.create_newsletter') %> </a></li> -->
-                    <li><a href=<%= history_path %>><%= t('.history') %> </a></li>
-                    <li><a href=<%= newsletters_path %>><%= t('.create_newsletter_template') %> </a></li>
-                  </ul>
-                </li>
+                <li><a href=<%= user_reports_path %>><%= t('.user_reports') %> </a></li>
               </ul>
             </li>
             <% end %>

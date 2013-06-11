@@ -1,9 +1,21 @@
 class AdvertsController < ApplicationController
+  load_and_authorize_resource
   def index
     @active_adverts = Advert.active
     @inactive_adverts = Advert.inactive
     @pending_adverts = Advert.pending
     @all_adverts = Advert.all
+    @advert_transactions = AdvertTransaction.all
+
+    if !can? :manage, :all?
+      respond_to do |format|
+        if current_user
+          format.html {redirect_to my_adverts_user_path(current_user) }
+        elsif current_consultant
+          format.html {redirect_to my_adverts_consultant_path(current_consultant)}
+        end
+      end
+    end
   end
 
   def show
@@ -104,6 +116,17 @@ class AdvertsController < ApplicationController
     respond_to do |format|
       if @advert.update_attributes(params[:advert])
         format.html { redirect_to adverts_path, notice: t('successfully_activated_advert') }
+      end
+    end
+  end
+
+  def make_request
+    @advert = Advert.find(params[:id])
+    respond_to do |format|
+      if @advert.update_attributes(params[:advert])
+        AdvertTransaction.create(advert_id: @advert.id, title: @advert.title, advert_action: params[:advert_action])
+        format.html { redirect_to @advert, notice: t('successfully_requested_advert') }
+
       end
     end
   end

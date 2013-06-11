@@ -36,6 +36,8 @@ class ReportsController < ApplicationController
   end
 
   def consultants
+    @total_consultants = Consultant.all.count
+    @active_consultants = Consultant.active.count
   end
 
   def programs

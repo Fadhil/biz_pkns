@@ -30,7 +30,7 @@
       .control-group
         = q.label t('question_type'), class: 'control-label'
         .controls
-          = q.select :question_type, options_for_select([[t('yes_no'),'yes_no'],[t('multiple_choice'),'multiple_choice'],[t('scale'),'scale']], q.object.question_type), {},{ onchange: "change_question_type(this.value, #{question_id});", class: "question_#{question_id}" }
+          = q.select :question_type, options_for_select([[t('yes_no'),'yes_no'],[t('multiple_choice'),'multiple_choice'],[t('scale'),'scale'], [t('subjective'),'subjective']], q.object.question_type), {},{ onchange: "change_question_type(this.value, #{question_id});", class: "question_#{question_id}" }
       - if q.object.new_record?
         .question_options.hide{ class: "#{question_id}" }
           .control-group

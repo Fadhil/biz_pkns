@@ -31,6 +31,8 @@ class Consultant < ActiveRecord::Base
   #append :remote_ip, :user_agent, :session
   attributes :name, :from, :subject, :message, :created_at
 
+  scope :active, where(active: true)
+
   def headers
     {
       :to => "your.email@your.domain.com",

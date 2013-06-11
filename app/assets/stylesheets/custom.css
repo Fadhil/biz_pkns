@@ -42,3 +42,20 @@
 .wide-dt {
   width: 250px !important;
 }
+
+@media print {
+  * {
+    font-size: 8pt;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  h1 {
+    font-size: 12pt !important;
+  }
+  td {
+    font-size: 8pt !important;
+  }
+
+}

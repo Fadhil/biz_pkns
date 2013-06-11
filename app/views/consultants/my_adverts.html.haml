@@ -2,12 +2,11 @@
 .page-header
   %h1=t '.title', :default => model_class.model_name.human.pluralize
 %br
-= link_to t('.new', :default => t("helpers.links.new")), new_advert_path, :class => 'btn btn-primary'
+= link_to t('create_advert', :default => t("helpers.links.new")), new_advert_path, :class => 'btn btn-primary'
 %br
 %br
 %table.table.table-striped
   %thead
-    %h4= t('my_adverts')
     %tr
       %th.short-column
         No
@@ -16,9 +15,9 @@
       %th
         = t('advert_type')
       %th
-        = t('start_date')
+        = t('advert_start_date')
       %th
-        = t('end_date')
+        = t('advert_end_date')
       %th.short-column
         = t('active')
       %th.short-column
@@ -30,7 +29,7 @@
       %tr
         %td= index + 1
         %td= advert.title
-        %td= advert.advert_type
+        %td= t(advert.advert_type.downcase)
         %td
           = advert.start_date
         %td

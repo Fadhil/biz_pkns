@@ -1,6 +1,17 @@
 
 .page-header
   %h1="Laporan " + @survey.title
+- chart_type = params[:chart][:type] rescue 'bar'
+
+= form_for '' do
+  .control-group
+    = label 'bar', t('bar_chart')
+    .controls
+      = radio_button 'chart','type', 'bar', onClick: 'submit();',checked: ( chart_type == 'bar' ? 'checked' : false )
+  .control-group
+    = label 'pie', t('pie_chart')
+    .controls
+      = radio_button 'chart','type', 'pie', onClick: 'submit();',checked: ( chart_type == 'pie' ? 'checked' : false )
 
 
 %table.table-striped
@@ -30,7 +41,22 @@
 - @survey.questions.each_with_index do |q,index|
   %h6
     = t('.question') + " #{index + 1}"
+  %strong
+    = t('.question') + ": "
+  = q.title
+  - if q.question_type == 'multiple_choice'
+    %br
+    %ul
+      %li
+        = "(A): " + ( q.option1.blank? ? '' : q.option1 )
+      %li
+        = "(B): " + ( q.option2.blank? ? '' : q.option2 )
+      %li
+        = "(C): " + ( q.option3.blank? ? '' : q.option3 )
+      %li
+        = "(D): " + ( q.option4.blank? ? '' : q.option4 )
 
+    
   - case q.question_type
     - when 'yes_no'
       %table.table.table-striped{ style: "width: 250px;"}
@@ -47,10 +73,8 @@
             %td
               = q.responses.where('answer = ?','no').count
       %div
-        = image_tag( Gchart.bar(data: [0,q.responses.where('answer = ?','yes').count,
-                                        q.responses.where('answer = ?','no').count],
-                                        labels: ['',t('yes_answer'),t('no_answer')],
-                                        axis_with_labels: 'y'))
+
+        = image_tag( Gchart.send(chart_type.to_s,{data: [0,q.responses.where('answer = ?','yes').count,q.responses.where('answer = ?','no').count],labels: ['',t('yes_answer'),t('no_answer')],axis_with_labels: 'y'}))
     - when 'multiple_choice'
       %table.table.table-striped{ style: "width: 400px;"}
         %thead
@@ -74,12 +98,7 @@
             %td
               = q.responses.where('answer = ?','D').count
       %div
-        = image_tag( Gchart.bar(data: [0, q.responses.where('answer = ?','A').count,
-                                        q.responses.where('answer = ?','B').count,
-                                        q.responses.where('answer = ?','C').count,
-                                        q.responses.where('answer = ?','D').count],
-                                        labels: ['','A','B','C','D'],
-                                        axis_with_labels: 'y'))
+        = image_tag( Gchart.send(chart_type,{data: [0, q.responses.where('answer = ?','A').count,q.responses.where('answer = ?','B').count,q.responses.where('answer = ?','C').count,q.responses.where('answer = ?','D').count],labels: ['','A','B','C','D'],axis_with_labels: 'y'}))
     - when 'scale'
       %table.table.table-striped{ style: "width: 400px;"}
         %thead
@@ -107,13 +126,20 @@
             %td
               = q.responses.where('answer = ?','5').count
       %div
-        = image_tag( Gchart.bar(data: [0,q.responses.where('answer = ?','1').count,
-                                        q.responses.where('answer = ?','2').count,
-                                        q.responses.where('answer = ?','3').count,
-                                        q.responses.where('answer = ?','4').count,
-                                        q.responses.where('answer = ?','5').count],
-                                        labels: ['','1','2','3','4','5'],
-                                        axis_with_labels: 'y'))
+        = image_tag( Gchart.send(chart_type, {data: [0,q.responses.where('answer = ?','1').count,q.responses.where('answer = ?','2').count,q.responses.where('answer = ?','3').count,q.responses.where('answer = ?','4').count,q.responses.where('answer = ?','5').count],labels: ['','1','2','3','4','5'], axis_with_labels: 'y'}))
+
+    - when 'subjective'
+      %table.table.table-striped{ style: "width: 400px;"}
+        %thead
+          %tr
+            %th
+              = t('answers')
+        %tbody
+          - q.responses.each do |a|
+            %tr
+              %td
+                = a.answer
+      
 
 
 

@@ -3,12 +3,6 @@ BizPkns::Application.routes.draw do
   mount RedactorRails::Engine => '/redactor_rails'
 
   localized do
-    get "reports/users" => 'reports#users'
-    get "reports/consultants" => 'reports#consultants'
-    get "reports/programs" => 'reports#programs'
-    get "newsletters/history" => 'newsletters#history', as: "history"
-
-    get "newsletters/new/:id" => 'newsletters#use_template', as: "use_template"
 
     put 'make_member/:id' => 'users#make_member', as: :make_member
     match 'select_program/:program_id' => 'consultants#select_program', as: :select_program
@@ -32,16 +26,24 @@ BizPkns::Application.routes.draw do
       get "/admin/login" => "devise/sessions#new"
     end
     
+    resources :reports, only: [] do
+      collection do
+        match 'users' => 'reports#users', as: :user
+        match "consultants" => 'reports#consultants', as: :consultant
+        match "programs" => 'reports#programs', as: :program
+      end
+    end
     resources :admin
     resources :adverts do
       member do 
         put 'activate' 
         put 'assign_weight'
+        put 'make_request'
       end
     end
     resources :consultants do
       member do
-        get 'my_adverts'
+        match 'my_adverts', as: :my_adverts
       end
     end
     resources :users do
@@ -49,7 +51,7 @@ BizPkns::Application.routes.draw do
         put 'update_membership' => 'users#update_membership'#, as: :update_membership
         get 'surveys'
         get 'letters', as: :letter_user
-        get 'my_adverts'
+        match 'my_adverts', as: :my_adverts
       end 
     end
     resources :programs
@@ -77,6 +79,7 @@ BizPkns::Application.routes.draw do
         get 'take'
         post 'take' => 'surveys#finish_survey'
         get 'report'
+        post 'report'
       end
     end
     # resources :users do
