@@ -5,12 +5,16 @@ bm:
   active: 'Aktif'
   active_adverts: 'Senarai Iklan Aktif'
   activated_adverts_full: 'Senarai Iklan Aktif Sudah Penuh'
+  advert_type: 'Jenis Iklan'
+  answers: 'Jawapan'
   inactive_adverts: 'Senarai Iklan Tidak Aktif'
   pending_adverts: 'Senarai Iklan Menunggu'
   activate: 'Aktifkan'
   add_program: 'Tambah Program'
   add_attendee: 'Daftar Ahli'
   add_questions: 'Tambah Soalan'
+  advert_start_date: 'Tarikh Mula Iklan'
+  advert_end_date: 'Tarikh Akhir Iklan'
   inactive: 'Tidak Aktif'
   is_active: 'Aktif'
   are_you_sure: 'And pasti?'
@@ -41,7 +45,7 @@ bm:
   consultant: 'Perunding'
   contact: 'Hubungi'
   contact_consultant: 'Email kepada perunding'
-  create_advert: 'Daftar Iklan'
+  create_advert: 'Cipta Iklan'
   create_course: 'Cipta Kursus'
   create_user: 'Daftar Ahli'
   customers: 'Pelanggan'
@@ -55,9 +59,10 @@ bm:
   gold: 'Gold'
   invalid_request: 'Permintaan Tidak Sah'
   make_member: 'Jadikan Ahli'
+  make_request: 'Permohonan Iklan'
   message: 'Mesej'
   my_courses: 'Kursus Saya'
-  my_adverts: 'Iklan Saya'
+  my_adverts: 'Iklan'
   name: 'Nama'
   member: 'Ahli'
   membership_num: 'No Keahlian'
@@ -129,7 +134,9 @@ bm:
   successfully_created_advert: 'Berjaya mendaftarkan iklan'
   successfully_updated_advert: 'Berjaya mengemaskini iklan'
   successfully_activated_advert: 'Berjaya mengaktifkan iklan'
+  successfully_requested_advert: 'Berjaya menghantar iklan untuk pengaktifan'
   take_survey: 'Ambil Survey'
+  text: 'Teks'
   thanks_for_completing_our_survey: 'Terima kasih kerana sudi menjawab kajiselidik kami.'
   unit: 'Unit'
   update: 'Kemaskini'
@@ -534,9 +541,9 @@ bm:
   surveys:
     index:
       title: 'Senarai kajiselidik'
-      new: 'Daftar kajiselidik Baru'
+      new: 'Kajiselidik Baru'
     new:
-      title: 'Daftar kajiselidik Baru'
+      title: 'Kajiselidik Baru'
     form:
       title: 'Daftar kajiselidik Baru'
       create: 'Daftar kajiselidik'
@@ -565,12 +572,12 @@ bm:
       select_advert_type: 'Pilih Jenis Iklan'
       select_course: 'Pilih Kursus'
     new:
-      title: 'Daftar Iklan Baru'
+      title: 'Iklan Baru'
     edit:
       title: 'Kemaskini Iklan'
     index:
       title: 'Senarai Iklan'
-      new: 'Daftar Iklan Baru'
+      new: 'Iklan Baru'
     show:
       title: 'Iklan'
       advert_information: 'Maklumat Iklan'
@@ -612,6 +619,11 @@ bm:
         part_time_business: 'Belajar/Perniagaan Sendiri'
         unknown: 'Tidak Diketahui'
       current_employment_status: 'Status Semasa'
+    consultants:
+      title: 'Laporan Perunding'
+      consultant_details: 'Pecahan Perunding'
+      number_of_consultants: 'Jumlah Perunding'
+      active_consultants: 'Jumlah Perunding Aktif'
 
   #Stuff in the header
   layouts:
@@ -625,6 +637,7 @@ bm:
       profile: 'Profil'
       consultant_profile: 'Profil Perunding'
       my_program: 'Program Saya'
+      my_adverts: 'Iklan'
       administrate_user: 'Urus Ahli'
       administrate_pkns_user: 'Urus Operator PKNS'
       directory: 'Direktori'
@@ -643,8 +656,9 @@ bm:
       course: 'Kursus'
       course_listing: 'Senarai Kursus'
       program_member: 'Ahli Program'
+      surveys: 'Kajiselidik'
       list_surveys: 'Senarai kajiselidik'
-      new_survey: 'Daftar kajiselidik Baru'
+      new_survey: 'Kajiselidik Baru'
       list_adverts: 'Senarai Iklan'
       user_reports: 'Laporan Pengguna'
       newsletters: 'Bulletin'
@@ -716,11 +730,12 @@ bm:
     course_listing: "kursus_akan_datang"
     business_directory: 'direktori'
     my_courses: 'kursus_saya'
+    #my_adverts: 'iklan_saya'
     upcoming_courses: 'kursus_akan_datang'
     pkns_users: 'pengguna_pkns'
     business_categories: 'bidang_perniagaan'
-    my_adverts: 'iklan_saya'
-    reports: 'laporan'
+    users: 'pengguna'
+    consultants: 'perunding'
 
   resources: 
     consultants: 'perunding'
@@ -732,6 +747,10 @@ bm:
     skills: 'kemahiran'
     businesses: 'perniagaan'
     adverts: 'iklan'
+    reports: 'laporan'
+
+  path_names:
+    my_adverts: 'iklan_saya'
 
   errors:
     ic_format: "mesti mengikut format berikut xxxxxx-xx-xxxx"

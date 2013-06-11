@@ -1,2 +1,36 @@
-%h1 Reports#consultants
-%p Find me in app/views/reports/consultants.html.haml
+.page-header
+  %h1= t('.title')
+
+.consultants-section
+  %h4
+    = t('.consultant_details')
+  .row-fluid
+    .span3
+      %dl.dl-horizontal
+        %dt.wide-dt
+          %strong
+            = t('.number_of_consultants')
+            \:
+        %dd
+          = @total_consultants
+        %dt.wide-dt
+          %strong
+            = t('.active_consultants')
+            \:
+        %dd
+          = @active_consultants
+        %dt.wide-dt
+          %strong
+            = t('.number_of_users')
+            \:
+        %dd
+          = @number_of_users
+    .span4
+      - labels = [ @percent_members, @percent_nonmembers ]
+      - legend = [ t('.number_of_members'), t('.number_of_nonmembers')]
+      =# image_tag Gchart.pie(title: 'Jumlah Pengguna', |
+                            labels: labels, |
+                            legend: legend, |
+                            data: [@number_of_members.to_i, |
+                            @number_of_nonmembers.to_i], |
+                            size: '500x200')

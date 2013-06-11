@@ -30,7 +30,22 @@
 - @survey.questions.each_with_index do |q,index|
   %h6
     = t('.question') + " #{index + 1}"
+  %strong
+    = t('.question') + ": "
+  = q.title
+  - if q.question_type == 'multiple_choice'
+    %br
+    %ul
+      %li
+        = "(A): " + q.option1
+      %li
+        = "(B): " + q.option2
+      %li
+        = "(C): " + q.option3
+      %li
+        = "(D): " + q.option4
 
+    
   - case q.question_type
     - when 'yes_no'
       %table.table.table-striped{ style: "width: 250px;"}
@@ -114,6 +129,19 @@
                                         q.responses.where('answer = ?','5').count],
                                         labels: ['','1','2','3','4','5'],
                                         axis_with_labels: 'y'))
+
+    - when 'subjective'
+      %table.table.table-striped{ style: "width: 400px;"}
+        %thead
+          %tr
+            %th
+              = t('answers')
+        %tbody
+          - q.responses.each do |a|
+            %tr
+              %td
+                = a.answer
+      
 
 
 

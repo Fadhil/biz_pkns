@@ -25,11 +25,11 @@
         = p.file_field :file
  
   .control-group
-    = f.label t('start_date'), :class => 'control-label'
+    = f.label t('advert_start_date'), :class => 'control-label'
     .controls
       = f.text_field :start_date, :class => 'text_field'
   .control-group
-    = f.label t('end_date'), :class => 'control-label'
+    = f.label t('advert_end_date'), :class => 'control-label'
     .controls
       = f.text_field :end_date, :class => 'text_field'
       = f.hidden_field :advert_type, value: 'Product'

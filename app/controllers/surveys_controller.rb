@@ -16,7 +16,7 @@ class SurveysController < ApplicationController
     @survey = Survey.new(params[:survey])
     if @survey.save
       respond_to do |format|
-        format.html { redirect_to surveys_path, notice: t('successfully_created_survey') }
+        format.html { redirect_to @survey, notice: t('successfully_created_survey') }
       end
     end
   end
