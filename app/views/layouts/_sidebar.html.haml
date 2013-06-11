@@ -31,7 +31,10 @@
             %li
               = link_to t('business_directory'), business_directory_path
             %li
-              = link_to 'Kursus', '#'
+              = link_to '#' do
+                %span.right
+                  %i.icon-plus
+                Kursus
               %ul.dropdown-menu
                 %li
                   = link_to t('course_listing'), course_listing_path
@@ -47,7 +50,10 @@
                 = link_to t('my_adverts'), my_adverts_user_path(current_user)
           - if current_user.admin?
             %li
-              = link_to t('administrate_user'), '#'
+              = link_to '#' do
+                = t('administrate_user')
+                %span.right
+                  %i.icon-plus
               %ul.dropdown-menu
                 %li
                   = link_to t('member_directory'), members_path
@@ -64,14 +70,20 @@
             %li
               = link_to t('consultant'), consultants_path
             %li
-              = link_to t('course'), '#'
+              = link_to '#' do
+                = t('course')
+                %span.right
+                  %i.icon-plus
               %ul.dropdown-menu
                 %li
                   = link_to t('course_listing'), course_listing_path
                 %li
                   = link_to t('add_modify_courses'), courses_path
             %li
-              = link_to t('register'), '#'
+              = link_to '#' do
+                = t('register')
+                %span.right
+                  %i.icon-plus
               %ul.dropdown-menu
                 %li
                   = link_to t('new_skill'), skills_path
@@ -84,7 +96,10 @@
                 %li
                   = link_to t('new_consultant'), new_consultant_path
             %li
-              = link_to t('extra'), '#'
+              = link_to '#' do
+                = t('extra')
+                %span.right
+                  %i.icon-plus
               %ul.dropdown-menu
                 %li
                   = link_to t('list_surveys'), surveys_path
@@ -97,7 +112,10 @@
                 %li
                   = link_to t('user_reports'), reports_users_path
             %li
-              = link_to t('.newsletters'), '#'
+              = link_to '#' do
+                = t('.newsletters')
+                %span.right
+                  %i.icon-plus
               %ul.dropdown-menu
                 %li
                   = link_to t('history'), history_path
