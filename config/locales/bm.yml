@@ -15,6 +15,8 @@ bm:
   add_questions: 'Tambah Soalan'
   advert_start_date: 'Tarikh Mula Iklan'
   advert_end_date: 'Tarikh Akhir Iklan'
+  bar_chart: 'Carta Palang'
+  pie_chart: 'Carta Pai'
   inactive: 'Tidak Aktif'
   is_active: 'Aktif'
   are_you_sure: 'And pasti?'
