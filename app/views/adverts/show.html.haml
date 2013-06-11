@@ -5,10 +5,14 @@
     \:
     = @advert.title
 %dl.dl-horizontal
-  %div
+  %div.adbox
     - if @advert.photo
       - if !@advert.photo.file.nil?
-        = image_tag (@advert.photo.file)#, size: '100x100'
+        %div.adinfo 
+          %div.title= @advert.title
+          %div.venue= 'Tempat : '+ @advert.location
+          %div.date= 'Tarikh : '+ @advert.start_date.strftime("%d %b %y").to_s
+        = image_tag (@advert.photo.file)#, :class => 'adboxw'#, size: '100x100'
   %h3=t('.advert_information')
   %dt
     %strong
