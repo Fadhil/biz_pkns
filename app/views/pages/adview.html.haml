@@ -1,0 +1,21 @@
+.page-header
+  %h1
+    = t '.title'
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th= 'Ads'
+
+  %tbody
+    - @adverts.each do |advert|
+      %tr
+        %td
+          %div.adbox
+            - if advert.photo
+              - if !advert.photo.file.nil?
+                %div.adinfo
+                  %div.title= advert.title
+                  %div.venue= 'Tempat : '+ advert.location
+                  %div.date= 'Tarikh : '+ advert.start_date.strftime("%d %b %y").to_s
+                = image_tag (advert.photo.file)#, :class => 'adboxw'#, size: '100x100'

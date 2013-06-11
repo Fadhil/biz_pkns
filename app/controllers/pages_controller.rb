@@ -96,4 +96,8 @@ class PagesController < ApplicationController
       @users = User.joins(:business_profiles)
     end
   end
+
+  def adview
+    @adverts = Advert.all
+  end
 end
