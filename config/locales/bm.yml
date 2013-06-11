@@ -54,6 +54,7 @@ bm:
   filter_by_non_member: 'Paparkan Bukan Ahli'
   gold: 'Gold'
   invalid_request: 'Permintaan Tidak Sah'
+  login: 'Masuk'
   make_member: 'Jadikan Ahli'
   message: 'Mesej'
   my_courses: 'Kursus Saya'

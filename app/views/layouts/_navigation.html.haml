@@ -1,0 +1,43 @@
+- if current_user
+  %li
+    .row
+      .three.columns
+        - unless current_user.profile_photo.nil?
+          .avatar.circle.image
+            = image_tag(current_user.profile_photo.file)
+      .nine.columns.profile
+        = link_to "#{current_user.first_name} #{current_user.last_name}", '#'
+        %span
+          %i.icon-down-open
+        .dropdown
+          - if current_user
+            %ul
+              %li
+                = link_to user_path(id: current_user.id) do
+                  %i.icon-user
+                  = t('profile')
+              %li
+                = link_to '#' do
+                  %i.icon-tools
+                  = t('setting')
+              %li
+                = link_to destroy_user_session_path, :method => 'delete' do
+                  %i.icon-logout
+                  = t('logout')
+- elsif current_consultant
+  %li
+    /= link_to session[:current_program_name] unless session[:current_program_name].nil?, '#'
+    - unless current_consultant.profile_photo.nil?
+      .avatar
+        = image_tag(current_consultant.profile_photo.file)
+    = link_to current_consultant.first_name
+    .dropdown
+      %ul
+        %li
+          = link_to t('.consultant_profile'), consultant_path(id: current_consultant.id)
+        %li
+          = link_to t('.my_program')
+          .dropdown
+            = program_switch_menu.html_safe
+        %li
+          = link_to t('logout'), destroy_consultant_session_path, method: :delete

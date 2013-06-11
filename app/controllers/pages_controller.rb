@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
 
   def welcome
+    render :layout => 'static'
   end
 
   def consultation
@@ -50,11 +51,10 @@ class PagesController < ApplicationController
     if course.attendance_list.attendees.count < course.attendance_list.max_attendees
       course.attendance_list.attendees.push attendee
     end
-  end 
-  
+  end
+
   def upcoming_courses_show
     @course = Course.find(params[:id])
-    
   end
 
   def my_courses

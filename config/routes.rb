@@ -9,7 +9,7 @@ BizPkns::Application.routes.draw do
     get "newsletters/history" => 'newsletters#history', as: "history"
 
     get "newsletters/new/:id" => 'newsletters#use_template', as: "use_template"
-
+    get "home" => "pages#home"
     put 'make_member/:id' => 'users#make_member', as: :make_member
     match 'select_program/:program_id' => 'consultants#select_program', as: :select_program
     post 'update_attendance', to: 'members#update_attendance', as: 'update_attendance'
