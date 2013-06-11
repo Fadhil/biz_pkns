@@ -46,6 +46,8 @@
 @media print {
   * {
     font-size: 8pt;
+  }
+  body {
     margin: 0;
     padding: 0;
   }
