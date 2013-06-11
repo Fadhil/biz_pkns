@@ -1,7 +1,7 @@
 - model_class = Course
 .page-header
   %h1= @course.name
-%dl.dl-horizontal
+%dl.dl-horizontal.hidden-print
   %dt
     %strong
       = t('course_type')
@@ -43,6 +43,39 @@
       = t('status')
       \:
   %dd= !@course.status.blank? || @course.status? ? t('active') : t('inactive')
+.visible-print
+  %p
+    %strong
+      = t('course_type')
+    =@course.course_type
+    |
+    %strong
+      = t('program')
+    = @course.program.name
+    |
+    %strong
+      = t('description')
+    = @course.description
+    |
+    %strong
+      =t('start_date')
+    = @course.start_date
+    |
+    %strong
+      =t('end_date')
+    = @course.end_date
+    |
+    %strong
+      = t('venue')
+    = @course.venue
+    |
+    %strong
+      = t('pax')
+    = @course.pax
+    |
+    %strong
+      = t('status')
+    = !@course.status.blank? || @course.status? ? t('active') : t('inactive')
 - if can? :manage, @course
   .form-actions
   = link_to t('edit', :default => t("helpers.links.edit")), |
