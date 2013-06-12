@@ -3,7 +3,15 @@ class LettersController < ApplicationController
   # GET /letters.json
   def index
     @letters = User.all
-    @users = User.all
+    if params[:search].present?
+      if params[:search][:term].blank?
+        
+      else
+        search_terms = params[:search][:term].split(' ').join('%')
+        @letters = User.where("concat(LOWER(first_name), ' ', LOWER(last_name)) like ?","%#{search_terms}%")
+      end
+    end
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @letters }

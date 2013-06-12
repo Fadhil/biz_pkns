@@ -1,6 +1,15 @@
 - model_class = Letter
 .page-header
   %h1=t '.title', :default => model_class.model_name.human.pluralize
+= form_tag '', method: :get do
+  .row-fluid
+    .span3
+      = label :search, :name, t('search_by_name')
+      = text_field_tag 'search_term','', name: 'search[term]'
+    .span3
+      %br/
+      = button_tag t('search'), class: 'btn btn-success', :style => "margin-top:8px;" 
+      %br/
 %table.table.table-striped
   %thead
     %tr
