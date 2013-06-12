@@ -63,6 +63,8 @@ class AdvertsController < ApplicationController
 
   def update
     the_params = params[:advert]
+    puts "Asswipe: "
+    puts params[:advert]
     @advert = Advert.find(params[:id])
     if params[:advert_course_select].present?
       course = Course.find(params[:advert_course_select])
@@ -72,7 +74,8 @@ class AdvertsController < ApplicationController
                   course_end_date: course.end_date,
                   capacity: course.pax,
                   program_name: course.try(:program).try(:name),
-                  course_type: course.course_type }
+                  course_type: course.course_type,
+                  photo_attributes: params[:advert][:photo_attributes]}
     end
 
     respond_to do |format|
