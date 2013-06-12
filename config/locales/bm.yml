@@ -121,6 +121,7 @@ bm:
   state: 'Negeri'
   status: 'Status'
   subject: 'Perkara'
+  subjective: 'Subjektif'
   submit: 'Hantar'
   successfully_registered_course: 'Pendaftaran Kursus Berjaya.'
   successfully_registered_pkns_user: 'Pendaftaran Ahli PKNS berjaya'
@@ -586,6 +587,7 @@ bm:
     index:
       title: 'Senarai Iklan'
       new: 'Iklan Baru'
+      advert_request_history: 'Senarai Permohonan Iklan'
     show:
       title: 'Iklan'
       advert_information: 'Maklumat Iklan'
