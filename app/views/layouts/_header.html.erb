@@ -22,7 +22,7 @@
               <a href="#" class="dropdown-toggle user" data-toggle="dropdown">
 
                 <div id="user-avatar">
-                  <% unless current_user.profile_photo.nil? %><%= image_tag(current_user.profile_photo.file, size: '33x33') %><% end %>
+                  <% unless current_user.profile_photo.nil? %><%= image_tag(current_user.profile_photo.file, size: '33x33') rescue nil%><% end %>
                 </div>
                 <span>
                   <%= current_user.first_name %> <%= current_user.last_name %>
