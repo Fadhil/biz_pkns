@@ -1,3 +1,13 @@
+GIT
+  remote: git@github.com:epireve/prawn.git
+  revision: 313d8f87dc49adf814b8dfee0fc0cb9f8e4322f1
+  specs:
+    prawn (1.0.0.rc2)
+      afm
+      pdf-reader (~> 1.2)
+      ruby-rc4
+      ttfunk (~> 1.0.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -145,9 +155,6 @@ GEM
       ttfunk
     pg (0.15.1)
     polyglot (0.3.3)
-    prawn (0.12.0)
-      pdf-reader (>= 0.9.0)
-      ttfunk (~> 1.0.2)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -264,7 +271,7 @@ DEPENDENCIES
   mysql2
   nested_form
   pg
-  prawn
+  prawn!
   rails (= 3.2.6)
   rails-erd
   redactor-rails

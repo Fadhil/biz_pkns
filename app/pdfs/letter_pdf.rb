@@ -16,12 +16,12 @@ class LetterPdf < Prawn::Document
     text "Kepada #{@letter.full_name},"
 
     move_down 15
-    text "#{@letter.message}".html_safe, :inline_format => true
+    text "#{@letter.message}".gsub("<p>","").gsub("</p>","\n\n").html_safe, :inline_format => true
 
     move_down 20
     text "Yang Bertugas,".html_safe
 
-    move_down 30
+    move_down 3
     text @letter.sender_name(user)
   end
 
