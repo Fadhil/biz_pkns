@@ -102,6 +102,11 @@ body {
           margin: 0;
         }
       }
+
+      .toggle {
+        line-height: 50px;
+      }
+
       form {
         margin: 1em 0 0 0;
       }
@@ -137,6 +142,45 @@ body {
               padding: 3px 0 3px 6px;
             }
           }
+        }
+      }
+    }
+
+    .table {
+      .table-head {
+        background: #FC4000;
+        padding: 5px;
+        .title {
+          color: white;
+        }
+      }
+      .table-rows {
+        padding: 5px;
+        border-bottom: 1px dotted #DDD;
+        a {
+          display: block;
+          font-weight: bold;
+          &:hover {
+            background: transparent;
+          }
+        }
+        small {
+          clear: both;
+          display: inline-block;
+          font-size: 11px;
+          font-weight: 300;
+        }
+        p {
+          font-size: 13px;
+          font-family: "Open Sans", Helvetica, Arial, sans-serif;
+        }
+        .small {
+          a {
+            font-weight: normal;
+          }
+        }
+        .no-margin {
+          margin-left: 0;
         }
       }
     }
