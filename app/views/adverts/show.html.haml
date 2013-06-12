@@ -8,7 +8,7 @@
   %div.adbox
     - if @advert.photo
       - if !@advert.photo.file.nil?
-        %div.adinfo 
+        %div.adinfo.userselect
           %div.title= @advert.title
           %div.venue= 'Tempat : '+ @advert.location
           %div.date= 'Tarikh : '+ @advert.start_date.strftime("%d %b %y").to_s
