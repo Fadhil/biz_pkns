@@ -40,6 +40,9 @@ gem 'rails-erd'
 # Google Charts
 gem 'googlecharts', :require => "gchart"
 
+# Anything Slider
+gem 'anything_slider_rails'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
