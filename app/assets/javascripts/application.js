@@ -15,3 +15,4 @@
 //= require jquery_nested_form
 //= require_tree .
 //= require redactor-rails
+//= require jquery.slides

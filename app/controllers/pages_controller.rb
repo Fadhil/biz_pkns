@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
 
   def welcome
+    @adverts = Advert.active
   end
 
   def consultation

@@ -1,0 +1,29 @@
+/
+  <h1>Selamat Datang ke Sistem Aplikasi PKNS BizClub.</h1>
+  <p><haml:loud> link_to &amp;quot;Daftar&amp;quot;, new_user_registration_path </haml:loud> jika anda bukan ahli PKNS BizClub.</p>
+%center
+  .container
+    - if @adverts.count > 1
+      #slides
+        - @adverts.each do |advert|
+          %dl.dl-horizontal
+            %div.adbox
+              - if advert.photo
+                - if !advert.photo.file.nil?
+                  %div.adinfo.userselect
+                    %div.title= advert.title
+                    %div.venue= 'Tempat : '+ advert.location.to_s
+                    %div.date= 'Tarikh : '+ advert.start_date.strftime("%d %b %y").to_s
+                  = image_tag (advert.photo.file)#, :class => 'adboxw'#, size: '100x100'
+    - else
+      %dl.dl-horizontal
+        %div.adbox
+          - if @adverts.first.photo
+            - if !@adverts.first.photo.file.nil?
+              %div.adinfo.userselect
+                %div.title= @adverts.first.title
+                %div.venue= 'Tempat : '+ @adverts.first.location.to_s
+                %div.date= 'Tarikh : '+ @adverts.first.start_date.strftime("%d %b %y").to_s
+              = image_tag (@adverts.first.photo.file)#, :class => 'adboxw'#, size: '100x100'
+
+    = image_tag('fakeafterlogin.png')
