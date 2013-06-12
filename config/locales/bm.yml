@@ -157,6 +157,9 @@ bm:
   no_answer: 'Tidak'
   multiple_choice: 'Aneka Pilihan'
   scale: 'Skala'
+
+  reject_request: 'Tidak Diluluskan'
+  approve_request: 'Diluluskan'
   
   male: 'Lelaki'
   female: 'Perempuan'
