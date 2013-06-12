@@ -472,6 +472,7 @@ bm:
     index:
       title: 'Bulletin'
       name: 'Nama'
+      use_this: 'Karang guna templat ini'
     edit:
     new:
       title: 'Karang Bulletin baru'
@@ -505,6 +506,7 @@ bm:
       nonmembers: 'Bukan Ahli'
       users_by_program: 'Pengguna mengikut Program'
       users_by_course: 'Pengguna mengikut Kursus'
+
 
   courses:
     index:
