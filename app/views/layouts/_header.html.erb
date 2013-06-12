@@ -170,8 +170,13 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t('extra') %> <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href=<%= surveys_path %>><%= t('.list_surveys') %></a></li>
-                <li><a href=<%= new_survey_path %>><%= t('.new_survey') %></a></li>
+                <li class="dropdown-submenu">
+                  <%= link_to t('.surveys') %>
+                  <ul class="dropdown-menu">
+                    <li><a href=<%= surveys_path %>><%= t('.list_surveys') %></a></li>
+                    <li><a href=<%= new_survey_path %>><%= t('.new_survey') %></a></li>
+                  </ul>
+                </li>
                 <li><a href=<%= letters_path %>><%= t('.new_letter') %></a></li>
                 <li><a href=<%= adverts_path %>><%= t('.list_adverts')%></a></li>
                 <li><a href=<%= user_reports_path %>><%= t('.user_reports') %> </a></li>
