@@ -41,14 +41,16 @@ gem 'rails-erd'
 gem 'googlecharts', :require => "gchart"
 
 # Anything Slider
-gem 'anything_slider_rails'
+#gem 'anything_slider_rails'
+
+# Twitter Bootstrap
+gem 'twitter-bootstrap-rails',"2.2.6" #"~> 2.0rc0"
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  gem 'twitter-bootstrap-rails', "~> 2.0rc0"
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
@@ -77,7 +79,7 @@ end
 
 group :production do
   gem 'pg'
-  gem 'fog'
+  gem 'fog', "1.3.1"
 end
 
 gem 'jquery-rails'
