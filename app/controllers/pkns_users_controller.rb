@@ -2,7 +2,7 @@ class PknsUsersController < UsersController
   def index
 
     @users = PknsUser.all
-
+    @users = Kaminari.paginate_array(@users).page(params[:page]).per(6)
   end 
 
   def new

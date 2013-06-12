@@ -22,7 +22,7 @@
             = select :search, :state, City.order(:state_name).map{|a| [a.state_name,a.state_name]}.uniq, {:include_blank => true, selected: ''}
       .row
         .two.columns
-          %span.pretty.medium.primary.btn
+          %span.medium.primary.btn
             = button_tag t('search')
 .table
   .row.table-head
@@ -43,7 +43,7 @@
           %p NIL
       .four.columns
         %p
-          = link_to "#{user.first_name} #{user.last_name}", user_path(user)
+          = link_to "#{user.first_name} #{user.last_name}", user_path(user), :class => 'name'
           %small.warning.label
             - if user.current_employment_status == 'own_business'
               Pemilik Perniagaan
@@ -74,3 +74,4 @@
                         user_path(user),
                         :method => :delete,
                         :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => t('are_you_sure'))) }
+  = paginate @users
