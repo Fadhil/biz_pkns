@@ -8,6 +8,7 @@ BizPkns::Application.routes.draw do
     match 'select_program/:program_id' => 'consultants#select_program', as: :select_program
     post 'update_attendance', to: 'members#update_attendance', as: 'update_attendance'
     get "newsletters/history" => 'newsletters#history', as: "history"
+    get "newsletters/new/:id" => 'newsletters#use_template', as: "use_template"
     match 'consultation' => "pages#consultation", as: :consultation
     match 'my_courses' => "pages#my_courses", as: :user_course_listing
     match 'program_users' => "members#program_member_list", as: :program_user_listing
