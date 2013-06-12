@@ -24,7 +24,7 @@
       - if !@advert.photo.nil?
         .control-group
           .controls
-            = image_tag(f.object.photo.file)
+            = image_tag(@advert.photo.file)
     = f.fields_for :photo do |p|
       .control-group
         = p.label t('.upload_photo'), class: 'control-label'
