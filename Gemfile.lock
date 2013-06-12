@@ -222,10 +222,9 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     ttfunk (1.0.3)
-    twitter-bootstrap-rails (2.2.7)
+    twitter-bootstrap-rails (2.2.6)
       actionpack (>= 3.1)
       execjs
-      rails (>= 3.1)
       railties (>= 3.1)
     tzinfo (0.3.37)
     uglifier (2.1.1)
@@ -274,6 +273,6 @@ DEPENDENCIES
   shoulda-matchers
   sqlite3
   therubyracer
-  twitter-bootstrap-rails (~> 2.0rc0)
+  twitter-bootstrap-rails (= 2.2.6)
   uglifier (>= 1.0.3)
   whenever

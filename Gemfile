@@ -44,7 +44,7 @@ gem 'googlecharts', :require => "gchart"
 #gem 'anything_slider_rails'
 
 # Twitter Bootstrap
-gem 'twitter-bootstrap-rails', "~> 2.0rc0"
+gem 'twitter-bootstrap-rails',"2.2.6" #"~> 2.0rc0"
 
 # Gems used only for assets and not required
 # in production environments by default.
