@@ -41,7 +41,7 @@ gem 'rails-erd'
 gem 'googlecharts', :require => "gchart"
 
 # Anything Slider
-gem 'anything_slider_rails'
+#gem 'anything_slider_rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -77,7 +77,7 @@ end
 
 group :production do
   gem 'pg'
-  gem 'fog'
+  gem 'fog', "1.3.1"
 end
 
 gem 'jquery-rails'

@@ -19,7 +19,7 @@
           .whitespace
             %span.aleft
               - unless @user.profile_photo.nil?
-                = image_tag(@user.profile_photo.file, size: '70x70')
+                = image_tag(@user.profile_photo.file, size: '70x70') rescue nil
             %span.aright
             #name= @user.full_name
           
