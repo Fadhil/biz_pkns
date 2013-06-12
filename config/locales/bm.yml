@@ -362,6 +362,12 @@ bm:
       message: 'Kandungan Surat'
       send: 'Prebiu'
       cancel: 'Batal'
+    history:
+      title: 'Arkib Surat'
+      subject: 'Subjek'
+      name: 'Penerima'
+      created_at: 'Dihantar pada'
+      view: 'Papar'
 
   skills:
     index:
@@ -673,6 +679,8 @@ bm:
       user_reports: 'Laporan Pengguna'
       newsletters: 'Bulletin'
       history: 'Arkib'
+      letters: 'Surat'
+      history_letter: 'Arkib Surat'
       create_newsletter: 'Karang Bulletin'
       create_newsletter_template: 'Karang Bulletin'
 

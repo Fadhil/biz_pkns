@@ -112,4 +112,13 @@ class LettersController < ApplicationController
     #ConsultantMailer.contact(@consultant).deliver
     #format.html { redirect_to @consultant, notice: 'Your message has been sent to respective consultant.' }
   end
+
+  def history
+    @letters = Letter.order("created_at DESC").all
+    #@newsletters_templates = Newsletters::Template.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+    end
+  end
 end
