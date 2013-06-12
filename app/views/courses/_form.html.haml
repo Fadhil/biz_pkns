@@ -36,11 +36,11 @@
     .control-group
       = f.label t('start_date'), :class => 'control-label'
       .controls
-        = f.date_select :start_date, :class => 'date_select', :include_blank => true
+        = f.date_select :start_date, :class => 'date_select datepicker', :include_blank => true
     .control-group
       = f.label t('end_date'), :class => 'control-label'
       .controls
-        = f.date_select :end_date, :class => 'date_select', :include_blank => true
+        = f.date_select :end_date, :class => 'date_select datepicker', :include_blank => true
     .control-group
       = f.label t('status'), :class => 'control-label'
       .controls

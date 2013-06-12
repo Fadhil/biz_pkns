@@ -17,11 +17,11 @@
       = select_tag 'advert_course_select', options_for_select(Course.where(program_id: current_consultant.programs.first.id).map{ |a| [a.name,a.id]})
 
   .control-group
-    = f.label t('advert_start_date'), :class => 'control-label'
+    = f.label t('advert_start_date'), :class => 'control-label datepicker'
     .controls
       = f.text_field :start_date, :class => 'text_field'
   .control-group
-    = f.label t('advert_end_date'), :class => 'control-label'
+    = f.label t('advert_end_date'), :class => 'control-label datepicker'
     .controls
       = f.text_field :end_date, :class => 'text_field'
       = f.hidden_field :advert_type, value: 'Course'

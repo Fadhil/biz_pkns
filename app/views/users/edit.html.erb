@@ -1,8 +1,6 @@
 <%- model_class = User -%>
 <script>
-  $(function() {
-    $("#datepicker").datepicker();
-  });
+  
 </script>
 <div class="page-header">
   <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human %></h1>
