@@ -127,8 +127,11 @@
         %td
           = advert.end_date
         %td.short-column
-          = form_for advert, url: activate_advert_path(advert) do |f|
-            = f.check_box :active, onClick: "submit();"
+          - if advert.request_status == 'approved' || advert.admin_created?
+            = form_for advert, url: activate_advert_path(advert) do |f|
+              = f.check_box :active, onClick: "submit();"
+          - else
+            = t('not_yet_approved')
         %td.short-column
           = form_for advert, url: activate_advert_path(advert) do |f|
             = f.check_box :paid_for, onClick: "submit();"
