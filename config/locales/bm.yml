@@ -90,6 +90,8 @@ bm:
   please_complete_your_profile: 'Sila lengkapkan profil anda untuk menikmati sistem ini sepenuhnya.'
   present: 'Hadir'
   not_present: 'Tidak Hadir'
+  will_attend: 'Akan Hadir'
+  cannot_attend: 'Tidak Layak Hadir'
   profile: 'Profile'
   program: 'Program'
   question_type: 'Jenis Soalan'

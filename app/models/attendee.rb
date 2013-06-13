@@ -1,5 +1,5 @@
 class Attendee < ActiveRecord::Base
-  attr_accessible :attended, :email, :ic_number, :name, :first_name, :last_name, :user_id
+  attr_accessible :attended, :email, :ic_number, :name, :first_name, :last_name, :user_id, :attendance_status
 
   has_one :course, through: :attendance_list
 
