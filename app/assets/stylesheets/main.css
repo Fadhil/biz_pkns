@@ -151,7 +151,7 @@ label, input, button, select, textarea {
 .adinfo .date { background-color:rgba(255,255,255,.3); font-size: 12px; padding: 3px; text-align: center; width: 100%;}
 
 .adinfo-product .title {background-color:rgba(255,255,255,.5); font-size: 24px; padding: 8px 10px; font-weight: 100; margin-top: 40px; margin-bottom:10px;}
-.adinfo-product .content { background-color:rgba(255,255,255,.3); font-size: 12px; padding: 8px; width: 400px;}
+.adinfo-product .content { background-color:rgba(255,255,255,.3); font-size: 12px; padding: 8px; max-width: 400px;}
 .userselect{ -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;}
 
 /* Table
