@@ -16,3 +16,4 @@
 //= require_tree .
 //= require redactor-rails
 //= require jquery.slides
+//= require datepicker
