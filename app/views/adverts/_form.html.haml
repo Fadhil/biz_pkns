@@ -70,11 +70,11 @@
     .control-group
       = f.label t('advert_start_date'), :class => 'control-label'
       .controls
-        = f.text_field :start_date, :class => 'text_field'
+        = f.text_field :start_date, :class => 'text_field datepicker'
     .control-group
       = f.label t('advert_end_date'), :class => 'control-label'
       .controls
-        = f.text_field :end_date, :class => 'text_field'
+        = f.text_field :end_date, :class => 'text_field datepicker'
         = f.hidden_field :advert_type, value: 'Course'
         = f.hidden_field :admin_created, value: 1
     .form-actions
