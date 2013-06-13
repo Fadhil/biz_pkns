@@ -9,6 +9,8 @@
       = p.label t('.upload_photo'), class: 'control-label'
       .controls
         = p.file_field :file
+      .small-text
+        = t('image_should_be_this_size')
 
   .control-group
     = f.label t('.select_course'), class: 'control-label'

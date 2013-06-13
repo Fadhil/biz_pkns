@@ -59,6 +59,7 @@ bm:
   filter_by_member: "Paparkan Ahli"
   filter_by_non_member: 'Paparkan Bukan Ahli'
   gold: 'Gold'
+  image_should_be_this_size: 'Pastikan imej bersaiz dimensi 100x200'
   invalid_request: 'Permintaan Tidak Sah'
   make_member: 'Jadikan Ahli'
   make_request: 'Permohonan Iklan'

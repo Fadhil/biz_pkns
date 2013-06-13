@@ -30,6 +30,8 @@
         = p.label t('.upload_photo'), class: 'control-label'
         .controls
           = p.file_field :file, disabled: disabled
+        .small-text
+          = t('image_should_be_this_size')
    
     .control-group
       = f.label t('advert_start_date'), :class => 'control-label'
@@ -60,6 +62,8 @@
         = p.label t('.upload_photo'), class: 'control-label'
         .controls
           = p.file_field :file, disabled: disabled
+        .small-text
+          = t('image_should_be_this_size')
 
     .control-group
       = f.label t('.select_course'), class: 'control-label'
