@@ -483,37 +483,37 @@ bm:
 
   newsletters:
     index:
-      title: 'Bulletin'
+      title: 'Buletin'
       name: 'Nama'
       use_this: 'Karang guna templat ini'
     edit:
     new:
-      title: 'Karang Bulletin baru'
+      title: 'Karang Buletin baru'
       subject: 'Subjek'
       message: 'Mesej'
-      send_to: 'Hantar bulletin kepada'
+      send_to: 'Hantar buletin kepada'
       all_users: 'Semua Pengguna'
       members: 'Ahli'
       nonmembers: 'Bukan Ahli'
       users_by_program: 'Pengguna mengikut Program'
       users_by_course: 'Pengguna mengikut Kursus'
     show:
-      title: 'Bulletin'
+      title: 'Buletin'
       subject: 'Subjek'
       message: 'Mesej'
       edit: 'Kemaskini'
       destroy: 'Padam'
     form:
     history:
-      title: 'Arkib Bulletin'
+      title: 'Arkib Buletin'
       subject: 'Subjek'
       created_at: 'Dihantar pada'
       view: 'Papar'
     use_template:
-      title: 'Karang Bulletin baru'
+      title: 'Karang Buletin baru'
       subject: 'Subjek'
       message: 'Mesej'
-      send_to: 'Hantar bulletin kepada'
+      send_to: 'Hantar buletin kepada'
       all_users: 'Semua Pengguna'
       members: 'Ahli'
       nonmembers: 'Bukan Ahli'
@@ -679,12 +679,12 @@ bm:
       new_survey: 'Kajiselidik Baru'
       list_adverts: 'Senarai Iklan'
       user_reports: 'Laporan Pengguna'
-      newsletters: 'Bulletin'
+      newsletters: 'Buletin'
       history: 'Arkib'
       letters: 'Surat'
       history_letter: 'Arkib Surat'
-      create_newsletter: 'Karang Bulletin'
-      create_newsletter_template: 'Karang Bulletin'
+      create_newsletter: 'Karang Buletin'
+      create_newsletter_template: 'Karang Buletin'
 
   errors:
       messages:
