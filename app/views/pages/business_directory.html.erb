@@ -39,20 +39,24 @@
 
            <td>
               <ul>
-                <% user.business_profiles.each do |b| %>
-                  <li>
-                    <%= b.category %>
-                  </li>
+                <% user.business_profiles.each_with_index do |b,index| %>
+                  <% unless user.business_profiles[index].category.blank? || user.business_profiles[index].company_name.blank? %>
+                    <li>
+                      <%= b.category %>
+                    </li>
+                  <% end %>
                 <% end %>
               </ul>
 
            </td>
             <td>
               <ul>
-                <% user.business_profiles.each do |b| %>
-                  <li>
-                    <%= b.company_name %>
-                  </li>
+                <% user.business_profiles.each_with_index do |b,index| %>
+                  <% unless user.business_profiles[index].company_name.blank? %>
+                    <li>
+                      <%= b.company_name %>
+                    </li>
+                  <% end %>
                 <% end %>
               </ul>
             </td>
