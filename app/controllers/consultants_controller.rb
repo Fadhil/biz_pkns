@@ -45,6 +45,7 @@ class ConsultantsController < ApplicationController
   # POST /consultants.json
   def create
     @consultant = Consultant.new(params[:consultant])
+    @consultant.build_profile_photo
     
     respond_to do |format|
       if @consultant.save

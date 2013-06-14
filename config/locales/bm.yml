@@ -808,6 +808,19 @@ bm:
               too_short: "terlalu pendek"
             ic_number:
               taken: "yang dimasukkan sudah berdaftar"
+        consultant:
+          attributes:
+            email:
+              blank: "diperlukan"
+              taken: "yang dimasukkan sudah berdaftar"
+              not_found: "email tersebut dijumpai."
+            password: 
+              blank: "diperlukan"
+              confirmation: "yang dimasukkan tidak sama"
+              too_short: "terlalu pendek"
+            ic_number:
+              taken: "yang dimasukkan sudah berdaftar"
+
 
   helpers:
     links:

@@ -26,6 +26,8 @@ class Consultant < ActiveRecord::Base
 
   has_many :adverts, dependent: :destroy
 
+  before_create :default_name
+
   include MailForm::Delivery
 
   #append :remote_ip, :user_agent, :session
@@ -42,5 +44,10 @@ class Consultant < ActiveRecord::Base
 
   def active_for_authentication?
     super && self.is_active?
+  end
+
+  def default_name
+    self.first_name = 'Perunding'
+    self.last_name = 'Baru'
   end
 end
