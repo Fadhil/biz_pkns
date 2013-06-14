@@ -1,21 +1,36 @@
 - model_class = t('business_category')
-.page-header
-  %h1=t '.title'
-%table.table.table-striped
-  %thead
-    %tr
-      %th
-        ID
-      %th= t('name')
-      %th
-  %tbody
-    - @business_categories.each do |business_category|
-      %tr
-        %td= link_to business_category.id, business_category_path(business_category)
-        %td= business_category.name
 
-        %td
-          = link_to t('edit', :default => t("helpers.links.edit")), edit_business_category_path(business_category), :class => 'btn btn-secondary btn-mini'
-          = link_to t('destroy', :default => t("helpers.links.destroy")), business_category_path(business_category), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
-
-= link_to t('.new', :default => t("helpers.links.new")), new_business_category_path, :class => 'btn btn-primary'
+.row
+  %h3.seven.columns
+    = t('.title')
+  .five.columns.action
+    %span.pretty.medium.primary.btn.entypo.icon-left.icon-list-add
+      = link_to t('.new', :default => t("helpers.links.new")), new_business_category_path
+.table
+  .row.table-head
+    .two.columns
+      %h6.title ID
+    .eight.columns
+      %h6.title= t('.name')
+    .two.columns
+      %h6.title= t('status')
+  - @business_categories.each_with_index do |business_category, i|
+    .row.table-rows
+      .two.columns
+        %p
+          = link_to business_category.id, business_path(business_category), :class => 'name'
+      .eight.columns
+        %p
+          = "#{business_category.name}"
+      .two.columns
+        .row
+          .twelve.columns
+          .twelve.columns
+            %span.pretty.small.btn.warning.icon-left.entypo.icon-list-add
+              = link_to t('edit', :default => t("helpers.links.edit")), edit_business_category_path(business_category)
+          .twelve.columns
+            %span.pretty.small.btn.danger.icon-left.entypo.icon-delete
+              = link_to t('destroy', :default => t("helpers.links.destroy")), business_category_path(business_category),
+                :method => :delete,
+                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }
+  =# paginate @businesses
