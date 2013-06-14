@@ -63,8 +63,6 @@ class AdvertsController < ApplicationController
 
   def update
     the_params = params[:advert]
-    puts "Asswipe: "
-    puts params[:advert]
     @advert = Advert.find(params[:id])
     if params[:advert_course_select].present?
       course = Course.find(params[:advert_course_select])

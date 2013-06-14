@@ -1,4 +1,4 @@
-- if !session[:current_program_id].present?
+- if current_consultant && !session[:current_program_id].present?
   %h2
     = t('select_a_program_to_manage')
 - else

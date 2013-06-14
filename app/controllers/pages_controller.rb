@@ -27,7 +27,7 @@ class PagesController < ApplicationController
     course = Course.find(params[:id]) rescue nil
 
     if user && course 
-      if course.attendance_list.attendees.count < course.attendance_list.max_attendees
+      if !course.full?
         user.courses.push course unless user.courses.include?(course)
         user.save
         update_attendance_list(course, user)
@@ -94,7 +94,7 @@ class PagesController < ApplicationController
         @users = @users.joins(:business_profiles).where('LOWER(business_profiles.company_name) like ?', "%#{business_name}%")
       end
     else
-      @users = User.joins(:business_profiles)
+      @users = User.joins(:business_profiles).uniq
     end
   end
 

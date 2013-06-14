@@ -23,4 +23,10 @@ class Course < ActiveRecord::Base
     self.attendance_list.save
     self.save
   end
+
+  def full?
+    return if self.attendance_list.nil?
+    # Full only if 30% more than max_attendees
+    self.attendance_list.attendees.count > ( self.attendance_list.max_attendees + ( self.attendance_list.max_attendees * 0.3).floor ) ? true : false
+  end
 end

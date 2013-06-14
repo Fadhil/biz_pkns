@@ -59,6 +59,7 @@ bm:
   filter_by_member: "Paparkan Ahli"
   filter_by_non_member: 'Paparkan Bukan Ahli'
   gold: 'Gold'
+  image_should_be_this_size: 'Pastikan imej bersaiz dimensi 100x200'
   invalid_request: 'Permintaan Tidak Sah'
   make_member: 'Jadikan Ahli'
   make_request: 'Permohonan Iklan'
@@ -90,6 +91,8 @@ bm:
   please_complete_your_profile: 'Sila lengkapkan profil anda untuk menikmati sistem ini sepenuhnya.'
   present: 'Hadir'
   not_present: 'Tidak Hadir'
+  will_attend: 'Akan Hadir'
+  cannot_attend: 'Tidak Layak Hadir'
   profile: 'Profile'
   program: 'Program'
   question_type: 'Jenis Soalan'
@@ -141,6 +144,7 @@ bm:
   take_survey: 'Ambil Survey'
   text: 'Teks'
   thanks_for_completing_our_survey: 'Terima kasih kerana sudi menjawab kajiselidik kami.'
+  this_survey_has_been_sent: '*Kajiselidik ini sudah pernah dihantar'
   unit: 'Unit'
   update: 'Kemaskini'
   upcoming: 'Akan Datang'
@@ -481,37 +485,37 @@ bm:
 
   newsletters:
     index:
-      title: 'Bulletin'
+      title: 'Buletin'
       name: 'Nama'
       use_this: 'Karang guna templat ini'
     edit:
     new:
-      title: 'Karang Bulletin baru'
+      title: 'Karang Buletin baru'
       subject: 'Subjek'
       message: 'Mesej'
-      send_to: 'Hantar bulletin kepada'
+      send_to: 'Hantar buletin kepada'
       all_users: 'Semua Pengguna'
       members: 'Ahli'
       nonmembers: 'Bukan Ahli'
       users_by_program: 'Pengguna mengikut Program'
       users_by_course: 'Pengguna mengikut Kursus'
     show:
-      title: 'Bulletin'
+      title: 'Buletin'
       subject: 'Subjek'
       message: 'Mesej'
       edit: 'Kemaskini'
       destroy: 'Padam'
     form:
     history:
-      title: 'Arkib Bulletin'
+      title: 'Arkib Buletin'
       subject: 'Subjek'
       created_at: 'Dihantar pada'
       view: 'Papar'
     use_template:
-      title: 'Karang Bulletin baru'
+      title: 'Karang Buletin baru'
       subject: 'Subjek'
       message: 'Mesej'
-      send_to: 'Hantar bulletin kepada'
+      send_to: 'Hantar buletin kepada'
       all_users: 'Semua Pengguna'
       members: 'Ahli'
       nonmembers: 'Bukan Ahli'
@@ -677,12 +681,12 @@ bm:
       new_survey: 'Kajiselidik Baru'
       list_adverts: 'Senarai Iklan'
       user_reports: 'Laporan Pengguna'
-      newsletters: 'Bulletin'
+      newsletters: 'Buletin'
       history: 'Arkib'
       letters: 'Surat'
       history_letter: 'Arkib Surat'
-      create_newsletter: 'Karang Bulletin'
-      create_newsletter_template: 'Karang Bulletin'
+      create_newsletter: 'Karang Buletin'
+      create_newsletter_template: 'Karang Buletin'
 
   errors:
       messages:
@@ -805,6 +809,19 @@ bm:
               too_short: "terlalu pendek"
             ic_number:
               taken: "yang dimasukkan sudah berdaftar"
+        consultant:
+          attributes:
+            email:
+              blank: "diperlukan"
+              taken: "yang dimasukkan sudah berdaftar"
+              not_found: "email tersebut dijumpai."
+            password: 
+              blank: "diperlukan"
+              confirmation: "yang dimasukkan tidak sama"
+              too_short: "terlalu pendek"
+            ic_number:
+              taken: "yang dimasukkan sudah berdaftar"
+
 
   helpers:
     links:

@@ -19,23 +19,27 @@
     = link_to t('report'), report_survey_path, :class => 'btn'
   - unless @survey.completed
     = link_to t('edit', :default => t("helpers.links.edit")), edit_survey_path(@survey), :class => 'btn'
-  = link_to t('destroy', :default => t("helpers.links.destroy")), survey_path(@survey), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+  - unless @survey.sent?
+    = link_to t('destroy', :default => t("helpers.links.destroy")), survey_path(@survey), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
 %br
 %br
 %br
-.row-fluid
-  %h5
-    Hantar Survey Ke
-  = form_for '',url: send_user_survey_path do |f|
-    - if current_user
-      - if current_user.admin?
-        = select_tag 'survey_user_select', options_for_select([[t('.all_users'),'all_users'],[t('.members'),'members'], [t('.nonmembers'),'nonmembers'],[t('.users_by_program'), 'users_by_program'],[t('.users_by_course'),'users_by_course']])
-    - elsif current_consultant
-      = select_tag 'survey_user_select', options_for_select([[t('.users_by_program'), 'users_by_program'],[t('.users_by_course'),'users_by_course']])
-    - if current_consultant
-      = select_tag 'survey_program_select', options_for_select(current_consultant.programs.all.map{|a| [a.name, a.id]}), disabled: false
-      = select_tag 'survey_course_select', options_for_select(Course.where(program_id: current_consultant.programs.first.id).map{ |a| [a.name,a.id]}), disabled: true, class: 'hide'
-    - else
-      = select_tag 'survey_program_select', options_for_select(Program.all.map{|a| [a.name, a.id]}), disabled: true, class: 'hide'
-      = select_tag 'survey_course_select', options_for_select(Course.where(program_id: Program.first.id).map{ |a| [a.name,a.id]}), disabled: true, class: 'hide'
-    = f.submit t('submit')
+- unless @survey.sent?
+  .row-fluid
+    %h5
+      Hantar Survey Ke
+    = form_for '',url: send_user_survey_path do |f|
+      - if current_user
+        - if current_user.admin?
+          = select_tag 'survey_user_select', options_for_select([[t('.all_users'),'all_users'],[t('.members'),'members'], [t('.nonmembers'),'nonmembers'],[t('.users_by_program'), 'users_by_program'],[t('.users_by_course'),'users_by_course']])
+      - elsif current_consultant
+        = select_tag 'survey_user_select', options_for_select([[t('.users_by_program'), 'users_by_program'],[t('.users_by_course'),'users_by_course']])
+      - if current_consultant
+        = select_tag 'survey_program_select', options_for_select(current_consultant.programs.all.map{|a| [a.name, a.id]}), disabled: false
+        = select_tag 'survey_course_select', options_for_select(Course.where(program_id: current_consultant.programs.first.id).map{ |a| [a.name,a.id]}), disabled: true, class: 'hide'
+      - else
+        = select_tag 'survey_program_select', options_for_select(Program.all.map{|a| [a.name, a.id]}), disabled: true, class: 'hide'
+        = select_tag 'survey_course_select', options_for_select(Course.where(program_id: Program.first.id).map{ |a| [a.name,a.id]}), disabled: true, class: 'hide'
+      = f.submit t('submit')
+- else
+  = t('this_survey_has_been_sent')

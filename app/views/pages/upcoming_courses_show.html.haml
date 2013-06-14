@@ -85,11 +85,13 @@
               %td
                 = attendee.ic_number
               %td
-                - if !attendee.attended.nil?
-                  = attendee.attended? ? t('present') : t('not_present')
+                - if !attendee.attended.nil? && !attendee.attendance_status.nil?
+                  = t(attendee.attendance_status)
                 - else
-                  = link_to t('present'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: true), method: :post, class: 'btn btn-mini'
-                  = link_to t('not_present'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: false), method: :post, class: 'btn btn-mini'  
+                  = link_to t('present'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: true, attendance_status: 'present'), method: :post, class: 'btn btn-mini'
+                  = link_to t('not_present'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: false, attendance_status: 'not_present'), method: :post, class: 'btn btn-mini' 
+                  = link_to t('will_attend'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: false, attendance_status: 'will_attend'), method: :post, class: 'btn btn-mini' 
+                  = link_to t('cannot_attend'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: false, attendance_status: 'cannot_attend'), method: :post, class: 'btn btn-mini'  
 
 
       .span2

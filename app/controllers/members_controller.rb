@@ -137,9 +137,8 @@ class MembersController < ApplicationController
     attendance = Attendee.find(params[:attendee_id]) rescue nil
     course = Course.find(params[:course_id]) rescue nil
     attended = params[:attended]
-
     attendance.attended = attended
-
+    attendance.attendance_status = params[:attendance_status]
     if attended
       user.make_member
     end
