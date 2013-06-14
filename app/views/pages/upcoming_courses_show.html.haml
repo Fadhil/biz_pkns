@@ -79,7 +79,10 @@
               %td
                 = index + 1
               %td
-                = attendee.name
+                - if attendee.name.nil?
+                  = attendee.full_name
+                - else
+                  = attendee.name
               %td
                 = attendee.email
               %td
