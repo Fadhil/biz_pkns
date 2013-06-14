@@ -20,7 +20,7 @@ $(document).ready(
       formattingTags: ['blockquote', 'pre', 'h1', 'h2', 'h3', 'h4'], 
       paragraphy: false,
       linebreaks: true,
-      deniedTags: ['p','html']
+      deniedTags: ['p','html','div']
   }
   );
 });
