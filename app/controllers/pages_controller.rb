@@ -13,12 +13,12 @@ class PagesController < ApplicationController
     if params[:search].present?
       if params[:search][:terms].present?
         search_terms = params[:search][:terms].split(' ').join('%')
-        @courses = Course.active.upcoming.where('LOWER(name) like ?',"%#{search_terms}%").page(params[:page])
+        @courses = Course.active.upcoming.where('LOWER(name) like ?',"%#{search_terms}%").page(params[:page]).order("start_date DESC")
       else
-        @courses = Course.active.upcoming.page(params[:page])
+        @courses = Course.active.upcoming.page(params[:page]).order("start_date DESC")
       end
     else
-      @courses = Course.active.upcoming.page(params[:page])
+      @courses = Course.active.upcoming.page(params[:page]).order("start_date DESC")
     end
   end
 
