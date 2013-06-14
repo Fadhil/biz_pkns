@@ -9,9 +9,11 @@ body {
       margin: 0;
       background: #FC4000;
       border-bottom: 3px solid #C73100;
-
       .avatar {
-        margin: 3px auto;
+        margin: 13px 13px 0 0;
+        float: left;
+        width: 30px;
+        height: 30px;
         img {
           min-width: 100%;
           max-width: 100%;
@@ -21,7 +23,6 @@ body {
         text-align: left;
         color: rgba(255, 255, 255, 1);
         a {
-          margin-left: 10px;
           color: rgba(255, 255, 255, 1);
           &:hover {
             background: transparent;
@@ -63,7 +64,6 @@ body {
 
   section {
     &#main {
-
       #welcome {
         background-image: url('bground-b2cc613338fffc17a2a643a883caacaf.jpg');
         background-size: 100% 100%;
@@ -109,7 +109,7 @@ body {
 
       .action {
         span.btn {
-          margin: 1em auto;
+          margin: 10px auto 0;
         }
       }
 
@@ -156,6 +156,7 @@ body {
       .table-head {
         background: #FC4000;
         padding: 5px;
+        margin: 15px auto 5px;
         .title {
           color: white;
         }
@@ -256,7 +257,7 @@ body {
   }
 }
 
-.top-padding { 
+.top-padding {
   margin-top: 8px;
 }
 .text_area_large {

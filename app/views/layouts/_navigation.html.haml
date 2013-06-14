@@ -1,12 +1,15 @@
 - if current_user
   %li
     .row
-      .three.columns
-        - unless current_user.profile_photo.nil?
-          .avatar.circle.image
-            = image_tag(current_user.profile_photo.file)
-      .nine.columns.profile
-        = link_to "#{current_user.first_name} #{current_user.last_name}", '#'
+      / .three.columns
+      .twelve.columns.profile
+        = link_to '#' do
+          / %i.icon-user
+          - unless current_user.profile_photo.nil?
+            .avatar.circle.image
+              = image_tag('http://flickholdr.com/50/50/avatar')
+              / = image_tag(current_user.profile_photo.file)
+          ="#{current_user.first_name} #{current_user.last_name}"
         %span
           %i.icon-down-open
         .dropdown
