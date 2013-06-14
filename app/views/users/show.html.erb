@@ -1,4 +1,4 @@
-<%- model_class = User -%>
+s<%- model_class = User -%>
 <div class="page-header">
   <h1><%= t('.title') %></h1>
 </div>
@@ -93,6 +93,16 @@
             <th><%= t('.current_employment_status') %></th>
             <% status = @user.current_employment_status %>
             <td><%= t(".employment_status.#{status}") unless @user.current_employment_status.blank? %></td>
+          </tr>
+          <tr>
+            <th>Program</th>
+            <td>
+              <ul>
+                <% @user.programs.each do |program| %>
+                  <li><%= program.name %></li>
+                <% end %>
+              </ul>
+            </td>
           </tr>
         </table><br><br><br><br>
         </div>
