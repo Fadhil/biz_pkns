@@ -144,6 +144,7 @@ bm:
   take_survey: 'Ambil Survey'
   text: 'Teks'
   thanks_for_completing_our_survey: 'Terima kasih kerana sudi menjawab kajiselidik kami.'
+  this_survey_has_been_sent: '*Kajiselidik ini sudah pernah dihantar'
   unit: 'Unit'
   update: 'Kemaskini'
   upcoming: 'Akan Datang'

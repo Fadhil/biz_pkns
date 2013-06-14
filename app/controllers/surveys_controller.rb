@@ -76,9 +76,15 @@ class SurveysController < ApplicationController
         @survey.users << user unless @survey.users.include?(user)
         UserMailer.mail_survey_invite(user, @survey).deliver
       end
+      @survey.sent = true
     end
     respond_to do |format|
-      format.html { redirect_to @survey, notice: the_notice }
+      if @survey.save
+        format.html { redirect_to @survey, notice: the_notice }
+      else
+        the_notice = 'something went wrong'
+        format.html { redirect_to @survey, notice: the_notice}
+      end
     end
   end
 
