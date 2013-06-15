@@ -80,11 +80,8 @@
       <div class="nav-collapse">
         <% if current_consultant %>
           <ul class="nav">
-
-            <li><a href=<%= members_path %>><%= t('.member_directory') %></a></li>
-
-            </li>
             <li><a href=<%= business_directory_path %>><%= t('.business_directory') %></a></li>
+            <li><a href=<%= members_path %>><%= t('.member_directory') %></a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t('.course') %><b class="caret"></b></a>
               <ul class="dropdown-menu">
@@ -120,8 +117,8 @@
         <% if current_user %>
           <ul class="nav">
             <% if !current_user.admin? %>
-              <li><a href=<%= members_path %>><%= t('.member_directory') %></a></li>
               <li><a href=<%= business_directory_path %>><%= t('.business_directory') %></a></li>
+              <li><a href=<%= members_path %>><%= t('.member_directory') %></a></li>
               <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 Kursus
@@ -141,27 +138,28 @@
             <% end %>
             
             <% if current_user.admin? %>
+              <li><a href=<%= business_directory_path %>><%= t('.business_directory') %></a></li>
               <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <%= t('.administrate_user') %>
-                <b class="caret"></b>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <%= t('.administrate_user') %>
+                  <b class="caret"></b>
+                </a>
+                  <ul class="dropdown-menu">
+                    <li><a href=<%= members_path %>><%= t('.member_directory') %></a></li>
+                    <li><a href=<%= users_path %>><%= t('.administrate_user') %></a></li>
+                    <li><a href=<%= pkns_users_path %>><%= t('.administrate_pkns_user') %></a></li>
+                    <li><a href=<%= past_attendances_path %>><%= 'Database' %></a></li>
+                  </ul>
+              </li>
+              <li><a href=<%= programs_path %>><%= t('.program') %></a></li>
+              <li><a href=<%= consultants_path %>><%= t('.consultant') %></a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t('.course') %> <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                <li><a href=<%= members_path %>><%= t('.member_directory') %></a></li>
-                  <li><a href=<%= users_path %>><%= t('.administrate_user') %></a></li>
-                  <li><a href=<%= pkns_users_path %>><%= t('.administrate_pkns_user') %></a></li>
-                  <li><a href=<%= past_attendances_path %>><%= 'Database' %></a></li>
-              </ul>
-            </li>
-            <li><a href=<%= business_directory_path %>><%= t('.business_directory') %></a></li>
-            <li><a href=<%= programs_path %>><%= t('.program') %></a></li>
-            <li><a href=<%= consultants_path %>><%= t('.consultant') %></a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t('.course') %> <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href=<%= course_listing_path %>><%= t('.course_listing') %></a></li>
-                <li><a href=<%= courses_path %>><%= t('.add_modify_courses') %></a></li>
-              </ul>
-            </li>
+                  <li><a href=<%= course_listing_path %>><%= t('.course_listing') %></a></li>
+                  <li><a href=<%= courses_path %>><%= t('.add_modify_courses') %></a></li>
+                </ul>
+              </li>
 
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t('register') %> <b class="caret"></b></a>
@@ -199,8 +197,6 @@
                     <li><a href=<%= history_path %>><%= t('.history') %> </a></li>
                     <!-- <li><a href=<%= new_newsletter_path %>><%= t('.create_newsletter') %> </a></li> -->
                     <li><a href=<%= newsletters_path %>><%= t('.create_newsletter_template') %> </a></li>
-
-
                   </ul>
                 </li>
               </ul>
