@@ -3,10 +3,21 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+    @users = User.nonadmin
+    if params[:search].present?
+      if params[:search][:term].blank?
+        @users = User.nonadmin.order("id desc")
+      elsif params[:search][:term].present?
+        search_terms = params[:search][:term].split(' ').join('%')
+        @users = User.nonadmin.where("concat(LOWER(first_name), ' ', LOWER(last_name)) like ?","%#{search_terms}%")
+      end
+
+      if !params[:search][:ic].blank?
+        @users = @users.where(ic_number: params[:search][:ic])
+      end
+    end
     if params[:filter].present?
-      @users = User.nonadmin.send(params[:filter])
-    else
-      @users = User.nonadmin
+      @users = @users.send(params[:filter])
     end
     @klass = Class
     respond_to do |format|

@@ -110,6 +110,7 @@ bm:
   search_by_state: 'Carian mengikut negeri'
   search_by_skill: 'Carian mengikut kemahiran'
   search_by_company_name: 'Carian Nama Syarikat'
+  search_by_ic_number: 'Carian mengikut Nombor KP'
   section: 'Bahagian'
   select_a_program: 'Pilih Program'
   select_a_program_to_manage: 'Sila Pilih Program Untuk Diurus Dahulu'
