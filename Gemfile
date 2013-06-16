@@ -50,6 +50,7 @@ group :assets do
   # gem 'modular-scale'
   gem "modernizr-rails"
   gem "gumby-framework"
+  gem "angularjs-rails"
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby

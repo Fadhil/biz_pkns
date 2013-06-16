@@ -11,11 +11,11 @@
   /Scripts
   = javascript_include_tag "application"
   = csrf_meta_tags
-%body.home
+%body.home{:'ng-app' => 'PKNS'}
   = render '/layouts/header'
-  %section#main
+  %section#main{:'ng-controller' => 'MainCtrl'}
     .row
-      .twelve.columns
+      .seven.columns.centered
         = render '/layouts/flash'
     .row
       .three.columns

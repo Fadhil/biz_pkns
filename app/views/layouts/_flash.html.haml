@@ -1,0 +1,7 @@
+- if self.flash[:alert]
+  .alert.primary
+    = alert.html_safe
+
+- if self.flash[:notice]
+  .alert.info
+    = notice.html_safe
