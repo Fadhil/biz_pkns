@@ -141,6 +141,7 @@ bm:
   successfully_updated_advert: 'Berjaya mengemaskini iklan'
   successfully_activated_advert: 'Berjaya mengaktifkan iklan'
   successfully_requested_advert: 'Berjaya menghantar iklan untuk pengaktifan'
+  successfully_rejected_advert: 'Iklan tidak diluluskan, dihantar balik kepada pengguna'
   take_survey: 'Ambil Survey'
   text: 'Teks'
   thanks_for_completing_our_survey: 'Terima kasih kerana sudi menjawab kajiselidik kami.'
