@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   scope :nonadmin, where(:role_id=> nil)
   scope :members, joins(:membership)
   scope :nonmembers, joins('left outer join memberships on users.id = memberships.user_id').where('memberships.id is null')
+  scope :male, where(gender: 'm')
+  scope :female, where(gender: 'f')
   before_save :default_values
   before_save :complete_profile
 

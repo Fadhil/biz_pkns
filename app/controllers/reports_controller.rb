@@ -1,8 +1,18 @@
 class ReportsController < ApplicationController
   def users
-    @number_of_users = User.nonadmin.count
-    @number_of_members = User.nonadmin.members.count
-    @number_of_nonmembers = User.nonadmin.nonmembers.count
+    @nonadmin_users = User.nonadmin
+    @number_of_users = @nonadmin_users.count
+    @number_of_users_male = @nonadmin_users.male.count
+    @number_of_users_female = @nonadmin_users.female.count
+    @member_users = @nonadmin_users.members
+    @number_of_members = @member_users.count
+    @number_of_members_male = @member_users.male.count
+    @number_of_members_female = @member_users.female.count
+    @nonmember_users = @nonadmin_users.nonmembers
+    @number_of_nonmembers = @nonmember_users.count
+    @number_of_nonmembers_male = @nonmember_users.male.count
+    @number_of_nonmembers_female = @nonmember_users.female.count
+
     @percent_members = ( (@number_of_members.to_f / @number_of_users.to_f ) * 100 ).round(2).to_s + "%"
     @percent_nonmembers = ( ( @number_of_nonmembers.to_f / @number_of_users.to_f ) * 100 ).round(2).to_s + "%"
 
