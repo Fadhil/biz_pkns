@@ -51,6 +51,8 @@
           - if current_user.admin?
             %li
               = link_to '#' do
+                %span.left
+                  %i.icon-user-add
                 = t('administrate_user')
                 %span.right
                   %i.icon-plus
@@ -64,13 +66,24 @@
                 %li
                   = link_to 'Database', past_attendances_path
             %li
-              = link_to t('business_directory'), business_directory_path
+              = link_to business_directory_path do
+                %span.left
+                  %i.icon-folder
+                = t('business_directory')
             %li
-              = link_to t('program'), programs_path
+              = link_to programs_path do
+                %span.left
+                  %i.icon-briefcase
+                = t('program')
             %li
-              = link_to t('consultant'), consultants_path
+              = link_to consultants_path do
+                %span.left
+                  %i.icon-users
+                = t('consultant')
             %li
               = link_to '#' do
+                %span.left
+                  %i.icon-archive
                 = t('course')
                 %span.right
                   %i.icon-plus
@@ -81,6 +94,8 @@
                   = link_to t('add_modify_courses'), courses_path
             %li
               = link_to '#' do
+                %span.left
+                  %i.icon-tools
                 = t('register')
                 %span.right
                   %i.icon-plus
@@ -97,6 +112,8 @@
                   = link_to t('new_consultant'), new_consultant_path
             %li
               = link_to '#' do
+                %span.left
+                  %i.icon-plus-squared
                 = t('extra')
                 %span.right
                   %i.icon-plus
@@ -113,6 +130,8 @@
                   = link_to t('user_reports'), reports_users_path
             %li
               = link_to '#' do
+                %span.left
+                  %i.icon-newspaper
                 = t('.newsletters')
                 %span.right
                   %i.icon-plus
