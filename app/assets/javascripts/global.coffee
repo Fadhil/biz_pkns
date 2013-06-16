@@ -35,3 +35,19 @@ PKNS.directive('uiNavDropdown', [
         element.on 'click', scope.clickHandler
     }
 ])
+
+PKNS.directive('uiClose', [
+  '$rootScope',
+  ($rootScope) ->
+    return {
+      restrict: 'A'
+      scope: false
+      controller: ($scope, $element) ->
+        $scope.clickHandler = (e) ->
+          e.preventDefault()
+          target = $(e.currentTarget).parent('.alert')
+          target.remove() if target.length
+      link: (scope, element, attr) ->
+        element.on 'click', scope.clickHandler
+    }
+])
