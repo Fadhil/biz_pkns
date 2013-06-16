@@ -10,16 +10,11 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery
+//= require modernizr.min
+//= require jquery.min
+//= require jquery-ui.min
+//= require redactor-rails
 //= require jquery_ujs
 //= require jquery_nested_form
-//= require gumby
-//= require ui/gumby.checkbox
-//= require ui/gumby.fixed
-//= require ui/gumby.radiobtn
-//= require ui/gumby.retina
-//= require ui/gumby.skiplink
-//= require ui/gumby.tabs
-//= require ui/gumby.toggleswitch
-//= require ui/jquery.validation
-//= require redactor-rails
+//= require gumby.min
+//= require_tree
