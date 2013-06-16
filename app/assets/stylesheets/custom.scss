@@ -130,10 +130,11 @@ body {
     aside#sidebar {
       ul {
         list-style: none;
-        margin: 0;
+        margin: 5em 0 0 0;
         padding: 0;
         font-size: 13px;
         border-right: 1px dotted #DDD;
+        border-left: 1px dotted #DDD;
         li {
           border-bottom: 1px dotted #DDD;
           a {
@@ -154,7 +155,7 @@ body {
           li {
             border: none;
             a {
-              padding: 3px 0 3px 6px;
+              padding: 3px 0 3px 30px;
             }
           }
         }
