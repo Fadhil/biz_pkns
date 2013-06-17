@@ -129,9 +129,9 @@
                 </ul>
               </li>
               <% if cannot? :consultation, :pages %>
-                <li><a href='#' style="color:gray"%><%= t('.consultation') %></a></li>
+                <li><a href='#' style="color:gray"%><%= t('.consultant') %></a></li>
               <% else %>
-                <li><a href=<%= consultation_path %>><%= t('.consultation') %></a></li>
+                <li><a href=<%= consultation_path %>><%= t('.consultant') %></a></li>
 
                 <li><a href=<%= my_adverts_user_path(current_user) %>><%= t('.my_adverts') %></a></li>
               <% end %>
