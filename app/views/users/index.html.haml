@@ -4,6 +4,12 @@
 = form_tag '', method: :get do
   .row-fluid
     .span3
+      = label :search, :name, t('search_by_name')
+      = text_field_tag 'search_term','', name: 'search[term]'
+    .span3
+      = label :search, :ic, t('search_by_ic_number')
+      = text_field_tag 'search_term','', name: 'search[ic]'
+    .span3
       = label :filter, :city, t('filter_by_member')
       = select_tag 'filter', options_for_select([[t('filter_all'),''],[t('filter_by_member'), "members"],[t('filter_by_non_member'), "nonmembers"]], params[:filter])
     .span3

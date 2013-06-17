@@ -15,16 +15,55 @@
           = @number_of_members
         %dt.wide-dt
           %strong
-            = t('.number_of_non_members')
+            = t('male')
+            \:
+        %dd
+          = @number_of_members_male
+        %dt.wide-dt
+          %strong
+            = t('female')
+            \:
+        %dd 
+          = @number_of_members_female
+        %br
+        %dt.wide-dt
+          %strong
+            = t('.number_of_nonmembers')
             \:
         %dd
           = @number_of_nonmembers
+        %dt.wide-dt
+          %strong
+            = t('male')
+            \:
+        %dd
+          = @number_of_nonmembers_male
+        %dt.wide-dt
+          %strong
+            = t('female')
+            \:
+        %dd 
+          = @number_of_nonmembers_female
+        %br
         %dt.wide-dt
           %strong
             = t('.number_of_users')
             \:
         %dd
           = @number_of_users
+        %dt.wide-dt
+          %strong
+            = t('male')
+            \:
+        %dd
+          = @number_of_users_male
+        %dt.wide-dt
+          %strong
+            = t('female')
+            \:
+        %dd 
+          = @number_of_users_female
+        %br
     .span4
       - labels = [ @percent_members, @percent_nonmembers ]
       - legend = [ t('.number_of_members'), t('.number_of_nonmembers')]

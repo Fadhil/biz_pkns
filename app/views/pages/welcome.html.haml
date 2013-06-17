@@ -3,36 +3,37 @@
   <p><haml:loud> link_to &amp;quot;Daftar&amp;quot;, new_user_registration_path </haml:loud> jika anda bukan ahli PKNS BizClub.</p>
 %center
   .container
-    - if @adverts.count > 1
-      #slides
-        - @adverts.each do |advert|
-          %dl.dl-horizontal
-            %div.adbox
-              - if advert.advert_type == 'Course'
-                - if advert.photo
-                  - if !advert.photo.file.nil?
-                    %div.adinfo.userselect
-                      %div.title= advert.title
-                      %div.venue= 'Tempat : '+ advert.location.to_s
-                      %div.date= 'Tarikh : '+ advert.start_date.strftime("%d %b %y").to_s
-                    = image_tag (advert.photo.file)#, :class => 'adboxw'#, size: '100x100'
-              - else
-                - if advert.photo
-                  - if !advert.photo.file.nil?
-                    %div.adinfo-product.userselect
-                      %div.title= advert.title
-                      %div.content= advert.content
-                    = image_tag (advert.photo.file)#, :class => 'adboxw'#, size: '100x100'
-    - else
-      %dl.dl-horizontal
-        %div.adbox
+    - if current_user || current_consultant
+      - if @adverts.count > 1 
+        #slides
           - @adverts.each do |advert|
-            - if advert.photo
-              - if !advert.photo.file.nil?
-                %div.adinfo.userselect
-                  %div.title= advert.title
-                  %div.venue= 'Tempat : '+ advert.location.to_s
-                  %div.date= 'Tarikh : '+ advert.start_date.strftime("%d %b %y").to_s
-                = image_tag (advert.photo.file)#, :class => 'adboxw'#, size: '100x100'
+            %dl.dl-horizontal
+              %div.adbox
+                - if advert.advert_type == 'Course'
+                  - if advert.photo
+                    - if !advert.photo.file.nil?
+                      %div.adinfo.userselect
+                        %div.title= advert.title
+                        %div.venue= 'Tempat : '+ advert.location.to_s
+                        %div.date= 'Tarikh : '+ advert.start_date.strftime("%d %b %y").to_s
+                      = image_tag (advert.photo.file)#, :class => 'adboxw'#, size: '100x100'
+                - else
+                  - if advert.photo
+                    - if !advert.photo.file.nil?
+                      %div.adinfo-product.userselect
+                        %div.title= advert.title
+                        %div.content= advert.content
+                      = image_tag (advert.photo.file)#, :class => 'adboxw'#, size: '100x100'
+      - else
+        %dl.dl-horizontal
+          %div.adbox
+            - @adverts.each do |advert|
+              - if advert.photo
+                - if !advert.photo.file.nil?
+                  %div.adinfo.userselect
+                    %div.title= advert.title
+                    %div.venue= 'Tempat : '+ advert.location.to_s
+                    %div.date= 'Tarikh : '+ advert.start_date.strftime("%d %b %y").to_s
+                  = image_tag (advert.photo.file)#, :class => 'adboxw'#, size: '100x100'
 
-    = image_tag('fakeafterlogin.png')
+      = image_tag('fakeafterlogin.png')

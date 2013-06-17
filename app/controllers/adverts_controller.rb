@@ -126,7 +126,14 @@ class AdvertsController < ApplicationController
     respond_to do |format|
       if @advert.update_attributes(params[:advert])
         AdvertTransaction.create(advert_id: @advert.id, title: @advert.title, advert_action: params[:advert_action])
-        format.html { redirect_to @advert, notice: t('successfully_requested_advert') }
+        if params[:advert_action] == 'reject'
+          the_notice = t('successfully_rejected_advert')
+        elsif params[:advert_action] == 'approve'
+          the_notice = t('successfully_activated_advert') 
+        elsif params[:advert_action] == 'request'
+          the_notice = t('successfully_requested_advert')
+        end
+        format.html { redirect_to @advert, notice: the_notice}
 
       end
     end
