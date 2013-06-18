@@ -10,6 +10,7 @@ bm:
   inactive_adverts: 'Senarai Iklan Tidak Aktif'
   pending_adverts: 'Senarai Iklan Menunggu'
   activate: 'Aktifkan'
+  attendee: 'Penghadir'
   add_program: 'Tambah Program'
   add_attendee: 'Daftar Ahli'
   add_questions: 'Tambah Soalan'
@@ -61,6 +62,7 @@ bm:
   gold: 'Gold'
   image_should_be_this_size: 'Pastikan imej bersaiz dimensi 100x200'
   invalid_request: 'Permintaan Tidak Sah'
+  login: 'Masuk'
   make_member: 'Jadikan Ahli'
   make_request: 'Permohonan Iklan'
   message: 'Mesej'
@@ -70,7 +72,7 @@ bm:
   member: 'Ahli'
   membership_num: 'No Keahlian'
   new: 'Baru'
-  new_consultant: 'Daftar Perunding Baru'
+  new_consultant: 'Daftar Perunding'
   new_business_category: 'Daftar Bidang Perniagaan'
   office_phone: 'No Tel Pejabat'
   old: 'Lama'
@@ -463,6 +465,7 @@ bm:
 
   past_attendances:
     index:
+      attendee: 'Penghadir'
       title: 'Senarai Kehadiran Lama'
     uploaded:
       title: 'Senarai Kehadiran Yang Baru Dimuatnaik'

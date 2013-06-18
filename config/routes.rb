@@ -4,6 +4,13 @@ BizPkns::Application.routes.draw do
 
   localized do
 
+    get "reports/users" => 'reports#users'
+    get "reports/consultants" => 'reports#consultants'
+    get "reports/programs" => 'reports#programs'
+    get "newsletters/history" => 'newsletters#history', as: "history"
+
+    get "newsletters/new/:id" => 'newsletters#use_template', as: "use_template"
+    get "home" => "pages#home"
     put 'make_member/:id' => 'users#make_member', as: :make_member
     match 'select_program/:program_id' => 'consultants#select_program', as: :select_program
     post 'update_attendance', to: 'members#update_attendance', as: 'update_attendance'
@@ -14,7 +21,7 @@ BizPkns::Application.routes.draw do
     match 'my_courses' => "pages#my_courses", as: :user_course_listing
     match 'program_users' => "members#program_member_list", as: :program_user_listing
     get  '/upcoming_courses' => 'pages#upcoming_courses', as: :course_listing
-    scope '/upcoming_courses' do 
+    scope '/upcoming_courses' do
        match '/:id' => 'pages#upcoming_courses_show', as: :course_details
        match '/:id/user/:user_id' => 'pages#register_user', as: :user_course_registration
     end
@@ -29,7 +36,7 @@ BizPkns::Application.routes.draw do
     devise_for :users do
       get "/admin/login" => "devise/sessions#new"
     end
-    
+
     resources :reports, only: [] do
       collection do
         match 'users' => 'reports#users', as: :user
@@ -39,8 +46,8 @@ BizPkns::Application.routes.draw do
     end
     resources :admin
     resources :adverts do
-      member do 
-        put 'activate' 
+      member do
+        put 'activate'
         put 'assign_weight'
         put 'make_request'
       end
@@ -56,7 +63,7 @@ BizPkns::Application.routes.draw do
         get 'surveys'
         get 'letters', as: :letter_user
         match 'my_adverts', as: :my_adverts
-      end 
+      end
     end
     resources :programs
     resources :courses
@@ -79,7 +86,7 @@ BizPkns::Application.routes.draw do
       member do
         post 'send_survey' => 'surveys#send_survey', as: :send_user
       end
-      member do 
+      member do
         get 'take'
         post 'take' => 'surveys#finish_survey'
         get 'report'

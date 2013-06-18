@@ -1,22 +1,44 @@
 - model_class = Newsletter
-.page-header
-  %h1=t '.title', :default => model_class.model_name.human.pluralize
-%table.table.table-striped
-  %thead
-    %tr
-      %th= model_class.human_attribute_name(:id)
-      %th= t('.subject')
-      %th= t('.created_at')
-      %th
-  %tbody
-    - @newsletters.each do |newsletter|
-      %tr
-        %td= link_to newsletter.id, newsletter_path(newsletter)
-        %td= newsletter.subject
-        %td= newsletter.created_at.strftime("%d %b %y, %M:%S")
-        %td
-          =# link_to t('.edit', :default => t("helpers.links.edit")), edit_newsletter_path(newsletter), :class => 'btn btn-mini'
-          = link_to t('.view'), newsletter_path(newsletter), :class => 'btn btn-mini'
-          =# link_to t('.destroy', :default => t("helpers.links.destroy")), newsletter_path(newsletter), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+.row
+  %h3.ten.columns
+    = t '.title'
+  .two.columns.action.hide
+    - if can? :manage, Course
+      %span.pretty.medium.primary.btn.entypo.icon-left.icon-list-add
+        = link_to t('.new', :default => t("helpers.links.new")), new_newsletter_path
 
-=# link_to t('.new', :default => t("helpers.links.new")), new_newsletter_path, :class => 'btn btn-primary'
+.table
+  .row.table-head
+    .one.columns
+      %h6.title= model_class.human_attribute_name(:id)
+    .seven.columns
+      %h6.title= t('.subject')
+    .three.columns
+      %h6.title= t('.created_at')
+    .one.columns
+      %h6.title= t('status')
+  - @newsletters.each_with_index do |course, i|
+    .row.table-rows
+      .one.columns
+        %p
+          = link_to newsletter.id, newsletter_path(newsletter), :class => 'name'
+      .seven.columns
+        %p
+          = link_to newsletter.subject, newsletter_path(newsletter), :class => 'name'
+      .three.columns
+        %p
+          = newsletter.created_at.strftime("%d %b %y, %M:%S")
+      .one.columns
+        .row
+          .twelve.columns
+          .twelve.columns.hide
+            %span.pretty.small.btn.info.icon-left.entypo.icon-list-add
+              = link_to t('.edit', :default => t("helpers.links.edit")), edit_newsletter_path(newsletter)
+          .twelve.columns
+            %span.pretty.small.btn.info.icon-left.entypo.icon-eye
+              = link_to t('.view'), newsletter_path(newsletter)
+          .twelve.columns.hide
+            %span.pretty.small.btn.info.icon-left.entypo.icon-trash
+              = link_to t('.destroy', :default => t("helpers.links.destroy")), newsletter_path(newsletter),
+                :method => :delete,
+                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }

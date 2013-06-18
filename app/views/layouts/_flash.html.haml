@@ -1,0 +1,11 @@
+- if self.flash[:alert]
+  .alert.primary
+    = alert.html_safe
+    %span.close{:'ui-close' => 'ui-close'}
+      %i.icon-cancel
+
+- if self.flash[:notice]
+  .alert.info
+    = notice.html_safe
+    %span.close{:'ui-close' => 'ui-close'}
+      %i.icon-cancel
