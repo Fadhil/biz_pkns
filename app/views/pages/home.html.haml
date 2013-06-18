@@ -9,24 +9,23 @@
         %hr
     .row
       .twelve.columns
-        - if current_user || current_consultant
-          - if @adverts.count > 1 
+        - if current_user or current_consultant
+          - if @adverts.count > 1
             #slides
               - @adverts.each do |advert|
-                %dl.dl-horizontal
-                  .adbox
-                    - if advert.advert_type == 'Course'
-                      - if advert.photo
-                        - if !advert.photo.file.nil?
-                          .adinfo.userselect
-                            .title= advert.title
-                            .venue= 'Tempat : '+ advert.location.to_s
-                            .date= 'Tarikh : '+ advert.start_date.strftime("%d %b %y").to_s
-                          = image_tag (advert.photo.file)#, :class => 'adboxw'#, size: '100x100'
-                    - else
-                      - if advert.photo
-                        - if !advert.photo.file.nil?
-                          .adinfo-product.userselect
-                            .title= advert.title
-                            .content= advert.content
-                          = image_tag (advert.photo.file)#, :class => 'adboxw'#, size: '100x100'
+                .adbox
+                  - if advert.advert_type == 'Course'
+                    - if advert.photo
+                      - if !advert.photo.file.nil?
+                        .adinfo.userselect
+                          .title= advert.title
+                          .venue= 'Tempat : '+ advert.location.to_s
+                          .date= 'Tarikh : '+ advert.start_date.strftime("%d %b %y").to_s
+                        = image_tag (advert.photo.file)#, :class => 'adboxw'#, size: '100x100'
+                  - else
+                    - if advert.photo
+                      - if !advert.photo.file.nil?
+                        .adinfo-product.userselect
+                          .title= advert.title
+                          .content= advert.content
+                        = image_tag (advert.photo.file)#, :class => 'adboxw'#, size: '100x100'

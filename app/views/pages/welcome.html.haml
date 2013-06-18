@@ -75,12 +75,12 @@
                   = f.submit t('sign_up'), :class => ' pretty medium primary btn'
   .row
     .twelve.columns
-       .adbox
-          - @adverts.each do |advert|
-            - if advert.photo
-              - if !advert.photo.file.nil?
-                .adinfo.userselect
-                  .title= advert.title
-                  .venue= 'Tempat : '+ advert.location.to_s
-                  .date= 'Tarikh : '+ advert.start_date.strftime("%d %b %y").to_s
-                = image_tag (advert.photo.file)#, :class => 'adboxw'#, size: '100x100'
+      .adbox
+        - @adverts.each do |advert|
+          - if advert.photo
+            - if !advert.photo.file.nil?
+              .adinfo.userselect
+                .title= advert.title
+                .venue= 'Tempat : '+ advert.location.to_s
+                .date= 'Tarikh : '+ advert.start_date.strftime("%d %b %y").to_s
+              = image_tag (advert.photo.file)#, :class => 'adboxw'#, size: '100x100'
