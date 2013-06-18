@@ -19,6 +19,7 @@ BizPkns::Application.routes.draw do
        match '/:id/user/:user_id' => 'pages#register_user', as: :user_course_registration
     end
 
+    match "/delayed_job" => DelayedJobWeb, :anchor => false
     match 'business_directory' => 'pages#business_directory', as: :business_directory
     get 'city_dropdown' => 'application#city_dropdown', as: :city_dropdown
     get 'course_dropdown' => 'application#course_dropdown', as: :course_dropdown

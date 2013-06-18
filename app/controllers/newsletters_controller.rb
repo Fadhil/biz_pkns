@@ -74,7 +74,8 @@ class NewslettersController < ApplicationController
     if !users.empty?
       users.uniq.each do |user|
         #@newsletter.users << user unless @newsletter.users.include?(user)
-        NewsletterMailer.mailer_newsletter(user, @emailsubject, @emailmessage).deliver
+        #NewsletterMailer.mailer_newsletter(user, @emailsubject, @emailmessage).deliver
+        NewsletterMailer.delay(:run_at => 5.minutes.from_now).mailer_newsletter(user, @emailsubject, @emailmessage)
       end
     end
     respond_to do |format|
@@ -158,13 +159,16 @@ class NewslettersController < ApplicationController
     if !users.empty?
       users.uniq.each do |user|
         @newsletter.users << user unless @newsletter.users.include?(user)
-        NewsletterMailer.mailer_newsletter(user, @emailsubject, @emailmessage).deliver
+        #NewsletterMailer.mailer_newsletter(user, @emailsubject, @emailmessage).deliver
+        NewsletterMailer.delay(:run_at => 3.minutes.from_now).mailer_newsletter(user, @emailsubject, @emailmessage)
       end
     end
     respond_to do |format|
       format.html { redirect_to @newsletter, notice: the_notice }
     end
   end
+
+  handle_asynchronously :send_newsletter, :run_at => Proc.new { 5.minutes.from_now }
 
   def use_template
     @newsletters_template = Newsletters::Template.find(params[:id])
