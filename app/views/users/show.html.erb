@@ -116,7 +116,7 @@ s<%- model_class = User -%>
                     <%= "#{background.education.name}" %>
                   </td>
                   <td>
-                    <%= "#{background.start_date.try(:to_date)} - #{background.end_date.try(:to_date)}" %>
+                    <%= "#{background.start_date} - #{background.end_date}" %>
                   </td>
                 </tr>
               <% end %>

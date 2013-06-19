@@ -233,6 +233,8 @@ bm:
       customers1: ' #1'
       customers2: ' #2'
       customers3: ' #3'
+      start_date: 'Tahun mula'
+      end_date: 'Tahun akhir'
     form_new:  
       create_user: 'Daftar Ahli'
       cancel: 'Batal'

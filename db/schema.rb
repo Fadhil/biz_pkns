@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130617203640) do
+ActiveRecord::Schema.define(:version => 20130619053606) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -230,10 +230,10 @@ ActiveRecord::Schema.define(:version => 20130617203640) do
     t.integer  "user_id"
     t.integer  "education_id"
     t.text     "description"
-    t.date     "start_date"
-    t.date     "end_date"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.integer  "start_date"
+    t.integer  "end_date"
   end
 
   add_index "educations_users", ["education_id", "user_id"], :name => "index_educations_users_on_education_id_and_user_id"
