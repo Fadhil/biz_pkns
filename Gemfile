@@ -85,6 +85,7 @@ gem 'prawn'#, :git => 'git@github.com:epireve/prawn.git'
 gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'delayed_job_web'
+gem 'foreman'
 # gem 'roo', '~> 1.9.5'
 
 # To use ActiveModel has_secure_password
