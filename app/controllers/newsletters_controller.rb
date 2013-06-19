@@ -78,19 +78,19 @@ class NewslettersController < ApplicationController
         NewsletterMailer.delay(:run_at => 5.minutes.from_now).mailer_newsletter(user, @emailsubject, @emailmessage)
       end
     end
-    respond_to do |format|
-      format.html { redirect_to @newsletter, notice: the_notice }
-    end
-
     # respond_to do |format|
-    #   if @newsletter.save
-    #     format.html { redirect_to @newsletter, notice: 'Newsletter was successfully created.' }
-    #     format.json { render json: @newsletter, status: :created, location: @newsletter }
-    #   else
-    #     format.html { render action: "new" }
-    #     format.json { render json: @newsletter.errors, status: :unprocessable_entity }
-    #   end
+    #   format.html { redirect_to @newsletter, notice: the_notice }
     # end
+
+    respond_to do |format|
+      if @newsletter.save
+        format.html { redirect_to @newsletter, notice: the_notice }
+        format.json { render json: @newsletter, status: :created, location: @newsletter }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @newsletter.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PUT /newsletters/1
