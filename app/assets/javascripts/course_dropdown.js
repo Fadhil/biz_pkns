@@ -37,5 +37,46 @@ $(document).ready(function(){
   });
 });
 
+$(document).ready(function(){
+  newsletter_program_select = $('input[name$="program_select"]:first')
+  newsletter_program_select.change(function(){
+  newsletter_course_select = $('#newsletter_course_select')
+    $.ajax({
+      type: 'GET',
+      url: '/course_dropdown',
+      data: {program_id: newsletter_program_select.val() },
+      success: function (response) {
+        newsletter_course_select.html(response);
+      }
+    });
+  });
+});
+
+$(document).ready(function(){
+  $('#newsletter_user_select').change(function(){
+    newsletter_program_select = $('#newsletter_program_select')
+    newsletter_course_select = $('#newsletter_course_select')
+    if($(this).val()=='users_by_program') {
+      newsletter_program_select.prop('disabled', false);
+      newsletter_program_select.show();
+      newsletter_course_select.hide();
+      newsletter_course_select.prop('disabled', true)
+    }else if($(this).val() == 'users_by_course') {
+      newsletter_program_select.prop('disabled', false);
+      newsletter_program_select.show();
+      newsletter_course_select.prop('disabled', false);
+      newsletter_course_select.show();
+    } else {
+      newsletter_program_select.prop('disabled', true);
+      newsletter_program_select.hide();
+      newsletter_course_select.prop('disabled', true);
+      newsletter_course_select.hide();
+
+    }
+  });
+});
+
+
+
 
 
