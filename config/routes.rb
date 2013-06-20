@@ -1,5 +1,7 @@
 BizPkns::Application.routes.draw do
 
+  resources :blogs
+
   mount RedactorRails::Engine => '/redactor_rails'
 
   localized do
@@ -64,6 +66,7 @@ BizPkns::Application.routes.draw do
     resources :members
     resources :educations
     resources :skills
+    resources :blog
     resources :attendance_list
     resources :pkns_users
     resources :businesses
