@@ -30,6 +30,6 @@
           = select_tag 'newsletter_program_select', options_for_select(Program.all.map{|a| [a.name, a.id]}), disabled: true, class: 'hide'
           = select_tag 'newsletter_course_select', options_for_select(Course.where(program_id: Program.first.id).map{ |a| [a.name,a.id]}), disabled: true, class: 'hide'
 
-  .form-actions
-    = f.submit nil, :class => 'btn btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), newsletters_path, :class => 'btn'
+        .form-actions
+          = f.submit nil, :class => 'btn btn-primary'
+          = link_to t('.cancel', :default => t("helpers.links.cancel")), newsletters_path, :class => 'btn'
