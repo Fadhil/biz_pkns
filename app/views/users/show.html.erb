@@ -151,7 +151,7 @@ s<%- model_class = User -%>
            <% if !bp.company_name.blank? %>
             <tr><th colspan="2"><center>
 
-                  <% unless bp.business_logo.nil? %>
+                  <% unlessbp.business_logo.nil? %>
                     <% unless bp.business_logo.file.nil? %><%= image_tag(bp.business_logo.file, :size => '150x150') %><% end %>
                   <% end %>
                
