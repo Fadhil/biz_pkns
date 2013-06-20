@@ -101,4 +101,8 @@ class PagesController < ApplicationController
   def adview
     @adverts = Advert.all
   end
+
+  def contact
+
+  end
 end
