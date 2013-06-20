@@ -15,22 +15,22 @@
           = @total_consultants
         %dt.wide-dt
           %strong
-            = t('.active_consultants')
+            = t('.number_of_active_consultants')
             \:
         %dd
           = @active_consultants
         %dt.wide-dt
           %strong
-            = t('.number_of_users')
+            = t('.number_of_inactive_consultants')
             \:
         %dd
-          = @number_of_users
+          = @inactive_consultants
     .span4
-      - labels = [ @percent_members, @percent_nonmembers ]
-      - legend = [ t('.number_of_members'), t('.number_of_nonmembers')]
-      =# image_tag Gchart.pie(title: 'Jumlah Pengguna', |
+      - labels = [ @percent_active_consultants, @percent_inactive_consultants ]
+      - legend = [ t('.number_of_active_consultants'), t('.number_of_inactive_consultants')]
+      = image_tag Gchart.pie(title: 'Jumlah Perunding', |
                             labels: labels, |
                             legend: legend, |
-                            data: [@number_of_members.to_i, |
-                            @number_of_nonmembers.to_i], |
+                            data: [@active_consultants.to_i, |
+                            @inactive_consultants.to_i], |
                             size: '500x200')

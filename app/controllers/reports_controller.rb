@@ -48,6 +48,10 @@ class ReportsController < ApplicationController
   def consultants
     @total_consultants = Consultant.all.count
     @active_consultants = Consultant.active.count
+    @inactive_consultants = Consultant.inactive.count
+
+    @percent_active_consultants = (( @active_consultants.to_f / @total_consultants.to_f ) * 100 ).round(2).to_s + "%"
+    @percent_inactive_consultants = (( @inactive_consultants.to_f / @total_consultants.to_f ) * 100 ).round(2).to_s + "%"
   end
 
   def programs

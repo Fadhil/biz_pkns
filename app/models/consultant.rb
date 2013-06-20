@@ -16,7 +16,7 @@ class Consultant < ActiveRecord::Base
   has_many :programs, through: :consultants_programs
   accepts_nested_attributes_for :programs
   
-  has_many :courses, through: :program
+  has_many :courses, through: :programs
   validates :password, :presence => true, :confirmation => true, :on => :create
 
   has_many :users, through: :courses
@@ -49,5 +49,13 @@ class Consultant < ActiveRecord::Base
   def default_name
     self.first_name = 'Perunding'
     self.last_name = 'Baru'
+  end
+
+  def self.active
+    Consultant.includes(:courses).where('courses.created_at >= ?',6.months.ago.to_date)
+  end
+
+  def self.inactive
+    Consultant.all - Consultant.active
   end
 end

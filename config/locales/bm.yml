@@ -660,7 +660,8 @@ bm:
       title: 'Laporan Perunding'
       consultant_details: 'Pecahan Perunding'
       number_of_consultants: 'Jumlah Perunding'
-      active_consultants: 'Jumlah Perunding Aktif'
+      number_of_active_consultants: 'Jumlah Perunding Aktif'
+      number_of_inactive_consultants: 'Jumlah Perunding Tidak Aktif'
 
   #Stuff in the header
   layouts:
