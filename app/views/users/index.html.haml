@@ -50,6 +50,6 @@
                 = f.fields_for :membership do |m|
                   = select_tag 'membership[category]', options_for_select((MEMBER_CATEGORIES.map{|a| [t(a),a]}), user.membership.category), class: "membership", onchange: "$('#submit#{i}').click();"
                   = f.submit( data: {confirm: t('confirm_category_change') }, id: "submit#{i}", class: 'hidden')
-
-= link_to t('new', :default => t("helpers.links.new_user")), new_user_path, :class => 'btn btn-primary'  
+- if can? :manage, @blog
+  = link_to t('new', :default => t("helpers.links.new_user")), new_user_path, :class => 'btn btn-primary'  
 

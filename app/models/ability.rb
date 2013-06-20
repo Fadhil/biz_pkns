@@ -23,6 +23,7 @@ class Ability
           can [:take], Survey
           can :finish_survey, Survey
           cannot [:index, :edit, :update, :destroy], Survey
+          cannot [:edit, :update, :destroy], Blog
           can :manage, Advert, user_id: resource.id
           #cannot :all, :surveys, except: [:take]
         else
@@ -39,6 +40,7 @@ class Ability
           can [:take], Survey
           can :finish_survey, Survey
           cannot [:index, :edit, :update, :destroy], Survey
+          cannot [:edit, :update, :destroy], Blog
           #cannot :all, :surveys, except: [:take]
           cannot :all, Advert
         end
@@ -50,6 +52,7 @@ class Ability
         can :manage, AttendanceList, program_id: resource.programs.all.map(&:id)
         can :manage, Survey
         can :manage, Advert, consultant_id: resource.id
+        cannot [:edit, :update, :destroy], Blog
 
       else 
         cannot :index, :course
