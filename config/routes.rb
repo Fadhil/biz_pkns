@@ -66,6 +66,7 @@ BizPkns::Application.routes.draw do
     resources :attendance_list
     resources :pkns_users
     resources :businesses
+    resources :email
     namespace :newsletters do resources :templates end
     resources :newsletters do
       member do
