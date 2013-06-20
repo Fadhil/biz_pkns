@@ -17,7 +17,7 @@
     = f.label t('.send_to'), :class => 'control-label'
     
     .controls
-      = form_for '', url:  do |f|
+      = form_for '', url: send_user_newsletter_path do |f|
       - if current_user
         - if current_user.admin?
           = select_tag 'newsletter_user_select', options_for_select([[t('.all_users'),'all_users'],[t('.members'),'members'], [t('.nonmembers'),'nonmembers'],[t('.users_by_program'), 'users_by_program'],[t('.users_by_course'),'users_by_course']])
