@@ -12,6 +12,8 @@
 %p
   %strong= t('.message') + ':'
   %br
+  =# "Is this email not displaying correctly?"
+  =# link_to "View it in your browser.", newsletter_path(@newsletter)
   = @newsletter.message.html_safe
 
 .form-actions

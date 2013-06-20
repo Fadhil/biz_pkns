@@ -46,45 +46,45 @@ class NewslettersController < ApplicationController
     @emailmessage = params[:newsletter][:message]
     #NewsletterMailer.mailer_newsletter(@user, @emailsubject, @emailmessage).deliver
 
-    the_notice=t('successfully_sent_newsletter')
-    users = []
-    #@newsletter = Newsletter.find(params[:id])
-    if params[:newsletter_user_select].present?
-      case params[:newsletter_user_select]
-      when 'all_users'
-        users = User.nonadmin
-      when 'members'
-        users = User.nonadmin.members
-      when 'nonmembers'
-        users = User.nonadmin.nonmembers
-      when 'users_by_program'
-        if params[:newsletter_program_select].present?
-          the_program = Program.find(params[:newsletter_program_select])
-          users = the_program.users
-        end
-      when 'users_by_course'
-        if params[newsletter_course_select].present?
-          the_course = Course.find(params[:newsletter_course_select])
-          users = the_course.users
-        end
-      else
-        users = User.nonadmin
-      end
-    end
-    if !users.empty?
-      users.uniq.each do |user|
-        #@newsletter.users << user unless @newsletter.users.include?(user)
-        #NewsletterMailer.mailer_newsletter(user, @emailsubject, @emailmessage).deliver
-        NewsletterMailer.delay(:run_at => 5.minutes.from_now).mailer_newsletter(user, @emailsubject, @emailmessage)
-      end
-    end
+    # the_notice=t('successfully_sent_newsletter')
+    # users = []
+    # #@newsletter = Newsletter.find(params[:id])
+    # if params[:newsletter_user_select].present?
+    #   case params[:newsletter_user_select]
+    #   when 'all_users'
+    #     users = User.nonadmin
+    #   when 'members'
+    #     users = User.nonadmin.members
+    #   when 'nonmembers'
+    #     users = User.nonadmin.nonmembers
+    #   when 'users_by_program'
+    #     if params[:newsletter_program_select].present?
+    #       the_program = Program.find(params[:newsletter_program_select])
+    #       users = the_program.users
+    #     end
+    #   when 'users_by_course'
+    #     if params[newsletter_course_select].present?
+    #       the_course = Course.find(params[:newsletter_course_select])
+    #       users = the_course.users
+    #     end
+    #   else
+    #     users = User.nonadmin
+    #   end
+    # end
+    # if !users.empty?
+    #   users.uniq.each do |user|
+    #     #@newsletter.users << user unless @newsletter.users.include?(user)
+    #     #NewsletterMailer.mailer_newsletter(user, @emailsubject, @emailmessage).deliver
+      
+    #   end
+    # end
     # respond_to do |format|
     #   format.html { redirect_to @newsletter, notice: the_notice }
     # end
 
     respond_to do |format|
       if @newsletter.save
-        format.html { redirect_to @newsletter, notice: the_notice }
+        format.html { redirect_to preview_newsletter_path(@newsletter) }
         format.json { render json: @newsletter, status: :created, location: @newsletter }
       else
         format.html { render action: "new" }
@@ -131,7 +131,7 @@ class NewslettersController < ApplicationController
   end
 
   def send_newsletter
-    the_notice=t('successfully_sent_newsletter')
+     the_notice=t('successfully_sent_newsletter')
     users = []
     @newsletter = Newsletter.find(params[:id])
     if params[:newsletter_user_select].present?
@@ -148,7 +148,7 @@ class NewslettersController < ApplicationController
           users = the_program.users
         end
       when 'users_by_course'
-        if params[newslettery_course_select].present?
+        if params[:newsletter_course_select].present?
           the_course = Course.find(params[:newsletter_course_select])
           users = the_course.users
         end
@@ -158,7 +158,7 @@ class NewslettersController < ApplicationController
     end
     if !users.empty?
       users.uniq.each do |user|
-        @newsletter.users << user unless @newsletter.users.include?(user)
+        #@newsletter.users << user unless @newsletter.users.include?(user)
         #NewsletterMailer.mailer_newsletter(user, @emailsubject, @emailmessage).deliver
         NewsletterMailer.delay(:run_at => 3.minutes.from_now).mailer_newsletter(user, @emailsubject, @emailmessage)
       end
@@ -167,8 +167,6 @@ class NewslettersController < ApplicationController
       format.html { redirect_to @newsletter, notice: the_notice }
     end
   end
-
-  handle_asynchronously :send_newsletter, :run_at => Proc.new { 5.minutes.from_now }
 
   def use_template
     @newsletters_template = Newsletters::Template.find(params[:id])
@@ -180,7 +178,7 @@ class NewslettersController < ApplicationController
     end
   end
 
-  def email
+  def preview
     @newsletter = Newsletter.find(params[:id])
 
     respond_to do |format|

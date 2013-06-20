@@ -11,19 +11,19 @@
   .control-group
     = f.label t('.send_to'), :class => 'control-label'
     
-    .controls
-      =# form_for '' do |f|
-      - if current_user
-        - if current_user.admin?
-          = select_tag 'newsletter_user_select', options_for_select([[t('.all_users'),'all_users'],[t('.members'),'members'], [t('.nonmembers'),'nonmembers'],[t('.users_by_program'), 'users_by_program'],[t('.users_by_course'),'users_by_course']])
-      - elsif current_consultant
-        = select_tag 'newsletter_user_select', options_for_select([[t('.users_by_program'), 'users_by_program'],[t('.users_by_course'),'users_by_course']])
-      - if current_consultant
-        = select_tag 'newsletter_program_select', options_for_select(current_consultant.programs.all.map{|a| [a.name, a.id]}), disabled: false
-        = select_tag 'newsletter_course_select', options_for_select(Course.where(program_id: current_consultant.programs.first.id).map{ |a| [a.name,a.id]}), disabled: true, class: 'hide'
-      - else
-        = select_tag 'newsletter_program_select', options_for_select(Program.all.map{|a| [a.name, a.id]}), disabled: true, class: 'hide'
-        = select_tag 'newsletter_course_select', options_for_select(Course.where(program_id: Program.first.id).map{ |a| [a.name,a.id]}), disabled: true, class: 'hide'
+    / .controls
+    /   =# form_for '' do |f|
+    /   - if current_user
+    /     - if current_user.admin?
+    /       = select_tag 'newsletter_user_select', options_for_select([[t('.all_users'),'all_users'],[t('.members'),'members'], [t('.nonmembers'),'nonmembers'],[t('.users_by_program'), 'users_by_program'],[t('.users_by_course'),'users_by_course']])
+    /   - elsif current_consultant
+    /     = select_tag 'newsletter_user_select', options_for_select([[t('.users_by_program'), 'users_by_program'],[t('.users_by_course'),'users_by_course']])
+    /   - if current_consultant
+    /     = select_tag 'newsletter_program_select', options_for_select(current_consultant.programs.all.map{|a| [a.name, a.id]}), disabled: false
+    /     = select_tag 'newsletter_course_select', options_for_select(Course.where(program_id: current_consultant.programs.first.id).map{ |a| [a.name,a.id]}), disabled: true, class: 'hide'
+    /   - else
+    /     = select_tag 'newsletter_program_select', options_for_select(Program.all.map{|a| [a.name, a.id]}), disabled: true, class: 'hide'
+    /     = select_tag 'newsletter_course_select', options_for_select(Course.where(program_id: Program.first.id).map{ |a| [a.name,a.id]}), disabled: true, class: 'hide'
 
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'

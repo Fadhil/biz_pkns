@@ -9,6 +9,7 @@ BizPkns::Application.routes.draw do
     post 'update_attendance', to: 'members#update_attendance', as: 'update_attendance'
     get "newsletters/history" => 'newsletters#history', as: "history"
     get "newsletters/new/:id" => 'newsletters#use_template', as: "use_template"
+    get "newsletters/preview/:id" => 'newsletters#preview', as: "preview_newsletter"
     get "letters/history" => 'letters#history', as: "letters_history"
     match 'consultation' => "pages#consultation", as: :consultation
     match 'my_courses' => "pages#my_courses", as: :user_course_listing
@@ -66,7 +67,7 @@ BizPkns::Application.routes.draw do
     resources :attendance_list
     resources :pkns_users
     resources :businesses
-    resources :email
+    resources :email, :only => [:show]
     namespace :newsletters do resources :templates end
     resources :newsletters do
       member do

@@ -143,6 +143,7 @@ bm:
   successfully_activated_advert: 'Berjaya mengaktifkan iklan'
   successfully_requested_advert: 'Berjaya menghantar iklan untuk pengaktifan'
   successfully_rejected_advert: 'Iklan tidak diluluskan, dihantar balik kepada pengguna'
+  successfully_sent_newsletter: 'Buletin telah berjaya dihantar'
   take_survey: 'Ambil Survey'
   text: 'Teks'
   thanks_for_completing_our_survey: 'Terima kasih kerana sudi menjawab kajiselidik kami.'
@@ -525,8 +526,18 @@ bm:
       nonmembers: 'Bukan Ahli'
       users_by_program: 'Pengguna mengikut Program'
       users_by_course: 'Pengguna mengikut Kursus'
-
-
+      preview: 'Prebiu'
+    preview:
+      title: 'Prebiu Buletin baru'
+      subject: 'Subjek'
+      message: 'Mesej'
+      send_to: 'Hantar buletin kepada'
+      all_users: 'Semua Pengguna'
+      members: 'Ahli'
+      nonmembers: 'Bukan Ahli'
+      users_by_program: 'Pengguna mengikut Program'
+      users_by_course: 'Pengguna mengikut Kursus'
+    
   courses:
     index:
       title: "Senarai Kursus"
