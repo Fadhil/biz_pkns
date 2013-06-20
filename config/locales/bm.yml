@@ -89,6 +89,7 @@ bm:
   platinum: 'Platinum'
   please_change_default_password: "Kata Laluan anda sekarang ialah 'password'. Sila tukarkan kata laluan di Profil anda"
   please_complete_your_profile: 'Sila lengkapkan profil anda untuk menikmati sistem ini sepenuhnya.'
+  please_become_a_member: 'Sila jadi ahli untuk akses maklumat dalam sistem.'
   present: 'Hadir'
   not_present: 'Tidak Hadir'
   will_attend: 'Akan Hadir'
@@ -788,9 +789,7 @@ bm:
     businesses: 'perniagaan'
     adverts: 'iklan'
     reports: 'laporan'
-    contact: 'hubungi'
-    blogs: 'blog'
-
+    portals: 'portal'
   path_names:
     my_adverts: 'iklan_saya'
 

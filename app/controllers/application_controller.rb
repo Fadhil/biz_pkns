@@ -45,6 +45,8 @@ class ApplicationController < ActionController::Base
     if current_user
       if current_user.walk_in_first_time?
         flash.now[:notice] = t('please_change_default_password')
+      elsif current_user.membership.nil?
+          flash.now[:notice] = t('please_become_a_member')
       elsif current_user.confirmed && !current_user.profile_complete? 
         unless current_user.admin?
           flash.now[:notice] = t('please_complete_your_profile')

@@ -1,11 +1,12 @@
 BizPkns::Application.routes.draw do
 
+
+
   resources :blogs
 
   mount RedactorRails::Engine => '/redactor_rails'
 
   localized do
-
     put 'make_member/:id' => 'users#make_member', as: :make_member
     match 'select_program/:program_id' => 'consultants#select_program', as: :select_program
     post 'update_attendance', to: 'members#update_attendance', as: 'update_attendance'
@@ -100,6 +101,9 @@ BizPkns::Application.routes.draw do
     #   collection { post :import }
     # end
 
+    scope '/portal' do
+      get 'home' => 'portals#home'
+    end
     get "pages/welcome", as: 'welcome_page'
     get "pages/adview", as: 'adview'
     get "consultants/:id/contact", :to => "consultants#contact", :as => 'contact_consultant'
