@@ -437,6 +437,8 @@ bm:
       name: 'Nama Perunding'
     my_courses:
       title: 'Kursus Yang Saya Hadiri'
+    contact:
+      title: 'Hubungi'
 
   businesses:
     index:
@@ -785,6 +787,8 @@ bm:
     businesses: 'perniagaan'
     adverts: 'iklan'
     reports: 'laporan'
+    contact: 'hubungi'
+    blogs: 'blog'
 
   path_names:
     my_adverts: 'iklan_saya'
