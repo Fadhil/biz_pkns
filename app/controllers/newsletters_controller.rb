@@ -63,7 +63,7 @@ class NewslettersController < ApplicationController
           users = the_program.users
         end
       when 'users_by_course'
-        if params[newsletter_course_select].present?
+        if params[:newsletter_course_select].present?
           the_course = Course.find(params[:newsletter_course_select])
           users = the_course.users
         end
