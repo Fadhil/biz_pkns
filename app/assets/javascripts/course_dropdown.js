@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  survey_program_select = $('#survey_program_select')
+  survey_program_select = $('input[name$="program_select"]:first')
   survey_program_select.change(function(){
   survey_course_select = $('#survey_course_select')
     $.ajax({

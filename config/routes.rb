@@ -67,7 +67,11 @@ BizPkns::Application.routes.draw do
     resources :pkns_users
     resources :businesses
     namespace :newsletters do resources :templates end
-    resources :newsletters
+    resources :newsletters do
+      member do
+        post 'send_newsletter' => 'newsletters#send_newsletter', as: :send_user
+      end
+    end
     resources :past_attendances, except: [ :update, :destroy, :edit ] do
       collection do
         get 'uploaded'
