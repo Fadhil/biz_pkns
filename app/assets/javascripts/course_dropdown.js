@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  survey_program_select = $('input[name$="program_select"]:first')
+  survey_program_select = $('#survey_program_select')
   survey_program_select.change(function(){
   survey_course_select = $('#survey_course_select')
     $.ajax({
@@ -38,7 +38,7 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-  newsletter_program_select = $('input[name$="program_select"]:first')
+  newsletter_program_select = $('#newsletter_program_select')
   newsletter_program_select.change(function(){
   newsletter_course_select = $('#newsletter_course_select')
     $.ajax({
