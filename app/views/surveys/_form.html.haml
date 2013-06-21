@@ -10,11 +10,11 @@
   .control-group
     = f.label t('start_date'), :class => 'control-label'
     .controls
-      = f.date_select :start_date, :class => 'date_select datepicker', :include_blank => true
+      = f.text_field :start_date, :class => 'start_date datepicker', :include_blank => true
   .control-group
     = f.label t('end_date'), :class => 'control-label'
     .controls
-      = f.date_select :end_date, :class => 'date_select datepicker', :include_blank => true
+      = f.text_field :end_date, :class => 'end_date datepicker', :include_blank => true
 
   .control-group.questions
     %h4= t('questions')
