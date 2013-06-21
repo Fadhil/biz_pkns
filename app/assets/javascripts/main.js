@@ -10,10 +10,10 @@ $(document).ready(function(){
           alert('Hello!');
         }
     });
-    // $(".end_date").datepicker({ 
-    //     numberOfMonths: 1,
-    //     onSelect: function(selected) {
-    //        $(".start_date").datepicker("option","maxDate", selected)
-    //     }
-    // });  
+    $(".end_date").datepicker({ 
+        numberOfMonths: 1,
+        onSelect: function(selected) {
+           $(".start_date").datepicker("option","maxDate", selected)
+        }
+    });  
 });
