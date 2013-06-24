@@ -8,83 +8,84 @@
   .control-group
     = f.label t('.select_advert_type'), class: 'control-label'
     .controls
-      = select_tag 'select_advert_type', options_for_select([[t('.course_advert'), 'Course'], [t('.product_advert'), 'Product']], selected: @advert.advert_type ), disabled: disabled
-#product_advert.hide
-
-  = form_for @advert, :html => { :class => 'form-horizontal' } do |f|
-    .control-group
-      = f.label t('name'), :class => 'control-label'
-      .controls
-        = f.text_field :title, :class => 'text_field', disabled: disabled
-    .control-group
-      = f.label t('.content'), :class => 'control-label'
-      .controls
-        = f.text_area :content, :class => 'text_area_large', disabled: disabled
-    - if !f.object.new_record?
-      - if !@advert.photo.nil?
-        .control-group
-          .controls
-            = image_tag(@advert.photo.file)
-    = f.fields_for :photo do |p|
+      = select_tag 'select_advert_type', options_for_select([[t('.course_advert'), 'Course'], [t('.product_advert'), 'Product']], selected: @advert.advert_type || params[:select_advert_type]), onChange: "submit();"#, disabled: disabled
+= form_for @advert, :html => { :class => 'form-horizontal' } do |f|
+  - if params[:select_advert_type] == 'Product'
+    #product_advert
       .control-group
-        = p.label t('.upload_photo'), class: 'control-label'
+        = f.label t('name'), :class => 'control-label'
         .controls
-          = p.file_field :file, disabled: disabled
-        .small-text
-          = t('image_should_be_this_size')
-   
-    .control-group
-      = f.label t('advert_start_date'), :class => 'control-label'
-      .controls
-        = f.text_field :start_date, :class => 'text_field datepicker'
-    .control-group
-      = f.label t('advert_end_date'), :class => 'control-label'
-      .controls
-        = f.text_field :end_date, :class => 'text_field datepicker'
-        = f.hidden_field :advert_type, value: 'Product'
-        = f.hidden_field :admin_created, value: 1
-    .form-actions
-      - if f.object.new_record?
-        = f.submit t('create_advert'), :class => 'btn btn-primary'
-      - else
-        = f.submit t('update'), :class => 'btn btn-primary'
-      = link_to t('cancel', :default => t("helpers.links.cancel")), adverts_path, :class => 'btn'
-
-#course_advert
-  = form_for @advert, :html => { :class => 'form-horizontal' } do |f|
-    - if !f.object.new_record?
-      - if !@advert.photo.new_record?
-        .control-group
-          .controls
-            = image_tag(f.object.photo.file)
-    = f.fields_for :photo do |p|
+          = f.text_field :title, :class => 'text_field', disabled: disabled
       .control-group
-        = p.label t('.upload_photo'), class: 'control-label'
+        = f.label t('.content'), :class => 'control-label'
         .controls
-          = p.file_field :file, disabled: disabled
-        .small-text
-          = t('image_should_be_this_size')
+          = f.text_area :content, :class => 'text_area_large', disabled: disabled
+      - if !f.object.new_record?
+        - if !@advert.photo.nil?
+          .control-group
+            .controls
+              = image_tag(@advert.photo.file)
+      = f.fields_for :photo do |p|
+        .control-group
+          = p.label t('.upload_photo'), class: 'control-label'
+          .controls
+            = p.file_field :file, disabled: disabled
+          .small-text
+            = t('image_should_be_this_size')
+     
+      .control-group
+        = f.label t('advert_start_date'), :class => 'control-label'
+        .controls
+          = f.text_field :start_date, :class => 'datepicker'
+      .control-group
+        = f.label t('advert_end_date'), :class => 'control-label'
+        .controls
+          = f.text_field :end_date, :class => 'datepicker'
+          = f.hidden_field :advert_type, value: 'Product'
+          = f.hidden_field :admin_created, value: 1
+      .form-actions
+        - if f.object.new_record?
+          = f.submit t('create_advert'), :class => 'btn btn-primary'
+        - else
+          = f.submit t('update'), :class => 'btn btn-primary'
+        = link_to t('cancel', :default => t("helpers.links.cancel")), adverts_path, :class => 'btn'
 
-    .control-group
-      = f.label t('.select_course'), class: 'control-label'
-      .controls
-        = select_tag 'advert_program_select', options_for_select(Program.all.map{|a| [a.name, a.id]}), disabled: disabled
-        = select_tag 'advert_course_select', options_for_select(Course.where(program_id: Program.first.id).map{ |a| [a.name,a.id]}), disabled: disabled
-  
-    .control-group
-      = f.label t('advert_start_date'), :class => 'control-label'
-      .controls
-        = f.text_field :start_date, :class => 'text_field datepicker'
-    .control-group
-      = f.label t('advert_end_date'), :class => 'control-label'
-      .controls
-        = f.text_field :end_date, :class => 'text_field datepicker'
-        = f.hidden_field :advert_type, value: 'Course'
-        = f.hidden_field :admin_created, value: 1
-    .form-actions
-      - if f.object.new_record?
-        = f.submit t('create_advert'), :class => 'btn btn-primary'
-      - else
-        = f.submit t('update'), :class => 'btn btn-primary'
-      = link_to t('cancel', :default => t("helpers.links.cancel")), adverts_path, :class => 'btn'
+  - else
+    #course_advert
+
+      - if !f.object.new_record?
+        - if !@advert.photo.new_record?
+          .control-group
+            .controls
+              = image_tag(f.object.photo.file)
+      = f.fields_for :photo do |p|
+        .control-group
+          = p.label t('.upload_photo'), class: 'control-label'
+          .controls
+            = p.file_field :file, disabled: disabled
+          .small-text
+            = t('image_should_be_this_size')
+
+      .control-group
+        = f.label t('.select_course'), class: 'control-label'
+        .controls
+          = select_tag 'advert_program_select', options_for_select(Program.all.map{|a| [a.name, a.id]}), disabled: disabled
+          = select_tag 'advert_course_select', options_for_select(Course.where(program_id: Program.first.id).map{ |a| [a.name,a.id]}), disabled: disabled
+    
+      .control-group
+        = f.label t('advert_start_date'), :class => 'control-label'
+        .controls
+          = f.text_field :start_date, :class => 'datepicker'
+      .control-group
+        = f.label t('advert_end_date'), :class => 'control-label'
+        .controls
+          = f.text_field :end_date, :class => 'datepicker'
+          = f.hidden_field :advert_type, value: 'Course'
+          = f.hidden_field :admin_created, value: 1
+      .form-actions
+        - if f.object.new_record?
+          = f.submit t('create_advert'), :class => 'btn btn-primary'
+        - else
+          = f.submit t('update'), :class => 'btn btn-primary'
+        = link_to t('cancel', :default => t("helpers.links.cancel")), adverts_path, :class => 'btn'
 
