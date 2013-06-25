@@ -7,12 +7,6 @@
   = @letter.subject
 %p
   = @letter.message.html_safe
-
-
-.form-actions
-  =# link_to t('.back', :default => t("helpers.links.back")), newsletters_path, :class => 'btn'
-  = link_to t('.edit', :default => t("helpers.links.edit")), edit_letter_path(@letter), :class => 'btn'
-
 %br
 %br
 %br
@@ -35,4 +29,5 @@
 
       .form-actions
         = f.submit nil, :class => 'btn btn-primary'
-        = link_to t('.cancel', :default => t("helpers.links.cancel")), newsletters_path, :class => 'btn'
+        = link_to t('.edit', :default => t("helpers.links.edit")), edit_letter_path(@letter), :class => 'btn'
+        = link_to t('.cancel', :default => t("helpers.links.cancel")), letters_path, :class => 'btn'

@@ -156,7 +156,7 @@ class LettersController < ApplicationController
       end
     end
     respond_to do |format|
-      format.html { redirect_to @newsletter, notice: the_notice }
+      format.html { redirect_to @letter, notice: the_notice }
     end
   end
 

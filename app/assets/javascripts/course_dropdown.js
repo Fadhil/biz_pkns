@@ -76,7 +76,44 @@ $(document).ready(function(){
   });
 });
 
+$(document).ready(function(){
+  letter_program_select = $('#letter_program_select')
+  letter_program_select.change(function(){
+  letter_course_select = $('#letter_course_select')
+    $.ajax({
+      type: 'GET',
+      url: '/course_dropdown',
+      data: {program_id: letter_program_select.val() },
+      success: function (response) {
+        letter_course_select.html(response);
+      }
+    });
+  });
+});
 
+$(document).ready(function(){
+  $('#letter_user_select').change(function(){
+    letter_program_select = $('#letter_program_select')
+    letter_course_select = $('#letter_course_select')
+    if($(this).val()=='users_by_program') {
+      letter_program_select.prop('disabled', false);
+      letter_program_select.show();
+      letter_course_select.hide();
+      letter_course_select.prop('disabled', true)
+    }else if($(this).val() == 'users_by_course') {
+      letter_program_select.prop('disabled', false);
+      letter_program_select.show();
+      letter_course_select.prop('disabled', false);
+      letter_course_select.show();
+    } else {
+      letter_program_select.prop('disabled', true);
+      letter_program_select.hide();
+      letter_course_select.prop('disabled', true);
+      letter_course_select.hide();
+
+    }
+  });
+});
 
 
 
