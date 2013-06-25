@@ -1,9 +1,5 @@
 BizPkns::Application.routes.draw do
 
-
-
-  #resources :blogs
-
   mount RedactorRails::Engine => '/redactor_rails'
 
   localized do
