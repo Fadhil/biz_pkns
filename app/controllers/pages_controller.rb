@@ -105,4 +105,8 @@ class PagesController < ApplicationController
   def contact
 
   end
+
+  def portal
+    @blogs = Blog.all(:order => "created_at DESC", :limit => 5)
+  end
 end

@@ -9,7 +9,7 @@
 %p
   %strong= model_class.human_attribute_name(:content) + ':'
   %br
-  = @blog.content
+  = @blog.content.html_safe
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), blogs_path, :class => 'btn'
