@@ -87,6 +87,7 @@ gem 'daemons'
 gem 'delayed_job_web'
 gem 'foreman'
 gem 'aws-ses', require: 'aws/ses'
+gem 'friendly_id'
 # gem 'roo', '~> 1.9.5'
 
 # To use ActiveModel has_secure_password

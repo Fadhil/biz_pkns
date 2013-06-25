@@ -2,7 +2,7 @@ BizPkns::Application.routes.draw do
 
 
 
-  resources :blogs
+  #resources :blogs
 
   mount RedactorRails::Engine => '/redactor_rails'
 
@@ -70,7 +70,7 @@ BizPkns::Application.routes.draw do
     resources :members
     resources :educations
     resources :skills
-    resources :blog
+    resources :blogs
     resources :attendance_list
     resources :pkns_users
     resources :businesses
