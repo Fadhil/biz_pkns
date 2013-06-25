@@ -1,31 +1,31 @@
 = form_for @letter, :html => { :class => 'form-horizontal' } do |f|
-  %h4=t '.recipient'
-  .control-group
-    = f.label t('.name'), :class => 'control-label'
-    .controls
-      = f.text_field :first_name, :class => 'text_field', :value => @user.first_name
-      = f.text_field :last_name, :class => 'text_field', :value => @user.last_name
-      = f.text_field :user_id, :value => @user.id, type: "hidden"
+  / %h4=t '.recipient'
+  / .control-group
+  /   = f.label t('.name'), :class => 'control-label'
+  /   .controls
+  /     = f.text_field :first_name, :class => 'text_field', :value => @user.first_name
+  /     = f.text_field :last_name, :class => 'text_field', :value => @user.last_name
+  /     = f.text_field :user_id, type: "hidden", :value => @user.id
 
-  %h4=t '.address'
-  .control-group
-    = f.label t('.address'), :class => 'control-label'
-    .controls
-      = f.text_field :line1, :class => 'text_field', :placeholder => 'Baris 1', :value => @user.address.line1
-  .control-group
-    .controls
-      = f.text_field :line2, :class => 'text_field', :placeholder => 'Baris 2', :value => @user.address.line2
-  .control-group
-    .controls
-      = f.text_field :postcode, :class => 'text_field input-mini', :placeholder => 'Poskod', :value => @user.address.postcode
-  .control-group
-    = f.label t('.city'), :class => 'control-label'
-    .controls
-      = f.text_field :city, :class => 'text_field', :placeholder => 'Bandar', :value => @user.address.city.name
-  .control-group
-    = f.label t('.state'), :class => 'control-label'
-    .controls
-      = f.text_field :state, :class => 'text_field', :placeholder => 'Negeri', :value => @user.address.city.state_name
+  / %h4=t '.address'
+  / .control-group
+  /   = f.label t('.address'), :class => 'control-label'
+  /   .controls
+  /     = f.text_field :line1, :class => 'text_field', :placeholder => 'Baris 1', :value => @user.address.line1
+  / .control-group
+  /   .controls
+  /     = f.text_field :line2, :class => 'text_field', :placeholder => 'Baris 2', :value => @user.address.line2
+  / .control-group
+  /   .controls
+  /     = f.text_field :postcode, :class => 'text_field input-mini', :placeholder => 'Poskod', :value => @user.address.postcode
+  / .control-group
+  /   = f.label t('.city'), :class => 'control-label'
+  /   .controls
+  /     = f.text_field :city, :class => 'text_field', :placeholder => 'Bandar', :value => @user.address.city.name
+  / .control-group
+  /   = f.label t('.state'), :class => 'control-label'
+  /   .controls
+  /     = f.text_field :state, :class => 'text_field', :placeholder => 'Negeri', :value => @user.address.city.state_name
 
   %h4=t '.compose'
   .control-group
@@ -38,5 +38,5 @@
       = f.text_area :message, :class => 'redactor', :rows => 40, :cols => 520
       
   .form-actions
-    = f.submit t('.update'), :class => 'btn btn-primary'
+    = f.submit nil, :class => 'btn btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), letters_path, :class => 'btn'
