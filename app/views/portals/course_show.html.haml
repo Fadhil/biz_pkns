@@ -1,0 +1,86 @@
+- model_class = Course
+.page-header
+  %h1= t @course.name
+%dl.dl-horizontal
+  %dt
+    %strong
+      = t('course_type')
+      \:
+  %dd= @course.course_type
+  %dt
+    %strong
+      = t('description')
+      \:
+  %dd= @course.description
+  %dt
+    %strong
+      = t('start_date')
+      \:
+  %dd= @course.start_date
+  %dt
+    %strong
+      = t('end_date')
+      \:
+  %dd= @course.end_date
+  %dt
+    %strong
+      = t('venue')
+      \:
+  %dd= @course.venue
+  %dt
+    %strong
+      = t('pax')
+      \:
+  %dt
+  %dd= @course.pax
+  %dt
+    %strong
+      = t('status')
+      \:
+  %dd= !@course.status.blank? || @course.status? ? t('active') : t('inactive')
+
+-if current_user
+  - if !current_user.courses.include?(@course) && !current_user.admin?
+    = form_tag user_course_registration_path({id: @course.id, user_id: current_user.id}), method: :put do
+      = button_tag t('register_course'), data: { confirm: t('confirm_register_course') }, class: 'btn'
+                                                         
+
+  %br
+  %br    
+  - if @course.attendance_list.attendees.count > 0                     
+    .preattendance
+      %h4
+        Preattendance List
+      %table.table.table-striped
+        %thead
+          %tr
+            %th{ :style => 'width: 5px;'}
+              ID
+            %th
+              Name
+            %th
+              Email
+            %th
+              IC Number
+        %tbody
+          - @course.attendance_list.attendees.each_with_index do |attendee, index|
+            %tr
+              %td
+                = index + 1
+              %td
+                - if attendee.name.nil?
+                  = attendee.full_name
+                - else
+                  = attendee.name
+              %td
+                = attendee.email
+              %td
+                = attendee.ic_number
+             
+
+      .span2
+        %h5 
+          = t('number_of_attendees')
+      .span2
+        %h5
+          = "#{@course.attendance_list.attendees.count}/#{@course.attendance_list.max_attendees}"
