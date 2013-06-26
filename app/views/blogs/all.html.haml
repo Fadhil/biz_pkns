@@ -21,10 +21,10 @@
   %div.row
     %div.span8
       - @blogs.each do |blog|
-        %b=link_to blog.title, blog_path(blog)
+        %b=link_to blog.title, show_blog_path(blog)
         %br
         = truncate(blog.content, :length => 500).html_safe
-        = link_to t('.read_more'), blog_path(blog)
+        = link_to t('.read_more'), show_blog_path(blog)
         %br
         = "Tag : "
         = raw blog.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')

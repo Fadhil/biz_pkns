@@ -21,9 +21,9 @@
   %thead
     %tr
       %th= model_class.human_attribute_name(:id)
-      %th= model_class.human_attribute_name(:title)
+      %th= t('.subject')
       %th= "Tag"
-      %th=t '.actions', :default => t("helpers.actions")
+      %th
   %tbody
     - @blogs.each do |blog|
       %tr

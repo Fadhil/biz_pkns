@@ -601,6 +601,29 @@ bm:
       question_breakdown: 'Analisa Soalan'
       question: 'Soalan'
 
+  blogs:
+    index:
+      title: 'Urus blog'
+      new: 'Cipta Blog'
+      edit: 'Kemaskini'
+      destroy: 'Padam'
+      cancel: 'Batal'
+      subject: 'Tajuk'
+    new:
+      title: 'Tambah blog baru'
+    form:
+      title: 'Tajuk'
+      category: 'Kategori'
+      tag: 'Tag'
+      content: 'Kandungan'
+      cancel: 'Batal'
+    edit:
+      title: 'Kemaskini blog'
+    show:
+      edit: 'Kemaskini'
+      destroy: 'Padam'
+    all:
+
   adverts:
     form:
       upload_photo: 'Muatnaik gambar iklan'
