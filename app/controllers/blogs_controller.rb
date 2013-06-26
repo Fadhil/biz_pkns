@@ -2,12 +2,8 @@ class BlogsController < ApplicationController
   load_and_authorize_resource
   # GET /blogs
   # GET /blogs.json
-  def index
-    if params[:tag]
-      @blogs = Blog.tagged_with(params[:tag])
-    else
-      @blogs = Blog.all
-    end
+  def index    
+    @blogs = Blog.send(params[:filter] || 'all')
     
     respond_to do |format|
       format.html # index.html.erb
@@ -90,7 +86,7 @@ class BlogsController < ApplicationController
     if params[:tag]
       @blogs = Blog.tagged_with(params[:tag])
     else
-      @blogs = Blog.all
+      @blogs = Blog.send(params[:filter] || 'all')
     end
     
     respond_to do |format|

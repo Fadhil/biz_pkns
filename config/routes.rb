@@ -17,6 +17,7 @@ BizPkns::Application.routes.draw do
     match "portal" => "pages#portal", as: :portal
     get  '/upcoming_courses' => 'pages#upcoming_courses', as: :course_listing
     get 'blogs/tag/:tag', to: 'blogs#all', as: :tag
+    match 'blog', to: 'blogs#all', as: :category_blog
     scope '/upcoming_courses' do 
        match '/:id' => 'pages#upcoming_courses_show', as: :course_details
        match '/:id/user/:user_id' => 'pages#register_user', as: :user_course_registration

@@ -5,7 +5,10 @@
 %p
   %strong= @blog.title
   %br
-  %small=@blog.created_at.strftime("%d %b %y")
+  %small
+    =@blog.created_at.strftime("%d %b %y")
+    = " | "
+    =@blog.category
 %p
   = simple_format @blog.content#.html_safe
   ="Tag :"

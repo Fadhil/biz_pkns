@@ -113,6 +113,7 @@ GEM
       activesupport (>= 3.1, < 4.1)
       haml (>= 3.1, < 4.1)
       railties (>= 3.1, < 4.1)
+    has_scope (0.5.1)
     hashery (2.1.0)
     hike (1.2.3)
     hpricot (0.8.6)
@@ -290,6 +291,7 @@ DEPENDENCIES
   friendly_id
   googlecharts
   haml-rails (>= 0.3.4)
+  has_scope
   html2haml
   i18n_routing
   jquery-rails

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130625133540) do
+ActiveRecord::Schema.define(:version => 20130626072437) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(:version => 20130625133540) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "slug"
+    t.string   "category"
   end
 
   add_index "blogs", ["slug"], :name => "index_blogs_on_slug", :unique => true

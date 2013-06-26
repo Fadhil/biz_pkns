@@ -1,6 +1,22 @@
+:css
+  .filter {margin-left:-25px; margin-bottom:20px;}
+  ul li {display: inline;}
+
 - model_class = Blog
 .page-header
   %h1=t '.title', :default => model_class.model_name.human.pluralize
+%div.filter
+  %ul
+    %li= link_to_unless params[:filter].nil?, "Semua", blogs_path
+    = " | " 
+    %li= link_to_unless_current "Umum", blogs_path(filter: :general)
+    = " | "
+    %li= link_to_unless_current "Berita", blogs_path(filter: :news)
+    = " | " 
+    %li= link_to_unless_current "Keusahawanan", blogs_path(filter: :entrepreneurship)
+    = " | " 
+    %li= link_to_unless_current "Pemasaran", blogs_path(filter: :marketing)
+
 %table.table.table-striped
   %thead
     %tr
