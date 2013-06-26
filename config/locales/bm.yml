@@ -623,7 +623,18 @@ bm:
       edit: 'Kemaskini'
       destroy: 'Padam'
     all:
+      title: 'Urus blog'
+      new: 'Cipta Blog'
+      edit: 'Kemaskini'
+      destroy: 'Padam'
+      cancel: 'Batal'
+      subject: 'Tajuk'
 
+  portals:
+    home:
+      title: 'Berita Semasa'
+    contact:
+    about:
   adverts:
     form:
       upload_photo: 'Muatnaik gambar iklan'
