@@ -10,6 +10,8 @@ BizPkns::Application.routes.draw do
     get "newsletters/new/:id" => 'newsletters#use_template', as: "use_template"
     get "newsletters/preview/:id" => 'newsletters#preview', as: "preview_newsletter"
     get "letters/history" => 'letters#history', as: "letters_history"
+    get "letters/list" => 'letters#list', as: "letters_list"
+    get "letters/preview/:id" => 'letters#preview', as: "preview_letter"
     match 'consultation' => "pages#consultation", as: :consultation
     match 'my_courses' => "pages#my_courses", as: :user_course_listing
     match 'program_users' => "members#program_member_list", as: :program_user_listing
@@ -86,7 +88,12 @@ BizPkns::Application.routes.draw do
       end
     end
     resources :business_categories
-    resources :letters
+    resources :letters do
+      member do
+        post 'send_letter' => 'letters#send_letter', as: :send_user
+        match 'generate_letter' => 'letters#generate_letter', as: :generate
+      end
+    end
     resources :surveys do
       member do
         post 'send_survey' => 'surveys#send_survey', as: :send_user
@@ -105,6 +112,8 @@ BizPkns::Application.routes.draw do
     scope '/portal' do
       get 'home' => 'portals#home'
       get 'contact' => 'portals#contact'
+      get 'course' => 'portals#course'
+      get 'course/:id' => 'portals#course_show', as: :portal_course_show
     end
     get "pages/welcome", as: 'welcome_page'
     get "pages/adview", as: 'adview'
