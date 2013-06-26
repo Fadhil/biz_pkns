@@ -23,6 +23,7 @@ class LettersController < ApplicationController
   def show
     @letter = Letter.find(params[:id])
 
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @letter }
@@ -33,6 +34,47 @@ class LettersController < ApplicationController
                               type: "application/pdf",
                               disposition: "inline"
     end
+    end
+  end
+
+  def generate_letter
+    the_notice=t('successfully_sent_letter')
+    @users = []
+    @letter = Letter.find(params[:id])
+    if params[:letter_user_select].present?
+      case params[:letter_user_select]
+      when 'all_users'
+        @users = User.nonadmin
+      when 'members'
+        @users = User.nonadmin.members
+      when 'nonmembers'
+        @users = User.nonadmin.nonmembers
+      when 'users_by_program'
+        if params[:letter_program_select].present?
+          the_program = Program.find(params[:letter_program_select])
+          @users = the_program.users
+        end
+      when 'users_by_course'
+        if params[:letter_course_select].present?
+          the_course = Course.find(params[:letter_course_select])
+          @users = the_course.users
+        end
+      else
+        @users = User.nonadmin
+      end
+    end
+
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @letter }
+      format.pdf do
+        #pdf = Prawn::Document.new
+        pdf = LetterPdf.new(@letter)
+        send_data pdf.render, filename: "surat_#{@letter.subject}".downcase.gsub(' ', '_'),
+                                type: "application/pdf",
+                                disposition: "inline"
+      end
     end
   end
 
@@ -156,7 +198,7 @@ class LettersController < ApplicationController
       end
     end
     respond_to do |format|
-      format.html { redirect_to @letter, notice: the_notice }
+      format.html { redirect_to generate_letter_path(@letter, users: users), notice: the_notice, users: users}
     end
   end
 

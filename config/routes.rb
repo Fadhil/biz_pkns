@@ -90,6 +90,7 @@ BizPkns::Application.routes.draw do
     resources :letters do
       member do
         post 'send_letter' => 'letters#send_letter', as: :send_user
+        match 'generate_letter' => 'letters#generate_letter', as: :generate
       end
     end
     resources :surveys do

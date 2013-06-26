@@ -1,31 +1,27 @@
 class LetterPdf < Prawn::Document
-    #include SessionHelper
-  def initialize(letter, user)
+include ApplicationHelper
+  def initialize(letter, users=User.all)
     super(top_margin: 140)
-    @letter = letter
-    text "#{@letter.full_name}"
-    text "#{@letter.line1}"
-    text "#{@letter.line2}"
-    text "#{@letter.postcode}"
-    text "#{@letter.city} #{@letter.state}"
+    users.each do |user|
+        text "#{user.full_name}"
+        text full_address_text(user)
 
-    move_down 20
-    text "#{@letter.date}"
+        move_down 20
+        text "#{letter.date}"
 
-    move_down 20
-    text "Kepada #{@letter.full_name},"
+        move_down 20
+        text "Kepada #{letter.full_name},"
 
-    move_down 15
-    text "#{@letter.message}".gsub("<p>","").gsub("</p>","\n\n").gsub("<br>","\n\n").gsub("<div>","").gsub("</div>","").gsub("&nbsp;"," ").html_safe, :inline_format => true
+        move_down 15
+        text "#{letter.message}".gsub("<p>","").gsub("</p>","\n\n").gsub("<br>","\n\n").gsub("<div>","").gsub("</div>","").gsub("&nbsp;"," ").html_safe, :inline_format => true
 
-    move_down 20
-    text "Yang Bertugas,".html_safe
+        move_down 20
+        text "Yang Bertugas,".html_safe
 
-    move_down 3
-    text @letter.sender_name(user)
+        move_down 3
+        text letter.sender_name(user)
+        start_new_page
+    end
   end
 
-  def message
-    
-  end
 end
