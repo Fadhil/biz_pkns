@@ -15,4 +15,9 @@
         %li= "Tel : 03-5511 3514/1727  Faks : 03 - 5511 1716 "
         %li= "Emel : info@pknsbizdata.com"
 
+      = form_for @message, :url => create_message_path do |f|
+        = f.text_field :name, :placeholder => "Nama"
+        = f.text_field :email, :placeholder => "Email"
+        = f.text_area :content, :placeholder => "Mesej"#, as: :text
+        = f.button :submit
 

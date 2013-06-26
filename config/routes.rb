@@ -14,6 +14,7 @@ BizPkns::Application.routes.draw do
     match 'my_courses' => "pages#my_courses", as: :user_course_listing
     match 'program_users' => "members#program_member_list", as: :program_user_listing
     match "contact" => "pages#contact", as: :contact
+    match 'create_message' => 'messages#create', as: :create_message
     get  '/upcoming_courses' => 'pages#upcoming_courses', as: :course_listing
     get 'blogs/tag/:tag', to: 'blogs#all', as: :tag
     match 'blog', to: 'blogs#all', as: :category_blog
