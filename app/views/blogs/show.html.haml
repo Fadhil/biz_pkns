@@ -3,13 +3,13 @@
   %h1=t '.title', :default => model_class.model_name.human
 
 %p
-  %strong= model_class.human_attribute_name(:title) + ':'
+  %strong= @blog.title
   %br
-  = @blog.title
+  %small=@blog.created_at.strftime("%d %b %y")
 %p
-  %strong= model_class.human_attribute_name(:content) + ':'
-  %br
   = @blog.content.html_safe
+  ="Tag :"
+  = raw @blog.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), blogs_path, :class => 'btn'

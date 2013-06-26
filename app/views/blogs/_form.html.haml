@@ -4,6 +4,10 @@
     .controls
       = f.text_field :title, :class => 'text_field input-xxlarge'
   .control-group
+    = f.label :tag_list, t('.tags')
+    .controls
+      = f.text_field :tag_list
+  .control-group
     = f.label :content, :class => 'control-label'
     .controls
       = f.text_area :content, :class => 'text_area redactor'

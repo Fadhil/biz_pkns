@@ -3,8 +3,12 @@ class BlogsController < ApplicationController
   # GET /blogs
   # GET /blogs.json
   def index
-    @blogs = Blog.all
-
+    if params[:tag]
+      @blogs = Blog.tagged_with(params[:tag])
+    else
+      @blogs = Blog.all
+    end
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @blogs }
@@ -79,6 +83,19 @@ class BlogsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to blogs_url }
       format.json { head :no_content }
+    end
+  end
+
+  def all
+    if params[:tag]
+      @blogs = Blog.tagged_with(params[:tag])
+    else
+      @blogs = Blog.all
+    end
+    
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @blogs }
     end
   end
 end

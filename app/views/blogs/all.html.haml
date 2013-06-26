@@ -1,0 +1,21 @@
+.page-header
+  %h1=t '.title'
+%div.container
+  %div.row
+    %div.span8
+      - @blogs.each do |blog|
+        %b=link_to blog.title, blog_path(blog)
+        %br
+        = truncate(blog.content, :length => 500).html_safe
+        = link_to t('.read_more'), blog_path(blog)
+        %br
+        = "Tag : "
+        = raw blog.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')
+        %br
+        %br
+
+      =#link_to t('.see_more'), blogs_path, :class => 'btn btn-mini'
+      
+
+    %div.span5
+      %ul
