@@ -20,6 +20,6 @@ class ConsultantMailer < ActionMailer::Base
     @emailsender = from
     @emailsubject = subject
     @emailmessage = message
-    mail to: consultant.email, subject: @emailsubject, cc: "1.shahida@gmail.com" #, from: %("#{@emailname}" <#{@emailsender}>)
+    mail to: consultant.email, subject: @emailsubject, cc: "1.shahida@gmail.com" , from: "\"#{@emailname}\" <#{@emailsender}>"
   end
 end

@@ -28,10 +28,10 @@ class Consultant < ActiveRecord::Base
 
   before_create :default_name
 
-  # include MailForm::Delivery
+   include MailForm::Delivery
 
   # #append :remote_ip, :user_agent, :session
-  # attributes :name, :from, :subject, :message, :created_at
+   attributes :name, :from, :subject, :message, :created_at
 
   # scope :active, where(active: true)
 
