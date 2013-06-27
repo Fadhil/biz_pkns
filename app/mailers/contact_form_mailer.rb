@@ -6,6 +6,6 @@ class ContactFormMailer < ActionMailer::Base
     @email = email
     @content = content
 
-    mail to: "epi.skywalker@gmail.com", subject: "Contact", cc: "1.shahida@gmail.com" #, from: %("#{@emailname}" <#{@emailsender}>)
+    mail to: "admin@pknsbizclub.com", subject: "Contact", cc: "1.shahida@gmail.com" #, from: %("#{@emailname}" <#{@emailsender}>)
   end
 end
