@@ -20,6 +20,7 @@ class UsersController < ApplicationController
       @users = @users.send(params[:filter])
     end
     @klass = Class
+    @users = Kaminari.paginate_array(@users).page(params[:page]).per(6)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @users }

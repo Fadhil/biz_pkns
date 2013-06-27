@@ -48,6 +48,12 @@ gem 'twitter-bootstrap-rails',"2.2.6" #"~> 2.0rc0"
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
+  # gem 'twitter-bootstrap-rails', "~> 2.0rc0"
+  # gem 'compass-rails', :git => 'git://github.com/Compass/compass-rails.git'
+  # gem 'modular-scale'
+  gem "modernizr-rails"
+  gem "gumby-framework"
+  gem "angularjs-rails"
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby

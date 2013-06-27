@@ -3,10 +3,9 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    
     if current_user && ( current_user.admin? )
       @courses = Course.order(:start_date).order(:status).page(params[:page])
-    elsif current_consultant 
+    elsif current_consultant
       #todo use session[:current_program_id]
       if session[:current_program_id].nil?
         @courses = []
