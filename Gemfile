@@ -84,7 +84,7 @@ end
 
 group :production do
   gem 'pg'
-  gem 'fog', "1.3.1"
+  gem 'fog', "~>1.3.1"
 end
 
 gem 'jquery-rails'
