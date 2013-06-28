@@ -1,65 +1,80 @@
 - model_class = User
-.page-header
-  %h1= t('.title')
 = form_tag '', method: :get do
-  .row-fluid
-    .span3
-      = label :search, :city, t('search_by_name')
-      = text_field_tag 'search_term','', name: 'search[term]'
-    .span3
-      = label :search, :skill, t('search_by_skill')
-      = select :search, :skill, Skill.order(:name).map{|a| [a.name,a.id]}, {:include_blank => true, selected: ''}
-    .span3
-      = label :search, :state, t('search_by_state')
-      = select :search, :state, City.order(:state_name).map{|a| [a.state_name,a.state_name]}.uniq, {:include_blank => true, selected: ''}
-    .span3
-      %br/
-      = button_tag t('search'), class: 'btn btn-success', :style => "margin-top:8px;" 
-      %br/
-  .row-fluid
-    .span12
-      %table.table.table-striped
-        %thead
-          %tr
-            %th{:style => "width:auto"}= t('name')
-            %th= t('membership_num')
-            %th{:style => "width:250px;"}= t('program')
-            %th{:style => "width:200px;"}= t('status')
-        %tbody
-          - @users.each_with_index do |user,i|
-            %tr
-              %td= link_to "#{user.first_name} #{user.last_name}", user_path(user)
-              %td
-                - if user.confirmed? && user.membership
-                  = user.membership.member_number
-                - else
-                  NIL
-              %td
-                - user.programs.uniq.each do |program|
-                  %p= program.name
-              - if user.current_employment_status == 'own_business'
-                %td Pemilik Perniagaan
-              - elsif user.current_employment_status == 'working_studying'
-                %td Bekerja/Belajar
-              - elsif user.current_employment_status == 'studying'
-                %td Belajar
-              - elsif user.current_employment_status == 'working_self_business'
-                %td Bekerja/Perniagaan Sendiri
-              - elsif user.current_employment_status == 'Belajar/Perniagaan Sampingan'
-                %td Pemilik Perniagaan
-              - else
-                %td Nil
-              %td
-                -# if can? :read, :all
-                - if cannot? :consultation, :pages
-                  = link_to t('view'),                        
-                  '', :class => 'btn btn-mini disabled'
-                - else 
-                  = link_to t('view'),                        
-                  user_path(user), :class => 'btn btn-secondary btn-mini'
-                - if can? :manage, :all
-                  =link_to t('destroy', :default => t("helpers.links.destroy")),
-                              user_path(user),
-                              :method => :delete,
-                              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => t('are_you_sure'))) },
-                              :class => 'btn btn-mini btn-danger'
+  .row
+    %h3.eleven.columns
+      = t('.title')
+    .one.columns.filter
+      %span.toggle
+        %i.icon-search{:'gumby-trigger' => "#search-drawer"}
+  .row
+    #search-drawer.twelve.columns
+      .row
+        .four.columns.field
+          = label :search, :city, t('search_by_name')
+          = text_field_tag 'search_term','', name: 'search[term]', :placeholder => 'Search..', :class => 'text input'
+        .four.columns.field
+          = label :search, :skill, t('search_by_skill')
+          .picker
+            = select :search, :skill, Skill.order(:name).map{|a| [a.name,a.id]}, {:include_blank => true, selected: ''}
+        .four.columns.field
+          = label :search, :state, t('search_by_state')
+          .picker
+            = select :search, :state, City.order(:state_name).map{|a| [a.state_name,a.state_name]}.uniq, {:include_blank => true, selected: ''}
+      .row
+        .two.columns
+          %span.pretty.medium.primary.btn
+            = button_tag t('search')
+.table
+  .row.table-head
+    .two.columns
+      %h6.title= t('membership_num')
+    .four.columns
+      %h6.title= t('name')
+    .four.columns
+      %h6.title= t('program')
+    .two.columns
+      %h6.title= t('status')
+  - @users.each_with_index do |user,i|
+    .row.table-rows
+      .two.columns
+        - if user.confirmed? && user.membership
+          %p= user.membership.member_number
+        - else
+          %p NIL
+      .four.columns
+        %p
+          = link_to "#{user.first_name} #{user.last_name}", user_path(user), :class => 'name'
+          %small.warning.label
+            - if user.current_employment_status == 'own_business'
+              Pemilik Perniagaan
+            - elsif user.current_employment_status == 'working_studying'
+              Bekerja/Belajar
+            - elsif user.current_employment_status == 'studying'
+              Belajar
+            - elsif user.current_employment_status == 'working_self_business'
+              Bekerja/Perniagaan Sendiri
+            - elsif user.current_employment_status == 'Belajar/Perniagaan Sampingan'
+              Pemilik Perniagaan
+            - else
+              %td Nil
+      .four.columns
+        - user.programs.uniq.each do |program|
+          %p= program.name
+      .two.columns
+        .row
+          .twelve.columns
+          .twelve.columns
+            - if cannot? :consultation, :pages
+              %span.pretty.small.btn.primary
+                = link_to t('view'), ''
+            - else
+              %span.pretty.small.btn.info.icon-left.entypo.icon-list-add
+                = link_to t('view'), user_path(user)
+          .twelve.columns
+            - if can? :manage, :all
+              %span.pretty.small.btn.danger.icon-left.entypo.icon-trash
+                =link_to t('destroy', :default => t("helpers.links.destroy")),
+                            user_path(user),
+                            :method => :delete,
+                            :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => t('are_you_sure'))) }
+  = paginate @users

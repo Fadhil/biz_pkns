@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 
   def welcome
-    @adverts = Advert.active
+    render :layout => 'static'
   end
 
   def consultation
@@ -26,8 +26,8 @@ class PagesController < ApplicationController
     user = User.find(params[:user_id]) rescue nil
     course = Course.find(params[:id]) rescue nil
 
-    if user && course 
-      if !course.full?
+    if user && course
+      if course.attendance_list.attendees.count < course.attendance_list.max_attendees
         user.courses.push course unless user.courses.include?(course)
         user.save
         update_attendance_list(course, user)
@@ -35,27 +35,24 @@ class PagesController < ApplicationController
       else
         redirect_to course_details_path(course), alert: t('course_is_full')
       end
-
     else
-      
       redirect_to course_details_path(course), alert: t('invalid_request')
     end
   end
 
   def update_attendance_list(course,user)
-    attendee = Attendee.create( user_id: user.id, 
+    attendee = Attendee.create( user_id: user.id,
                                 first_name: user.first_name,
                                 last_name: user.last_name,
-                                email: user.email, 
+                                email: user.email,
                                 ic_number: user.ic_number)
     if course.attendance_list.attendees.count < course.attendance_list.max_attendees
       course.attendance_list.attendees.push attendee
     end
-  end 
-  
+  end
+
   def upcoming_courses_show
     @course = Course.find(params[:id])
-    
   end
 
   def my_courses
@@ -64,14 +61,12 @@ class PagesController < ApplicationController
     if current_user
       @courses = current_user.courses
     end
-
   end
 
   def business_directory
     @users = User.joins(:business_profiles)
 
     if params[:search].present?
-
       unless params[:search][:category] == ''
         category = params[:search][:category]
       end
@@ -96,6 +91,7 @@ class PagesController < ApplicationController
     else
       @users = User.joins(:business_profiles).uniq
     end
+    @users = Kaminari.paginate_array(@users).page(params[:page]).per(6)
   end
 
   def adview

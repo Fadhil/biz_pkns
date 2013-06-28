@@ -1,4 +1,5 @@
 class MembersController < ApplicationController
+  # require 'Kaminari'
   #load_and_authorize_resource
   # GET /users
   # GET /users.json
@@ -21,8 +22,7 @@ class MembersController < ApplicationController
         end
       end
     end
-    
-
+    @users = Kaminari.paginate_array(@users).page(params[:page]).per(10)
   end
 
   # GET /users/1

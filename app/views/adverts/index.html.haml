@@ -1,167 +1,184 @@
 - model_class = Advert
-.page-header
-  %h1=t '.title', :default => model_class.model_name.human.pluralize
-%br
-= link_to t('.new', :default => t("helpers.links.new")), new_advert_path, :class => 'btn btn-primary'
-%br
-%br
-%table.table.table-striped
-  %thead
-    %h4= t('active_adverts')
-    %tr
-      %th.short-column
-        No
-      %th
-        = t('name')
-      %th
-        = t('advert_type')
-      %th
-        = t('start_date')
-      %th
-        = t('end_date')
-      %th.short-column
-        = t('active')
-      %th.short-column
-        = t('paid_for')
-      %th.short-column
-        = t('weight')
-      %th
-  %tbody
-
-    - @active_adverts.each_with_index do |advert, index|
-      %tr
-        %td= index + 1
-        %td= advert.title
-        %td= advert.advert_type
-        %td
-          = advert.start_date
-        %td
-          = advert.end_date
-        %td.short-column
-          = form_for advert, url: activate_advert_path(advert) do |f|
-            = f.check_box :active, onClick: "submit();"
-        %td.short-column
-          = form_for advert, url: activate_advert_path(advert) do |f|
-            = f.check_box :paid_for, onClick: "submit();"
-        %td.short-column
-          = form_for advert, url: activate_advert_path(advert) do |f|
-            = f.select :weight, options_for_select(['1','2','3','4','5','7','8','9','10'], selected: advert.weight ),{} ,{ onChange: "submit();", class: 'short-select'}
-        %td
-          = link_to t('view'), advert_path(advert), class: 'btn btn-mini'
-          =# link_to t('edit', :default => t("helpers.links.edit")), edit_advert_path(advert), :class => 'btn btn-mini'
-          =# link_to t('destroy', :default => t("helpers.links.destroy")), advert_path(advert), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
-
-%br
-%table.table.table-striped
-  %thead
-    %h4= t('pending_adverts')
-    %tr
-      %th.short-column
-        No
-      %th
-        = t('name')
-      %th
-        = t('advert_type')
-      %th
-        = t('start_date')
-      %th
-        = t('end_date')
-      %th.short-column
-        = t('active')
-      %th.short-column
-        = t('paid_for')
-      %th
-  %tbody
-
-    - @pending_adverts.each_with_index do |advert, index|
-      %tr
-        %td= index + 1
-        %td= advert.title
-        %td= advert.advert_type
-        %td
-          = advert.start_date
-        %td
-          = advert.end_date
-        %td.short-column
-          = form_for advert, url: activate_advert_path(advert) do |f|
-            = f.check_box :active, onClick: "submit();"
-        %td.short-column
-          = form_for advert, url: activate_advert_path(advert) do |f|
-            = f.check_box :paid_for, onClick: "submit();"
-        %td
-          = link_to t('view'), advert_path(advert), class: 'btn btn-mini'
-          =# link_to t('edit', :default => t("helpers.links.edit")), edit_advert_path(advert), :class => 'btn btn-mini'
-          =# link_to t('destroy', :default => t("helpers.links.destroy")), advert_path(advert), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
-
-
-
-%br
-%table.table.table-striped
-  %thead
-    %h4= t('inactive_adverts')
-    %tr
-      %th.short-column
-        No
-      %th
-        = t('name')
-      %th
-        = t('advert_type')
-      %th
-        = t('start_date')
-      %th
-        = t('end_date')
-      %th.short-column
-        = t('active')
-      %th.short-column
-        = t('paid_for')
-      %th
-  %tbody
-
-    - @inactive_adverts.each_with_index do |advert, index|
-      %tr
-        %td= index + 1
-        %td= advert.title
-        %td= t(advert.advert_type.downcase)
-        %td
-          = advert.start_date
-        %td
-          = advert.end_date
-        %td.short-column
-          - if advert.request_status == 'approved' || advert.admin_created?
-            = form_for advert, url: activate_advert_path(advert) do |f|
-              = f.check_box :active, onClick: "submit();"
-          - else
-            = t('not_yet_approved')
-        %td.short-column
-          = form_for advert, url: activate_advert_path(advert) do |f|
-            = f.check_box :paid_for, onClick: "submit();"
-        %td
-          = link_to t('view'), advert_path(advert), class: 'btn btn-mini'
-          =# link_to t('edit', :default => t("helpers.links.edit")), edit_advert_path(advert), :class => 'btn btn-mini'
-          =# link_to t('destroy', :default => t("helpers.links.destroy")), advert_path(advert), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
-
-
-%br
-%table.table.table-striped
-  %thead
-    %h4= t('.advert_request_history')
-    %tr
-      %th.short-column
-        No
-      %th
-        = t('title')
-      %th
-        = t('date_requested')
-      %th
-        = t('action')
-  %tbody
-
-    - @advert_transactions.each_with_index do |advert, index|
-      %tr
-        %td= index + 1
-        %td= advert.title
-        %td
-          = advert.created_at
-        %td
-          = advert.advert_action
-        
+.row
+  %h3.eight.columns
+    =t '.title', :default => model_class.model_name.human.pluralize
+  .four.columns.action
+    - if can? :manage, Course
+      %span.pretty.medium.primary.btn.entypo.icon-left.icon-list-add
+        = link_to t('.new', :default => t("helpers.links.new")), new_advert_path
+.row
+  .twelve.columns
+    %hr
+    %section.pill.tabs
+      %ul.tab-nav
+        %li.active
+          = link_to t('active_adverts'), '#'
+        %li
+          = link_to t('pending_adverts'), '#'
+        %li
+          = link_to t('inactive_adverts'), '#'
+      .tab-content.active
+        .table
+          .row.table-head
+            .one.columns
+              %h6 No
+            .three.columns
+              %h6.title= t('name')
+            .two.columns
+              %h6.title= t('advert_type')
+            .two.columns
+              %h6.title= t('weight')
+            .one.columns
+              %h6.title= t('paid_for')
+            .one.columns
+              %h6.title= t('active')
+            .one.columns
+              %h6.title= t('status')
+          - @active_adverts.each_with_index do |advert, index|
+            .row.table-rows
+              .one.columns
+                %p= index + 1
+              .three.columns
+                %p
+                  = link_to advert.title, advert_path(advert), :class => 'name'
+                  .row
+                    %small.label.info
+                      Tarikh :
+                      = "#{advert.start_date} - #{advert.end_date}"
+              .two.columns
+                %p
+                  = advert.advert_type
+              .two.columns
+                = form_for advert, url: activate_advert_path(advert) do |f|
+                  .picker
+                    = f.select :weight, options_for_select(['1','2','3','4','5','7','8','9','10'], selected: advert.weight ),{} ,{ onChange: "submit();", class: 'short-select'}
+              .one.columns
+                = form_for advert, url: activate_advert_path(advert) do |f|
+                  = f.check_box :paid_for, onClick: "submit();"
+              .one.columns
+                = form_for advert, url: activate_advert_path(advert) do |f|
+                  = f.check_box :active, onClick: "submit();"
+              .one.columns
+                .row
+                  .twelve.columns
+                  .twelve.columns
+                    %span.pretty.small.btn.info.icon-left.entypo.icon-eye
+                      = link_to t('view'), advert_path(advert)
+                  .twelve.columns
+                    %span.pretty.small.btn.warning.icon-left.entypo.icon-list-add
+                      = link_to t('view'), edit_advert_path(advert)
+                  .twelve.columns
+                    %span.pretty.small.btn.danger.icon-left.entypo.icon-trash
+                      = link_to t('destroy', :default => t("helpers.links.destroy")), advert_path(advert),
+                        :method => :delete,
+                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }
+      .tab-content
+        .table
+          .row.table-head
+            .one.columns
+              %h6 No
+            .three.columns
+              %h6.title= t('name')
+            .two.columns
+              %h6.title= t('advert_type')
+            .two.columns
+              %h6.title= t('weight')
+            .one.columns
+              %h6.title= t('paid_for')
+            .one.columns
+              %h6.title= t('active')
+            .one.columns
+              %h6.title= t('status')
+          - @pending_adverts.each_with_index do |advert, index|
+            .row.table-rows
+              .one.columns
+                %p= index + 1
+              .three.columns
+                %p
+                  = link_to advert.title, advert_path(advert), :class => 'name'
+                  .row
+                    %small.label.info
+                      Tarikh :
+                      = "#{advert.start_date} - #{advert.end_date}"
+              .two.columns
+                %p
+                  = advert.advert_type
+              .two.columns
+                = form_for advert, url: activate_advert_path(advert) do |f|
+                  .picker
+                    = f.select :weight, options_for_select(['1','2','3','4','5','7','8','9','10'], selected: advert.weight ),{} ,{ onChange: "submit();", class: 'short-select'}
+              .one.columns
+                = form_for advert, url: activate_advert_path(advert) do |f|
+                  = f.check_box :paid_for, onClick: "submit();"
+              .one.columns
+                = form_for advert, url: activate_advert_path(advert) do |f|
+                  = f.check_box :active, onClick: "submit();"
+              .one.columns
+                .row
+                  .twelve.columns
+                  .twelve.columns
+                    %span.pretty.small.btn.info.icon-left.entypo.icon-eye
+                      = link_to t('view'), advert_path(advert)
+                  .twelve.columns
+                    %span.pretty.small.btn.warning.icon-left.entypo.icon-list-add
+                      = link_to t('view'), edit_advert_path(advert)
+                  .twelve.columns
+                    %span.pretty.small.btn.danger.icon-left.entypo.icon-trash
+                      = link_to t('destroy', :default => t("helpers.links.destroy")), advert_path(advert),
+                        :method => :delete,
+                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }
+      .tab-content
+        .table
+          .row.table-head
+            .one.columns
+              %h6 No
+            .three.columns
+              %h6.title= t('name')
+            .two.columns
+              %h6.title= t('advert_type')
+            .two.columns
+              %h6.title= t('weight')
+            .one.columns
+              %h6.title= t('paid_for')
+            .one.columns
+              %h6.title= t('active')
+            .one.columns
+              %h6.title= t('status')
+          - @inactive_adverts.each_with_index do |advert, index|
+            .row.table-rows
+              .one.columns
+                %p= index + 1
+              .three.columns
+                %p
+                  = link_to advert.title, advert_path(advert), :class => 'name'
+                  .row
+                    %small.label.info
+                      Tarikh :
+                      = "#{advert.start_date} - #{advert.end_date}"
+              .two.columns
+                %p
+                  = advert.advert_type
+              .two.columns
+                = form_for advert, url: activate_advert_path(advert) do |f|
+                  .picker
+                    = f.select :weight, options_for_select(['1','2','3','4','5','7','8','9','10'], selected: advert.weight ),{} ,{ onChange: "submit();", class: 'short-select'}
+              .one.columns
+                = form_for advert, url: activate_advert_path(advert) do |f|
+                  = f.check_box :paid_for, onClick: "submit();"
+              .one.columns
+                = form_for advert, url: activate_advert_path(advert) do |f|
+                  = f.check_box :active, onClick: "submit();"
+              .one.columns
+                .row
+                  .twelve.columns
+                  .twelve.columns
+                    %span.pretty.small.btn.info.icon-left.entypo.icon-eye
+                      = link_to t('view'), advert_path(advert)
+                  .twelve.columns
+                    %span.pretty.small.btn.warning.icon-left.entypo.icon-list-add
+                      = link_to t('view'), edit_advert_path(advert)
+                  .twelve.columns
+                    %span.pretty.small.btn.danger.icon-left.entypo.icon-trash
+                      = link_to t('destroy', :default => t("helpers.links.destroy")), advert_path(advert),
+                        :method => :delete,
+                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }

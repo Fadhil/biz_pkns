@@ -36,6 +36,7 @@ GEM
       rails (>= 3, < 5)
     addressable (2.3.4)
     afm (0.2.0)
+    angularjs-rails (1.0.7)
     arel (3.0.2)
     aws-ses (0.5.0)
       builder
@@ -109,7 +110,10 @@ GEM
     formatador (0.2.4)
     friendly_id (4.0.9)
     googlecharts (1.6.8)
-    haml (4.0.3)
+    gumby-framework (0.0.1)
+      jquery-rails
+      modernizr-rails
+    haml (4.0.2)
       tilt
     haml-rails (0.4)
       actionpack (>= 3.1, < 4.1)
@@ -157,7 +161,8 @@ GEM
     mime-types (1.23)
     mini_magick (3.6.0)
       subexec (~> 0.2.1)
-    multi_json (1.7.6)
+    modernizr-rails (2.6.2.3)
+    multi_json (1.7.1)
     mysql2 (0.3.11)
     nested_form (0.3.2)
     net-scp (1.0.4)
@@ -279,6 +284,7 @@ PLATFORMS
 DEPENDENCIES
   active_attr
   acts-as-taggable-on
+  angularjs-rails
   aws-ses
   cancan
   capybara
@@ -294,6 +300,7 @@ DEPENDENCIES
   foreman
   friendly_id
   googlecharts
+  gumby-framework
   haml-rails (>= 0.3.4)
   has_scope
   html2haml
@@ -305,6 +312,7 @@ DEPENDENCIES
   mail_form
   mailjet
   mini_magick
+  modernizr-rails
   mysql2
   nested_form
   pg
