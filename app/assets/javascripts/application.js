@@ -13,9 +13,9 @@
 //= require modernizr.min
 //= require jquery.min
 //= require jquery-ui.min
-//= require redactor-rails
 //= require jquery_ujs
 //= require jquery_nested_form
+//= require redactor-rails
 //= require angular
 //= require gumby.min
 //= require_tree
