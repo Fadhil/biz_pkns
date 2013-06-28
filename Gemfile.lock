@@ -261,6 +261,10 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     ttfunk (1.0.3)
+    twitter-bootstrap-rails (2.2.6)
+      actionpack (>= 3.1)
+      execjs
+      railties (>= 3.1)
     tzinfo (0.3.37)
     uglifier (2.1.1)
       execjs (>= 0.3.0)
@@ -278,7 +282,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_attr
+  acts-as-taggable-on
   angularjs-rails
+  aws-ses
   cancan
   capybara
   carrierwave
@@ -318,5 +325,6 @@ DEPENDENCIES
   shoulda-matchers
   sqlite3
   therubyracer
+  twitter-bootstrap-rails (= 2.2.6)
   uglifier (>= 1.0.3)
   whenever
