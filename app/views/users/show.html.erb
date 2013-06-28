@@ -153,7 +153,7 @@
             <tr><th colspan="2"><center>
 
                   <% unless bp.business_logo.nil? %>
-                    <%# unless bp.business_logo.file.nil? %><%#= image_tag(bp.business_logo.file, :size => '150x150') %><% end %>
+                    <%# unless bp.business_logo.file.nil? %><%#= image_tag(bp.business_logo.file, :size => '150x150') %><%# end %>
                   <% end %>
                
 
@@ -194,7 +194,7 @@
                     <th>Penerangan Gambar</th>
                     <td><%= bp.business_photo.caption %></td>
                   </tr>
-                <% end %>
+                <%# end %>
               <% end %>
             <% end %>
           <% end %>
