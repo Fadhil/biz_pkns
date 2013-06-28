@@ -11,8 +11,7 @@
           <div class="whitespace">
             <span class="aleft">
               <% unless @user.profile_photo.nil? %>
-                <%= debug @user.profile_photo %>
-                <%#= image_tag(@user.profile_photo.file, size: '70x70') %>
+                <%= image_tag(@user.profile_photo.file, size: '70x70') %>
               <% end %>
             </span>
             <span class="aright">
@@ -153,7 +152,7 @@
             <tr><th colspan="2"><center>
 
                   <% unless bp.business_logo.nil? %>
-                    <%# unless bp.business_logo.file.nil? %><%#= image_tag(bp.business_logo.file, :size => '150x150') %><%# end %>
+                    <% unless bp.business_logo.file.nil? %><%= image_tag(bp.business_logo.file, :size => '150x150') %><% end %>
                   <% end %>
                
 
@@ -188,13 +187,13 @@
                 <td><%= bp.registration_number unless bp.nil?%></td>
               </tr>
               <% unless bp.business_photo.nil? %>
-                <%# unless bp.business_photo.file.nil?%>
-                  <tr><td colspan="2"><%#= image_tag(bp.business_photo.file, :size => '250x250') %></td></tr>
+                <% unless bp.business_photo.file.nil?%>
+                  <tr><td colspan="2"><%= image_tag(bp.business_photo.file, :size => '250x250') %></td></tr>
                   <tr>
                     <th>Penerangan Gambar</th>
                     <td><%= bp.business_photo.caption %></td>
                   </tr>
-                <%# end %>
+                <% end %>
               <% end %>
             <% end %>
           <% end %>
