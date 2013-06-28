@@ -31,7 +31,7 @@ gem 'haml-rails', '>= 0.3.4'
 gem 'html2haml'
 
 #pagination
-#gem 'kaminari'
+gem 'kaminari'
 
 # localized routes
 gem 'i18n_routing'
