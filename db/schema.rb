@@ -45,9 +45,9 @@ ActiveRecord::Schema.define(:version => 20130626072437) do
     t.boolean  "active"
     t.integer  "weight"
     t.integer  "capacity"
-    t.text     "content"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.text     "content",           :limit => 255
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.string   "course_type"
     t.string   "program_name"
     t.date     "course_start_date"
@@ -352,6 +352,90 @@ ActiveRecord::Schema.define(:version => 20130626072437) do
   add_index "redactor_assets", ["assetable_type", "assetable_id"], :name => "idx_redactor_assetable"
   add_index "redactor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_redactor_assetable_type"
 
+  create_table "refinery_images", :force => true do |t|
+    t.string   "image_mime_type"
+    t.string   "image_name"
+    t.integer  "image_size"
+    t.integer  "image_width"
+    t.integer  "image_height"
+    t.string   "image_uid"
+    t.string   "image_ext"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "refinery_page_part_translations", :force => true do |t|
+    t.integer  "refinery_page_part_id"
+    t.string   "locale"
+    t.text     "body"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  add_index "refinery_page_part_translations", ["locale"], :name => "index_refinery_page_part_translations_on_locale"
+  add_index "refinery_page_part_translations", ["refinery_page_part_id"], :name => "index_f9716c4215584edbca2557e32706a5ae084a15ef"
+
+  create_table "refinery_page_parts", :force => true do |t|
+    t.integer  "refinery_page_id"
+    t.string   "title"
+    t.text     "body"
+    t.integer  "position"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "refinery_page_parts", ["id"], :name => "index_refinery_page_parts_on_id"
+  add_index "refinery_page_parts", ["refinery_page_id"], :name => "index_refinery_page_parts_on_refinery_page_id"
+
+  create_table "refinery_page_translations", :force => true do |t|
+    t.integer  "refinery_page_id"
+    t.string   "locale"
+    t.string   "title"
+    t.string   "custom_slug"
+    t.string   "menu_title"
+    t.string   "slug"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "refinery_page_translations", ["locale"], :name => "index_refinery_page_translations_on_locale"
+  add_index "refinery_page_translations", ["refinery_page_id"], :name => "index_d079468f88bff1c6ea81573a0d019ba8bf5c2902"
+
+  create_table "refinery_pages", :force => true do |t|
+    t.integer  "parent_id"
+    t.string   "path"
+    t.string   "slug"
+    t.boolean  "show_in_menu",        :default => true
+    t.string   "link_url"
+    t.string   "menu_match"
+    t.boolean  "deletable",           :default => true
+    t.boolean  "draft",               :default => false
+    t.boolean  "skip_to_first_child", :default => false
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.integer  "depth"
+    t.string   "view_template"
+    t.string   "layout_template"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+  end
+
+  add_index "refinery_pages", ["depth"], :name => "index_refinery_pages_on_depth"
+  add_index "refinery_pages", ["id"], :name => "index_refinery_pages_on_id"
+  add_index "refinery_pages", ["lft"], :name => "index_refinery_pages_on_lft"
+  add_index "refinery_pages", ["parent_id"], :name => "index_refinery_pages_on_parent_id"
+  add_index "refinery_pages", ["rgt"], :name => "index_refinery_pages_on_rgt"
+
+  create_table "refinery_resources", :force => true do |t|
+    t.string   "file_mime_type"
+    t.string   "file_name"
+    t.integer  "file_size"
+    t.string   "file_uid"
+    t.string   "file_ext"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
   create_table "responses", :force => true do |t|
     t.integer  "user_id"
     t.integer  "question_id"
@@ -366,14 +450,54 @@ ActiveRecord::Schema.define(:version => 20130626072437) do
   end
 
   create_table "roles_users", :force => true do |t|
-    t.integer "role_id"
-    t.integer "user_id"
+    t.integer  "user_id"
+    t.integer  "role_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
+
+  add_index "roles_users", ["role_id"], :name => "index_roles_users_on_role_id"
+  add_index "roles_users", ["user_id"], :name => "index_roles_users_on_user_id"
+
+  create_table "seo_meta", :force => true do |t|
+    t.integer  "seo_meta_id"
+    t.string   "seo_meta_type"
+    t.string   "browser_title"
+    t.string   "meta_keywords"
+    t.text     "meta_description"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "seo_meta", ["id"], :name => "index_seo_meta_on_id"
+  add_index "seo_meta", ["seo_meta_id", "seo_meta_type"], :name => "index_seo_meta_on_seo_meta_id_and_seo_meta_type"
 
   create_table "skills", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.integer  "experience"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "survey_sections", :force => true do |t|
+    t.integer  "survey_id"
+    t.string   "title"
+    t.text     "description"
+    t.string   "reference_identifier"
+    t.string   "data_export_identifier"
+    t.string   "common_namespace"
+    t.string   "common_identifier"
+    t.integer  "display_order"
+    t.string   "custom_class"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+  end
+
+  create_table "survey_translations", :force => true do |t|
+    t.integer  "survey_id"
+    t.string   "locale"
+    t.text     "translation"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -416,6 +540,14 @@ ActiveRecord::Schema.define(:version => 20130626072437) do
     t.string "name"
   end
 
+  create_table "user_plugins", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.integer  "position"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "ic_number"
     t.string   "phone"
@@ -440,8 +572,7 @@ ActiveRecord::Schema.define(:version => 20130626072437) do
     t.boolean  "confirmed"
     t.boolean  "has_business_profile"
     t.string   "attended_course"
-    t.string   "has_attended_course"
-    t.boolean  "has_atended_course"
+    t.boolean  "has_attended_course"
     t.string   "gender"
     t.string   "twitter_handle"
     t.string   "facebook_handle"
@@ -471,6 +602,32 @@ ActiveRecord::Schema.define(:version => 20130626072437) do
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "validation_conditions", :force => true do |t|
+    t.integer  "validation_id"
+    t.string   "rule_key"
+    t.string   "operator"
+    t.integer  "question_id"
+    t.integer  "answer_id"
+    t.datetime "datetime_value"
+    t.integer  "integer_value"
+    t.float    "float_value"
+    t.string   "unit"
+    t.text     "text_value"
+    t.string   "string_value"
+    t.string   "response_other"
+    t.string   "regexp"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  create_table "validations", :force => true do |t|
+    t.integer  "answer_id"
+    t.string   "rule"
+    t.string   "message"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end
