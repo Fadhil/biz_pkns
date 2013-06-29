@@ -97,7 +97,7 @@ bm:
   not_present: 'Tidak Hadir'
   will_attend: 'Akan Hadir'
   cannot_attend: 'Tidak Layak Hadir'
-  profile: 'Profile'
+  profile: 'Profil'
   program: 'Program'
   question_type: 'Jenis Soalan'
   questions: 'Soalan'
@@ -703,7 +703,7 @@ bm:
 
   #Stuff in the header
   layouts:
-    header:
+    sidebar:
       member_directory: 'Direktori Ahli'
       list_of_courses: 'Senarai Kursus'
       upcoming_courses: 'Kursus Akan Datang'
@@ -711,6 +711,7 @@ bm:
       business_directory: 'Direktori Perniagaan'
       consultation: 'Perundingan'
       profile: 'Profil'
+      database: 'Database'
       consultant_profile: 'Profil Perunding'
       my_program: 'Program Saya'
       my_adverts: 'Iklan'
