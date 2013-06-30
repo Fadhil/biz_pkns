@@ -18,4 +18,5 @@
 //= require redactor-rails
 //= require angular
 //= require gumby.min
+//= require custom
 //= require_tree
