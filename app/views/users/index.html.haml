@@ -10,16 +10,12 @@
     #search-drawer.twelve.columns
       .row
         .four.columns.field
-          = label :search, :city, t('search_by_name')
-          = text_field_tag 'search_term','', name: 'search[term]', :placeholder => 'Search..', :class => 'text input'
+          = label :search, :name, t('search_by_name')
+          = text_field_tag 'search_name','', name: 'search[name]', :placeholder => 'Search..', :class => 'text input'
         .four.columns.field
-          = label :search, :skill, t('search_by_skill')
-          .picker
-            = select :search, :skill, Skill.order(:name).map{|a| [a.name,a.id]}, {:include_blank => true, selected: ''}
-        .four.columns.field
-          = label :search, :state, t('search_by_state')
-          .picker
-            = select :search, :state, City.order(:state_name).map{|a| [a.state_name,a.state_name]}.uniq, {:include_blank => true, selected: ''}
+          = label :search, :ic, t('search_by_ic')
+          = text_field_tag 'search_ic','', name: 'search[ic]', :placeholder => 'Search..', :class => 'text input'
+        
       .row
         .two.columns
           %span.pretty.medium.primary.btn.entypo.icon-left.icon-search

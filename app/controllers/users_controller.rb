@@ -5,14 +5,14 @@ class UsersController < ApplicationController
   def index
     @users = User.nonadmin
     if params[:search].present?
-      if params[:search][:term].blank?
+      if params[:search][:name].blank?
         @users = User.nonadmin.order("id desc")
-      elsif params[:search][:term].present?
-        search_terms = params[:search][:term].split(' ').join('%')
+      elsif params[:search][:name].present?
+        search_terms = params[:search][:name].split(' ').join('%')
         @users = User.nonadmin.where("concat(LOWER(first_name), ' ', LOWER(last_name)) like ?","%#{search_terms}%")
       end
 
-      if !params[:search][:ic].blank?
+      if params[:search][:ic].present?
         @users = @users.where(ic_number: params[:search][:ic])
       end
     end
