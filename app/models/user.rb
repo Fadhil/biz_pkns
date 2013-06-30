@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   scope :female, where(gender: 'f')
   before_save :default_values
   before_save :complete_profile
+  after_create :create_default_profile
 
   def default_values
     self.confirmed ||= 'false'
@@ -252,5 +253,22 @@ class User < ActiveRecord::Base
 
   def unfinished_surveys
     self.surveys.active.where('completed_surveys.completed is not true AND surveys.completed is not true')
+  end
+
+  def create_default_profile
+    self.create_default_profile_photo
+    self.create_default_last_name
+    self.save
+  end
+
+  def create_default_last_name
+    if self.last_name.blank?
+      self.last_name = 'Nama Bapa'
+    end
+  end
+
+  def create_default_profile_photo
+    self.build_profile_photo
+    self.profile_photo.save
   end
 end

@@ -26,7 +26,7 @@ class Consultant < ActiveRecord::Base
 
   has_many :adverts, dependent: :destroy
 
-  before_create :default_name
+  after_create :create_default_profile
 
    include MailForm::Delivery
 
@@ -46,9 +46,20 @@ class Consultant < ActiveRecord::Base
     super && self.is_active?
   end
 
-  def default_name
+  def create_default_profile
+    self.create_default_name
+    self.create_default_profile_photo
+    self.save
+  end
+
+  def create_default_name
     self.first_name = 'Perunding'
     self.last_name = 'Baru'
+  end
+
+  def create_default_profile_photo
+    self.build_profile_photo
+    self.profile_photo.save
   end
 
   def self.active

@@ -1,0 +1,152 @@
+- model_class = User
+.page-header
+  %h1= t('.title')
+.container
+  .row.wrapper
+    .span7.border-right
+      .row.border-bottom
+        .span3.border-right.container
+          .whitespace
+            %span.aleft
+              - unless @user.profile_photo.nil?
+                = image_tag(@user.profile_photo.file, size: '70x70')
+            %span.aright
+            #name= @user.full_name
+            %span
+              %b= t('gender')
+              - if @user.gender == 'm'
+                Lelaki
+              - elsif @user.gender == 'f'
+                Perempuan
+              - else
+                nil
+              %br/
+              %b= t('age')
+              = @user.age
+        .span2
+          .whitespace
+            %b T
+            - if @user.twitter_handle.blank?
+              NIL
+            - else
+              %a{:href => "http://twitter.com/#{@user.twitter_handle}", :title => ""}= @user.twitter_handle
+            %br/
+            %b F
+            - if @user.facebook_handle.blank?
+              NIL
+            - else
+              %a{:href => "http://facebook.com/#{@user.facebook_handle}", :title => ""}= @user.facebook_handle
+            %br/
+            %b P
+            - if @user.phone.blank?
+            - else
+              = @user.phone
+        .span1
+          .whitespace
+            - if @user.membership
+              = image_tag("#{@user.membership.category}.png") unless @user.membership.category.nil?
+      .row
+        .span4
+          %table.table
+            %tr
+              %th.header{:colspan => "2"} Latar Belakang Individu
+            %tr
+              %th= t('membership_status')
+              %td= @user.confirmed? ? "Unconfirmed" : "Confirmed"
+            %tr
+              %th= t('ic_number')
+              %td= @user.ic_number
+            %tr
+              %th= t('address')
+              %td
+                - if !@user.address.nil?
+                  - if !@user.try(:address).try(:line1).try(:blank?)
+                    = @user.address.line1
+                    = @user.address.line2
+                    = unless @user.address.city.nil? then @user.address.city.name end
+                    = @user.address.postcode
+                    = @user.address.city.state_name unless @user.address.city.nil?
+                  - else
+                    NIL
+                - else
+                  NIL
+            %tr
+              %th= t('.current_employment_status')
+              - status = @user.current_employment_status
+              %td= t(".employment_status.#{status}") unless @user.current_employment_status.blank?
+            %tr
+              %th Program
+              %td
+                %ul
+                  - @user.programs.each do |program|
+                    %li= program.name
+          %br/
+          %br/
+          %br/
+          %br/
+        .span3{:style => "margin-left:-5px;"}
+          - unless @user.education_background.empty?
+            %table.table
+              %tr
+                %th.header{:colspan => "2"} Latar Belakang Pendidikan
+              - @user.education_background.each do |background|
+                %tr
+                  %td
+                    = "#{background.education.name}"
+                  %td
+                    = "#{background.start_date} - #{background.end_date}"
+          - unless @user.experience.empty?
+            %table.table
+              %tr
+                %th.header{:colspan => "2"} Kemahiran
+              - @user.experience.each do |experience|
+                %tr
+                  %td
+                    - years = experience.experience.nil? ? '' : ", #{experience.experience} #{t('years')}"
+                    = "#{experience.skill.name} #{years}"
+    .span4
+      %div
+        %table.table
+          %tr
+            %th.header{:colspan => "2"} Maklumat Perniagaan
+          - unless @user.business_profiles.empty?
+            - @user.business_profiles.each do |bp|
+              - if !bp.company_name.blank?
+                %tr
+                  %th{:colspan => "2"}
+                    %center
+                      - unless bp.business_logo.nil?
+                        - unless bp.business_logo.file.nil?
+                          = image_tag(bp.business_logo.file, :size => '150x150')
+                %tr
+                  %th= t('.company_name')
+                  %td= bp.company_name unless bp.nil?
+                %tr
+                  %th= t('address')
+                  %td= bp.full_business_address
+                %tr
+                  %th= t('office_phone')
+                  %td= bp.phone
+                %tr
+                  %th= t('description')
+                  %td= bp.description unless bp.nil?
+                %tr
+                  %th= t('category')
+                  %td= bp.category unless bp.nil?
+                %tr
+                  %th= t('.type_of_business')
+                  %td= bp.type_of_business unless bp.nil?
+                %tr
+                  %th= t('.company_registration_number')
+                  %td= bp.registration_number unless bp.nil?
+                - unless bp.business_photo.nil?
+                  - unless bp.business_photo.file.nil?
+                    %tr
+                      %td{:colspan => "2"}= image_tag(bp.business_photo.file, :size => '250x250')
+                    %tr
+                      %th Penerangan Gambar
+                      %td= bp.business_photo.caption
+- if can? :manage, @user
+  .form-actions
+  = link_to t('edit', :default => t("helpers.links.edit")), |
+    edit_user_path(@user), :class => 'btn btn-flat'         |
