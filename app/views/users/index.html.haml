@@ -11,12 +11,19 @@
       .row
         .four.columns.field
           = label :search, :city, t('search_by_name')
+          = text_field_tag 'search_term','', name: 'search[term]', :placeholder => 'Search..', :class => 'text input'
+        .four.columns.field
+          = label :search, :skill, t('search_by_skill')
           .picker
-            = select_tag 'filter', options_for_select([[t('filter_by_non_member'), "nonmembers"], [t('filter_by_member'), "members"], [t('filter_all'),'']], params[:filter])
+            = select :search, :skill, Skill.order(:name).map{|a| [a.name,a.id]}, {:include_blank => true, selected: ''}
+        .four.columns.field
+          = label :search, :state, t('search_by_state')
+          .picker
+            = select :search, :state, City.order(:state_name).map{|a| [a.state_name,a.state_name]}.uniq, {:include_blank => true, selected: ''}
       .row
         .two.columns
           %span.pretty.medium.primary.btn.entypo.icon-left.icon-search
-            = button_tag t('search')
+            = button_tag t('search'), onClick: "alert('test');"
 .table
   .row.table-head
     .two.columns
