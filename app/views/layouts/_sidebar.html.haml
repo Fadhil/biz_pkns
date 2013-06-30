@@ -5,7 +5,7 @@
         %ul#sidebar-nav
           %li
             = link_to t('.member_directory'), members_path
-          %li
+          %li{:'ui-nav-dropdown' => 'ui-nav-dropdown'}
             = link_to t('.business_directory'), business_directory_path
             %ul.dropdown-menu
               %li
@@ -14,7 +14,7 @@
                 = link_to t('.add_modify_courses'), courses_path
           %li
             = link_to t('course'), courses_path
-          %li
+          %li{:'ui-nav-dropdown' => 'ui-nav-dropdown'}
             = link_to t('extra'), courses_path
             %ul.dropdown-menu
               %li
@@ -30,7 +30,7 @@
               = link_to t('.member_directory'), members_path
             %li
               = link_to t('.business_directory'), business_directory_path
-            %li
+            %li{:'ui-nav-dropdown' => 'ui-nav-dropdown'}
               = link_to '#' do
                 %span.left
                   %i.icon-archive
