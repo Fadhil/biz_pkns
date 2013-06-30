@@ -9,6 +9,7 @@ class Ability
       if resource.is_a?(User)
         if resource.admin?
           can :manage, :all
+          cannot [:edit, :update, :destroy], Survey, sent: true
         elsif resource.confirmed && resource.profile_complete? # Member
           can :manage, User, id: resource.id
           can :read, :all
@@ -25,6 +26,7 @@ class Ability
           cannot [:index, :edit, :update, :destroy], Survey
           cannot [:edit, :update, :destroy], Blog
           can :manage, Advert, user_id: resource.id
+          cannot [:edit, :update, :destroy], Survey, sent: true
           #cannot :all, :surveys, except: [:take]
         else
           #can :read, :all
@@ -52,6 +54,7 @@ class Ability
         can :manage, AttendanceList, program_id: resource.programs.all.map(&:id)
         can :manage, Survey
         can :manage, Advert, consultant_id: resource.id
+        cannot [:edit, :update, :destroy], Survey, sent: true
         cannot [:edit, :update, :destroy], Blog
 
       else 
