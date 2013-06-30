@@ -16,8 +16,6 @@
     %li.field
       = f.label t('password')
       = f.password_field :password, :class => 'password input', :placeholder => t('password')
-    %li.field
-      = f.submit t('.create_consultant'), :class => 'medium btn primary'
   .row
     .twelve.columns
       = f.label 'Pilih Program'
@@ -31,3 +29,6 @@
               = program.link_to_remove t('remove_program')
       = f.link_to_add t('add_program'), :consultants_programs
       = f.hidden_field :is_active, value: 1
+  %ul
+    %li.field
+      = f.submit t('.create_consultant'), :class => 'medium btn primary'

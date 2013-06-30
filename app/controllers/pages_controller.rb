@@ -4,6 +4,10 @@ class PagesController < ApplicationController
     render :layout => 'static'
   end
 
+  def home
+    @adverts = Advert.active
+  end
+
   def consultation
     authorize! :consultation, :pages, message: 'Anda perlu menjadi ahli untuk menggunakan perkhidmatan ini.'
     @consultants = Consultant.all
