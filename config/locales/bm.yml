@@ -269,6 +269,7 @@ bm:
     letters:
       title: 'Arkib Surat'
       subject: 'Perkara Surat'
+
     my_adverts:
       title: 'Iklan Saya'
       new: 'Daftar Iklan'
@@ -380,6 +381,13 @@ bm:
       name: 'Penerima'
       created_at: 'Dihantar pada'
       view: 'Papar'
+    list:
+      title: 'Senarai Surat'
+      subject: 'Perkara'
+      created_at: 'Tarikh'
+      preview: 'Papar'
+      index: 'No.'
+      new: 'Karang Surat'
 
   skills:
     index:
@@ -719,7 +727,7 @@ bm:
       administrate_user: 'Urus Ahli'
       administrate_pkns_user: 'Urus Operator PKNS'
       directory: 'Direktori'
-      new_letter: 'Karang Surat'
+      new_letter: 'Surat'
       new_consultant: 'Daftar Perunding'
       new_education: 'Daftar Bidang Pendidikan'
       new_business: 'Daftar Jenis Perniagaan'
