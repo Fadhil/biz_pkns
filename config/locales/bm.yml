@@ -10,6 +10,7 @@ bm:
   inactive_adverts: 'Senarai Iklan Tidak Aktif'
   pending_adverts: 'Senarai Iklan Menunggu'
   activate: 'Aktifkan'
+  attendee: 'Penghadir'
   add_program: 'Tambah Program'
   add_attendee: 'Daftar Ahli'
   add_questions: 'Tambah Soalan'
@@ -61,6 +62,7 @@ bm:
   gold: 'Gold'
   image_should_be_this_size: 'Pastikan imej bersaiz dimensi 100x200'
   invalid_request: 'Permintaan Tidak Sah'
+  login: 'Masuk'
   make_member: 'Jadikan Ahli'
   make_request: 'Permohonan Iklan'
   message: 'Mesej'
@@ -70,7 +72,7 @@ bm:
   member: 'Ahli'
   membership_num: 'No Keahlian'
   new: 'Baru'
-  new_consultant: 'Daftar Perunding Baru'
+  new_consultant: 'Daftar Perunding'
   new_business_category: 'Daftar Bidang Perniagaan'
   office_phone: 'No Tel Pejabat'
   old: 'Lama'
@@ -95,7 +97,7 @@ bm:
   not_present: 'Tidak Hadir'
   will_attend: 'Akan Hadir'
   cannot_attend: 'Tidak Layak Hadir'
-  profile: 'Profile'
+  profile: 'Profil'
   program: 'Program'
   question_type: 'Jenis Soalan'
   questions: 'Soalan'
@@ -469,6 +471,7 @@ bm:
 
   past_attendances:
     index:
+      attendee: 'Penghadir'
       title: 'Senarai Kehadiran Lama'
     uploaded:
       title: 'Senarai Kehadiran Yang Baru Dimuatnaik'
@@ -700,7 +703,7 @@ bm:
 
   #Stuff in the header
   layouts:
-    header:
+    sidebar:
       member_directory: 'Direktori Ahli'
       list_of_courses: 'Senarai Kursus'
       upcoming_courses: 'Kursus Akan Datang'
@@ -708,9 +711,11 @@ bm:
       business_directory: 'Direktori Perniagaan'
       consultation: 'Perundingan'
       profile: 'Profil'
+      database: 'Database'
       consultant_profile: 'Profil Perunding'
       my_program: 'Program Saya'
       my_adverts: 'Iklan'
+      my_courses: 'Kursus Saya'
       administrate_user: 'Urus Ahli'
       administrate_pkns_user: 'Urus Operator PKNS'
       directory: 'Direktori'

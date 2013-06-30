@@ -10,10 +10,13 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery
+//= require modernizr.min
+//= require jquery.min
+//= require jquery-ui.min
 //= require jquery_ujs
 //= require jquery_nested_form
-//= require_tree .
 //= require redactor-rails
-//= require jquery.slides
-//= require datepicker
+//= require angular
+//= require gumby.min
+//= require custom
+//= require_tree

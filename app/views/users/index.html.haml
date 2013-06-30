@@ -1,55 +1,73 @@
 - model_class = User
-.page-header
-  %h1= t '.title'
 = form_tag '', method: :get do
-  .row-fluid
-    .span3
-      = label :search, :name, t('search_by_name')
-      = text_field_tag 'search_term','', name: 'search[term]'
-    .span3
-      = label :search, :ic, t('search_by_ic_number')
-      = text_field_tag 'search_term','', name: 'search[ic]'
-    .span3
-      = label :filter, :city, t('filter_by_member')
-      = select_tag 'filter', options_for_select([[t('filter_all'),''],[t('filter_by_member'), "members"],[t('filter_by_non_member'), "nonmembers"]], params[:filter])
-    .span3
-      %br/
-      = button_tag t('search'), class: 'btn btn-success', :style => "margin-top:8px;" 
-      %br/
-%table.table.table-striped
-  %thead
-    %tr
-      %th= t('name')
-      %th= t('membership_num')
-      %th= t('program')
-  %tbody
-    - @users.each_with_index do |user,i|
-      %tr
-        %td= link_to "#{user.first_name} #{user.last_name}", user_path(user)
+  .row
+    %h3.ten.columns
+      = t('.title')
+    .two.columns.action
+      %span.pretty.medium.primary.btn.entypo.icon-left.icon-list-add
+        = link_to t('new', :default => t("helpers.links.new_user")), new_user_path
+  .row
+    #search-drawer.twelve.columns
+      .row
+        .four.columns.field
+          = label :search, :city, t('search_by_name')
+          = text_field_tag 'search_term','', name: 'search[term]', :placeholder => 'Search..', :class => 'text input'
+        .four.columns.field
+          = label :search, :skill, t('search_by_skill')
+          .picker
+            = select :search, :skill, Skill.order(:name).map{|a| [a.name,a.id]}, {:include_blank => true, selected: ''}
+        .four.columns.field
+          = label :search, :state, t('search_by_state')
+          .picker
+            = select :search, :state, City.order(:state_name).map{|a| [a.state_name,a.state_name]}.uniq, {:include_blank => true, selected: ''}
+      .row
+        .two.columns
+          %span.pretty.medium.primary.btn.entypo.icon-left.icon-search
+            = button_tag t('search'), onClick: 'submit();'
+.table
+  .row.table-head
+    .two.columns
+      %h6.title= t('membership_num')
+    .four.columns
+      %h6.title= t('name')
+    .four.columns
+      %h6.title= t('program')
+    .two.columns
+      %h6.title= t('status')
+  - @users.each_with_index do |user,i|
+    .row.table-rows
+      .two.columns
         - if user.membership.nil?
-          %td
+          %p NIL
         - else
-          %td= "#{user.membership.member_number}"
-
-        - if user.programs.empty?
-          %td
-        -else
-          %td
-            - user.programs.uniq.each do |p|
-              %p= "#{p.name}"
-        - if can? :manage, @user
-          %td
-            = link_to t('view', :default => t("helpers.links.edit")), user_path(user), :class => 'btn btn-mini'
-            -#
-            = link_to t('destroy', :default => t("helpers.links.destroy")), user_path(user),:method => :delete,:data => { :confirm => t('confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
-            - if user.membership.nil?
-              = link_to t('make_member'), make_member_path(user), method: :put, :class => 'btn btn-mini btn-red'
-            - else
-
-              = nested_form_for '', url: update_membership_user_path(user), method: :put do |f|
+          %p= user.membership.member_number
+      .four.columns
+        %p
+          = link_to "#{user.first_name} #{user.last_name}", user_path(user), :class => 'name'
+        .row
+          - if user.membership.nil?
+            %span.pretty.medium.btn.primary.entypo.icon-left.icon-user-add
+              = link_to t('make_member'), make_member_path(user), method: :put
+          - else
+            = nested_form_for '', url: update_membership_user_path(user), method: :put do |f|
+              .field
                 = f.fields_for :membership do |m|
-                  = select_tag 'membership[category]', options_for_select((MEMBER_CATEGORIES.map{|a| [t(a),a]}), user.membership.category), class: "membership", onchange: "$('#submit#{i}').click();"
-                  = f.submit( data: {confirm: t('confirm_category_change') }, id: "submit#{i}", class: 'hidden')
-- if can? :manage, @blog
-  = link_to t('new', :default => t("helpers.links.new_user")), new_user_path, :class => 'btn btn-primary'  
-
+                  .picker
+                    = select_tag 'membership[category]', options_for_select((MEMBER_CATEGORIES.map{|a| [t(a),a]}), user.membership.category), class: "membership", onchange: "$('#submit#{i}').click();"
+                  = f.submit( data: {confirm: t('confirm_category_change') }, id: "submit#{i}", class: 'hide')
+      .four.columns
+        - user.programs.uniq.each do |p|
+          %p= p.name
+      .two.columns
+        .row
+          .twelve.columns
+          .twelve.columns
+            %span.pretty.small.btn.info.icon-left.entypo.icon-list-add
+              = link_to t('view', :default => t("helpers.links.edit")), user_path(user)
+          .twelve.columns
+            %span.pretty.small.btn.danger.icon-left.entypo.icon-trash
+              =link_to t('destroy', :default => t("helpers.links.destroy")),
+                          user_path(user),
+                          :method => :delete,
+                          :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => t('are_you_sure'))) }
+  = paginate @users

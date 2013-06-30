@@ -1,60 +1,55 @@
-.page-header
-  - if current_consultant && !session[:current_program_id].nil?
-    %h1="#{t('.title')} #{session[:current_program_name]}"
-
-.pagination-left
-  = paginate @courses unless @courses.empty?
-
-
-%table.table.table-striped
+.row
+  %h3.ten.columns
+    - if current_consultant && !session[:current_program_id].nil?
+      ="#{t('.title')} #{session[:current_program_name]}"
+  .two.columns.action
+    - if can? :manage, Course
+      %span.pretty.medium.primary.btn.entypo.icon-left.icon-list-add
+        = link_to t('create_course', :default => t("helpers.links.new_user")), new_course_path
+.table
   - if current_consultant && session[:current_program_id].nil?
-    %h2=t('select_a_program_to_manage')
-  - else
-    %thead
-      %tr
-        %th
-          = t('course_name')
-        %th{:style => "width:100px;"}
-          = t('description')
-        %th
-          = t('program_name')
-        %th
-          = t('start_date')
-        %th
-          = t('end_date')
-        %th
-          = t('active')
-        %th
-        
-      %tbody
-        - @courses.each do |course|
-          %tr
-            %td
-              = link_to course.name, course_path(course)
-            %td
-              =# course.description
-              = truncate(course.description, :length => 80)
-            %td
-              = course.program.name unless course.program.nil?
-            %td
-              = course.start_date
-            %td
-              = course.end_date
-            %td
+    .row
+      .twelve.columns
+        %h4= t('select_a_program_to_manage')
+  -else
+    .row.table-head
+      .six.columns
+        %h6.title= t('course_name')
+      .four.columns
+        %h6.title= t('program_name')
+      .two.columns
+        %h6.title= t('status')
+    - @courses.each_with_index do |course, i|
+      .row.table-rows
+        .six.columns
+          %p
+            = link_to course.name, course_path(course), :class => 'name'
+          %p
+            = truncate(course.description, :length => 200)
+          .row
+            %small.label.info
+              = "#{t('status')} :"
               = course.status? ? t('active') : t('inactive')
-            %td{:style => "width:220px;"}
-              = mail_to "example@example.com", t('.share'), :subject => "Ada kursus menarik dari PKNS - #{course.try(:program).try(:name)}", :body => "Ada kursus menarik dari PKNS. Sila lewati #{"http://"+request.host+course_path(course)}. \n\nAnda perlu berdaftar dengan BizClub untuk hadiri kursus di #{new_user_registration_url}. \n\nMaklumat Kursus \nKursus : #{course.try(:program).try(:name)} \nHuraian : #{course.try(:program).try(:description)} \nTarikh : #{course.start_date}", :class => 'btn btn-mini'
-              = link_to t('view', :default => t("helpers.links.edit")),
-                            course_path(course), :class => 'btn btn-secondary btn-mini' 
-              - if can? :destroy, Course
-                =link_to t('destroy', :default => t("helpers.links.destroy")),
-                                course_path(course),
-                                :method => :delete,
-                                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => t('are_you_sure'))) },
-                                :class => 'btn btn-mini btn-danger'
-
-.pagination-left
-  = paginate @courses unless @courses.empty?
-
-- if can? :manage, Course
-  = link_to t('.create_course', :default => t("helpers.links.new")), new_course_path, :class => 'btn btn-primary' 
+            %small.label.info
+              = "#{t('start_date')} :"
+              = "#{course.start_date} - #{course.end_date}"
+        .four.columns
+          %p
+            = course.program.name unless course.program.nil?
+        .two.columns
+          .row
+            .twelve.columns
+            .twelve.columns
+              %span.pretty.small.btn.info.icon-left.entypo.icon-eye
+                = link_to t('view', :default => t("helpers.links.edit")), course_details_path(course)
+            .twelve.columns
+              %span.pretty.small.btn.warning.icon-left.entypo.icon-mail
+                = mail_to "example@example.com", t('share'), :subject => "Ada kursus menarik dari PKNS - #{course.try(:program).try(:name)}", :body => "Ada kursus menarik dari PKNS. Sila lewati #{"http://"+request.host+course_path(course)}. \n\nAnda perlu berdaftar dengan BizClub untuk hadiri kursus. \n\nMaklumat Kursus \nKursus : #{course.try(:program).try(:name)} \nHuraian : #{course.try(:program).try(:description)} \nTarikh : #{course.start_date}"
+            .twelve.columns
+              %span.pretty.small.btn.danger.icon-left.entypo.icon-trash
+                - if can? :destroy, Course
+                  = link_to t('destroy', :default => t("helpers.links.destroy")),
+                              course_path(course),
+                              :method => :delete,
+                              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => t('are_you_sure'))) }
+    = paginate @courses

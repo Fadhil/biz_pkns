@@ -1,0 +1,35 @@
+- model_class = Program
+.row
+  %h3.ten.columns
+    = t('.title')
+  .two.columns.action
+    %span.pretty.medium.primary.btn.entypo.icon-left.icon-list-add
+      = link_to t('new', :default => t("helpers.links.new_user")), new_program_path
+.table
+  .row.table-head
+    .four.columns
+      %h6.title= t('name')
+    .six.columns
+      %h6.title= t('description')
+    .two.columns
+      %h6.title= t('status')
+  - @programs.each do |program|
+    .row.table-rows
+      .four.columns
+        %p
+          = link_to program.name, program_path(program)
+      .six.columns
+        %p
+          = program.description.html_safe
+      .two.columns
+        .row
+          .twelve.columns
+          .twelve.columns
+            %span.pretty.small.btn.info.icon-left.entypo.icon-list-add
+              = link_to t('.show', :default => t("helpers.links.edit")), program_path(program)
+          .twelve.columns
+            %span.pretty.small.btn.danger.icon-left.entypo.icon-trash
+              = link_to t('destroy', :default => t("helpers.links.destroy")),
+                program_path(program),
+                :method => :delete,
+                :data => { :confirm => t('confirm', :default => t("helpers.links.confirm", :default => t('are_you_sure'))) }
