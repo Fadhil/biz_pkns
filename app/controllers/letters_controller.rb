@@ -203,7 +203,8 @@ class LettersController < ApplicationController
   end
 
   def list
-    @letters = Letter.order("created_at DESC").all
+    @adverts = Advert.active
+    @letters = Letter.order("created_at DESC")
     #@newsletters_templates = Newsletters::Template.all
 
     respond_to do |format|
