@@ -35,7 +35,7 @@
           %td
             = course.end_date
           %td
-            - attended = course.attendees.where('user_id = ?',current_user.id).first.attended?
+            - attended = course.attendees.where('user_id = ?',current_user.id).first.attended? rescue nil
             - case attended
               - when nil?
                 - if course.start_date < Date.today

@@ -31,7 +31,7 @@ class PagesController < ApplicationController
     course = Course.find(params[:id]) rescue nil
 
     if user && course
-      if course.attendance_list.attendees.count < course.attendance_list.max_attendees
+      unless course.full?
         user.courses.push course unless user.courses.include?(course)
         user.save
         update_attendance_list(course, user)
@@ -50,7 +50,7 @@ class PagesController < ApplicationController
                                 last_name: user.last_name,
                                 email: user.email,
                                 ic_number: user.ic_number)
-    if course.attendance_list.attendees.count < course.attendance_list.max_attendees
+    unless course.full?
       course.attendance_list.attendees.push attendee
     end
   end
