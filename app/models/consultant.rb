@@ -35,12 +35,12 @@ class Consultant < ActiveRecord::Base
 
   # scope :active, where(active: true)
 
-  # def headers
-  #   {
-  #     :to => "your.email@your.domain.com",
-  #     :from => User.name#%("#{User.name}" <#{User.email}>)
-  #   }
-  # end
+  def headers
+    {
+      :to => self.email,
+      :from => User.name#%("#{User.name}" <#{User.email}>)
+    }
+  end
 
   def active_for_authentication?
     super && self.is_active?
