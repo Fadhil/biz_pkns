@@ -388,6 +388,8 @@ bm:
       preview: 'Papar'
       index: 'No.'
       new: 'Karang Surat'
+    preview:
+      send_to: 'Hantar surat kepada'
 
   skills:
     index:
@@ -551,7 +553,9 @@ bm:
       nonmembers: 'Bukan Ahli'
       users_by_program: 'Pengguna mengikut Program'
       users_by_course: 'Pengguna mengikut Kursus'
-    
+  
+
+
   courses:
     index:
       title: "Senarai Kursus"
