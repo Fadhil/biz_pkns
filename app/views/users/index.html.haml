@@ -44,13 +44,13 @@
           - if user.membership.nil?
             %span.pretty.medium.btn.primary.entypo.icon-left.icon-user-add
               = link_to t('make_member'), make_member_path(user), method: :put
-          - else
-            = nested_form_for '', url: update_membership_user_path(user), method: :put do |f|
-              .field
-                = f.fields_for :membership do |m|
-                  .picker
-                    = select_tag 'membership[category]', options_for_select((MEMBER_CATEGORIES.map{|a| [t(a),a]}), user.membership.category), class: "membership", onchange: "$('#submit#{i}').click();"
-                  = f.submit( data: {confirm: t('confirm_category_change') }, id: "submit#{i}", class: 'hide')
+          / - else
+          /   = nested_form_for '', url: update_membership_user_path(user), method: :put do |f|
+          /     .field
+          /       = f.fields_for :membership do |m|
+          /         .picker
+          /           = select_tag 'membership[category]', options_for_select((MEMBER_CATEGORIES.map{|a| [t(a),a]}), user.membership.category), class: "membership", onchange: "$('#submit#{i}').click();"
+          /         = f.submit( data: {confirm: t('confirm_category_change') }, id: "submit#{i}", class: 'hide')
       .four.columns
         - user.programs.uniq.each do |p|
           %p= p.name
