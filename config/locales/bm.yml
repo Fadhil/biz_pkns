@@ -661,6 +661,7 @@ bm:
     home:
       title: 'Berita Semasa'
     contact:
+      title: 'Hubungi Kami'
     about:
   adverts:
     form:
@@ -688,7 +689,7 @@ bm:
       product_advert: 'Iklan Produk/Servis'
       select_advert_type: 'Pilih Jenis Iklan'
       select_course: 'Pilih Kursus'
-      
+
     user_form:
       upload_photo: 'Muatnaik gambar iklan'
       content: 'Kandungan Iklan'
