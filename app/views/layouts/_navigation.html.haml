@@ -7,8 +7,10 @@
           / %i.icon-user
           - unless current_user.profile_photo.nil?
             .avatar.circle.image
+              = image_tag(current_user.profile_photo.file)
+          - else
+            .avatar.circle.image
               = image_tag('http://flickholdr.com/50/50/avatar')
-              / = image_tag(current_user.profile_photo.file)
           ="#{current_user.first_name} #{current_user.last_name}"
         %span
           %i.icon-down-open

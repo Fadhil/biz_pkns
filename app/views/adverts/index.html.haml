@@ -1,14 +1,14 @@
 - model_class = Advert
 .row
-  %h3.eight.columns
+  %h3.nine.columns
     =t '.title', :default => model_class.model_name.human.pluralize
-  .four.columns.action
+  .three.columns.action
     - if can? :manage, Course
       %span.pretty.medium.primary.btn.entypo.icon-left.icon-list-add
         = link_to t('.new', :default => t("helpers.links.new")), new_advert_path
 .row
   .twelve.columns
-    %hr
+    %hr.divider
     %section.pill.tabs
       %ul.tab-nav
         %li.active

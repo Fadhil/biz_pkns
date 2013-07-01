@@ -19,8 +19,8 @@
         = text_field :search, :business_name, :placeholder => t('search_by_company_name'), :class => 'text input'
     .row
       .two.columns
-        %span.medium.primary.btn
-          = button_tag t('search')
+        %span.pretty.medium.primary.btn
+          = button_tag t('search'), :onClick => 'submit();'
 
 .table
   .row.table-head

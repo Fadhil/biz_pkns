@@ -200,6 +200,7 @@ bm:
   successfully_registered: "%{resource} telah berjaya didaftar."
 
   setting: 'Tetapan'
+
   logout: 'Daftar Keluar'
 
   users:
@@ -276,8 +277,6 @@ bm:
       title: 'Iklan Saya'
       new: 'Daftar Iklan'
 
-
-
   admin:
     index:
       title: 'Senarai Pangkat'
@@ -286,6 +285,7 @@ bm:
     edit:
       title: 'Lantik sebagai admin'
       role_id: 'Lantik'
+
   application:
     address_fields:
       line1: 'Baris 1'
@@ -444,6 +444,7 @@ bm:
       name: 'Nama'
       cancel: 'Batal'
       new: 'Tambah Pendidikan Baru'
+
   pages:
     upcoming_courses:
       title: 'Kursus Akan Datang'
@@ -494,7 +495,7 @@ bm:
       title: 'Senarai Kehadiran Lama'
     uploaded:
       title: 'Senarai Kehadiran Yang Baru Dimuatnaik'
-      
+
   programs:
     index:
       title: "Senarai Program"
@@ -567,8 +568,6 @@ bm:
       nonmembers: 'Bukan Ahli'
       users_by_program: 'Pengguna mengikut Program'
       users_by_course: 'Pengguna mengikut Kursus'
-  
-
 
   courses:
     index:
@@ -664,6 +663,7 @@ bm:
     contact:
       title: 'Hubungi Kami'
     about:
+
   adverts:
     form:
       upload_photo: 'Muatnaik gambar iklan'
@@ -832,6 +832,9 @@ bm:
       unlock_instructions:
         subject: 'Arahan membuka akaun kembali'
 
+  views:
+    pagination:
+      truncate: '...'
   # i18n Routes
   named_routes_path:
     consultation: "perundingan"
@@ -857,6 +860,7 @@ bm:
     adverts: 'iklan'
     reports: 'laporan'
     portals: 'portal'
+
   path_names:
     my_adverts: 'iklan_saya'
 
@@ -907,7 +911,6 @@ bm:
               too_short: "terlalu pendek"
             ic_number:
               taken: "yang dimasukkan sudah berdaftar"
-
 
   helpers:
     links:

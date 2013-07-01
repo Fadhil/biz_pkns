@@ -120,7 +120,7 @@ en:
 
   setting: 'Setting'
   logout: 'Logout'
-  
+
   users:
     index:
       title: 'Users'
@@ -191,9 +191,11 @@ en:
   skills:
     new:
       title: 'New Skill'
+
   educations:
     new:
       title: 'New Education type'
+
   pages:
     upcoming_courses:
       title: 'Upcoming Courses'
@@ -259,6 +261,9 @@ en:
       consultant_profile: 'Consultant Profile'
       new_business_category: 'New Business Category'
 
+  views:
+    pagination:
+      truncate: '...'
 
   # i18n Routes
   named_routes_path:
@@ -298,6 +303,7 @@ en:
               blank: "Email cannot be blank"
             password: 
               blank: "Password cannot be blank"
+
   helpers:
     links:
       new_user: 'Create New User'
