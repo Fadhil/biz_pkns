@@ -1,101 +1,106 @@
 = nested_form_for @survey, :html => { :class => 'form-horizontal' } do |f|
-  .control-group
+  .field
     = f.label t("name"), :class => 'control-label'
     .controls
-      = f.text_field :title, :class => 'text_field'
-  .control-group
+      = f.text_field :title, :class => 'text input', :placeholder => :title
+  .field
     = f.label t('description'), class: 'control-label'
     .controls  
-      = f.text_area :description, class: 'text-area-medium'
-  .control-group
-    = f.label t('start_date'), :class => 'control-label'
-    .controls
-      = f.text_field :start_date, :class => 'start_date datepicker', :include_blank => true
-  .control-group
-    = f.label t('end_date'), :class => 'control-label'
-    .controls
-      = f.text_field :end_date, :class => 'end_date datepicker', :include_blank => true
-
-  .control-group.questions
-    %h4= t('questions')
+      = f.text_area :description, class: 'input textarea', :rows => '7'
+  .field
+    .row
+      .six.columns
+        = f.text_field :start_date, :class => 'input type start_date datepicker', :include_blank => true, :placeholder => t('start_date')
+      .six.columns
+        = f.text_field :end_date, :class => 'input type end_date datepicker', :include_blank => true, :placeholder => t('end_date')
+  .field.questions
+    %h4
+      = t('questions')
     = f.fields_for :questions do |q|
       - if q.object.new_record?
         - question_id = q.options[:child_index]
       - else
         - question_id = q.object.id
-      .control-group
+      .field
         = q.label t('questions'), class: 'control-label'
         .controls  
-          = q.text_area :title, class: 'text-area-medium'
-      .control-group
+          = q.text_area :title, class: 'input textarea', :rows => '4'
+      .field
         = q.label t('question_type'), class: 'control-label'
-        .controls
+        .picker
           = q.select :question_type, options_for_select([[t('yes_no'),'yes_no'],[t('multiple_choice'),'multiple_choice'],[t('scale'),'scale'], [t('subjective'),'subjective']], q.object.question_type), {},{ onchange: "change_question_type(this.value, #{question_id});", class: "question_#{question_id}" }
       - if q.object.new_record?
         .question_options.hide{ class: "#{question_id}" }
-          .control-group
+          .field
             = q.label t('option1'), class: 'control-label'
             .controls 
-              = q.text_field :option1, class: 'text_field'
-          .control-group
+              = q.text_field :option1, class: 'text input', :placeholder => ''
+          .field
             = q.label t('option2'), class: 'control-label'
             .controls 
-              = q.text_field :option2, class: 'text_field'
-          .control-group
+              = q.text_field :option2, class: 'text input', :placeholder => ''
+          .field
             = q.label t('option3'), class: 'control-label'
             .controls 
-              = q.text_field :option3, class: 'text_field'
-          .control-group
+              = q.text_field :option3, class: 'text input', :placeholder => ''
+          .field
             = q.label t('option4'), class: 'control-label'
             .controls 
-              = q.text_field :option4, class: 'text_field'
+              = q.text_field :option4, class: 'text input', :placeholder => ''
       - else
         - if q.object.question_type == 'multiple_choice'
           .question_options{ class: "#{question_id}" }
-            .control-group
+            .field
               = q.label t('option1'), class: 'control-label'
               .controls 
-                = q.text_field :option1, class: 'text_field'
-            .control-group
+                = q.text_field :option1, class: 'text input', :placeholder => ''
+            .field
               = q.label t('option2'), class: 'control-label'
               .controls 
-                = q.text_field :option2, class: 'text_field'
-            .control-group
+                = q.text_field :option2, class: 'text input', :placeholder => ''
+            .field
               = q.label t('option3'), class: 'control-label'
               .controls 
-                = q.text_field :option3, class: 'text_field'
-            .control-group
+                = q.text_field :option3, class: 'text input', :placeholder => ''
+            .field
               = q.label t('option4'), class: 'control-label'
               .controls 
-                = q.text_field :option4, class: 'text_field'
+                = q.text_field :option4, class: 'text input', :placeholder => ''
         - else
           .question_options.hide{ class: "#{question_id}" }
-            .control-group
+            .field
               = q.label t('option1'), class: 'control-label'
               .controls 
-                = q.text_field :option1, class: 'text_field'
-            .control-group
+                = q.text_field :option1, class: 'text input', :placeholder => ''
+            .field
               = q.label t('option2'), class: 'control-label'
               .controls 
-                = q.text_field :option2, class: 'text_field'
-            .control-group
+                = q.text_field :option2, class: 'text input', :placeholder => ''
+            .field
               = q.label t('option3'), class: 'control-label'
               .controls 
-                = q.text_field :option3, class: 'text_field'
-            .control-group
+                = q.text_field :option3, class: 'text input', :placeholder => ''
+            .field
               = q.label t('option4'), class: 'control-label'
               .controls 
-                = q.text_field :option4, class: 'text_field'
+                = q.text_field :option4, class: 'text input', :placeholder => ''
 
         = q.link_to_remove 'Remove'
-    = f.link_to_add t('add_questions'), :questions
-  .form-actions
+    = f.link_to_add :questions, :class => 'add-question' do
+      %i.icon-plus-circled
+      = t('add_questions')
+  .field
+    %hr.divider
     - if f.object.new_record?
-      %span.medium.pretty.btn.primary  
-        = f.submit t('.create')#, :class => 'btn btn-primary'
+      %span.medium.pretty.btn.warning
+        %button{:value => 'submit', :onClick => 'submit();'}
+          =t('.create')
+        / = f.submit t('.create')
     - else
-      %span.medium.pretty.btn.secondary  
-        = f.submit t('update')#, class: 'btn btn-primary'
+      %span.medium.pretty.btn.warning
+        %button{:value => 'submit', :onClick => 'submit();'}
+          =t('update')
+        / = f.submit t('update')
 
 :javascript
   var change_question_type
