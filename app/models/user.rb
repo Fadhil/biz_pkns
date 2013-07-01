@@ -121,8 +121,14 @@ class User < ActiveRecord::Base
 
     month_of_birth = self.ic_number[2..3]
     day_of_birth = self.ic_number[4..5]
-    
-    date_of_birth = Time.new(year_of_birth, month_of_birth, day_of_birth)
+
+    if month_of_birth.to_i > 12
+      month_of_birth = '12'
+    end
+
+
+      
+    date_of_birth = Time.new(year_of_birth, month_of_birth, 1)
 
     seconds_since_birth = Time.now - date_of_birth
     age = (seconds_since_birth/SECONDS_IN_A_YEAR).floor

@@ -23,7 +23,7 @@
           %span.one.columns
             %i.icon-cog.ico-custom
         .row
-          = form_for("user", :url => user_session_path) do |f|
+          = form_for(resource, :url => session_path(resource)) do |f|
             %ul.eleven.columns
               %li.field
                 = f.email_field :email, :autofocus => true, :class => 'email input', :placeholder => t('email')

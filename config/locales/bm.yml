@@ -397,6 +397,8 @@ bm:
       send_to: 'Hantar surat kepada'
       print_pdf: 'Cetak PDF'
       subject: 'Perkara'
+    generate_letter:
+      print: 'Simpan'
 
   skills:
     index:
