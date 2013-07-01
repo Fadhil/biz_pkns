@@ -14,6 +14,9 @@ PKNS.controller('MainCtrl', [
   '$scope',
   ($scope) ->
     $scope.helo = "Start This"
+
+    # initialize tabs
+    Gumby.initialize('tabs')
 ])
 
 PKNS.directive('uiNavDropdown', [
