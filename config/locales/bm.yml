@@ -545,6 +545,7 @@ bm:
       subject: 'Subjek'
       created_at: 'Dihantar pada'
       view: 'Papar'
+      new: 'Karang Buletin'
     use_template:
       title: 'Karang Buletin baru'
       subject: 'Subjek'

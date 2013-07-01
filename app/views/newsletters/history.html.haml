@@ -1,11 +1,10 @@
 - model_class = Newsletter
 .row
-  %h3.ten.columns
+  %h3.eight.columns
     = t '.title'
-  .two.columns.action.hide
-    - if can? :manage, Course
-      %span.pretty.medium.primary.btn.entypo.icon-left.icon-list-add
-        = link_to t('.new', :default => t("helpers.links.new")), new_newsletter_path
+  .four.columns.action
+    %span.pretty.medium.primary.btn.entypo.icon-left.icon-list-add
+      = link_to t('.new'), new_newsletter_path
 
 .table
   .row.table-head
