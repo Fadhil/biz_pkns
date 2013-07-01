@@ -122,8 +122,8 @@ class User < ActiveRecord::Base
     month_of_birth = self.ic_number[2..3]
     day_of_birth = self.ic_number[4..5]
 
-    if month_of_birth > 12
-      month_of_birth = 12
+    if month_of_birth.to_i > 12
+      month_of_birth = '12'
     end
 
 
