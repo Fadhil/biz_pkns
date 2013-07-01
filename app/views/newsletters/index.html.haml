@@ -2,7 +2,7 @@
 .row
   %h3.ten.columns
     = t('.title', :default => model_class.model_name.human.pluralize)
-  .two.columns.action
+  .two.columns.action.hide
     %span.pretty.medium.primary.btn.entypo.icon-left.icon-list-add
       = link_to t('new', :default => t("helpers.links.new")), new_newsletter_path
 %table.table.table-striped
