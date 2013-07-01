@@ -342,6 +342,7 @@ bm:
       title: 'Surat Baru'
       history: 'Arkib'
     new:
+      title: 'Surat Baru'
     show:
       print: 'Cetak PDF'
       edit: 'Kemaskini'
@@ -361,6 +362,7 @@ bm:
       message: 'Kandungan Surat'
       update: 'Kemaskini Surat'
       cancel: 'Batal'
+      create_letter: 'Cipta Surat'
     compose:
       title: 'Karang Surat'
       recipient: 'Penerima'
@@ -389,7 +391,10 @@ bm:
       index: 'No.'
       new: 'Karang Surat'
     preview:
+      title: 'Surat'
       send_to: 'Hantar surat kepada'
+      print_pdf: 'Cetak PDF'
+      subject: 'Perkara'
 
   skills:
     index:
@@ -712,6 +717,7 @@ bm:
       number_of_consultants: 'Jumlah Perunding'
       number_of_active_consultants: 'Jumlah Perunding Aktif'
       number_of_inactive_consultants: 'Jumlah Perunding Tidak Aktif'
+      individual_consultant_report: 'Laporan Individu Perunding'
 
   #Stuff in the header
   layouts:
