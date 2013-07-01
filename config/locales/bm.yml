@@ -536,6 +536,10 @@ bm:
       edit: 'Kemaskini'
       destroy: 'Padam'
     form:
+      subject: 'Subjek'
+      message: 'Mesej'
+      send_to: 'Hantar buletin kepada'
+      create: 'Cipta Buletin'
     history:
       title: 'Arkib Buletin'
       subject: 'Subjek'
