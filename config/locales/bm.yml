@@ -81,6 +81,7 @@ bm:
   password: 'Kata Laluan'
   password_confirmation: 'Pengesahan Kata Laluan'
   new_password_confirmation: 'Sahkan kata laluan baru'
+  print: 'Cetak'
   number_of_attendees: 'Jumlah Peserta'
   option1: 'Pilihan Jawapan 1'
   option2: 'Pilihan Jawapan 2'

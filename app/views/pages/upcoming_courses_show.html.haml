@@ -58,76 +58,78 @@
 
   %br
   %br    
-  - if @course.attendance_list.attendees.count > 0                     
-    .preattendance
-      %h4
-        Preattendance List
-      %table.table.table-striped
-        %thead
-          %tr
-            %th{ :style => 'width: 5px;'}
-              ID
-            %th
-              Name
-            %th
-              Email
-            %th
-              IC Number
-        %tbody
-          - @course.attendance_list.attendees.each_with_index do |attendee, index|
+  - if @course.attendance_list
+    - if @course.attendance_list.attendees.count > 0 && !@course.attendance_list.completed                   
+      .preattendance
+        %h4
+          Preattendance List
+        = button_tag t('print'), onclick:"print();", class: 'hidden-print'
+        %table.table.table-striped
+          %thead
             %tr
-              %td
-                = index + 1
-              %td
-                - if attendee.name.nil?
-                  = attendee.full_name
-                - else
-                  = attendee.name
-              %td
-                = attendee.email
-              %td
-                = attendee.ic_number
-              %td
-                - if !attendee.attended.nil? && !attendee.attendance_status.nil?
-                  = t(attendee.attendance_status)
-                - else
-                  = link_to t('present'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: true, attendance_status: 'present'), method: :post, class: 'btn btn-mini'
-                  = link_to t('not_present'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: false, attendance_status: 'not_present'), method: :post, class: 'btn btn-mini' 
-                  = link_to t('will_attend'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: false, attendance_status: 'will_attend'), method: :post, class: 'btn btn-mini' 
-                  = link_to t('cannot_attend'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: false, attendance_status: 'cannot_attend'), method: :post, class: 'btn btn-mini'   
-        %table.visible-print
+              %th{ :style => 'width: 5px;'}
+                ID
+              %th
+                Name
+              %th
+                Email
+              %th
+                IC Number
           %tbody
-            - 10.times do |n|
+            - @course.attendance_list.attendees.each_with_index do |attendee, index|
               %tr
-                %td{style:"border: 1px solid black;"}
-                  =@course.attendance_list.attendees.count + n + 1
-                %td{style:"border: 1px solid black; width: 150px;"}
-              
-                %td{style:"border: 1px solid black;width: 140px;"}
-                                
-                %td{style:"border: 1px solid black;width: 140px;"}
-                                
-                %td{style:"border: 1px solid black;width: 140px;"}
-                  
-        .row-fluid
-          = nested_form_for @course.attendance_list do |f|
-            = f.fields_for :attendees do |a|
-              = a.text_field :first_name, value: t('first_name') if a.object.new_record?
-              = a.text_field :last_name, value: t('last_name') if a.object.new_record?
-              = a.text_field :email, value: t('email') if a.object.new_record?
-              = a.text_field :ic_number, value: t('ic_number') if a.object.new_record?
-              = a.link_to_remove t('remove'), class: 'btn btn-mini btn-danger' if a.object.new_record?
-              = a.hidden_field :attended, value: 1
-            = f.link_to_add t('add_attendee'), :attendees, class: 'btn btn-mini hidden-print'   
-            = f.submit t('update'), class: 'hidden-print'   
-          = form_for @course.attendance_list do |f|
-            = f.hidden_field :completed, value: 1
-            = f.submit t('end_course'), class: 'hidden-print'
+                %td
+                  = index + 1
+                %td
+                  - if attendee.name.nil?
+                    = attendee.full_name
+                  - else
+                    = attendee.name
+                %td
+                  = attendee.email
+                %td
+                  = attendee.ic_number
+                %td
+                  - if !attendee.attended.nil? && !attendee.attendance_status.nil?
+                    = t(attendee.attendance_status)
+                  - else
+                    = link_to t('present'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: true, attendance_status: 'present'), method: :post, class: 'btn btn-mini'
+                    = link_to t('not_present'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: false, attendance_status: 'not_present'), method: :post, class: 'btn btn-mini' 
+                    = link_to t('will_attend'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: false, attendance_status: 'will_attend'), method: :post, class: 'btn btn-mini' 
+                    = link_to t('cannot_attend'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: false, attendance_status: 'cannot_attend'), method: :post, class: 'btn btn-mini'   
+          %table.visible-print
+            %tbody
+              - 10.times do |n|
+                %tr
+                  %td{style:"border: 1px solid black;"}
+                    =@course.attendance_list.attendees.count + n + 1
+                  %td{style:"border: 1px solid black; width: 150px;"}
+                
+                  %td{style:"border: 1px solid black;width: 140px;"}
+                                  
+                  %td{style:"border: 1px solid black;width: 140px;"}
+                                  
+                  %td{style:"border: 1px solid black;width: 140px;"}
+                    
+          .row-fluid
+            = nested_form_for @course.attendance_list do |f|
+              = f.fields_for :attendees do |a|
+                = a.text_field :first_name, value: t('first_name') if a.object.new_record?
+                = a.text_field :last_name, value: t('last_name') if a.object.new_record?
+                = a.text_field :email, value: t('email') if a.object.new_record?
+                = a.text_field :ic_number, value: t('ic_number') if a.object.new_record?
+                = a.link_to_remove t('remove'), class: 'btn btn-mini btn-danger' if a.object.new_record?
+                = a.hidden_field :attended, value: 1
+              = f.link_to_add t('add_attendee'), :attendees, class: 'btn btn-mini hidden-print'   
+              = f.submit t('update'), class: 'hidden-print'   
+            = form_for @course.attendance_list do |f|
+              = f.hidden_field :completed, value: 1
+              = f.submit t('end_course'), class: 'hidden-print'
 
 
-      .span2
-        %h5 
-          = t('number_of_attendees')
-      .span2
-        %h5
-          = "#{@course.attendance_list.attendees.count}/#{@course.attendance_list.max_attendees}"
+        .span2
+          %h5 
+            = t('number_of_attendees')
+        .span2
+          %h5
+            = "#{@course.attendance_list.attendees.count}/#{@course.attendance_list.max_attendees}"
