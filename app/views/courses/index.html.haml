@@ -1,8 +1,8 @@
 .row
-  %h3.ten.columns
+  %h3.nine.columns
     - if current_consultant && !session[:current_program_id].nil?
       ="#{t('.title')} #{session[:current_program_name]}"
-  .two.columns.action
+  .three.columns.action
     - if can? :manage, Course
       %span.pretty.medium.primary.btn.entypo.icon-left.icon-list-add
         = link_to t('create_course', :default => t("helpers.links.new_user")), new_course_path
