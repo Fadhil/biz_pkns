@@ -19,6 +19,7 @@ BizPkns::Application.routes.draw do
     get "letters/history" => 'letters#history', as: "letters_history"
     get "letters/list" => 'letters#list', as: "letters_list"
     get "letters/preview/:id" => 'letters#preview', as: "preview_letter"
+    get "email/:id" => 'email#show', as: "show_email"
     match 'consultation' => "pages#consultation", as: :consultation
     match 'my_courses' => "pages#my_courses", as: :user_course_listing
     match 'program_users' => "members#program_member_list", as: :program_user_listing

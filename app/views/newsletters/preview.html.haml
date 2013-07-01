@@ -5,11 +5,14 @@
 .page-header
   %h1=t '.title', :default => model_class.model_name.human
 
+/ %p
+/   %strong= t('.subject') + ':'
+/   = @newsletter.subject
+/ %p
+/   = @newsletter.message.html_safe
+
 %p
-  %strong= t('.subject') + ':'
-  = @newsletter.subject
-%p
-  = @newsletter.message.html_safe
+  = link_to "Klik untuk prebiu buletin", show_email_path(@newsletter)
 
 %br
 %br
