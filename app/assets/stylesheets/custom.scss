@@ -254,6 +254,81 @@ body {
     }
   }
 
+  /* Banner */
+  .adbox {
+    position: relative;
+    font-family: 'Raleway', sans-serif;
+    line-height: -20px;
+    img {
+      height: 200px;
+      width: 100%;
+    }
+  }
+
+  .adinfo {
+    z-index: 1000;
+    color: #FFF;
+    position: absolute;
+    right: 0;
+  }
+
+  .adinfo {
+    .title {
+      background-color: rgba(255, 255, 255, 0.5);
+      font-size: 24px;
+      padding: 8px 10px;
+      text-align: right;
+      font-weight: 100;
+      margin-top: 40px;
+      margin-bottom: 10px;
+    }
+    .venue {
+      background-color: rgba(255, 255, 255, 0.3);
+      font-size: 12px;
+      padding: 3px;
+      text-align: center;
+      width: 100%;
+    }
+    .date {
+      background-color: rgba(255, 255, 255, 0.3);
+      font-size: 12px;
+      padding: 3px;
+      text-align: center;
+      width: 100%;
+    }
+  }
+
+  .adinfo-product {
+    z-index: 1000;
+    color: #FFF;
+    position: absolute;
+  }
+
+  .adinfo-product {
+    .title {
+      background-color: rgba(255, 255, 255, 0.5);
+      font-size: 24px;
+      padding: 8px 10px;
+      font-weight: 100;
+      margin-top: 25px;
+      margin-bottom: 10px;
+    }
+    .content {
+      background-color: rgba(255, 255, 255, 0.3);
+      font-size: 12px;
+      padding: 8px;
+      max-width: 500px;
+    }
+  }
+
+  .userselect {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
   /* Pagination */
   .pagination {
     text-align: center;
@@ -358,5 +433,3 @@ body {
 .panel-small {
   width: 70% !important;
 }
-
-
