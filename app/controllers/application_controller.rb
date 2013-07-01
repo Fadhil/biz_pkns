@@ -61,5 +61,10 @@ class ApplicationController < ActionController::Base
         end
       end
     end
+    if current_consultant
+      if !current_consultant.profile_complete?
+        flash.now[:notice] = t('consultant_please_complete_profile')
+      end
+    end
   end
 end

@@ -5,6 +5,8 @@ class Consultant < ActiveRecord::Base
   devise :database_authenticatable, #:registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  before_save :complete_profile
+
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :bio_data, :first_name, :last_name, :password, :phone
@@ -68,5 +70,23 @@ class Consultant < ActiveRecord::Base
 
   def self.inactive
     Consultant.all - Consultant.active
+  end
+
+  def complete_profile
+    unless self.profile_complete?
+      required_attributes = ['first_name','last_name','phone', 'email', 'company_name']
+      @complete = true
+      
+      required_attributes.each do |r| 
+
+        if self.send(r).nil? || self.send(r).empty?
+          @complete = false
+        end
+
+      end
+      if @complete
+        self.profile_complete = true
+      end
+    end
   end
 end
