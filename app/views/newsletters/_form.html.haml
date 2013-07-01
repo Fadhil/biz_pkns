@@ -26,5 +26,7 @@
     /     = select_tag 'newsletter_course_select', options_for_select(Course.where(program_id: Program.first.id).map{ |a| [a.name,a.id]}), disabled: true, class: 'hide'
 
   .form-actions
-    = f.submit nil, :class => 'btn btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), newsletters_path, :class => 'btn'
+    %span.medium.pretty.btn.primary
+      = f.submit nil, :class => 'btn btn-primary'
+    %span.medium.pretty.btn.default
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), newsletters_path, :class => 'btn'

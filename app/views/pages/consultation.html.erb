@@ -19,8 +19,8 @@
         <td><%= consultant.programs.first.name unless consultant.programs.first.nil? %></td>
         <% if current_user %><%# if can? :manage, @consultant %>
           <td>
-            <%= link_to t('view'), consultant_path(consultant), :class => 'btn btn-mini' %>
-              <%= link_to t('contact'), contact_consultant_path(consultant), :class => 'btn btn-mini btn-info' %>
+            <%= link_to t('view'), consultant_path(consultant), :class => 'btn pretty small primary' %>
+            <%= link_to t('contact'), contact_consultant_path(consultant), :class => 'btn pretty small info' %>
           </td>
         <% end %>
       </tr>

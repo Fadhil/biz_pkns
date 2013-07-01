@@ -34,10 +34,10 @@
 
   <div class="form-actions">
     <% if @program.new_record? %>
-      <%= f.submit t('register'), :class => 'btn btn-primary' %>
+      <%= f.submit t('register'), :class => 'btn pretty medium primary' %>
     <% else %>
-      <%= f.submit t('update'), :class => 'btn btn-primary' %>
+      <%= f.submit t('update'), :class => 'btn pretty medium secondary' %>
     <% end %>
-    <%= link_to t('cancel', :default => t("helpers.links.cancel")), programs_path, :class => 'btn' %>
+    <%= link_to t('cancel', :default => t("helpers.links.cancel")), programs_path, :class => 'btn pretty medium danger' %>
   </div>
 <% end %>

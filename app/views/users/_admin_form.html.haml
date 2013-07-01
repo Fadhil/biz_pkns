@@ -45,6 +45,8 @@
     %br/
     %br/
   .form-actions
-    = f.submit t('update'), :class => 'btn btn-primary'
-    = link_to t('cancel', :default => t("helpers.links.cancel")), |
-      users_path, :class => 'btn btn-primary'                     |
+    %span.medium.pretty.btn.secondary
+      = f.submit t('update')#, :class => 'btn btn-primary'
+    %span.medium.pretty.btn.default
+      = link_to t('cancel', :default => t("helpers.links.cancel")), |
+      users_path#, :class => 'btn btn-primary'                     |

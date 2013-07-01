@@ -20,5 +20,6 @@
         = f.text_field :name, :placeholder => "Nama"
         = f.text_field :email, :placeholder => "Email"
         = f.text_area :content, :placeholder => "Mesej", :style => 'height:250px; width:430px;'
-        = f.button :submit, :class => 'btn'
+        %span.medium.pretty.btn.primary
+          = f.button :submit, :class => 'btn'
 

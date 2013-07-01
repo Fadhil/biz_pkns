@@ -91,9 +91,11 @@
     = f.link_to_add t('add_questions'), :questions
   .form-actions
     - if f.object.new_record?
-      = f.submit t('.create'), :class => 'btn btn-primary'
+      %span.medium.pretty.btn.primary  
+        = f.submit t('.create')#, :class => 'btn btn-primary'
     - else
-      = f.submit t('update'), class: 'btn btn-primary'
+      %span.medium.pretty.btn.secondary  
+        = f.submit t('update')#, class: 'btn btn-primary'
 
 :javascript
   var change_question_type

@@ -76,6 +76,8 @@
           = f.radio_button :is_active, false
           = t('inactive')
   .form-actions{:style => "margin-left:-150px;"}
-    = f.submit t('.update'), :class => 'btn btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), |
-      consultants_path, :class => 'btn'                            |
+    %span.medium.pretty.btn.secondary
+      = f.submit t('.update')#, :class => 'btn btn-primary'
+    %span.medium.pretty.btn.default
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), |
+      consultants_path#, :class => 'btn'                            |

@@ -45,8 +45,9 @@
           = "#{past_attendance.start_date} - #{past_attendance.end_date}"
 .row
 = form_for :past_attendance,  :url=>{:controller=>"past_attendances", :action=>"create"}, :html => { :multipart => true } do |f|
-  = f.label 'Select a CSV file'
+  = f.label 'Select a CSV file'  
   = f.file_field :file
-  = f.submit class: 'btn btn-mini'
+  %span.medium.pretty.btn.primary
+    = f.submit class: 'btn btn-mini'
 
 =# link_to t('new_past_attendance'), new_past_attendance_path,:class => 'btn btn-primary'

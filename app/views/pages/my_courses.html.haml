@@ -47,5 +47,6 @@
               - when false
                 = t('not_present')
           %td
-            = link_to t('view'), course_details_path(course), |
+            %span.small.pretty.btn.primary
+              = link_to t('view'), course_details_path(course)#, |
               class: 'btn-mini btn btn-secondary'

@@ -40,15 +40,19 @@
 .form-actions
   - if can? :manage, :all
     - if @advert.requested? && !(@advert.request_status == 'approved')
-      = link_to t('reject_request'), make_request_advert_path(id: @advert.id, advert: { requested: 0, request_status: 'rejected' }, advert_action: 'reject' ), method: :put, class: 'btn'
-      = link_to t('approve_request'), make_request_advert_path(id: @advert.id, advert: { requested: 1, request_status: 'approved' }, advert_action: 'approve'), method: :put, class: 'btn'
+      = link_to t('reject_request'), make_request_advert_path(id: @advert.id, advert: { requested: 0, request_status: 'rejected' }, advert_action: 'reject' ), method: :put#, class: 'btn'
+      = link_to t('approve_request'), make_request_advert_path(id: @advert.id, advert: { requested: 1, request_status: 'approved' }, advert_action: 'approve'), method: :put#, class: 'btn'
     - unless @advert.request_status == 'approved'
-      = link_to t('edit', :default => t("helpers.links.edit")), edit_advert_path(@advert), :class => 'btn'
-    = link_to t('destroy', :default => t("helpers.links.destroy")), advert_path(@advert), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+      %span.pretty.btn.secondary
+        = link_to t('edit', :default => t("helpers.links.edit")), edit_advert_path(@advert)#, :class => 'btn'
+      %span.pretty.btn.danger
+        = link_to t('destroy', :default => t("helpers.links.destroy")), advert_path(@advert), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }#, :class => 'btn btn-danger'
 
   - elsif can? :manage, Advert
     - if !@advert.requested?
-      = link_to t('make_request'), make_request_advert_path(id: @advert.id, advert: { requested: 1, request_status: 'pending' }, advert_action: 'request'), method: :put, class: 'btn'
-      = link_to t('edit', :default => t("helpers.links.edit")), edit_advert_path(@advert), :class => 'btn'
-      = link_to t('destroy', :default => t("helpers.links.destroy")), advert_path(@advert), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+      = link_to t('make_request'), make_request_advert_path(id: @advert.id, advert: { requested: 1, request_status: 'pending' }, advert_action: 'request'), method: :put#, class: 'btn'
+      %span.pretty.btn.secondary
+      = link_to t('edit', :default => t("helpers.links.edit")), edit_advert_path(@advert)#, :class => 'btn'
+      %span.pretty.btn.danger
+        = link_to t('destroy', :default => t("helpers.links.destroy")), advert_path(@advert), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }#, :class => 'btn btn-danger'
   

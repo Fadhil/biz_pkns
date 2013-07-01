@@ -52,8 +52,11 @@
         %br/
     .form-actions
       - if @course.new_record?
-        = f.submit t('.create_course'), :class => 'btn btn-primary'
+        %span.medium.pretty.btn.primary
+          = f.submit t('.create_course')#, :class => 'btn btn-primary'
       - else
-        = f.submit t('update'), class: 'btn btn-primary'
-      = link_to t('cancel', :default => t("helpers.links.cancel")), |
-        courses_path, :class => 'btn'                                |
+        %span.medium.pretty.btn.secondary
+          = f.submit t('update')#, class: 'btn btn-primary'
+      %span.medium.pretty.btn.default
+        = link_to t('cancel', :default => t("helpers.links.cancel")), |
+        courses_path#, :class => 'btn'                                |

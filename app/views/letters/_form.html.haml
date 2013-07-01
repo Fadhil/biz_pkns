@@ -38,5 +38,7 @@
       = f.text_area :message, :class => 'redactor', :rows => 40, :cols => 520
       
   .form-actions
-    = f.submit nil, :class => 'btn btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), letters_path, :class => 'btn'
+    %span.medium.pretty.btn.primary
+      = f.submit nil#, :class => 'btn btn-primary'
+    %span.medium.pretty.btn.default
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), letters_path#, :class => 'btn'

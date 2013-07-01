@@ -7,6 +7,5 @@
   %b Template:
   = @newsletters_template.template.html_safe
 
-= link_to 'Edit', edit_newsletters_template_path(@newsletters_template)
-\|
-= link_to 'Back', newsletters_templates_path
+%span.medium.pretty.btn.secondary
+  = link_to 'Edit', edit_newsletters_template_path(@newsletters_template)

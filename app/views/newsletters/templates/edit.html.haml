@@ -1,7 +1,5 @@
 %h1 Editing newsletters_template
 
 = render 'form'
-
-= link_to 'Show', @newsletters_template
-\|
-= link_to 'Back', newsletters_templates_path
+%span.medium.pretty.btn.primary
+  = link_to 'Show', @newsletters_template

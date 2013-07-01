@@ -31,7 +31,10 @@
         %td= blog.title
         %td= raw blog.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')
         %td
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_blog_path(blog), :class => 'btn btn-mini'
-          = link_to t('.destroy', :default => t("helpers.links.destroy")), blog_path(blog), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+          %span.small.pretty.btn.secondary
+            = link_to t('.edit', :default => t("helpers.links.edit")), edit_blog_path(blog)#, :class => 'btn btn-mini'
+          %span.small.pretty.btn.danger
+            = link_to t('.destroy', :default => t("helpers.links.destroy")), blog_path(blog), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }#, :class => 'btn btn-mini btn-danger'
 
-= link_to t('.new', :default => t("helpers.links.new")), new_blog_path, :class => 'btn btn-primary'
+%span.medium.pretty.btn.primary
+  = link_to t('.new', :default => t("helpers.links.new")), new_blog_path#, :class => 'btn btn-primary'

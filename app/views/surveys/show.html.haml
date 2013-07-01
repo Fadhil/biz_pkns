@@ -16,10 +16,13 @@
       = f.hidden_field :completed, value: 1
       = f.submit t('end_survey'), class: 'btn'
   - else
-    = link_to t('report'), report_survey_path, :class => 'btn'
+    %span.medium.pretty.btn.primary
+      = link_to t('report'), report_survey_path, :class => 'btn'
   - unless @survey.sent?
-    = link_to t('edit', :default => t("helpers.links.edit")), edit_survey_path(@survey), :class => 'btn'
-    = link_to t('destroy', :default => t("helpers.links.destroy")), survey_path(@survey), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+    %span.medium.pretty.btn.secondary
+      = link_to t('edit', :default => t("helpers.links.edit")), edit_survey_path(@survey), :class => 'btn'
+    %span.medium.pretty.btn.danger
+      = link_to t('destroy', :default => t("helpers.links.destroy")), survey_path(@survey), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
 %br
 %br
 %br

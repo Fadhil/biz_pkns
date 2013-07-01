@@ -12,5 +12,7 @@
     .controls
       = f.number_field :experience, :class => 'number_field'
   .form-actions
-    = f.submit nil, :class => 'btn btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), skill_path, :class => 'btn'
+    %span.medium.pretty.btn.primary
+      = f.submit nil, :class => 'btn btn-primary'
+    %span.medium.pretty.btn.default
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), skill_path, :class => 'btn'

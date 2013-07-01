@@ -148,5 +148,6 @@
                       %td= bp.business_photo.caption
 - if can? :manage, @user
   .form-actions
-  = link_to t('edit', :default => t("helpers.links.edit")), |
-    edit_user_path(@user), :class => 'btn btn-flat'         |
+    %span.pretty.btn.secondary
+      = link_to t('edit', :default => t("helpers.links.edit")), |
+        edit_user_path(@user)

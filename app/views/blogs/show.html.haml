@@ -12,5 +12,7 @@
     = raw @blog.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')
 
   .form-actions
-    = link_to t('.edit', :default => t("helpers.links.edit")), edit_blog_path(@blog), :class => 'btn'
-    = link_to t('.destroy', :default => t("helpers.links.destroy")), blog_path(@blog), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+    %span.pretty.btn.secondary
+      = link_to t('.edit', :default => t("helpers.links.edit")), edit_blog_path(@blog)#, :class => 'btn'
+    %span.pretty.btn.danger
+      = link_to t('.destroy', :default => t("helpers.links.destroy")), blog_path(@blog), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }#, :class => 'btn btn-danger'

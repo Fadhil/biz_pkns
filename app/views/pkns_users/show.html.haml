@@ -64,5 +64,6 @@
  
 - if can? :manage, @user
   .form-actions
-  = link_to t('edit', :default => t("helpers.links.edit")), |
-    edit_pkns_user_path(@pkns_user), :class => 'btn btn-flat'         |
+  %span.medium.pretty.btn.secondary
+    = link_to t('edit', :default => t("helpers.links.edit")), |
+    edit_pkns_user_path(@pkns_user)#, :class => 'btn btn-flat'         |

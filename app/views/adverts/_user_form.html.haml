@@ -34,10 +34,13 @@
       = f.hidden_field :user_id, value: current_user.id
   .form-actions
     - if f.object.new_record?
-      = f.submit t('create_advert'), :class => 'btn btn-primary'
+      %span.medium.pretty.btn.primary
+        = f.submit t('create_advert')#, :class => 'btn btn-primary'
     - else
-      = f.submit t('update'), :class => 'btn btn-primary'
-    = link_to t('cancel', :default => t("helpers.links.cancel")), adverts_path, :class => 'btn'
+      %span.medium.pretty.btn.secondary
+        = f.submit t('update')#, :class => 'btn btn-primary'
+      %span.pretty.btn.default
+        = link_to t('cancel', :default => t("helpers.links.cancel")), adverts_path, :class => 'btn'
 
 
 

@@ -64,4 +64,5 @@
     \:data =&amp;gt; { :confirm =&amp;gt; t('confirm', :default =&amp;gt; t(&amp;quot;helpers.links.confirm&amp;quot;, :default =&amp;gt; t('are_you_sure'))) },
     \:class =&amp;gt; 'btn btn-danger' </haml:loud>
   - if current_user
-    = link_to t('contact'), contact_consultant_path(@consultant), :class => 'btn btn-info'
+    %span.medium.pretty.btn.primary
+      = link_to t('contact'), contact_consultant_path(@consultant), :class => 'btn btn-info'
