@@ -38,9 +38,9 @@
   = current_user.full_name
 
 .form-actions
-  %span.medium.pretty.btn.primary
-    = link_to t('.print'), letter_path(@letter, format: "pdf")#, :class => 'btn btn-secondary'
-  %span.medium.pretty.btn.secondary
-    = link_to t('.edit', :default => t("helpers.links.edit")), edit_letter_path(@letter)#, :class => 'btn'
+  %span.medium.pretty.btn.info
+    = link_to t('.print'), letter_path(@letter, format: "pdf")
+  %span.medium.pretty.btn.warning
+    = link_to t('.edit', :default => t("helpers.links.edit")), edit_letter_path(@letter)
   %span.medium.pretty.btn.danger
-    = link_to t('.destroy', :default => t("helpers.links.destroy")), letter_path(@letter), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }#, :class => 'btn btn-danger'
+    = link_to t('.destroy', :default => t("helpers.links.destroy")), letter_path(@letter), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }

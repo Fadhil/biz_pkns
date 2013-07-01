@@ -26,19 +26,18 @@
   /   = f.label t('.state'), :class => 'control-label'
   /   .controls
   /     = f.text_field :state, :class => 'text_field', :placeholder => 'Negeri', :value => @user.address.city.state_name
-
-  %h4=t '.compose'
-  .control-group
-    = f.label t('.subject'), :class => 'control-label'
-    .controls
-      = f.text_field :subject, :class => 'text_field input-xlarge'
-  .control-group
-    = f.label t('.message'), :class => 'control-label'
-    .controls
-      = f.text_area :message, :class => 'redactor', :rows => 40, :cols => 520
-      
-  .form-actions
-    %span.medium.pretty.btn.primary
-      = f.submit t('.create_letter')#, :class => 'btn btn-primary'
-    %span.medium.pretty.btn.default
-      = link_to t('.cancel', :default => t("helpers.links.cancel")), letters_path#, :class => 'btn'
+  %ul
+    %li.field
+      .control-group
+        = f.label t('.subject'), :class => 'control-label'
+        .controls
+          = f.text_field :subject, :class => 'text input input-xlarge'
+      .control-group
+        = f.label t('.message'), :class => 'control-label'
+        .controls
+          = f.text_area :message, :class => 'redactor', :rows => 40, :cols => 520
+    %li.field
+      %span.medium.pretty.btn.info
+        %button{:onClick => 'submit();'}=t '.compose'
+      %span.medium.pretty.btn.danger
+        = link_to t('.cancel', :default => t("helpers.links.cancel")), letters_path

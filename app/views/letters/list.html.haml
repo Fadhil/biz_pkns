@@ -34,7 +34,7 @@
           = link_to letter.subject, preview_letter_path(letter), :class => 'name'
         %small.info.label
           Tarikh :
-          = letter.created_at.strftime("%d %b %y, %M:%S")
+          = letter.created_at.strftime("%d %b %y, %H:%M:%S")
       .two.columns
         .row
           .twelve.columns
