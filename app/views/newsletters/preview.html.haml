@@ -33,8 +33,8 @@
 
       .form-actions
         %span.medium.pretty.btn.primary
-          = f.submit nil#, :class => 'btn btn-primary'
+          = f.submit t('send'), :class => 'btn btn-primary'
         %span.medium.pretty.btn.secondary
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_newsletter_path(@newsletter)#, :class => 'btn'
+          = link_to t('edit', :default => t("helpers.links.edit")), edit_newsletter_path(@newsletter)#, :class => 'btn'
         %span.medium.pretty.btn.default
-          = link_to t('.cancel', :default => t("helpers.links.cancel")), newsletters_path#, :class => 'btn'
+          = link_to t('cancel', :default => t("helpers.links.cancel")), newsletters_path#, :class => 'btn'

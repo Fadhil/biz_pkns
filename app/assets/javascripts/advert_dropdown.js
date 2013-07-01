@@ -15,22 +15,22 @@
 // });
 
 
-// $(document).ready(function(){
-//   advert_program_select = $('#advert_program_select')
-//   advert_program_select.change(function(){
-//   advert_course_select = $('#advert_course_select')
-//     $.ajax({
-//       type: 'GET',
-//       url: '/course_dropdown',
-//       data: {program_id: advert_program_select.val() },
-//       success: function (response) {
-//         advert_course_select.show();
-//         advert_course_select.prop('disabled', false)
-//         advert_course_select.html(response);
-//       }
-//     });
-//   });
-// });
+$(document).ready(function(){
+  advert_program_select = $('#advert_program_select')
+  advert_program_select.change(function(){
+  advert_course_select = $('#advert_course_select')
+    $.ajax({
+      type: 'GET',
+      url: '/course_dropdown',
+      data: {program_id: advert_program_select.val() },
+      success: function (response) {
+        advert_course_select.show();
+        advert_course_select.prop('disabled', false)
+        advert_course_select.html(response);
+      }
+    });
+  });
+});
 
 
 // $(document).ready(function(){
