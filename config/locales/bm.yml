@@ -30,6 +30,7 @@ bm:
   bio_data: 'Biodata'
   business: 'Perniagaan'
   business_categories: 'Bidang Perniagaan'
+  business_category: 'Bidang Perniagaan'
   destroy: 'Padam'
   cancel: 'Batal'
   change_your_password: 'Tukar kata laluan'
