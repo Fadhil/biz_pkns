@@ -132,14 +132,6 @@
                   = link_to t('.user_reports'), reports_users_path
                 %li
                   = link_to t('.blog'), blogs_path
-            %li{:'ui-nav-dropdown' => 'ui-nav-dropdown'}
-              = link_to '#' do
-                %span.left
-                  %i.icon-newspaper
-                = t('.newsletters')
-                %span.right
-                  %i.icon-plus
-              %ul.dropdown-menu
                 %li
                   = link_to t('.history'), history_path
                 %li

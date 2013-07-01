@@ -752,7 +752,7 @@ bm:
       list_adverts: 'Senarai Iklan'
       user_reports: 'Laporan Pengguna'
       newsletters: 'Buletin'
-      history: 'Arkib'
+      history: 'Arkib Buletin'
       letters: 'Surat'
       history_letter: 'Arkib Surat'
       create_newsletter: 'Karang Buletin'
