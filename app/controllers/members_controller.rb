@@ -17,7 +17,8 @@ class MembersController < ApplicationController
       if !params[:search][:state].blank? || !params[:search][:skill].blank?
         if !params[:search][:skill].blank?
           @users = @users.joins(:skills).where('skills.id' => params[:search][:skill])
-        else
+        end
+        if !params[:search][:state].blank?
           @users = @users.joins({:address=>:city}).where('cities.state_name'=>params[:search][:state])
         end
       end
