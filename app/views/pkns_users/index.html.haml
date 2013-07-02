@@ -24,7 +24,7 @@
         - if user.address.nil?
           %p N/A
         - else
-          %p= "#{user.address.city.name}, #{user.address.city.state_name}"
+          %p= "#{user.address.city.name}, #{user.address.city.state_name}" unless user.address.city.nil?
       - if can? :manage, @user
         .two.columns
           .row
