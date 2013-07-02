@@ -13,7 +13,8 @@
             %td= pp.label t('.upload_profile_photo')
             %td= pp.file_field :file
 
-    .row
+  .row
+    .field
       .twelve.columns
       %hr.divider
         .row
@@ -44,10 +45,10 @@
                     %td
                       %span
                       %p.radio
-                        = f.radio_button :gender, 'm'
+                        = f.radio_button :gender, 'm', :class => 'radio'
                         = t('male')
                       %p.radio
-                        = f.radio_button :gender, 'f'
+                        = f.radio_button :gender, 'f', :class => 'radio'
                         = t('female')
                   %tr
                     %th= f.label t('email')
@@ -57,10 +58,10 @@
                     %td= f.text_field :ic_number, :class => 'text input'
                   %tr
                     %th= f.label t('password')
-                    %td= f.password_field :password, :class => 'text input'
+                    %td= f.password_field :password, :class => 'input text input'
                   %tr
                     %th= f.label t('password_confirmation')
-                    %td= f.password_field :password_confirmation, :class => 'text input'
+                    %td= f.password_field :password_confirmation, :class => 'input text input'
                   %tr
                     %th= f.label t('phone')
                     %td= f.text_field :phone, :class => 'text input'
@@ -78,15 +79,15 @@
                       %tr
                         %th= f.label t('address')
                         %td
-                          = a.text_field :line1
+                          = a.text_field :line1, :class => 'text input'
                       %tr
                         %th
                         %td
-                          = a.text_field :line2
+                          = a.text_field :line2, :class => 'text input'
                       %tr
                         %th= f.label t('postcode')
                         %td
-                          = a.text_field :postcode
+                          = a.text_field :postcode, :class => 'text input normal'
                       %tr
                         %th= f.label t('city')
                         %td
@@ -135,13 +136,13 @@
                           = s.select :education_id, options_for_select(Education.all.map{ |a| [a.name,a.id]}, s.object.education_id)
                         .control-group
                           = s.label t('description')
-                          = s.text_field :description
+                          = s.text_field :description, :class => 'normal text input'
                         .control-group
                           = s.label t('.start_date')
-                          = s.text_field :start_date
+                          = s.text_field :start_date, :class => 'narrow text input'
                         .control-group
                           = s.label t('.end_date')
-                          = s.text_field :end_date
+                          = s.text_field :end_date, :class => 'narrow text input'
                         = s.link_to_remove t('.remove_education'), class: "btn btn-danger btn-mini"
                       %br
                       %br
@@ -156,10 +157,10 @@
                           = s.select :skill_id, options_for_select(Skill.all.map{ |a| [a.name,a.id]}, s.object.skill_id)
                         .control-group
                           = s.label t('description')
-                          = s.text_field :description
+                          = s.text_area :description, :class => 'textarea input', :style => 'height: 200px;'
                         .control-group
                           = s.label t('.experience')
-                          = s.text_field :experience, { size: '2', maxlength: '2', class: 'input-mini' }
+                          = s.text_field :experience, { size: '2', maxlength: '2', class: 'narrow text input' }
                           tahun
                         = s.link_to_remove t('.remove_skill'), class: "btn btn-danger btn-mini"
                       %br/
@@ -175,31 +176,31 @@
                       %th= t('business') + " ##{i}"
                     %tr
                       %th= bp.label t('company_name')
-                      %td= bp.text_field :company_name, class: 'text_field'
+                      %td= bp.text_field :company_name, class: 'text input'
                     %tr
                       %th= bp.label t('.type_of_business')
                       %td= bp.select :type_of_business, Business.order(:name).map{|a| [a.name,a.name]}, { selected: bp.object.try(:type_of_business), :include_blank => true }
                     %tr
                       %th= label_tag t('.registration_number')
                       %td
-                        = bp.text_field :registration_number
+                        = bp.text_field :registration_number, class: 'normal text input'
                     %tr
                       %th= bp.label t('category')
                       %td= bp.select(:category, BusinessCategory.order(:name).map{|a| [a.name,a.name]}, {:selected=> bp.object.try(:category), :include_blank => true})
                     %tr
                       %th= bp.label t('description')
-                      %td= bp.text_area :description, class: 'text_area', style: 'height:200px;'
+                      %td= bp.text_area :description, class: 'textarea input', style: 'height:200px;'
                     = bp.fields_for :business_logo do |bpl|
                       %tr
                         %th= bpl.label t('.upload_business_logo')
-                        %td= bpl.file_field :file, class: 'text-field'
+                        %td= bpl.file_field :file, class: 'text input'
                     = bp.fields_for :business_photo do |bph|
                       %tr
                         %th= bph.label t('.upload_business_photo')
-                        %td= bph.file_field :file, class: 'text-field'
+                        %td= bph.file_field :file, class: 'text input'
                       %tr
                         %th= bp.label "Penerangan Gambar"
-                        %td= bph.text_field :caption, class: 'text_area', :"data-limit" => 200
+                        %td= bph.text_field :caption, class: 'textarea input', :"data-limit" => 200
                     %tr
                       %th.header{:colspan => "2"}
                         %br>/
@@ -207,15 +208,15 @@
                     %tr
                       %th= bp.label t('address')
                       %td
-                        = bp.text_field :line1
+                        = bp.text_field :line1, :class => 'text input'
                     %tr
                       %th
                       %td
-                        = bp.text_field :line2
+                        = bp.text_field :line2, :class => 'text input'
                     %tr
                       %th= bp.label t('postcode')
                       %td
-                        = bp.text_field :postcode
+                        = bp.text_field :postcode, :class => 'text input'
                     %tr
                       %th= bp.label t('city')
                       %td
@@ -235,7 +236,7 @@
                     - i = i + 1
                     %tr
                       %th= f.label t('office_phone')
-                      %td= f.text_field :office_phone
+                      %td= f.text_field :office_phone, :class => 'text input'
                     %tr
                       %th.header{:colspan => "2"}
                         %br/
@@ -243,15 +244,15 @@
                     %tr
                       %th= bp.label t('.customers1')
                       %td
-                        = bp.text_field :customer1
+                        = bp.text_field :customer1, :class => 'text input'
                     %tr
                       %th= bp.label t('.customers2')
                       %td
-                        = bp.text_field :customer2
+                        = bp.text_field :customer2, :class => 'text input'
                     %tr
                       %th= bp.label t('.customers3')
                       %td
-                        = bp.text_field :customer3
+                        = bp.text_field :customer3, :class => 'text input'
 
 
   .form-actions

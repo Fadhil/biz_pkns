@@ -113,13 +113,11 @@
                 - @user.business_profiles.each do |bp|
                   - if !bp.company_name.blank?
                     %tr
-                      %th{:colspan => "2"}
-                        %center
-                          %td
-                          - unless bp.business_logo.nil?
-                            = bp.business_photo.caption
-                            - unless bp.business_logo.file.nil?
-                              = image_tag(bp.business_logo.file, :size => '150x150')
+                      %td
+                      - unless bp.business_logo.nil?
+                        = bp.business_photo.caption
+                        - unless bp.business_logo.file.nil?
+                          = image_tag(bp.business_logo.file, :size => '150x150')
                     %tr
                       %th= t('.company_name')
                       %td= bp.company_name unless bp.nil?
@@ -147,8 +145,8 @@
                           %td{:colspan => "2"}= image_tag(bp.business_photo.file, :size => '250x250')
                         %tr
                         %th Penerangan Gambar
-                    %br
-                    %br
+                      %br
+                      %br
                     %tr
                       %th= t('.customers1') unless bp.customer1.nil?
                       %td= bp.customer1 unless bp.nil?
