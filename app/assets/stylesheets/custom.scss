@@ -75,7 +75,8 @@ body {
 
   section {
     &#main {
-      #welcome {
+      padding: 1em 0;
+      &.welcome {
         background-image: url('bground-b2cc613338fffc17a2a643a883caacaf.jpg');
         background-size: 100% 100%;
         padding: 20px 0;
@@ -729,9 +730,8 @@ body {
 
   /* Alert, Notice */
   .alert {
-    position: absolute;
-    margin: 1em auto;
-    padding-right: 10px;
+    position: relative;
+    margin: 0 auto 1em;
     width: 100%;
     z-index: 3;
 
@@ -799,6 +799,6 @@ body {
 }
 
 .padding-top-some {
-  padding-top: 65px;
+  padding-top: 15px;
 }
 

@@ -32,17 +32,32 @@
 - elsif current_consultant
   %li
     /= link_to session[:current_program_name] unless session[:current_program_name].nil?, '#'
-    - unless current_consultant.profile_photo.nil?
-      .avatar
-        = image_tag(current_consultant.profile_photo.file)
-    = link_to current_consultant.first_name
-    .dropdown
-      %ul
-        %li
-          = link_to t('.consultant_profile'), consultant_path(id: current_consultant.id)
-        %li
-          = link_to t('.my_program')
+    .row
+      .twelve.columns.profile
+        = link_to '#' do
+          - unless current_consultant.profile_photo.nil?
+            .avatar.circle.image
+              = image_tag(current_consultant.profile_photo.file)
+          - else
+            .avatar.circle.image
+              = image_tag('http://flickholdr.com/50/50/avatar')
+          = current_consultant.first_name
+          %span
+            %i.icon-down-open
           .dropdown
-            = program_switch_menu.html_safe
-        %li
-          = link_to t('logout'), destroy_consultant_session_path, method: :delete
+            %ul
+              %li
+                = link_to consultant_path(id: current_consultant.id) do
+                  %i.icon-user
+                  = t('.consultant_profile')
+              %li
+                = link_to do
+                  %i.icon-briefcase
+                  = t('.my_program')
+                /
+                  .dropdown
+                  = program_switch_menu.html_safe
+              %li
+                = link_to destroy_consultant_session_path, method: :delete do
+                  %i.icon-logout
+                  =t('logout')

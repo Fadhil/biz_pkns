@@ -5,17 +5,27 @@
         %ul#sidebar-nav
           %li
             = link_to t('.member_directory'), members_path
-          %li{:'ui-nav-dropdown' => 'ui-nav-dropdown'}
+          %li
             = link_to t('.business_directory'), business_directory_path
+          %li{:'ui-nav-dropdown' => 'ui-nav-dropdown'}
+            = link_to '#' do
+              %span.left
+                %i.icon-archive
+              Kursus
+              %span.right
+                %i.icon-plus
             %ul.dropdown-menu
               %li
                 = link_to t('.list_of_courses'), course_listing_path
               %li
                 = link_to t('.add_modify_courses'), courses_path
-          %li
-            = link_to t('course'), courses_path
           %li{:'ui-nav-dropdown' => 'ui-nav-dropdown'}
-            = link_to t('extra'), courses_path
+            = link_to '#' do
+              %span.left
+                %i.icon-plus-squared
+              = t('extra')
+              %span.right
+                %i.icon-plus
             %ul.dropdown-menu
               %li
                 = link_to t('.list_surveys'), surveys_path
