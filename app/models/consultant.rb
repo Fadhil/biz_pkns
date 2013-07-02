@@ -48,6 +48,10 @@ class Consultant < ActiveRecord::Base
     super && self.is_active?
   end
 
+  def full_name
+    ( self.first_name || '' ) + ' ' + ( self.last_name || '')
+  end
+
   def create_default_profile
     self.create_default_name
     self.create_default_profile_photo

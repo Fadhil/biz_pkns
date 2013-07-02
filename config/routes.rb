@@ -126,7 +126,7 @@ BizPkns::Application.routes.draw do
     get "pages/welcome", as: 'welcome_page'
     get "pages/adview", as: 'adview'
     get "consultants/:id/contact", :to => "consultants#contact", :as => 'contact_consultant'
-    put "consultants/:id/contact/sent", :to => "consultants#sent", :as => 'contact_sent'
+    post "consultants/:id/contact/sent", :to => "consultants#sent", :as => 'contact_sent'
     get "letters/:id/compose", :to => "letters#compose", :as => 'compose_letter'
     put "admin/:id/update", :to => "admin#update", :as => "update_admin"
 

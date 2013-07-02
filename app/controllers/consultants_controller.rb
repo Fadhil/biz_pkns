@@ -101,10 +101,10 @@ class ConsultantsController < ApplicationController
 
   def sent
     @consultant = Consultant.find(params[:id])
-    @emailname = params[:consultant][:name]
-    @emailsender = params[:consultant][:email]
-    @emailsubject = params[:consultant][:subject]
-    @emailmessage = params[:consultant][:message]
+    @emailname = @consultant.full_name
+    @emailsender = @consultant.email
+    @emailsubject = params[:contact][:subject]
+    @emailmessage = params[:contact][:message]
     respond_to do |format|
       if @consultant.save
         ConsultantMailer.contact(@consultant, @emailname, @emailsender, @emailsubject, @emailmessage).deliver
