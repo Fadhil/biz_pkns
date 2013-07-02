@@ -13,6 +13,7 @@ class PknsUsersController < UsersController
     @pkns_user = PknsUser.find(params[:id])
   end
 
+
   def create
     respond_to do |format|
       if @pkns_user.save
