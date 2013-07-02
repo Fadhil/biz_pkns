@@ -158,6 +158,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  def is_member?
+    unless self.membership.nil?
+      if !self.membership.member_number.blank?
+        true
+      end
+    end
+  end
+
   def generate_member_id(id)
     year = Date.today.year.to_s[2..4]
     biz_id = (id + 499).to_s #start at 500

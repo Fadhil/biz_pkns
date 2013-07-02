@@ -55,7 +55,7 @@
             %tbody
               %tr
                 %th= t('membership_status')
-                %td= @user.confirmed? ? "Belum Disahkan" : "Disahkan"
+                %td= @user.is_member? ? "Disahkan" : "Belum Disahkan"
               %tr
                 %th= t('ic_number')
                 %td= @user.ic_number
