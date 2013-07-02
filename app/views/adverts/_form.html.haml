@@ -8,7 +8,7 @@
   .control-group
     = f.label t('.select_advert_type'), class: 'control-label'
     .controls
-      = select_tag 'select_advert_type', options_for_select([[t('.course_advert'), 'Course'], [t('.product_advert'), 'Product']], selected: @advert.advert_type || params[:select_advert_type]), onChange: "submit();"#, disabled: disabled
+      = select_tag 'select_advert_type', options_for_select([[t('.course_advert'), 'Course'], [t('.product_advert'), 'Product']], selected: @advert.advert_type || params[:select_advert_type]), onChange: "submit();", disabled: disabled
 = form_for @advert, :html => { :class => 'form-horizontal' } do |f|
   - if params[:select_advert_type] == 'Product'
     #product_advert
