@@ -30,19 +30,19 @@ class Consultant < ActiveRecord::Base
 
   after_create :create_default_profile
 
-   include MailForm::Delivery
+  # include MailForm::Delivery
 
-  # #append :remote_ip, :user_agent, :session
-   attributes :name, :from, :subject, :message, :created_at
+  # # #append :remote_ip, :user_agent, :session
+  #  attributes :name, :from, :subject, :message, :created_at
 
-  # scope :active, where(active: true)
+  # # scope :active, where(active: true)
 
-  def headers
-    {
-      :to => self.email,
-      :from => User.name#%("#{User.name}" <#{User.email}>)
-    }
-  end
+  # def headers
+  #   {
+  #     :to => self.email,
+  #     :from => "Test" #User.name#%("#{User.name}" <#{User.email}>)
+  #   }
+  # end
 
   def active_for_authentication?
     super && self.is_active?
