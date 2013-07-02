@@ -263,6 +263,9 @@ bm:
         studying: 'Belajar'
         working_self_business: 'Bekerja/Perniagaan Sendiri'
         part_time_business: 'Belajar/Perniagaan Sendiri'
+      customers1: ' Pelanggan #1'
+      customers2: ' Pelanggan #2'
+      customers3: ' Pelanggan #3'
     admin_edit:
       title: 'Kemaskini Profil Admin'
     admin_show:

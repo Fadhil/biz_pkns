@@ -44,22 +44,22 @@
       %section.pill.tabs
         %ul.tab-nav
           %li.active
-            = link_to 'Latar Belakang Individu', '#'
+            = link_to 'Latarbelakang Individu', '#'
           - unless @user.education_background.empty?
             %li
-              = link_to 'Latar Belakang Pendidikan', '#'
+              = link_to 'Latarbelakang Pendidikan', '#'
           - unless @user.experience.empty?
             %li
               = link_to 'Kemahiran', '#'
           - unless @user.business_profiles.empty?
             %li
-              = link_to 'Maklumat Perniagaan', '#'
+              = link_to 'Perniagaan', '#'
         .tab-content.active
           %table.table.strip
             %tbody
               %tr
                 %th= t('membership_status')
-                %td= @user.confirmed? ? "Unconfirmed" : "Confirmed"
+                %td= @user.confirmed? ? "Belum Disahkan" : "Disahkan"
               %tr
                 %th= t('ic_number')
                 %td= @user.ic_number
@@ -115,8 +115,9 @@
                     %tr
                       %th{:colspan => "2"}
                         %center
-                          %td= bp.business_photo.caption
+                          %td
                           - unless bp.business_logo.nil?
+                            = bp.business_photo.caption
                             - unless bp.business_logo.file.nil?
                               = image_tag(bp.business_logo.file, :size => '150x150')
                     %tr
@@ -146,3 +147,14 @@
                           %td{:colspan => "2"}= image_tag(bp.business_photo.file, :size => '250x250')
                         %tr
                         %th Penerangan Gambar
+                    %br
+                    %br
+                    %tr
+                      %th= t('.customers1') unless bp.customer1.nil?
+                      %td= bp.customer1 unless bp.nil?
+                    %tr
+                      %th= t('.customers2') unless bp.customer2.nil?
+                      %td= bp.customer2 unless bp.nil?
+                    %tr
+                      %th= t('.customers3') unless bp.customer3.nil?
+                      %td= bp.customer3 unless bp.nil?

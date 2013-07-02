@@ -1,257 +1,259 @@
 = nested_form_for @user, :html => { :class => 'form-horizontal', multipart: true } do |f|
   .container
-    .row.wrapper
-      .span7.border-right
-        .row.border-bottom
-          .whitespace
-            %span.aleft
-              - unless @user.profile_photo.nil?
-                = image_tag(@user.profile_photo.file, size: '70x70')
-            %span.aright
-              %span
-            %table.table
-              %tr
-                %th.header{:colspan => "2"} Gambar Profil
-              %tr
-                = f.fields_for :profile_photo do |pp|
-                  %td= pp.label t('.upload_profile_photo')
-                  %td= pp.file_field :file
-        .row
-          .span4
-            %table.table
-              %tr
-                %th.header{:colspan => "2"} Latar Belakang Individu
-              %tr
-                %th= f.label t('first_name')
-                %td= f.text_field :first_name, :class => 'input-medium'
-              %tr
-                %th= f.label t('last_name')
-                %td= f.text_field :last_name, :class => 'input-medium'
-              %tr
-                %th= f.label t('gender')
-                %td
-                  %span
-                  %p.radio
-                    = f.radio_button :gender, 'm'
-                    = t('male')
-                  %p.radio
-                    = f.radio_button :gender, 'f'
-                    = t('female')
-              %tr
-                %th= f.label t('email')
-                %td= f.text_field :email, :class => 'input-medium'
-              %tr
-                %th= f.label t('ic_number')
-                %td= f.text_field :ic_number, :class => 'input-medium'
-              %tr
-                %th= f.label t('password')
-                %td= f.password_field :password, :class => 'input-medium'
-              %tr
-                %th= f.label t('password_confirmation')
-                %td= f.password_field :password_confirmation, :class => 'input-medium'
-              %tr
-                %th= f.label t('phone')
-                %td= f.text_field :phone, :class => 'input-medium'
-              %tr
-                %th= f.label t('.twitter_handle')
-                %td= f.text_field :twitter_handle, :class => 'input-medium'
-              %tr
-                %th= f.label t('.facebook_handle')
-                %td= f.text_field :facebook_handle, :class => 'input-medium'
-              %tr
-                %th.header{:colspan => "2"}
-                  %br>/
-                  Alamat Individu
-              = f.fields_for :address do |a|
-                %tr
-                  %th= f.label t('address')
-                  %td
-                    = a.text_field :line1
-                %tr
-                  %th
-                  %td
-                    = a.text_field :line2
-                %tr
-                  %th= f.label t('postcode')
-                  %td
-                    = a.text_field :postcode
-                %tr
-                  %th= f.label t('city')
-                  %td
-                    = a.fields_for :city do |c|
-                      - if c.object.id
-                        - @cities = City.where(state_name: c.object.state_name).order(:name)
-                      - else
-                        - @cities = City.where(state_name: 'Selangor').order(:name)
-                      = select_tag "#{a.object.addressable_type.downcase}_city", options_for_select(@cities.map{ |a| [a.name, a.id]}, selected: c.object.id ), :include_blank => true
-                %tr
-                  %th= f.label t('state')
-                  %td
-                    = a.fields_for :city do |c|
-                      - if c.object.state_name
-                        - selected_state = c.object.state_name
-                      - else
-                        - selected_state = 'Selangor'
-                      = select_tag "#{a.object.addressable_type.downcase}_state", options_for_select(City.order(:state_name).map{ |a| [a.state_name]}.uniq, selected: selected_state), :include_blank => true
-                %tr
-                  %th= f.label t('.current_employment_status')
-                  %td
-                    = f.select :current_employment_status, [[t('.employment_status.own_business'),'own_business'], |
-                      [t('.employment_status.working_studying'),'working_studying'],                               |
-                      [t('.employment_status.studying'),'studying'],                                               |
-                      [t('.employment_status.working_self_business'),'working_self_business'],                     |
-                      [t('.employment_status.part_time_business'),'part_time_business']], :include_blank => true   |
-              %tr
-                %th
-                %td
-                  - if can? :manage, :all
-                    .span3
-                      = f.radio_button :is_active, true
-                      = t('active')
-                      \&nbsp;&nbsp;
-                      \#{f.radio_button :is_active, false}
-                      \#{t('inactive')}
-            %br/
-            %br/
-            %br/
-            %br/
-            %br/
-            %br/
-            %br/
-            %br/
-            %br/
-            %br/
-            %br/
-          .span3{:style => "margin-left:-5px;"}
-            %table.table
-              %tr
-                %th.header Latar Belakang Pendidikan
-                = f.fields_for :education_background do |s|
-                  %div
-                    %div
-                      = s.select :education_id, options_for_select(Education.all.map{ |a| [a.name,a.id]}, s.object.education_id)
-                    .control-group
-                      = s.label t('description')
-                      = s.text_field :description
-                    .control-group
-                      = s.label t('.start_date')
-                      = s.text_field :start_date
-                    .control-group
-                      = s.label t('.end_date')
-                      = s.text_field :end_date
-                    = s.link_to_remove t('.remove_education'), class: "btn btn-danger btn-mini"
-                  %br
-                  %br
-            = f.link_to_add "+", :education_background, class: "btn btn-mini", :style => "margin: -35px 0 0 4px;"
-            %br/
-            %table.table
-              %tr
-                %th.header{:colspan => "2"} Kemahiran
+    .row
+      .two.columns.center
+        .image.avatar
+          - unless @user.profile_photo.nil?
+            = image_tag(@user.profile_photo.file, size: '70x70')
+          - else
+            = image_tag('http://flickholdr.com/70/70/avatar', size: '70x70')
+      .ten.columns
+        %tr
+          = f.fields_for :profile_photo do |pp|
+            %td= pp.label t('.upload_profile_photo')
+            %td= pp.file_field :file
 
-                = f.fields_for :experience do |s|
-                  %div
-                    %div
-                      = s.select :skill_id, options_for_select(Skill.all.map{ |a| [a.name,a.id]}, s.object.skill_id)
-                    .control-group
-                      = s.label t('description')
-                      = s.text_field :description
-                    .control-group
-                      = s.label t('.experience')
-                      = s.text_field :experience, { size: '2', maxlength: '2', class: 'input-mini' }
-                      tahun
-                    = s.link_to_remove t('.remove_skill'), class: "btn btn-danger btn-mini"
-                  %br/
-                  %br/
-            = f.link_to_add "+", :experience, class: "btn btn-mini", :style => "margin: -35px 0 0 4px;"
-            %br/
-      .span4
-        %div
-          %table.table
-            %tr
-              %th.header{:colspan => "2"} Maklumat Perniagaan
-            - i = 1
-            = f.fields_for :business_profiles do |bp|
-              %tr
-                %th= t('business') + " ##{i}"
-              %tr
-                %th= bp.label t('company_name')
-                %td= bp.text_field :company_name, class: 'text_field'
-              %tr
-                %th= bp.label t('.type_of_business')
-                %td= bp.select :type_of_business, Business.order(:name).map{|a| [a.name,a.name]}, { selected: bp.object.try(:type_of_business), :include_blank => true }
-              %tr
-                %th= label_tag t('.registration_number')
-                %td
-                  = bp.text_field :registration_number
-              %tr
-                %th= bp.label t('category')
-                %td= bp.select(:category, BusinessCategory.order(:name).map{|a| [a.name,a.name]}, {:selected=> bp.object.try(:category), :include_blank => true})
-              %tr
-                %th= bp.label t('description')
-                %td= bp.text_area :description, class: 'text_area', style: 'height:200px;'
-              = bp.fields_for :business_logo do |bpl|
-                %tr
-                  %th= bpl.label t('.upload_business_logo')
-                  %td= bpl.file_field :file, class: 'text-field'
-              = bp.fields_for :business_photo do |bph|
-                %tr
-                  %th= bph.label t('.upload_business_photo')
-                  %td= bph.file_field :file, class: 'text-field'
-                %tr
-                  %th= bp.label "Penerangan Gambar"
-                  %td= bph.text_field :caption, class: 'text_area', :"data-limit" => 200
-              %tr
-                %th.header{:colspan => "2"}
-                  %br>/
-                  Alamat Syarikat
-              %tr
-                %th= bp.label t('address')
-                %td
-                  = bp.text_field :line1
-              %tr
-                %th
-                %td
-                  = bp.text_field :line2
-              %tr
-                %th= bp.label t('postcode')
-                %td
-                  = bp.text_field :postcode
-              %tr
-                %th= bp.label t('city')
-                %td
-                  - if bp.object.city_id
-                    - @cities = City.where(state_name: bp.object.city.state_name).order(:name)
-                  - else
-                    - @cities = City.where(state_name: 'Selangor').order(:name)
-                  = bp.select :city_id, options_for_select(@cities.map{ |a| [a.name, a.id]}, {selected: bp.object.city_id} )
-              %tr
-                %th= bp.label t('state')
-                %td
-                  - if bp.object.try(:city).try(:state_name)
-                    - selected_state = bp.object.city.state_name
-                  - else
-                    - selected_state = 'Selangor'
-                  = select_tag "businessprofile_state", options_for_select(City.order(:state_name).map{ |a| [a.state_name]}.uniq, {selected: selected_state})
-              - i = i + 1
-              %tr
-                %th= f.label t('office_phone')
-                %td= f.text_field :office_phone
-              %tr
-                %th.header{:colspan => "2"}
-                  %br/
-                  Pelanggan
-              %tr
-                %th= bp.label t('.customers1')
-                %td
-                  = bp.text_field :customer1
-              %tr
-                %th= bp.label t('.customers2')
-                %td
-                  = bp.text_field :customer2
-              %tr
-                %th= bp.label t('.customers3')
-                %td
-                  = bp.text_field :customer3
+    .row
+      .twelve.columns
+      %hr.divider
+        .row
+          %section.pill.tabs
+            %ul.tab-nav
+              %li.active
+                = link_to 'Latarbelakang Individu', '#'
+              - unless @user.education_background.empty?
+                %li
+                  = link_to 'Pendidikan', '#'
+              - unless @user.experience.empty?
+                %li
+                  = link_to 'Kemahiran', '#'
+              - unless @user.business_profiles.empty?
+                %li
+                  = link_to 'Perniagaan', '#'
+            .tab-content.active
+              %table.table.strip
+                %tbody
+                  %tr
+                    %th= f.label t('first_name')
+                    %td= f.text_field :first_name, :class => 'text input'
+                  %tr
+                    %th= f.label t('last_name')
+                    %td= f.text_field :last_name, :class => 'text input'
+                  %tr
+                    %th= f.label t('gender')
+                    %td
+                      %span
+                      %p.radio
+                        = f.radio_button :gender, 'm'
+                        = t('male')
+                      %p.radio
+                        = f.radio_button :gender, 'f'
+                        = t('female')
+                  %tr
+                    %th= f.label t('email')
+                    %td= f.text_field :email, :class => 'text input'
+                  %tr
+                    %th= f.label t('ic_number')
+                    %td= f.text_field :ic_number, :class => 'text input'
+                  %tr
+                    %th= f.label t('password')
+                    %td= f.password_field :password, :class => 'text input'
+                  %tr
+                    %th= f.label t('password_confirmation')
+                    %td= f.password_field :password_confirmation, :class => 'text input'
+                  %tr
+                    %th= f.label t('phone')
+                    %td= f.text_field :phone, :class => 'text input'
+                  %tr
+                    %th= f.label t('.twitter_handle')
+                    %td= f.text_field :twitter_handle, :class => 'text input'
+                  %tr
+                    %th= f.label t('.facebook_handle')
+                    %td= f.text_field :facebook_handle, :class => 'text input'
+
+                  %th.header{:colspan => "2"}
+                    %br>
+                      Alamat Individu
+                    = f.fields_for :address do |a|
+                      %tr
+                        %th= f.label t('address')
+                        %td
+                          = a.text_field :line1
+                      %tr
+                        %th
+                        %td
+                          = a.text_field :line2
+                      %tr
+                        %th= f.label t('postcode')
+                        %td
+                          = a.text_field :postcode
+                      %tr
+                        %th= f.label t('city')
+                        %td
+                          = a.fields_for :city do |c|
+                            - if c.object.id
+                              - @cities = City.where(state_name: c.object.state_name).order(:name)
+                            - else
+                              - @cities = City.where(state_name: 'Selangor').order(:name)
+                            = select_tag "#{a.object.addressable_type.downcase}_city", options_for_select(@cities.map{ |a| [a.name, a.id]}, selected: c.object.id ), :include_blank => true
+                      %tr
+                        %th= f.label t('state')
+                        %td
+                          = a.fields_for :city do |c|
+                            - if c.object.state_name
+                              - selected_state = c.object.state_name
+                            - else
+                              - selected_state = 'Selangor'
+                            = select_tag "#{a.object.addressable_type.downcase}_state", options_for_select(City.order(:state_name).map{ |a| [a.state_name]}.uniq, selected: selected_state), :include_blank => true
+                      %tr
+                        %th= f.label t('.current_employment_status')
+                        %td
+                          = f.select :current_employment_status, [[t('.employment_status.own_business'),'own_business'], |
+                            [t('.employment_status.working_studying'),'working_studying'],                               |
+                            [t('.employment_status.studying'),'studying'],                                               |
+                            [t('.employment_status.working_self_business'),'working_self_business'],                     |
+                            [t('.employment_status.part_time_business'),'part_time_business']], :include_blank => true   |
+                    %tr
+                      %th
+                      %td
+                        - if can? :manage, :all
+                          .span3
+                            = f.radio_button :is_active, true
+                            = t('active')
+                            \&nbsp;&nbsp;
+                            \#{f.radio_button :is_active, false}
+                            \#{t('inactive')}
+
+
+            - unless @user.education_background.empty?
+              .tab-content
+                %table.table.strip
+                  %tr
+                    = f.fields_for :education_background do |s|
+                      %div
+                        %div
+                          = s.select :education_id, options_for_select(Education.all.map{ |a| [a.name,a.id]}, s.object.education_id)
+                        .control-group
+                          = s.label t('description')
+                          = s.text_field :description
+                        .control-group
+                          = s.label t('.start_date')
+                          = s.text_field :start_date
+                        .control-group
+                          = s.label t('.end_date')
+                          = s.text_field :end_date
+                        = s.link_to_remove t('.remove_education'), class: "btn btn-danger btn-mini"
+                      %br
+                      %br
+                = f.link_to_add "Tambah Pendidikan", :education_background, class: "btn metro small secondary", :style => "margin: -35px 0 0 4px;"
+            - unless @user.experience.empty?
+              .tab-content
+                %table.table.strip
+                  %tr
+                    = f.fields_for :experience do |s|
+                      %div
+                        %div
+                          = s.select :skill_id, options_for_select(Skill.all.map{ |a| [a.name,a.id]}, s.object.skill_id)
+                        .control-group
+                          = s.label t('description')
+                          = s.text_field :description
+                        .control-group
+                          = s.label t('.experience')
+                          = s.text_field :experience, { size: '2', maxlength: '2', class: 'input-mini' }
+                          tahun
+                        = s.link_to_remove t('.remove_skill'), class: "btn btn-danger btn-mini"
+                      %br/
+                      %br/
+                = f.link_to_add "Tambah Pengalaman", :experience, class: "btn metro small secondary", :style => "margin: -35px 0 0 4px;"
+            - unless @user.business_profiles.empty?
+              .tab-content
+                %table.table.strip
+                  %tr
+                  - i = 1
+                  = f.fields_for :business_profiles do |bp|
+                    %tr
+                      %th= t('business') + " ##{i}"
+                    %tr
+                      %th= bp.label t('company_name')
+                      %td= bp.text_field :company_name, class: 'text_field'
+                    %tr
+                      %th= bp.label t('.type_of_business')
+                      %td= bp.select :type_of_business, Business.order(:name).map{|a| [a.name,a.name]}, { selected: bp.object.try(:type_of_business), :include_blank => true }
+                    %tr
+                      %th= label_tag t('.registration_number')
+                      %td
+                        = bp.text_field :registration_number
+                    %tr
+                      %th= bp.label t('category')
+                      %td= bp.select(:category, BusinessCategory.order(:name).map{|a| [a.name,a.name]}, {:selected=> bp.object.try(:category), :include_blank => true})
+                    %tr
+                      %th= bp.label t('description')
+                      %td= bp.text_area :description, class: 'text_area', style: 'height:200px;'
+                    = bp.fields_for :business_logo do |bpl|
+                      %tr
+                        %th= bpl.label t('.upload_business_logo')
+                        %td= bpl.file_field :file, class: 'text-field'
+                    = bp.fields_for :business_photo do |bph|
+                      %tr
+                        %th= bph.label t('.upload_business_photo')
+                        %td= bph.file_field :file, class: 'text-field'
+                      %tr
+                        %th= bp.label "Penerangan Gambar"
+                        %td= bph.text_field :caption, class: 'text_area', :"data-limit" => 200
+                    %tr
+                      %th.header{:colspan => "2"}
+                        %br>/
+                        Alamat Syarikat
+                    %tr
+                      %th= bp.label t('address')
+                      %td
+                        = bp.text_field :line1
+                    %tr
+                      %th
+                      %td
+                        = bp.text_field :line2
+                    %tr
+                      %th= bp.label t('postcode')
+                      %td
+                        = bp.text_field :postcode
+                    %tr
+                      %th= bp.label t('city')
+                      %td
+                        - if bp.object.city_id
+                          - @cities = City.where(state_name: bp.object.city.state_name).order(:name)
+                        - else
+                          - @cities = City.where(state_name: 'Selangor').order(:name)
+                        = bp.select :city_id, options_for_select(@cities.map{ |a| [a.name, a.id]}, {selected: bp.object.city_id} )
+                    %tr
+                      %th= bp.label t('state')
+                      %td
+                        - if bp.object.try(:city).try(:state_name)
+                          - selected_state = bp.object.city.state_name
+                        - else
+                          - selected_state = 'Selangor'
+                        = select_tag "businessprofile_state", options_for_select(City.order(:state_name).map{ |a| [a.state_name]}.uniq, {selected: selected_state})
+                    - i = i + 1
+                    %tr
+                      %th= f.label t('office_phone')
+                      %td= f.text_field :office_phone
+                    %tr
+                      %th.header{:colspan => "2"}
+                        %br/
+                        Pelanggan
+                    %tr
+                      %th= bp.label t('.customers1')
+                      %td
+                        = bp.text_field :customer1
+                    %tr
+                      %th= bp.label t('.customers2')
+                      %td
+                        = bp.text_field :customer2
+                    %tr
+                      %th= bp.label t('.customers3')
+                      %td
+                        = bp.text_field :customer3
+
+
   .form-actions
     %span.medium.pretty.btn.secondary
       = f.submit t('update'), :class => 'btn btn-primary'
