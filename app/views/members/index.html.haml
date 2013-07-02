@@ -41,27 +41,38 @@
           %p= user.membership.member_number
         - else
           %p NIL
-      .four.columns
         %p
-          = link_to "#{user.first_name} #{user.last_name}", user_path(user), :class => 'name'
-          %small.warning.label
-            - if user.current_employment_status == 'own_business'
-              Pemilik Perniagaan
-            - elsif user.current_employment_status == 'working_studying'
-              Bekerja/Belajar
-            - elsif user.current_employment_status == 'studying'
-              Belajar
-            - elsif user.current_employment_status == 'working_self_business'
-              Bekerja/Perniagaan Sendiri
-            - elsif user.current_employment_status == 'Belajar/Perniagaan Sampingan'
-              Pemilik Perniagaan
-            - else
-              %td Nil
+          - if can? :manage, :all
+            %span.pretty.small.btn.danger.icon-left.entypo.icon-trash
+              =link_to t('destroy', :default => t("helpers.links.destroy")),
+                        user_path(user),
+                        :method => :delete,
+                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => t('are_you_sure'))) }
+      .four.columns
+        - if cannot? :consultation, :pages
+          %p
+            = link_to "#{user.first_name} #{user.last_name}", '#', :class => 'name'
+        - else
+          %p
+            = link_to "#{user.first_name} #{user.last_name}", user_path(user), :class => 'name'
       .four.columns
         - user.programs.uniq.each do |program|
           %p= program.name
       .two.columns
-        .row
+        %small
+          - if user.current_employment_status == 'own_business'
+            Pemilik Perniagaan
+          - elsif user.current_employment_status == 'working_studying'
+            Bekerja/Belajar
+          - elsif user.current_employment_status == 'studying'
+            Belajar
+          - elsif user.current_employment_status == 'working_self_business'
+            Bekerja/Perniagaan Sendiri
+          - elsif user.current_employment_status == 'Belajar/Perniagaan Sampingan'
+            Pemilik Perniagaan
+          - else
+            %td Nil
+        .row.hide
           .twelve.columns
           .twelve.columns
             - if cannot? :consultation, :pages
