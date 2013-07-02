@@ -3,12 +3,24 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+    @users = User.nonadmin
+    if params[:search].present?
+      if params[:search][:name].blank?
+        @users = User.nonadmin.order("id desc")
+      elsif params[:search][:name].present?
+        search_terms = params[:search][:name].split(' ').join('%')
+        @users = User.nonadmin.where("concat(LOWER(first_name), ' ', LOWER(last_name)) like ?","%#{search_terms}%")
+      end
+
+      if params[:search][:ic].present?
+        @users = @users.where(ic_number: params[:search][:ic])
+      end
+    end
     if params[:filter].present?
-      @users = User.nonadmin.send(params[:filter])
-    else
-      @users = User.nonadmin
+      @users = @users.send(params[:filter])
     end
     @klass = Class
+    @users = Kaminari.paginate_array(@users).page(params[:page]).per(6)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @users }
@@ -52,13 +64,14 @@ class UsersController < ApplicationController
       @user.address.build_city
     end
     
-    # if @user.business_profiles.nil?
-    #   @user.build_business_profile
-    #   @user.business_profile.build_business_logo
-    #   @user.business_profile.build_business_photo
-    #   @user.business_profile.build_address
-    #   @user.business_profile.address.build_city
-    # end
+    if @user.business_profiles.empty?
+      3.times do |n|
+        @user.business_profiles.build
+        @user.business_profiles[n].build_business_logo
+        @user.business_profiles[n].build_business_photo
+      end
+
+    end
     # if @user.business_profile.address.nil?
     #   @user.business_profile.build_address
     # end
@@ -88,7 +101,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     city_id = params[:user_city]
-    #@user = User.new(params[:user].delete(:city_attributes))
+    @user = User.new(params[:user].delete(:city_attributes))
     #@business_profile = @user.build_business_profile
 
     respond_to do |format|
@@ -119,10 +132,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update_attributes(params[:user])
 
-        #@user.set_city(city_id) unless city_id.blank?
-        #@user.business_profile.set_city(business_city_id) unless business_city_id.blank?
-
-        # @user.set_city(city_id) unless city_id.blank?
+          @user.set_city(city_id) unless city_id.blank?
         # @user.business_profile.set_city(business_city_id) unless business_city_id.blank?
 
         unless @user.has_role?('Admin')
@@ -176,4 +186,29 @@ class UsersController < ApplicationController
       end
     end
   end 
+
+  def surveys
+    @user = User.find(params[:id])
+    @surveys = @user.unfinished_surveys
+  end
+
+  def letters
+    @user = User.find(params[:id])
+    @letters = Letter.where(:user_id => @user.id)
+    # respond_to do |format|
+    #   format.html # index.html.erb
+    #   format.json { render json: @letters }
+    # end
+
+  end
+
+  def my_adverts
+    if current_user
+<<<<<<< HEAD
+      @my_adverts = current_user.adverts.order("created_at DESC").all
+=======
+      @my_adverts = current_user.adverts#.order('created_at DESC')
+>>>>>>> b187bdca497fca8391e1022831313ace6fc6f3c6
+    end
+  end
 end

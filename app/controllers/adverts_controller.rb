@@ -28,8 +28,8 @@ class AdvertsController < ApplicationController
   end
 
   def create
-    @the_params = params[:advert]
     @advert = Advert.new(params[:advert])
+    @the_params = params[:advert]
     if params[:advert_course_select].present?
       course = Course.find(params[:advert_course_select])
       @the_params = {  title: course.name, 
@@ -43,10 +43,15 @@ class AdvertsController < ApplicationController
     
 
     respond_to do |format|
-      if @advert.save && @advert.update_attributes(@the_params)
+      if @advert.save 
+        if @advert.update_attributes(@the_params)
         
-        format.html { redirect_to @advert, notice: t('successfully_created_advert') }
-        format.json { head :no_content }
+          format.html { redirect_to @advert, notice: t('successfully_created_advert') }
+          format.json { head :no_content }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @advert.errors, status: :unprocessable_entity }
+        end
       else
         format.html { render action: "new" }
         format.json { render json: @advert.errors, status: :unprocessable_entity }

@@ -4,6 +4,7 @@ class Advert < ActiveRecord::Base
   attr_accessible :user_id, :requested, :admin_created, :request_status
 
   has_one :photo, as: :attachable, dependent: :destroy
+  default_scope order('created_at DESC')
   scope :active, where('active is true AND ( requested is true OR admin_created is true)').order(:weight, :end_date).limit(10)
   scope :inactive, where('active is not true AND ( requested is true OR admin_created is true)').order(:end_date)
   scope :pending, where('active is true AND ( requested is true OR admin_created is true)').order(:end_date).offset(10)
