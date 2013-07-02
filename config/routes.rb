@@ -118,9 +118,9 @@ BizPkns::Application.routes.draw do
     # end
 
     scope '/portal' do
-      get 'home' => 'portals#home'
-      get 'contact' => 'portals#contact'
-      get 'course' => 'portals#course'
+      get 'home' => 'portals#home', as: :portal_home
+      get 'contact' => 'portals#contact', as: :portal_contact
+      get 'course' => 'portals#course', as: :portal_course
       get 'course/:id' => 'portals#course_show', as: :portal_course_show
     end
     get "pages/welcome", as: 'welcome_page'
