@@ -808,7 +808,7 @@ bm:
       invalid_token: 'Kesalahan pada authentication token.'
       timeout: 'Sesi anda telah tamat, silahkan sign in bagi meneruskan sesi yang baru.'
       inactive: 'Akaun anda belum diaktifkan.'
-      already_authenticated: 'Anda telah pun berdaftar dengan Biz Club'
+      already_authenticated: 'Anda telah pun berdaftar dengan Biz Data'
       user:
         not_found_in_database: 'Pengguna tersebut tidak tersenarai dalam database.'
       consultant:
