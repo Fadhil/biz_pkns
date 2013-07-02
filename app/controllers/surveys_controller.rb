@@ -30,7 +30,13 @@ class SurveysController < ApplicationController
 
     if @survey.update_attributes(params[:survey])
       respond_to do |format|
-        format.html { redirect_to @survey, notice: t('successfully_updated_survey') }
+        @survey.reload
+        
+        if @survey.completed?
+          format.html {redirect_to surveys_path , notice: t('successfully_ended_survey') }
+        else
+          format.html { redirect_to @survey, notice: t('successfully_updated_survey') }
+        end
       end
     end
   end
