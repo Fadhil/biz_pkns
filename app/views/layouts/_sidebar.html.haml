@@ -55,6 +55,8 @@
             - if cannot? :consultation, :pages
               %li
                 = link_to t('.consultation'), '#'
+              %li
+                = link_to t('.my_adverts'), '#'
             - else
               %li
                 = link_to t('.consultation'), consultation_path
