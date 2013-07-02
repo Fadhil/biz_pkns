@@ -233,10 +233,10 @@
                         - else
                           - selected_state = 'Selangor'
                         = select_tag "businessprofile_state", options_for_select(City.order(:state_name).map{ |a| [a.state_name]}.uniq, {selected: selected_state})
-                    - i = i + 1
                     %tr
-                      %th= f.label t('office_phone')
-                      %td= f.text_field :office_phone, :class => 'text input'
+                      %th= bp.label t('office_phone')
+                      %td= bp.text_field :phone, :class => 'text input'
+                    - i = i + 1
                     %tr
                       %th.header{:colspan => "2"}
                         %br/
