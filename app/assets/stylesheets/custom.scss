@@ -221,6 +221,11 @@ body {
           tr {
             th, td {
               border: none !important;
+              padding: 8px 0;
+            }
+            th {
+              font-size: 90%;
+              color: #888;
             }
           }
         }
