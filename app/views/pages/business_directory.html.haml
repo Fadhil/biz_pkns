@@ -1,26 +1,28 @@
+
 .row
   %h3.eleven.columns
     = t('.title')
   .one.columns.filter
     %span.toggle
       %i.icon-search{:'gumby-trigger' => "#search-drawer"}
-.row
-  #search-drawer.twelve.columns
-    .row
-      .four.columns.field
-        = label :search, :city, t('search_by_name')
-        = text_field :search, :name, :placeholder => 'Search..', :class => 'text input'
-      .four.columns.field
-        = label :search, :category, t('search_by_category')
-        .picker
-          = select :search, :category, BusinessProfile.all.map(&:category).uniq, {:include_blank => true}
-      .four.columns.field
-        = label :search, :business_name, t('search_by_company_name')
-        = text_field :search, :business_name, :placeholder => t('search_by_company_name'), :class => 'text input'
-    .row
-      .two.columns
-        %span.pretty.medium.primary.btn
-          = button_tag t('search'), :onClick => 'submit();'
+= form_tag '', method: :get do
+  .row
+    #search-drawer.twelve.columns
+      .row
+        .four.columns.field
+          = label :search, :city, t('search_by_name')
+          = text_field :search, :name, :placeholder => 'Search..', :class => 'text input'
+        .four.columns.field
+          = label :search, :category, t('search_by_category')
+          .picker
+            = select :search, :category, BusinessProfile.all.map(&:category).uniq, {:include_blank => true}
+        .four.columns.field
+          = label :search, :business_name, t('search_by_company_name')
+          = text_field :search, :business_name, :placeholder => t('search_by_company_name'), :class => 'text input'
+      .row
+        .two.columns
+          %span.pretty.medium.primary.btn
+            = button_tag t('search'), :onClick => 'submit();'
 
 .table
   .row.table-head
