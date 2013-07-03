@@ -10,7 +10,7 @@ class ConsultantMailer < ActionMailer::Base
     @consultant = consultant
     @greeting = "Hi"
 
-    mail to: consultant.email, subject: "Anda telah dilantik menjadi perunding PKNS Biz Club!"
+    mail to: consultant.email, subject: "Anda telah dilantik menjadi perunding PKNS Biz Data!"
     #current_user.email
   end
 
