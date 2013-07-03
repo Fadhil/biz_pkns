@@ -22,6 +22,10 @@
                   %i.icon-user
                   = t('profile')
               %li
+                = link_to user_course_listing_path do
+                  %i.icon-book
+                  = t('my_course')
+              %li
                 = link_to '#' do
                   %i.icon-tools
                   = t('setting')

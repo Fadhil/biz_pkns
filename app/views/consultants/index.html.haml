@@ -13,6 +13,7 @@
       %h6.title= t('company_name')
     .four.columns
       %h6.title= t('program')
+  - if can? :manage, Consultant
     .two.columns
       %h6.title= t('status')
   - @consultants.each_with_index do |consultant, i|
@@ -28,6 +29,7 @@
           - consultant.programs.each do |p|
             %li
               %p= p.name
+    - if can? :manage, Consultant
       .two.columns
         .row
           .twelve.columns

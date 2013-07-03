@@ -124,6 +124,7 @@ bm:
   send: 'Hantar'
   send_password_instructions: "Hantarkan arahan tukar kata laluan"
   setting: 'Tetapan'
+  my_course: 'Kursus Saya'
   share: 'Kongsi'
   sign_up: 'Daftar Sebagai Ahli'
   sign_in: 'Daftar Masuk'
