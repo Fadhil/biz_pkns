@@ -60,6 +60,10 @@
               %tr
                 %th= t('membership_status')
                 %td= @user.is_member? ? "Disahkan" : "Belum Disahkan"
+              - if @user.is_member?
+                %tr
+                  %th= t('membership_num')
+                  %td= @user.membership.member_number
               %tr
                 %th= t('ic_number')
                 %td= @user.ic_number
