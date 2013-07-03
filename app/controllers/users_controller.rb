@@ -74,6 +74,15 @@ class UsersController < ApplicationController
 
     end
 
+    @user.business_profiles.each do |bp|
+      if bp.business_logo.nil?
+        bp.build_business_logo
+      end 
+      if bp.business_photo.nil?
+        bp.build_business_photo
+      end
+    end
+
     # if @user.business_profile.address.nil?
     #   @user.business_profile.build_address
     # end
