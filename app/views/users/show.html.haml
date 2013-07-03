@@ -47,7 +47,11 @@
             = link_to 'Informasi', '#'
           - unless @user.business_profiles.empty?
             %li
-              = link_to 'Perniagaan', '#'
+              = link_to 'Perniagaan 1', '#'
+            %li
+              = link_to 'Perniagaan 2', '#'
+            %li
+              = link_to 'Perniagaan 3', '#'
         .tab-content.active
           %h5 Latarbelakang Individu
           %hr.divider
@@ -116,58 +120,57 @@
                     %td
                       - years = experience.experience.nil? ? '' : ", #{experience.experience} #{t('years')}"
                       %p= "#{experience.skill.name} #{years}"
-        - unless @user.business_profiles.empty?
+        - @user.business_profiles.each do |bp|
           .tab-content
             %table.table.strip
               %tbody
-                - @user.business_profiles.each do |bp|
-                  - if !bp.company_name.blank?
-                    %tr
-                      %td
-                        %h5 Informasi Perniagaan
-                        %hr.divider
-                        .row
-                          .four.columns
-                            - unless bp.business_logo.nil?
-                              / = bp.business_photo.caption
-                              - unless bp.business_logo.file.nil?
-                                = image_tag(bp.business_logo.file, :size => '150x150')
-                          .eight.columns
-                            %table.table.strip
-                              %tbody
-                                %tr
-                                  %th= t('.company_name')
-                                  %td= bp.company_name unless bp.nil?
-                                %tr
-                                  %th= t('address')
-                                  %td= bp.full_business_address
-                                %tr
-                                  %th= t('office_phone')
-                                  %td= bp.phone
-                                %tr
-                                  %th= t('description')
-                                  %td= bp.description unless bp.nil?
-                                %tr
-                                  %th= t('category')
-                                  %td= bp.category unless bp.nil?
-                                %tr
-                                  %th= t('.type_of_business')
-                                  %td= bp.type_of_business unless bp.nil?
-                                %tr
-                                  %th= t('.company_registration_number')
-                                  %td= bp.registration_number unless bp.nil?
-                                - unless bp.business_photo.nil?
-                                  - unless bp.business_photo.file.nil?
-                                    %tr
-                                      %th Penerangan Gambar
-                                      %td{:colspan => "2"}= image_tag(bp.business_photo.file, :size => '250x250')
-                                    %tr
-                                %tr
-                                  %th= t('.customers1') unless bp.customer1.nil?
-                                  %td= bp.customer1 unless bp.nil?
-                                %tr
-                                  %th= t('.customers2') unless bp.customer2.nil?
-                                  %td= bp.customer2 unless bp.nil?
-                                %tr
-                                  %th= t('.customers3') unless bp.customer3.nil?
-                                  %td= bp.customer3 unless bp.nil?
+                - if !bp.company_name.blank?
+                  %tr
+                    %td
+                      %h5 Informasi Perniagaan
+                      %hr.divider
+                      .row
+                        .four.columns
+                          - unless bp.business_logo.nil?
+                            / = bp.business_photo.caption
+                            - unless bp.business_logo.file.nil?
+                              = image_tag(bp.business_logo.file, :size => '150x150')
+                        .eight.columns
+                          %table.table.strip
+                            %tbody
+                              %tr
+                                %th= t('.company_name')
+                                %td= bp.company_name unless bp.nil?
+                              %tr
+                                %th= t('address')
+                                %td= bp.full_business_address
+                              %tr
+                                %th= t('office_phone')
+                                %td= bp.phone
+                              %tr
+                                %th= t('description')
+                                %td= bp.description unless bp.nil?
+                              %tr
+                                %th= t('category')
+                                %td= bp.category unless bp.nil?
+                              %tr
+                                %th= t('.type_of_business')
+                                %td= bp.type_of_business unless bp.nil?
+                              %tr
+                                %th= t('.company_registration_number')
+                                %td= bp.registration_number unless bp.nil?
+                              - unless bp.business_photo.nil?
+                                - unless bp.business_photo.file.nil?
+                                  %tr
+                                    %th Penerangan Gambar
+                                    %td{:colspan => "2"}= image_tag(bp.business_photo.file, :size => '250x250')
+                                  %tr
+                              %tr
+                                %th= t('.customers1') unless bp.customer1.nil?
+                                %td= bp.customer1 unless bp.nil?
+                              %tr
+                                %th= t('.customers2') unless bp.customer2.nil?
+                                %td= bp.customer2 unless bp.nil?
+                              %tr
+                                %th= t('.customers3') unless bp.customer3.nil?
+                                %td= bp.customer3 unless bp.nil?

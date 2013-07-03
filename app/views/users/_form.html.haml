@@ -28,9 +28,12 @@
               - unless @user.experience.empty?
                 %li
                   = link_to 'Kemahiran', '#'
-              - unless @user.business_profiles.empty?
-                %li
-                  = link_to 'Perniagaan', '#'
+              %li
+                = link_to 'Perniagaan 1', '#'
+              %li
+                = link_to 'Perniagaan 2', '#'
+              %li
+                = link_to 'Perniagaan 3', '#'
             .tab-content.active
               %table.table.strip
                 %tbody
@@ -166,12 +169,13 @@
                       %br/
                       %br/
                 = f.link_to_add "Tambah Pengalaman", :experience, class: "btn metro small secondary", :style => "margin: -35px 0 0 4px;"
-            - unless @user.business_profiles.empty?
+        
+
+            - i = 1
+            = f.fields_for :business_profiles do |bp|
               .tab-content
                 %table.table.strip
                   %tr
-                  - i = 1
-                  = f.fields_for :business_profiles do |bp|
                     %tr
                       %th= t('business') + " ##{i}"
                     %tr
