@@ -22,15 +22,12 @@
             %ul.tab-nav
               %li.active
                 = link_to 'Latarbelakang Individu', '#'
-              - unless @user.education_background.empty?
-                %li
-                  = link_to 'Pendidikan', '#'
-              - unless @user.experience.empty?
-                %li
-                  = link_to 'Kemahiran', '#'
-              - unless @user.business_profiles.empty?
-                %li
-                  = link_to 'Perniagaan', '#'
+              %li
+                = link_to 'Perniagaan 1', '#'
+              %li
+                = link_to 'Perniagaan 2', '#'
+              %li
+                = link_to 'Perniagaan 3', '#'
             .tab-content.active
               %table.table.strip
                 %tbody
@@ -126,52 +123,55 @@
                             \#{t('inactive')}
 
 
-            - unless @user.education_background.empty?
-              .tab-content
-                %table.table.strip
-                  %tr
-                    = f.fields_for :education_background do |s|
+          
+              %table.table.strip
+                %tr
+                  %th
+                    Tambah Latarbelakang Pendidikan
+                  = f.fields_for :education_background do |s|
+                    %div
                       %div
-                        %div
-                          = s.select :education_id, options_for_select(Education.all.map{ |a| [a.name,a.id]}, s.object.education_id)
-                        .control-group
-                          = s.label t('description')
-                          = s.text_field :description, :class => 'normal text input'
-                        .control-group
-                          = s.label t('.start_date')
-                          = s.text_field :start_date, :class => 'narrow text input'
-                        .control-group
-                          = s.label t('.end_date')
-                          = s.text_field :end_date, :class => 'narrow text input'
-                        = s.link_to_remove t('.remove_education'), class: "btn btn-danger btn-mini"
-                      %br
-                      %br
-                = f.link_to_add "Tambah Pendidikan", :education_background, class: "btn metro small secondary", :style => "margin: -35px 0 0 4px;"
-            - unless @user.experience.empty?
-              .tab-content
-                %table.table.strip
-                  %tr
-                    = f.fields_for :experience do |s|
+                        = s.select :education_id, options_for_select(Education.all.map{ |a| [a.name,a.id]}, s.object.education_id)
+                      .control-group
+                        = s.label t('description')
+                        = s.text_field :description, :class => 'normal text input'
+                      .control-group
+                        = s.label t('.start_date')
+                        = s.text_field :start_date, :class => 'narrow text input'
+                      .control-group
+                        = s.label t('.end_date')
+                        = s.text_field :end_date, :class => 'narrow text input'
+                      = s.link_to_remove t('.remove_education'), class: "btn btn-danger btn-mini"
+                    %br
+                    %br
+              = f.link_to_add "Tambah Pendidikan", :education_background, class: "btn metro small secondary", :style => "margin: -35px 0 0 4px;"
+      
+              %table.table.strip
+                %tr
+                  %th
+                    Tambah Pengalaman Pekerjaan
+                  = f.fields_for :experience do |s|
+                    %div
                       %div
-                        %div
-                          = s.select :skill_id, options_for_select(Skill.all.map{ |a| [a.name,a.id]}, s.object.skill_id)
-                        .control-group
-                          = s.label t('description')
-                          = s.text_area :description, :class => 'textarea input', :style => 'height: 200px;'
-                        .control-group
-                          = s.label t('.experience')
-                          = s.text_field :experience, { size: '2', maxlength: '2', class: 'narrow text input' }
-                          tahun
-                        = s.link_to_remove t('.remove_skill'), class: "btn btn-danger btn-mini"
-                      %br/
-                      %br/
-                = f.link_to_add "Tambah Pengalaman", :experience, class: "btn metro small secondary", :style => "margin: -35px 0 0 4px;"
-            - unless @user.business_profiles.empty?
+                        = s.select :skill_id, options_for_select(Skill.all.map{ |a| [a.name,a.id]}, s.object.skill_id)
+                      .control-group
+                        = s.label t('description')
+                        = s.text_area :description, :class => 'textarea input', :style => 'height: 200px;'
+                      .control-group
+                        = s.label t('.experience')
+                        = s.text_field :experience, { size: '2', maxlength: '2', class: 'narrow text input' }
+                        tahun
+                      = s.link_to_remove t('.remove_skill'), class: "btn btn-danger btn-mini"
+                    %br/
+                    %br/
+              = f.link_to_add "Tambah Pengalaman", :experience, class: "btn metro small secondary", :style => "margin: -35px 0 0 4px;"
+        
+
+            - i = 1
+            = f.fields_for :business_profiles do |bp|
               .tab-content
                 %table.table.strip
                   %tr
-                  - i = 1
-                  = f.fields_for :business_profiles do |bp|
                     %tr
                       %th= t('business') + " ##{i}"
                     %tr

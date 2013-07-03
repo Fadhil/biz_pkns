@@ -64,14 +64,25 @@ class UsersController < ApplicationController
       @user.address.build_city
     end
     
-    if @user.business_profiles.empty?
-      3.times do |n|
+    if @user.business_profiles.count < 3
+      repetitions = 3 - @user.business_profiles.count
+      repetitions.times do |n|
         @user.business_profiles.build
         @user.business_profiles[n].build_business_logo
         @user.business_profiles[n].build_business_photo
       end
 
     end
+
+    @user.business_profiles.each do |bp|
+      if bp.business_logo.nil?
+        bp.build_business_logo
+      end 
+      if bp.business_photo.nil?
+        bp.build_business_photo
+      end
+    end
+
     # if @user.business_profile.address.nil?
     #   @user.business_profile.build_address
     # end
