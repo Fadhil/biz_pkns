@@ -655,7 +655,7 @@ bm:
       edit: 'Kemaskini'
       destroy: 'Padam'
     all:
-      title: 'Urus blog'
+      title: 'Berita terkini'
       new: 'Cipta Blog'
       edit: 'Kemaskini'
       destroy: 'Padam'

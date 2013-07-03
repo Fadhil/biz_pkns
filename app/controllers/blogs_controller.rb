@@ -1,5 +1,7 @@
 class BlogsController < ApplicationController
   load_and_authorize_resource
+  #layout :resolve_layout
+  #layout Proc.new{ ['all'].include?(action_name) ? 'portal' : 'application' }
   # GET /blogs
   # GET /blogs.json
   def index    
@@ -83,15 +85,22 @@ class BlogsController < ApplicationController
   end
 
   def all
+
     if params[:tag]
-      @blogs = Blog.tagged_with(params[:tag])
+      @blogs = Blog.order("created_at DESC").tagged_with(params[:tag])
     else
-      @blogs = Blog.send(params[:filter] || 'all')
+      @blogs = Blog.order("created_at DESC").send(params[:filter] || 'all')
     end
     
     respond_to do |format|
-      format.html # index.html.erb
+      format.html {render :layout => 'portal'} # index.html.erb
       format.json { render json: @blogs }
     end
   end
+
+  # private
+
+  # def resolve_layout
+    
+  # end
 end
