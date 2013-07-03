@@ -87,39 +87,37 @@
                   %ul
                     - @user.programs.each do |program|
                       %li= program.name
-          - unless @user.education_background.empty?
-            %h5 Latarbelakang Pendidikan
-            %hr.divider
-            %table.table.strip
-              %tbody
-                - @user.education_background.each_with_index do |background, i|
-                  %tr
-                    %td{:width => 30}
-                      %p="#{i+1}."
-                    %td
-                      %p= "#{background.education.name}"
-                    %td
-                      .row
-                        .six.columns
-                          %small.label.info
-                            Mula :
-                            = "#{background.start_date}"
-                        .six.columns
-                          %small.label.info
-                            Akhir :
-                            = "#{background.end_date}"
-          - unless @user.experience.empty?
-            %h5 Kemahiran
-            %hr.divider
-            %table.table.strip
-              %tbody
-                - @user.experience.each_with_index do |experience, i|
-                  %tr
-                    %td{:width => 30}
-                      %p="#{i+1}."
-                    %td
-                      - years = experience.experience.nil? ? '' : ", #{experience.experience} #{t('years')}"
-                      %p= "#{experience.skill.name} #{years}"
+          %h5 Latarbelakang Pendidikan
+          %hr.divider
+          %table.table.strip
+            %tbody
+              - @user.education_background.each_with_index do |background, i|
+                %tr
+                  %td{:width => 30}
+                    %p="#{i+1}."
+                  %td
+                    %p= "#{background.education.name}"
+                  %td
+                    .row
+                      .six.columns
+                        %small.label.info
+                          Mula :
+                          = "#{background.start_date}"
+                      .six.columns
+                        %small.label.info
+                          Akhir :
+                          = "#{background.end_date}"
+          %h5 Kemahiran
+          %hr.divider
+          %table.table.strip
+            %tbody
+              - @user.experience.each_with_index do |experience, i|
+                %tr
+                  %td{:width => 30}
+                    %p="#{i+1}."
+                  %td
+                    - years = experience.experience.nil? ? '' : ", #{experience.experience} #{t('years')}"
+                    %p= "#{experience.skill.name} #{years}"
         - @user.business_profiles.each do |bp|
           .tab-content
             %table.table.strip
