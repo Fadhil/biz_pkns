@@ -46,23 +46,22 @@
             .avatar.circle.image
               = image_tag('http://flickholdr.com/50/50/avatar')
           = current_consultant.first_name
-          %span
-            %i.icon-down-open
-          .dropdown
-            %ul
-              %li
-                = link_to consultant_path(id: current_consultant.id) do
-                  %i.icon-user
-                  = t('.consultant_profile')
-              %li
-                = link_to do
-                  %i.icon-briefcase
-                  = t('.my_program')
-                
-                  .dropdown
-                    %ul
+        %span
+          %i.icon-down-open
+        .dropdown
+          %ul
+            %li
+              = link_to consultant_path(id: current_consultant.id) do
+                %i.icon-user
+                = t('.consultant_profile')
+            %li
+              = link_to '#' do
+                %i.icon-briefcase
+                = t('.my_program')
+              .dropdown
+                %ul
                   = program_switch_menu.html_safe
-              %li
-                = link_to destroy_consultant_session_path, method: :delete do
-                  %i.icon-logout
-                  =t('logout')
+            %li
+              = link_to destroy_consultant_session_path, method: :delete do
+                %i.icon-logout
+                = t('logout')

@@ -28,4 +28,8 @@ class PortalsController < ApplicationController
   def course_show
     @course = Course.find(params[:id])
   end
+
+  def faq
+
+  end
 end
