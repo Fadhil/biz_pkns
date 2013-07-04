@@ -121,6 +121,7 @@ BizPkns::Application.routes.draw do
       get 'home' => 'portals#home', as: :portal_home
       get 'contact' => 'portals#contact', as: :portal_contact
       get 'course' => 'portals#course', as: :portal_course
+      get 'faq' => 'portals#faq', as: :portal_faq
       get 'course/:id' => 'portals#course_show', as: :portal_course_show
     end
     get "pages/welcome", as: 'welcome_page'
