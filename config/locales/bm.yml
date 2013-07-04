@@ -38,6 +38,7 @@ bm:
   confirm_register_course: 'Adakah anda pasti untuk menghadiri kursus ini?'
   confirm_category_change: 'Adakah anda pasti untuk menukar kategori ahli?'
   course: 'Kursus'
+  product: 'Produk'
   course_start_date: 'Tarikh Mula Kursus'
   course_end_date: 'Tarikh Akhir Kursus'
   courses: 'Kursus'

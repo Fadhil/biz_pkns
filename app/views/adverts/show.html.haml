@@ -22,20 +22,22 @@
             %div.content= @advert.content
           = image_tag (@advert.photo.file)#, :class => 'adboxw'#, size: '100x100'
   %h3=t('.advert_information')
-  %dt
-    %strong
-      Jenis Iklan
-      \:
-  %dd= @advert.advert_type.blank? ? "<br/>".html_safe : t(@advert.advert_type.downcase)
-  %dt
-    %strong
-      = t('name')
-      \:
-  %dd= @advert.title.blank? ? "<br/>".html_safe : @advert.title
-  - if @advert.advert_type == 'Course'  
-    = render partial: 'course_advert'
-  - else
-    = render partial: 'product_advert'
+  %table.table.strip
+    %tr
+      %td{style: 'width:190px'}
+        %strong
+          Jenis Iklan
+      %td= @advert.advert_type.blank? ? "<br/>".html_safe : t(@advert.advert_type.downcase)
+    %tr
+      %td
+        %strong
+          = t('name')
+      %td= @advert.title.blank? ? "<br/>".html_safe : @advert.title
+    %tr
+      - if @advert.advert_type == 'Course'  
+        = render partial: 'course_advert'
+      - else
+        = render partial: 'product_advert'
 
 .form-actions
   - if can? :manage, :all
