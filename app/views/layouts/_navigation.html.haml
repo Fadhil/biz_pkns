@@ -35,7 +35,6 @@
                   = t('logout')
 - elsif current_consultant
   %li
-    /= link_to session[:current_program_name] unless session[:current_program_name].nil?, '#'
     .row
       .twelve.columns.profile
         = link_to '#' do
