@@ -304,6 +304,7 @@ body {
   .adbox {
     position: relative;
     font-family: 'Raleway', sans-serif;
+    text-shadow: 1px 1px 1px #CCC;
     line-height: -20px;
     img {
       height: 200px;
@@ -320,7 +321,7 @@ body {
 
   .adinfo {
     .title {
-      background-color: rgba(255, 255, 255, 0.5);
+      background-color: rgba(0, 0, 0, 0.5);
       font-size: 24px;
       padding: 8px 10px;
       text-align: right;
@@ -329,14 +330,14 @@ body {
       margin-bottom: 10px;
     }
     .venue {
-      background-color: rgba(255, 255, 255, 0.3);
+      background-color: rgba(0, 0, 0, 0.3);
       font-size: 12px;
       padding: 3px;
       text-align: center;
       width: 100%;
     }
     .date {
-      background-color: rgba(255, 255, 255, 0.3);
+      background-color: rgba(0, 0, 0, 0.3);
       font-size: 12px;
       padding: 3px;
       text-align: center;
@@ -352,7 +353,7 @@ body {
 
   .adinfo-product {
     .title {
-      background-color: rgba(255, 255, 255, 0.5);
+      background-color: rgba(0, 0, 0, 0.5);
       font-size: 24px;
       padding: 8px 10px;
       font-weight: 100;
@@ -360,10 +361,11 @@ body {
       margin-bottom: 10px;
     }
     .content {
-      background-color: rgba(255, 255, 255, 0.3);
+      background-color: rgba(0, 0, 0, 0.3);
       font-size: 12px;
       padding: 8px;
       max-width: 500px;
+      line-height: 25px;
     }
   }
 

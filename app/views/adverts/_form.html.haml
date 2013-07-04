@@ -15,11 +15,12 @@
       .control-group
         = f.label t('name'), :class => 'control-label'
         .controls
-          = f.text_field :title, :class => 'text_field', disabled: disabled
+          = f.text_field :title, :class => 'text input', disabled: disabled
+          = "50 Huruf Sahaja"
       .control-group
         = f.label t('.content'), :class => 'control-label'
         .controls
-          = f.text_area :content, :class => 'text_area_large', disabled: disabled
+          = f.text_area :content, :class => 'text_area_large', disabled: disabled, limit: 140
       - if !f.object.new_record?
         - if !@advert.photo.nil?
           .control-group
