@@ -18,6 +18,8 @@ class BusinessProfile < ActiveRecord::Base
   has_one :business_photo, as: :attachable, dependent: :destroy 
   accepts_nested_attributes_for :business_photo, allow_destroy: true
 
+  default_scope order('id ASC')
+
   #after_initialize :initialize_address
 
   def set_city(city_id)
