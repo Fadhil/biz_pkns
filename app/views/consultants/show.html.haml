@@ -17,28 +17,24 @@
     %strong
       = t('first_name')
       \:
-  %dd= @consultant.first_name.blank? ? "<br/>".html_safe : @consultant.first_name
-  %dt
-    %strong
-      = t('last_name')
-      \:
-  %dd= @consultant.last_name.blank? ? "<br/>".html_safe : @consultant.last_name
+  %dd= (@consultant.first_name.blank? && @consultant.last_name.blank?) ? "<br/>".html_safe : @consultant.full_name
   - if !@consultant.company_name.blank?
     %dt
       %strong
         = t('company_name')
         \:
     %dd= @consultant.company_name
-  %dt
-    %strong
-      = t('email')
-      \:
-  %dd= @consultant.email
-  %dt
-    %strong
-      = t('phone')
-      \:
-  %dd= @consultant.phone.blank? ? "<br/>".html_safe : @consultant.phone
+  - unless cannot? :manage, @consultant
+    %dt
+      %strong
+        = t('email')
+        \:
+    %dd= @consultant.email
+    %dt
+      %strong
+        = t('phone')
+        \:
+    %dd= @consultant.phone.blank? ? "<br/>".html_safe : @consultant.phone
   %dt
     %strong
       = t('program')
