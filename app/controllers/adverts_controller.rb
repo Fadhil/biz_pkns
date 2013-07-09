@@ -91,7 +91,7 @@ class AdvertsController < ApplicationController
         format.html { redirect_to @advert, notice: t('successfully_updated_advert') }
         format.json { head :no_content }
       else
-        format.html { render action: "edit", notice: @advert.errors.full_messages }
+        format.html { redirect_to edit_advert_path(@advert), notice: error_messages(@advert) }
         format.json { render json: @advert.errors, status: :unprocessable_entity }
       end
     end
