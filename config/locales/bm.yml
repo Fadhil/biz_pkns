@@ -402,7 +402,12 @@ bm:
     preview:
       title: 'Surat'
       send_to: 'Hantar surat kepada'
-      print_pdf: 'Cetak PDF'
+      all_users: 'Semua Pengguna'
+      members: 'Ahli'
+      nonmembers: 'Bukan Ahli'
+      users_by_program: 'Pengguna mengikut Program'
+      users_by_course: 'Pengguna mengikut Kursus'
+      print_pdf: 'Cipta Surat'
       subject: 'Perkara'
     generate_letter:
       print: 'Simpan'
