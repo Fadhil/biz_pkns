@@ -167,13 +167,13 @@
               = f.link_to_add t('.add_skill'), :experience, class: "btn metro small secondary", :style => "margin: -35px 0 0 4px;"
         
 
-            - i = 1
+            - i = 0
             = f.fields_for :business_profiles do |bp|
               .tab-content
                 %table.table.strip
                   %tr
                     %tr
-                      %th= t('business') + " ##{i}"
+                      %th= t('business') + " ##{i + 0}"
                     %tr
                       %th= bp.label t('company_name')
                       %td= bp.text_field :company_name, class: 'text input'
@@ -190,6 +190,7 @@
                     %tr
                       %th= bp.label t('description')
                       %td= bp.text_area :description, class: 'textarea input', style: 'height:200px;'
+
                     = bp.fields_for :business_logo do |bpl|
                       %tr
                         %th= bpl.label t('.upload_business_logo')
@@ -201,6 +202,7 @@
                       %tr
                         %th= bp.label "Penerangan Gambar"
                         %td= bph.text_field :caption, class: 'textarea input', :"data-limit" => 200
+
                     %tr
                       %th.header{:colspan => "2"}
                         %br>/
@@ -228,11 +230,11 @@
                     %tr
                       %th= bp.label t('state')
                       %td
-                        - if bp.object.try(:city).try(:state_name)
+                        - if bp.object.try(:city)
                           - selected_state = bp.object.city.state_name
                         - else
                           - selected_state = 'Selangor'
-                        = select_tag "businessprofile_state", options_for_select(City.order(:state_name).map{ |a| [a.state_name]}.uniq, {selected: selected_state})
+                        = select_tag "businessprofile_state#{i}", options_for_select(City.order(:state_name).map{ |a| [a.state_name]}.uniq, {selected: selected_state})
                     %tr
                       %th= bp.label t('office_phone')
                       %td= bp.text_field :phone, :class => 'text input'
