@@ -13,9 +13,9 @@
       %h6.title= t('company_name')
     .four.columns
       %h6.title= t('program')
-  - if can? :manage, Consultant
-    .two.columns
-      %h6.title= t('status')
+    - if can? :manage, Consultant
+      .two.columns
+        %h6.title= t('status')
   - @consultants.each_with_index do |consultant, i|
     .row.table-rows
       .three.columns
@@ -29,16 +29,16 @@
           - consultant.programs.each do |p|
             %li
               %p= p.name
-    - if can? :manage, Consultant
-      .two.columns
-        .row
-          .twelve.columns
-          .twelve.columns
-            %span.pretty.small.btn.info.icon-left.entypo.icon-list-add
-              = link_to t('show', :default => t("helpers.links.show")), consultant_path(consultant)
-          .twelve.columns
-            %span.pretty.small.btn.danger.icon-left.entypo.icon-trash
-              = link_to t('destroy', :default => t("helpers.links.destroy")),
-                consultant_path(consultant),
-                :method => :delete,
-                :data => { :confirm => t('confirm', :default => t("helpers.links.confirm", :default => t('are_you_sure'))) }
+      - if can? :manage, Consultant
+        .two.columns
+          .row
+            .twelve.columns
+            .twelve.columns
+              %span.pretty.small.btn.warning.icon-left.entypo.icon-list-add
+                = link_to t('show', :default => t("helpers.links.show")), consultant_path(consultant)
+            .twelve.columns
+              %span.pretty.small.btn.danger.icon-left.entypo.icon-trash
+                = link_to t('destroy', :default => t("helpers.links.destroy")),
+                  consultant_path(consultant),
+                  :method => :delete,
+                  :data => { :confirm => t('confirm', :default => t("helpers.links.confirm", :default => t('are_you_sure'))) }
