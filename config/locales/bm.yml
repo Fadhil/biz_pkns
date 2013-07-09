@@ -684,7 +684,7 @@ bm:
       product_advert: 'Iklan Produk/Servis'
       select_advert_type: 'Pilih Jenis Iklan'
       select_course: 'Pilih Kursus'
-      up_to_150_chars_only: '150 huruf sahaja'
+      up_to_140_chars_only: '140 huruf sahaja'
     new:
       title: 'Iklan Baru'
     edit:
