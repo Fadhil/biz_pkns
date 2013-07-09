@@ -4,7 +4,7 @@
 </div>
 <div>
   <% unless @program.logo.nil? %>
-    <%= image_tag(@program.logo.file) %>
+    <%= image_tag(@program.logo.file.thumb) %>
   <% end %>
 </div>
 <br/>

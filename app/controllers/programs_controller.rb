@@ -36,6 +36,9 @@ class ProgramsController < ApplicationController
   # GET /programs/1/edit
   def edit
     @program = Program.find(params[:id])
+    if @program.logo.nil?
+      @program.build_logo
+    end
     @program.courses.build
     @courses = Course.new
   end
