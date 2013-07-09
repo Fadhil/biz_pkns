@@ -59,6 +59,7 @@ BizPkns::Application.routes.draw do
         put 'assign_weight'
         put 'make_request'
         post 'new'
+        post 'edit'
       end
     end
     resources :consultants do

@@ -91,7 +91,7 @@ class LettersController < ApplicationController
 
   # GET /letters/1/edit
   def edit
-    @user = User.find(params[:id])
+    #@user = User.find(params[:id])
     @letter = Letter.find(params[:id])
   end
 

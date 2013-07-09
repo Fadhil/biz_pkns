@@ -1,8 +1,4 @@
 - model_class = Letter
-.row
-  %h3.twelve.columns
-    = t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human
-  %hr.divider
-.row
-  .twelve.columns
-    = render :partial => "form"
+.page-header
+  %h1=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human
+= render :partial => "form"

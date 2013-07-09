@@ -1,11 +1,11 @@
 - model_class = Letter
+
 .row
   %h3.ten.columns
     = t('.title', :default => model_class.model_name.human.pluralize)
   .two.columns.action
     %span.pretty.medium.primary.btn.entypo.icon-left.icon-list-add
       = link_to t('new', :default => t("helpers.links.new")), new_letter_path
-  %hr.divider
 .table
   .row.table-head
     .two.columns

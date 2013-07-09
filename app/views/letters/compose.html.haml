@@ -1,49 +1,49 @@
 - model_class = Letter
-.row
-  %h3.twelve.columns
-    = t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human
-  %hr.divider
+.page-header
+  %h1=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human
 
-.row
-  = form_for @letter, :html => { :class => 'form-horizontal' } do |f|
-    %ul
-      %li.field
-        %h5=t '.recipient'
-      %li.field
-        .row
-          .six.columns
-            = f.text_field :first_name, :class => 'text input', :value => @user.first_name, :placeholder => 'First Name'
-          .six.columns
-            = f.text_field :last_name, :class => 'text input', :value => @user.last_name, :placeholder => 'Last Name'
-          = f.text_field :user_id, :value => @user.id, type: "hidden"
-      %li.field
-        %h5=t '.address'
-      %li.field
-        .row
-          .six.columns
-            = f.text_field :line1, :class => 'text input', :placeholder => 'Baris 1', :value => @user.address.line1
-          .six.columns
-            = f.text_field :city, :class => 'xwide text input', :placeholder => 'Bandar', :value => @user.address.city.name
-            = f.text_field :postcode, :class => 'narrow text input', :placeholder => 'Poskod', :value => @user.address.postcode
-      %li.field
-        .row
-          .six.columns
-            = f.text_field :line2, :class => 'text input', :placeholder => 'Baris 2', :value => @user.address.line2
-          .six.columns
-            = f.text_field :state, :class => 'text input', :placeholder => 'Negeri', :value => @user.address.city.state_name
-      %li.field
-        %h5=t '.compose'
-      %li.field
-        .row
-          = f.text_field :subject, :class => 'text input', :placeholder => t('.subject')
-      %li.field
-        .row
-          = f.text_area :message, :class => 'redactor', :rows => 40, :cols => 520, :placeholder => t('.message')
-      %li.field
-        %span.medium.pretty.btn.info
-          /= f.submit t('.send')
-          %button{:value => t('.send'), :onClick => 'submit();'}=t('.send')
-        %span.medium.pretty.btn.danger
-          = link_to t('.cancel', :default => t("helpers.links.cancel")), letters_path
+= form_for @letter, :html => { :class => 'form-horizontal' } do |f|
+  
+  %h4=t '.recipient'
+  .control-group
+    = f.label t('.name'), :class => 'control-label'
+    .controls
+      = f.text_field :first_name, :class => 'text_field', :value => @user.first_name
+      = f.text_field :last_name, :class => 'text_field', :value => @user.last_name
+      = f.text_field :user_id, :value => @user.id, type: "hidden"
 
+  %h4=t '.address'
+  .control-group
+    = f.label t('.address'), :class => 'control-label'
+    .controls
+      = f.text_field :line1, :class => 'text_field', :placeholder => 'Baris 1', :value => @user.address.line1
+  .control-group
+    .controls
+      = f.text_field :line2, :class => 'text_field', :placeholder => 'Baris 2', :value => @user.address.line2
+  .control-group
+    .controls
+      = f.text_field :postcode, :class => 'text_field input-mini', :placeholder => 'Poskod', :value => @user.address.postcode
+  .control-group
+    = f.label t('.city'), :class => 'control-label'
+    .controls
+      = f.text_field :city, :class => 'text_field', :placeholder => 'Bandar', :value => @user.address.city.name
+  .control-group
+    = f.label t('.state'), :class => 'control-label'
+    .controls
+      = f.text_field :state, :class => 'text_field', :placeholder => 'Negeri', :value => @user.address.city.state_name
 
+  %h4=t '.compose'
+  .control-group
+    = f.label t('.subject'), :class => 'control-label'
+    .controls
+      = f.text_field :subject, :class => 'text_field input-xlarge'
+  .control-group
+    = f.label t('.message'), :class => 'control-label'
+    .controls
+      = f.text_area :message, :class => 'redactor', :rows => 40, :cols => 520
+
+  .form-actions
+    %span.medium.pretty.btn.primary
+      = f.submit t('.send')#, :class => 'btn btn-primary'
+    %span.medium.pretty.btn.default
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), letters_path#, :class => 'btn'

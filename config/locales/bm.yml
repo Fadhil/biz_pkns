@@ -780,7 +780,7 @@ bm:
       history_letter: 'Arkib Surat'
       create_newsletter: 'Karang Buletin'
       create_newsletter_template: 'Karang Buletin'
-    navigation:
+    navigation: 
       my_program: 'Program Saya'
       consultant_profile: 'Profil Perunding'
 
