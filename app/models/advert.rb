@@ -10,7 +10,7 @@ class Advert < ActiveRecord::Base
   scope :pending, where('active is true AND ( requested is true OR admin_created is true)').order(:end_date).offset(10)
   accepts_nested_attributes_for :photo
 
-  validates_length_of :content, maximum: 150
+  validates_length_of :content, maximum: 140
   belongs_to :consultant
   belongs_to :user
 end
