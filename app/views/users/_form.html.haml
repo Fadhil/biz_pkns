@@ -149,7 +149,7 @@
               %table.table.strip
                 %tr
                   %th
-                    Tambah Pengalaman Pekerjaan
+                    = t('.add_skill')
                   = f.fields_for :experience do |s|
                     %div
                       %div
@@ -164,7 +164,7 @@
                       = s.link_to_remove t('.remove_skill'), class: "btn btn-danger btn-mini"
                     %br/
                     %br/
-              = f.link_to_add "Tambah Pengalaman", :experience, class: "btn metro small secondary", :style => "margin: -35px 0 0 4px;"
+              = f.link_to_add t('.add_skill'), :experience, class: "btn metro small secondary", :style => "margin: -35px 0 0 4px;"
         
 
             - i = 1
