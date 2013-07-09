@@ -164,9 +164,10 @@
                               - unless bp.business_photo.nil?
                                 - unless bp.business_photo.file.nil?
                                   %tr
-                                    %th Penerangan Gambar
                                     %td{:colspan => "2"}= image_tag(bp.business_photo.file, :size => '250x250')
                                   %tr
+                                    %th Penerangan Gambar
+                                    %td= bp.business_photo.caption
                               %tr
                                 %th= t('.customers1') unless bp.customer1.nil?
                                 %td= bp.customer1 unless bp.nil?
