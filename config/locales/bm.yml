@@ -893,6 +893,7 @@ bm:
   activerecord:
     models:
       user: Pengguna
+      advert: Iklan
     attributes:
       user: 
         ic_number: "No IC"
@@ -901,6 +902,9 @@ bm:
         gender: "Jantina"
       survey:
         title: 'Nama'
+      advert:
+        content: 'Teks'
+
         
     errors:
       messages: 
@@ -930,6 +934,10 @@ bm:
               too_short: "terlalu pendek"
             ic_number:
               taken: "yang dimasukkan sudah berdaftar"
+        advert:
+          attributes:
+            content:
+              too_long: "terlalu panjang"
 
   helpers:
     links:

@@ -1,4 +1,7 @@
 class AdvertsController < ApplicationController
+  include AdvertsHelper
+  include ActionView::Helpers::TagHelper
+ include ActionView::Context
   load_and_authorize_resource
   def index
     @active_adverts = Advert.active
@@ -49,11 +52,12 @@ class AdvertsController < ApplicationController
           format.html { redirect_to @advert, notice: t('successfully_created_advert') }
           format.json { head :no_content }
         else
-          format.html { render action: "new" }
+
+          format.html { redirect_to new_advert_path, notice: error_messages(@advert)  }
           format.json { render json: @advert.errors, status: :unprocessable_entity }
         end
       else
-        format.html { render action: "new" }
+        format.html { redirect_to new_advert_path, notice: error_messages(@advert) }
         format.json { render json: @advert.errors, status: :unprocessable_entity }
       end
     end
@@ -87,7 +91,7 @@ class AdvertsController < ApplicationController
         format.html { redirect_to @advert, notice: t('successfully_updated_advert') }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render action: "edit", notice: @advert.errors.full_messages }
         format.json { render json: @advert.errors, status: :unprocessable_entity }
       end
     end
