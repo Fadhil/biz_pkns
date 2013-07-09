@@ -31,5 +31,7 @@
       = f.hidden_field :is_active, value: 1
   %ul
     %li.field
+    %hr.divider
       %span.medium.pretty.btn.primary
-        = f.submit t('.create_consultant')#, :class => 'medium btn primary'
+        %button{:onClick => 'submit();'}=t('.create_consultant')
+        / = f.submit t('.create_consultant')#
