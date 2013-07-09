@@ -849,6 +849,10 @@ bm:
 
   views:
     pagination:
+      first: 'Mula'
+      last: 'Akhir'
+      previous: 'Sebelum'
+      next: 'Seterusnya'
       truncate: '...'
   # i18n Routes
   named_routes_path:
