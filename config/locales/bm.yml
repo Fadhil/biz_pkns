@@ -409,8 +409,11 @@ bm:
       users_by_course: 'Pengguna mengikut Kursus'
       print_pdf: 'Prebiu Surat'
       subject: 'Perkara'
+      date: 'Tarikh'
     generate_letter:
+      title: 'Karang'
       print: 'Cetak PDF'
+      date: 'Tarikh'
 
   skills:
     index:

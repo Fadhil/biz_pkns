@@ -1,36 +1,59 @@
 - model_class = Letter
-.page-header
-  %h1=t '.title', :default => model_class.model_name.human
-
-%p
-  %strong= t('.subject') + ':'
-  = @letter.subject
-%p
-  = @letter.message.html_safe
-%br
-%br
-%br
-.control-group
-  = label :test, t('.send_to'), :class => 'control-label'
-  
-  .controls
+.row
+  %h3.twelve.columns
+    = t('.title', :default => model_class.model_name.human)
+  %hr.divider
+.row
+  .twelve.columns
+    %h5= t('.subject') + ':'
+    %p
+      =@letter.message
+  %hr.divider
+.row
+  .twelve.columns
     = form_for '', url: generate_letter_path(id: @letter.id) do |f|
-      - if current_user
-        - if current_user.admin?
-          = select_tag 'letter_user_select', options_for_select([[t('.all_users'),'all_users'],[t('.members'),'members'], [t('.nonmembers'),'nonmembers'],[t('.users_by_program'), 'users_by_program'],[t('.users_by_course'),'users_by_course']])
-      - elsif current_consultant
-        = select_tag 'letter_user_select', options_for_select([[t('.users_by_program'), 'users_by_program'],[t('.users_by_course'),'users_by_course']])
-      - if current_consultant
-        = select_tag 'letter_program_select', options_for_select(current_consultant.programs.all.map{|a| [a.name, a.id]}), disabled: false
-        = select_tag 'letter_course_select', options_for_select(Course.where(program_id: current_consultant.programs.first.id).map{ |a| [a.name,a.id]}), disabled: true, class: 'hide'
-      - else
-        = select_tag 'letter_program_select', options_for_select(Program.all.map{|a| [a.name, a.id]}), disabled: true, class: 'hide'
-        = select_tag 'letter_course_select', options_for_select(Course.where(program_id: Program.first.id).map{ |a| [a.name,a.id]}), disabled: true, class: 'hide'
-
-      .form-actions
-        %span.medium.pretty.btn.primary
-          = f.submit t('.print_pdf')#, :class => 'btn btn-primary'
-        %span.medium.pretty.btn.secondary
-          = link_to t('edit', :default => t("helpers.links.edit")), edit_letter_path(@letter)#, :class => 'btn'
-        %span.medium.pretty.btn.danger
-          = link_to t('cancel', :default => t("helpers.links.cancel")), letters_path#, :class => 'btn'
+      %ul
+        - if current_user
+          - if current_user.admin?
+            %li.field
+              .row
+                .twelve.columns
+                  .picker
+                    = select_tag 'letter_user_select', options_for_select([[t('.all_users'),'all_users'],[t('.members'),'members'], [t('.nonmembers'),'nonmembers'],[t('.users_by_program'), 'users_by_program'],[t('.users_by_course'),'users_by_course']])
+          - elsif current_consultant
+            %li.field
+              .row
+                .twelve.columns
+                  .picker
+                    = select_tag 'letter_user_select', options_for_select([[t('.users_by_program'), 'users_by_program'],[t('.users_by_course'),'users_by_course']])
+        - if current_consultant
+          %li.field
+            .row
+              .six.columns
+                .picker
+                  = select_tag 'letter_program_select', options_for_select(current_consultant.programs.all.map{|a| [a.name, a.id]}), disabled: false
+          %li.field
+            .row
+              .six.columns
+                .picker
+                  = select_tag 'letter_course_select', options_for_select(Course.where(program_id: current_consultant.programs.first.id).map{ |a| [a.name,a.id]}), disabled: true, class: 'hide'
+        - else
+          %li.field
+            .row
+              .six.columns
+                .picker
+                  = select_tag 'letter_program_select', options_for_select(Program.all.map{|a| [a.name, a.id]}), disabled: true, class: 'hide'
+          %li.field
+            .row
+              .six.columns
+                .picker
+                  = select_tag 'letter_course_select', options_for_select(Course.where(program_id: Program.first.id).map{ |a| [a.name,a.id]}), disabled: true, class: 'hide'
+        %li.field
+          %hr.divider
+          %span.medium.pretty.btn.warning
+            / = f.submit t('.print_pdf')
+            %button{:onClick => 'submit();'}= t('.print_pdf')
+          %span.medium.pretty.btn.warning
+            = link_to t('edit', :default => t("helpers.links.edit")), edit_letter_path(@letter)
+          %span.medium.pretty.btn.danger
+            = link_to t('cancel', :default => t("helpers.links.cancel")), letters_path
