@@ -234,9 +234,10 @@ body {
               border: none !important;
               padding: 8px 0;
             }
-            th {
+            th, th > label {
               font-size: 90%;
               color: #888;
+              width: 180px;
             }
           }
         }

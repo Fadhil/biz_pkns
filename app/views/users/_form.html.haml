@@ -12,7 +12,6 @@
           = f.fields_for :profile_photo do |pp|
             %td= pp.label t('.upload_profile_photo')
             %td= pp.file_field :file
-
   .row
     .field
       .twelve.columns
@@ -40,12 +39,13 @@
                   %tr
                     %th= f.label t('gender')
                     %td
-                      %span
-                      %p.radio
-                        = f.radio_button :gender, 'm', :class => 'radio'
+                      = f.label '', :class => 'radio checked', :for => :gender do
+                        = f.radio_button :gender, 'm', :class => 'radio', :checked => 'checked'
+                        %span
                         = t('male')
-                      %p.radio
+                      = f.label '', :class => 'radio', :for => :gender do
                         = f.radio_button :gender, 'f', :class => 'radio'
+                        %span
                         = t('female')
                   %tr
                     %th= f.label t('email')
@@ -68,112 +68,123 @@
                   %tr
                     %th= f.label t('.facebook_handle')
                     %td= f.text_field :facebook_handle, :class => 'text input'
-
-                  %th.header{:colspan => "2"}
-                    %br>
-                      Alamat Individu
-                    = f.fields_for :address do |a|
-                      %tr
-                        %th= f.label t('address')
-                        %td
-                          = a.text_field :line1, :class => 'text input'
-                      %tr
-                        %th
-                        %td
-                          = a.text_field :line2, :class => 'text input'
-                      %tr
-                        %th= f.label t('postcode')
-                        %td
-                          = a.text_field :postcode, :class => 'text input normal'
-                      %tr
-                        %th= f.label t('city')
-                        %td
-                          = a.fields_for :city do |c|
-                            - if c.object.id
-                              - @cities = City.where(state_name: c.object.state_name).order(:name)
-                            - else
-                              - @cities = City.where(state_name: 'Selangor').order(:name)
-                            = select_tag "#{a.object.addressable_type.downcase}_city", options_for_select(@cities.map{ |a| [a.name, a.id]}, selected: c.object.id ), :include_blank => true
-                      %tr
-                        %th= f.label t('state')
-                        %td
-                          = a.fields_for :city do |c|
-                            - if c.object.state_name
-                              - selected_state = c.object.state_name
-                            - else
-                              - selected_state = 'Selangor'
-                            = select_tag "#{a.object.addressable_type.downcase}_state", options_for_select(City.order(:state_name).map{ |a| [a.state_name]}.uniq, selected: selected_state), :include_blank => true
-                      %tr
-                        %th= f.label t('.current_employment_status')
-                        %td
-                          = f.select :current_employment_status, [[t('.employment_status.own_business'),'own_business'], |
-                            [t('.employment_status.working_studying'),'working_studying'],                               |
-                            [t('.employment_status.studying'),'studying'],                                               |
-                            [t('.employment_status.working_self_business'),'working_self_business'],                     |
-                            [t('.employment_status.part_time_business'),'part_time_business']], :include_blank => true   |
+              %table.table.strip
+                %tbody
+                  %tr
+                    %th.header{:colspan => "2"}
+                      %h5 Alamat Individu
+                      %hr
+                  = f.fields_for :address do |a|
+                    %tr
+                      %th= f.label t('address')
+                      %td
+                        = a.text_field :line1, :class => 'text input'
                     %tr
                       %th
                       %td
-                        - if can? :manage, :all
-                          .span3
-                            = f.radio_button :is_active, true
-                            = t('active')
-                            \&nbsp;&nbsp;
-                            \#{f.radio_button :is_active, false}
-                            \#{t('inactive')}
-
-
-          
+                        = a.text_field :line2, :class => 'text input'
+                    %tr
+                      %th= f.label t('postcode')
+                      %td
+                        = a.text_field :postcode, :class => 'text input normal'
+                    %tr
+                      %th= f.label t('city')
+                      %td
+                        = a.fields_for :city do |c|
+                          - if c.object.id
+                            - @cities = City.where(state_name: c.object.state_name).order(:name)
+                          - else
+                            - @cities = City.where(state_name: 'Selangor').order(:name)
+                          = select_tag "#{a.object.addressable_type.downcase}_city", options_for_select(@cities.map{ |a| [a.name, a.id]}, selected: c.object.id ), :include_blank => true
+                    %tr
+                      %th= f.label t('state')
+                      %td
+                        = a.fields_for :city do |c|
+                          - if c.object.state_name
+                            - selected_state = c.object.state_name
+                          - else
+                            - selected_state = 'Selangor'
+                          = select_tag "#{a.object.addressable_type.downcase}_state", options_for_select(City.order(:state_name).map{ |a| [a.state_name]}.uniq, selected: selected_state), :include_blank => true
+                    %tr
+                      %th= f.label t('.current_employment_status')
+                      %td
+                        = f.select :current_employment_status, [[t('.employment_status.own_business'),'own_business'], |
+                          [t('.employment_status.working_studying'),'working_studying'],                               |
+                          [t('.employment_status.studying'),'studying'],                                               |
+                          [t('.employment_status.working_self_business'),'working_self_business'],                     |
+                          [t('.employment_status.part_time_business'),'part_time_business']], :include_blank => true   |
+                  %tr
+                    %th
+                      =t('status')
+                    %td
+                      - if can? :manage, :all
+                        = f.label '', :class => 'radio checked', :for => :is_active do
+                          = f.radio_button :is_active, true, :class => 'radio', :checked => 'checked'
+                          %span
+                          = t('active')
+                        = f.label '', :class => 'radio checked', :for => :is_active do
+                          = f.radio_button :is_active, false, :class => 'radio'
+                          %span
+                          =t('inactive')
               %table.table.strip
-                %tr
-                  %th
-                    Tambah Latarbelakang Pendidikan
-                  = f.fields_for :education_background do |s|
-                    %div
-                      %div
-                        = s.select :education_id, options_for_select(Education.all.map{ |a| [a.name,a.id]}, s.object.education_id)
-                      .control-group
-                        = s.label t('description')
-                        = s.text_field :description, :class => 'normal text input'
-                      .control-group
-                        = s.label t('.start_date')
-                        = s.text_field :start_date, :class => 'narrow text input'
-                      .control-group
-                        = s.label t('.end_date')
-                        = s.text_field :end_date, :class => 'narrow text input'
-                      = s.link_to_remove t('.remove_education'), class: "btn btn-danger btn-mini"
-                    %br
-                    %br
-              = f.link_to_add "Tambah Pendidikan", :education_background, class: "btn metro small secondary", :style => "margin: -35px 0 0 4px;"
-      
+                %tbody
+                  %tr
+                    %th{:colspan => 2}
+                      %h5 Tambah Latarbelakang Pendidikan
+                      %hr
+                  %tr
+                    %td
+                      = f.fields_for :education_background do |s|
+                        %ul
+                          %li.field
+                            .picker
+                              = s.select :education_id, options_for_select(Education.all.map{ |a| [a.name,a.id]}, s.object.education_id)
+                          %li.field
+                            .row
+                              .six.columns
+                                = s.label t('description')
+                                = s.text_field :description, :class => 'text input'
+                              .three.columns
+                                = s.label t('.start_date')
+                                = s.text_field :start_date, :class => 'text input'
+                              .three.columns
+                                = s.label t('.end_date')
+                                = s.text_field :end_date, :class => 'text input'
+                            = s.link_to_remove t('.remove_education')
+                          %li.field
+                            = f.link_to_add "Tambah Pendidikan", :education_background
               %table.table.strip
-                %tr
-                  %th
-                    = t('.add_skill')
-                  = f.fields_for :experience do |s|
-                    %div
-                      %div
-                        = s.select :skill_id, options_for_select(Skill.all.map{ |a| [a.name,a.id]}, s.object.skill_id)
-                      .control-group
-                        = s.label t('description')
-                        = s.text_area :description, :class => 'textarea input', :style => 'height: 200px;'
-                      .control-group
-                        = s.label t('.experience')
-                        = s.text_field :experience, { size: '2', maxlength: '2', class: 'narrow text input' }
-                        tahun
-                      = s.link_to_remove t('.remove_skill'), class: "btn btn-danger btn-mini"
-                    %br/
-                    %br/
-              = f.link_to_add t('.add_skill'), :experience, class: "btn metro small secondary", :style => "margin: -35px 0 0 4px;"
-        
+                %tbody
+                  %tr
+                    %th
+                      %h5= t('.add_skill')
+                      %hr
+                  %tr
+                    %td
+                      = f.fields_for :experience do |s|
+                        %ul
+                          %li.field
+                            .picker
+                              = s.select :skill_id, options_for_select(Skill.all.map{ |a| [a.name,a.id]}, s.object.skill_id)
+                          %li.field
+                            .row
+                              .nine.columns
+                                = s.label t('description')
+                                = s.text_area :description, :class => 'textarea input', :rows => 5
+                              .three.columns
+                                = s.label t('.experience')
+                                = s.text_field :experience, { size: '2', maxlength: '2', class: 'narrow text input' }
+                                tahun
+                            = s.link_to_remove t('.remove_skill')
+                  %tr
+                    %td
+                      = f.link_to_add t('.add_skill'), :experience
 
             - i = 0
             = f.fields_for :business_profiles do |bp|
               .tab-content
                 %table.table.strip
                   %tr
-                    %tr
-                      %th= t('business') + " ##{i + 1}"
                     %tr
                       %th= bp.label t('company_name')
                       %td= bp.text_field :company_name, class: 'text input'
@@ -202,11 +213,12 @@
                       %tr
                         %th= bp.label "Penerangan Gambar"
                         %td= bph.text_field :caption, class: 'textarea input', :"data-limit" => 200
-
+                %table.table.strip
+                  %tbody
                     %tr
-                      %th.header{:colspan => "2"}
-                        %br>/
-                        Alamat Syarikat
+                      %th.header{:colspan => 2}
+                        %h5 Alamat Syarikat
+                        %hr
                     %tr
                       %th= bp.label t('address')
                       %td
@@ -234,7 +246,8 @@
                           - selected_state = bp.object.city.state_name
                         - else
                           - selected_state = 'Selangor'
-                        = select_tag "businessprofile_state#{i}", options_for_select(City.order(:state_name).map{ |a| [a.state_name]}.uniq, {selected: selected_state})
+                        .picker
+                          = select_tag "businessprofile_state#{i}", options_for_select(City.order(:state_name).map{ |a| [a.state_name]}.uniq, {selected: selected_state})
                     %tr
                       %th= bp.label t('office_phone')
                       %td= bp.text_field :phone, :class => 'text input'
@@ -256,10 +269,11 @@
                       %td
                         = bp.text_field :customer3, :class => 'text input'
 
+  .row
+    %span.medium.pretty.btn.warning
+      / = f.submit t('update')
+      %button{:onClick => 'submit();'}=t('update')
+    %span.medium.pretty.btn.warning
+      = link_to t('cancel', :default => t("helpers.links.cancel")), users_path
 
-  .form-actions
-    %span.medium.pretty.btn.secondary
-      = f.submit t('update'), :class => 'btn btn-primary'
-    %span.medium.pretty.btn.default
-      = link_to t('cancel', :default => t("helpers.links.cancel")), |
-      users_path, :class => 'btn btn-primary'                     |
+
