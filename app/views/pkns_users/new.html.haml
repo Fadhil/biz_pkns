@@ -1,2 +1,8 @@
-%h1 PknsUsers#new
-%p Find me in app/views/pkns_users/new.html.haml
+- model_class = User
+.row
+  %h3.twelve.columns
+    = t '.title'
+  %hr.divider
+.row
+  .twelve.columns
+    = render :partial => "form"

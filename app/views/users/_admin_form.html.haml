@@ -15,7 +15,7 @@
             = pp.file_field :file, :class => 'file input'
       %li.field
         = f.label t('email')
-        = f.text_field :email, :class => 'text input', :placeholder => ''
+        = f.text_field :email, :class => 'email input', :placeholder => ''
       %li.field
         .row
           .six.columns
@@ -34,10 +34,10 @@
         .row
           .six.columns
             = f.label t('phone')
-            = f.text_field :phone, :class => 'text input', :placeholder => ''
+            = f.text_field :phone, :class => 'phone input', :placeholder => ''
           .six.columns
             = f.label t('office_phone')
-            = f.text_field :office_phone, :class => 'text input', :placeholder => ''
+            = f.text_field :office_phone, :class => 'phone input', :placeholder => ''
       %li.field
         %span.medium.pretty.btn.warning
           / = f.submit t('update')
