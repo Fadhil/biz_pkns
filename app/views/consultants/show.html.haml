@@ -33,10 +33,11 @@
   .twelve.columns
     %hr.divider
     %h5= t('bio_data')
-    - unless @consultant.bio_data.empty?
-      %p= @consultant.bio_data
-    - else
-      %p Not Available
+    - if @consultant.bio_data
+      - unless @consultant.bio_data.empty?
+        %p= @consultant.bio_data
+      - else
+        %p Not Available
 .row
   .twelve.columns
     %h5= t('program')

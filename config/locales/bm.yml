@@ -361,7 +361,7 @@ bm:
     form:
       recipient: 'Penerima'
       address: 'Alamat'
-      compose: 'Karang Surat'
+      compose: 'Cipta Surat'
       name: 'Nama'
       address: 'Alamat'
       postcode: 'Poskod'
