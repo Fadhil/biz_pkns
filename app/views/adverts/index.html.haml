@@ -64,13 +64,15 @@
                     %span.pretty.small.btn.info.icon-left.entypo.icon-eye
                       = link_to t('view'), advert_path(advert)
                   .twelve.columns
-                    %span.pretty.small.btn.warning.icon-left.entypo.icon-list-add
-                      = link_to t('edit'), edit_advert_path(advert)
+                    - if advert.admin_created?
+                      %span.pretty.small.btn.warning.icon-left.entypo.icon-list-add
+                        = link_to t('edit'), edit_advert_path(advert)
                   .twelve.columns
-                    %span.pretty.small.btn.danger.icon-left.entypo.icon-trash
-                      = link_to t('destroy', :default => t("helpers.links.destroy")), advert_path(advert),
-                        :method => :delete,
-                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }
+                    - if advert.admin_created?
+                      %span.pretty.small.btn.danger.icon-left.entypo.icon-trash
+                        = link_to t('destroy', :default => t("helpers.links.destroy")), advert_path(advert),
+                          :method => :delete,
+                          :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }
       .tab-content
         .table
           .row.table-head
@@ -117,13 +119,15 @@
                     %span.pretty.small.btn.info.icon-left.entypo.icon-eye
                       = link_to t('view'), advert_path(advert)
                   .twelve.columns
-                    %span.pretty.small.btn.warning.icon-left.entypo.icon-list-add
-                      = link_to t('edit'), edit_advert_path(advert)
+                    - if advert.admin_created?
+                      %span.pretty.small.btn.warning.icon-left.entypo.icon-list-add
+                        = link_to t('edit'), edit_advert_path(advert)
                   .twelve.columns
-                    %span.pretty.small.btn.danger.icon-left.entypo.icon-trash
-                      = link_to t('destroy', :default => t("helpers.links.destroy")), advert_path(advert),
-                        :method => :delete,
-                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }
+                    - if advert.admin_created?
+                      %span.pretty.small.btn.danger.icon-left.entypo.icon-trash
+                        = link_to t('destroy', :default => t("helpers.links.destroy")), advert_path(advert),
+                          :method => :delete,
+                          :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }
       .tab-content
         .table
           .row.table-head
@@ -169,13 +173,15 @@
                     %span.pretty.small.btn.info.icon-left.entypo.icon-eye
                       = link_to t('view'), advert_path(advert)
                   .twelve.columns
-                    %span.pretty.small.btn.warning.icon-left.entypo.icon-list-add
-                      = link_to t('edit'), edit_advert_path(advert)
+                    - if advert.admin_created?
+                      %span.pretty.small.btn.warning.icon-left.entypo.icon-list-add
+                        = link_to t('edit'), edit_advert_path(advert)
                   .twelve.columns
-                    %span.pretty.small.btn.danger.icon-left.entypo.icon-trash
-                      = link_to t('destroy', :default => t("helpers.links.destroy")), advert_path(advert),
-                        :method => :delete,
-                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }
+                    - if advert.admin_created?
+                      %span.pretty.small.btn.danger.icon-left.entypo.icon-trash
+                        = link_to t('destroy', :default => t("helpers.links.destroy")), advert_path(advert),
+                          :method => :delete,
+                          :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }
       .tab-content
         %table.table.table-striped
           %thead

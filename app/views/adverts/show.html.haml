@@ -44,7 +44,7 @@
     - if @advert.requested? && !(@advert.request_status == 'approved')
       = link_to t('reject_request'), make_request_advert_path(id: @advert.id, advert: { requested: 0, request_status: 'rejected' }, advert_action: 'reject' ), method: :put#, class: 'btn'
       = link_to t('approve_request'), make_request_advert_path(id: @advert.id, advert: { requested: 1, request_status: 'approved' }, advert_action: 'approve'), method: :put#, class: 'btn'
-    - unless @advert.request_status == 'approved'
+    - if @advert.admin_created?
       %span.pretty.btn.secondary
         = link_to t('edit', :default => t("helpers.links.edit")), edit_advert_path(@advert)#, :class => 'btn'
       %span.pretty.btn.danger

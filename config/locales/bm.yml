@@ -3,12 +3,12 @@
 
 bm:
   active: 'Aktif'
-  active_adverts: 'Senarai Iklan Aktif'
+  active_adverts: 'Iklan Aktif'
   activated_adverts_full: 'Senarai Iklan Aktif Sudah Penuh'
   advert_type: 'Jenis Iklan'
   answers: 'Jawapan'
-  inactive_adverts: 'Senarai Iklan Tidak Aktif'
-  pending_adverts: 'Senarai Iklan Menunggu'
+  inactive_adverts: 'Iklan Tidak Aktif'
+  pending_adverts: 'Iklan Belum Diluluskan'
   activate: 'Aktifkan'
   attendee: 'Penghadir'
   add_program: 'Tambah Program'
@@ -692,7 +692,7 @@ bm:
     index:
       title: 'Senarai Iklan'
       new: 'Iklan Baru'
-      advert_request_history: 'Senarai Permohonan Iklan'
+      advert_request_history: 'Rekod Permohonan Iklan'
     show:
       title: 'Iklan'
       advert_information: 'Maklumat Iklan'
