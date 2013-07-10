@@ -23,11 +23,12 @@
           = @consultant.company_name
       - else
         %span.ten.columns Nil
-    .email.row
-      %span.ten.columns
-        = @consultant.email
-    .phone.row
-      %span.ten.column= @consultant.phone.blank? ? "<br/>".html_safe : @consultant.phone
+    - if can? :manage, @consultant
+      .email.row
+        %span.ten.columns
+          = @consultant.email
+      .phone.row
+        %span.ten.column= @consultant.phone.blank? ? "<br/>".html_safe : @consultant.phone
 
 .row
   .twelve.columns
