@@ -395,7 +395,7 @@ bm:
     list:
       title: 'Senarai Surat'
       subject: 'Perkara'
-      created_at: 'Tarikh'
+      created_at: 'Tarikh Dicipta'
       preview: 'Papar'
       index: 'No.'
       new: 'Karang Surat'
@@ -407,10 +407,10 @@ bm:
       nonmembers: 'Bukan Ahli'
       users_by_program: 'Pengguna mengikut Program'
       users_by_course: 'Pengguna mengikut Kursus'
-      print_pdf: 'Cipta Surat'
+      print_pdf: 'Prebiu Surat'
       subject: 'Perkara'
     generate_letter:
-      print: 'Simpan'
+      print: 'Cetak PDF'
 
   skills:
     index:
