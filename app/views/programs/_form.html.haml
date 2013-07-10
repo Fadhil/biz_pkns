@@ -1,0 +1,23 @@
+.row
+  = nested_form_for @program, :html => { :class => 'form-horizontal', multipart: true } do |f|
+    %ul
+      %li.field
+        = f.label t('name')
+        = f.text_field :name, :class => 'text input', :placeholder => ''
+      %li.field
+        = f.fields_for :logo do |l|
+          = l.label 'Muatnaik logo' do
+            = l.file_field :file, class: 'file input'
+      %li.field
+        = f.label t('description')
+        = f.text_area :description, class: 'textarea input', :placeholder => '', :rows => 5
+      %li.field
+        %span.medium.pretty.btn.warning
+          - if @program.new_record?
+            %button{:onClick => 'submit();'}= t('register')
+          - else
+            / = f.submit t('update')
+            %button{:onClick => 'submit();'}= t('update')
+        %span.medium.pretty.btn.default
+          = link_to t('cancel', :default => t("helpers.links.cancel")),
+          users_path

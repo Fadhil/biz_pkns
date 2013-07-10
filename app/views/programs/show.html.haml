@@ -1,0 +1,21 @@
+.row
+  %h3.twelve.columns
+    = t('.title', program_name: @program.name)
+  %hr.divider
+.row
+  .twelve.columns
+    -unless @program.logo.nil?
+      .image
+        = image_tag(@program.logo.file.thumb)
+  .twelve.columns
+    %h5= t('description')
+  %hr.divider
+.row
+  .twelve.columns
+    - if can? :manage, @program
+      %span.medium.pretty.btn.warning
+        = link_to t('edit', :default => t("helpers.links.edit")), edit_program_path(@program)
+      %span.medium.pretty.btn.default
+        = link_to t('destroy', :default => t("helpers.links.destroy")), program_path(@program),
+          :method => 'delete',
+          :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }
