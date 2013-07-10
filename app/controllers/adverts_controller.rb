@@ -5,10 +5,10 @@ class AdvertsController < ApplicationController
   load_and_authorize_resource
   def index
     @active_adverts = Advert.active
-    @inactive_adverts = Advert.inactive
-    @pending_adverts = Advert.pending
+    @inactive_adverts = Advert.inactive.order('created_at DESC')
+    @pending_adverts = Advert.pending.order('created_at DESC')
     @all_adverts = Advert.all
-    @advert_transactions = AdvertTransaction.all
+    @advert_transactions = AdvertTransaction.order('created_at DESC')
 
     if !can? :manage, :all?
       respond_to do |format|
