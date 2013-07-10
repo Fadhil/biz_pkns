@@ -6,7 +6,8 @@ before(:each) do
   http_login
   @skill = stub_model(Skill)
   assigns(:skill){@skill}
-  controller.stub(:current_user){FactoryGirl.build(:user)}
+  controller.stub(:check_status){ nil }
+  controller.stub(:current_user){FactoryGirl.build(:admin)}
   @ability = Object.new
   @ability.extend(CanCan::Ability)
   controller.stub(:current_ability) { @ability }
@@ -27,6 +28,7 @@ end
   def valid_session
     {}
   end
+
   describe "GET 'index'" do
     it "returns http success" do
       get 'index'

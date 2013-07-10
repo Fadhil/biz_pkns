@@ -19,13 +19,14 @@ FactoryGirl.define do
     current_employment_status 'part_time_business'
 
 
-
-    factory :admin do
-
+    factory :admin , parent: :user do |user|
+      after(:create) { |user| create(:admin_role)}
     end
 
 
+
   end
+
   trait :member do
     association :membership, factory: :membership
   end
@@ -34,5 +35,7 @@ FactoryGirl.define do
     walk_in_first_time false
     profile_complete true
   end
+
+
 end
 
