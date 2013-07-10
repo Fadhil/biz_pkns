@@ -1,10 +1,14 @@
 - model_class = Advert
-.page-header
-  %h1=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human
-- if current_user
-  - if current_user.admin?
-    = render :partial => "form"
-  - else
-    = render :partial => 'user_form'
-- elsif current_consultant
-  = render :partial => "consultant_form"
+.row
+  %h3.twelve.columns
+    = t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human
+  %hr.divider
+.row
+  .twelve.columns
+    - if current_user
+      - if current_user.admin?
+        = render :partial => "form"
+      - else
+        = render :partial => "user_form"
+    - elsif current_consultant
+      = render :partial => "consultant_form"

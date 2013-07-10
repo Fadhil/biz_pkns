@@ -1,47 +1,38 @@
 = form_for @advert, :html => { :class => 'form-horizontal' } do |f|
-  - if !f.object.new_record?
-    - if !@advert.photo.new_record?
-      .control-group
-        .controls
-          = image_tag(f.object.photo.file)
-
-  .control-group
-    = f.label t('name'), :class => 'control-label'
-    .controls
-      = f.text_field :title, :class => 'text_field'
-  .control-group
-    = f.label t('.content'), :class => 'control-label'
-    .controls
-      = f.text_area :content, :class => 'text_area_large'
-
-  = f.fields_for :photo do |p|
-    .control-group
-      = p.label t('.upload_photo'), class: 'control-label'
-      .controls
-        = p.file_field :file
-      .small-text
-        = t('image_should_be_this_size')
- 
-  .control-group
-    = f.label t('advert_start_date'), :class => 'control-label'
-    .controls
-      = f.text_field :start_date, :class => 'text_field datepicker'
-  .control-group
-    = f.label t('advert_end_date'), :class => 'control-label'
-    .controls
-      = f.text_field :end_date, :class => 'text_field datepicker'
-      = f.hidden_field :advert_type, value: 'Product'
-      = f.hidden_field :user_id, value: current_user.id
-  .form-actions
-    - if f.object.new_record?
-      %span.medium.pretty.btn.primary
-        = f.submit t('create_advert')#, :class => 'btn btn-primary'
-    - else
-      %span.medium.pretty.btn.secondary
-        = f.submit t('update')#, :class => 'btn btn-primary'
-      %span.pretty.btn.default
-        = link_to t('cancel', :default => t("helpers.links.cancel")), adverts_path, :class => 'btn'
-
-
-
-  
+  .row
+    %ul
+      - if !f.object.new_record?
+        - if !@advert.photo.new_record?
+          %li.field
+            = image_tag(f.object.photo.file
+      %li.field
+        = f.label t('name'), :class => 'control-label'
+        = f.text_field :title, :class => 'text input'
+      %li.field
+        = f.label t('.content'), :class => 'control-label'
+        = f.text_area :content, :class => 'textarea input', :rows => 5
+      = f.fields_for :photo do |p|
+        %li.field
+          = p.label t('.upload_photo'), class: 'control-label'
+            = p.file_field :file, :class => 'file input'
+          .small-text
+            = t('image_should_be_this_size')
+      %li.field
+        .rows
+          .six.columns
+            = f.label t('advert_start_date'), :class => 'control-label'
+            = f.text_field :start_date, :class => 'text input datepicker'
+          .six.columns
+            = f.label t('advert_end_date'), :class => 'control-label'
+            = f.text_field :end_date, :class => 'text input  datepicker'
+              = f.hidden_field :advert_type, value: 'Product'
+              = f.hidden_field :user_id, value: current_user.id
+      %li.field
+        - if f.object.new_record?
+          %span.medium.pretty.btn.warning
+            = f.submit t('create_advert')
+        - else
+          %span.medium.pretty.btn.warning
+            = f.submit t('update')
+          %span.pretty.btn.default
+            = link_to t('cancel', :default => t("helpers.links.cancel")), adverts_path, :class => 'btn'
