@@ -52,7 +52,7 @@
             %li
               = link_to consultant_path(id: current_consultant.id) do
                 %i.icon-user
-                = t('.consultant_profile')
+                = t('.profile')
             %li
               = link_to '#' do
                 %i.icon-briefcase
@@ -60,7 +60,6 @@
               .dropdown
                 %ul
                   = program_switch_menu.html_safe
-                        
             %li
               = link_to destroy_consultant_session_path, method: :delete do
                 %i.icon-logout

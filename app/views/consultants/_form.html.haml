@@ -1,83 +1,76 @@
-= nested_form_for @consultant, :html => { :class => 'form-horizontal' } do |f|
-  %div{:style => "padding-left:30px;"}
-    .row-fluid
-      .span3
+.row
+  = nested_form_for @consultant, :html => { :class => 'form-horizontal' } do |f|
+    %ul
+      %li.field
         = f.label t('company_name')
-        = f.text_field :company_name, :class => 'text_field'
-      .span3.offset1
-        %div
-          - if can? :manage, :all
-            %div
-              = f.label 'Pilih Program'
-              = f.fields_for :consultants_programs do |program| 
-                .row-fluid
-                  .span
-                    = program.select :program_id, options_for_select(Program.all.map{ |a| [a.name, a.id]}, program.object.program_id)
-                  .span
-                    = program.link_to_remove t('remove_program'), class: 'btn btn-danger btn-mini'
-            = f.link_to_add t('add_program'), :consultants_programs, class: 'btn btn-mini'
-          - else
-            %div
-              Program
-              %ul
-                - f.object.programs.each do |p|
-                  %li
-                    = p.name
-    %br
-    .control-group
-      = f.fields_for :profile_photo do |pp|
-        = pp.label t('.upload_company_logo'), :class => 'control-label'
-        .controls
-          = pp.file_field :file, :class => 'text_field'
-    .row-fluid
-      .span3
+        = f.text_field :company_name, :class => 'text input', :placeholder => t('company_name')
+      - if can? :manage, :all
+        %li.field
+          = f.label 'Pilih Program'
+          = f.fields_for :consultants_programs do |program|
+            .picker
+              = program.select :program_id, options_for_select(Program.all.map{ |a| [a.name, a.id]}, program.object.program_id)
+            .span
+              = program.link_to_remove t('remove_program')
+        %li.field
+          %span.pretty.medium.warning.btn
+            = f.link_to_add t('add_program'), :consultants_programs
+      - else
+        %li.field
+          %h6 Program(s)
+          %hr.divider
+          %ul
+            - f.object.programs.each do |p|
+              %li
+                = p.name
+      %li.field
+        = f.fields_for :profile_photo do |pp|
+          = pp.label t('.upload_company_logo')
+          = pp.file_field :file, :class => 'file input'
+      %li.field
         = f.label 'Latarbelakang Syarikat'
-        = f.text_area :bio_data, :style => 'width:500px; height:200px;'
-  %br
-  %h2 Pegawai Bertanggungjawab
-  %div{:style => "padding-left:30px;"}
-    .row-fluid
-      .span3
+        = f.text_area :bio_data, :class => 'textarea input', :rows => '5'
+    %h4 Pegawai Bertanggungjawab
+    %hr.divider
+    %ul
+      %li.field
         = f.label t('first_name')
-        = f.text_field :first_name, :class => 'text_field'
-      .span3.offset1
+        = f.text_field :first_name, :class => 'text input', :placeholder => t('first_name')
+      %li.field
         = f.label t('last_name')
-        = f.text_field :last_name, :class => 'text_field'
-    %br
-    .row-fluid
-      .span3
-        = f.label t('phone')
-        = f.text_field :phone, :class => 'text_field'
-      .span3.offset1
-        = f.label t('email')
-        = f.text_field :email, :class => 'text_field'
-    %br
-    %br
-    - if !@consultant.new_record?
-      .row-fluid
-        .span3
+        = f.text_field :last_name, :class => 'text input', :placeholder => t('last_name')
+      %li.field
+        .row
+          .six.columns
+            = f.label t('phone')
+            = f.text_field :phone, :class => 'text input', :placeholder => t('phone')
+          .six.columns
+            = f.label t('email')
+            = f.text_field :email, :class => 'text input', :placeholder => t('email')
+      - if !@consultant.new_record?
+        %li.field
           = f.label t('password')
-          = f.text_field :password, :class => 'text_field'
-        .span3.offset1
+          = f.text_field :password, :class => 'password input', :placeholder => t('password')
+        %li.field
           = f.label t('password_confirmation')
-          = f.text_field :password_confirmation, :class => 'text_field'
-    - if @consultant.new_record?
-      .row-fluid
-        .span3
+          = f.text_field :password_confirmation, :class => 'password input', :placeholder => t('password_confirmation')
+      - if @consultant.new_record?
+        %li.field
           = f.label t('password')
-          = f.text_field :password, :class => 'text_field'
-    %br
-    %br
-    - if can? :manage, :all
-      .row-fluid
-        .span3
-          = f.radio_button :is_active, true
-          = t('active')
-          = f.radio_button :is_active, false
-          = t('inactive')
-  .form-actions{:style => "margin-left:-150px;"}
-    %span.medium.pretty.btn.secondary
-      = f.submit t('.update')#, :class => 'btn btn-primary'
-    %span.medium.pretty.btn.default
-      = link_to t('.cancel', :default => t("helpers.links.cancel")), |
-      consultants_path#, :class => 'btn'                            |
+          = f.text_field :password, :class => 'text input', :placeholder => t('password')
+      - if can? :manage, :all
+        %li.field
+          = f.label '', :class => 'radio checked', :for => "consultant[is_active]" do
+            = f.radio_button :is_active, true, :class => 'radio', :checked => 'checked'
+            %span
+            = t('active')
+          = f.label '', :class => 'radio', :for => 'consultant[is_active]' do
+            = f.radio_button :is_active, false, :class => 'radio'
+            %span
+            = t('inactive')
+      %li.field
+        %span.medium.pretty.btn.warning
+          / = f.submit t('.update')
+          %button{:onClick => 'submit();'}=t('.update')
+        %span.medium.pretty.btn.warning
+          = link_to t('.cancel', :default => t("helpers.links.cancel")), consultants_path

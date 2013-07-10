@@ -1,8 +1,8 @@
 = form_tag '', method: :get do
   .row
-    %h3.ten.columns
+    %h3.nine.columns
       = t('.title')
-    .two.columns.action
+    .three.columns.action
       - if can? :manage, Course
         %span.pretty.medium.primary.btn.entypo.icon-left.icon-list-add
           = link_to t('create_course', :default => t("helpers.links.new_user")), new_course_path
@@ -46,10 +46,10 @@
         .row
           .twelve.columns
           .twelve.columns
-            %span.pretty.small.btn.secondary.icon-left.entypo.icon-eye
+            %span.pretty.small.btn.info.icon-left.entypo.icon-eye
               = link_to t('view', :default => t("helpers.links.edit")), course_details_path(course)
           .twelve.columns
-            %span.pretty.small.btn.primary.icon-left.entypo.icon-mail
+            %span.pretty.small.btn.warning.icon-left.entypo.icon-mail
               = mail_to "example@example.com", t('share'), :subject => "Ada kursus menarik dari PKNS - #{course.try(:name)}", :body => "Ada kursus menarik dari PKNS. Sila lewati #{"http://"+request.host+course_path(course)}. \n\nAnda perlu berdaftar dengan Biz Data untuk hadiri kursus. \n\nMaklumat Kursus \nKursus : #{course.try(:name)} \nHuraian : #{course.try(:description)} \nTarikh : #{course.start_date}"
           .twelve.columns
             %span.pretty.small.btn.danger.icon-left.entypo.icon-trash

@@ -754,7 +754,7 @@ bm:
       profile: 'Profil'
       database: 'Database'
       consultant_profile: 'Profil Perunding'
-      my_program: 'Program Saya'
+      my_program: 'Kursus Saya'
       my_adverts: 'Iklan'
       my_courses: 'Kursus Saya'
       administrate_user: 'Urus Ahli'
