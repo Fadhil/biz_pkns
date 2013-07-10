@@ -1,0 +1,43 @@
+= nested_form_for @user, :html => { :class => 'form-horizontal', multipart: true } do |f|
+  .row
+    .twelve.columns
+      %table.table.strip
+        %tbody
+          %tr.field
+            %th= f.label t('first_name')
+            %td= f.text_field :first_name, :class => 'text input', :placeholder => t('first_name')
+          %tr.field
+            %th= f.label t('last_name')
+            %td= f.text_field :last_name, :class => 'text input', :placeholder => t('last_name')
+          %tr.field
+            %th= f.label t('gender')
+            %td
+              = f.label '', :class => 'radio checked', :for => :gender do
+                = f.radio_button :gender, 'm', :class => 'radio', :checked => 'checked'
+                %span
+                = t('male')
+              = f.label '', :class => 'radio', :for => :gender do
+                = f.radio_button :gender, 'f', :class => 'radio'
+                %span
+                = t('female')
+          %tr.field
+            %th= f.label t('email')
+            %td= f.text_field :email, :class => 'text input', :placeholder => t('email')
+          %tr.field
+            %th= f.label t('ic_number')
+            %td= f.text_field :ic_number, :class => 'text input', :placeholder => t('ic_number')
+          %tr.field
+            %th= f.label t('password')
+            %td= f.password_field :password, :class => 'input text input'
+          %tr.field
+            %th= f.label t('password_confirmation')
+            %td= f.password_field :password_confirmation, :class => 'input text input'
+          %tr.field
+            %td{:colspan => 2}= f.hidden_field :is_active, value: true
+  .row
+    .twelve.columns
+      %span.medium.pretty.btn.warning
+        / = f.submit t('.create_user')
+        %button{:onClick => 'submit();'}=t('.create_user')
+      %span.medium.pretty.btn.default
+        = link_to t('cancel', :default => t("helpers.links.cancel")), users_path
