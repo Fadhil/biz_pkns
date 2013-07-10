@@ -19,4 +19,5 @@
 //= require angular
 //= require gumby.min
 //= require custom
+//= jquery.maxlength-min
 //= require_tree

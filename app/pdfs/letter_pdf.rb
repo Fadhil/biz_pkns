@@ -19,7 +19,7 @@ include ApplicationHelper
         text "Yang Bertugas,".html_safe
 
         move_down 3
-        text letter.sender_name(user)
+        text current_user.full_name
         start_new_page
     end
   end
