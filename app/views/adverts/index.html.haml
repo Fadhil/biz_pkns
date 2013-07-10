@@ -14,9 +14,9 @@
         %li.active
           = link_to t('active_adverts'), '#'
         %li
-          = link_to t('pending_adverts'), '#'
-        %li
           = link_to t('inactive_adverts'), '#'
+        %li
+          = link_to t('pending_adverts'), '#'
         %li
           = link_to t('.advert_request_history'), '#'
       .tab-content.active
@@ -88,7 +88,7 @@
               %h6.title= t('weight')
             .one.columns
               %h6.title &nbsp;
-          - @pending_adverts.each_with_index do |advert, index|
+          - @inactive_adverts.each_with_index do |advert, index|
             .row.table-rows
               .one.columns
                 %p= index + 1
@@ -141,7 +141,7 @@
               %h6.title= t('weight')
             .one.columns
               %h6.title &nbsp;
-          - @inactive_adverts.each_with_index do |advert, index|
+          - @pending_adverts.each_with_index do |advert, index|
             .row.table-rows
               .one.columns
                 %p= index + 1
