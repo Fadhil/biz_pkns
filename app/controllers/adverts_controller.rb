@@ -4,7 +4,8 @@ class AdvertsController < ApplicationController
  include ActionView::Context
   load_and_authorize_resource
   def index
-    @active_adverts = Advert.active
+    @active_adverts = Advert.active.limit(10)
+    @more_active_adverts = Advert.active.offset(10)
     @inactive_adverts = Advert.inactive.order('created_at DESC')
     @pending_adverts = Advert.pending.order('created_at DESC')
     @all_adverts = Advert.all
