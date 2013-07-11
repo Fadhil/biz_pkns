@@ -24,7 +24,7 @@
               %small 50 Huruf Sahaja
           %li.field
             = f.label t('.content'), :class => 'control-label'
-            = f.text_area :content, :class => 'textarea input', disabled: disabled, limit: 140, :rows => 5, onKeyUp: "limitText(this, 'warning_text_1', 140);"
+            = f.text_area :content, :class => 'textarea input', disabled: disabled, limit: 140, :rows => 3, onKeyUp: "limitText(this, 'warning_text_1', 140);"
             #warning_text_1
               %small= t('.up_to_140_chars_only')
           - if !f.object.new_record?

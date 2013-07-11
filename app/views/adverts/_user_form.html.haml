@@ -5,12 +5,14 @@
       %ul
         %li.field
           = f.label t('name'), :class => 'control-label'
-          = f.text_field :title, :class => 'text input'
-          %small 50 Huruf Sahaja
+          = f.text_field :title, :class => 'text input', onKeyUp:"limitText(this,'warning-text1',50);"
+          #warning-text1
+            %small 50 Huruf Sahaja
         %li.field
           = f.label t('.content'), :class => 'control-label'
-          = f.text_area :content, :class => 'textarea input'
-          %small= t('.up_to_140_chars_only')
+          = f.text_area :content, :class => 'textarea input', onKeyUp:"limitText(this,'warning-text1',140);"
+          #warning-text2
+            %small= t('.up_to_140_chars_only')
         - if !f.object.new_record?
           - if !@advert.photo.nil?
             %li.field
