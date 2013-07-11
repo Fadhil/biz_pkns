@@ -48,6 +48,7 @@ class Ability
         end
       elsif resource.is_a?(Consultant)
         can :manage, Consultant, id: resource.id
+        can :consultation, :pages
         can :read, User
         can :manage, Course, program_id: resource.programs.all.map(&:id)
         can :create, Course
