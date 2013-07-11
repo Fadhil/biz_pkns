@@ -45,15 +45,12 @@
       .two.columns
         .row
           .twelve.columns
-          .twelve.columns
-            %span.pretty.small.btn.info.icon-left.entypo.icon-eye
-              = link_to t('view', :default => t("helpers.links.edit")), course_details_path(course)
-          .twelve.columns
             %span.pretty.small.btn.warning.icon-left.entypo.icon-mail
               = mail_to "example@example.com", t('share'), :subject => "Ada kursus menarik dari PKNS - #{course.try(:name)}", :body => "Ada kursus menarik dari PKNS. Sila lewati #{"http://"+request.host+course_path(course)}. \n\nAnda perlu berdaftar dengan Biz Data untuk hadiri kursus. \n\nMaklumat Kursus \nKursus : #{course.try(:name)} \nHuraian : #{course.try(:description)} \nTarikh : #{course.start_date}"
-          .twelve.columns
-            %span.pretty.small.btn.danger.icon-left.entypo.icon-trash
-              - if can? :destroy, Course
+          - if can? :destroy, Course
+            .twelve.columns
+              %span.pretty.small.btn.danger.icon-left.entypo.icon-trash
+              
                 = link_to t('destroy', :default => t("helpers.links.destroy")),
                             course_path(course),
                             :method => :delete,
