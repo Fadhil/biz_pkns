@@ -215,7 +215,7 @@ class UsersController < ApplicationController
 
   def my_adverts
     if current_user
-      @my_adverts = current_user.adverts.order("created_at DESC").all
+      @my_adverts = current_user.adverts.latest
     end
   end
 end

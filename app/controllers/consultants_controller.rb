@@ -131,7 +131,7 @@ class ConsultantsController < ApplicationController
   
   def my_adverts
     if current_consultant
-      @my_adverts = current_consultant.adverts.all
+      @my_adverts = current_consultant.adverts.latest
     end
   end
 end

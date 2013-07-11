@@ -1,43 +1,43 @@
 - model_class = Advert
-.page-header
-  %h1=t '.title', :default => model_class.model_name.human.pluralize
-%br
-= link_to t('create_advert', :default => t("helpers.links.new")), new_advert_path, :class => 'btn btn-primary'
-%br
-%br
-%table.table.table-striped
-  %thead
-    %tr
-      %th.short-column
-        No
-      %th
-        = t('name')
-      %th
-        = t('advert_type')
-      %th
-        = t('advert_start_date')
-      %th
-        = t('advert_end_date')
-      %th.short-column
-        = t('active')
-      %th.short-column
-        = t('paid_for')
-      %th
-  %tbody
+.row
+  %h3.nine.columns
+    =t '.title', :default => model_class.model_name.human.pluralize
+  .three.columns.action
+    %span.pretty.medium.primary.btn.entypo.icon-left.icon-list-add
+      = link_to t('create_advert', :default => t("helpers.links.new")), new_advert_path
+.row
+  .twelve.columns
+    .table
+      .row.table-head
+        .one.columns
+          %h6 No
+        .six.columns
+          %h6.title= t('name')
+        .one.columns
+          %h6.title &nbsp;
+        .one.columns
+          %h6.title= t('active')
+        .two.columns
+          %h6.title= t('paid_for')
+        .one.columns
+          %h6.title &nbsp;
 
-    - @my_adverts.each_with_index do |advert, index|
-      %tr
-        %td= index + 1
-        %td= advert.title
-        %td= t(advert.advert_type.downcase)
-        %td
-          = advert.start_date
-        %td
-          = advert.end_date
-        %td.short-column
-          = advert.active? ? 'YA' : ''
-        %td.short-column
-          = advert.paid_for? ? 'YA' : ''
-        %td
-          = link_to t('view'), advert_path(advert), class: 'btn btn-mini'
-        
+      - @my_adverts.each_with_index do |advert, index|
+        .row.table-rows
+          .one.columns
+            %p= index + 1
+          .six.columns
+            %p
+              = link_to advert.title, advert_path(advert), :class => 'name'
+              .row
+                .date= "#{advert.start_date.try(:to_formatted_s,'rfc822')} - #{advert.end_date.try(:to_formatted_s,'rfc822')}"
+          .one.columns
+            %h6.title &nbsp;
+          .one.columns
+            %p= advert.active? ? 'YA' : ''
+          .two.columns
+            %p= advert.paid_for? ? 'YA' : ''
+          .one.columns
+            = link_to t('view'), advert_path(advert), class: 'btn btn-mini'
+
+  

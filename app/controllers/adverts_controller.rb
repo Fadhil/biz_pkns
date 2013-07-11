@@ -6,10 +6,10 @@ class AdvertsController < ApplicationController
   def index
     @active_adverts = Advert.active.limit(10)
     @more_active_adverts = Advert.active.offset(10)
-    @inactive_adverts = Advert.inactive.order('created_at DESC')
-    @pending_adverts = Advert.pending.order('created_at DESC')
+    @inactive_adverts = Advert.inactive.latest
+    @pending_adverts = Advert.pending.latest
     @all_adverts = Advert.all
-    @advert_transactions = AdvertTransaction.order('created_at DESC')
+    @advert_transactions = AdvertTransaction.latest
 
     if !can? :manage, :all?
       respond_to do |format|
