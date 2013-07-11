@@ -142,7 +142,6 @@
                   = link_to advert.title, advert_path(advert), :class => 'name'
                   .row
                     .date= "#{advert.start_date.to_formatted_s(:rfc822)} - #{advert.end_date.to_formatted_s(:rfc822)}"
-                    .date= "#{advert.end_date.to_formatted_s(:long)}"
               .two.columns
                 %p
                   = advert.advert_type
