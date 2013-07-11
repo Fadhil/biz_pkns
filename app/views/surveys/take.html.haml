@@ -10,9 +10,9 @@
           - the_field = ''
           - case q.question_type
             - when 'yes_no'
-              = f.label 'Yes'
+              = f.label t('yes_answer')
               = radio_button "question[#{q.id}]", :answer, 'yes'
-              = f.label 'No'
+              = f.label t('no_answer')
               = radio_button "question[#{q.id}]",:answer, 'no'
             - when 'multiple_choice'
               = f.label q.option1
@@ -24,13 +24,13 @@
               = f.label q.option4
               = radio_button "question[#{q.id}]", :answer, 'D'
             - when 'scale'
-              = f.label 'Very Yes'
+              = f.label t('scale_low')
               = radio_button "question[#{q.id}]", :answer, 1
               = radio_button "question[#{q.id}]", :answer, 2
               = radio_button "question[#{q.id}]", :answer, 3
               = radio_button "question[#{q.id}]", :answer, 4
               = radio_button "question[#{q.id}]", :answer, 5
-              = f.label 'Very No'
+              = f.label t('scale_high')
             - when 'subjective'
               = text_area "question[#{q.id}]", :answer, class: 'text_area_large'
       = hidden_field "question[#{q.id}]", 'question_id', value: q.id
