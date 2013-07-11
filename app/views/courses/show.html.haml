@@ -49,6 +49,8 @@
     - if @course.attendance_list.attendees.count > 0 && !@course.attendance_list.completed
       %hr.divider
       %h5 Preattendance List
+      %span.pretty.medium.btn.info
+        = link_to t('print'), '#', onClick: "print();"
       %table.table.table-striped
         %thead
           %tr
