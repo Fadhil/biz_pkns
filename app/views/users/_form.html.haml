@@ -41,11 +41,11 @@
                   %tr
                     %th= f.label t('gender')
                     %td
-                      = f.label '', :class => 'radio checked', :for => :gender do
+                      = f.label '', :class => "radio #{(@user.gender == 'm' ? 'checked' : '')}", :for => :gender do
                         = f.radio_button :gender, 'm', :class => 'radio', :checked => 'checked'
                         %span
                         = t('male')
-                      = f.label '', :class => 'radio', :for => :gender do
+                      = f.label '', :class => "radio #{(@user.gender == 'f' ? 'checked' : '')}", :for => :gender do
                         = f.radio_button :gender, 'f', :class => 'radio'
                         %span
                         = t('female')
