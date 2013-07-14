@@ -40,6 +40,8 @@ class AdvertsController < ApplicationController
                   location: course.venue,
                   course_start_date: course.start_date,
                   course_end_date: course.end_date,
+                  start_date: params[:advert][:start_date],
+                  end_date: params[:advert][:end_date],
                   capacity: course.pax,
                   program_name: course.try(:program).try(:name),
                   course_type: course.course_type}
@@ -80,6 +82,8 @@ class AdvertsController < ApplicationController
                   location: course.venue,
                   course_start_date: course.start_date,
                   course_end_date: course.end_date,
+                  start_date: params[:advert][:start_date],
+                  end_date: params[:advert][:end_date],
                   capacity: course.pax,
                   program_name: course.try(:program).try(:name),
                   course_type: course.course_type,
