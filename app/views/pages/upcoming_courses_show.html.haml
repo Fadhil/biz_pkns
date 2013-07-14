@@ -1,8 +1,8 @@
 - model_class = Course
 .row
-  %h3.nine.columns
+  %h3.ten.columns
     = @course.name
-  .three.columns.action
+  .two.columns.action
     - if can? :manage, @user
       %span.pretty.medium.primary.btn.entypo.icon-left.icon-print
         = link_to t('Print'), '', :onClick => 'print();'
@@ -104,8 +104,8 @@
                     %td{style:"border: 1px solid black;width: 140px;"}
           .row
             = nested_form_for @course.attendance_list do |f|
-              %ul
-                = f.fields_for :attendees do |a|
+              = f.fields_for :attendees do |a|
+                %ul
                   %li.field
                     = a.text_field :first_name, value: t('first_name'), :class => 'text input', :placeholder => t('first_name') if a.object.new_record?
                   %li.field
@@ -117,9 +117,17 @@
                   %li.field
                     = a.link_to_remove t('remove') if a.object.new_record?
                     = a.hidden_field :attended, value: 1
-              = f.link_to_add t('add_attendee'), :attendees
-              %span.pretty.medium.btn.warning
-                %button{:onClick => "submit();"}= t('update')
+              = f.link_to_add :attendees do
+                %i.icon-user-add
+                =t('add_attendee')
+              %span
+                |
+              = link_to 'javascript:', :onClick => 'submit();' do
+                %i.icon-pencil
+                =t('update')
+              /
+                %span.pretty.small.btn.info
+                  %button{:onClick => "submit();"}= t('update')
             = form_for @course.attendance_list do |f|
               = f.hidden_field :completed, value: 1
               %span.pretty.medium.btn.warning
