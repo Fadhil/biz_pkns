@@ -113,7 +113,7 @@ class SurveysController < ApplicationController
       if !current_user.unfinished_surveys.empty?
         format.html { redirect_to surveys_user_path(current_user), notice: t('thanks_for_completing_our_survey') }
       else
-        format.html { redirect_to the_home_path, notice: t('thanks_for_completing_our_survey')}
+        format.html { redirect_to home_url, notice: t('thanks_for_completing_our_survey')}
       end
     end
   end
