@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130701165819) do
+ActiveRecord::Schema.define(:version => 20130714210507) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -45,9 +45,9 @@ ActiveRecord::Schema.define(:version => 20130701165819) do
     t.boolean  "active"
     t.integer  "weight"
     t.integer  "capacity"
-    t.text     "content"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.text     "content",           :limit => 255
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.string   "course_type"
     t.string   "program_name"
     t.date     "course_start_date"
@@ -321,6 +321,7 @@ ActiveRecord::Schema.define(:version => 20130701165819) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.integer  "consultant_id"
+    t.boolean  "active"
   end
 
   create_table "questions", :force => true do |t|
