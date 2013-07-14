@@ -6,10 +6,8 @@
     - unless current_user
       .panel
         .row
-          %h6.eleven.columns
+          %h6.twelve.columns
             = t('sign_in')
-          %span.one.columns
-            %i.icon-cog.ico-custom
         .row
           = form_for(resource, :url => session_path(resource)) do |f|
             %ul.eleven.columns

@@ -1,0 +1,17 @@
+.row
+  .twelve.columns
+    %h3= t('resend_confirmation')
+.row
+  .eight.columns
+    - unless current_user
+      .panel
+        = form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f|
+          = devise_error_messages!
+          = f.hidden_field :reset_password_token
+          %ul
+            %li.field
+              = f.label :email
+              = f.email_field :email, :autofocus => true, :class => 'password input'
+            %li.field
+              = f.submit t('resend_confirmation'), :class => ' pretty medium warning btn'
+    = render "devise/shared/links"
