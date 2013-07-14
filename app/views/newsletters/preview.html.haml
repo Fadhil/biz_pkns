@@ -1,43 +1,44 @@
-/ %style
-/   html{ margin-top: 130px; }
-
 - model_class = Newsletter
-.page-header
-  %h1=t '.title', :default => model_class.model_name.human
-
-/ %p
-/   %strong= t('.subject') + ':'
-/   = @newsletter.subject
-/ %p
-/   = @newsletter.message.html_safe
-
-%p
-  = link_to "Klik untuk prebiu buletin", show_email_path(@newsletter)
-
-%br
-%br
-%br
-.control-group
-  = label :test, t('.send_to'), :class => 'control-label'
-  
-  .controls
+.row
+  %h3.twelve.columns
+    = t('.title', :default => model_class.model_name.human)
+  %hr
+.row
+  .twelve.columns
+    %p
+      = link_to "Klik untuk prebiu buletin", show_email_path(@newsletter)
+.row
+  .twelve.columns
     = form_for '', url: send_user_newsletter_path(id: @newsletter.id) do |f|
-      - if current_user
-        - if current_user.admin?
-          = select_tag 'newsletter_user_select', options_for_select([[t('.all_users'),'all_users'],[t('.members'),'members'], [t('.nonmembers'),'nonmembers'],[t('.users_by_program'), 'users_by_program'],[t('.users_by_course'),'users_by_course']])
-      - elsif current_consultant
-        = select_tag 'newsletter_user_select', options_for_select([[t('.users_by_program'), 'users_by_program'],[t('.users_by_course'),'users_by_course']])
-      - if current_consultant
-        = select_tag 'newsletter_program_select', options_for_select(current_consultant.programs.all.map{|a| [a.name, a.id]}), disabled: false
-        = select_tag 'newsletter_course_select', options_for_select(Course.where(program_id: current_consultant.programs.first.id).map{ |a| [a.name,a.id]}), disabled: true, class: 'hide'
-      - else
-        = select_tag 'newsletter_program_select', options_for_select(Program.all.map{|a| [a.name, a.id]}), disabled: true, class: 'hide'
-        = select_tag 'newsletter_course_select', options_for_select(Course.where(program_id: Program.first.id).map{ |a| [a.name,a.id]}), disabled: true, class: 'hide'
-
-      .form-actions
-        %span.medium.pretty.btn.primary
-          = f.submit t('send'), :class => 'btn btn-primary'
-        %span.medium.pretty.btn.secondary
-          = link_to t('edit', :default => t("helpers.links.edit")), edit_newsletter_path(@newsletter)#, :class => 'btn'
-        %span.medium.pretty.btn.default
-          = link_to t('cancel', :default => t("helpers.links.cancel")), newsletters_path#, :class => 'btn'
+      %ul
+        - if current_user
+          - if current_user.admin?
+            %li.field
+              .picker
+                = select_tag 'newsletter_user_select', options_for_select([[t('.all_users'),'all_users'],[t('.members'),'members'], [t('.nonmembers'),'nonmembers'],[t('.users_by_program'), 'users_by_program'],[t('.users_by_course'),'users_by_course']])
+        - elsif current_consultant
+          %li.field
+            .picker
+              = select_tag 'newsletter_user_select', options_for_select([[t('.users_by_program'), 'users_by_program'],[t('.users_by_course'),'users_by_course']])
+        - if current_consultant
+          %li.field
+            .picker
+              = select_tag 'newsletter_program_select', options_for_select(current_consultant.programs.all.map{|a| [a.name, a.id]}), disabled: false
+          %li.field
+            .picker
+              = select_tag 'newsletter_course_select', options_for_select(Course.where(program_id: current_consultant.programs.first.id).map{ |a| [a.name,a.id]}), disabled: true, class: 'hide'
+        - else
+            %li.field
+              .picker
+                = select_tag 'newsletter_program_select', options_for_select(Program.all.map{|a| [a.name, a.id]}), disabled: true, class: 'hide'
+            %li.field
+              .picker
+                = select_tag 'newsletter_course_select', options_for_select(Course.where(program_id: Program.first.id).map{ |a| [a.name,a.id]}), disabled: true, class: 'hide'
+        %li.field
+          %span.medium.pretty.btn.warning
+            / = f.submit t('send')
+            %button{:onClick => 'submit();'}=t('send')
+          %span.medium.pretty.btn.warning
+            = link_to t('edit', :default => t("helpers.links.edit")), edit_newsletter_path(@newsletter)
+          %span.medium.pretty.btn.default
+            = link_to t('cancel', :default => t("helpers.links.cancel")), newsletters_path

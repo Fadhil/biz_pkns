@@ -1,37 +1,49 @@
-%style
-  html { margin-top: 130px; }
 - model_class = Newsletter
-.page-header
-  %h1=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human
-= form_for @newsletter, :html => { :class => 'form-horizontal' } do |f|
-  .control-group
-    = f.label t('.subject'), :class => 'control-label'
-    .controls
-      = f.text_field :subject, :class => 'text_field input-xxlarge'
-  .control-group
-    = f.label t('.message'), :class => 'control-label'
-    .controls
-      = f.text_area :message, :class => 'text_area redactor', :value => @newsletters_template.template
-
-  / .control-group
-  /   = f.label t('.send_to'), :class => 'control-label'
-    
-  /   .controls
-  /     = form_for '', url: send_user_newsletter_path do |f|
-  /       - if current_user
-  /         - if current_user.admin?
-  /           = select_tag 'newsletter_user_select', options_for_select([[t('.all_users'),'all_users'],[t('.members'),'members'], [t('.nonmembers'),'nonmembers'],[t('.users_by_program'), 'users_by_program'],[t('.users_by_course'),'users_by_course']])
-  /       - elsif current_consultant
-  /         = select_tag 'newsletter_user_select', options_for_select([[t('.users_by_program'), 'users_by_program'],[t('.users_by_course'),'users_by_course']])
-  /       - if current_consultant
-  /         = select_tag 'newsletter_program_select', options_for_select(current_consultant.programs.all.map{|a| [a.name, a.id]}), disabled: false
-  /         = select_tag 'newsletter_course_select', options_for_select(Course.where(program_id: current_consultant.programs.first.id).map{ |a| [a.name,a.id]}), disabled: true, class: 'hide'
-  /       - else
-  /         = select_tag 'newsletter_program_select', options_for_select(Program.all.map{|a| [a.name, a.id]}), disabled: true, class: 'hide'
-  /         = select_tag 'newsletter_course_select', options_for_select(Course.where(program_id: Program.first.id).map{ |a| [a.name,a.id]}), disabled: true, class: 'hide'
-
-  .form-actions
-    %span.medium.pretty.btn.primary
-      = f.submit t('.preview')#, :class => 'btn btn-primary'
-    %span.medium.pretty.btn.default
-      = link_to t('cancel', :default => t("helpers.links.cancel")), newsletters_path#, :class => 'btn'
+.row
+  %h3.twelve.columns
+    = t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human
+  %hr
+.row
+  .twelve.columns
+    = form_for @newsletter, :html => { :class => 'form-horizontal' } do |f|
+      %ul
+        %li.field
+          = f.label t('.subject')
+          = f.text_field :subject, :class => 'text input input-xxlarge', :placeholder => t('.subject')
+        %li.field
+          = f.label t('.message')
+          = f.text_area :message, :class => 'textarea redactor', :value => @newsletters_template.template
+        /
+          %li.field
+            = f.label t('.send_to')
+            = form_for '', url: send_user_newsletter_path do |f|
+              %ul
+              - if current_user
+                - if current_user.admin?
+                  %li.field
+                    .picker
+                      = select_tag 'newsletter_user_select', options_for_select([[t('.all_users'),'all_users'],[t('.members'),'members'], [t('.nonmembers'),'nonmembers'],[t('.users_by_program'), 'users_by_program'],[t('.users_by_course'),'users_by_course']])
+              - elsif current_consultant
+                %li.field
+                  .picker
+                    = select_tag 'newsletter_user_select', options_for_select([[t('.users_by_program'), 'users_by_program'],[t('.users_by_course'),'users_by_course']])
+              - if current_consultant
+                %li.field
+                  .picker
+                    = select_tag 'newsletter_program_select', options_for_select(current_consultant.programs.all.map{|a| [a.name, a.id]}), disabled: false
+                %li.field
+                  .picker
+                    = select_tag 'newsletter_course_select', options_for_select(Course.where(program_id: current_consultant.programs.first.id).map{ |a| [a.name,a.id]}), disabled: true, class: 'hide'
+              - else
+                %li.field
+                  .picker
+                    = select_tag 'newsletter_program_select', options_for_select(Program.all.map{|a| [a.name, a.id]}), disabled: true, class: 'hide'
+                %li.field
+                  .picker
+                    = select_tag 'newsletter_course_select', options_for_select(Course.where(program_id: Program.first.id).map{ |a| [a.name,a.id]}), disabled: true, class: 'hide'
+        %li.field
+          %span.medium.pretty.btn.warning
+            / = f.submit t('.preview')
+            %button{:onClick => 'submit();'}=t('.preview')
+          %span.medium.pretty.btn.default
+            = link_to t('cancel', :default => t("helpers.links.cancel")), newsletters_path

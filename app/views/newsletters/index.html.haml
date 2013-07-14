@@ -5,18 +5,23 @@
   .two.columns.action.hide
     %span.pretty.medium.primary.btn.entypo.icon-left.icon-list-add
       = link_to t('new', :default => t("helpers.links.new")), new_newsletter_path
-%table.table.table-striped
-  %thead
-    %tr
-      %th= model_class.human_attribute_name(:id)
-      %th= t('.name')
-      %th
-  %tbody
-    - @newsletters_templates.each_with_index do |newsletters_template, i|
-      %tr
-        %td= i+1
-        %td= newsletters_template.name
-        %td
-          = link_to t('.use_this'), use_template_path(newsletters_template), :class => 'btn btn-mini'
-
-=# link_to t('.new', :default => t("helpers.links.new")), new_newsletter_path, :class => 'btn btn-primary'
+  %hr.divider
+.row
+  .twelve.columns
+    - unless @newsletters_template.nil?
+      %table.table.table-striped
+        %thead
+          %tr
+            %th= model_class.human_attribute_name(:id)
+            %th= t('.name')
+            %th
+        %tbody
+          - @newsletters_templates.each_with_index do |newsletters_template, i|
+            %tr
+              %td= i+1
+              %td= newsletters_template.name
+              %td
+                %span.small.pretty.btn.warning
+                  = link_to t('.use_this'), use_template_path(newsletters_template)
+    - else
+      %h5 Templates not available!
