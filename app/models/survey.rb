@@ -9,4 +9,5 @@ class Survey < ActiveRecord::Base
   belongs_to :creator, class_name: User
 
   scope :active, where('start_date <= ? AND end_date > ?', Date.today, Date.today)
+  scope :latest, order('created_at DESC')
 end
