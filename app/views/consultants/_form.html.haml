@@ -60,11 +60,11 @@
           = f.text_field :password, :class => 'text input', :placeholder => t('password')
       - if can? :manage, :all
         %li.field
-          = f.label '', :class => 'radio checked', :for => "consultant[is_active]" do
-            = f.radio_button :is_active, true, :class => 'radio', :checked => 'checked'
+          = f.label '', :class => "radio #{(@consultant.is_active? ? 'checked' : '')}", :for => "consultant[is_active]" do
+            = f.radio_button :is_active, true, :class => 'radio'
             %span
             = t('active')
-          = f.label '', :class => 'radio', :for => 'consultant[is_active]' do
+          = f.label '', :class => "radio #{(@consultant.is_active? ? '' : 'checked')}", :for => 'consultant[is_active]' do
             = f.radio_button :is_active, false, :class => 'radio'
             %span
             = t('inactive')
