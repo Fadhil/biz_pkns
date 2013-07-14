@@ -35,7 +35,13 @@
         %tr
           %th= t('status')
           %td= !@course.status.blank? || @course.status? ? t('active') : t('inactive')
+
+
 .row
+  -if current_user
+    - if !current_user.courses.include?(@course) && !current_user.admin?
+      %span.pretty.medium.btn.primary
+        = link_to t('register_course'),user_course_registration_path({id: @course.id, user_id: current_user.id}), data: { confirm: t('confirm_register_course') }, method: :put
   - if can? :manage, @course
     %span.pretty.medium.btn.info
       = link_to t('edit', :default => t("helpers.links.edit")), edit_course_path(@course)
