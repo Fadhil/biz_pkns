@@ -61,6 +61,12 @@ body {
           background: transparent;
         }
       }
+      .logo img {
+        width: 40px;
+        max-width: 40px;
+        float: left;
+        margin: 5px 0;
+      }
       .logo a {
         color: rgba(255, 255, 255, 1);
         font-weight: 800;

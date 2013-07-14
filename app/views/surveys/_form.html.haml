@@ -5,8 +5,7 @@
       = f.text_field :title, :class => 'text input', :placeholder => :title
   .field
     = f.label t('description'), class: 'control-label'
-    .controls  
-      = f.text_area :description, class: 'input textarea', :rows => '7'
+    = f.text_area :description, class: 'input textarea redactor', :rows => '7'
   .field
     .row
       .six.columns
@@ -23,8 +22,7 @@
         - question_id = q.object.id
       .field
         = q.label t('questions'), class: 'control-label'
-        .controls  
-          = q.text_area :title, class: 'input textarea', :rows => '4'
+        = q.text_area :title, class: 'input textarea redactor', :rows => '4'
       .field
         = q.label t('question_type'), class: 'control-label'
         .picker
@@ -33,57 +31,45 @@
         .question_options.hide{ class: "#{question_id}" }
           .field
             = q.label t('option1'), class: 'control-label'
-            .controls 
-              = q.text_field :option1, class: 'text input', :placeholder => ''
+            = q.text_field :option1, class: 'text input', :placeholder => ''
           .field
             = q.label t('option2'), class: 'control-label'
-            .controls 
-              = q.text_field :option2, class: 'text input', :placeholder => ''
+            = q.text_field :option2, class: 'text input', :placeholder => ''
           .field
             = q.label t('option3'), class: 'control-label'
-            .controls 
-              = q.text_field :option3, class: 'text input', :placeholder => ''
+            = q.text_field :option3, class: 'text input', :placeholder => ''
           .field
             = q.label t('option4'), class: 'control-label'
-            .controls 
-              = q.text_field :option4, class: 'text input', :placeholder => ''
+            = q.text_field :option4, class: 'text input', :placeholder => ''
       - else
         - if q.object.question_type == 'multiple_choice'
           .question_options{ class: "#{question_id}" }
             .field
               = q.label t('option1'), class: 'control-label'
-              .controls 
-                = q.text_field :option1, class: 'text input', :placeholder => ''
+              = q.text_field :option1, class: 'text input', :placeholder => ''
             .field
               = q.label t('option2'), class: 'control-label'
-              .controls 
-                = q.text_field :option2, class: 'text input', :placeholder => ''
+              = q.text_field :option2, class: 'text input', :placeholder => ''
             .field
               = q.label t('option3'), class: 'control-label'
-              .controls 
-                = q.text_field :option3, class: 'text input', :placeholder => ''
+              = q.text_field :option3, class: 'text input', :placeholder => ''
             .field
               = q.label t('option4'), class: 'control-label'
-              .controls 
-                = q.text_field :option4, class: 'text input', :placeholder => ''
+              = q.text_field :option4, class: 'text input', :placeholder => ''
         - else
           .question_options.hide{ class: "#{question_id}" }
             .field
               = q.label t('option1'), class: 'control-label'
-              .controls 
-                = q.text_field :option1, class: 'text input', :placeholder => ''
+              = q.text_field :option1, class: 'text input', :placeholder => ''
             .field
               = q.label t('option2'), class: 'control-label'
-              .controls 
-                = q.text_field :option2, class: 'text input', :placeholder => ''
+              = q.text_field :option2, class: 'text input', :placeholder => ''
             .field
               = q.label t('option3'), class: 'control-label'
-              .controls 
-                = q.text_field :option3, class: 'text input', :placeholder => ''
+              = q.text_field :option3, class: 'text input', :placeholder => ''
             .field
               = q.label t('option4'), class: 'control-label'
-              .controls 
-                = q.text_field :option4, class: 'text input', :placeholder => ''
+              = q.text_field :option4, class: 'text input', :placeholder => ''
 
         = q.link_to_remove 'Remove'
     = f.link_to_add :questions, :class => 'add-question' do

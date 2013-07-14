@@ -11,5 +11,5 @@
  *= require_self
  *= require redactor-rails
  *= require gumby
- *= require custom
+ *= require_tree
  */

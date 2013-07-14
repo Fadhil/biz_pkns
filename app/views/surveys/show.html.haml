@@ -13,7 +13,7 @@
   .twelve.columns
     %small
       %strong= t('description')
-    %p= @survey.description
+    %p= @survey.description.html_safe
 
 .row
   .twelve.columns

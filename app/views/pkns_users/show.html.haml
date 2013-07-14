@@ -1,69 +1,53 @@
 -# model_class = User
-:css
-  .content{ padding-left: 10px;}
-    table tr th {width: 140px;}
-    .table td {padding: 8px;
-    line-height: 20px;
-    text-align: left;
-    vertical-align: top;
-    border-top: 0 solid #dddddd;
-  }
-    .table th { border-top: 0 solid #dddddd; }
-.page-header
-  %h1= t('.title')
-.container
-  .row.wrapper
-    .span7.border-right
-      .row.border-bottom
-        .span3.border-right.container
-          .whitespace
-            %span.aleft
-              - unless @user.profile_photo.nil?
-                = image_tag(@user.profile_photo.file, size: '70x70')
-            %span.aright
-            #name= @user.full_name
-          
-        .span3
-          .whitespace
-            %b E
-            - if @user.email.blank?
-              NIL
-            - else
-              = mail_to @user.email
-            %br/
-            %b P
-            - if @user.phone.blank?
-            - else
-              = @user.phone
-            %br/
-            %b O
-            = @user.office_phone
-      .row
-        .span4
-          %table.table
-            %tr
-              %th.header{:colspan => "2"}=t('.staff_details')
-            %tr
-              %th= t('staff_number')
-              %td= @user.staff_number
-            %tr
-              %th= t('ic_number')
-              %td= @user.ic_number
-            %tr
-              %th= t('section')
-              %td
-                = @user.section
-            %tr
-              %th= t('unit')
-              %td= @user.unit
-          %br/
-          %br/
-          %br/
-          %br/
-     
- 
-- if can? :manage, @user
-  .form-actions
-  %span.medium.pretty.btn.secondary
-    = link_to t('edit', :default => t("helpers.links.edit")), |
-    edit_pkns_user_path(@pkns_user)#, :class => 'btn btn-flat'         |
+.row
+  %h3.twelve.columns
+    = t('.title')
+  .two.columns.action.hide
+    - if current_user
+      %span.pretty.medium.primary.btn.entypo.icon-left.icon-list-add
+        = link_to t('contact'), edit_user_path(@user)
+  %hr.divider
+.row
+  .two.columns.center
+    .image.avatar
+      - unless @user.profile_photo.nil?
+        = image_tag (@user.profile_photo.file), size: '70x70'
+      - else
+        = image_tag('http://flickholdr.com/70/70/avatar', size: '70x70')
+  .ten.columns
+    %h5
+      = @user.full_name
+    .email.row
+      %span.ten.columns
+        = @user.email
+    .phone.row
+      .six.columns
+        %small.label.info Mobile
+        = @user.phone
+      .six.columns
+        %small.label.info Office
+        = @user.office_phone
+  %hr.divider
+.row
+  .twelve.columns
+    %table.table.strip
+      %tbody
+        %tr
+          %th{:colspan => 2}
+            %h5=t('.staff_details')
+        %tr
+          %th= t('staff_number')
+          %td= @user.staff_number
+        %tr
+          %th= t('ic_number')
+          %td= @user.ic_number
+        %tr
+          %th= t('section')
+          %td= @user.section
+        %tr
+          %th= t('unit')
+          %td= @user.unit
+.row
+  .twelve.columns
+    %span.medium.pretty.btn.warning
+      = link_to t('edit', :default => t("helpers.links.edit")), edit_pkns_user_path(@pkns_user)
