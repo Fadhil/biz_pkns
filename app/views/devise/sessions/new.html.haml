@@ -1,19 +1,7 @@
-%style{type: 'text/css'}
-  = "body { background-color: #EBEAEA; background: url('#{image_path 'bground.jpg'}'); no-repeat center center; }"
 .row
-  .span8.login-hero
-    %h1 Jaringan Usahawan PKNS Biz Data
-    / %p
-    /   %span.icon
-    /   %b Rakan niaga
-    /   pelbagai bidang dan kemahiran.
-    / %p
-    /   %b Kongsi pengalaman
-    /   dalam perniagaan.
-    / %p
-    /   %b Jaringan keusahawanan
-    /   mantap dan berkesan.
-
+  .twelve.columns
+    %h3= t('sign_in')
+.row
   .eight.columns
     - unless current_user
       .panel
@@ -30,32 +18,12 @@
               %li.field
                 = f.password_field :password, :class => 'password input', :placeholder => t('password')
               %li.field
-                .five.columns
+                .eight.columns
                   - if devise_mapping.rememberable?
                     = f.label t('remember_me'), :class => 'checkbox checked', :for => 'user_remember_me' do
                       = f.check_box :remember_me, :checked => 'checked'
                       %span
                       Remember Me
                 .four.columns
-                  = f.submit t('login'), :class => ' pretty medium primary btn'
-        = render "devise/shared/links"
-  / .span3
-  /   .login-box
-  /     .page-header
-  /       %h1= t('sign_in')
-  /     = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-  /       %div
-  /         = f.label t('email')
-  /         = f.email_field :email, :autofocus => true
-  /       %div
-  /         = f.label t('password')
-  /         = f.password_field :password
-  /       - if devise_mapping.rememberable?
-  /         .row{:style => "padding:0 0 10px 0;"}
-  /           .span
-  /             = f.check_box :remember_me
-  /           .span3{:style => "margin-left:10px; padding-top:3px;"}
-  /             = f.label t('remember_me')
-  /         %div
-  /       %div= f.submit t('sign_in'), :class => 'btn btn-primary'
-  /     = render "devise/shared/links"
+                  = f.submit t('login'), :class => ' pretty medium warning btn'
+    = render "devise/shared/links"

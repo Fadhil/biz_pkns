@@ -1,0 +1,42 @@
+.row
+  .twelve.columns
+    %h3= "Edit #{resource_name.to_s.humanize}"
+.row
+  .eight.columns
+    .panel
+      = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+        = devise_error_messages!
+        %ul
+          %li.field
+            = f.label :first_name
+            = f.text_field :first_name, :autofocus => true, :class => 'text input'
+          %li.field
+            = f.label :last_name
+            = f.text_field :last_name, :autofocus => true, :class => 'text input'
+          %li.field
+            = f.label :email
+            = f.email_field :email, :autofocus => true, :class => 'text input'
+          - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+            %li.field
+              Currently waiting confirmation for: #{resource.unconfirmed_email}
+          %li.field
+            = f.label :password
+            %i (leave blank if you don't want to change it)
+            = f.password_field :password, :autocomplete => "off", :class => 'text input'
+          %li.field
+            = f.label :password_confirmation
+            = f.password_field :password_confirmation, :class => 'text input'
+          %li.field
+            = f.label :current_password
+            %i (we need your current password to confirm your changes)
+            = f.password_field :current_password, :class => 'text input'
+          %li.field
+            %span.pretty.medium.warning.btn
+              / = f.submit "Update"
+              %button{:onClick => 'submit();'} Update
+.row
+  .eight.columns
+    %h3 Cancel my account
+    %p
+      Unhappy? #{button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}.
+    = link_to "Back", :back
