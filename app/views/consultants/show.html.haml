@@ -55,6 +55,6 @@
     - if can? :manage, Consultant
       %span.medium.pretty.btn.warning
         = link_to t('edit', :default => t("helpers.links.edit")), edit_consultant_path(@consultant)
-    - if current_user
+    - if current_user && cannot?(:manage, :all)
       %span.medium.pretty.btn.warning
         = link_to t('contact'), contact_consultant_path(@consultant)
