@@ -13,6 +13,8 @@
         = f.fields_for :profile_photo do |pp|
           = pp.label t('upload_profile_photo') do
             = pp.file_field :file, :class => 'file input'
+          %small
+            = t('image_should_be_this_size')
       %li.field
         = f.label t('email')
         = f.text_field :email, :class => 'email input', :placeholder => ''
