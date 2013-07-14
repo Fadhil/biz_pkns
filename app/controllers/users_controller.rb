@@ -94,9 +94,6 @@ class UsersController < ApplicationController
       @user.build_profile_photo
     end
 
-    if @user.previous_courses.empty?
-      @user.previous_courses.build
-    end
 
     respond_to do |format|
       if @user.has_role?('Admin')

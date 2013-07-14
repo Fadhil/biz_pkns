@@ -12,6 +12,8 @@
           = f.fields_for :profile_photo do |pp|
             %td= pp.label t('.upload_profile_photo')
             %td= pp.file_field :file
+          %small
+            = t('image_should_be_this_size')
   .row
     .field
       .twelve.columns
@@ -151,8 +153,9 @@
                                 = s.label t('.end_date')
                                 = s.text_field :end_date, :class => 'text input'
                             = s.link_to_remove t('.remove_education')
-                          %li.field
-                            = f.link_to_add "Tambah Pendidikan", :education_background
+                  %tr
+                    %td
+                      = f.link_to_add "Tambah Pendidikan", :education_background
               %table.table.strip
                 %tbody
                   %tr
