@@ -3,6 +3,7 @@ html*, body {
 }
 
 body {
+  font-size: 14px;
   /* header */
   header {
     &.navbar {
@@ -819,4 +820,15 @@ body {
 
 .block {
   display: block;
+}
+
+@media print {
+  .row {
+    .print-section {
+      width: 100% !important;
+    }
+    .print-disabled {
+      display: none;
+    }
+  }
 }

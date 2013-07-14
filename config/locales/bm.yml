@@ -83,6 +83,7 @@ bm:
   password: 'Kata Laluan'
   password_confirmation: 'Pengesahan Kata Laluan'
   new_password_confirmation: 'Sahkan kata laluan baru'
+  preattendance_list: 'Senarai Pra-Kedatangan'
   print: 'Cetak'
   number_of_attendees: 'Jumlah Peserta'
   option1: 'Pilihan Jawapan 1'
@@ -600,6 +601,9 @@ bm:
       create_course: 'Cipta Kursus'
     edit: 
       title: 'Kemaskini kursus'
+    show:
+      preattendance_list: 'Senarai Pra-Kedatangan'
+      attendance_list: 'Senarai Kedatangan'
 
   members:
     index:
