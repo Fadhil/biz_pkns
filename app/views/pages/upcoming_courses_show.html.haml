@@ -90,9 +90,6 @@
                         = link_to t('not_present'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: false, attendance_status: 'not_present'), method: :post
                     %li
                       %small
-                        = link_to t('will_attend'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: false, attendance_status: 'will_attend'), method: :post
-                    %li
-                      %small
                         = link_to t('cannot_attend'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: false, attendance_status: 'cannot_attend'), method: :post
           %table.table
             %tbody
