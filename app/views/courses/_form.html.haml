@@ -41,11 +41,11 @@
             = f.label t('end_date'), :class => 'control-label'
             = f.text_field :end_date, :class => 'end_date datepicker text input'
       %li.field
-        = f.label t('status'), :class => 'radio checked' do
+        = f.label t('status'), :class => "radio #{(@course.status? ? 'checked' : '')}"  do
           = radio_button("course","status", true, :class => 'radio')
           %span
           = t('active')
-        = f.label t('status'), :class => 'radio'  do
+        = f.label t('status'), :class => "radio #{(@course.status? ? '' : 'checked')}"   do
           = radio_button("course","status", false, :class => 'radio')
           %span
           = t('inactive')
