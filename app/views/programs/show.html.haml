@@ -13,6 +13,11 @@
   %hr.divider
 .row
   .twelve.columns
+    =t('status') + ":"
+    = @program.active? ? t('active') : t('inactive')
+  %hr.divider
+.row
+  .twelve.columns
     - if can? :manage, @program
       %span.medium.pretty.btn.warning
         = link_to t('edit', :default => t("helpers.links.edit")), edit_program_path(@program)

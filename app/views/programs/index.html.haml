@@ -7,7 +7,7 @@
       = link_to t('new', :default => t("helpers.links.new_user")), new_program_path
 .table
   .row.table-head
-    .four.columns
+    .two.columns
       %h6.title= t('name')
     .six.columns
       %h6.title= t('description')
@@ -15,12 +15,14 @@
       %h6.title= t('status')
   - @programs.each do |program|
     .row.table-rows
-      .four.columns
+      .two.columns
         %p
           = link_to program.name, program_path(program)
       .six.columns
         %p
           = program.description.html_safe
+      .two.columns
+        = program.active? ? t('active') : t('inactive')
       .two.columns
         .row
           .twelve.columns
