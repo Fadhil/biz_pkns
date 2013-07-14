@@ -29,7 +29,7 @@
     .row.table-rows
       .six.columns
         %p
-          = link_to course.name, course_path(course), :class => 'name'
+          = link_to course.name, course_details_path(course), :class => 'name'
         %p
           = truncate(course.description, :length => 200)
         .row
