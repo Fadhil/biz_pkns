@@ -8,22 +8,15 @@
         = link_to t('new', :default => t("helpers.links.new_user")), new_pkns_user_path
 .table
   .row.table-head
-    .six.columns
+    .ten.columns
       %h6.title= t('name')
-    .four.columns
-      %h6.title= "#{t('city')}, #{t('state')}"
     .two.columns
       %h6.title= t('status')
   - @users.each_with_index do |user,i|
     .row.table-rows
-      .six.columns
+      .ten.columns
         %p
           = link_to "#{user.first_name} #{user.last_name}", user_path(user), :class => 'name'
-      .four.columns
-        - if user.address.nil?
-          %p N/A
-        - else
-          %p= "#{user.address.city.name}, #{user.address.city.state_name}" unless user.address.city.nil?
       - if can? :manage, @user
         .two.columns
           .row
