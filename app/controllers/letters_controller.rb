@@ -70,7 +70,7 @@ class LettersController < ApplicationController
       format.json { render json: @letter }
       format.pdf do
         #pdf = Prawn::Document.new
-        pdf = LetterPdf.new(@letter)
+        pdf = LetterPdf.new(@letter, current_user)
         send_data pdf.render, filename: "surat_#{@letter.subject}".downcase.gsub(' ', '_'),
                                 type: "application/pdf",
                                 disposition: "inline"

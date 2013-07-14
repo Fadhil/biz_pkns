@@ -1,6 +1,6 @@
 class LetterPdf < Prawn::Document
 include ApplicationHelper
-  def initialize(letter, users=User.all)
+  def initialize(letter, sender,users=User.all)
     super(top_margin: 140)
     users.each do |user|
         text "#{user.full_name}"
@@ -19,7 +19,7 @@ include ApplicationHelper
         text "Yang Bertugas,".html_safe
 
         move_down 3
-        text current_user.full_name
+        text sender.full_name
         start_new_page
     end
   end
