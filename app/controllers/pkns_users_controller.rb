@@ -10,7 +10,16 @@ class PknsUsersController < UsersController
   end
 
   def edit
-    @pkns_user = PknsUser.find(params[:id])
+    @pkns_user = PknsUser.find(params[:id]) 
+
+    respond_to do |format|
+      if @pkns_user.has_role?('Admin')
+        format.html { render 'admin_edit', controller: :users}
+      else
+        format.html # edit.html.erb
+      end
+      format.json { render json: @user }
+    end
   end
 
 
