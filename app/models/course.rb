@@ -11,7 +11,7 @@ class Course < ActiveRecord::Base
   after_create :add_attendance_list
 
   scope :upcoming, lambda{ where('start_date >= ?', Date.today)}
-  scope :active, where(status: true)
+  scope :active, lambda{ where('status = true AND end_date >= ?', Date.today)}
 
   validates_numericality_of :pax
 

@@ -56,7 +56,11 @@ class PagesController < ApplicationController
   end
 
   def upcoming_courses_show
-    @course = Course.find(params[:id])
+    @course = Course.find(params[:id])    
+    if @course.end_date < Date.today
+      @course.status = false
+      @course.save
+    end
   end
 
   def my_courses

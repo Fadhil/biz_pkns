@@ -29,7 +29,7 @@
           .row
             %small.label.info
               = "#{t('status')} :"
-              = course.status? ? t('active') : t('inactive')
+              = (course.status? && course.end_date >= Date.today ) ? t('active') : t('inactive')
             %small.label.info
               = "#{t('start_date')} :"
               = "#{course.start_date} - #{course.end_date}"
