@@ -12,6 +12,7 @@ class Course < ActiveRecord::Base
 
   scope :upcoming, lambda{ where('start_date >= ?', Date.today)}
   scope :active, lambda{ where('status = true AND end_date >= ?', Date.today)}
+  scope :latest, order('created_at DESC')
 
   validates_numericality_of :pax
 
