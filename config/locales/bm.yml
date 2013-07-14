@@ -82,6 +82,7 @@ bm:
   pax: 'Jumlah peserta'
   password: 'Kata Laluan'
   password_confirmation: 'Pengesahan Kata Laluan'
+  current_password: 'Katalaluan semasa'
   new_password_confirmation: 'Sahkan kata laluan baru'
   preattendance_list: 'Senarai Pra-Kedatangan'
   print: 'Cetak'
