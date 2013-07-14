@@ -47,7 +47,7 @@
           .twelve.columns
             %span.pretty.small.btn.warning.icon-left.entypo.icon-mail
               = mail_to "example@example.com", t('share'), :subject => "Ada kursus menarik dari PKNS - #{course.try(:name)}", :body => "Ada kursus menarik dari PKNS. Sila lewati #{"http://"+request.host+course_path(course)}. \n\nAnda perlu berdaftar dengan Biz Data untuk hadiri kursus. \n\nMaklumat Kursus \nKursus : #{course.try(:name)} \nHuraian : #{course.try(:description)} \nTarikh : #{course.start_date}"
-          - if can? :destroy, Course
+          - if can? :manage, :all
             .twelve.columns
               %span.pretty.small.btn.danger.icon-left.entypo.icon-trash
               
