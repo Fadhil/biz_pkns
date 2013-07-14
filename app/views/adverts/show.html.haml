@@ -12,7 +12,7 @@
           %div.adinfo.userselect
             %div.title= @advert.title
             %div.venue= 'Tempat : '+ @advert.location.to_s
-            %div.date= 'Tarikh : '+ @advert.start_date.strftime("%d %b %y").to_s
+            %div.date= 'Tarikh : '+ @advert.course_start_date.strftime("%d %b %y").to_s
           = image_tag (@advert.photo.file)#, :class => 'adboxw'#, size: '100x100'
     - else
       - if @advert.photo
