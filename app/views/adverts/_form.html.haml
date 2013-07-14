@@ -49,11 +49,13 @@
                 = f.hidden_field :admin_created, value: 1
           %li.field
             - if f.object.new_record?
-              / = f.submit t('create_advert')
-              %button{:onClick => 'submit();'}= t('create_advert')
+              %span.medium.pretty.btn.warning
+                / = f.submit t('create_advert')
+                %button{:onClick => 'submit();'}= t('create_advert')
             - else
-              / = f.submit t('update')
-              %button{:onClick => 'submit();'}= t('update')
+              %span.medium.pretty.btn.warning
+                / = f.submit t('update')
+                %button{:onClick => 'submit();'}= t('update')
             %span.medium.pretty.btn.default
               = link_to t('cancel', :default => t("helpers.links.cancel")), adverts_path
       - else

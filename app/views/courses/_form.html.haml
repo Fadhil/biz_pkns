@@ -55,8 +55,8 @@
             / = f.submit t('.create_course')
             %button{:onClick => 'submit();'}= t('.create_course')
         - else
-          %span.medium.pretty.btn.secondary
-            = f.submit t('update')
-            %button{:onClick => 'submit();'}= t('.create_course')
+          %span.medium.pretty.btn.warning
+            / = f.submit t('update')
+            %button{:onClick => 'submit();'}= t('.update')
         %span.medium.pretty.btn.default
           = link_to t('cancel', :default => t("helpers.links.cancel")), courses_path

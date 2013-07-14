@@ -63,6 +63,9 @@ body {
       }
       .logo a {
         color: rgba(255, 255, 255, 1);
+        font-weight: 800;
+        letter-spacing: -1px;
+        text-shadow: 0 1px orangered;
       }
       .dropdown {
         border: none;
@@ -823,6 +826,31 @@ body {
 }
 
 @media print {
+  /* Printing Section */
+
+  body {
+    .navbar {
+      display: none;
+    }
+    #footer {
+      display: none;
+    }
+    #sidebar {
+      display: none;
+    }
+    .row {
+      &.print-disabled {
+        display: none;
+      }
+      &.print-section {
+        display: block;
+        width: 100% !important;
+      }
+      .print-disabled {
+        display: none;
+      }
+    }
+  }
   .row {
     .print-section {
       width: 100% !important;

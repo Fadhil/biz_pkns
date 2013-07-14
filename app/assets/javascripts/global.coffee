@@ -7,7 +7,7 @@ PKNS.run([
   '$timeout',
   ($rootScope, $timeout) ->
     $(document).ready ->
-      console.log $rootScope if console?.log
+      console.info $rootScope if console?.info
 ])
 
 PKNS.controller('MainCtrl', [
@@ -17,6 +17,10 @@ PKNS.controller('MainCtrl', [
 
     # initialize tabs
     Gumby.initialize('tabs')
+    # initialize checkboxes
+    Gumby.initialize('checkboxes')
+    # initialize radiobtns
+    Gumby.initialize('radiobtns')
 ])
 
 PKNS.directive('uiNavDropdown', [

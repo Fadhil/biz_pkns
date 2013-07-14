@@ -97,7 +97,8 @@
                             - @cities = City.where(state_name: c.object.state_name).order(:name)
                           - else
                             - @cities = City.where(state_name: 'Selangor').order(:name)
-                          = select_tag "#{a.object.addressable_type.downcase}_city", options_for_select(@cities.map{ |a| [a.name, a.id]}, selected: c.object.id ), :include_blank => true
+                          .picker
+                            = select_tag "#{a.object.addressable_type.downcase}_city", options_for_select(@cities.map{ |a| [a.name, a.id]}, selected: c.object.id ), :include_blank => true
                     %tr
                       %th= f.label t('state')
                       %td
@@ -106,11 +107,13 @@
                             - selected_state = c.object.state_name
                           - else
                             - selected_state = 'Selangor'
-                          = select_tag "#{a.object.addressable_type.downcase}_state", options_for_select(City.order(:state_name).map{ |a| [a.state_name]}.uniq, selected: selected_state), :include_blank => true
+                          .picker
+                            = select_tag "#{a.object.addressable_type.downcase}_state", options_for_select(City.order(:state_name).map{ |a| [a.state_name]}.uniq, selected: selected_state), :include_blank => true
                     %tr
                       %th= f.label t('.current_employment_status')
                       %td
-                        = f.select :current_employment_status, [[t('.employment_status.own_business'),'own_business'], |
+                        .picker
+                          = f.select :current_employment_status, [[t('.employment_status.own_business'),'own_business'], |
                           [t('.employment_status.working_studying'),'working_studying'],                               |
                           [t('.employment_status.studying'),'studying'],                                               |
                           [t('.employment_status.working_self_business'),'working_self_business'],                     |
@@ -176,7 +179,7 @@
                                 = s.text_area :description, :class => 'textarea input', :rows => 5
                               .three.columns
                                 = s.label t('.experience')
-                                = s.text_field :experience, { size: '2', maxlength: '2', class: 'narrow text input' }
+                                = s.text_field :experience, { size: '2', maxlength: '2', class: 'normal text input' }
                                 tahun
                             = s.link_to_remove t('.remove_skill')
                   %tr
@@ -193,14 +196,18 @@
                       %td= bp.text_field :company_name, class: 'text input'
                     %tr
                       %th= bp.label t('.type_of_business')
-                      %td= bp.select :type_of_business, Business.order(:name).map{|a| [a.name,a.name]}, { selected: bp.object.try(:type_of_business), :include_blank => true }
+                      %td
+                        .picker
+                          = bp.select :type_of_business, Business.order(:name).map{|a| [a.name,a.name]}, { selected: bp.object.try(:type_of_business), :include_blank => true }
                     %tr
                       %th= label_tag t('.registration_number')
                       %td
                         = bp.text_field :registration_number, class: 'normal text input'
                     %tr
                       %th= bp.label t('category')
-                      %td= bp.select(:category, BusinessCategory.order(:name).map{|a| [a.name,a.name]}, {:selected=> bp.object.try(:category), :include_blank => true})
+                      %td
+                        .picker
+                          = bp.select(:category, BusinessCategory.order(:name).map{|a| [a.name,a.name]}, {:selected=> bp.object.try(:category), :include_blank => true})
                     %tr
                       %th= bp.label t('description')
                       %td= bp.text_area :description, class: 'textarea input', style: 'height:200px;'
@@ -241,7 +248,8 @@
                           - @cities = City.where(state_name: bp.object.city.state_name).order(:name)
                         - else
                           - @cities = City.where(state_name: 'Selangor').order(:name)
-                        = bp.select :city_id, options_for_select(@cities.map{ |a| [a.name, a.id]}, {selected: bp.object.city_id} )
+                        .picker
+                          = bp.select :city_id, options_for_select(@cities.map{ |a| [a.name, a.id]}, {selected: bp.object.city_id} )
                     %tr
                       %th= bp.label t('state')
                       %td

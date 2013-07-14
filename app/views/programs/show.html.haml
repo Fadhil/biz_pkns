@@ -7,8 +7,9 @@
     -unless @program.logo.nil?
       .image
         = image_tag(@program.logo.file.thumb)
-  .twelve.columns
     %h5= t('description')
+    %p
+      = @program.description.html_safe
   %hr.divider
 .row
   .twelve.columns

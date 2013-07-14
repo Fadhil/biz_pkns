@@ -5,12 +5,13 @@
         = f.label t('name')
         = f.text_field :name, :class => 'text input', :placeholder => ''
       %li.field
+        = f.label 'Logo'
         = f.fields_for :logo do |l|
           = l.label 'Muatnaik logo' do
             = l.file_field :file, class: 'file input'
       %li.field
         = f.label t('description')
-        = f.text_area :description, class: 'textarea input', :placeholder => '', :rows => 5
+        = f.text_area :description, class: 'textarea input redactor', :placeholder => '', :rows => 5
       %li.field
         %span.medium.pretty.btn.warning
           - if @program.new_record?

@@ -36,7 +36,7 @@
     %h5= t('bio_data')
     - if @consultant.bio_data
       - unless @consultant.bio_data.empty?
-        %p= @consultant.bio_data
+        %p= @consultant.bio_data.html_safe
       - else
         %p Not Available
 .row
