@@ -2,7 +2,7 @@ class NewslettersController < ApplicationController
   # GET /newsletters
   # GET /newsletters.json
   def index
-    @newsletters = Newsletter.all
+    @newsletters = Newsletter.latest
     @newsletters_templates = Newsletters::Template.all
 
     respond_to do |format|
@@ -122,7 +122,7 @@ class NewslettersController < ApplicationController
   end
 
   def history
-    @newsletters = Newsletter.all
+    @newsletters = Newsletter.latest
     #@newsletters_templates = Newsletters::Template.all
 
     respond_to do |format|

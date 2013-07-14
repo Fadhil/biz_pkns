@@ -394,7 +394,7 @@ bm:
       title: 'Arkib Surat'
       subject: 'Subjek'
       name: 'Penerima'
-      created_at: 'Dihantar pada'
+      created_at: 'Dicipta pada'
       view: 'Papar'
     list:
       title: 'Senarai Surat'
@@ -563,7 +563,7 @@ bm:
     history:
       title: 'Arkib Buletin'
       subject: 'Subjek'
-      created_at: 'Dihantar pada'
+      created_at: 'Dicipta pada'
       view: 'Papar'
       new: 'Karang Buletin'
     use_template:
