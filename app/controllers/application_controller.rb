@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    the_home_path
+    home_url
   end
 
   def city_dropdown
