@@ -5,7 +5,7 @@
   .two.columns.action
     - if can? :manage, @user
       %span.pretty.medium.primary.btn.entypo.icon-left.icon-print
-        = link_to t('Print'), '', :onClick => 'print();'
+        = link_to t('print'), '', :onClick => 'print();'
   %hr.divider
 .row.print-disabled
   .twelve.columns
