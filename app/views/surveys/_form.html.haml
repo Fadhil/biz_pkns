@@ -9,9 +9,9 @@
   .field
     .row
       .six.columns
-        = f.text_field :start_date, :class => 'input type start_date datepicker', :include_blank => true, :placeholder => t('start_date')
+        = f.text_field :start_date, :class => 'input type start_date datepicker', :include_blank => true, :placeholder => t('start_date'), id: 'start_date'
       .six.columns
-        = f.text_field :end_date, :class => 'input type end_date datepicker', :include_blank => true, :placeholder => t('end_date')
+        = f.text_field :end_date, :class => 'input type end_date datepicker', :include_blank => true, :placeholder => t('end_date'), id: 'end_date'
   .field.questions
     %h4
       = t('questions')
