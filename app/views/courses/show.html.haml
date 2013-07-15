@@ -96,7 +96,7 @@
                   %td{style:"border: 1px solid black;width: 140px;"}
                   %td{style:"border: 1px solid black;width: 140px;"}
                   %td{style:"border: 1px solid black;width: 140px;"}
-        .row
+        .row.print-disabled
           = nested_form_for @course.attendance_list do |f|
             = f.fields_for :attendees do |a|
               = a.text_field :first_name, value: t('first_name'), :class => 'text input', :placeholder => t('first_name') if a.object.new_record?
@@ -105,14 +105,19 @@
               = a.text_field :ic_number, value: t('ic_number') , :class => 'text input'if a.object.new_record?
               = a.link_to_remove t('remove') if a.object.new_record?
               = a.hidden_field :attended, value: 1
-            = f.link_to_add t('add_attendee'), :attendees
-            %span.pretty.medium.btn.warning
-              %button{:onClick => "submit();"}= t('update')
+            = f.link_to_add :attendees do
+                %i.icon-user-add
+                =t('add_attendee')
+            %span
+              |
+            = link_to 'javascript:', :onClick => 'submit();' do
+              %i.icon-pencil
+              =t('update')
           = form_for @course.attendance_list do |f|
             = f.hidden_field :completed, value: 1
             %span.pretty.medium.btn.warning
               %button{:onClick => "submit();"}= t('end_course')
-        .row
+        .row.print-disabled
           .twelve.columns
             %h5
               = "#{t('number_of_attendees')} : #{@course.attendance_list.attendees.count}/#{@course.attendance_list.max_attendees}"

@@ -4,6 +4,9 @@ html*, body {
 
 body {
   font-size: 14px;
+  small {
+    font-size: 75%;
+  }
   /* header */
   header {
     &.navbar {
@@ -280,7 +283,7 @@ body {
     }
 
     .social {
-      font-size: 2em;
+      font-size: 1.6em;
     }
 
     .divider {
@@ -479,6 +482,11 @@ body {
     }
     .table {
       background-color: #ffffff;
+    }
+    .small {
+      li {
+        padding: 0;
+      }
     }
   }
 

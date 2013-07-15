@@ -22,7 +22,7 @@
         %p
           = link_to "#{survey.title}", survey_path(survey), :class => 'name'
         %p
-          = survey.description
+          = survey.description.html_safe
       .two.columns
         .row
           .twelve.columns

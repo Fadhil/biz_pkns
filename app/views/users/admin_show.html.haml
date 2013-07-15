@@ -14,7 +14,7 @@
         = image_tag (@user.profile_photo.file), size: '70x70'
       - else
         = image_tag('http://flickholdr.com/70/70/avatar', size: '70x70')
-    .row.social
+    .row.social.hide
       %a{:href => "http://twitter.com/#{@user.twitter_handle}", :title => @user.twitter_handle}
         %i.icon-twitter-circled
       %a{:href => "http://facebook.com/#{@user.facebook_handle}", :title => @user.facebook_handle}
