@@ -33,6 +33,10 @@
                 = link_to t('.new_survey'), new_survey_path
               %li
                 = link_to t('.my_adverts'), my_adverts_consultant_path(current_consultant)
+              %li
+                = link_to t('.history'), history_path
+              %li
+                = link_to t('.create_newsletter_template'), newsletters_path
       - if current_user
         %ul#sidebar-nav
           - if !current_user.admin?
