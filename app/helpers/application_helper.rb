@@ -35,7 +35,7 @@ module ApplicationHelper
 
     unless user.address.nil?
       unless user.address.line1.blank?
-        full_address += "<br/>#{user.address.line1}".html_safe
+        full_address += "#{user.address.line1}".html_safe
       end
       unless user.address.line2.blank?
         full_address += "<br/>#{user.address.line2}".html_safe

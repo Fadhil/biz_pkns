@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   scope :nonmembers, joins('left outer join memberships on users.id = memberships.user_id').where('memberships.id is null')
   scope :male, where(gender: 'm')
   scope :female, where(gender: 'f')
+  scope :has_address, joins(:address).where('addresses.line2 <> ? and addresses.line1 <> ?','','')
+  
   before_save :default_values
   before_save :complete_profile
   after_create :create_default_profile

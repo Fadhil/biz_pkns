@@ -8,23 +8,23 @@
     - @users.each do |user|
       %p= user.full_name
       %p= full_address(user).html_safe
-    = @letter.date
-.row
-  .twelve.columns
-    %h5= "#{t('subject')} : #{@letter.subject}"
-    %p
-      =@letter.message
-.row
-  .twelve.columns
-    %p
-      %small Yang bertugas,
-      %strong.block
-        = current_user.full_name
-  %hr.divider
+      = @letter.date
+      .row
+        .twelve.columns
+          %h5= "#{t('subject')} : #{@letter.subject}"
+          %p
+            =@letter.message.html_safe
+      .row
+        .twelve.columns
+          %p
+            %small Yang bertugas,
+            %strong.block
+              = current_user.full_name
+        %hr.divider
 .row
   .twelve.columns
     %span.medium.pretty.btn.warning
-      = link_to t('.print'), generate_letter_path(@letter, format: "pdf")
+      = link_to t('.print'), generate_letter_path(@letter, letter_user_select: params[:letter_user_select], letter_program_select: params[:letter_program_select], letter_course_select: params[:letter_course_select], format: "pdf"), method: :post
     %span.medium.pretty.btn.warning
       = link_to t('edit', :default => t("helpers.links.edit")), edit_letter_path(@letter)
     %span.medium.pretty.btn.danger

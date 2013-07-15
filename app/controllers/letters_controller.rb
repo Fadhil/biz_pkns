@@ -39,16 +39,18 @@ class LettersController < ApplicationController
 
   def generate_letter
     the_notice=t('successfully_sent_letter')
+ 
     @users = []
+   
     @letter = Letter.find(params[:id])
     if params[:letter_user_select].present?
       case params[:letter_user_select]
       when 'all_users'
-        @users = User.nonadmin
+        @users = User.nonadmin.has_address
       when 'members'
-        @users = User.nonadmin.members
+        @users = User.nonadmin.members.has_address
       when 'nonmembers'
-        @users = User.nonadmin.nonmembers
+        @users = User.nonadmin.nonmembers.has_address
       when 'users_by_program'
         if params[:letter_program_select].present?
           the_program = Program.find(params[:letter_program_select])
@@ -60,7 +62,7 @@ class LettersController < ApplicationController
           @users = the_course.users
         end
       else
-        @users = User.nonadmin
+        @users = User.nonadmin.has_address
       end
     end
 
@@ -70,7 +72,7 @@ class LettersController < ApplicationController
       format.json { render json: @letter }
       format.pdf do
         #pdf = Prawn::Document.new
-        pdf = LetterPdf.new(@letter, current_user)
+        pdf = LetterPdf.new(@letter, current_user, @users)
         send_data pdf.render, filename: "surat_#{@letter.subject}".downcase.gsub(' ', '_'),
                                 type: "application/pdf",
                                 disposition: "inline"
