@@ -840,6 +840,8 @@ bm:
     passwords:
       send_instructions: 'Anda akan menerima e-mail mengenai langkah mengubah password sebentar lagi.'
       updated: 'Kata laluan anda telah berjaya diubah. Anda telah didaftar masuk.'
+      consultant:
+        updated_not_active: 'Akaun anda belum diaktifkan.'
     confirmations:
       send_instructions: 'Anda akan menerima e-mail mengenai langkah proses pengesahan akaun sebentar lagi.'
       confirmed: 'Akaun anda telah berjaya disahkan. Anda telah sign in.'
