@@ -102,7 +102,7 @@ class ConsultantsController < ApplicationController
   def sent
     @consultant = Consultant.find(params[:id])
     @emailname = @consultant.full_name
-    @emailsender = @consultant.email
+    @emailsender = current_user.email
     @emailsubject = params[:contact][:subject]
     @emailmessage = params[:contact][:message]
     respond_to do |format|
