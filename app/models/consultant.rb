@@ -30,6 +30,8 @@ class Consultant < ActiveRecord::Base
 
   after_create :create_default_profile
 
+  has_many :newsletters, dependent: :destroy
+
   # include MailForm::Delivery
 
   # # #append :remote_ip, :user_agent, :session

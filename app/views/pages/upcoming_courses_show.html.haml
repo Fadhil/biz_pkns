@@ -1,5 +1,5 @@
 - model_class = Course
-.row
+.row.print-disabled
   %h3.ten.columns
     = @course.name
   .two.columns.action
@@ -7,7 +7,7 @@
       %span.pretty.medium.primary.btn.entypo.icon-left.icon-print
         = link_to t('Print'), '', :onClick => 'print();'
   %hr.divider
-.row
+.row.print-disabled
   .twelve.columns
     %table.table.strip
       %tbody
@@ -35,9 +35,7 @@
         %tr
           %th= t('status')
           %td= !@course.status.blank? || @course.status? ? t('active') : t('inactive')
-
-
-.row
+.row.print-disabled
   -if current_user
     - if !current_user.courses.include?(@course) && !current_user.admin?
       %span.pretty.medium.btn.primary
@@ -49,12 +47,11 @@
       = link_to t('destroy', :default => t("helpers.links.destroy")), course_path(@course),
         :method => 'delete',
         :data => { :confirm => t('confirm', :default => t("helpers.links.confirm", :default => t('are_you_sure'))) }
-
-- if can? :manage, @course
-  .row
+  %hr.divider
+.row.print-section
+  - if can? :manage, @course
     - if @course.attendance_list
       - if @course.attendance_list.attendees.count > 0 && !@course.attendance_list.completed
-        %hr.divider
         %h5 Preattendance List
         %table.table.table-striped
           %thead
@@ -82,7 +79,7 @@
                   - if !attendee.attended.nil? && !attendee.attendance_status.nil?
                     = t(attendee.attendance_status)
                   - else
-                    %ul
+                    %ul.print-disabled.small
                       %li
                         %small
                           = link_to t('present'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: true, attendance_status: 'present'), method: :post
@@ -102,7 +99,7 @@
                     %td{style:"border: 1px solid black;width: 140px;"}
                     %td{style:"border: 1px solid black;width: 140px;"}
                     %td{style:"border: 1px solid black;width: 140px;"}
-          .row
+          .row.print-disabled
             = nested_form_for @course.attendance_list do |f|
               = f.fields_for :attendees do |a|
                 %ul
@@ -132,7 +129,7 @@
               = f.hidden_field :completed, value: 1
               %span.pretty.medium.btn.warning
                 %button{:onClick => "submit();"}= t('end_course')
-          .row
+          .row.print-disabled
             .twelve.columns
               %h5
                 = "#{t('number_of_attendees')} : #{@course.attendance_list.attendees.count}/#{@course.attendance_list.max_attendees}"

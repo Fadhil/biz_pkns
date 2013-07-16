@@ -21,17 +21,21 @@
       .eight.columns
         %p
           = link_to "#{survey.title}", survey_path(survey), :class => 'name'
-        %p
-          = survey.description
+        - unless survey.description.blank?
+          %p
+            = survey.description.html_safe
+        - else
+          %p
+            %em Description not available.
       .two.columns
         .row
           .twelve.columns
-          .twelve.columns
+          .twelve.columns.hide
             %span.pretty.small.btn.warning.icon-left.entypo.icon-eye
               = link_to t('view'), survey
           - if can? :edit, survey
             .twelve.columns
-              %span.pretty.small.btn.info.icon-left.entypo.icon-list-add
+              %span.pretty.small.btn.warning.icon-left.entypo.icon-list-add
                 = link_to t('edit', :default => t("helpers.links.edit")), edit_survey_path(survey)
             .twelve.columns
               %span.pretty.small.btn.danger.icon-left.entypo.icon-trash

@@ -6,6 +6,9 @@
     %li.field
       = f.label t('.message')
       = f.text_area :message, :class => 'textarea input redactor'
+      - if current_consultant.logged_in?
+        = f.hidden_field :consultant_id, value: current_consultant.id
+      
     %li.field
       = f.label t('.send_to')
     /

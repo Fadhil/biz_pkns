@@ -5,14 +5,12 @@
   %hr.divider
 .row
   .twelve.columns
-    %small
-      %strong= t('name')
+    %strong= t('name')
     %h5
       = @survey.title
 .row
   .twelve.columns
-    %small
-      %strong= t('description')
+    %strong= t('description')
     %p= @survey.description.html_safe
 
 .row
