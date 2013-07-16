@@ -106,8 +106,8 @@
               = a.link_to_remove t('remove') if a.object.new_record?
               = a.hidden_field :attended, value: 1
             = f.link_to_add :attendees do
-                %i.icon-user-add
-                =t('add_attendee')
+              %i.icon-user-add
+              =t('add_attendee')
             %span
               |
             = link_to 'javascript:', :onClick => 'submit();' do
