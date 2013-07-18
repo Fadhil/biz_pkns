@@ -43,13 +43,16 @@
       = link_to t('destroy', :default => t("helpers.links.destroy")), course_path(@course),
         :method => 'delete',
         :data => { :confirm => t('confirm', :default => t("helpers.links.confirm", :default => t('are_you_sure'))) }
-  %hr.divider
 .row.print-section
   - if @course.attendance_list
     - if @course.attendance_list.attendees.count > 0 && !@course.attendance_list.completed
-      %h5= t('.preattendance_list')
-      %span.pretty.medium.btn.info
-        = link_to t('print'), '#', onClick: "print();"
+      .row
+        .ten.columns
+          %h5= t('.preattendance_list')
+        .two.columns
+          %span.pretty.medium.btn.info.print-disabled
+            = link_to t('print'), '#', onClick: "print();"
+      %hr.divider
       %table.table.table-striped
         %thead
           %tr

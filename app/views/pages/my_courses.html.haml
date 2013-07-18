@@ -1,52 +1,41 @@
-.page-header
-  %h1=t('.title')
-
-%table.table.table-striped
-  %thead
-    %tr
-      %th{:style => 'width:auto;'}
-        No.
-      %th
-        = t('course_name')
-      %th
-        = t('program_name')
-      %th
-        = t('venue')
-      %th
-        = t('start_date')
-      %th
-        = t('end_date')
-      %th
-        = t('status')
-      %th
-    %tbody
-      - current_user.courses.each_with_index do |course,index|
-        %tr
-          %td
-            = index + 1
-          %td
-            = course.name
-          %td
-            = course.program.name unless course.program.nil?
-          %td
-            = course.venue
-          %td
-            = course.start_date
-          %td
-            = course.end_date
-          %td
-            - attended = course.attendees.where('user_id = ?',current_user.id).first.attended? rescue nil
-            - case attended
-              - when nil?
-                - if course.start_date < Date.today
-                  = t('not_present')
-                - else
-                  = t('upcoming')
-              - when true
-                = t('present')
-              - when false
+.row
+  %h3.twelve.columns
+    = t('.title')
+.table
+  .row.table-head
+    .six.columns
+      %h6.title= t('course_name')
+    .four.columns
+      %h6.title= t('program_name')
+    .two.columns
+      %h6.title= t('status')
+  - current_user.courses.each_with_index do |course, i|
+    .row.table-rows
+      .six.columns
+        %p
+          = link_to course.name, course_path(course), :class => 'name'
+        %p
+          = truncate(course.description, :length => 200)
+        .row
+          %small.label.info
+            = "#{t('status')} :"
+            = (course.status? && course.end_date >= Date.today ) ? t('active') : t('inactive')
+          %small.label.info
+            = "#{t('start_date')} :"
+            = "#{course.start_date} - #{course.end_date}"
+      .four.columns
+        %p
+          = course.program.name unless course.program.nil?
+      .two.columns
+        %p
+          - attended = course.attendees.where('user_id = ?',current_user.id).first.attended? rescue nil
+          - case attended
+            - when nil?
+              - if course.start_date < Date.today
                 = t('not_present')
-          %td
-            %span.small.pretty.btn.primary
-              = link_to t('view'), course_details_path(course)#, |
-              class: 'btn-mini btn btn-secondary'
+              - else
+                = t('upcoming')
+            - when true
+              = t('present')
+            - when false
+              = t('not_present')
