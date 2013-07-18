@@ -50,10 +50,10 @@
       - if !@consultant.new_record?
         %li.field
           = f.label t('password')
-          = f.text_field :password, :class => 'password input', :placeholder => t('password')
+          = f.password_field :password, :class => 'password input', :placeholder => t('password')
         %li.field
           = f.label t('password_confirmation')
-          = f.text_field :password_confirmation, :class => 'password input', :placeholder => t('password_confirmation')
+          = f.password_field :password_confirmation, :class => 'password input', :placeholder => t('password_confirmation')
       - if @consultant.new_record?
         %li.field
           = f.label t('password')
