@@ -91,10 +91,20 @@ body {
   section {
     &#main {
       padding: 1em 0;
-      &.welcome {
+      &.welcome,
+      &.registrations,
+      &.confirmations,
+      &.mailer,
+      &.welcome,
+      &.sessions {
         background-image: url('bground-b2cc613338fffc17a2a643a883caacaf.jpg');
         background-size: 100% 100%;
         padding: 20px 0;
+        min-height: 550px;
+
+        a{
+          color: white;
+        }
       }
 
       #home {

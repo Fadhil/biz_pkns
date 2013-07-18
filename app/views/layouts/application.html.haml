@@ -13,7 +13,7 @@
   = csrf_meta_tags
 %body.home{:'ng-app' => 'PKNS'}
   = render '/layouts/header'
-  %section#main{:'ng-controller' => 'MainCtrl'}
+  %section#main{:'ng-controller' => 'MainCtrl', :class => controller.controller_name}
     .row
       .seven.columns.centered
         = render '/layouts/flash'
@@ -23,3 +23,6 @@
       .nine.columns.print-section
         = yield
   = render '/layouts/footer'
+
+:javascript
+  console.log("#{controller.class.methods}")

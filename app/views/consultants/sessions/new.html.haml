@@ -1,0 +1,27 @@
+.row
+  .twelve.columns
+    %h3= t('sign_in')
+.row
+  .eight.columns
+    - unless current_user
+      .panel
+        .row
+          %h6.twelve.columns
+            = t('sign_in')
+        .row
+          = form_for(resource, , :as => resource_name, :url => session_path(resource_name)) do |f|
+            %ul.eleven.columns
+              %li.field
+                = f.email_field :email, :autofocus => true, :class => 'email input', :placeholder => t('email')
+              %li.field
+                = f.password_field :password, :class => 'password input', :placeholder => t('password')
+              %li.field
+                .eight.columns
+                  - if devise_mapping.rememberable?
+                    = f.label t('remember_me'), :class => 'checkbox checked', :for => 'user_remember_me' do
+                      = f.check_box :remember_me, :checked => 'checked'
+                      %span
+                      Remember Me
+                .four.columns
+                  = f.submit t('login'), :class => ' pretty medium warning btn'
+    = render "devise/shared/links"
