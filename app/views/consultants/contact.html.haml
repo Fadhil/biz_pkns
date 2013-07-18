@@ -1,0 +1,21 @@
+-model_class = Consultant
+.row
+  %h3.twelve.columns
+    = "#{t('contact_consultant')} #{@consultant.first_name} #{@consultant.last_name}"
+  %hr.divider
+.row
+  .twelve.columns
+    = form_for 'contact', url: contact_sent_path, :html => { :class => 'form-horizontal' } do |f|
+      %ul
+        %li.field
+          = f.text_field t('name'), :class => 'text_field', type: "hidden", :value => "#{current_user.first_name} #{current_user.last_name}"
+          = f.text_field :email, :class => 'text_field', type: "hidden", :value => current_user.email
+        %li.field
+          = f.label t('subject')
+          = f.text_field :subject, :class => 'text input', :placeholder => t('subject')
+        %li.field
+          = f.label t('message')
+          = f.text_area :message, class: 'textarea input', :rows => 6
+        %li.field
+          %span.pretty.medium.btn.warning
+            = button_tag t('send'), :onClick => 'submit();'

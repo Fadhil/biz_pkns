@@ -1,0 +1,32 @@
+-model_class = Consultant
+.row
+  %h3.nine.columns
+    = t('.title', :default => model_class.model_name.human.pluralize)
+  .three.columns.action.hide
+    - if can? :manage, @user
+      %span.pretty.medium.primary.btn.entypo.icon-left.icon-list-add
+        = link_to t('edit', :default => t("helpers.links.edit")), edit_user_path
+  %hr.divider
+.table
+  .row.table-head
+    .four.columns
+      %h6.title= t('.name')
+    .three.columns
+      %h6.title= t('company_name')
+    .three.columns
+      %h6.title= t('.program')
+    .one.columns
+  - @consultants.each_with_index do |consultant,i|
+    .row.table-rows
+      .four.columns
+        %p
+          = link_to "#{consultant.first_name} #{consultant.last_name}", consultant_path(consultant), :class => 'name'
+      .three.columns
+        %p= consultant.company_name
+      .three.columns
+        %p= consultant.programs.first.name unless consultant.programs.first.nil?
+      .one.columns
+        %span.pretty.small.btn.warning
+          =link_to t('view'), consultant_path(consultant)
+        %span.pretty.small.btn.warning
+          = link_to t('contact'), contact_consultant_path(consultant)
