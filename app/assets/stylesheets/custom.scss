@@ -156,6 +156,19 @@ body {
           display: block;
           padding: 1em 0;
         }
+        &.custom {
+          input[type=radio] {
+            -webkit-appearance: radio;
+            width: auto;
+            max-width: 30px;
+            display: inline-block;
+            // float: left;
+            margin: 6px;
+          }
+          label {
+            display: inline-block;
+          }
+        }
       }
     }
 

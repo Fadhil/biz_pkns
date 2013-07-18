@@ -1,52 +1,58 @@
-.page-header
-  %h1=t '.title'
-  %br
-  %br
-  = form_for '', :html => { :class => 'form-horizontal' } do |f|
-    - @questions.each do |q|
-      .control-group
-        = f.label q.title, :class => 'control-label'
-        .controls
+.row
+  %h3.twelve.columns
+    = t '.title'
+  %hr.divider
+.row
+  .twelve.columns
+    = form_for '', :html => { :class => 'form-horizontal custom' } do |f|
+      %ul
+        - @questions.each do |q|
+          = f.label q.title
           - the_field = ''
           - case q.question_type
             - when 'yes_no'
-              = f.label t('yes_answer')
-              = radio_button "question[#{q.id}]", :answer, 'yes'
-              = f.label t('no_answer')
-              = radio_button "question[#{q.id}]",:answer, 'no'
+              %li.field
+                .row
+                  .three.columns
+                    = radio_button "question[#{q.id}]", :answer, 'yes'
+                    = f.label t('yes_answer')
+                  .three.columns
+                    = radio_button "question[#{q.id}]",:answer, 'no'
+                    = f.label t('no_answer')
             - when 'multiple_choice'
-              = f.label q.option1
-              = radio_button "question[#{q.id}]", :answer, 'A'
-              = f.label q.option2
-              = radio_button "question[#{q.id}]", :answer, 'B'
-              = f.label q.option3
-              = radio_button "question[#{q.id}]", :answer, 'C'
-              = f.label q.option4
-              = radio_button "question[#{q.id}]", :answer, 'D'
+              %li.field
+                .row
+                  .three.columns
+                    = radio_button "question[#{q.id}]", :answer, 'A'
+                    = f.label q.option1
+                  .three.columns
+                    = radio_button "question[#{q.id}]", :answer, 'B'
+                    = f.label q.option2
+                  .three.columns
+                    = radio_button "question[#{q.id}]", :answer, 'C'
+                    = f.label q.option3
+                  .three.columns
+                    = radio_button "question[#{q.id}]", :answer, 'D'
+                    = f.label q.option4
             - when 'scale'
-              = f.label t('scale_low')
-              = radio_button "question[#{q.id}]", :answer, 1
-              = radio_button "question[#{q.id}]", :answer, 2
-              = radio_button "question[#{q.id}]", :answer, 3
-              = radio_button "question[#{q.id}]", :answer, 4
-              = radio_button "question[#{q.id}]", :answer, 5
-              = f.label t('scale_high')
+              %li.field
+                = f.label t('scale_low')
+                .row
+                  .three.columns
+                    = radio_button "question[#{q.id}]", :answer, 1
+                  .three.columns
+                    = radio_button "question[#{q.id}]", :answer, 2
+                  .three.columns
+                    = radio_button "question[#{q.id}]", :answer, 3
+                  .three.columns
+                    = radio_button "question[#{q.id}]", :answer, 4
+                  .three.columns
+                    = radio_button "question[#{q.id}]", :answer, 5
+                = f.label t('scale_high')
             - when 'subjective'
-              = text_area "question[#{q.id}]", :answer, class: 'text_area_large'
-      = hidden_field "question[#{q.id}]", 'question_id', value: q.id
-    = f.submit t('submit'), :class => 'btn btn-primary'
-    / .control-group
-    /   = f.label :name, :class => 'control-label'
-    /   .controls
-    /     = f.text_field :name, :class => 'text_field'
-    / .control-group
-    /   = f.label :description, :class => 'control-label'
-    /   .controls
-    /     = f.text_area :description, :class => 'text_area'
-    / .control-group
-    /   = f.label :experience, :class => 'control-label'
-    /   .controls
-    /     = f.number_field :experience, :class => 'number_field'
-    / .form-actions
-    /   
-    /   = link_to t('.cancel', :default => t("helpers.links.cancel")), skill_path, :class => 'btn'
+              %li.field
+                = text_area "question[#{q.id}]", :answer, class: 'textarea input', :rows => 8
+          %li.field
+            = hidden_field "question[#{q.id}]", 'question_id', value: q.id
+        %li.field
+          = f.submit t('submit'), :class => ' pretty medium warning btn normal'
