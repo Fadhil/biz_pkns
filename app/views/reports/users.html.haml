@@ -8,21 +8,25 @@
       %ul.tab-nav.four.columns
         %li.active
           = link_to t('.user_details'), '#'
-        %li
-          = link_to t('.business_details'), '#'
+        / %li
+        /   = link_to t('.business_details'), '#'
         %li
           = link_to t('member_nonmember_by_age'), '#'
         %li
           = link_to t('member_gender_by_age'), '#'
         %li
           = link_to t('member_by_current_status'), '#'
+        %li
+          = link_to t('member_by_business_details'), '#'
       .tab-content.eight.columns.active
         = render partial: 'users_members_non_members'
-      .tab-content.eight.columns
-        = render partial: 'users_with_business'
+      / .tab-content.eight.columns
+      /   = render partial: 'users_with_business'
       .tab-content.eight.columns
         = render partial: 'users_by_age'
       .tab-content.eight.columns
         = render partial: 'users_by_gender'
       .tab-content.eight.columns
         = render partial: 'users_by_current_status'
+      .tab-content.eight.columns
+        = render partial: 'users_by_business'

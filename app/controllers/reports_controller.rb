@@ -29,22 +29,31 @@ class ReportsController < ApplicationController
     # @employment_unknown = User.nonadmin.where('current_employment_status is null').count
     # @percent_employment_unknown = (( @employment_unknown.to_f / @number_of_users.to_f ) * 100 ).round(2).to_s + "%"
 
+    @members = @nonadmin_users.members
+    @nonmembers = @nonadmin_users.nonmembers
+
     @business_categories = BusinessCategory.all.map(&:name).uniq
 
     @users_with_business = User.joins(:business_profiles).where('business_profiles.category in (?)',@business_categories).count
-    @business_categories_users = []
-    @business_categories_percentages = []
+    @business_categories_users = {}
+    
+    
+    @total_businesses = 0
     @business_categories.each do |b|
-      @business_categories_users << User.joins(:business_profiles).where('business_profiles.category = ?', b ).count
-
-    @members = @nonadmin_users.members
-    @nonmembers = @nonadmin_users.nonmembers
+      @business_categories_users[b] = {} unless @business_categories_users[b]
+      @business_categories_users[b]['count'] = @members.joins(:business_profiles).where('business_profiles.category = ?', b ).count 
+      @total_businesses += @members.joins(:business_profiles).where('business_profiles.category = ?', b ).count 
     end
 
-    bpu_sum = @business_categories_users.sum
-    @business_categories_users.each do |b| 
-      @business_categories_percentages << (( b.to_f / bpu_sum.to_f )* 100 ).round(2).to_s + "%"
+    @business_categories_users.each do |key,value|
+        @business_categories_users[key]['percentage'] = ((@business_categories_users[key]['count'].to_f / @total_businesses.to_f) * 100 ).round(2).to_s + "%"
     end
+
+
+    # bpu_sum = @business_categories_users.sum
+    # @business_categories_users.each do |b| 
+    #   @business_categories_percentages << (( b.to_f / bpu_sum.to_f )* 100 ).round(2).to_s + "%"
+    # end
 
   end
 

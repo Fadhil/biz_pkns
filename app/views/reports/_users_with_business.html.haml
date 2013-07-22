@@ -15,10 +15,10 @@
       %h4
         = @business_categories_users[i]
       %small= b
-.row
-  .twelve.columns
-    %hr
-    - labels = @business_categories_percentages
-    - legend = @business_categories
-    - data = @business_categories_users
-    = image_tag Gchart.pie(title: t('.business_categories'), labels: labels,legend: legend, data: data, size: '600x280')
+/ .row
+/   .twelve.columns
+/     %hr
+/     - labels = @business_categories_percentages
+/     - legend = @business_categories
+/     - data = @business_categories_users
+/     = image_tag Gchart.pie(title: t('.business_categories'), labels: labels,legend: legend, data: data, size: '600x280')

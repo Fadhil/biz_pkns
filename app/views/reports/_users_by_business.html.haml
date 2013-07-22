@@ -1,0 +1,50 @@
+.row
+  .twelve.columns.center
+    .table
+      .row.table-head
+        .five.columns
+          %h6.title
+            = t('business_category')
+        .two.columns
+          %h6.title
+            = t('number_of_members')
+        .three.columns
+          %h6.title
+            = t('percentage')
+      - members = []
+      - @business_categories_users.each do |key,value|
+        .row.table-rows
+          .five.columns
+            %p
+              = key
+          .two.columns
+            %p
+              = value['count']
+          .three.columns
+            %p
+              = value['percentage']
+
+      .row.table-rows
+        .five.columns
+          %p.bold
+            Jumlah
+        .two.columns
+          %p.bold
+            = @total_businesses
+        .three.columns
+          %p.bold
+                
+.row
+  .twelve.columns
+    
+   
+    -title = 'Pecahan Perniagaan Keseluruhan Ahli'
+    - legend = []
+    - labels = []
+    - data = []
+    - @business_categories_users.each do |key,value|
+      - legend << key
+      - labels << value['percentage']
+      - data << value['count']
+    - colours = ['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6']
+    = image_tag Gchart.pie_3d(title: title,labels: labels, data: data, legend: legend, size: '750x300')
