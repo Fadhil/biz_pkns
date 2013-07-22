@@ -9,90 +9,20 @@
         %li.active
           = link_to t('.user_details'), '#'
         %li
-          = link_to t('.current_status_details'), '#'
-        %li
           = link_to t('.business_details'), '#'
+        %li
+          = link_to t('member_nonmember_by_age'), '#'
+        %li
+          = link_to t('member_gender_by_age'), '#'
+        %li
+          = link_to t('member_by_current_status'), '#'
       .tab-content.eight.columns.active
-        .row.charts
-          .four.columns.center
-            %h4
-              = @number_of_members
-            %small= t('.number_of_members')
-          .four.columns.center
-            %h4
-              = @number_of_nonmembers
-            %small= t('.number_of_nonmembers')
-          .four.columns.center
-            %h4
-              = @number_of_users
-            %small= t('.number_of_users')
-        .row
-          .twelve.columns
-            %hr
-            - labels = [ @percent_members, @percent_nonmembers ]
-            - legend = [ t('.number_of_members'), t('.number_of_nonmembers')]
-            = image_tag Gchart.pie(title: 'Jumlah Pengguna', |
-                                  labels: labels, |
-                                  legend: legend, |
-                                  data: [@number_of_members.to_i, |
-                                  @number_of_nonmembers.to_i], |
-                                  size: '600x280')
+        = render partial: 'users_members_non_members'
       .tab-content.eight.columns
-        .row.charts
-          .four.columns.center
-            %h4
-              = @employment_own_business
-            %small= t('.employment.own_business')
-          .four.columns.center
-            %h4
-              = @employment_working_studying
-            %small= t('.employment.working_studying')
-          .four.columns.center
-            %h4
-              = @employment_studying
-            %small= t('.employment.studying')
-        .row.charts
-          .four.columns.center
-            %h4
-              = @employment_working_self_business
-            %small= t('.employment.working_self_business')
-          .four.columns.center
-            %h4
-              = @employment_part_time_business
-            %small= t('.employment.part_time_business')
-          .four.columns.center
-            %h4
-              = @employment_unknown
-            %small= t('.employment.unknown')
-        .row
-          .twelve.columns
-            %hr
-            - labels = [ @percent_employment_own_business, @percent_employment_working_studying, @percent_employment_studying, @percent_employment_working_self_business, @percent_employment_part_time_business, @percent_employment_unknown ]
-            - legend = [ t('.employment.own_business'), t('.employment.working_studying'), t('.employment.studying'), t('.employment.working_self_business'), t('.employment.part_time_business'),t('.employment.unknown')]
-            - data = [ @employment_own_business, @employment_working_studying, @employment_studying, @employment_working_self_business, @employment_part_time_business, @employment_unknown ]
-            = image_tag Gchart.pie(title: t('.current_employment_status'), labels: labels,legend: legend, data: data, size: '600x280')
+        = render partial: 'users_with_business'
       .tab-content.eight.columns
-        .row.charts
-          .four.columns.center
-            %h4
-              = @users_with_business
-            %small= t('.users_with_business')
-          .four.columns.center
-            %h4
-              = @business_categories.count
-            %small= t('.number_of_business_categories')
-          .four.columns.center
-            /
-              %h4
-                = t('.details_by_business_category')
-            - @business_categories.each_with_index do |b,i|
-              %h4
-                = @business_categories_users[i]
-              %small= b
-        .row
-          .twelve.columns
-            %hr
-            - labels = @business_categories_percentages
-            - legend = @business_categories
-            - data = @business_categories_users
-            = image_tag Gchart.pie(title: t('.business_categories'), labels: labels,legend: legend, data: data, size: '600x280')
+        = render partial: 'users_by_age'
+      .tab-content.eight.columns
+        = render partial: 'users_by_gender'
+      .tab-content.eight.columns
+        = render partial: 'users_by_current_status'

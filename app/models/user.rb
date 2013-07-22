@@ -9,6 +9,32 @@ class User < ActiveRecord::Base
   scope :male, where(gender: 'm')
   scope :female, where(gender: 'f')
   scope :has_address, joins(:address).where('addresses.line2 <> ? and addresses.line1 <> ?','','')
+  scope :age_13_below, Proc.new { select { |u| u.age <= 13} }
+  scope :age_13_18, Proc.new { select { |u| u.age > 13 && u.age <= 18} }
+  scope :age_19_24, Proc.new { select { |u| u.age > 18 && u.age <= 24} }
+  scope :age_25_40, Proc.new { select { |u| u.age > 24 && u.age <= 40} }
+  scope :age_41_above, Proc.new { select { |u| u.age > 40 } }
+
+  scope :own_business, where( current_employment_status: 'own_business')
+  scope :working_studying, where( current_employment_status: 'working_studying')
+  scope :studying, where( current_employment_status: 'studying')
+  scope :working_self_business, where( current_employment_status: 'working_self_business')
+  scope :part_time_business, where( current_employment_status: 'part_time_business')
+  scope :working, where( current_employment_status: 'working')
+  scope :unknown, where( 'current_employment_status not in (?) 
+                          or current_employment_status is null',['own_business',
+                                                                'working_studying',
+                                                                'studying', 
+                                                                'working_self_business',
+                                                                'parttime_business',
+                                                                'working'])
+  scope :has_employment_status, where('current_employment_status is not null AND 
+                                        current_employment_status in (?)',['own_business',
+                                                                        'working_studying',
+                                                                        'studying', 
+                                                                        'working_self_business',
+                                                                        'parttime_business',
+                                                                        'working'])
   
   before_save :default_values
   before_save :complete_profile

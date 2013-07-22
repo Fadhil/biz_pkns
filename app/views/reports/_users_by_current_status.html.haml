@@ -1,0 +1,152 @@
+.row
+  .twelve.columns.center
+    .table
+      .row.table-head
+        .five.columns
+          %h6.title
+            = t('current_employment_status')
+        .two.columns
+          %h6.title
+            = t('male')
+        .three.columns
+          %h6.title
+            = t('female')
+        .two.columns
+          %h6.title
+            = t('total')
+      .row.table-rows
+        .five.columns
+          %p
+            = t('reports.users.employment.own_business')
+        .two.columns
+          %p
+            = @members.male.own_business.count
+        .three.columns
+          %p
+            = @members.female.own_business.count
+        .two.columns
+          %p
+            = @members.female.own_business.count + @members.male.own_business.count
+      .row.table-rows
+        .five.columns
+          %p
+            = t('reports.users.employment.working_studying')
+        .two.columns
+          %p
+            = @members.male.working_studying.count
+        .three.columns
+          %p
+            = @members.female.working_studying.count
+        .two.columns
+          %p
+            = @members.female.working_studying.count + @members.male.working_studying.count
+
+      .row.table-rows
+        .five.columns
+          %p
+            = t('reports.users.employment.studying')
+        .two.columns
+          %p
+            = @members.male.studying.count
+        .three.columns
+          %p
+            = @members.female.studying.count
+        .two.columns
+          %p
+            = @members.female.studying.count + @members.male.studying.count
+      .row.table-rows
+        .five.columns
+          %p
+            = t('reports.users.employment.working_self_business')
+        .two.columns
+          %p
+            = @members.male.working_self_business.count
+        .three.columns
+          %p
+            = @members.female.working_self_business.count
+        .two.columns
+          %p
+            = @members.female.working_self_business.count + @members.male.working_self_business.count
+      .row.table-rows
+        .five.columns
+          %p
+            = t('reports.users.employment.part_time_business')
+        .two.columns
+          %p
+            = @members.male.part_time_business.count
+        .three.columns
+          %p
+            = @members.female.part_time_business.count
+        .two.columns
+          %p
+            = @members.female.part_time_business.count + @members.male.part_time_business.count
+      .row.table-rows
+        .five.columns
+          %p
+            = t('reports.users.employment.working')
+        .two.columns
+          %p
+            = @members.male.working.count
+        .three.columns
+          %p
+            = @members.female.working.count
+        .two.columns
+          %p
+            = @members.female.working.count + @members.male.working.count
+      - if @members.male.unknown.count > 0 || @members.female.unknown.count > 0
+        .row.table-rows
+          .five.columns
+            %p
+              = t('reports.users.employment.unknown')
+          .two.columns
+            %p
+              = @members.male.unknown.count
+          .three.columns
+            %p
+              = @members.female.unknown.count
+          .two.columns
+            %p
+              = @members.female.unknown.count + @members.male.unknown.count
+      .row.table-rows
+        .five.columns
+          %p.bold
+            Jumlah
+        .two.columns
+          %p.bold
+            = @members.male.own_business.count +          |
+              @members.male.working_studying.count +      |
+              @members.male.studying.count +              |
+              @members.male.working_self_business.count + |
+              @members.male.part_time_business.count +    |
+              @members.male.working.count                 |
+        .three.columns
+          %p.bold
+            = @members.female.has_employment_status.count     
+        .two.columns
+          %p   
+.row
+  .twelve.columns
+    
+    - labels = [ t('reports.users.employment.own_business'),              |
+                  t('reports.users.employment.working_studying'),         |
+                  t('reports.users.employment.studying'),                 |
+                  t('reports.users.employment.working_self_business'),    |
+                  t('reports.users.employment.part_time_business'),       |
+                  t('reports.users.employment.working') ,                 |
+                  t('reports.users.employment.unknown') ]                 |
+    - legends = [ 'Lelaki', 'Perempuan']
+    - title = 'Pecahan Ahli Mengikut Jantina dan Status semasa'
+    - values = [ @members.male.own_business.count + @members.female.own_business.count, @members.male.working_studying.count + @members.female.working_studying.count, @members.male.studying.count + @members.female.studying.count, @members.male.working_self_business.count + @members.female.working_self_business.count, @members.male.part_time_business.count + @members.female.part_time_business.count,@members.male.working.count + @members.female.working.count,@members.male.unknown.count + @members.female.unknown.count]
+    = image_tag Gchart.bar(title: title,labels: labels, legend: legends, :axis_with_labels=> 'y', :data => [[@members.male.own_business.count, @members.male.working_studying.count, @members.male.studying.count, @members.male.working_self_business.count, @members.male.part_time_business.count, @members.male.working.count, @members.male.unknown.count], [@members.female.own_business.count, @members.female.working_studying.count, @members.female.studying.count, @members.female.working_self_business.count, @members.female.part_time_business.count, @members.female.working.count, @members.female.unknown.count]], :size=>'400x300' ,:bar_colors => '00EE00,EE0000',:bar_width_and_spacing => '30,10', max_value: values.max , min_value: 0)
+  %hr
+    -title = 'Pecahan Status Semasa Keseluruhan Ahli'
+    - legend = [ t('reports.users.employment.own_business'),         |
+                  t('reports.users.employment.working_studying'),    |
+                  t('reports.users.employment.studying'),    |
+                  t('reports.users.employment.working_self_business'),    |
+                  t('reports.users.employment.part_time_business'),    |
+                  t('reports.users.employment.working') ,   |
+                  t('reports.users.employment.unknown') ]   |
+    -labels = [ @members.own_business.count, @members.working_studying.count, @members.studying.count, @members.working_self_business.count, @members.part_time_business.count, @members.working.count, @members.unknown.count]
+    - colours = ['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6']
+    = image_tag Gchart.pie_3d(title: title,labels: labels, data: [@members.own_business.count, @members.working_studying.count, @members.studying.count, @members.working_self_business.count, @members.part_time_business.count, @members.working.count, @members.unknown.count], legend: legend, size: '750x300')

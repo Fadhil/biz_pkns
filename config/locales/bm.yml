@@ -54,6 +54,7 @@ bm:
   create_course: 'Cipta Kursus'
   create_user: 'Daftar Ahli'
   customers: 'Pelanggan'
+  current_employment_status: 'Status Semasa'
   date_tarikh: 'Tarikh'
   description: 'Huraian'
   did_not_receive_confirmation: "Tidak terima arahan pengesahan?"
@@ -72,6 +73,7 @@ bm:
   my_adverts: 'Iklan'
   name: 'Nama'
   member: 'Ahli'
+  nonmember: 'Bukan Ahli'
   membership_num: 'No Keahlian'
   new: 'Baru'
   new_consultant: 'Daftar Perunding'
@@ -160,6 +162,7 @@ bm:
   text: 'Teks'
   thanks_for_completing_our_survey: 'Terima kasih kerana sudi menjawab kajiselidik kami.'
   this_survey_has_been_sent: '*Kajiselidik ini sudah pernah dihantar'
+  total: 'Jumlah'
   unit: 'Unit'
   update: 'Kemaskini'
   upcoming: 'Akan Datang'
@@ -171,6 +174,9 @@ bm:
   you_have_new_surveys_here: 'Jawab kajiselidik terbaru anda di sini:'
   you_were_invited_to_do_a_survey: 'Anda telah dijemput untuk menjawab kajiselidik'
 
+  member_nonmember_by_age: 'Pecahan Julat Umur'
+  member_gender_by_age: 'Pecahan Ikut Jantina'
+  member_by_current_status: 'Pecahan Status Semasa'
   yes_no: 'Ya/Tidak'
   yes_answer: 'Ya'
   no_answer: 'Tidak'
@@ -227,6 +233,7 @@ bm:
         studying: 'Belajar'
         working_self_business: 'Bekerja/Perniagaan Sendiri'
         part_time_business: 'Belajar/Perniagaan Sendiri'
+        working: 'Bekerja'
       skills: 'Kemahiran'
       remove_skill: 'Buang kemahiran ini'
       add_skill: 'Tambah Kemahiran'
@@ -270,6 +277,7 @@ bm:
         studying: 'Belajar'
         working_self_business: 'Bekerja/Perniagaan Sendiri'
         part_time_business: 'Belajar/Perniagaan Sendiri'
+        working: 'Bekerja'
       customers1: ' Pelanggan #1'
       customers2: ' Pelanggan #2'
       customers3: ' Pelanggan #3'
@@ -732,9 +740,6 @@ bm:
       business_details: 'Pecahan Perniagaan'
       education_details: 'Pecahan Pendidikan'
       current_status_details: 'Pecahan Status Semasa'
-      users_with_business: 'Pengguna Yang Berniaga'
-      number_of_business_categories: 'Jumlah Bidang Perniagaan'
-      details_by_business_category: 'Pecahan mengikut Bidang Perniagaan'
       business_categories: 'Bidang Perniagaan'
       employment:
         own_business: 'Pemilik Perniagaan'
@@ -743,7 +748,20 @@ bm:
         working_self_business: 'Bekerja/Perniagaan Sendiri'
         part_time_business: 'Belajar/Perniagaan Sendiri'
         unknown: 'Tidak Diketahui'
+        working: 'Bekerja'
       current_employment_status: 'Status Semasa'
+    users_with_business:
+      business_categories: 'Bidang Perniagaan'
+      users_with_business: 'Pengguna Yang Berniaga'
+      number_of_business_categories: 'Jumlah Bidang Perniagaan'
+      details_by_business_category: 'Pecahan mengikut Bidang Perniagaan'
+    users_members_non_members:
+      business_categories: 'Bidang Perniagaan'
+      number_of_members: 'Jumlah Ahli'
+      number_of_nonmembers: 'Jumlah Bukan Ahli'
+      number_of_users: 'Jumlah Pengguna'
+      
+
     consultants:
       title: 'Laporan Perunding'
       consultant_details: 'Pecahan Perunding'
