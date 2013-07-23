@@ -16,7 +16,7 @@
           %td= @course.course_type
         %tr
           %th= t('program')
-          %td= @course.program.name
+          %td= @course.try(:program).try(:name)
         %tr
           %th= t('description')
           %td= @course.description
