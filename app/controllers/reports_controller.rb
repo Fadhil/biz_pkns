@@ -67,5 +67,13 @@ class ReportsController < ApplicationController
   end
 
   def programs
+
+    if params[:report].present?
+        @program = Program.find(params[:report][:program])
+    end
+    respond_to do |format|
+        format.html
+        format.js
+    end
   end
 end

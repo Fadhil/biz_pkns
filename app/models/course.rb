@@ -13,6 +13,8 @@ class Course < ActiveRecord::Base
   scope :upcoming, lambda{ where('start_date >= ?', Date.today)}
   scope :active, lambda{ where('status = true AND end_date >= ?', Date.today)}
   scope :latest, order('created_at DESC')
+  scope :year, lambda{ |year| where('start_date >= ? AND start_date <= ?', "#{year}-01-01","#{year}-12-31")}
+  scope :course_type, lambda{ |course_type| where(course_type: course_type)}
 
   validates_numericality_of :pax
 

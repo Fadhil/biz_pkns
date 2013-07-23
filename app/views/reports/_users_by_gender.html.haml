@@ -96,7 +96,7 @@
   .twelve.columns
     
     - labels = [ '<13','13-18','19-24','25-40','>41' ]
-    - legends = [ 'Ahli', 'Bukan Ahli']
+    - legends = [ 'Lelaki', 'Perempuan']
     - title = 'Pecahan Ahli Mengikut Jantina'
     - values = [ @members.male.age_13_below.count + @members.female.age_13_below.count, @members.male.age_13_18.count + @members.female.age_13_18.count, @members.male.age_19_24.count + @members.female.age_19_24.count, @members.male.age_25_40.count + @members.female.age_25_40.count, @members.male.age_41_above.count + @members.female.age_41_above.count]
     = image_tag Gchart.bar(title: title,labels: labels, legend: legends, :axis_with_labels=> 'y', :data => [[@members.male.age_13_below.count, @members.male.age_13_18.count, @members.male.age_19_24.count, @members.male.age_25_40.count, @members.male.age_41_above.count], [@members.female.age_13_below.count, @members.female.age_13_18.count, @members.female.age_19_24.count, @members.female.age_25_40.count, @members.female.age_41_above.count]], :size=>'400x300' ,:bar_colors => '00EE00,EE0000',:bar_width_and_spacing => '40,10', max_value: values.max , min_value: 0)
