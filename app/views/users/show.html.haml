@@ -85,6 +85,10 @@
                 %th= t('.current_employment_status')
                 - status = @user.current_employment_status
                 %td= t(".employment_status.#{status}") unless @user.current_employment_status.blank?
+              - if can? :manage, :all
+                %tr
+                  %th= t('status')
+                  %td= @user.is_active? ? t('active') : t('inactive')
               %tr
                 %th Program
                 %td
