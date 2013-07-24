@@ -15,6 +15,7 @@ class Course < ActiveRecord::Base
   scope :latest, order('created_at DESC')
   scope :year, lambda{ |year| where('start_date >= ? AND start_date <= ?', "#{year}-01-01","#{year}-12-31")}
   scope :course_type, lambda{ |course_type| where(course_type: course_type)}
+  scope :completed, joins(:attendance_list).where('attendance_lists.completed is true')
 
   validates_numericality_of :pax
 

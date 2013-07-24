@@ -765,7 +765,8 @@ bm:
       number_of_users: 'Jumlah Pengguna'
     programs:
       title: 'Laporan Program'
-      
+      activities_by_program: 'Bilangan Aktiviti Program'
+      users_by_program: 'Bilangan Ahli Program'
 
     consultants:
       title: 'Laporan Perunding'

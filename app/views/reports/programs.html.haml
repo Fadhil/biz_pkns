@@ -7,11 +7,11 @@
     %section.vertical.tabs
       %ul.tab-nav.four.columns
         %li.active
-          = link_to t('.user_details')
+          = link_to t('.activities_by_program')
         %li
-          = link_to t('member_nonmember_by_age')
+          = link_to t('.users_by_program')
       .tab-content.eight.columns.active
         = render partial: 'activities_by_programs'
           
       .tab-content.eight.columns
-        Test2
+        = render partial: 'users_by_program'

@@ -1,0 +1,53 @@
+.row
+  .twelve.columns.center
+    .table
+      .row.table-head
+        .four.columns
+          %h6.title
+        - @years.each do |year|
+          .two.columns
+            %h6.title
+              = year
+        .two.columns
+          %h6.title
+            Jumlah
+      - course_types = ['Seminar','Bengkel','Ceramah']
+      - course_types.each do |course_type|
+        .row.table-rows
+          .four.columns
+            %p
+              = course_type
+          - @years.each do |year|
+            .two.columns
+              %p
+                = @program.courses.completed.year(year).course_type(course_type).count
+          .two.columns
+            %p
+              - total = 0
+              - @years.each do |year|
+                - total += @program.courses.completed.year(year).course_type(course_type).count
+              = total
+      .row.table-rows
+        .four.columns
+          %p
+            Jumlah
+
+        - @years.each  do |year|
+          .two.columns
+            %p
+              - total = 0
+              - course_types.each do |course_type|
+                - total += @program.courses.completed.year(year).course_type(course_type).count
+              = total
+
+.row
+  .twelve.columns
+    
+   
+    - title = "Bilangan Aktiviti #{@program.name} mengikut tahun"
+    - legend = course_types
+    - labels = @years
+    - data = [[3,1,1],[2,1,5]]
+   
+    - colours = ['00EE00,EE0000','0000EE']
+    = image_tag Gchart.bar(title: title,bar_colors: colours, labels: labels, data: data, legend: legend, size: '450x300', stacked: false)       

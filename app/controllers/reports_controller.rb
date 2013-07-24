@@ -69,7 +69,12 @@ class ReportsController < ApplicationController
   def programs
 
     if params[:report].present?
-        @program = Program.find(params[:report][:program])
+        @report_type = params[:report][:type]
+    end
+
+    if @report_type && params[@report_type.to_sym].present?
+        @program = Program.find(params[@report_type.to_sym][:program])
+        @years = (params[@report_type.to_sym][:start_year].to_i..params[@report_type.to_sym][:end_year].to_i).to_a
     end
     respond_to do |format|
         format.html

@@ -1,13 +1,13 @@
 
-= form_tag 'programs', id: 'program_report_form',remote: true do
-     = "Laporan Program"
-     = select :report, :program, Program.order(:name).map{|a| [a.name,a.id]}, {:include_blank => true, selected: params[:program] || ''}
+= form_tag 'programs', id: 'activity_program_report_form',remote: true do
+     = "Bilangan Aktiviti Dalam Program"
+     = select :activity_program, :program, Program.order(:name).map{|a| [a.name,a.id]}, {:include_blank => true, selected: params[:program] || ''}
      %br
      = "Dari tahun"
-     = select :report, :start_year, (2000..2030), {selected: params[:start_year] || 1.year.ago.year }
+     = select :activity_program, :start_year, (2000..2030), {selected: params[:start_year] || 1.year.ago.year }
      = "ke tahun"
-     = hidden_field :report, :type, value: 'activities_by_programs'
-     = select :report, :end_year, (2000..2030), {selected:  params[:end_year] || Date.today.year}, onChange: 'submitReportRequest();'
-     = button_tag 'Papar', onClick: 'event.preventDefault();submitReportRequest();'
+     = hidden_field :report, :type, value: 'activity_program'
+     = select :activity_program, :end_year, (2000..2030), {selected:  params[:end_year] || Date.today.year}, onChange: 'submitReportRequest("activity_program");'
+     = button_tag 'Papar', onClick: 'event.preventDefault();submitReportRequest("activity_program");'
 
-#activities_by_program
+#activity_program_results
