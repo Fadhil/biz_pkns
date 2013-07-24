@@ -1,0 +1,53 @@
+.row
+  .twelve.columns.center
+    .table
+      .row.table-head
+        .six.columns
+          %h6.title
+        .three.columns
+          %h6.title
+            Bil Peserta
+        .three.columns
+          %h6.title
+            Jumlah
+      - @result_set.each do |course_type,values|
+        - if course_type == 'grand_total'
+          .row.table-row
+            .six.columns
+              %p
+                Jumlah Keseluruhan
+            .three.columns
+              %p
+                = @result_set['grand_total']
+            .three.columns
+              %p
+                = @result_set['grand_total']
+        - else
+          .row.table-row
+            .six.columns
+              %p
+                = course_type
+            .three.columns
+            .three.columns
+          - values.each do |key, user_count|
+            .row.table-row
+              - if key == 'total_users'
+                .six.columns
+                  %p
+                    = t('.total_users')
+                .three.columns
+                .three.columns
+                  %p
+                    = user_count
+              - else
+                .six.columns
+                  %p
+                    = key
+                .three.columns
+                  %p
+                    = user_count
+                .three.columns
+
+
+              
+

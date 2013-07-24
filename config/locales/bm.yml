@@ -422,6 +422,7 @@ bm:
       nonmembers: 'Bukan Ahli'
       users_by_program: 'Pengguna mengikut Program'
       users_by_course: 'Pengguna mengikut Kursus'
+      users_by_activity: 'Pengguna mengikut Aktivity'
       print_pdf: 'Prebiu Surat'
       subject: 'Perkara'
       date: 'Tarikh'
@@ -767,6 +768,9 @@ bm:
       title: 'Laporan Program'
       activities_by_program: 'Bilangan Aktiviti Program'
       users_by_program: 'Bilangan Ahli Program'
+      users_by_activity: 'Bilangan Ahli Aktiviti'
+    user_by_activity:
+      total_users: 'Jumlah Peserta'
 
     consultants:
       title: 'Laporan Perunding'

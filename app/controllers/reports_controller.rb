@@ -74,8 +74,22 @@ class ReportsController < ApplicationController
 
     if @report_type && params[@report_type.to_sym].present?
         @program = Program.find(params[@report_type.to_sym][:program])
-        @years = (params[@report_type.to_sym][:start_year].to_i..params[@report_type.to_sym][:end_year].to_i).to_a
+        start_year = params[@report_type.to_sym][:start_year].to_i
+        end_year = params[@report_type.to_sym][:end_year].try(:to_i) || start_year
+        @years = (start_year..end_year).to_a
+
+        if @report_type=='user_by_activity'
+            
+            year = start_year
+
+            course_types = @program.course_types(year)
+            Rails.logger.info "Course Types"
+            Rails.logger.info(course_types)
+            @result_set = @program.count_users_by_course(course_types, year)
+        end
     end
+
+
     respond_to do |format|
         format.html
         format.js

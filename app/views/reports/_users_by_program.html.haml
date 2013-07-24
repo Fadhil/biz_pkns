@@ -1,6 +1,7 @@
 
 = form_tag 'programs', id: 'user_program_report_form',remote: true do
      = "Bilangan Ahli Yang Mengikuti Program"
+     %br
      = select :user_program, :program, Program.order(:name).map{|a| [a.name,a.id]}, {:include_blank => true, selected: params[:program] || ''}
      %br
      = "Dari tahun"
