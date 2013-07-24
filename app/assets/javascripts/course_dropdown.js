@@ -20,18 +20,24 @@ $(document).ready(function(){
     if($(this).val()=='users_by_program') {
       survey_program_select.prop('disabled', false);
       survey_program_select.show();
+      $('.survey_program_select_field').removeClass('hide')
       survey_course_select.hide();
+      $('.survey_course_select_field').addClass('hide')
       survey_course_select.prop('disabled', true)
     }else if($(this).val() == 'users_by_course') {
       survey_program_select.prop('disabled', false);
       survey_program_select.show();
+      $('.survey_program_select_field').removeClass('hide')
       survey_course_select.prop('disabled', false);
       survey_course_select.show();
+      $('.survey_course_select_field').removeClass('hide')
     } else {
       survey_program_select.prop('disabled', true);
       survey_program_select.hide();
+      $('.survey_program_select_field').addClass('hide')
       survey_course_select.prop('disabled', true);
       survey_course_select.hide();
+      $('.survey_course_select_field').addClass('hide')
 
     }
   });

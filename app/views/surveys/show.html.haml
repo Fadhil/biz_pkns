@@ -45,12 +45,12 @@
               .picker
                 = select_tag 'survey_user_select', options_for_select([[t('.users_by_program'), 'users_by_program'],[t('.users_by_course'),'users_by_course']])
           - if current_consultant
-            %li.field
+            %li.field.survey_program_select_field
               .picker
                 = select_tag 'survey_program_select', options_for_select(current_consultant.programs.all.map{|a| [a.name, a.id]}), disabled: false
-            %li.field
+            %li.field.survey_course_select_field.hide
               .picker
-                = select_tag 'survey_course_select', options_for_select(Course.where(program_id: current_consultant.programs.first.id).map{ |a| [a.name,a.id]}), disabled: true, class: 'hide' 
+                = select_tag 'survey_course_select', options_for_select(Course.where(program_id: current_consultant.programs.first.id).map{ |a| [a.name,a.id]}), disabled: true
           - else
             %li.field
               .picker
