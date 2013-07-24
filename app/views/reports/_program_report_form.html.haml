@@ -1,0 +1,31 @@
+
+= form_tag 'programs', id: "#{report_type}_form",remote: true do
+  #program_report_title
+  = select report_type, :program, Program.order(:name).map{|a| [a.name,a.id]}, {:include_blank => true, selected: params[:program] || ''}
+  %br
+  - user_by_activity = ( report_type == 'user_by_activity' ) ? true : false
+  - if user_by_activity
+    = "Untuk tahun"
+    %br
+    = select report_type, :start_year, (2000..2030), {selected: params[:start_year] || Date.today.year }
+  - else
+    = "Dari tahun"
+    %br
+    = select report_type, :start_year, (2000..2030), {selected: params[:start_year] || 1.year.ago.year }
+  - if user_by_activity 
+    = hidden_field report_type, :end_year, value: 2020
+    = hidden_field :report, :type, value: report_type
+  - else
+    = "ke tahun"
+    
+    = select report_type, :end_year, (2000..2030), {selected:  params[:end_year] || Date.today.year}, onChange: "submitReportRequest(\"#{report_type}\");"
+    = hidden_field :report, :type, value: report_type
+  = button_tag 'Papar', onClick: "submitReportRequest(\"#{report_type}\");"
+
+= content_tag(:div,'' ,id: report_type.to_s + '_results')
+
+
+:javascript
+  $(document).ready(function(){
+    $('#program_report_title').html("#{ escape_javascript(get_title(report_type))}")
+  });

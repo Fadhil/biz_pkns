@@ -1,0 +1,19 @@
+.row.charts
+  .four.columns.center
+    %h4
+      = @number_of_members
+    %small= t('.number_of_members')
+  .four.columns.center
+    %h4
+      = @number_of_nonmembers
+    %small= t('.number_of_nonmembers')
+  .four.columns.center
+    %h4
+      = @number_of_users
+    %small= t('.number_of_users')
+.row
+  .twelve.columns
+    %hr
+    - labels = [ @percent_members, @percent_nonmembers ]
+    - legend = [ t('.number_of_members'), t('.number_of_nonmembers')]
+    = image_tag Gchart.pie(title: 'Jumlah Pengguna',labels: labels,legend: legend, data: [@number_of_members.to_i,@number_of_nonmembers.to_i], size: '600x280') 

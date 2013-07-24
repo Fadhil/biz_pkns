@@ -1,0 +1,3 @@
+the_html = "<h2><%= escape_javascript(render partial: @report_type) %></h2>"
+$('#' + '<%= @report_type %>' + '_results').html(the_html)
+console.log('here');

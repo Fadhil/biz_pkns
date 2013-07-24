@@ -117,17 +117,19 @@
                           [t('.employment_status.working_studying'),'working_studying'],                               |
                           [t('.employment_status.studying'),'studying'],                                               |
                           [t('.employment_status.working_self_business'),'working_self_business'],                     |
-                          [t('.employment_status.part_time_business'),'part_time_business']], :include_blank => true   |
+                          [t('.employment_status.part_time_business'),'part_time_business'],                           |
+                          [t('employment_status.working'),'working']], :include_blank => true   |
+
                   %tr
                     %th
                       =t('status')
                     %td
                       - if can? :manage, :all
-                        = f.label '', :class => 'radio checked', :for => :is_active do
-                          = f.radio_button :is_active, true, :class => 'radio', :checked => 'checked'
+                        = f.label '', :class => "radio #{@user.is_active? ? 'checked' : '' }", :for => :is_active do
+                          = f.radio_button :is_active, true, :class => 'radio'
                           %span
                           = t('active')
-                        = f.label '', :class => 'radio checked', :for => :is_active do
+                        = f.label '', :class => "radio #{@user.is_active? ? '' : 'checked' }", :for => :is_active do
                           = f.radio_button :is_active, false, :class => 'radio'
                           %span
                           =t('inactive')

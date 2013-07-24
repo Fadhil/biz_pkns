@@ -1,0 +1,14 @@
+
+= form_tag 'programs', id: 'user_program_report_form',remote: true do
+     = "Bilangan Ahli Yang Mengikuti Program"
+     %br
+     = select :user_program, :program, Program.order(:name).map{|a| [a.name,a.id]}, {:include_blank => true, selected: params[:program] || ''}
+     %br
+     = "Dari tahun"
+     = select :user_program, :start_year, (2000..2030), {selected: params[:start_year] || 1.year.ago.year }
+     = "ke tahun"
+     = hidden_field :report, :type, value: 'user_program'
+     = select :user_program, :end_year, (2000..2030), {selected:  params[:end_year] || Date.today.year}, onChange: 'submitReportRequest("user_program");'
+     = button_tag 'Papar', onClick: 'event.preventDefault();submitReportRequest("user_program");'
+
+#user_program_results
