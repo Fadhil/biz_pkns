@@ -185,8 +185,8 @@ bm:
   no_answer: 'Tidak'
   multiple_choice: 'Aneka Pilihan'
   scale: 'Skala'
-  scale_low: 'Tidak Setuju'
-  scale_high: 'Setuju'
+  scale_low: 'Sangat tidak setuju'
+  scale_high: 'Sangat setuju'
 
   reject_request: 'Tidak Diluluskan'
   approve_request: 'Diluluskan'
