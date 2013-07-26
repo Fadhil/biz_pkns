@@ -14,8 +14,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(resource)
-    Rails.logger.info("The Resource is:\n")
-    Rails.logger.info(resource.inspect)
     if resource == ('consultant'.to_sym)
       new_consultant_session_url
     else
