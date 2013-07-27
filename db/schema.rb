@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130715192415) do
+ActiveRecord::Schema.define(:version => 20130724195800) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -181,6 +181,9 @@ ActiveRecord::Schema.define(:version => 20130715192415) do
     t.boolean  "is_active"
     t.boolean  "active"
     t.boolean  "profile_complete"
+    t.string   "active_from"
+    t.string   "date"
+    t.date     "active_to"
   end
 
   add_index "consultants", ["email"], :name => "index_consultants_on_email", :unique => true
