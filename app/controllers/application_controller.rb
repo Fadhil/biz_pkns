@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource)
     if resource == ('consultant'.to_sym)
       new_consultant_session_url
-    elsif resource.admin?
+    elsif current_user.try(:admin?)
       new_user_session_url
     else
       root_url
