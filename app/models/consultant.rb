@@ -11,6 +11,7 @@ class Consultant < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :bio_data, :first_name, :last_name, :password, :phone
   attr_accessible :profile_photo_attributes, :company_name, :is_active, :programs_attributes, :consultants_programs_attributes
+  attr_accessible :register_date
 
   has_many :consultants_programs, dependent: :destroy
   accepts_nested_attributes_for :consultants_programs, allow_destroy: true

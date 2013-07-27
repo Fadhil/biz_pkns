@@ -184,7 +184,7 @@ ActiveRecord::Schema.define(:version => 20130727105201) do
     t.string   "active_from"
     t.string   "date"
     t.date     "active_to"
-    t.date     "register_date"
+    t.string   "register_date"
   end
 
   add_index "consultants", ["email"], :name => "index_consultants_on_email", :unique => true

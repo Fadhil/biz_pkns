@@ -52,6 +52,10 @@
 - if can? :manage, :all
   .row
     .twelve.columns
+      %h5= t('registered_on')
+      %p= @consultant.register_date
+  .row
+    .twelve.columns
       %h5= t('status')
       %p= @consultant.is_active? ? t('active') : t('inactive')
 .row

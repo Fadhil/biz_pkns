@@ -113,6 +113,7 @@ bm:
   questions: 'Soalan'
   register: 'Daftar'
   register_course: 'Daftar Kursus'
+  registered_on: 'Didaftar pada'
   remember_me: 'Simpan Maklumat Saya'
   remove_program: 'Padam Program'
   report: 'Laporan'
