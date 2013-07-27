@@ -7,6 +7,8 @@ class Consultant < ActiveRecord::Base
 
   before_save :complete_profile
 
+  after_create :set_register_date
+
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :bio_data, :first_name, :last_name, :password, :phone
@@ -95,5 +97,9 @@ class Consultant < ActiveRecord::Base
         self.profile_complete = true
       end
     end
+  end
+
+  def set_register_date
+    self.register_date = Date.today.year
   end
 end
