@@ -636,7 +636,7 @@ bm:
       targeted_attendees: 'Sasaran Kehadiran'
       actual_attendees: 'Kehadiran Sebenar'
       no_of_vips: 'Bil Pensyarah/Jemputan/VIP *'
-      course_summary: 'Ulasan Kursus *'
+      course_summary: 'Rumusan Kursus *'
       generate_report: 'Jana Report'
       course_schedule: 'Jadual Kursus *'
 
