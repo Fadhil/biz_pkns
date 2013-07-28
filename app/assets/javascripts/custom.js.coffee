@@ -1,4 +1,5 @@
 window.submitReportRequest = (report_name) ->
+
   start_date = $('#' + report_name + '_start_year').val()
   end_date = $('#' + report_name + '_end_year').val()
   program_name = $('#' + report_name + '_program').val()
@@ -6,7 +7,12 @@ window.submitReportRequest = (report_name) ->
 
   if start_date > end_date
     alert('Tahun Mula perlu lebih awal dari Tahun Akhir')
-  else if (program_name == '')
-    alert('Sila pilih program')
-  else
+    return
+
+  if report_name == 'consultant_list'
     the_form.submit()
+  else 
+    if (program_name == '')
+      alert('Sila pilih program')
+    else
+      the_form.submit()

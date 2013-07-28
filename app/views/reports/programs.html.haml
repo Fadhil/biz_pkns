@@ -12,6 +12,8 @@
           = link_to t('.users_by_program')
         %li
           = link_to t('.users_by_activity')
+        %li
+          = link_to t('number_of_consultants')
       .tab-content.eight.columns.active
         = render partial: 'activities_by_programs'
           
@@ -19,3 +21,5 @@
         = render partial: 'users_by_program'
       .tab-content.eight.columns
         = render partial: 'program_report_form', locals: { report_type: 'user_by_activity'}
+      .tab-content.eight.columns
+        = render partial: 'consultant_report'

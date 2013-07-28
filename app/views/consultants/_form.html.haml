@@ -62,7 +62,7 @@
         %li.field
           = f.label t('registered_on')
           .picker
-            = f.select :register_date, options_for_select((10.years.ago.year.to_i .. 20.years.from_now.year.to_i).to_a )
+            = f.select :register_date, options_for_select((10.years.ago.year.to_i .. 20.years.from_now.year.to_i).to_a,@consultant.register_date )
         %li.field
           = f.label '', :class => "radio #{(@consultant.is_active? ? 'checked' : '')}", :for => "consultant[is_active]" do
             = f.radio_button :is_active, true, :class => 'radio'

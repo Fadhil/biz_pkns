@@ -1,0 +1,12 @@
+
+= form_tag 'consultants', id: 'consultant_list_report_form',remote: true do
+     = "Senarai Perunding di Bawah BPU PKNS"
+     %br
+     = "Dari tahun"
+     = select :consultant_list, :start_year, (2000..2030), {selected: params[:start_year] || 1.year.ago.year }
+     = "ke tahun"
+     = hidden_field :report, :type, value: 'consultant_list'
+     = select :consultant_list, :end_year, (2000..2030), {selected:  params[:end_year] || Date.today.year}, onChange: 'submitReportRequest("consultant_list");'
+     = button_tag 'Papar', onClick: 'event.preventDefault();submitReportRequest("consultant_list");'
+
+#consultant_list_results

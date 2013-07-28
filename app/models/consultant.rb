@@ -5,6 +5,8 @@ class Consultant < ActiveRecord::Base
   devise :database_authenticatable, #:registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  scope :between_years, lambda { |start_year, end_year| where('register_date >= ? AND register_date <= ?', start_year, end_year ) }
+
   before_save :complete_profile
 
   after_create :set_register_date
@@ -74,7 +76,7 @@ class Consultant < ActiveRecord::Base
   end
 
   def self.active
-    Consultant.includes(:courses).where('courses.created_at >= ?',6.months.ago.to_date)
+    Consultant.includes(:courses).where('courses.created_at >= ? AND consultants.is_active is true',6.months.ago.to_date)
   end
 
   def self.inactive

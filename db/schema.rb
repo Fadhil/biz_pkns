@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130727105201) do
+ActiveRecord::Schema.define(:version => 20130727215120) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -179,7 +179,6 @@ ActiveRecord::Schema.define(:version => 20130727105201) do
     t.string   "last_sign_in_ip"
     t.string   "company_name"
     t.boolean  "is_active"
-    t.boolean  "active"
     t.boolean  "profile_complete"
     t.string   "active_from"
     t.string   "date"

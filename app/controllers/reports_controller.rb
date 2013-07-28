@@ -64,6 +64,22 @@ class ReportsController < ApplicationController
 
     @percent_active_consultants = (( @active_consultants.to_f / @total_consultants.to_f ) * 100 ).round(2).to_s + "%"
     @percent_inactive_consultants = (( @inactive_consultants.to_f / @total_consultants.to_f ) * 100 ).round(2).to_s + "%"
+
+    if params[:report].present?
+        @report_type = params[:report][:type]
+    end
+
+    if @report_type && params[@report_type.to_sym].present?
+        start_year = params[@report_type.to_sym][:start_year].to_i
+        end_year = params[@report_type.to_sym][:end_year].try(:to_i) || start_year
+
+        @consultants = Consultant.between_years(start_year, end_year)
+    end
+
+    respond_to do |format|
+        format.html
+        format.js
+    end
   end
 
   def programs

@@ -1,0 +1,42 @@
+.row
+  .twelve.columns
+    .table
+      .row.table-head
+        .six.columns
+          %h6.title
+            = t('consultant_name')
+        .three.columns
+          %h6.title
+            = t('registered_year')
+        .three.columns
+          %h6.title
+            = t('current_status')
+      - @consultants.each do |consultant|
+        .row.table-rows
+          .six.columns
+            %p
+              = consultant.full_name
+          .three.columns
+            %p 
+              = consultant.register_date
+          .three.columns
+            %p
+              = consultant.is_active? ? t('active') : t('inactive')
+ 
+.row
+  .twelve.columns
+    .row
+      .six.columns.right-aligned
+        %h6
+          = t('total_active_consultants')
+      .six.columns
+        %p
+          = @consultants.active.count 
+    .row
+      .six.columns.right-aligned
+        %h6
+          = t('total_inactive_consultants')
+      .six.columns
+        %p
+          = @consultants.inactive.count 
+
