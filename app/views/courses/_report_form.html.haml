@@ -68,6 +68,26 @@
           %small
             = t('image_should_be_this_size')
       %li.field
+        .row
+          .twelve.columns
+            %h6
+              Gambar Kursus
+        - i=1
+        = f.fields_for :course_photos do |cp|
+          .row
+            .four.columns
+              - if @course_report.course_photos[i-1].file.url != 'default.png'
+                = "Gambar Kursus ##{i}"
+                = image_tag(@course_report.course_photos[i-1].file.thumb)
+              - else
+                = "Gambar Kursus ##{i}"
+            .eight.columns
+              = cp.label "Muatnaik Gambar"
+              = cp.file_field :file
+              %small
+                = t('image_should_be_this_size')
+          - i+=1
+      %li.field
         - if @course_report.new_record?
           %span.medium.pretty.btn.warning
             / = f.submit t('.create_course')

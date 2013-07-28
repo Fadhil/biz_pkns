@@ -102,6 +102,11 @@ class CoursesController < ApplicationController
     if @course_report.course_schedule.nil?
       @course_report.build_course_schedule
     end
+    if @course_report.course_photos.count < 6
+      (6 - @course_report.course_photos.count).times do 
+        @course_report.course_photos.build
+      end
+    end
   end
 
   def create_report
