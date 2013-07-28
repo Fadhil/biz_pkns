@@ -95,4 +95,45 @@ class CoursesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def generate_report
+    @course = Course.find(params[:id])
+    @course_report = @course.course_report || CourseReport.new()
+    if @course_report.course_schedule.nil?
+      @course_report.build_course_schedule
+    end
+  end
+
+  def create_report
+    @course = Course.find(params[:id])
+    @course_report = CourseReport.new(params[:course_report])
+
+    respond_to do |format|
+      format.html { 
+        if @course_report.save
+          redirect_to my_reports_consultant_path(current_consultant), notice: "Berjaya menjanakan report untuk kursus #{@course.name}"
+        else
+          redirect_to generate_report_course_path(@course), notice: "Tidak berjaya menjanakan report"
+        end
+      }
+    end
+  end
+  def  update_report
+    @course = Course.find(params[:id])
+    @course_report = @course.course_report
+    Rails.logger.info("Params:\n")
+    Rails.logger.info(params[:course_report])
+    respond_to do |format|
+      format.html { 
+        if @course_report.update_attributes(params[:course_report])
+          redirect_to my_reports_consultant_path(current_consultant), notice: "Berjaya mengemeskini report untuk kursus #{@course.name}"
+        else
+          redirect_to generate_report_course_path(@course), notice: "Tidak berjaya mengemeaskini report"
+        end
+      }
+    end
+  end
+  def reports
+
+  end
 end

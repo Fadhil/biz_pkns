@@ -1,0 +1,3 @@
+class CourseSchedule < Attachment
+
+end

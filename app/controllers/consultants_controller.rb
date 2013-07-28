@@ -137,4 +137,8 @@ class ConsultantsController < ApplicationController
       @my_adverts = current_consultant.adverts.latest
     end
   end
+
+  def my_reports
+
+  end
 end

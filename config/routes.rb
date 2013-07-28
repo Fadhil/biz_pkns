@@ -1,5 +1,7 @@
 BizPkns::Application.routes.draw do
 
+
+
   mount RedactorRails::Engine => '/redactor_rails'
 
   localized do
@@ -65,6 +67,7 @@ BizPkns::Application.routes.draw do
     resources :consultants do
       member do
         match 'my_adverts', as: :my_adverts
+        match 'my_reports', as: :my_reports
       end
     end
     resources :users do
@@ -76,7 +79,14 @@ BizPkns::Application.routes.draw do
       end 
     end
     resources :programs
-    resources :courses
+    resources :courses do
+      member do
+        get 'generate_report'
+        post 'create_report', as: :create_report
+        put 'update_report', as: :update_report
+        get 'reports'
+      end
+    end
     resources :members
     resources :educations
     resources :skills

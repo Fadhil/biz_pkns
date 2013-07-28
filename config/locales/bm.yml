@@ -623,6 +623,22 @@ bm:
     show:
       preattendance_list: 'Senarai Pra-Kedatangan'
       attendance_list: 'Senarai Kedatangan'
+    generate_report:
+      title: 'Jana Report Kursus'
+    report_form:
+      course_name: 'Nama Kursus'
+      course_type: 'Jenis Kursus'
+      create_course: 'Cipta Kursus'
+      course_date: 'Tarikh Kursus'
+      course_venue: 'Tempat Kursus'
+      consultant_email: 'Emel Perunding'
+      report_date: 'Tarikh Report'
+      targeted_attendees: 'Sasaran Kehadiran'
+      actual_attendees: 'Kehadiran Sebenar'
+      no_of_vips: 'Bil Pensyarah/Jemputan/VIP *'
+      course_summary: 'Ulasan Kursus *'
+      generate_report: 'Jana Report'
+      course_schedule: 'Jadual Kursus *'
 
   members:
     index:
