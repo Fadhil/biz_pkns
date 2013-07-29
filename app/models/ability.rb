@@ -60,6 +60,7 @@ class Ability
 
       else 
         cannot :index, :course
+        can [:all, :index, :show], Blog
       end
       # if user.super_admin?
       #   can :manage, :all
