@@ -8,7 +8,7 @@ class BlogsController < ApplicationController
     @blogs = Blog.send(params[:filter] || 'all')
     
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render :layout => 'portal' }# index.html.erb
       format.json { render json: @blogs }
     end
   end
@@ -19,7 +19,7 @@ class BlogsController < ApplicationController
     @blog = Blog.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render :layout => 'portal' }# show.html.erb
       format.json { render json: @blog }
     end
   end

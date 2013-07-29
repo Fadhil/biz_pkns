@@ -10,7 +10,7 @@
       %li= link_to t('.faq'), portal_faq_path
       %li= link_to t('.contact'), portal_contact_path
       %li
-        = link_to '#' do
+        = link_to '/user/login' do
           %i.icon-user
           Member Login
         = form_for("user", :url => user_session_path, :html => {:class => 'custom form hide'}) do |f|

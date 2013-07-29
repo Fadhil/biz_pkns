@@ -1,6 +1,6 @@
 body {
   &.portal {
-    background: orangered;
+    background: #782215 url('background-portal.png') top left repeat-x;
     header {
       &.navbar {
         ul {
@@ -8,6 +8,10 @@ body {
             > a {
               text-shadow: none;
               font-size: 1em;
+              &:hover {
+                background: white;
+                color: black;
+              }
             }
           }
         }
@@ -15,9 +19,31 @@ body {
     }
     section#main {
       .panel {
-        background: rgba(255, 255, 255, 1);
+        background: #faf1e3;
         border: none;
+        border-radius: 5px;
       }
+      .blog-list {
+        li.panel {
+          display: block;
+          border-bottom: 1px dotted #ecd9bb;
+        }
+        li {
+          p, ol, li {
+            font-size: 13px;
+          }
+        }
+      }
+      .table {
+        .table-head {
+          background: #29110d;
+          color: white;
+        }
+      }
+    }
+    .tag {
+      display: inline !important;
+      font-size: 12px;
     }
     .adbox {
       min-height: 300px;
@@ -63,6 +89,9 @@ body {
               color: white;
             }
           }
+        }
+        small {
+          color: white;
         }
       }
     }

@@ -1,6 +1,3 @@
-:css
-  ul li {display: inline;}
-
 - model_class = Blog
 .row
   .five.columns
@@ -17,11 +14,17 @@
 .row
   .twelve.columns
     %hr.divider
-    - @blogs.each do |blog|
-      %b=link_to blog.title, show_blog_path(blog)
-      %br
-      = truncate(blog.content, :length => 500).html_safe
-      = link_to t('.read_more'), show_blog_path(blog)
-      %br
-      = "Tag : " unless blog.tag_list.blank?
-      = raw blog.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')
+    %ul.blog-list
+      - @blogs.each do |blog|
+        %li.panel
+          %h4=link_to blog.title, show_blog_path(blog)
+          .content
+            /= truncate(blog.content, :length => 500).html_safe
+            = blog.content.html_safe
+            .info
+              %small
+                = link_to t('.read_more'), show_blog_path(blog)
+          %p
+            %small
+              = "Tag : " unless blog.tag_list.blank?
+              = raw blog.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')
