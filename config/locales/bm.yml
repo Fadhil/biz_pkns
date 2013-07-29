@@ -850,6 +850,10 @@ bm:
     navigation: 
       my_program: 'Program Saya'
       consultant_profile: 'Profil Perunding'
+    header_portal:
+      contact: 'Hubungi'
+      faq: 'FAQ'
+      blog: 'Blog'
 
   errors:
       messages:
