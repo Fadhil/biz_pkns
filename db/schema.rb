@@ -184,6 +184,7 @@ ActiveRecord::Schema.define(:version => 20130728152742) do
     t.string   "date"
     t.date     "active_to"
     t.string   "register_date"
+    t.boolean  "active"
   end
 
   add_index "consultants", ["email"], :name => "index_consultants_on_email", :unique => true
