@@ -1,19 +1,21 @@
-
-=render partial: 'adverts/banner_slider', locals: { adverts: @adverts }
-
-.page-header
-  %h1=t '.title'
-  
-%div.container
-  %div.row
-    %div.span5
+.row
+  .twelve.columns
+    =render partial: 'adverts/banner_slider', locals: { adverts: @adverts }
+.row
+  .eight.columns
+    %h3=t '.title'
+    %hr.divider
+    %ul
       - @blogs.each do |blog|
-        %b=link_to blog.title, show_blog_path(blog)
-        %br
-        = truncate(blog.content, :length => 300).html_safe
-        = link_to t('.read_more'), show_blog_path(blog)
-        %br
-        %br
-      - unless @blogs.count > 5
-        =(link_to t('.see_more'), category_blog_path, :class => 'btn metro medium primary')
-      
+        %li
+          %h5
+            = link_to blog.title, show_blog_path(blog)
+          %p
+            = truncate(blog.content, :length => 300).html_safe
+            = link_to t('.read_more'), show_blog_path(blog)
+    - if @blogs.count > 5
+      %span.pretty.medium.warning.btn
+        = link_to t('.see_more'), category_blog_path
+  .four.columns
+    %h3 Another Section
+    %hr.divider

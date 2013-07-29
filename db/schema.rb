@@ -45,9 +45,9 @@ ActiveRecord::Schema.define(:version => 20130728152742) do
     t.boolean  "active"
     t.integer  "weight"
     t.integer  "capacity"
-    t.text     "content",           :limit => 255
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.text     "content"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.string   "course_type"
     t.string   "program_name"
     t.date     "course_start_date"
