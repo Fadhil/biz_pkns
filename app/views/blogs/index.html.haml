@@ -9,11 +9,11 @@
   .seven.columns
     %section.pill.tabs
       %ul.tab-nav
-        %li.active= link_to "Semua", blogs_path
-        %li= link_to_unless_current "Umum", blogs_path(filter: :general)
-        %li= link_to_unless_current "Berita", blogs_path(filter: :news)
-        %li= link_to_unless_current "Keusahawanan", blogs_path(filter: :entrepreneurship)
-        %li= link_to_unless_current "Pemasaran", blogs_path(filter: :marketing)
+        %li.active= link_to "Semua", category_blog_path
+        %li= link_to_unless_current "Umum", category_blog_path(filter: :general)
+        %li= link_to_unless_current "Berita", category_blog_path(filter: :news)
+        %li= link_to_unless_current "Keusahawanan", category_blog_path(filter: :entrepreneurship)
+        %li= link_to_unless_current "Pemasaran", category_blog_path(filter: :marketing)
 
 %table.table.table-striped
   %thead
