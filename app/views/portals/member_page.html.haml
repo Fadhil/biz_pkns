@@ -1,50 +1,73 @@
-.page-header
-  %h1=t('.title')
+.row
+  .twelve.columns
+    %h3=t('.title')
+  %hr.divider
+.row
+  %ul.four_up.tiles
+    - (0..5).each do |index|
+      %li.panel.center
+        .image
+          = image_tag(@members[index].profile_photo.try(:file), size: "100x100")
+        .name
+          %h5
+            = link_to @members[index].full_name, '#'
+        .status
+          / %small.label.info Status semasa :
+          %section.label.info
+            = t("reports.users.employment.#{@members[index].current_employment_status}")
+        .program
+          %ul
+            - @members[index].programs.uniq.each do |program|
+              %li
+                %small= program.name
+/
+  .page-header
+    %h1=t('.title')
 
 
-  .row
-    - (0..2).each do |index|
-      .four.columns
-        .table.striped.rounded
-          .thead
-            .tr
-              .th
-                = @members[index].full_name
-          .tbody
-            .tr
-              .td
-                = image_tag(@members[index].profile_photo.try(:file), size: "100x100")
-            .tr
-              .td
-                = "Status semasa: " + t("reports.users.employment.#{@members[index].current_employment_status}")
-            .tr
-              .td
-                Program:
-                %ul
-                  - @members[index].programs.uniq.each do |program|
-                    %li
-                      = program.name
+    .row
+      - (0..2).each do |index|
+        .four.columns
+          .table.striped.rounded
+            .thead
+              .tr
+                .th
+                  = @members[index].full_name
+            .tbody
+              .tr
+                .td
+                  = image_tag(@members[index].profile_photo.try(:file), size: "100x100")
+              .tr
+                .td
+                  = "Status semasa: " + t("reports.users.employment.#{@members[index].current_employment_status}")
+              .tr
+                .td
+                  Program:
+                  %ul
+                    - @members[index].programs.uniq.each do |program|
+                      %li
+                        = program.name
 
 
-  .row
-    - (3..5).each do |index|
-      .four.columns
-        .table.striped.rounded
-          .thead
-            .tr
-              .th
-                = @members[index].full_name
-          .tbody
-            .tr
-              .td
-                = image_tag(@members[index].profile_photo.try(:file), size: "100x100")
-            .tr
-              .td
-                = "Status semasa: " + t("reports.users.employment.#{@members[index].current_employment_status}")
-            .tr
-              .td
-                Program:
-                %ul
-                  - @members[index].programs.uniq.each do |program|
-                    %li
-                      = program.name
+    .row
+      - (3..5).each do |index|
+        .four.columns
+          .table.striped.rounded
+            .thead
+              .tr
+                .th
+                  = @members[index].full_name
+            .tbody
+              .tr
+                .td
+                  = image_tag(@members[index].profile_photo.try(:file), size: "100x100")
+              .tr
+                .td
+                  = "Status semasa: " + t("reports.users.employment.#{@members[index].current_employment_status}")
+              .tr
+                .td
+                  Program:
+                  %ul
+                    - @members[index].programs.uniq.each do |program|
+                      %li
+                        = program.name
