@@ -1,0 +1,17 @@
+%header.navbar
+  .row
+    %h5.two.columns.logo
+      = link_to 'PKNS BIZ DATA', portal_home_path
+    %ul.ten.columns
+      %li= link_to t('.blog'), category_blog_path
+      %li= link_to t('course'), portal_course_path
+      %li= link_to t('.faq'), portal_faq_path
+      %li= link_to t('.contact'), portal_contact_path
+      = form_for("user", :url => user_session_path) do |f|
+        %li
+      
+          = f.email_field :email, :autofocus => true, :class => 'email input', :placeholder => t('email')
+        %li
+          = f.password_field :password, :class => 'password input', :placeholder => t('password')
+        %li
+          = f.submit t('login'), :class => ' pretty medium primary btn'
