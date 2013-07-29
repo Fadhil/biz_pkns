@@ -134,6 +134,7 @@ BizPkns::Application.routes.draw do
       get 'course' => 'portals#course', as: :portal_course
       get 'faq' => 'portals#faq', as: :portal_faq
       get 'course/:id' => 'portals#course_show', as: :portal_course_show
+      get 'members' => 'portals#member_page', as: :portal_members
     end
     get "pages/welcome", as: 'welcome_page'
     get "pages/adview", as: 'adview'

@@ -719,6 +719,8 @@ bm:
     contact:
       title: 'Hubungi Kami'
     about:
+    member_page:
+      title: 'Ahli BIZ DATA PKNS'
 
   adverts:
     form:
@@ -854,6 +856,7 @@ bm:
       contact: 'Hubungi'
       faq: 'FAQ'
       blog: 'Blog'
+      member_page: 'Ahli'
 
   errors:
       messages:

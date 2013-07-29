@@ -32,4 +32,8 @@ class PortalsController < ApplicationController
   def faq
 
   end
+
+  def member_page
+    @members = User.random_businessmen(6)
+  end
 end
