@@ -93,7 +93,7 @@
                 %th Program
                 %td
                   %ul
-                    - @user.programs.each do |program|
+                    - @user.programs.uniq.each do |program|
                       %li= program.name
           %h5 Latarbelakang Pendidikan
           %hr.divider

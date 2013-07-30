@@ -14,6 +14,7 @@ class PastAttendance < ActiveRecord::Base
   end
 
   def create_member
+    # If user already exists, just update the course details
     user = User.where('ic_number = ? OR email = ?', self.ic_number, self.email).first || User.new(first_name: self.first_name, last_name: self.last_name, ic_number: self.ic_number, email: self.email, password: 'password', password_confirmation: 'password', is_active: true, walk_in_first_time: true, confirmed: true)
     if user.new_record?
       self.newly_generated = true
@@ -23,6 +24,7 @@ class PastAttendance < ActiveRecord::Base
     program = Program.where(name: self.program).first
     course = Course.where(name: self.course, program_id: program.try(:id)).first
 
+    # Newly created/old user joins course (becomes a member of that course)
     if course
       user.courses << course
     end
