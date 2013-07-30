@@ -7,6 +7,10 @@ body {
   small {
     font-size: 75%;
   }
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    letter-spacing: -1px;
+  }
   /* header */
   header {
     &.navbar {
@@ -108,7 +112,7 @@ body {
       }
 
       #home {
-        padding: 20px 0;
+        padding: 0;
       }
 
       .title {

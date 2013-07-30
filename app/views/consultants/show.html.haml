@@ -43,7 +43,7 @@
   .twelve.columns
     %h5= t('program')
     - unless @consultant.programs.empty?
-      %ul
+      %ol
         - @consultant.programs.each do |program|
           %li
             = program.name
