@@ -529,7 +529,7 @@ bm:
   past_attendances:
     index:
       attendee: 'Penghadir'
-      title: 'Senarai Kehadiran Lama'
+      title: 'Muatnaik Database'
     uploaded:
       title: 'Senarai Kehadiran Yang Baru Dimuatnaik'
 
