@@ -6,4 +6,7 @@
  
   .form-actions
     %span.medium.pretty.btn.primary
-      = f.submit t('.create')#, :class => 'btn btn-primary'
+      - if @skill.new_record?
+        = f.submit t('.create')#, :class => 'btn btn-primary'
+      - else
+        = f.submit t('update')
