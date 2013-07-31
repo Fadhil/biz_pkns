@@ -126,8 +126,9 @@
                   = link_to t('.new_business'), businesses_path
                 %li
                   = link_to t('.new_business_category'), business_categories_path
-                %li
-                  = link_to t('.new_consultant'), new_consultant_path
+                /
+                  %li
+                    = link_to t('.new_consultant'), new_consultant_path
             %li{:'ui-nav-dropdown' => 'ui-nav-dropdown'}
               = link_to '#' do
                 %span.left
