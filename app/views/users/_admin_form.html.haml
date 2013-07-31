@@ -19,6 +19,12 @@
         = f.label t('email')
         = f.text_field :email, :class => 'email input', :placeholder => ''
       %li.field
+        = f.label t('password')
+        = f.password_field :password_confirmation, :class => 'email input', :placeholder => ''
+      %li.field
+        = f.label t('password_confirmation')
+        = f.password_field :password_confirmation, :class => 'email input', :placeholder => ''
+      %li.field
         .row
           .six.columns
             = f.label t('staff_number'), class: 'control-label'

@@ -70,7 +70,7 @@ class ConsultantsController < ApplicationController
     @consultant = Consultant.find(params[:id])
     respond_to do |format|
       if @consultant.update_attributes(params[:consultant])
-        unless current_user.admin?
+        if current_user && current_user.try(:admin?)
           sign_in @consultant, :bypass => true
         end
         format.html { redirect_to @consultant, notice: t('successfully_updated', resource:t('consultant')) }
