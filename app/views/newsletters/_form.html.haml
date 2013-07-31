@@ -28,6 +28,9 @@
     %li.field
       %span.medium.pretty.btn.warning
         / = f.submit t('.create')
-        %button{:onClick => 'submit();'}=t('.create')
+        - if @newsletter.new_record?
+          %button{:onClick => 'submit();'}=t('.create')
+        - else
+          %button{:onClick => 'submit();'}=t('.preview')
       %span.medium.pretty.btn.default
         = link_to t('cancel', :default => t("helpers.links.cancel")), newsletters_path
