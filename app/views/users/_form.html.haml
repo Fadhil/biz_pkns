@@ -120,11 +120,11 @@
                           [t('.employment_status.part_time_business'),'part_time_business'],                           |
                           [t('employment_status.working'),'working']], :include_blank => true   |
 
-                  %tr
-                    %th
-                      =t('status')
-                    %td
-                      - if can? :manage, :all
+                  - if can? :manage, :all
+                    %tr
+                      %th
+                        =t('status')
+                      %td
                         = f.label '', :class => "radio #{@user.is_active? ? 'checked' : '' }", :for => :is_active do
                           = f.radio_button :is_active, true, :class => 'radio'
                           %span
