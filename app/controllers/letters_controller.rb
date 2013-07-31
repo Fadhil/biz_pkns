@@ -106,7 +106,7 @@ class LettersController < ApplicationController
 
     respond_to do |format|
       if @letter.save
-        format.html { redirect_to preview_letter_path(@letter), notice: 'Letter was successfully created.' }
+        format.html { redirect_to preview_letter_path(@letter), notice: 'Surat berjaya dicipta.' }
         format.json { render json: @letter, status: :created, location: @letter }
       else
         format.html { render action: "new" }
@@ -122,7 +122,7 @@ class LettersController < ApplicationController
 
     respond_to do |format|
       if @letter.update_attributes(params[:letter])
-        format.html { redirect_to @letter, notice: 'Letter was successfully updated.' }
+        format.html { redirect_to preview_letter_path(@letter), notice: 'Surat berjaya dikemaskini.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

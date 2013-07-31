@@ -38,6 +38,10 @@
           = f.text_area :message, :class => 'redactor', :rows => 40, :cols => 520
     %li.field
       %span.medium.pretty.btn.info
-        %button{:onClick => 'submit();'}=t '.compose'
+        - if @letter.new_record?
+          - button_text = '.compose'
+        - else
+          - button_text = 'update'
+        %button{:onClick => 'submit();'}=t button_text
       %span.medium.pretty.btn.danger
         = link_to t('.cancel', :default => t("helpers.links.cancel")), letters_path
