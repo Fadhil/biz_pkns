@@ -9,11 +9,25 @@ body {
               text-shadow: none;
               font-size: 1em;
               &:hover {
-                background: white;
+                background: transparent;
                 color: black;
               }
             }
           }
+        }
+      }
+      .dropdown.custom {
+        right: 0;
+        width: 320px;
+        border: none;
+        background-color: orangered;
+        form {
+          padding: 10px;
+        }
+        ul {
+          float: left;
+          width: 300px;
+          display: inline-block;
         }
       }
     }
@@ -55,7 +69,7 @@ body {
       }
       .events {
         padding: 0 0 10px;
-        .title {
+        p {
           line-height: 1em;
           small {
             line-height: 1em;

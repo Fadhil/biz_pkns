@@ -1,44 +1,45 @@
 - model_class = Blog
-.row
-  .ten.columns
-    %h3=t '.title', :default => model_class.model_name.human.pluralize
-  .two.columns.action
-    %span.medium.pretty.btn.primary
-      = link_to t('.new', :default => t("helpers.links.new")), new_blog_path
-  %hr.divider
-.row
-  .twelve.columns
-    %section.pill.tabs
-      %ul.tab-nav
-        %li.active= link_to "Semua", category_blog_path
-        %li= link_to_unless_current "Umum", category_blog_path(filter: :general)
-        %li= link_to_unless_current "Berita", category_blog_path(filter: :news)
-        %li= link_to_unless_current "Keusahawanan", category_blog_path(filter: :entrepreneurship)
-        %li= link_to_unless_current "Pemasaran", category_blog_path(filter: :marketing)
-  %hr.divider
-.table
-  .row.table-head
-    .one.columns
-      %h6.title= model_class.human_attribute_name(:id)
-    .eight.columns
-      %h6.title= t('.subject')
-    .one.columns
-    .one.columns
-  - @blogs.each_with_index do |blog, i|
-    .row.table-rows
+- if can? :manage, @blogs
+  .row
+    .ten.columns
+      %h3=t '.title', :default => model_class.model_name.human.pluralize
+    .two.columns.action
+      %span.medium.pretty.btn.primary
+        = link_to t('.new', :default => t("helpers.links.new")), new_blog_path
+    %hr.divider
+  .row
+    .twelve.columns
+      %section.pill.tabs
+        %ul.tab-nav
+          %li.active= link_to "Semua", category_blog_path
+          %li= link_to_unless_current "Umum", category_blog_path(filter: :general)
+          %li= link_to_unless_current "Berita", category_blog_path(filter: :news)
+          %li= link_to_unless_current "Keusahawanan", category_blog_path(filter: :entrepreneurship)
+          %li= link_to_unless_current "Pemasaran", category_blog_path(filter: :marketing)
+    %hr.divider
+  .table
+    .row.table-head
       .one.columns
-        %p= blog.id
+        %h6.title= model_class.human_attribute_name(:id)
       .eight.columns
-        %p= link_to blog.title, blog_path(blog), :class => 'name'
-        %p
-          %small
-            %span.label.info Tag :
-            = raw blog.tag_list.map { |t| link_to t, tag_path(t), :class => 'tag' }.join(', ')
+        %h6.title= t('.subject')
       .one.columns
-        %span.small.pretty.btn.warning
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_blog_path(blog)
       .one.columns
-        %span.small.pretty.btn.default
-          = link_to t('.destroy', :default => t("helpers.links.destroy")), blog_path(blog), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }
+    - @blogs.each_with_index do |blog, i|
+      .row.table-rows
+        .one.columns
+          %p= blog.id
+        .eight.columns
+          %p= link_to blog.title, blog_path(blog), :class => 'name'
+          %p
+            %small
+              %span.label.info Tag :
+              = raw blog.tag_list.map { |t| link_to t, tag_path(t), :class => 'tag' }.join(', ')
+        .one.columns
+          %span.small.pretty.btn.warning
+            = link_to t('.edit', :default => t("helpers.links.edit")), edit_blog_path(blog)
+        .one.columns
+          %span.small.pretty.btn.default
+            = link_to t('.destroy', :default => t("helpers.links.destroy")), blog_path(blog), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }
 
 

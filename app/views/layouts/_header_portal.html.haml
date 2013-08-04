@@ -1,23 +1,26 @@
 %header.navbar
   .row
-    %h5.five.columns.logo
+    %h5.three.columns.logo
       = image_tag 'pknslogo.png'
       = link_to 'PKNS BIZ DATA', portal_home_path
-    %ul.six.columns
-      %li= link_to t('.blog'), category_blog_path
-      %li= link_to t('course'), portal_course_path
+    %ul.nine.columns
       %li= link_to t('.member_page'), portal_members_path
-      %li= link_to t('.faq'), portal_faq_path
+      %li= link_to t('course'), portal_course_path
+      %li= link_to t('.blog'), category_blog_path
+      /%li= link_to t('.faq'), portal_faq_path
       %li= link_to t('.contact'), portal_contact_path
       %li
         = link_to '/user/login' do
           %i.icon-user
           Member Login
-        = form_for("user", :url => user_session_path, :html => {:class => 'custom form hide'}) do |f|
-          %li.field
-            = f.email_field :email, :autofocus => true, :class => 'email input wide', :placeholder => t('email')
-            = f.password_field :password, :class => 'password input normal', :placeholder => t('password')
-          %li
-            %span.pretty.medium.primary.btn
-              %button{:onClick => 'submit();'}=t('login')
-              / = f.submit t('login'), :class => ' pretty medium primary btn'
+          .dropdown.custom
+            = form_for("user", :url => user_session_path, :html => {:class => 'custom form'}) do |f|
+              %ul
+                %li.field
+                  = f.email_field :email, :autofocus => true, :class => 'email input', :placeholder => t('email')
+                %li.field
+                  = f.password_field :password, :class => 'password input', :placeholder => t('password')
+                %li.field
+                  %span.pretty.medium.info.btn
+                    %button{:onClick => 'submit();'}=t('login')
+                    / = f.submit t('login'), :class => ' pretty medium primary btn'

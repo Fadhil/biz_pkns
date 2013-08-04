@@ -857,10 +857,10 @@ bm:
       my_program: 'Program Saya'
       consultant_profile: 'Profil Perunding'
     header_portal:
-      contact: 'Hubungi'
+      contact: 'Hubungi Kami'
       faq: 'FAQ'
-      blog: 'Blog'
-      member_page: 'Ahli'
+      blog: 'Berita & Artikel'
+      member_page: 'Ahli BizData'
 
   errors:
       messages:

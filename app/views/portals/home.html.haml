@@ -25,15 +25,17 @@
     %h5 News &amp; Events
     %hr.divider
     .row
-      .twelve.columns
+      .eleven.columns
         %ul
-          %li.events
-            .row
-              .two.columns
-                .date
-                  12 Aug
-              .ten.columns
-                %p.title
-                  - title = "You can nest grids within grids infinitely, but after a while the columns become too small to be practical."
-                  %small
-                    = link_to title, '#'
+          - (0..4).each do |i|
+            %li.events
+              .row
+                .two.columns
+                  .date= "#{i+12} Aug"
+                .ten.columns
+                  %p.title
+                    - title = "You can nest grids within grids infinitely"
+                    %small
+                      = link_to title, '#'
+                  %p
+                    %small You can nest grids within grids infinitely, but after a while the columns become too small to be practical
