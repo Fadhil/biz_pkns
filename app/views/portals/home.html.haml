@@ -3,19 +3,37 @@
     =render partial: 'adverts/banner_slider', locals: { adverts: @adverts }
 .row
   .eight.columns
-    %h3=t '.title'
+    %h5 Berita Terkini
     %hr.divider
-    %ul
-      - @blogs.each do |blog|
-        %li
-          %h5
-            = link_to blog.title, show_blog_path(blog)
-          %p
-            = truncate(blog.content, :length => 300).html_safe
-            = link_to t('.read_more'), show_blog_path(blog)
-    - if @blogs.count > 5
-      %span.pretty.medium.warning.btn
-        = link_to t('.see_more'), category_blog_path
+    .row
+      .eleven.columns
+        %ul.blog-list
+          - @blogs.each do |blog|
+            %li.panel
+              %h5=link_to blog.title, show_blog_path(blog)
+              .content
+                /= truncate(blog.content, :length => 500).html_safe
+                = blog.content.html_safe
+                .info
+                  %small
+                    = link_to t('.read_more'), show_blog_path(blog)
+              %p
+                %small
+                  = "Tag : " unless blog.tag_list.blank?
+                  = raw blog.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')
   .four.columns
-    %h3 Another Section
+    %h5 News &amp; Events
     %hr.divider
+    .row
+      .twelve.columns
+        %ul
+          %li.events
+            .row
+              .two.columns
+                .date
+                  12 Aug
+              .ten.columns
+                %p.title
+                  - title = "You can nest grids within grids infinitely, but after a while the columns become too small to be practical."
+                  %small
+                    = link_to title, '#'

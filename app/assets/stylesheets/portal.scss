@@ -40,6 +40,36 @@ body {
           color: white;
         }
       }
+      .colgrid {
+        .panel {
+          background: #DDD;
+          border-radius: 0;
+          border: 1px solid #CCC;
+        }
+      }
+      .filter {
+        li {
+          display: inline;
+          float: none;
+        }
+      }
+      .events {
+        padding: 0 0 10px;
+        .title {
+          line-height: 1em;
+          small {
+            line-height: 1em;
+          }
+        }
+      }
+      .date {
+        text-align: center;
+        padding: 10px 0;
+        line-height: 12px;
+        font-weight: 700;
+        color: white;
+        background-color: #2D1610;
+      }
     }
     .tag {
       display: inline !important;

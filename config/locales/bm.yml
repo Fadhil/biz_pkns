@@ -707,12 +707,13 @@ bm:
       edit: 'Kemaskini'
       destroy: 'Padam'
     all:
-      title: 'Berita terkini'
+      title: 'Berita & Artikel'
       new: 'Cipta Blog'
       edit: 'Kemaskini'
       destroy: 'Padam'
       cancel: 'Batal'
       subject: 'Tajuk'
+      filter: 'Filter :'
 
   portals:
     home:
@@ -720,6 +721,8 @@ bm:
     contact:
       title: 'Hubungi Kami'
     about:
+    course:
+      title: 'Senarai Kursus'
     member_page:
       title: 'Ahli BIZ DATA PKNS'
 

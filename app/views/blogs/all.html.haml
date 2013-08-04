@@ -1,30 +1,72 @@
 - model_class = Blog
 .row
-  .five.columns
-    %h3=t '.title', :default => model_class.model_name.human.pluralize
-  .seven.columns
-    %section.pill.tabs
-      %ul.tab-nav
-        %li.active= link_to "Semua", category_blog_path
-        %li= link_to_unless_current "Umum", category_blog_path(filter: :general)
-        %li= link_to_unless_current "Berita", category_blog_path(filter: :news)
-        %li= link_to_unless_current "Keusahawanan", category_blog_path(filter: :entrepreneurship)
-        %li= link_to_unless_current "Pemasaran", category_blog_path(filter: :marketing)
-
-.row
   .twelve.columns
+    %h4=t '.title', :default => model_class.model_name.human.pluralize
     %hr.divider
-    %ul.blog-list
-      - @blogs.each do |blog|
-        %li.panel
-          %h4=link_to blog.title, show_blog_path(blog)
-          .content
-            /= truncate(blog.content, :length => 500).html_safe
-            = blog.content.html_safe
-            .info
-              %small
-                = link_to t('.read_more'), show_blog_path(blog)
-          %p
-            %small
-              = "Tag : " unless blog.tag_list.blank?
-              = raw blog.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')
+.twelve.colgrid
+  .row
+    - ['Berita', 'Pemasaran', 'Jaringan', 'Strategi'].each_with_index do |title, i|
+      .three.columns
+        .panel
+          %p=title
+          .image
+            = image_tag "http://lorempixel.com/200/140/business/#{i}"
+          %span.pretty.btn.small.info
+            = link_to 'More', '#'
+.row
+  .eight.columns
+    .row
+      .three.columns
+        %h5 Berita Terkini
+      .nine.columns
+        %ul.filter
+          %li= t('.filter')
+          %li
+            %span.round.btn.small.warning
+              = link_to "Semua", category_blog_path
+          %li
+            %span.round.btn.small.warning
+              = link_to_unless_current "Umum", category_blog_path(filter: :general)
+          %li
+            %span.round.btn.small.warning
+              = link_to_unless_current "Berita", category_blog_path(filter: :news)
+          %li
+            %span.round.btn.small.warning
+              = link_to_unless_current "Keusahawanan", category_blog_path(filter: :entrepreneurship)
+          %li
+            %span.round.btn.small.warning
+              = link_to_unless_current "Pemasaran", category_blog_path(filter: :marketing)
+      %hr.divider
+
+    .row
+      .twelve.columns
+        %ul.blog-list
+          - @blogs.each do |blog|
+            %li.panel
+              %h5=link_to blog.title, show_blog_path(blog)
+              .content
+                /= truncate(blog.content, :length => 500).html_safe
+                = blog.content.html_safe
+                .info
+                  %small
+                    = link_to t('.read_more'), show_blog_path(blog)
+              %p
+                %small
+                  = "Tag : " unless blog.tag_list.blank?
+                  = raw blog.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')
+  .four.columns
+    %h5 News &amp; Events
+    %hr.divider
+    .row
+      .eleven.columns
+        %ul
+          - (0..4).each do |i|
+            %li.events
+              .row
+                .two.columns
+                  .date= "#{i+12} Aug"
+                .ten.columns
+                  %p.title
+                    - title = "You can nest grids within grids infinitely, but after a while the columns become too small to be practical."
+                    %small
+                      = link_to title, '#'
