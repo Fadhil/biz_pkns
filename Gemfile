@@ -75,6 +75,7 @@ end
 
 group :development do
   gem 'mysql2' 
+  gem 'hirb'
   gem "letter_opener"
 end
 

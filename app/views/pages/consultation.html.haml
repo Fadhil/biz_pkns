@@ -27,6 +27,4 @@
         %p= consultant.programs.first.name unless consultant.programs.first.nil?
       .one.columns
         %span.pretty.small.btn.warning
-          =link_to t('view'), consultant_path(consultant)
-        %span.pretty.small.btn.warning
           = link_to t('contact'), contact_consultant_path(consultant)
