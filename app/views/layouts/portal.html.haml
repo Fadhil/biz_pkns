@@ -14,10 +14,11 @@
   %body.portal.static
     = render partial: "/layouts/header_portal"
     %section#main.container
-      .row
-        .twelve.columns
-          = render partial: "/layouts/flash"
       .row.panel
-        .twelve.columns
-          = yield
+        .row
+          .twelve.columns
+            = render partial: "/layouts/flash"
+        .row
+          .twelve.columns
+            = yield
     = render partial: "/layouts/footer"

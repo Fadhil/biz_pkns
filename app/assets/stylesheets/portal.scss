@@ -1,13 +1,17 @@
 body {
+  margin: 1em 0;
   &.portal {
     background: #782215 url('background-portal.png') top left repeat-x;
     header {
+      background: transparent;
+      border: none;
       &.navbar {
         ul {
           li {
             > a {
               text-shadow: none;
               font-size: 1em;
+              color: #d04526;
               &:hover {
                 background: transparent;
                 color: black;
@@ -15,12 +19,33 @@ body {
             }
           }
         }
+        .navigation {
+          background: #faf1e3;
+          padding: 10px 0 10px 10px;
+          border-radius: 5px 5px 0 0;
+          -webkit-border-radius: 5px 5px 0 0;
+          -moz-border-radius: 5px 5px 0 0;
+        }
+        .logo {
+          a {
+            color: #d04526;
+            text-shadow: 0 1px #FFFFFF;
+          }
+        }
+        form {
+          label {
+            font-size: 80%;
+            padding: 0;
+            margin: 0 5px;
+            line-height: 1em;
+          }
+        }
       }
       .dropdown.custom {
         right: 0;
         width: 320px;
         border: none;
-        background-color: orangered;
+        background-color: #faf1e3;
         form {
           padding: 10px;
         }
@@ -32,10 +57,13 @@ body {
       }
     }
     section#main {
+      margin: 0;
+      padding: 0;
       .panel {
         background: #faf1e3;
         border: none;
-        border-radius: 5px;
+        border-radius: 0 0 5px 5px;
+        padding: 20px;
       }
       .blog-list {
         li.panel {

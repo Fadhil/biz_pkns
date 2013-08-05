@@ -1,5 +1,5 @@
 %header.navbar
-  .row
+  .row.navigation
     %h5.three.columns.logo
       = image_tag 'pknslogo.png'
       = link_to 'PKNS BIZ DATA', portal_home_path
@@ -10,15 +10,17 @@
       /%li= link_to t('.faq'), portal_faq_path
       %li= link_to t('.contact'), portal_contact_path
       %li
-        = link_to '/user/login' do
+        = link_to '#' do
           %i.icon-user
           Member Login
           .dropdown.custom
             = form_for("user", :url => user_session_path, :html => {:class => 'custom form'}) do |f|
               %ul
                 %li.field
+                  = f.label :email
                   = f.email_field :email, :autofocus => true, :class => 'email input', :placeholder => t('email')
                 %li.field
+                  = f.label :password
                   = f.password_field :password, :class => 'password input', :placeholder => t('password')
                 %li.field
                   %span.pretty.medium.info.btn
