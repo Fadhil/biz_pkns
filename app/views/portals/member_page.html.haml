@@ -7,15 +7,15 @@
     - (0..5).each do |index|
       %li.panel.center
         .image
-          = image_tag(@members[index].profile_photo.try(:file), size: "100x100")
+          = image_tag(@members[index].try(:profile_photo).try(:file), size: "100x100")
         .name
           %h5
-            = link_to @members[index].full_name, '#'
+            = link_to @members[index].try(:full_name), '#'
         .status
           %section.label.info
-            = t("reports.users.employment.#{@members[index].current_employment_status}")
+            = t("reports.users.employment.#{@members[index].try(:current_employment_status)}")
         .program
           %ul
-            - @members[index].programs.uniq.each do |program|
+            - @members[index].try(:programs).try(:uniq).try(:each) do |program|
               %li
                 %small= program.name
