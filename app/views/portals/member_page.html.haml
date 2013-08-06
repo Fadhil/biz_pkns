@@ -12,7 +12,6 @@
           %h5
             = link_to @members[index].full_name, '#'
         .status
-          / %small.label.info Status semasa :
           %section.label.info
             = t("reports.users.employment.#{@members[index].current_employment_status}")
         .program
