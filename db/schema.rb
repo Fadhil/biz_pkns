@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130728152742) do
+ActiveRecord::Schema.define(:version => 20130806191352) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -531,8 +531,8 @@ ActiveRecord::Schema.define(:version => 20130728152742) do
 
   create_table "surveys", :force => true do |t|
     t.string   "title"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.text     "description"
     t.boolean  "completed"
     t.date     "start_date"
@@ -540,6 +540,8 @@ ActiveRecord::Schema.define(:version => 20130728152742) do
     t.integer  "creator_id"
     t.string   "creator_type"
     t.boolean  "sent"
+    t.string   "type"
+    t.integer  "course_report_id"
   end
 
   create_table "surveys_users", :force => true do |t|
