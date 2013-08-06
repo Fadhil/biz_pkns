@@ -12,7 +12,6 @@
             %li.panel
               %h5=link_to blog.title, show_blog_path(blog)
               .content
-                /= truncate(blog.content, :length => 500).html_safe
                 = blog.content.html_safe
                 .info
                   %small
