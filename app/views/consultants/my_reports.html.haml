@@ -1,1 +1,12 @@
-Halo
+.row
+  %h3.ten.columns
+    Senarai Report Kursus
+
+.table
+  .row.table-head
+    .four.columns
+      Nama Kursus
+  - current_consultant.course_reports.each do |course_report|
+    .row.table-rows
+      .four.columns
+        = course_report.course.name

@@ -45,7 +45,10 @@
         :data => { :confirm => t('confirm', :default => t("helpers.links.confirm", :default => t('are_you_sure'))) }
     - if @course.attendance_list.completed
       %span.pretty.medium.btn.info
-        = link_to t('generate_report'), generate_report_course_path(@course)
+        - if @course.course_report
+          = link_to t('.edit_report'), generate_report_course_path(@course)
+        - else 
+          = link_to t('.generate_report'), generate_report_course_path(@course)
 .row.print-section
   - if @course.attendance_list
     - if @course.attendance_list.attendees.count > 0 && !@course.attendance_list.completed

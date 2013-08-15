@@ -1,7 +1,10 @@
 - model_class = CourseReport
 .row
   %h3.twelve.columns
-    = t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human
+    - if @course_report.new_record?
+      = t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human
+    -else
+      Kemaskini Report
   %hr.divider
 .row
   .twelve.columns

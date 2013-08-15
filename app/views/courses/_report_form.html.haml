@@ -88,6 +88,15 @@
                 = t('image_should_be_this_size')
           - i+=1
       %li.field
+        .row
+          .twelve.columns
+            %h6
+              = t('upload_course_survey')
+        .row
+          .four.columns
+            = f.label t('upload_course_survey_csv')
+            = f.file_field :file
+      %li.field
         - if @course_report.new_record?
           %span.medium.pretty.btn.warning
             / = f.submit t('.create_course')

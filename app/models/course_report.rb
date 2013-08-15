@@ -12,4 +12,8 @@ class CourseReport < ActiveRecord::Base
 
   belongs_to :course
   belongs_to :consultant
+
+  validates :course_no_of_vips, presence: true
+  validates :course_summary, presence: true
+  validates_with CourseImageValidator
 end

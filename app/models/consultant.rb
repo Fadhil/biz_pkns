@@ -37,6 +37,8 @@ class Consultant < ActiveRecord::Base
 
   has_many :newsletters, dependent: :destroy
 
+  has_many :course_reports, through: :courses
+
   # include MailForm::Delivery
 
   # # #append :remote_ip, :user_agent, :session

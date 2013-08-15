@@ -110,34 +110,68 @@ class CoursesController < ApplicationController
   end
 
   def create_report
-    @course = Course.find(params[:id])
+    @course = Course.find(params[:id])   
+
+    # we don't intend to save the file, so let's just get its contents and delete the :file params
+    file = params[:course_report][:file]
+    if file
+      data = file.read
+      extension = file.content_type
+    end
+
+    params[:course_report].delete(:file)
+
     @course_report = CourseReport.new(params[:course_report])
+    @course_report.course_survey = CourseSurvey.new(title: @course.name)
+
 
     respond_to do |format|
       format.html { 
-        if @course_report.save
+        if extension != 'text/csv' && !extension.blank?
+          redirect_to request.referrer, alert: 'Sila muatnaik file CSV dengan format yang betul'
+        elsif @course_report.save
+
+          @course_report.course_survey.import_survey_data(data) unless data.nil?
+
           redirect_to my_reports_consultant_path(current_consultant), notice: "Berjaya menjanakan report untuk kursus #{@course.name}"
         else
-          redirect_to generate_report_course_path(@course), notice: "Tidak berjaya menjanakan report"
+          redirect_to generate_report_course_path(@course), notice: "Tidak berjaya mengemaskini report kerana:<br/> #{@course_report.errors.full_messages.join("<br/>")}"
         end
       }
     end
   end
+
   def  update_report
     @course = Course.find(params[:id])
     @course_report = @course.course_report
-    Rails.logger.info("Params:\n")
-    Rails.logger.info(params[:course_report])
+    
+
+    file = params[:course_report][:file]
+    if file
+      data = file.read
+      extension = file.content_type
+    end
+
+    params[:course_report].delete(:file)
     respond_to do |format|
       format.html { 
-        if @course_report.update_attributes(params[:course_report])
-          redirect_to my_reports_consultant_path(current_consultant), notice: "Berjaya mengemeskini report untuk kursus #{@course.name}"
+        if extension != 'text/csv' && !extension.blank?
+          redirect_to request.referrer, alert: 'Sila muatnaik file CSV dengan format yang betul'
+        elsif @course_report.update_attributes(params[:course_report])
+          @course_report.course_survey.destroy
+          @course_report.course_survey.import_survey_data(data) unless data.nil?
+
+          redirect_to my_reports_consultant_path(current_consultant), notice: "Berjaya mengemaskini report untuk kursus #{@course.name}"
         else
-          redirect_to generate_report_course_path(@course), notice: "Tidak berjaya mengemeaskini report"
+          redirect_to generate_report_course_path(@course), notice: "Tidak berjaya mengemaskini report kerana:<br/> #{@course_report.errors.full_messages.join("<br/>")}"
         end
       }
     end
   end
+
+
+
+
   def reports
 
   end

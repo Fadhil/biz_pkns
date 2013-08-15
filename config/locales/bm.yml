@@ -176,6 +176,8 @@ bm:
   upcoming: 'Akan Datang'
   upload_successful: 'Muat naik berjaya'
   upload_unsuccessful: 'Muat naik tidak berjaya, sila semak data anda'
+  upload_course_survey: 'Muat naik borang penilaian kursus'
+  upload_course_survey_csv: 'Pilih CSV Borang Penilaian Kursus'
   venue: 'Tempat'
   weight: 'Turutan'
   years: 'tahun'
@@ -624,6 +626,8 @@ bm:
     show:
       preattendance_list: 'Senarai Pra-Kedatangan'
       attendance_list: 'Senarai Kedatangan'
+      generate_report: 'Jana Report'
+      edit_report: 'Kemaskini Report'
     generate_report:
       title: 'Jana Report Kursus'
     report_form:
@@ -979,6 +983,9 @@ bm:
         title: 'Nama'
       advert:
         content: 'Teks'
+      course_report:
+        course_no_of_vips: 'Bil pensyarah/jemputan/vip'
+        course_summary: 'Rumusan Kursus'
 
         
     errors:
@@ -1013,6 +1020,12 @@ bm:
           attributes:
             content:
               too_long: "terlalu panjang"
+        course_report:
+          attributes:
+            course_no_of_vips:
+              blank: "diperlukan"
+            course_summary:
+              blank: 'diperlukan'
 
   helpers:
     links:
