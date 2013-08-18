@@ -1,0 +1,80 @@
+%h6
+  Laporan Analisa Kursus
+%hr
+.row
+  .four.columns
+    Tajuk
+  .four.columns
+    = @course.name
+.row
+  .four.columns
+    Tarikh
+  .four.columns
+    = @course.start_date
+.row
+  .four.columns
+    Tempat
+  .four.columns
+    = @course_report.course_venue
+.row
+  .four.columns
+    Anggaran Peserta
+  .four.columns
+    = @course_report.course_targeted_attendees
+.row
+  .four.columns
+    Hadir
+  .four.columns
+    = @course_report.course_actual_attendees
+.row
+  .four.columns
+    Penceramah/Jemputan/VIP
+  .four.columns
+    = @course_report.course_no_of_vips
+
+%hr
+.row
+  Rumusan Program
+.row
+  = @course_report.course_summary.html_safe
+ 
+%hr
+
+.row
+  .six.columns
+    = image_tag(@course_report.course_schedule.file, size: '800x600')
+
+%hr
+.row
+  %h6
+    Laporan Bergambar
+.row
+  .four.columns
+    Tajuk:
+  .four.columns
+    = @course_report.course.name
+.row
+  .four.columns
+    Tarikh:
+  .four.columns
+    = @course.start_date
+.row
+  .four.columns
+    Tempat:
+  .four.columns
+    = @course_report.course_venue
+.row
+  - @course_report.course_photos[0..1].each do |photo|
+    .five.columns
+      = image_tag(photo.file)
+.row
+  - @course_report.course_photos[2..3].each do |photo|
+    .five.columns
+      = image_tag(photo.file)
+.row
+  - @course_report.course_photos[4..5].each do |photo|
+    .five.columns
+      = image_tag(photo.file)
+
+
+  

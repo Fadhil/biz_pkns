@@ -628,8 +628,12 @@ bm:
       attendance_list: 'Senarai Kedatangan'
       generate_report: 'Jana Report'
       edit_report: 'Kemaskini Report'
+      save_report: 'Finalize'
+      view_report: 'Papar Report'
     generate_report:
       title: 'Jana Report Kursus'
+      edit_report: 'Kemaskini Report'
+      save_report: 'Finalize'
     report_form:
       course_name: 'Nama Kursus'
       course_type: 'Jenis Kursus'
@@ -643,6 +647,8 @@ bm:
       no_of_vips: 'Bil Pensyarah/Jemputan/VIP *'
       course_summary: 'Rumusan Kursus *'
       generate_report: 'Jana Report'
+      edit_report: 'Kemaskini Report'
+      save_report: 'Save'
       course_schedule: 'Jadual Kursus *'
 
   members:

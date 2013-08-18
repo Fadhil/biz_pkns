@@ -83,6 +83,7 @@ BizPkns::Application.routes.draw do
       member do
         get 'generate_report'
         post 'create_report', as: :create_report
+        get 'view_report'
         put 'update_report', as: :update_report
         get 'reports'
       end

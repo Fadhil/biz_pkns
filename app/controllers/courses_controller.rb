@@ -158,7 +158,7 @@ class CoursesController < ApplicationController
         if extension != 'text/csv' && !extension.blank?
           redirect_to request.referrer, alert: 'Sila muatnaik file CSV dengan format yang betul'
         elsif @course_report.update_attributes(params[:course_report])
-          @course_report.course_survey.destroy
+          @course_report.course_survey.destroy unless @course_report.course_survey.nil?
           @course_report.course_survey.import_survey_data(data) unless data.nil?
 
           redirect_to my_reports_consultant_path(current_consultant), notice: "Berjaya mengemaskini report untuk kursus #{@course.name}"
@@ -169,8 +169,10 @@ class CoursesController < ApplicationController
     end
   end
 
-
-
+  def view_report
+    @course = Course.find(params[:id])
+    @course_report = @course.course_report
+  end
 
   def reports
 

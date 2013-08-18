@@ -16,3 +16,7 @@ window.submitReportRequest = (report_name) ->
       alert('Sila pilih program')
     else
       the_form.submit()
+
+window.finalizeCourse = () ->
+  course_report_finalized = $('#course_report_finalized')
+  course_report_finalized.val(true)

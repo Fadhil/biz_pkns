@@ -1,6 +1,7 @@
 class CourseReport < ActiveRecord::Base
   attr_accessible :consultant_email, :course_actual_attendees, :course_date, :course_details, :course_id, :course_no_of_vips, :course_summary, :course_targeted_attendees, :course_title, :report_date
   attr_accessible :course_program, :course_program_id, :course_type, :course_schedule_attributes, :consultant_id, :course_photos_attributes
+  attr_accessible :finalized, :report_date, :course_venue 
   has_one :course_schedule, as: :attachable, dependent: :destroy
   accepts_nested_attributes_for :course_schedule, allow_destroy: true
 
@@ -16,4 +17,5 @@ class CourseReport < ActiveRecord::Base
   validates :course_no_of_vips, presence: true
   validates :course_summary, presence: true
   validates_with CourseImageValidator
+  validates_with CourseScheduleValidator
 end
