@@ -10,6 +10,9 @@ class Program < ActiveRecord::Base
   has_many :users, through: :courses
 
   has_many :consultants, through: :consultants_programs
+
+  has_many :targets, dependent: :destroy
+  accepts_nested_attributes_for :targets
   accepts_nested_attributes_for :consultants
 
   accepts_nested_attributes_for :logo, allow_destroy: true
