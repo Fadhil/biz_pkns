@@ -1,5 +1,5 @@
 class Course < ActiveRecord::Base
-  attr_accessible :description, :end_date, :name, :start_date, :venue, :status
+  attr_accessible :description, :end_date, :name, :start_date, :venue, :status, :course_category_id
   attr_accessible :program_id, :pax, :course_type
   belongs_to :program#, inverse_of: :courses
   accepts_nested_attributes_for :program
@@ -11,6 +11,8 @@ class Course < ActiveRecord::Base
   after_create :add_attendance_list
 
   has_one :course_report, dependent: :destroy
+
+  belongs_to :course_category
 
   scope :upcoming, lambda{ where('start_date >= ?', Date.today)}
   scope :active, lambda{ where('status = true AND end_date >= ?', Date.today)}
