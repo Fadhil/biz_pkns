@@ -8,7 +8,7 @@
           .two.columns
             %h6.title
               = year
-      - course_types = ['Seminar','Bengkel','Ceramah']
+      - course_types = @program.course_types
       - course_types.each do |course_type|
         .row.table-rows
           .four.columns

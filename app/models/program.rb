@@ -40,7 +40,11 @@ class Program < ActiveRecord::Base
     result_set
   end
 
-  def course_types(year)
-    self.courses.year(year).map(&:course_type).uniq.select{|x| x != nil }
+  def course_types(year=nil)
+    if year==nil
+      self.courses.map(&:course_type).uniq.select{|x| x!= nil }
+    else
+      self.courses.year(year).map(&:course_type).uniq.select{|x| x != nil }
+    end
   end
 end
