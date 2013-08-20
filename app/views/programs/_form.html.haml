@@ -22,12 +22,42 @@
           %span
           = t('inactive')
       %li.field
-        %span.medium.pretty.btn.warning
-          - if @program.new_record?
-            %button{:onClick => 'submit();'}= t('register')
-          - else
-            / = f.submit t('update')
-            %button{:onClick => 'submit();'}= t('update')
-        %span.medium.pretty.btn.default
-          = link_to t('cancel', :default => t("helpers.links.cancel")),
-          users_path
+        %h6
+          Sasaran Kursus
+        = f.label t('years')
+        = select_tag 'target_year', options_for_select((10.years.ago.year.to_i .. 20.years.from_now.year.to_i).to_a)
+    .table
+      .row.table-head
+        .four.columns
+          = t('course_type')
+        .three.columns
+          Sasaran Bilangan Kursus
+        .three.columns
+          Sasaran Peserta Setiap Kursus
+        .two.columns
+          Tahun
+      = f.fields_for :targets do |t|
+        .row.table-data
+          - disabled = (t.object.new_record? ? false : true)
+          .four.columns
+            = t.select :course_category_id, options_for_select([['test',0],['test2',1]],t.object.course_category_id),{}, {disabled: disabled}
+          .three.columns
+            = t.text_field :number_of_courses, disabled: disabled
+          .three.columns
+            = t.text_field :target_attendance, disabled: disabled
+          .two.columns
+            = t.select :year, options_for_select((10.years.ago.year.to_i .. 20.years.from_now.year.to_i).to_a, t.object.year || Date.today.year),{}, {disabled: disabled}
+      .row.table-data
+        = f.link_to_add "Tambah Sasaran", :targets
+    .row
+      %ul
+        %li.field
+          %span.medium.pretty.btn.warning
+            - if @program.new_record?
+              %button{:onClick => 'submit();'}= t('register')
+            - else
+              / = f.submit t('update')
+              %button{:onClick => 'submit();'}= t('update')
+          %span.medium.pretty.btn.default
+            = link_to t('cancel', :default => t("helpers.links.cancel")),
+            users_path
