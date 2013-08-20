@@ -24,8 +24,6 @@
       %li.field
         %h6
           Sasaran Kursus
-        = f.label t('years')
-        = select_tag 'target_year', options_for_select((10.years.ago.year.to_i .. 20.years.from_now.year.to_i).to_a)
     .table
       .row.table-head
         .four.columns
@@ -40,7 +38,7 @@
         .row.table-data
           - disabled = (t.object.new_record? ? false : true)
           .four.columns
-            = t.select :course_category_id, options_for_select([['test',0],['test2',1]],t.object.course_category_id),{}, {disabled: disabled}
+            = t.select :course_category_id, options_for_select(CourseCategory.all.map{ |a| [a.name, a.id] } ,t.object.course_category_id),{}, {disabled: disabled}
           .three.columns
             = t.text_field :number_of_courses, disabled: disabled
           .three.columns
@@ -60,4 +58,4 @@
               %button{:onClick => 'submit();'}= t('update')
           %span.medium.pretty.btn.default
             = link_to t('cancel', :default => t("helpers.links.cancel")),
-            users_path
+            programs_path
