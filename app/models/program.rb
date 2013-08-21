@@ -115,28 +115,31 @@ class Program < ActiveRecord::Base
           course_category_id = CourseCategory.where(name: course_type).first.try(:id)
           program_target = program.targets(year).course_category_id(course_category_id).order(:created_at).first
 
+          Rails.logger.info "PerSession Target"
           kpi_results[program.name][course_type]['per_session_target'] = 0
           kpi_results[program.name][course_type]['per_session_target'] = program_target.target_attendance unless program_target.nil?
-          
+          Rails.logger.info "Yearly number of courses"
           kpi_results[program.name][course_type]['yearly_number_of_courses'] = 0
           kpi_results[program.name][course_type]['yearly_number_of_courses'] = program_target.number_of_courses unless program_target.nil?
-      
+          Rails.logger.info "Current Target"
           kpi_results[program.name][course_type]['current_target'] = 0
           kpi_results[program.name][course_type]['current_target'] = ( program_target.target_attendance * program.courses.completed.year(year).count ) unless program_target.nil?
-
+          Rails.logger.info "YearlyTarget"
           kpi_results[program.name][course_type]['yearly_target'] = 0
           kpi_results[program.name][course_type]['yearly_target'] = ( program_target.target_attendance * program_target.number_of_courses ) unless program_target.nil?
-
+          Rails.logger.info "Current Actual"
           kpi_results[program.name][course_type]['current_actual'] = 0.0
           kpi_results[program.name][course_type]['current_actual'] = (current_actual_total.to_f / kpi_results[program.name][course_type]['current_target'].to_f * 100 ).round(2) unless kpi_results[program.name][course_type]['current_target'] == 0
- 
+          Rails.logger.info "Yearly Actual"
           kpi_results[program.name][course_type]['yearly_actual'] = 0.0
           kpi_results[program.name][course_type]['yearly_actual'] = (current_actual_total.to_f / kpi_results[program.name][course_type]['yearly_target'].to_f * 100).round(2) unless kpi_results[program.name][course_type]['yearly_target'] == 0
-         
+          
         end
 
       end
+      Rails.logger.info "numberof actual ocourse types"
       kpi_results[program.name]['number_of_course_types'] = course_types.count
+      
     end
 
     kpi_results
