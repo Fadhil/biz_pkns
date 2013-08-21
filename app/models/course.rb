@@ -18,6 +18,7 @@ class Course < ActiveRecord::Base
   scope :active, lambda{ where('status = true AND end_date >= ?', Date.today)}
   scope :latest, order('created_at DESC')
   scope :year, lambda{ |year| where('start_date >= ? AND start_date <= ?', "#{year}-01-01","#{year}-12-31")}
+
   scope :course_type, lambda{ |course_type| where(course_type: course_type)}
   scope :completed, joins(:attendance_list).where('attendance_lists.completed is true')
 
@@ -36,5 +37,9 @@ class Course < ActiveRecord::Base
     return if self.attendance_list.nil?
     # Full only if 30% more than max_attendees
     self.attendance_list.attendees.count > ( self.attendance_list.max_attendees + ( self.attendance_list.max_attendees * 0.3).floor ) ? true : false
+  end
+
+  def self.for_period(year= Date.today.year,month = '01')
+    where('start_date >= ? AND start_date <= ?', "#{year}-#{month}-1", "#{year}-#{month}-31")
   end
 end

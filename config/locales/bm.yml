@@ -809,6 +809,8 @@ bm:
       users_by_activity: 'Bilangan Ahli Aktiviti'
     user_by_activity:
       total_users: 'Jumlah Peserta'
+    kpi:
+      title: 'Laporan KPI'
 
     consultants:
       title: 'Laporan Perunding'
@@ -857,6 +859,7 @@ bm:
       list_adverts: 'Senarai Iklan'
       user_reports: 'Laporan Pengguna'
       program_reports: 'Laporan Program'
+      kpi_reports: 'Laporan KPI'
       newsletters: 'Buletin'
       history: 'Arkib Buletin'
       letters: 'Surat'

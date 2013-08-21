@@ -8,6 +8,7 @@ BizPkns::Application.routes.draw do
     get "reports/users" => 'reports#users'
     get "reports/consultants" => 'reports#consultants'
     get "reports/programs" => 'reports#programs'
+    get "reports/kpi" => 'reports#kpi'
     get "newsletters/history" => 'newsletters#history', as: "history"
 
     get "newsletters/new/:id" => 'newsletters#use_template', as: "use_template"

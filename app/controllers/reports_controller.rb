@@ -1,4 +1,6 @@
 class ReportsController < ApplicationController
+layout 'kpi_report', only: [:programs]
+layout 'none' , only: [:kpi]
   def users
     @nonadmin_users = User.nonadmin
     @number_of_users = @nonadmin_users.count
@@ -110,5 +112,8 @@ class ReportsController < ApplicationController
         format.html
         format.js
     end
+  end
+
+  def kpi
   end
 end

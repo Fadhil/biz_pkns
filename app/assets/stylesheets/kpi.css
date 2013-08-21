@@ -1,0 +1,7 @@
+.kpi, th, td{
+  border: 1px solid #dddddd
+}
+
+.kpi {
+    font-size: 80%;
+}
