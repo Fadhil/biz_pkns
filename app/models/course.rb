@@ -40,32 +40,6 @@ class Course < ActiveRecord::Base
   end
 
   def self.for_period(year= Date.today.year,month = '01')
-    last_day = case month
-    when '01'
-      31
-    when '02'
-      29
-    when '03'
-      31
-    when '04'
-      30
-    when '05'
-      31
-    when '06'
-      30
-    when '07'
-      31
-    when '08'
-      31
-    when '09'
-      30
-    when '10'
-      31
-    when '11'
-      30
-    when '12'
-      31
-    end
-    where('start_date >= ? AND start_date <= ?', "#{year}-#{month}-1", "#{year}-#{month}-#{last_day}")
+    where('start_date >= ? AND start_date <= ?', "#{year}-#{month}-1", DateTime.new(year,month,-1).strftime('%Y-%m-%d'))
   end
 end
