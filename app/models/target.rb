@@ -3,4 +3,7 @@ class Target < ActiveRecord::Base
 
   belongs_to :course_category
   belongs_to :program
+
+  scope :year, lambda { |year| where(year: year) }
+  scope :course_category_id, lambda { |course_category_id| where(course_category_id: course_category_id)}
 end

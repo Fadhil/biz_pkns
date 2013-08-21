@@ -47,4 +47,87 @@ class Program < ActiveRecord::Base
       self.courses.year(year).map(&:course_type).uniq.select{|x| x != nil }
     end
   end
+
+  def self.get_month(month)
+    case month
+    when 1
+      'Januari'
+    when 2
+      'Februari'
+    when 3
+      'Mac'
+    when 4
+      'April'
+    when 5
+      'Mei'
+    when 6
+      'Jun'
+    when 7
+      'Julai'
+    when 8
+      'Ogos'
+    when 9
+      'September'
+    when 10
+      'Oktober'
+    when 11
+      'November'
+    when 11
+      'Disember'
+    end
+  end
+
+  def self.get_kpi(year=Date.today.year)
+    kpi_results = {}
+    months =  [['jan','01'],
+                ['feb','02'],
+                ['mar','03'],
+                ['apr','04'],
+                ['may','05'],
+                ['jun','06'],
+                ['jul','07'],
+                ['aug','08'],
+                ['sep','09'],
+                ['oct','10'],
+                ['nov','11'],
+                ['dec','12']]
+    Program.all.each do |program|
+      course_types = program.course_types(year)
+      courses = program.courses.year(year)
+
+      kpi_results['current_month']  = get_month(Date.today.month)
+
+      if !courses.empty?
+        kpi_results[program.name] = {} unless kpi_results[program.name]
+
+        course_types.each do |course_type|
+          current_actual_total = 0
+          kpi_results[program.name][course_type] = {} unless kpi_results[program.name][course_type]
+          months.each do |month, month_index|
+          
+            kpi_results[program.name][course_type][month] = program.courses.completed.for_period(year,month_index).course_type(course_type).sum{ |x| x.try(:attendance_list).try(:attendees).try(:count) }
+            current_actual_total += kpi_results[program.name][course_type][month]
+          end
+          kpi_results[program.name][course_type]['current_total'] = program.courses.completed.year(year).course_type(course_type).sum{ |x| x.try(:attendance_list).try(:attendees).try(:count)}
+      
+          course_category_id = CourseCategory.where(name: course_type).first.try(:id)
+          program_target = program.targets(year).course_category_id(course_category_id).order(:created_at).first
+          kpi_results[program.name][course_type]['per_session_target'] = 0
+          kpi_results[program.name][course_type]['per_session_target'] = program_target.target_attendance unless program_target.nil?
+          kpi_results[program.name][course_type]['yearly_number_of_courses'] = 0
+          kpi_results[program.name][course_type]['yearly_number_of_courses'] = program_target.number_of_courses unless program_target.nil?
+          kpi_results[program.name][course_type]['current_target'] = 0
+          kpi_results[program.name][course_type]['current_target'] = ( program_target.target_attendance * program.courses.completed.year(year).count ) unless program_target.nil?
+          kpi_results[program.name][course_type]['yearly_target'] = 0
+          kpi_results[program.name][course_type]['yearly_target'] = ( program_target.target_attendance * program_target.number_of_courses ) unless program_target.nil?
+          kpi_results[program.name][course_type]['current_actual'] = 0.0
+          kpi_results[program.name][course_type]['current_actual'] = current_actual_total.to_f / kpi_results[program.name][course_type]['current_target'].to_f * 100 unless kpi_results[program.name][course_type]['current_target'] == 0
+          kpi_results[program.name][course_type]['yearly_actual'] = 0.0
+          kpi_results[program.name][course_type]['yearly_actual'] = current_actual_total.to_f / kpi_results[program.name][course_type]['yearly_target'].to_f * 100 unless kpi_results[program.name][course_type]['yearly_target'] == 0
+        end
+      end
+    end
+
+    kpi_results
+  end
 end
