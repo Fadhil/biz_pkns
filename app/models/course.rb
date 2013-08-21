@@ -40,6 +40,6 @@ class Course < ActiveRecord::Base
   end
 
   def self.for_period(year= Date.today.year,month = '01')
-    where('SUBSTR(start_date,1,4) = ? AND SUBSTR(start_date,6,2) = ?', "#{year}", "#{month}")
+    where('SUBSTR(start_date from 1 for 4) = ? AND SUBSTR(start_date from 6 for 2) = ?', "#{year}", "#{month}")
   end
 end
