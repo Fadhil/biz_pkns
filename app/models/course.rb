@@ -40,6 +40,6 @@ class Course < ActiveRecord::Base
   end
 
   def self.for_period(year= Date.today.year,month = '01')
-    where('start_date >= ? AND start_date <= ?', "#{year}-#{month}-1", DateTime.new(year,month,-1).strftime('%Y-%m-%d'))
+    where('start_date >= ? AND start_date <= ?', "#{year}-#{month}-1", DateTime.new(year.to_i,month.to_i,-1).strftime('%Y-%m-%d'))
   end
 end
