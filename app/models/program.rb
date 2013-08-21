@@ -136,9 +136,11 @@ class Program < ActiveRecord::Base
           
         end
 
+        
+        Rails.logger.info "numberof actual ocourse types"
+        kpi_results[program.name]['number_of_course_types'] = course_types.count
       end
-      Rails.logger.info "numberof actual ocourse types"
-      kpi_results[program.name]['number_of_course_types'] = course_types.count
+
       
     end
 
