@@ -97,9 +97,9 @@
               
                 = "@<br/>#{v['yearly_target']} org /#{v['yearly_number_of_courses']} sesi".html_safe  unless ( v['yearly_target'] == 0 && v['yearly_number_of_courses'] == 0 )
               %td
-                = "v['current_actual'] %"
+                = "#{v['current_actual']} %"
               %td
-                = "v['yearly_actual'] %"
+                = "#{v['yearly_actual']} %"
             - else
               %tr
                 %td
@@ -139,8 +139,8 @@
                 
                   = "@<br/>#{v['yearly_target']} org /#{v['yearly_number_of_courses']} sesi".html_safe  unless ( v['yearly_target'] == 0 && v['yearly_number_of_courses'] == 0 )
                 %td
-                  = "v['current_actual'] %"
+                  = "#{v['current_actual']} %"
                 %td
-                  = "v['yearly_actual'] %"
+                  = "#{v['yearly_actual']} %"
             - j += 1
       - i += 1
