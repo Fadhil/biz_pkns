@@ -112,6 +112,7 @@ class Program < ActiveRecord::Base
       
           course_category_id = CourseCategory.where(name: course_type).first.try(:id)
           program_target = program.targets(year).course_category_id(course_category_id).order(:created_at).first
+
           kpi_results[program.name][course_type]['per_session_target'] = 0
           kpi_results[program.name][course_type]['per_session_target'] = program_target.target_attendance unless program_target.nil?
           kpi_results[program.name][course_type]['yearly_number_of_courses'] = 0
@@ -121,11 +122,12 @@ class Program < ActiveRecord::Base
           kpi_results[program.name][course_type]['yearly_target'] = 0
           kpi_results[program.name][course_type]['yearly_target'] = ( program_target.target_attendance * program_target.number_of_courses ) unless program_target.nil?
           kpi_results[program.name][course_type]['current_actual'] = 0.0
-          kpi_results[program.name][course_type]['current_actual'] = current_actual_total.to_f / kpi_results[program.name][course_type]['current_target'].to_f * 100 unless kpi_results[program.name][course_type]['current_target'] == 0
+          kpi_results[program.name][course_type]['current_actual'] = (current_actual_total.to_f / kpi_results[program.name][course_type]['current_target'].to_f * 100 ).round(2) unless kpi_results[program.name][course_type]['current_target'] == 0
           kpi_results[program.name][course_type]['yearly_actual'] = 0.0
-          kpi_results[program.name][course_type]['yearly_actual'] = current_actual_total.to_f / kpi_results[program.name][course_type]['yearly_target'].to_f * 100 unless kpi_results[program.name][course_type]['yearly_target'] == 0
+          kpi_results[program.name][course_type]['yearly_actual'] = (current_actual_total.to_f / kpi_results[program.name][course_type]['yearly_target'].to_f * 100).round(2) unless kpi_results[program.name][course_type]['yearly_target'] == 0
         end
       end
+      kpi_results[program.name]['number_of_course_types'] = course_types.count
     end
 
     kpi_results

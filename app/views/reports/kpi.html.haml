@@ -26,64 +26,113 @@
     %th
       Feb
     %th
-      Jan
+      Mar
     %th
-      Feb
+      Apr
     %th
-      Jan
+      Mei
     %th
-      Feb
+      Jun
     %th
-      Jan
+      Jul
     %th
-      Feb
+      Ogo
     %th
-      Jan
+      Sep
     %th
-      Feb
+      Okt
     %th
-      Jan
+      Nov
     %th
-      Feb
-  
-  %tr
-    %td
-      1
-    %td
-      Program
-    %td
-      CourseType
-    %td
-      22 
-    %td
-      22 
-    %td
-      22 
-    %td
-      22 
-    %td
-      22 
-    %td
-      22 
-    %td
-      22 
-    %td
-      22 
-    %td
-      22 
-    %td
-      22 
-    %td
-      22 
-    %td
-      22 
-    %td
-      300
-    %td
-      150 org/1 Sesi @ 450 org/3 Sesi
-    %td
-      150 org/1 Sesi @ 450 org/3 Sesi
-    %td
-      87%
-    %td
-      57%
+      Dis
+  - i = 1
+  - @kpi_results.each do |key, value| 
+    - rowspan = value['number_of_course_types']
+    - unless key == 'current_month'
+      %tr
+        %td{rowspan: rowspan}
+          = i
+        %td{rowspan: rowspan}
+          = key
+
+        - j = 0
+        - value.each do |k,v|
+          - unless k == 'number_of_course_types'
+            - if j == 0
+            
+              %td
+                = k
+              %td
+                = v['jan']
+              %td
+                = v['feb']  
+              %td
+                = v['mar']  
+              %td
+                = v['apr']  
+              %td
+                = v['may']  
+              %td
+                = v['jun']  
+              %td
+                = v['jul']  
+              %td
+                = v['aug']  
+              %td
+                = v['sep']  
+              %td
+                = v['oct']  
+              %td
+                = v['nov']  
+              %td
+                = v['dec']  
+              %td
+                = v['current_total']
+              %td
+                = v['current_target']
+              %td
+                = v['yearly_target']
+              %td
+                = v['current_actual']
+              %td
+                = v['yearly_actual']
+            - else
+              %tr
+                %td
+                  = k
+                %td
+                  = v['jan']
+                %td
+                  = v['feb']  
+                %td
+                  = v['mar']  
+                %td
+                  = v['apr']  
+                %td
+                  = v['may']  
+                %td
+                  = v['jun']  
+                %td
+                  = v['jul']  
+                %td
+                  = v['aug']  
+                %td
+                  = v['sep']  
+                %td
+                  = v['oct']  
+                %td
+                  = v['nov']  
+                %td
+                  = v['dec']  
+                %td
+                  = v['current_total']
+                %td
+                  = v['current_target']
+                %td
+                  = v['yearly_target']
+                %td
+                  = v['current_actual']
+                %td
+                  = v['yearly_actual']
+            - j += 1
+      - i += 1

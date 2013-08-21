@@ -115,5 +115,6 @@ layout 'none' , only: [:kpi]
   end
 
   def kpi
+    @kpi_results = Program.get_kpi
   end
 end
