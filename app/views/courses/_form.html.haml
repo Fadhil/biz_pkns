@@ -12,7 +12,7 @@
           .six.columns
             = f.label t('.course_type'), :class => 'control-label'
             .picker
-              = f.select :course_type, options_for_select(CourseCategory.all.map{ |a| [a.name, a.name]}, selected: f.object.course_type)
+              = f.select :course_type, options_for_select(CourseCategory.order(:name).map{ |a| [a.name, a.name]}, selected: f.object.course_type)
           .six.columns
             = f.label 'Program', class: 'control-label'
             - if can? :manage, :all
