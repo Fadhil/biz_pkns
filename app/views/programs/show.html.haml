@@ -11,6 +11,32 @@
     %p
       = @program.description.html_safe
   %hr.divider
+- if can? :manage, @program && !@program.targets.empty?
+  .row
+    %h5= "Sasaran Kursus"
+    .twelve.columns
+      .table
+        .row.table-head
+          .four.columns
+            = t('course_type')
+          .three.columns
+            Sasaran Bilangan Kursus
+          .three.columns
+            Sasaran Peserta Setiap Kursus
+          .two.columns
+            Tahun
+        - last_target = ''
+        - @program.targets.each do |target|
+          .row.table-data
+            .four.columns
+              = CourseCategory.find(target.course_category_id).name
+            .three.columns
+              = target.number_of_courses
+            .three.columns
+              = target.target_attendance
+            .two.columns 
+              = target.year
+%hr.divider
 .row
   .twelve.columns
     =t('status') + ":"
