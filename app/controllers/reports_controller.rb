@@ -116,5 +116,36 @@ layout 'none' , only: [:kpi]
 
   def kpi
     @kpi_results = Program.get_kpi
+    month = case Date.today.month
+    when 1
+        "Januari"
+    when 2
+        "Februari"
+    when 3
+        "Mac"
+    when 4
+        "April"
+    when 5
+        "Mei"
+    when 6
+        "Jun"
+    when 7
+        "Julai"
+    when 8
+        "Ogos"
+    when 9
+        "September"
+    when 10
+        "Oktober"
+    when 11
+        "November"
+    when 12
+        "Disember"
+    else
+        "Default"
+    end
+
+    year = Date.today.year
+    @the_date = "#{month} #{year}"
   end
 end
