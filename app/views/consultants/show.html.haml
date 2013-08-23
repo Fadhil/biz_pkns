@@ -57,7 +57,7 @@
   .row
     .twelve.columns
       %h5= t('status')
-      %p= @consultant.is_active? ? t('active') : t('inactive')
+      %p= @consultant.is_still_active? ? t('active') : t('inactive')
 .row
   .twelve.columns
     %hr.divider

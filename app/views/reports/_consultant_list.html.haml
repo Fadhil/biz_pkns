@@ -21,7 +21,7 @@
               = consultant.register_date
           .three.columns
             %p
-              = consultant.is_active? ? t('active') : t('inactive')
+              = consultant.is_still_active? ? t('active') : t('inactive')
  
 .row
   .twelve.columns

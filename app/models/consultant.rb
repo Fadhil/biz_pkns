@@ -78,11 +78,21 @@ class Consultant < ActiveRecord::Base
   end
 
   def self.active
-    Consultant.includes(:courses).where('courses.created_at >= ? AND consultants.is_active is true',6.months.ago.to_date)
+    Consultant.all.select { |x| x.is_still_active? }
   end
 
   def self.inactive
     Consultant.all - Consultant.active
+  end
+
+  def is_still_active?
+    if self.is_active
+      if self.courses.where('courses.created_at >= ?', 6.months.ago.to_date)
+        true
+      end
+    else
+      false
+    end
   end
 
   def complete_profile
