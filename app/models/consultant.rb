@@ -5,7 +5,7 @@ class Consultant < ActiveRecord::Base
   devise :database_authenticatable, #:registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  scope :between_years, lambda { |start_year, end_year| where('register_date >= ? AND register_date <= ?', start_year, end_year ) }
+  scope :between_years, lambda { |start_year, end_year| where('register_date >= ? AND register_date <= ?', start_year.to_s, end_year.to_s ) }
 
   before_save :complete_profile
 
