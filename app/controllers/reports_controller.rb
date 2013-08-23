@@ -109,10 +109,12 @@ layout 'none' , only: [:kpi]
 
 
     respond_to do |format|
-        format.html
+        format.html { render @report_type}
         format.js
     end
   end
+
+
 
   def kpi
     @kpi_results = Program.get_kpi

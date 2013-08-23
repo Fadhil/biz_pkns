@@ -1,5 +1,5 @@
 
-= form_tag 'programs', id: "#{report_type}_form",remote: true do
+= form_tag 'programs', id: "#{report_type}_form" do
   #program_report_title
   = select report_type, :program, Program.order(:name).map{|a| [a.name,a.id]}, {:include_blank => true, selected: params[:program] || ''}
   %br
@@ -20,7 +20,7 @@
     
     = select report_type, :end_year, (2000..2030), {selected:  params[:end_year] || Date.today.year}, onChange: "submitReportRequest(\"#{report_type}\");"
     = hidden_field :report, :type, value: report_type
-  = button_tag 'Papar', onClick: "submitReportRequest(\"#{report_type}\");"
+  = button_tag 'Papar', onClick: "this.form.target='_blank';submitReportRequest(\"#{report_type}\");"
 
 = content_tag(:div,'' ,id: report_type.to_s + '_results')
 
