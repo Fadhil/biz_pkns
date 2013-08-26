@@ -39,9 +39,6 @@ gem 'i18n_routing'
 # Rails ERD
 gem 'rails-erd'
 
-# Google Charts
-gem 'googlecharts', :require => "gchart"
-
 # Twitter Bootstrap
 gem 'twitter-bootstrap-rails',"2.2.6" #"~> 2.0rc0"
 

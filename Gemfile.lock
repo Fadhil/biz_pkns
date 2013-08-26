@@ -109,7 +109,6 @@ GEM
       thor (>= 0.13.6)
     formatador (0.2.4)
     friendly_id (4.0.9)
-    googlecharts (1.6.8)
     gumby-framework (0.0.1)
       jquery-rails
       modernizr-rails
@@ -300,7 +299,6 @@ DEPENDENCIES
   fog (~> 1.3.1)
   foreman
   friendly_id
-  googlecharts
   gumby-framework
   haml-rails (>= 0.3.4)
   has_scope

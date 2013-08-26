@@ -1,0 +1,44 @@
+   <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Jumlah', 'Orang'],
+          ['Ahli',     <%= @number_of_members %>],
+          ['Bukan Ahli',      <%= @number_of_nonmembers %>]
+        ]);
+
+        var options = {
+          title: 'Pecahan Pengguna Mengikut Keahlian'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+      }
+    </script>
+<div class="row">
+  <div class="four columns center">
+    <h4>
+      <%= @number_of_members %>
+    </h4>
+    <small>Jumlah Ahli</small>
+  </div>
+  <div class="four columns center">
+    <h4>
+      <%= @number_of_nonmembers %>
+    </h4>
+    <small>Jumlah Bukan Ahli</small>
+  </div>
+  <div class='four columns center'>
+    <h4>
+      <%= @number_of_users %>
+    </h4>
+    <small>Jumlah Pengguna</small>
+  </div>
+</div>
+
+<div class="row">
+  <div class="twelve columns">
+    <div id='piechart' style="width: 600px; height: 400px;"></div>
+  </div>
+</div>
