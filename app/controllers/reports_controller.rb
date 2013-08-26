@@ -1,6 +1,7 @@
 class ReportsController < ApplicationController
 layout 'kpi_report', only: [:programs]
-layout 'none' , only: [:kpi]
+layout 'report_layout'
+
   def users
     @nonadmin_users = User.nonadmin
     @number_of_users = @nonadmin_users.count
@@ -149,5 +150,7 @@ layout 'none' , only: [:kpi]
 
     year = Date.today.year
     @the_date = "#{month} #{year}"
+
+    render layout: 'none'
   end
 end
