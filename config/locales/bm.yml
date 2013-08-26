@@ -837,6 +837,7 @@ bm:
       my_adverts: 'Iklan'
       my_courses: 'Kursus Saya'
       my_reports: 'Laporan Saya'
+      all_reports: 'Laporan Perunding'
       administrate_user: 'Urus Ahli'
       administrate_pkns_user: 'Urus Operator PKNS'
       directory: 'Direktori'

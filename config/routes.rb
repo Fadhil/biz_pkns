@@ -88,6 +88,9 @@ BizPkns::Application.routes.draw do
         put 'update_report', as: :update_report
         get 'reports'
       end
+      collection do 
+        get 'list_reports'
+      end
     end
     resources :members
     resources :educations

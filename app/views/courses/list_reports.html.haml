@@ -1,0 +1,20 @@
+.row
+  %h3.ten.columns
+    Senarai Report Kursus
+
+.table
+  .row.table-head
+    .four.columns
+      Nama Kursus
+    .three.columns
+      Tarikh Laporan Dijana
+    .three.columns
+      Perunding
+  - @course_reports.each do |course_report|
+    .row.table-rows
+      .four.columns
+        = link_to course_report.course.name, view_report_course_path(course_report.course)
+      .four.columns
+        = course_report.report_date
+      .three.columns
+        = course_report.consultant_email

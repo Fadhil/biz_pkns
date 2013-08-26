@@ -174,6 +174,9 @@ class CoursesController < ApplicationController
     @course_report = @course.course_report
   end
 
+  def list_reports
+    @course_reports = CourseReport.all
+  end
   def reports
 
   end
