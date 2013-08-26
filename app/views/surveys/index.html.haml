@@ -32,7 +32,7 @@
           .twelve.columns
           .twelve.columns.hide
             %span.pretty.small.btn.warning.icon-left.entypo.icon-eye
-              = link_to t('view'), survey
+              = link_to t('view'), survey_path(survey)
           - if can? :edit, survey
             .twelve.columns
               %span.pretty.small.btn.warning.icon-left.entypo.icon-list-add
