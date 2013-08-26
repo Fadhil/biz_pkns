@@ -11,7 +11,7 @@
 .row
   .twelve.columns
     %strong= t('description')
-    %p= @survey.description.html_safe
+    %p= @survey.try(:description).try(:html_safe)
 
 .row
   .twelve.columns
