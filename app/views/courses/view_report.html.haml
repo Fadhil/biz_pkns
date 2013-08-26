@@ -94,7 +94,20 @@
       = q.title
       - case q.question_type
         - when 'yes_no'
-          yes no
+          %table.table.table-striped
+            %thead
+              %tr
+                %th
+                  Ya
+                %th
+                  Tidak
+            %tbody
+              %tr
+                %td
+                  = q.responses.where('answer = ?','ya').count
+                %td
+                  = q.responses.where('answer <> ?','ya').count
+
         - when 'scale'
           %table.table.table-striped
             %thead
@@ -109,18 +122,18 @@
                   4
                 %th
                   5
-            %tbody
-              %tr
-                %td
-                  123
-                %td
-                  24
-                %td
-                  523
-                %td
-                  512
-                %td
-                  12
+                %tbody
+                  %tr
+                    %td
+                      = q.responses.where('answer = ?','1').count
+                    %td
+                      = q.responses.where('answer = ?','2').count
+                    %td
+                      = q.responses.where('answer = ?','3').count
+                    %td
+                      = q.responses.where('answer = ?','4').count
+                    %td
+                      = q.responses.where('answer = ?','5').count
 
 #agechart
 
