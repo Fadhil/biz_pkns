@@ -15,7 +15,7 @@
 
 .row
   .twelve.columns
-    = form_for @survey do |f|
+    = form_for @survey, url: survey_path do |f|
       - if !@survey.completed
         = f.hidden_field :completed, value: 1
         %span.medium.pretty.btn.info
