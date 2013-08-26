@@ -1,6 +1,9 @@
 = render 'gcharts'
 %h6
   Laporan Analisa Kursus
+.print-disabled
+  %span.medium.pretty.btn.default
+    = button_tag 'Print', onClick: 'print();'
 %hr
 .row
   .four.columns
