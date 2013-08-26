@@ -42,7 +42,7 @@
 
 .row
   .six.columns
-    = image_tag(@course_report.course_schedule.file, size: '800x600')
+    = image_tag(@course_report.try(:course_schedule).try(:file), size: '800x600')
 
 %hr
 .row
@@ -66,15 +66,15 @@
 .row
   - @course_report.course_photos[0..1].each do |photo|
     .five.columns
-      = image_tag(photo.file)
+      = image_tag(photo.try(:file))
 .row
   - @course_report.course_photos[2..3].each do |photo|
     .five.columns
-      = image_tag(photo.file)
+      = image_tag(photo.try(:file))
 .row
   - @course_report.course_photos[4..5].each do |photo|
     .five.columns
-      = image_tag(photo.file)
+      = image_tag(photo.try(:file))
 
 
   
