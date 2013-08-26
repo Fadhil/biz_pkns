@@ -19,6 +19,8 @@
                 = link_to t('.list_of_courses'), course_listing_path
               %li
                 = link_to t('.add_modify_courses'), courses_path
+              %li
+                = link_to t('.my_reports'), my_reports_consultant_path(current_consultant)
           %li{:'ui-nav-dropdown' => 'ui-nav-dropdown'}
             = link_to '#' do
               %span.left

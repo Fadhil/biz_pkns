@@ -6,7 +6,11 @@
   .row.table-head
     .four.columns
       Nama Kursus
+    .four.columns
+      Tarikh Laporan Dijana
   - current_consultant.course_reports.each do |course_report|
     .row.table-rows
       .four.columns
-        = course_report.course.name
+        = link_to course_report.course.name, view_report_course_path(course_report.course)
+      .four.columns
+        = course_report.report_date
