@@ -1,3 +1,4 @@
+= render 'gcharts'
 %h6
   Laporan Analisa Kursus
 %hr
@@ -78,5 +79,48 @@
     .five.columns
       = image_tag(photo.try(:file))
 
+%hr
 
-  
+- if @course_report.course_survey
+  .row
+    %h6
+      Laporan Kajiselidik Kursus
+    %br
+    - @course_report.course_survey.questions.each_with_index do |q,i|
+      %strong
+        = "Soalan #{ i+1 }"
+      %br
+      = "Soalan: "
+      = q.title
+      - case q.question_type
+        - when 'yes_no'
+          yes no
+        - when 'scale'
+          %table.table.table-striped
+            %thead
+              %tr
+                %th
+                  1
+                %th
+                  2
+                %th
+                  3
+                %th
+                  4
+                %th
+                  5
+            %tbody
+              %tr
+                %td
+                  123
+                %td
+                  24
+                %td
+                  523
+                %td
+                  512
+                %td
+                  12
+
+#agechart
+
