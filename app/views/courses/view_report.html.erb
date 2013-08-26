@@ -1,0 +1,275 @@
+
+
+<div class="print-disabled">
+  <span class="medium pretty btn default">
+    <button name="button" onclick="print();" type="submit">Print</button>
+  </span>
+
+</div>
+<hr>
+<div class="row">
+<h6>
+  Laporan Analisa Kursus
+</h6>
+</div>
+<div class="row">
+
+  <div class="four columns">
+    Tajuk
+  </div>
+  <div class="four columns">
+    <%= @course.name %>
+  </div>
+</div>
+<div class="row">
+  <div class="four columns">
+    Tarikh
+  </div>
+  <div class="four columns">
+    <%= @course.start_date %>
+  </div>
+</div>
+<div class="row">
+  <div class="four columns">
+    Tempat
+  </div>
+  <div class="four columns">
+    <%= @course_report.course_venue %>
+  </div>
+</div>
+<div class="row">
+  <div class="four columns">
+    Anggaran Peserta
+  </div>
+  <div class="four columns">
+    <%= @course_report.course_targeted_attendees %>
+  </div>
+</div>
+<div class="row">
+  <div class="four columns">
+    Hadir
+  </div>
+  <div class="four columns">
+    <%= @course_report.course_actual_attendees %>
+  </div>
+</div>
+<div class="row">
+  <div class="four columns">
+    Penceramah/Jemputan/VIP
+  </div>
+  <div class="four columns">
+    <%= @course_report.course_no_of_vips %>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <h6 class="break">
+    Rumusan Program
+  </h6>
+</div>
+<div class="row">
+  <%= @course_report.course_summary.html_safe %>
+</div>
+<hr>
+<div class="row">
+  <h6 class="break">
+    Jadual Kursus
+  </h6>
+  <div class="six columns">
+    <% if @course_report.course_schedule %>
+      <% if @course_report.course_schedule.file %>
+        <%= image_tag(@course_report.course_schedule.file, size: '800x600') %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <h6 class="break">
+    Laporan Bergambar
+  </h6>
+</div>
+<div class="row">
+  <div class="four columns">
+    Tajuk:
+  </div>
+  <div class="four columns">
+    <%= @course_report.course.name %>
+  </div>
+</div>
+<div class="row">
+  <div class="four columns">
+    Tarikh:
+  </div>
+  <div class="four columns">
+    <%= @course.start_date %>
+  </div>
+</div>
+<div class="row">
+  <div class="four columns">
+    Tempat:
+  </div>
+  <div class="four columns">
+    <%= @course_report.course_venue %>
+  </div>
+</div>
+<div class="row">
+  <% @course_report.course_photos[0..1].each do |photo| %>
+    <div class="five columns">
+      <%= image_tag(photo.try(:file)) %>
+    </div>
+  <% end %>
+</div>
+<div class="row">
+  <% @course_report.course_photos[2..3].each do |photo| %>
+    <div class="five columns">
+      <%= image_tag(photo.try(:file)) %>
+    </div>
+  <% end %>
+</div>
+<div class="row">
+  <% @course_report.course_photos[4..5].each do |photo| %>
+    <div class="five columns">
+      <%= image_tag(photo.try(:file)) %>
+    </div>
+  <% end %>
+</div>
+
+
+<% if @course_report.course_survey %>
+
+<hr>
+<div class="row">
+  <h6 class="break">
+    Laporan Kajiselidik Kursus
+  </h6>
+  <br>
+  <% @course_report.course_survey.questions.each_with_index do |q,i| %>
+    <strong>
+      Soalan <%= i+1 %>
+    </strong>
+    <br>
+    Soalan:
+    <%= q.title %>
+    <br>
+
+    <% case q.question_type %>
+    <% when 'yes_no' %>
+      <script type="text/javascript">
+        google.load("visualization", "1", {packages:["corechart"]});
+        google.setOnLoadCallback(<%= "drawChart#{i}" %>);
+        function <%= "drawChart#{i}" %>() {
+          var data = google.visualization.arrayToDataTable([
+            ['Pilihan', 'Jawapan'],
+            ['Ya',  <%= q.responses.where('answer = ?','ya').count %>],
+            ['Tidak', <%= q.responses.where('answer <> ? or answer is NULL','ya').count %>]
+          ]);
+
+          var options = {
+            title: 'Pecahan Ahli Mengikut Umur',
+            isStacked: true,
+            height: '300',
+            width: '500',
+            hAxis: {title: 'Umur', titleTextStyle: {color: 'red'}}
+          };
+
+          var chart = new google.visualization.ColumnChart(document.getElementById('resultchart<%=i%>'));
+          chart.draw(data, options);
+        }
+      </script>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>
+              Ya
+            </th>
+            <th>
+              Tidak
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <%= q.responses.where('answer = ?','ya').count %>
+            </td>
+            <td>
+              <%= q.responses.where('answer <> ? or answer is NULL','ya').count %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div id="resultchart<%= i %>"></div>
+    <% when 'scale' %>
+      <script type="text/javascript">
+        google.load("visualization", "1", {packages:["corechart"]});
+        google.setOnLoadCallback(<%= "drawChart#{i}" %>);
+        function <%= "drawChart#{i}" %>() {
+          var data = google.visualization.arrayToDataTable([
+            ['Skala', 'Pilihan'],
+            ['1', <%= q.responses.where('answer = ?','1').count %>],
+            ['2', <%= q.responses.where('answer = ?','2').count %>],
+            ['3', <%= q.responses.where('answer = ?','3').count %>],
+            ['4', <%= q.responses.where('answer = ?','4').count %>],
+            ['5', <%= q.responses.where('answer = ?','5').count %>]
+          ]);
+
+          var options = {
+            
+            height: '330',
+            width: '500',
+            hAxis: {title: 'Umur', titleTextStyle: {color: 'red'}}
+          };
+
+          var chart = new google.visualization.ColumnChart(document.getElementById('resultchart<%=i%>'));
+          chart.draw(data, options);
+        }
+      </script>      
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>
+              1
+            </th>
+            <th>
+              2
+            </th>
+            <th>
+              3
+            </th>
+            <th>
+              4
+            </th>
+            <th>
+              5
+            </th>
+            </tr>
+          </thead>
+        <tbody>
+              <tr>
+                <td>
+                  <%= q.responses.where('answer = ?','1').count %>
+                </td>
+                <td>
+                  <%= q.responses.where('answer = ?','2').count %>
+                </td>
+                <td>
+                  <%= q.responses.where('answer = ?','3').count %>
+                </td>
+                <td>
+                  <%= q.responses.where('answer = ?','4').count %>
+                </td>
+                <td>
+                  <%= q.responses.where('answer = ?','5').count %>
+                </td>
+              </tr>
+            </tbody>
+      </table>
+      <div id="resultchart<%= i %>"></div>
+
+    <% end %>
+  <% end %>
+
+<% end %>
+<div id='agechart' ></div>
