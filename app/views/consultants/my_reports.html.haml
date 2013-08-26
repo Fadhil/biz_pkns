@@ -11,6 +11,6 @@
   - current_consultant.course_reports.each do |course_report|
     .row.table-rows
       .four.columns
-        = link_to course_report.course.name, view_report_course_path(course_report.course)
+        = link_to course_report.course.name, view_report_course_path(course_report.course), target: '_blank'
       .four.columns
         = course_report.report_date

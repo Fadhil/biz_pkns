@@ -173,6 +173,9 @@ class CoursesController < ApplicationController
   def view_report
     @course = Course.find(params[:id])
     @course_report = @course.course_report
+    respond_to do |format|
+      format.html { render layout: 'kpi_report'}
+    end
   end
 
   def list_reports
