@@ -1,0 +1,89 @@
+<% business_categories = [] 
+  business_categories << ['Bil Ahli', 'Peratusan']
+  @business_categories_users.each do |key,value| 
+    business_categories << [key, value['percentage'].to_f] 
+  end 
+%>
+<script type="text/javascript">
+
+  google.load("visualization", "1", {packages:["corechart"]});
+  google.setOnLoadCallback(drawPieChart);
+  function drawPieChart() {
+
+        var data = google.visualization.arrayToDataTable(<%= business_categories.to_s.html_safe %>);
+
+        var options = {
+          title: 'Pecahan Bidang Perniagaan Keseluruhan Ahli',
+          width: '600',
+          height: '400'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('businesschart'));
+        chart.draw(data, options);
+   }
+
+  
+</script>
+<div class="row">
+  <div class="twelve columns center">
+    <div class="table">
+      <div class="row table-head">
+        <div class="five columns">
+          <h6 class="title">
+            <%= t('business_category') %>
+          </h6>
+        </div>
+        <div class="two columns">
+          <h6 class="title">
+            <%= t('number_of_members') %>
+          </h6>
+        </div>
+        <div class="three columns">
+          <h6 class="title">
+            <%= t('percentage') %>
+          </h6>
+        </div>
+      </div>
+      <% members = [] %>
+      <% @business_categories_users.each do |key,value| %>
+        <div class="row table-rows">
+          <div class="five columns">
+            <p>
+              <%= key %>
+            </p>
+          </div>
+          <div class="two columns">
+            <p>
+              <%= value['count'] %>
+            </p>
+          </div>
+          <div class="three columns">
+            <p>
+              <%= value['percentage'] %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+      <div class="row table-rows">
+        <div class="five columns">
+          <p>
+            Jumlah
+          </p>
+        </div>
+        <div class="two columns">
+          <p>
+            <%= @total_businesses %>
+          </p>
+        </div>
+        <div class="three columns">
+          <p>
+          </p>
+        </div>
+      </div>
+  
+<div class="row">
+  <div class="twelve columns">
+    <div id='businesschart' style="width: 600px; height:400px;"></div>
+    
+  </div>
+</div>

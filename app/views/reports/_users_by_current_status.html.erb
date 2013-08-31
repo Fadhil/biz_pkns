@@ -1,4 +1,58 @@
+<script type="text/javascript">
+  google.load("visualization", "1", {packages:["corechart"]});
+  google.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+      ['Status Semasa', 'Lelaki', 'Perempuan'],
+      ['Pemilik Perniagaan',  <%= @members.male.own_business.count %>,      <%= @members.female.own_business.count%>],
+      ['Bekerja/Belajar',  <%= @members.male.working_studying.count %>,      <%= @members.female.working_studying.count %>],
+      ['Belajar',  <%= @members.male.studying.count %>,       <%= @members.male.studying.count %>],
+      ['Bekerja/Perniagaan Sendiri',  <%= @members.male.working_self_business.count %>,      <%= @members.female.working_self_business.count%>],
+      ['Belajar/Perniagaan Sendiri', <%= @members.male.part_time_business.count %>,<%= @members.female.part_time_business.count %>],
+      ['Bekerja', <%= @members.male.working.count%>,<%= @members.female.working.count %>],
+      ['Tidak Diketahui', <%= @members.male.unknown.count %>,<%= @members.female.unknown.count %>]
+    ]);
 
+    var options = {
+      title: 'Pecahan Ahli Mengikut Justifikasi Status Semasa',
+      isStacked: true,
+      width: '500',
+      height: '600',
+      chartArea: {width: '63%', height: '50%'},
+legend: {position: 'out'},
+titlePosition: 'out', axisTitlesPosition: 'out',
+hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'in'},
+      hAxis: {title: 'Status Semasa', titleTextStyle: {color: 'red'},
+      slantedText: true }
+    };
+
+    var chart = new google.visualization.ColumnChart(document.getElementById('statuschart'));
+    chart.draw(data, options);
+  }
+
+  google.setOnLoadCallback(drawPieChart);
+  function drawPieChart() {
+      var data = google.visualization.arrayToDataTable([
+        ['Status Semasa', 'Orang'],
+        ['Pemilik Perniagaan',  <%= @members.own_business.count %>],
+        ['Bekerja/Belajar',  <%= @members.working_studying.count %>],
+        ['Belajar',  <%= @members.studying.count %>],
+        ['Bekerja/Perniagaan Sendiri',  <%= @members.working_self_business.count %>],
+        ['Belajar/Perniagaan Sendiri', <%= @members.part_time_business.count %>],
+        ['Bekerja', <%= @members.working.count%>],
+        ['Tidak Diketahui', <%= @members.unknown.count %>]
+      ]);
+
+        var options = {
+          title: 'Pecahan Status Semasa Keseluruhan Ahli',
+          width: '600',
+          height: '400'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('statusoverallchart'));
+        chart.draw(data, options);
+      }
+</script>
 <div class="row">
   <div class="twelve columns center">
     <div class="table">
@@ -27,182 +81,210 @@
       <div class="row table-rows">
         <div class="five columns">
           <p>
-            Pemilik Perniagaan
+            <%= t('reports.users.employment.own_business') %>
           </p>
         </div>
         <div class="two columns">
           <p>
-            2
+            <%= @members.male.own_business.count %>
           </p>
         </div>
         <div class="three columns">
           <p>
-            2
+            <%= @members.female.own_business.count %>
           </p>
         </div>
         <div class="two columns">
           <p>
-            4
+            <%= @members.female.own_business.count + @members.male.own_business.count %>
           </p>
         </div>
       </div>
       <div class="row table-rows">
         <div class="five columns">
           <p>
-            Bekerja/Belajar
+            <%= t('reports.users.employment.working_studying') %>
           </p>
         </div>
         <div class="two columns">
           <p>
-            1
+            <%= @members.male.working_studying.count %>
           </p>
         </div>
         <div class="three columns">
           <p>
-            0
+            <%= @members.female.working_studying.count %>
           </p>
         </div>
         <div class="two columns">
           <p>
-            1
+            <%= @members.female.working_studying.count + @members.male.working_studying.count %>
           </p>
         </div>
       </div>
       <div class="row table-rows">
         <div class="five columns">
           <p>
-            Belajar
+            <%= t('reports.users.employment.studying') %>
           </p>
         </div>
         <div class="two columns">
           <p>
-            1
+            <%= @members.male.studying.count %>
           </p>
         </div>
         <div class="three columns">
           <p>
-            1
+            <%= @members.female.studying.count %>
           </p>
         </div>
         <div class="two columns">
           <p>
-            2
+            <%= @members.female.studying.count + @members.male.studying.count %>
           </p>
         </div>
       </div>
       <div class="row table-rows">
         <div class="five columns">
           <p>
-            Bekerja/Perniagaan Sendiri
+            <%= t('reports.users.employment.working_self_business') %>
           </p>
         </div>
         <div class="two columns">
           <p>
-            0
+            <%= @members.male.working_self_business.count %>
           </p>
         </div>
         <div class="three columns">
           <p>
-            0
+            <%= @members.female.working_self_business.count %>
           </p>
         </div>
         <div class="two columns">
           <p>
-            0
+            <%= @members.female.working_self_business.count + @members.male.working_self_business.count %>
           </p>
         </div>
       </div>
       <div class="row table-rows">
         <div class="five columns">
           <p>
-            Belajar/Perniagaan Sendiri
+            <%= t('reports.users.employment.part_time_business') %>
           </p>
         </div>
         <div class="two columns">
           <p>
-            0
+            <%= @members.male.part_time_business.count %>
           </p>
         </div>
         <div class="three columns">
           <p>
-            0
+            <%= @members.female.part_time_business.count %>
           </p>
         </div>
         <div class="two columns">
           <p>
-            0
+            <%= @members.female.part_time_business.count + @members.male.part_time_business.count %>
           </p>
         </div>
       </div>
       <div class="row table-rows">
         <div class="five columns">
           <p>
-            Bekerja
+            <%= t('reports.users.employment.working') %>
           </p>
         </div>
         <div class="two columns">
           <p>
-            1
+            <%=  @members.male.working.count %>
           </p>
         </div>
         <div class="three columns">
           <p>
-            0
+            <%= @members.female.working.count %>
           </p>
         </div>
         <div class="two columns">
           <p>
-            1
+            <%= @members.female.working.count + @members.male.working.count %>
           </p>
         </div>
       </div>
-      <div class="row table-rows">
-        <div class="five columns">
-          <p>
-            Tidak Diketahui
-          </p>
+      <% if @members.male.unknown.count > 0 || @members.female.unknown.count > 0 %>
+        <div class="row table-rows">
+          <div class="five columns">
+            <p>
+              <%= t('reports.users.employment.unknown') %>
+            </p>
+          </div>
+          <div class="two columns">
+            <p>
+              <%= @members.male.unknown.count %>
+            </p>
+          </div>
+          <div class="three columns">
+            <p>
+              <%= @members.female.unknown.count %>
+            </p>
+          </div>
+          <div class="two columns">
+            <p>
+              <%= @members.female.unknown.count + @members.male.unknown.count %>
+            </p>
+          </div>
         </div>
-        <div class="two columns">
-          <p>
-            10
-          </p>
+      <% end %>
+        <div class="row table-rows">
+          <div class="five columns">
+            <p class="bold">
+              Jumlah
+            </p>
+          </div>
+          <div class="two columns">
+            <p class="bold">
+              <%= 
+                @members.male.own_business.count +          
+                @members.male.working_studying.count +      
+                @members.male.studying.count +              
+                @members.male.working_self_business.count + 
+                @members.male.part_time_business.count +    
+                @members.male.working.count
+              %>
+            </p>
+          </div>
+          <div class="three columns">
+            <p class="bold">
+              <%= @members.female.has_employment_status.count  %>
+            </p>
+          </div>
+          <div class="two columns">
+            <p></p>
+          </div>
         </div>
-        <div class="three columns">
-          <p>
-            4
-          </p>
-        </div>
-        <div class="two columns">
-          <p>
-            14
-          </p>
-        </div>
-      </div>
-      <div class="row table-rows">
-        <div class="five columns">
-          <p class="bold">
-            Jumlah
-          </p>
-        </div>
-        <div class="two columns">
-          <p class="bold">
-            5
-          </p>
-        </div>
-        <div class="three columns">
-          <p class="bold">
-            3
-          </p>
-        </div>
-        <div class="two columns">
-          <p></p>
-        </div>
-      </div>
     </div>
   </div>
 </div>
 <div class="row">
   <div class="twelve columns">
+    
+  </div>
+  <hr>
+    
+  
+</div>
+
+<div class="row">
+  <div class="twelve columns">
+    <div id='statuschart' style="width: 500px; height: 600px;"></div>
+
+  </div>
+  <hr>
+    
+  
+</div>
+<div class="row">
+  <div class="twelve columns">
+    <div id='statusoverallchart' style="width: 600px; height: 400px;"></div>
     
   </div>
   <hr>
