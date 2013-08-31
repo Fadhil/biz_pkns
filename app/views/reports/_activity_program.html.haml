@@ -30,7 +30,7 @@
       .row.table-rows
         .four.columns
           %p
-            Jumlah
+            Jumlahbn
 
         - @years.each  do |year|
           .two.columns
@@ -44,10 +44,4 @@
   .twelve.columns
     
    
-    - title = "Bilangan Aktiviti #{@program.name} mengikut tahun"
-    - legend = course_types
-    - labels = @years
-    - data = [[3,1,1],[2,1,5]]
-   
-    - colours = ['00EE00,EE0000','0000EE']
-    =# image_tag Gchart.bar(title: title,bar_colors: colours, labels: labels, data: data, legend: legend, size: '450x300', stacked: false)       
+     
