@@ -92,7 +92,17 @@ layout 'report_layout'
     end
 
     if @report_type && params[@report_type.to_sym].present?
-        @program = Program.find(params[@report_type.to_sym][:program])
+        unless @report_type == 'consultant_list'
+            @program = Program.find(params[@report_type.to_sym][:program])
+
+        end
+        if @report_type == 'consultant_list'
+
+            start_year = params[@report_type.to_sym][:start_year].to_i
+            end_year = params[@report_type.to_sym][:end_year].try(:to_i) || start_year
+
+            @consultants = Consultant.between_years(start_year, end_year)
+        end
         start_year = params[@report_type.to_sym][:start_year].to_i
         end_year = params[@report_type.to_sym][:end_year].try(:to_i) || start_year
         @years = (start_year..end_year).to_a

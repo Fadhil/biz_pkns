@@ -1,0 +1,109 @@
+<script type="text/javascript">
+<% course_types = @program.course_types %>
+<% the_data_array = [] %>
+  google.load("visualization", "1", {packages:["corechart"]});
+  google.setOnLoadCallback(drawChart);
+  <% header_array = ['Jenis Kursus'] 
+     row_array = []
+     @years.each do |year| 
+       header_array << year
+     end 
+     the_data_array << header_array
+     course_types.each do |course_type|
+      row_array = []  
+      row_array << course_type
+        @years.each do |year|
+          row_array << User.joins(:courses).where('courses.id in (?)', @program.courses.year(year).course_type(course_type)).count
+        end
+      the_data_array << row_array
+     end
+  %>
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable(
+      <%= the_data_array.to_s.html_safe %>
+    );
+
+    var options = {
+      title: 'Bilangan Aktiviti <%= @program.name %> yang telah dianjurkan dari <%= @years.first %>',
+      width: '600',
+      height: '500',
+      chartArea: {width: '63%', height: '50%'},
+legend: {position: 'out'},
+titlePosition: 'out', axisTitlesPosition: 'out',
+hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'out'},
+      hAxis: {title: 'Jenis Aktiviti', titleTextStyle: {color: 'red'},slantedText: true}
+    };
+
+    var chart = new google.visualization.ColumnChart(document.getElementById('userchart'));
+    chart.draw(data, options);
+  }
+
+ 
+</script>
+<div class="row">
+  <div class="twelve columns center">
+    <div class="table">
+      <div class="row table-head">
+        <div class="four columns">
+          <h6 class="title"></h6>
+        </div>
+        <% @years.each do |year| %>
+          <div class="two columns">
+            <h6 class="title">
+              <%= year %>
+            </h6>
+          </div>
+        <% end %> 
+      </div>
+      <% 
+        course_types = @program.course_types 
+        course_types.each do |course_type|
+      %>
+        <div class="row table-rows">
+          <div class="four columns">
+            <p>
+              <%= course_type %>
+            </p>
+          </div>
+          <% @years.each do |year| %>
+            <div class="two columns">
+              <p>
+                <%= User.joins(:courses).where('courses.id in (?)', @program.courses.year(year).course_type(course_type)).count %>
+              </p>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="row table-rows">
+        <div class="four columns">
+          <p>
+            Jumlah
+          </p>
+        </div>
+        <% @years.each do |year| %>
+          <div class="two columns">
+            <p>
+              <%
+                total = 0
+                course_types.each do |course_type|
+                  total += User.joins(:courses).where('courses.id in (?)', @program.courses.year(year).course_type(course_type)).count
+                end
+
+              %>
+              <%= total %>
+            </p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="twelve columns">
+    <div id='userchart' style="width: 600px; height: 500px;"></div>
+    
+  </div>
+  <hr>
+    
+  
+</div>
