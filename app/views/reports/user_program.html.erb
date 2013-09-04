@@ -3,16 +3,16 @@
 <% the_data_array = [] %>
   google.load("visualization", "1", {packages:["corechart"]});
   google.setOnLoadCallback(drawChart);
-  <% header_array = ['Jenis Kursus'] 
+  <% header_array = ['Tahun'] 
      row_array = []
-     @years.each do |year| 
-       header_array << year
+     course_types.each do |course_type| 
+       header_array << course_type
      end 
      the_data_array << header_array
-     course_types.each do |course_type|
+     @years.each do |year|
       row_array = []  
-      row_array << course_type
-        @years.each do |year|
+      row_array << year.to_s
+        course_types.each do |course_type|
           row_array << User.joins(:courses).where('courses.id in (?)', @program.courses.year(year).course_type(course_type)).count
         end
       the_data_array << row_array
@@ -27,11 +27,11 @@
       title: 'Bilangan Aktiviti <%= @program.name %> yang telah dianjurkan dari <%= @years.first %>',
       width: '600',
       height: '500',
-      chartArea: {width: '63%', height: '50%'},
+      chartArea: {width: '50%', height: '50%'},
 legend: {position: 'out'},
 titlePosition: 'out', axisTitlesPosition: 'out',
 hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'out'},
-      hAxis: {title: 'Jenis Aktiviti', titleTextStyle: {color: 'red'},slantedText: true}
+      hAxis: {title: 'Tahun', titleTextStyle: {color: 'red'},slantedText: true}
     };
 
     var chart = new google.visualization.ColumnChart(document.getElementById('userchart'));
