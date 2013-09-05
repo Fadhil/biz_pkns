@@ -4,6 +4,7 @@ html*, body {
 
 body {
   font-size: 14px;
+  margin-top: 0 !important;
   small {
     font-size: 75%;
   }
@@ -16,7 +17,7 @@ body {
     &.navbar {
       margin: 0;
       background: #FC4000;
-      border-bottom: 3px solid #C73100;
+      // border-bottom: 3px solid #C73100;
       .small { font-size:12px; text-align:right; margin-left: 20px;}
       .avatar {
         margin: 13px 13px 0 0;
@@ -41,7 +42,7 @@ body {
           }
         }
         .dropdown {
-          top: 63px;
+          top: 60px;
           box-shadow: none !important;
           border: none;
 
