@@ -1,7 +1,7 @@
 .kpi, th, td{
   border: 1px solid #dddddd;
 }
-th {
+.kpi {
 
   background-color: #fc4000;
 }
