@@ -48,6 +48,14 @@ class Program < ActiveRecord::Base
     end
   end
 
+  def self.users_by_program
+    the_data = {}
+
+    self.each do |program|
+      
+    end
+  end
+
   def self.get_month(month)
     case month
     when 1

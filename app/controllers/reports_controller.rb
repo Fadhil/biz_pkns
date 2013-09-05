@@ -52,6 +52,8 @@ layout 'report_layout'
         @business_categories_users[key]['percentage'] = ((@business_categories_users[key]['count'].to_f / @total_businesses.to_f) * 100 ).round(2).to_s + "%"
     end
 
+    @by_program_data = Program.users_by_program
+    
 
     # bpu_sum = @business_categories_users.sum
     # @business_categories_users.each do |b| 

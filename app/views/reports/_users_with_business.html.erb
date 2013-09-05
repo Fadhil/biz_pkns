@@ -1,0 +1,226 @@
+<script type="text/javascript">
+  google.load("visualization", "1", {packages:["corechart"]});
+  google.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+      ['Umur', 'Lelaki', 'Perempuan'],
+      ['<13',  <%= @members.male.age_13_below.count%>,      <%= @members.female.age_13_below.count%>],
+      ['13-18',  <%= @members.male.age_13_18.count %>,      <%= @members.female.age_13_18.count %>],
+      ['19-24',  <%= @members.male.age_19_24.count %>,       <%= @members.female.age_19_24.count %>],
+      ['25-40',  <%= @members.male.age_25_40.count %>,      <%= @members.female.age_25_40.count %>],
+      ['41>', <%= @members.male.age_41_above.count %>,<%= @nonmembers.age_41_above.count %>]
+    ]);
+
+    var options = {
+      title: 'Pecahan Ahli Mengikut Jantina',
+      isStacked: true,
+      width: '500',
+      height: '300',
+      chartArea: {width: '63%', height: '80%'},
+legend: {position: 'out'},
+titlePosition: 'out', axisTitlesPosition: 'out',
+hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'out'},
+      hAxis: {title: 'Umur', titleTextStyle: {color: 'red'}}
+    };
+
+    var chart = new google.visualization.ColumnChart(document.getElementById('sexchart'));
+    chart.draw(data, options);
+  }
+
+  google.setOnLoadCallback(drawPieChart);
+  function drawPieChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Umur', 'Orang'],
+          ['<13',    <%= @members.age_13_below.count %> ],
+          ['13-18',      <%= @members.age_13_18.count %>],
+          ['19-24', <%= @members.age_19_24.count %>],
+          ['25-40',<%= @members.age_25_40.count %>],
+          ['>41', <%= @members.age_41_above.count %>]
+        ]);
+
+        var options = {
+          title: 'Pecahan Umur Keseluruhan Ahli',
+          width: '600',
+          height: '400'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('sexagechart'));
+        chart.draw(data, options);
+      }
+</script>
+<div class="row">
+  <div class="twelve columns center">
+    <div class="table">
+      <div class="row table-head">
+        <div class="five columns">
+          <h6 class="title">
+            Umur
+          </h6>
+        </div>
+        <div class="two columns">
+          <h6 class="title">
+            Lelaki
+          </h6>
+        </div>
+        <div class="three columns">
+          <h6 class="title">
+            Perempuan
+          </h6>
+        </div>
+        <div class="two columns">
+          <h6 class="title">
+            Jumlah
+          </h6>
+        </div>
+      </div>
+      <div class="row table-rows">
+        <div class="five columns">
+          <p>
+            Bawah 13 tahun
+          </p>
+        </div>
+        <div class="two columns">
+          <p>
+            <%= @members.male.age_13_below.count %>
+          </p>
+        </div>
+        <div class="three columns">
+          <p>
+            <%= @members.female.age_13_below.count %>
+          </p>
+        </div>
+        <div class="two columns">
+          <p>
+            <%= @members.female.age_13_below.count + @members.male.age_13_below.count %>
+          </p>
+        </div>
+      </div>
+      <div class="row table-rows">
+        <div class="five columns">
+          <p>
+            13 - 18 tahun
+          </p>
+        </div>
+        <div class="two columns">
+          <p>
+            <%= @members.male.age_13_18.count %> 
+          </p>
+        </div>
+        <div class="three columns">
+          <p>
+            <%= @members.female.age_13_18.count %>
+          </p>
+        </div>
+        <div class="two columns">
+          <p>
+            <%= @members.female.age_13_18.count + @members.male.age_13_18.count %>
+          </p>
+        </div>
+      </div>
+      <div class="row table-rows">
+        <div class="five columns">
+          <p>
+            19 - 24 tahun
+          </p>
+        </div>
+        <div class="two columns">
+          <p>
+            <%= @members.male.age_19_24.count %> 
+          </p>
+        </div>
+        <div class="three columns">
+          <p>
+            <%= @members.female.age_19_24.count %>
+          </p>
+        </div>
+        <div class="two columns">
+          <p>
+            <%= @members.female.age_19_24.count + @members.male.age_19_24.count %>
+          </p>
+        </div>
+      </div>
+      <div class="row table-rows">
+        <div class="five columns">
+          <p>
+            25 - 40 tahun
+          </p>
+        </div>
+        <div class="two columns">
+          <p>
+            <%= @members.male.age_25_40.count %>
+          </p>
+        </div>
+        <div class="three columns">
+          <p>
+            <%= @members.female.age_25_40.count %>
+          </p>
+        </div>
+        <div class="two columns">
+          <p>
+            <%= @members.female.age_25_40.count + @members.male.age_25_40.count %>
+          </p>
+        </div>
+      </div>
+      <div class="row table-rows">
+        <div class="five columns">
+          <p>
+            Atas 41 tahun
+          </p>
+        </div>
+        <div class="two columns">
+          <p>
+            <%= @members.male.age_41_above.count %>
+          </p>
+        </div>
+        <div class="three columns">
+          <p>
+            <%= @members.female.age_41_above.count %>
+          </p>
+        </div>
+        <div class="two columns">
+          <p>
+            <%= @members.female.age_41_above.count + @members.male.age_41_above.count %>
+          </p>
+        </div>
+      </div>
+      <div class="row table-rows">
+        <div class="five columns">
+          <p class="bold">
+            Jumlah
+          </p>
+        </div>
+        <div class="two columns">
+          <p class="bold">
+            <%= @members.male.count %>
+          </p>
+        </div>
+        <div class="three columns">
+          <p class="bold">
+            <%= @members.female.count  %>
+          </p>
+        </div>
+        <div class="two columns">
+          <p></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="twelve columns">
+    <div id='sexchart' style="width: 500px; height: 300px;"></div>
+
+  </div>
+  <hr>
+    
+  
+</div>
+<div class="row">
+  <div class="twelve columns">
+    <div id='sexagechart' style="width: 600px; height: 400px;"></div>
+    
+  </div>
+  <hr>
+    
+  
+</div>
