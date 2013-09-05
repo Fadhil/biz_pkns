@@ -161,6 +161,6 @@ layout 'report_layout'
     year = Date.today.year
     @the_date = "#{month} #{year}"
 
-    render layout: 'none'
+    render layout: 'kpi_report'
   end
 end

@@ -50,101 +50,106 @@
     %th
       Dis
   - i = 1
+
+  - previous = ''
   - @kpi_results.each do |key, value| 
     - rowspan = value['number_of_course_types']
     - unless key == 'current_month'
+      - header_colour = ( i%2==0 ? '#f88158' : '#ffffff')
       %tr
-        %td{rowspan: rowspan}
+        %td{rowspan: rowspan, style: "background-color:#{header_colour}"}
           = i
-        %td{rowspan: rowspan}
+        %td{rowspan: rowspan, style: "background-color:#{header_colour}"}
           = key
 
         - j = 0
         - value.each do |k,v|
           - unless k == 'number_of_course_types'
+            - coloured = ( previous == '#ffffff' ? '#f88158' : '#ffffff' )
+            - previous = coloured
             - if j == 0
-            
-              %td
+              
+              %td{style: "background-color:#{coloured}"}
                 = k
-              %td
+              %td{style: "background-color:#{coloured}"}
                 = v['jan']
-              %td
+              %td{style: "background-color:#{coloured}"}
                 = v['feb']  
-              %td
+              %td{style: "background-color:#{coloured}"}
                 = v['mar']  
-              %td
+              %td{style: "background-color:#{coloured}"}
                 = v['apr']  
-              %td
+              %td{style: "background-color:#{coloured}"}
                 = v['may']  
-              %td
+              %td{style: "background-color:#{coloured}"}
                 = v['jun']  
-              %td
+              %td{style: "background-color:#{coloured}"}
                 = v['jul']  
-              %td
+              %td{style: "background-color:#{coloured}"}
                 = v['aug']  
-              %td
+              %td{style: "background-color:#{coloured}"}
                 = v['sep']  
-              %td
+              %td{style: "background-color:#{coloured}"}
                 = v['oct']  
-              %td
+              %td{style: "background-color:#{coloured}"}
                 = v['nov']  
-              %td
+              %td{style: "background-color:#{coloured}"}
                 = v['dec']  
-              %td
+              %td{style: "background-color:#{coloured}"}
                 = v['current_total']
-              %td
+              %td{style: "background-color:#{coloured}"}
                 = "#{v['per_session_target']} org/1 sesi"
                 
                 = "@<br/>#{v['current_target']} org /#{v['current_number_of_courses']} sesi".html_safe unless ( v['current_target'] == 0 && v['current_number_of_courses'] == 0 )
-              %td
+              %td{style: "background-color:#{coloured}"}
                 = "#{v['per_session_target']} org/1 sesi"
               
                 = "@<br/>#{v['yearly_target']} org /#{v['yearly_number_of_courses']} sesi".html_safe  unless ( v['yearly_target'] == 0 && v['yearly_number_of_courses'] == 0 )
-              %td
+              %td{style: "background-color:#{coloured}"}
                 = "#{v['current_actual']} %"
-              %td
+              %td{style: "background-color:#{coloured}"}
                 = "#{v['yearly_actual']} %"
             - else
               %tr
-                %td
+                %td{style: "background-color:#{coloured}"}
                   = k
-                %td
+                %td{style: "background-color:#{coloured}"}
                   = v['jan']
-                %td
+                %td{style: "background-color:#{coloured}"}
                   = v['feb']  
-                %td
+                %td{style: "background-color:#{coloured}"}
                   = v['mar']  
-                %td
+                %td{style: "background-color:#{coloured}"}
                   = v['apr']  
-                %td
+                %td{style: "background-color:#{coloured}"}
                   = v['may']  
-                %td
+                %td{style: "background-color:#{coloured}"}
                   = v['jun']  
-                %td
+                %td{style: "background-color:#{coloured}"}
                   = v['jul']  
-                %td
+                %td{style: "background-color:#{coloured}"}
                   = v['aug']  
-                %td
+                %td{style: "background-color:#{coloured}"}
                   = v['sep']  
-                %td
+                %td{style: "background-color:#{coloured}"}
                   = v['oct']  
-                %td
+                %td{style: "background-color:#{coloured}"}
                   = v['nov']  
-                %td
+                %td{style: "background-color:#{coloured}"}
                   = v['dec']  
-                %td
+                %td{style: "background-color:#{coloured}"}
                   = v['current_total']
-                %td
+                %td{style: "background-color:#{coloured}"}
                   = "#{v['per_session_target']} org/1 sesi"
                   
                   = "@<br/>#{v['current_target']} org /#{v['current_number_of_courses']} sesi".html_safe unless ( v['current_target'] == 0 && v['current_number_of_courses'] == 0 )
-                %td
+                %td{style: "background-color:#{coloured}"}
                   = "#{v['per_session_target']} org/1 sesi"
                 
                   = "@<br/>#{v['yearly_target']} org /#{v['yearly_number_of_courses']} sesi".html_safe  unless ( v['yearly_target'] == 0 && v['yearly_number_of_courses'] == 0 )
-                %td
+                %td{style: "background-color:#{coloured}"}
                   = "#{v['current_actual']} %"
-                %td
+                %td{style: "background-color:#{coloured}"}
                   = "#{v['yearly_actual']} %"
             - j += 1
       - i += 1

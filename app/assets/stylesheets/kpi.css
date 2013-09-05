@@ -1,7 +1,11 @@
 .kpi, th, td{
-  border: 1px solid #dddddd
+  border: 1px solid #dddddd;
+}
+th {
+
+  background-color: #fc4000;
 }
 
 .kpi {
-    font-size: 80%;
+    font-size: 100%;
 }
