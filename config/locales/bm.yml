@@ -806,7 +806,7 @@ bm:
       title: 'Laporan Program'
       activities_by_program: 'Bilangan Aktiviti Program'
       users_by_program: 'Bilangan Ahli Program'
-      users_by_activity: 'Bilangan Ahli Aktiviti'
+      users_by_activity: 'Bilangan Peserta Aktiviti'
     user_by_activity:
       total_users: 'Jumlah Peserta'
     kpi:

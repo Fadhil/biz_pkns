@@ -1,5 +1,5 @@
 .row
-  .twelve.columns.center
+  .twelve.columns
     .table
       .row.table-head
         .six.columns
@@ -12,7 +12,8 @@
             Jumlah
       - @result_set.each do |course_type,values|
         - if course_type == 'grand_total'
-          .row.table-row
+
+          .row.table-row{style: "background-color:#FFF380"}
             .six.columns
               %p
                 Jumlah Keseluruhan
@@ -24,14 +25,15 @@
                 = @result_set['grand_total']
         - else
           .row.table-row
-            .six.columns
+            .six.columns{style: "background-color:#F88158"}
               %p
                 = course_type
             .three.columns
             .three.columns
           - values.each do |key, user_count|
-            .row.table-row
-              - if key == 'total_users'
+            
+            - if key == 'total_users'
+              .row.table-row{style: "background-color:#D1D0CE"}
                 .six.columns
                   %p
                     = t('.total_users')
@@ -39,10 +41,11 @@
                 .three.columns
                   %p
                     = user_count
-              - else
+            - else
+              .row.table-row
                 .six.columns
                   %p
-                    = key
+                    = "&nbsp;&nbsp;&nbsp;&nbsp;#{key}".html_safe
                 .three.columns
                   %p
                     = user_count

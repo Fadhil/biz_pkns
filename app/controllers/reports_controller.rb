@@ -92,7 +92,7 @@ layout 'report_layout'
     end
 
     if @report_type && params[@report_type.to_sym].present?
-        unless @report_type == 'consultant_list' || 'user_program'
+        unless @report_type == 'consultant_list' || @report_type =='user_program'
             @program = Program.find(params[@report_type.to_sym][:program])
 
         end
