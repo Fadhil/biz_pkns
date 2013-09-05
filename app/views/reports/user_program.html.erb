@@ -1,19 +1,18 @@
 <script type="text/javascript">
-<% course_types = @program.course_types %>
 <% the_data_array = [] %>
   google.load("visualization", "1", {packages:["corechart"]});
   google.setOnLoadCallback(drawChart);
   <% header_array = ['Tahun'] 
      row_array = []
-     course_types.each do |course_type| 
-       header_array << course_type
+     @years.each do |year| 
+       header_array << year
      end 
      the_data_array << header_array
-     @years.each do |year|
+     @programs.each do |program|
       row_array = []  
-      row_array << year.to_s
-        course_types.each do |course_type|
-          row_array << User.joins(:courses).where('courses.id in (?)', @program.courses.year(year).course_type(course_type)).count
+      row_array << program.name
+        @years.each do |year|
+          row_array << User.joins(:courses).where('courses.id in (?)', program.courses.year(year)).count
         end
       the_data_array << row_array
      end
@@ -24,14 +23,14 @@
     );
 
     var options = {
-      title: 'Bilangan Aktiviti <%= @program.name %> yang telah dianjurkan dari <%= @years.first %>',
+      title: 'Bilangan Ahli yang mengikuti Program dari <%= @years.first %>',
       width: '600',
       height: '500',
       chartArea: {width: '50%', height: '50%'},
 legend: {position: 'out'},
 titlePosition: 'out', axisTitlesPosition: 'out',
 hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'out'},
-      hAxis: {title: 'Tahun', titleTextStyle: {color: 'red'},slantedText: true}
+      hAxis: {title: 'Program', titleTextStyle: {color: 'red'},slantedText: true}
     };
 
     var chart = new google.visualization.ColumnChart(document.getElementById('userchart'));
@@ -41,7 +40,7 @@ hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'out'},
  
 </script>
 <div class="row">
-  <div class="twelve columns center">
+  <div class="twelve columns">
     <div class="table">
       <div class="row table-head">
         <div class="two columns">
@@ -56,19 +55,18 @@ hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'out'},
         <% end %> 
       </div>
       <% 
-        course_types = @program.course_types 
-        course_types.each do |course_type|
+        @programs.each do |program|
       %>
         <div class="row table-rows">
           <div class="two columns">
             <p>
-              <%= course_type %>
+              <%= program.name %>
             </p>
           </div>
           <% @years.each do |year| %>
             <div class="two columns">
               <p>
-                <%= User.joins(:courses).where('courses.id in (?)', @program.courses.year(year).course_type(course_type)).count %>
+                <%= User.joins(:courses).where('courses.id in (?)', program.courses.year(year)).count %>
               </p>
             </div>
           <% end %>
@@ -85,8 +83,8 @@ hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'out'},
             <p>
               <%
                 total = 0
-                course_types.each do |course_type|
-                  total += User.joins(:courses).where('courses.id in (?)', @program.courses.year(year).course_type(course_type)).count
+                @programs.each do |program|
+                  total += User.joins(:courses).where('courses.id in (?)', program.courses.year(year)).count
                 end
 
               %>
