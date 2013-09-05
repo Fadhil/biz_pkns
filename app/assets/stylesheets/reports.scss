@@ -1,0 +1,32 @@
+/*
+ * Default Report KPI
+ */
+
+
+body {
+  .table {
+    &.kpi {
+      font-size: 12px;
+
+      th {
+        border: none;
+        color: rgba(255, 255, 255, 1);
+        vertical-align: middle;
+        background-color: #fc4000;
+
+        &[colspan*="12"] {
+          border-bottom: 1px solid rgba(212, 212, 212, 0.8);
+        }
+      }
+
+      td {
+        border: none;
+        border-bottom: 1px solid rgba(212, 212, 212, 0.8);
+
+        &[style^="background-"] {
+          background: rgba(222, 222, 222, 0.4);
+        }
+      }
+    }
+  }
+}

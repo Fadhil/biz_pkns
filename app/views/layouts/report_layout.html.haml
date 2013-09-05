@@ -23,5 +23,7 @@
       .three.columns.print-disabled
         = render '/layouts/sidebar'
       .nine.columns.print-section
+    .row
         = yield
-  = render '/layouts/footer'
+    .row
+      = render '/layouts/footer'
