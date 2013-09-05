@@ -50,10 +50,20 @@ class Program < ActiveRecord::Base
 
   def self.users_by_program
     the_data = {}
+    with_business_total = 0
+    without_business_total = 0
+    active.each do |program|
+      the_data[program.name] = {} unless the_data[program.name]
+      p_member_count = program.users.members.count
+      the_data[program.name]['with_business'] = program.users.members.joins(:business_profiles).uniq.to_a.size
+      the_data[program.name]['without_business'] = ( p_member_count - the_data[program.name]['with_business'] ) 
+      with_business_total += the_data[program.name]['with_business']
+      without_business_total += the_data[program.name]['without_business']
 
-    self.each do |program|
-      
     end
+    the_data['Jumlah']= {'with_business'=> with_business_total, 'without_business' => without_business_total }
+
+    the_data
   end
 
   def self.get_month(month)

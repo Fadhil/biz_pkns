@@ -188,7 +188,7 @@ bm:
   member_gender_by_age: 'Pecahan Ikut Jantina'
   member_by_current_status: 'Pecahan Status Semasa'
   member_by_business_details: 'Pecahan Perniagaan'
-  member_by_program: 'Bil Ahli Berniaga'
+  member_by_program: 'Pecahan Ahli Berniaga'
   yes_no: 'Ya/Tidak'
   yes_answer: 'Ya'
   no_answer: 'Tidak'
