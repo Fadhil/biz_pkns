@@ -15,24 +15,23 @@
         %span
           %i.icon-down-open
         .dropdown
-          - if current_user
-            %ul
-              %li
-                = link_to user_path(id: current_user.id) do
-                  %i.icon-user
-                  = t('profile')
-              / %li
-              /   = link_to user_course_listing_path do
-              /     %i.icon-book
-              /     = t('my_course')
-              %li
-                = link_to edit_user_registration_path do
-                  %i.icon-tools
-                  = t('setting')
-              %li
-                = link_to destroy_user_session_path, :method => 'delete' do
-                  %i.icon-logout
-                  = t('logout')
+          %ul
+            %li
+              = link_to user_path(id: current_user.id) do
+                %i.icon-user
+                = t('profile')
+            / %li
+            /   = link_to user_course_listing_path do
+            /     %i.icon-book
+            /     = t('my_course')
+            %li
+              = link_to edit_user_registration_path do
+                %i.icon-tools
+                = t('setting')
+            %li
+              = link_to destroy_user_session_path, :method => 'delete' do
+                %i.icon-logout
+                = t('logout')
 - elsif current_consultant
   %li
     .row
