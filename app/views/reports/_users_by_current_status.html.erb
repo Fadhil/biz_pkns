@@ -67,12 +67,12 @@ hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'in'},
             Lelaki
           </h6>
         </div>
-        <div class="three columns">
+        <div class="three columns center">
           <h6 class="title">
             Perempuan
           </h6>
         </div>
-        <div class="two columns">
+        <div class="two columns center">
           <h6 class="title">
             Jumlah
           </h6>
@@ -84,17 +84,17 @@ hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'in'},
             <%= t('reports.users.employment.own_business') %>
           </p>
         </div>
-        <div class="two columns">
+        <div class="two columns center">
           <p>
             <%= @members.male.own_business.count %>
           </p>
         </div>
-        <div class="three columns">
+        <div class="three columns center">
           <p>
             <%= @members.female.own_business.count %>
           </p>
         </div>
-        <div class="two columns">
+        <div class="two columns center">
           <p>
             <%= @members.female.own_business.count + @members.male.own_business.count %>
           </p>
@@ -106,17 +106,17 @@ hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'in'},
             <%= t('reports.users.employment.working_studying') %>
           </p>
         </div>
-        <div class="two columns">
+        <div class="two columns center">
           <p>
             <%= @members.male.working_studying.count %>
           </p>
         </div>
-        <div class="three columns">
+        <div class="three columns center">
           <p>
             <%= @members.female.working_studying.count %>
           </p>
         </div>
-        <div class="two columns">
+        <div class="two columns center">
           <p>
             <%= @members.female.working_studying.count + @members.male.working_studying.count %>
           </p>
@@ -128,17 +128,17 @@ hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'in'},
             <%= t('reports.users.employment.studying') %>
           </p>
         </div>
-        <div class="two columns">
+        <div class="two columns center">
           <p>
             <%= @members.male.studying.count %>
           </p>
         </div>
-        <div class="three columns">
+        <div class="three columns center">
           <p>
             <%= @members.female.studying.count %>
           </p>
         </div>
-        <div class="two columns">
+        <div class="two columns center">
           <p>
             <%= @members.female.studying.count + @members.male.studying.count %>
           </p>
@@ -150,17 +150,17 @@ hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'in'},
             <%= t('reports.users.employment.working_self_business') %>
           </p>
         </div>
-        <div class="two columns">
+        <div class="two columns center">
           <p>
             <%= @members.male.working_self_business.count %>
           </p>
         </div>
-        <div class="three columns">
+        <div class="three columns center">
           <p>
             <%= @members.female.working_self_business.count %>
           </p>
         </div>
-        <div class="two columns">
+        <div class="two columns center">
           <p>
             <%= @members.female.working_self_business.count + @members.male.working_self_business.count %>
           </p>
@@ -172,17 +172,17 @@ hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'in'},
             <%= t('reports.users.employment.part_time_business') %>
           </p>
         </div>
-        <div class="two columns">
+        <div class="two columns center">
           <p>
             <%= @members.male.part_time_business.count %>
           </p>
         </div>
-        <div class="three columns">
+        <div class="three columns center">
           <p>
             <%= @members.female.part_time_business.count %>
           </p>
         </div>
-        <div class="two columns">
+        <div class="two columns center">
           <p>
             <%= @members.female.part_time_business.count + @members.male.part_time_business.count %>
           </p>
@@ -194,17 +194,17 @@ hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'in'},
             <%= t('reports.users.employment.working') %>
           </p>
         </div>
-        <div class="two columns">
+        <div class="two columns center">
           <p>
             <%=  @members.male.working.count %>
           </p>
         </div>
-        <div class="three columns">
+        <div class="three columns center">
           <p>
             <%= @members.female.working.count %>
           </p>
         </div>
-        <div class="two columns">
+        <div class="two columns center">
           <p>
             <%= @members.female.working.count + @members.male.working.count %>
           </p>
@@ -217,17 +217,17 @@ hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'in'},
               <%= t('reports.users.employment.unknown') %>
             </p>
           </div>
-          <div class="two columns">
+          <div class="two columns center">
             <p>
               <%= @members.male.unknown.count %>
             </p>
           </div>
-          <div class="three columns">
+          <div class="three columns center">
             <p>
               <%= @members.female.unknown.count %>
             </p>
           </div>
-          <div class="two columns">
+          <div class="two columns center">
             <p>
               <%= @members.female.unknown.count + @members.male.unknown.count %>
             </p>
@@ -240,7 +240,7 @@ hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'in'},
               Jumlah
             </p>
           </div>
-          <div class="two columns">
+          <div class="two columns center">
             <p class="bold">
               <%= 
                 @members.male.own_business.count +          
@@ -252,12 +252,12 @@ hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'in'},
               %>
             </p>
           </div>
-          <div class="three columns">
+          <div class="three columns center">
             <p class="bold">
               <%= @members.female.has_employment_status.count  %>
             </p>
           </div>
-          <div class="two columns">
+          <div class="two columns center">
             <p></p>
           </div>
         </div>

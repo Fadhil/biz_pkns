@@ -49,7 +49,7 @@ hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'out'},
       }
 </script>
 <div class="row">
-  <div class="twelve columns center">
+  <div class="twelve columns left">
     <div class="table">
       <div class="row table-head">
         <div class="five columns">
@@ -57,17 +57,17 @@ hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'out'},
             Umur
           </h6>
         </div>
-        <div class="two columns">
+        <div class="two columns center">
           <h6 class="title">
             Lelaki
           </h6>
         </div>
-        <div class="three columns">
+        <div class="three columns center">
           <h6 class="title">
             Perempuan
           </h6>
         </div>
-        <div class="two columns">
+        <div class="two columns center">
           <h6 class="title">
             Jumlah
           </h6>
@@ -79,17 +79,17 @@ hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'out'},
             Bawah 13 tahun
           </p>
         </div>
-        <div class="two columns">
+        <div class="two columns center">
           <p>
             <%= @members.male.age_13_below.count %>
           </p>
         </div>
-        <div class="three columns">
+        <div class="three columns center">
           <p>
             <%= @members.female.age_13_below.count %>
           </p>
         </div>
-        <div class="two columns">
+        <div class="two columns center">
           <p>
             <%= @members.female.age_13_below.count + @members.male.age_13_below.count %>
           </p>
@@ -101,17 +101,17 @@ hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'out'},
             13 - 18 tahun
           </p>
         </div>
-        <div class="two columns">
+        <div class="two columns center">
           <p>
             <%= @members.male.age_13_18.count %> 
           </p>
         </div>
-        <div class="three columns">
+        <div class="three columns center">
           <p>
             <%= @members.female.age_13_18.count %>
           </p>
         </div>
-        <div class="two columns">
+        <div class="two columns center">
           <p>
             <%= @members.female.age_13_18.count + @members.male.age_13_18.count %>
           </p>
@@ -123,17 +123,17 @@ hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'out'},
             19 - 24 tahun
           </p>
         </div>
-        <div class="two columns">
+        <div class="two columns center">
           <p>
             <%= @members.male.age_19_24.count %> 
           </p>
         </div>
-        <div class="three columns">
+        <div class="three columns center">
           <p>
             <%= @members.female.age_19_24.count %>
           </p>
         </div>
-        <div class="two columns">
+        <div class="two columns center">
           <p>
             <%= @members.female.age_19_24.count + @members.male.age_19_24.count %>
           </p>
@@ -145,17 +145,17 @@ hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'out'},
             25 - 40 tahun
           </p>
         </div>
-        <div class="two columns">
+        <div class="two columns center">
           <p>
             <%= @members.male.age_25_40.count %>
           </p>
         </div>
-        <div class="three columns">
+        <div class="three columns center">
           <p>
             <%= @members.female.age_25_40.count %>
           </p>
         </div>
-        <div class="two columns">
+        <div class="two columns center">
           <p>
             <%= @members.female.age_25_40.count + @members.male.age_25_40.count %>
           </p>
@@ -167,17 +167,17 @@ hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'out'},
             Atas 41 tahun
           </p>
         </div>
-        <div class="two columns">
+        <div class="two columns center">
           <p>
             <%= @members.male.age_41_above.count %>
           </p>
         </div>
-        <div class="three columns">
+        <div class="three columns center">
           <p>
             <%= @members.female.age_41_above.count %>
           </p>
         </div>
-        <div class="two columns">
+        <div class="two columns center">
           <p>
             <%= @members.female.age_41_above.count + @members.male.age_41_above.count %>
           </p>
@@ -189,17 +189,17 @@ hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'out'},
             Jumlah
           </p>
         </div>
-        <div class="two columns">
+        <div class="two columns center">
           <p class="bold">
             <%= @members.male.count %>
           </p>
         </div>
-        <div class="three columns">
+        <div class="three columns center">
           <p class="bold">
             <%= @members.female.count  %>
           </p>
         </div>
-        <div class="two columns">
+        <div class="two columns center">
           <p></p>
         </div>
       </div>
