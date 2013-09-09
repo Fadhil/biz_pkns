@@ -18,12 +18,12 @@
       title: 'Bilangan Ahli (Tidak Berniaga/Aktif Berniaga) Mengikut Justifikasi Program',
       isStacked: true,
       width: '900',
-      height: '600',
+      height: '800',
       chartArea: {width: '75%', height: '50%', left: 0},
 legend: {position: 'out'},
 titlePosition: 'out', axisTitlesPosition: 'out',
 hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'in'},
-      hAxis: {title: 'Program', titleTextStyle: {color: 'red'},slantedText: true}
+      hAxis: {title: 'Program', titleTextStyle: {color: 'red'},slantedText: true, slantedTextAngle: 90}
     };
 
     var chart = new google.visualization.ColumnChart(document.getElementById('usersprogramchart'));
