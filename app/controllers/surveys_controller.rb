@@ -86,10 +86,10 @@ class SurveysController < ApplicationController
     end
     respond_to do |format|
       if @survey.save
-        format.html { redirect_to @survey, notice: the_notice }
+        format.html { redirect_to survey_path(@survey), notice: the_notice }
       else
         the_notice = 'something went wrong'
-        format.html { redirect_to @survey, notice: the_notice}
+        format.html { redirect_to survey_path(@survey), notice: the_notice}
       end
     end
   end

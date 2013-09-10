@@ -20,7 +20,7 @@
         %p= survey.id
       .seven.columns
         %p
-          = link_to survey.title, survey_path(survey), :class => 'name'
+          = survey.title, :class => 'name'
       .three.columns
         %span.medium.pretty.btn.warning
           = link_to t('take_survey'), take_survey_path(survey)
