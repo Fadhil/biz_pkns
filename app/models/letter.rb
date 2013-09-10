@@ -3,6 +3,7 @@ class Letter < ActiveRecord::Base
   attr_accessible :line1, :line2, :postcode, :city, :state
   attr_accessible :address
 
+  validates :subject, presence: true
   has_many :users
 
   def full_name

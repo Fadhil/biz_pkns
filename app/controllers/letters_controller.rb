@@ -83,7 +83,7 @@ class LettersController < ApplicationController
   # GET /letters/new
   # GET /letters/new.json
   def new
-    @letter = Letter.new
+    @letter = Letter.new(params[:letter])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -109,7 +109,8 @@ class LettersController < ApplicationController
         format.html { redirect_to preview_letter_path(@letter), notice: 'Surat berjaya dicipta.' }
         format.json { render json: @letter, status: :created, location: @letter }
       else
-        format.html { render action: "new" }
+        flash[:alert] = 'Perkara Diperlukan' 
+        format.html { render 'new' }
         format.json { render json: @letter.errors, status: :unprocessable_entity }
       end
     end

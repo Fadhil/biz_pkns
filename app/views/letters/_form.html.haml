@@ -31,11 +31,11 @@
       .control-group
         = f.label t('.subject'), :class => 'control-label'
         .controls
-          = f.text_field :subject, :class => 'text input input-xlarge'
+          = f.text_field :subject, :class => 'text input input-xlarge', value: @letter.subject
       .control-group
         = f.label t('.message'), :class => 'control-label'
         .controls
-          = f.text_area :message, :class => 'redactor', :rows => 40, :cols => 520
+          = f.text_area :message, :class => 'redactor',value: @letter.message, :rows => 40, :cols => 520
     %li.field
       %span.medium.pretty.btn.info
         - if @letter.new_record?
