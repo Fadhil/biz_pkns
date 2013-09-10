@@ -23,4 +23,19 @@ $(document).ready(
       deniedTags: ['p','html','div']
   }
   );
+  $('.redactor-less').redactor(
+    { 
+      
+      "path":"/assets/redactor-rails",
+      "css":"style.css",
+      buttons: ['html', '|', 'formatting', '|', 'bold', 'italic', 'deleted', '|', 
+                'unorderedlist', 'orderedlist', 'outdent', 'indent', '|',
+                'table', '|',
+                'fontcolor', 'backcolor', '|', 'alignment', '|', 'horizontalrule'],
+      formattingTags: ['blockquote', 'pre', 'h1', 'h2', 'h3', 'h4'], 
+      paragraphy: false,
+      linebreaks: true,
+      deniedTags: ['p','html','div']
+  }
+  );
 });

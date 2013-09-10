@@ -35,7 +35,7 @@
       .control-group
         = f.label t('.message'), :class => 'control-label'
         .controls
-          = f.text_area :message, :class => 'redactor',value: @letter.message, :rows => 40, :cols => 520
+          = f.text_area :message, :class => 'redactor-less',value: @letter.message, :rows => 40, :cols => 520
     %li.field
       %span.medium.pretty.btn.info
         - if @letter.new_record?
