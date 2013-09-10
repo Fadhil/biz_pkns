@@ -23,10 +23,12 @@
           = link_to "#{survey.title}", survey_path(survey), :class => 'name'
         - unless survey.description.blank?
           %p
-            = survey.description.html_safe
+            = sanitize(survey.description[0..140])
+            - if survey.description.size > 140
+              = '...'
         - else
           %p
-            %em Description not available.
+            %em Huraian tidak dijumpai.
       .two.columns
         .row
           .twelve.columns
