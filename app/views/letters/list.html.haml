@@ -29,7 +29,7 @@
       %tr
         %td= i+1
         %td= letter.subject
-        %td= letter.created_at.strftime("%d %b %y, %M:%S")
+        %td= letter.created_at.strftime("%d %b %y, %H:%M")
         %td
           =# link_to t('.edit', :default => t("helpers.links.edit")), edit_newsletter_path(newsletter), :class => 'btn btn-mini'
           %span.small.pretty.btn.primary
