@@ -12,6 +12,8 @@
           = f.text_field :subject, :class => 'text input input-xxlarge', :placeholder => t('.subject')
         %li.field
           = f.label t('.message')
+          %small
+            = "* Pastikan gambar dalam bentuk .jpg dan saiz dimension tidak melebihi 500x500"
           = f.text_area :message, :class => 'textarea redactor', :value => @newsletters_template.template
           - if current_consultant
             = f.hidden_field :consultant_id, value: current_consultant.id
