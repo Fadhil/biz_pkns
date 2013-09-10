@@ -20,7 +20,9 @@
           = link_to program.name, program_path(program)
       .six.columns
         %p
-          = program.description.html_safe
+          = sanitize(program.description[0..140])
+          - if program.description.html_safe.size > 140
+            = "..."
       .two.columns
         = program.active? ? t('active') : t('inactive')
       .two.columns
