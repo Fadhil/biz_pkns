@@ -54,12 +54,12 @@ class LettersController < ApplicationController
       when 'users_by_program'
         if params[:letter_program_select].present?
           the_program = Program.find(params[:letter_program_select])
-          @users = the_program.users
+          @users = the_program.users.has_address
         end
       when 'users_by_course'
         if params[:letter_course_select].present?
           the_course = Course.find(params[:letter_course_select])
-          @users = the_course.users
+          @users = the_course.users.has_address
         end
       else
         @users = User.nonadmin.has_address
