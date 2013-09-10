@@ -16,7 +16,7 @@
 .row
   .twelve.columns
     = form_for @survey, url: survey_path do |f|
-      - if !@survey.completed
+      - if !@survey.completed && @survey.users.nil?
         = f.hidden_field :completed, value: 1
         %span.medium.pretty.btn.info
           = f.submit t('end_survey')
