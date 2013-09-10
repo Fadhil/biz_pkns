@@ -41,21 +41,21 @@ hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'out'},
  
 </script>
 <div class="row">
-  <div class="twelve columns center">
+  <div class="twelve columns">
     <div class="table">
       <div class="row table-head">
         <div class="two columns">
           <h6 class="title"></h6>
         </div>
         <% @years.each do |year| %>
-          <div class="two columns">
+          <div class="two columns center">
             <h6 class="title">
               <%= year %>
               
             </h6>
           </div>
         <% end %>
-        <div class="two columns">
+        <div class="two columns center">
           <h6 class="title">
             Jumlah
           </h6>
@@ -64,14 +64,14 @@ hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'out'},
 
       <% course_types.each do |course_type| %>
         <div class="row table-rows">
-          <div class="two columns">
+          <div class="two columns left">
             <p>
               <%= course_type %>
             </p>
           </div>
           <% total = 0 %>
           <% @years.each do |year| %>
-            <div class="two columns">
+            <div class="two columns center">
               <p>
                 <%= @program.courses.completed.year(year).course_type(course_type).count %>
                 <% total += @program.courses.completed.year(year).course_type(course_type).count %>
@@ -79,7 +79,7 @@ hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'out'},
             </div>
           <% end %>
           
-          <div class="two columns">
+          <div class="two columns center">
             
             <p>
               <%= total %>
@@ -89,7 +89,7 @@ hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'out'},
       <% end %>
      
       <div class="row table-rows">
-        <div class="two columns">
+        <div class="two columns left">
           <p>
             Jumlah
           </p>
@@ -97,7 +97,7 @@ hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'out'},
         <% @years.each do |year| %>
 
           
-          <div class="two columns">
+          <div class="two columns center">
             <p>
               <% total = 0 %>
               <% course_types.each do |course_type| %>
