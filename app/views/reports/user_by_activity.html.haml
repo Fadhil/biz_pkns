@@ -4,10 +4,10 @@
       .row.table-head
         .six.columns
           %h6.title
-        .three.columns
+        .three.columns.center
           %h6.title
             Bil Peserta
-        .three.columns
+        .three.columns.center
           %h6.title
             Jumlah
       - @result_set.each do |course_type,values|
@@ -17,10 +17,10 @@
             .six.columns
               %p
                 Jumlah Keseluruhan
-            .three.columns
+            .three.columns.center
               %p
                 = @result_set['grand_total']
-            .three.columns
+            .three.columns.center
               %p
                 = @result_set['grand_total']
         - else
@@ -38,7 +38,7 @@
                   %p
                     = t('.total_users')
                 .three.columns
-                .three.columns
+                .three.columns.center
                   %p
                     = user_count
             - else
@@ -46,10 +46,10 @@
                 .six.columns
                   %p
                     = "&nbsp;&nbsp;&nbsp;&nbsp;#{key}".html_safe
-                .three.columns
+                .three.columns.center
                   %p
                     = user_count
-                .three.columns
+                .three.columns.center
 
 
               
