@@ -1,0 +1,19 @@
+
+<script type="text/javascript">
+  google.load("visualization", "1", {packages:["corechart"]});
+  google.setOnLoadCallback(drawPieChart);
+  function drawPieChart() {
+        var data = google.visualization.arrayToDataTable(<%= graph_data.to_s.html_safe %>);
+
+        var options = {
+          title: <%= chart_title %>,
+          width: '600',
+          height: '400'
+        };
+
+        var chart = new google.visualization.<%= chart_type.capitalize %>Chart(document.getElementById('<%= div_name.to_s %>'));
+        chart.draw(data, options);
+   }
+
+  
+</script>

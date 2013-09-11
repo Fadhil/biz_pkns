@@ -2,6 +2,7 @@
   %h3.twelve.columns
     ="Laporan " + @survey.title
     - chart_type = params[:chart][:type] rescue 'bar'
+    - chart_type = 'column' if chart_type == 'bar'
   %hr.divider
 .row
   .eight.columns
@@ -9,6 +10,9 @@
   .four.columns
     %span.label.info= "#{t('.answered')} : #{@survey.users.where('completed_surveys.completed is true').count}"
     %span.label.info= "#{t('.requested')} : #{@survey.users.count}"
+
+%script{ :src => 'http://www.google.com/jsapi', :type => 'text/javascript', :charset => 'utf-8' }
+
 .row
   .twelve.columns
     %section.vertical.tabs
@@ -24,6 +28,7 @@
               = t('.pie_chart')
         .tab-content.eight.columns.active
           - @survey.questions.each_with_index do |q,index|
+            
             %h6
               = t('.question') + " #{index + 1}"
             %strong
@@ -55,9 +60,9 @@
                         = q.responses.where('answer = ?','yes').count
                       %td
                         = q.responses.where('answer = ?','no').count
-                %div
-
-                  = image_tag( Gchart.send(chart_type.to_s,{data: [0,q.responses.where('answer = ?','yes').count,q.responses.where('answer = ?','no').count],labels: ['',t('yes_answer'),t('no_answer')],axis_with_labels: 'y'}))
+                
+                  = render partial: 'survey_graphs', locals: { div_name: "chart_#{index}", graph_data: [['Jawapan','Bil'],['Yes',q.responses.where('answer = ?','yes').count],['No',q.responses.where('answer = ?','no').count]], chart_title: "'Soalan #{index + 1}'", chart_type: chart_type}
+                  = content_tag('div','',id: "chart_#{index}")
               - when 'multiple_choice'
                 %table.table.table-striped{ style: "width: 400px;"}
                   %thead
@@ -80,8 +85,10 @@
                         = q.responses.where('answer = ?','C').count
                       %td
                         = q.responses.where('answer = ?','D').count
-                %div
-                  = image_tag( Gchart.send(chart_type,{data: [0, q.responses.where('answer = ?','A').count,q.responses.where('answer = ?','B').count,q.responses.where('answer = ?','C').count,q.responses.where('answer = ?','D').count],labels: ['','A','B','C','D'],axis_with_labels: 'y'}))
+
+                  = render partial: 'survey_graphs', locals: { div_name:  "chart_#{index}", graph_data: [['Jawapan','Bil'],['A',q.responses.where('answer = ?','A').count],['B',q.responses.where('answer = ?','B').count],['C',q.responses.where('answer = ?','C').count],['D',q.responses.where('answer = ?','D').count]], chart_title: "'Soalan #{index + 1}'", chart_type: chart_type}
+                  
+                  = content_tag('div','',id: "chart_#{index}")
               - when 'scale'
                 %table.table.table-striped
                   %thead
@@ -109,7 +116,9 @@
                       %td
                         = q.responses.where('answer = ?','5').count
                 %div
-                  = image_tag( Gchart.send(chart_type, {data: [0,q.responses.where('answer = ?','1').count,q.responses.where('answer = ?','2').count,q.responses.where('answer = ?','3').count,q.responses.where('answer = ?','4').count,q.responses.where('answer = ?','5').count],labels: ['','1','2','3','4','5'], axis_with_labels: 'y'}))
+                  = render partial: 'survey_graphs', locals: { div_name:  "chart_#{index}", graph_data: [['Jawapan','Bil'],['1',q.responses.where('answer = ?','1').count],['2',q.responses.where('answer = ?','2').count],['3',q.responses.where('answer = ?','3').count],['4',q.responses.where('answer = ?','4').count],['5',q.responses.where('answer = ?','5').count]], chart_title: "'Soalan #{index + 1}'", chart_type: chart_type}
+
+                  = content_tag('div','',id: "chart_#{index}")
 
               - when 'subjective'
                 %table.table.table-striped
