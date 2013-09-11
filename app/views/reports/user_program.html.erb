@@ -25,12 +25,12 @@
     var options = {
       title: 'Bilangan Ahli yang mengikuti Program dari <%= @years.first %>',
       width: '600',
-      height: '500',
-      chartArea: {width: '50%', height: '50%'},
+      height: '800',
+      chartArea: {width: '50%', height: '40%'},
 legend: {position: 'out'},
 titlePosition: 'out', axisTitlesPosition: 'out',
 hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'out'},
-      hAxis: {title: 'Program', titleTextStyle: {color: 'red'},slantedText: true}
+      hAxis: {title: 'Program', titleTextStyle: {color: 'red'},slantedText: true, slantedTextAngle: 90}
     };
 
     var chart = new google.visualization.ColumnChart(document.getElementById('userchart'));
@@ -47,7 +47,7 @@ hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'out'},
           <h6 class="title"></h6>
         </div>
         <% @years.each do |year| %>
-          <div class="two columns">
+          <div class="two columns center">
             <h6 class="title">
               <%= year %>
             </h6>
@@ -64,7 +64,7 @@ hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'out'},
             </p>
           </div>
           <% @years.each do |year| %>
-            <div class="two columns">
+            <div class="two columns center">
               <p>
                 <%= User.joins(:courses).where('courses.id in (?)', program.courses.year(year)).count %>
               </p>
@@ -79,7 +79,7 @@ hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'out'},
           </p>
         </div>
         <% @years.each do |year| %>
-          <div class="two columns">
+          <div class="two columns center">
             <p>
               <%
                 total = 0
@@ -98,7 +98,7 @@ hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'out'},
 </div>
 <div class="row">
   <div class="twelve columns">
-    <div id='userchart' style="width: 600px; height: 500px;"></div>
+    <div id='userchart' style="width: 600px; height: 800px;"></div>
     
   </div>
   <hr>
