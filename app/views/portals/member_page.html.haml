@@ -4,10 +4,10 @@
   %hr.divider
 .row
   %ul.four_up.tiles
-    - [0,1,2,3,4,5].each do |index|
+    - @members.size.times do |index|
       %li.panel.center
         .image
-          - unless @members[index].try(:profile_photo).try(:file).nil?
+          - unless @members[index].profile_photo.nil?
             = image_tag(@members[index].try(:profile_photo).try(:file), size: "100x100")
         .name
           %h5

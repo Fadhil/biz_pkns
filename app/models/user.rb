@@ -39,6 +39,8 @@ class User < ActiveRecord::Base
   scope :working_employment_status, where('current_employment_status in (?)',['own_business',
                                                                               'working_self_business',
                                                                               'working_studying'])
+
+  scope :has_profile_photo, joins(:profile_photo)
   
   before_save :default_values
   before_save :complete_profile
@@ -320,7 +322,7 @@ class User < ActiveRecord::Base
 
   # Select x number of random people with current employment status with a business
   def self.random_businessmen(x)
-    random_ids = self.working_employment_status.map(&:id).sort_by{ rand }.slice(0,x)
+    random_ids = self.has_profile_photo.working_employment_status.map(&:id).sort_by{ rand }.slice(0,x)
     self.where('id in (?)',random_ids)
   end
 end
