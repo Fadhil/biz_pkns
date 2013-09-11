@@ -7,7 +7,8 @@
     - [0,1,2,3,4,5].each do |index|
       %li.panel.center
         .image
-          = image_tag(@members[index].try(:profile_photo).try(:file), size: "100x100")
+          - unless @members[index].try(:profile_photo).try(:file).nil?
+            = image_tag(@members[index].try(:profile_photo).try(:file), size: "100x100")
         .name
           %h5
             = link_to @members[index].try(:full_name), '#'
