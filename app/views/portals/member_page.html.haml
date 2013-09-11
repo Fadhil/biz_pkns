@@ -4,7 +4,7 @@
   %hr.divider
 .row
   %ul.four_up.tiles
-    - (0..5).each do |index|
+    - [0,1,2,3,4,5].each do |index|
       %li.panel.center
         .image
           = image_tag(@members[index].try(:profile_photo).try(:file), size: "100x100")
