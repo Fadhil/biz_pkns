@@ -5,10 +5,10 @@
         .six.columns
           %h6.title
             = t('consultant_name')
-        .three.columns
+        .three.columns.center
           %h6.title
             = t('registered_year')
-        .three.columns
+        .three.columns.center
           %h6.title
             = t('current_status')
       - @consultants.each do |consultant|
@@ -16,10 +16,10 @@
           .six.columns
             %p
               = consultant.full_name
-          .three.columns
+          .three.columns.center
             %p 
               = consultant.register_date
-          .three.columns
+          .three.columns.center
             %p
               = consultant.is_still_active? ? t('active') : t('inactive')
  

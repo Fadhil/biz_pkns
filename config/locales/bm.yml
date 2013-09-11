@@ -56,6 +56,7 @@ bm:
   create_user: 'Daftar Ahli'
   customers: 'Pelanggan'
   current_employment_status: 'Status Semasa'
+  current_status: 'Status Semasa'
   date_tarikh: 'Tarikh'
   description: 'Huraian'
   did_not_receive_confirmation: "Tidak terima arahan pengesahan?"
