@@ -18,7 +18,7 @@
     .row.table-rows
       .two.columns
         %p
-          = link_to letter.id, letter_path(letter), :class => 'name'
+          = link_to i + 1, letter_path(letter), :class => 'name'
       .eight.columns
         %p
           = "#{letter.first_name} #{letter.last_name}"
