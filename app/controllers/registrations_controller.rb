@@ -19,7 +19,7 @@ class RegistrationsController < Devise::RegistrationsController
       end
     else
       flash[:notice] = nice_errors(@user).html_safe
-      render 'new'
+      render 'new', locals: { user: @user }
     end
   end
 
