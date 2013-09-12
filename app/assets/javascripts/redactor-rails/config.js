@@ -34,8 +34,8 @@ $(document).ready(
                 'fontcolor', 'backcolor', '|', 'alignment', '|', 'horizontalrule'],
       formattingTags: ['blockquote', 'pre', 'h1', 'h2', 'h3', 'h4'], 
       paragraphy: false,
-      linebreaks: true,
-      deniedTags: ['p','html','div']
+      linebreaks: true
+      //deniedTags: ['p','html','div']
   }
   );
 });

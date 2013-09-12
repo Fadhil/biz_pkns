@@ -912,3 +912,12 @@ body {
 }
 
 .break { page-break-before: always; }
+
+.redactor_redactor-less {
+  b {
+    font-weight: bold;
+  }
+  i {
+    font-style: italic;
+  }
+}
