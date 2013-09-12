@@ -143,7 +143,6 @@ class CoursesController < ApplicationController
   end
 
   def  update_report
-    Rails.logger.info 'In Update Report\n'
     @course = Course.find(params[:id])
     @course_report = @course.course_report
     
@@ -153,7 +152,6 @@ class CoursesController < ApplicationController
       data = file.read
       extension = file.content_type
     end
-    Rails.logger.info 'Seems to read teh file\n'
 
 
     params[:course_report].delete(:file)
@@ -163,6 +161,7 @@ class CoursesController < ApplicationController
           redirect_to request.referrer, alert: 'Sila muatnaik file CSV dengan format yang betul'
         elsif @course_report.update_attributes(params[:course_report])
           @course_report.course_survey.destroy unless @course_report.course_survey.nil?
+          @course_report.course_survey = CourseSurvey.create()
           @course_report.course_survey.import_survey_data(data) unless data.nil?
 
           redirect_to my_reports_consultant_path(current_consultant), notice: "Berjaya mengemaskini report untuk kursus #{@course.name}"
