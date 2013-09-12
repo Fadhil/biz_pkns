@@ -1,6 +1,8 @@
 class Survey < ActiveRecord::Base
   attr_accessible :title, :questions_attributes, :description, :completed, :start_date, :end_date
 
+  validates :title, presence: true
+
   has_many :questions
   accepts_nested_attributes_for :questions
   has_many :completed_surveys

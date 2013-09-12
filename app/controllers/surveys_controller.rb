@@ -14,10 +14,17 @@ class SurveysController < ApplicationController
 
   def create
     @survey = Survey.new(params[:survey])
-    if @survey.save
-      respond_to do |format|
+    respond_to do |format|
+      if @survey.save
+
         format.html { redirect_to @survey, notice: t('successfully_created_survey') }
+
+      else
+        flash[:notice] = "Nama diperlukan"
+        format.html { render 'new'}
+
       end
+
     end
   end
 
