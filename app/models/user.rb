@@ -323,6 +323,6 @@ class User < ActiveRecord::Base
   # Select x number of random people with current employment status with a business
   def self.random_businessmen(x)
     random_ids = self.has_profile_photo.working_employment_status.map(&:id).sort_by{ rand }.slice(0,x)
-    self.where('id in (?)',random_ids)
+    self.where('id in (?)',random_ids).sort_by{ rand }
   end
 end

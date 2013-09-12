@@ -34,6 +34,6 @@ class PortalsController < ApplicationController
   end
 
   def member_page
-    @members = User.random_businessmen(6)
+    @members = User.random_businessmen(8)
   end
 end
