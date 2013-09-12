@@ -36,19 +36,28 @@
                     = f.label q.option4
             - when 'scale'
               %li.field
-                = f.label t('scale_low')
                 .row
                   .three.columns
+                    = f.label t('scale_low')
+                  .four.columns
+                  .three.columns
+                    = f.label t('scale_high')
+                .row
+                  .two.columns
                     = radio_button "question[#{q.id}]", :answer, 1
-                  .three.columns
+                    1
+                  .two.columns
                     = radio_button "question[#{q.id}]", :answer, 2
-                  .three.columns
+                    2
+                  .two.columns
                     = radio_button "question[#{q.id}]", :answer, 3
-                  .three.columns
+                    3
+                  .two.columns
                     = radio_button "question[#{q.id}]", :answer, 4
-                  .three.columns
+                    4
+                  .two.columns
                     = radio_button "question[#{q.id}]", :answer, 5
-                = f.label t('scale_high')
+                    5
             - when 'subjective'
               %li.field
                 = text_area "question[#{q.id}]", :answer, class: 'textarea input', :rows => 8
