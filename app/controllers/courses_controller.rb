@@ -143,6 +143,7 @@ class CoursesController < ApplicationController
   end
 
   def  update_report
+    Rails.logger.info 'In Update Report\n'
     @course = Course.find(params[:id])
     @course_report = @course.course_report
     
@@ -152,6 +153,8 @@ class CoursesController < ApplicationController
       data = file.read
       extension = file.content_type
     end
+    Rails.logger.info 'Seems to read teh file\n'
+
 
     params[:course_report].delete(:file)
     respond_to do |format|
