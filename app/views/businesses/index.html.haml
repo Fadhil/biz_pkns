@@ -8,7 +8,7 @@
 .table
   .row.table-head
     .two.columns
-      %h6.title= model_class.human_attribute_name(:id)
+      %h6.title= "Bil"
     .eight.columns
       %h6.title= t('.name')
     .two.columns
@@ -17,7 +17,7 @@
     .row.table-rows
       .two.columns
         %p
-          = link_to business.id, business_path(business), :class => 'name'
+          = i + 1
       .eight.columns
         %p
           = "#{business.name}"

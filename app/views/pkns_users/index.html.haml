@@ -8,13 +8,18 @@
         = link_to t('new', :default => t("helpers.links.new_user")), new_pkns_user_path
 .table
   .row.table-head
-    .ten.columns
+    .one.columns
+      Bil
+    .nine.columns
       %h6.title= t('name')
     .two.columns
       %h6.title= t('status')
   - @users.each_with_index do |user,i|
     .row.table-rows
-      .ten.columns
+      .one.columns
+        - page_count = params[:page] || 1
+        = i + 1 + (( page_count.to_i - 1) * SystemConstant.small_page_size)
+      .nine.columns
         %p
           = link_to "#{user.first_name} #{user.last_name}", user_path(user), :class => 'name'
       - if can? :manage, @user

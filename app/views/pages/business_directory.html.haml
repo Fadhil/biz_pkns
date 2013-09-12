@@ -26,16 +26,21 @@
 
 .table
   .row.table-head
+    .one.columns
+      Bil
     .four.columns
       %h6.title= t('name')
     .three.columns
       %h6.title= t('company_name')
     .two.columns
       %h6.title= t('business_category')
-    .three.columns
+    .two.columns
       %h6.title= t('customers')
   - @users.each_with_index do |user,i|
     .row.table-rows
+      .one.columns
+        - page_count = params[:page] || 1
+        = i + 1 + (( page_count.to_i - 1 ) * SystemConstant.small_page_size)
       .four.columns
         %p
           - if can? :consultation, :pages
@@ -59,7 +64,7 @@
                   %small.label.info= b.category
                 - else
                   %small.label.danger N/A
-        .three.columns
+        .two.columns
           %ul
             - user.business_profiles.each do |b|
               - unless b.customer1.blank?

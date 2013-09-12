@@ -7,18 +7,22 @@
       = link_to t('new', :default => t("helpers.links.new_user")), new_program_path
 .table
   .row.table-head
+    .one.columns
+      Bil
     .two.columns
       %h6.title= t('name')
-    .six.columns
+    .five.columns
       %h6.title= t('description')
     .two.columns
       %h6.title= t('status')
-  - @programs.each do |program|
+  - @programs.each_with_index do |program, i|
     .row.table-rows
+      .one.columns
+        = i + 1
       .two.columns
         %p
           = link_to program.name, program_path(program)
-      .six.columns
+      .five.columns
         %p
           = sanitize(program.description[0..140])
           - if program.description.html_safe.size > 140

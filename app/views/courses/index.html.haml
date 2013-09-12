@@ -13,14 +13,18 @@
         %h4= t('select_a_program_to_manage')
   -else
     .row.table-head
+      .one.columns
+        Bil
       .six.columns
         %h6.title= t('course_name')
-      .four.columns
+      .three.columns
         %h6.title= t('program_name')
       .two.columns
         %h6.title= t('status')
     - @courses.each_with_index do |course, i|
       .row.table-rows
+        .one.columns
+          = i + 1
         .six.columns
           %p
             = link_to course.name, course_path(course), :class => 'name'
@@ -33,7 +37,7 @@
             %small.label.info
               = "#{t('start_date')} :"
               = "#{course.start_date} - #{course.end_date}"
-        .four.columns
+        .three.columns
           %p
             = course.program.name unless course.program.nil?
         .two.columns

@@ -21,16 +21,21 @@
             = button_tag t('search'), onClick: 'submit();'
 .table
   .row.table-head
+    .one.columns
+      Bil
     .two.columns
       %h6.title= t('membership_num')
     .four.columns
       %h6.title= t('name')
-    .four.columns
+    .three.columns
       %h6.title= t('program')
     .two.columns
       %h6.title= t('status')
   - @users.each_with_index do |user,i|
     .row.table-rows
+      .one.columns
+        - page_count = params[:page] || 1
+        = i + 1 + (( page_count.to_i - 1) * SystemConstant.small_page_size )
       .two.columns
         - if user.membership.nil?
           %p NIL
@@ -50,7 +55,7 @@
           /         .picker
           /           = select_tag 'membership[category]', options_for_select((MEMBER_CATEGORIES.map{|a| [t(a),a]}), user.membership.category), class: "membership", onchange: "$('#submit#{i}').click();"
           /         = f.submit( data: {confirm: t('confirm_category_change') }, id: "submit#{i}", class: 'hide')
-      .four.columns
+      .three.columns
         - user.programs.uniq.each do |p|
           %p= p.name
       .two.columns

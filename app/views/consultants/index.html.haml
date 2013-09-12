@@ -7,24 +7,28 @@
       = link_to t('new'), new_consultant_path
 .table
   .row.table-head
+    .one.columns
+      Bil
     .three.columns
       %h6.title= t('name')
     .three.columns
       %h6.title= t('company_name')
-    .four.columns
+    .three.columns
       %h6.title= t('program')
     - if can? :manage, Consultant
       .two.columns
         %h6.title= t('status')
   - @consultants.each_with_index do |consultant, i|
     .row.table-rows
+      .one.columns
+        = i + 1
       .three.columns
         %p
           = link_to "#{consultant.first_name} #{consultant.last_name}", consultant_path(consultant), :class => 'name'
       .three.columns
         %p
           = consultant.company_name
-      .four.columns
+      .three.columns
         %ul
           - consultant.programs.each do |p|
             %li

@@ -26,16 +26,21 @@
             = button_tag t('search'), onClick: 'submit();'
 .table
   .row.table-head
+    .one.columns
+      Bil
     .two.columns
       %h6.title= t('membership_num')
     .four.columns
       %h6.title= t('name')
-    .four.columns
+    .three.columns
       %h6.title= t('program')
     .two.columns
       %h6.title= t('status')
   - @users.each_with_index do |user,i|
     .row.table-rows
+      .one.columns
+        - page_count = params[:page] || 1
+        = i + 1 + (( page_count.to_i - 1) * SystemConstant.page_size)
       .two.columns
         - if user.confirmed? && user.membership
           %p= user.membership.member_number
@@ -55,7 +60,7 @@
         - else
           %p
             = link_to "#{user.first_name} #{user.last_name}", user_path(user), :class => 'name'
-      .four.columns
+      .three.columns
         - user.programs.uniq.each do |program|
           %p= program.name
       .two.columns
