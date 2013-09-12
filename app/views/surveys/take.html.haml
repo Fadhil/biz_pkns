@@ -22,16 +22,19 @@
             - when 'multiple_choice'
               %li.field
                 .row
-                  .three.columns
+                  .six.columns
                     = radio_button "question[#{q.id}]", :answer, 'A'
                     = f.label q.option1
-                  .three.columns
+                .row
+                  .six.columns
                     = radio_button "question[#{q.id}]", :answer, 'B'
                     = f.label q.option2
-                  .three.columns
+                .row
+                  .six.columns
                     = radio_button "question[#{q.id}]", :answer, 'C'
                     = f.label q.option3
-                  .three.columns
+                .row
+                  .six.columns
                     = radio_button "question[#{q.id}]", :answer, 'D'
                     = f.label q.option4
             - when 'scale'
