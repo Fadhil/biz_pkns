@@ -11,3 +11,5 @@
     = link_to t('.edit', :default => t("helpers.links.edit")), edit_education_path(@education)#, :class => 'btn'
   %span.medium.pretty.btn.danger
     = link_to t('.destroy', :default => t("helpers.links.destroy")), education_path(@education), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }#, :class => 'btn btn-danger'
+  %span.medium.pretty.btn.warning
+    = link_to t('back'), educations_path
