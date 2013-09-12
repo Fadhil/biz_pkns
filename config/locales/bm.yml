@@ -75,6 +75,7 @@ bm:
   my_adverts: 'Iklan'
   name: 'Nama'
   member: 'Ahli'
+  no_results: 'Tiada Hasil Carian'
   nonmember: 'Bukan Ahli'
   number_of_members: 'Bil Ahli'
   number_of_consultants: 'Senarai Perunding'

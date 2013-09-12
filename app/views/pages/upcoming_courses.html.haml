@@ -27,6 +27,8 @@
       %h6.title= t('program_name')
     .two.columns
       %h6.title= t('status')
+  - if @courses.empty?
+    = t('no_results')
   - @courses.each_with_index do |course, i|
     .row.table-rows
       .one.columns
