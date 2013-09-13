@@ -11,11 +11,12 @@
     .twelve.columns
       %section.pill.tabs
         %ul.tab-nav
-          %li.active= link_to "Semua", category_blog_path
-          %li= link_to_unless_current "Umum", category_blog_path(filter: :general)
-          %li= link_to_unless_current "Berita", category_blog_path(filter: :news)
-          %li= link_to_unless_current "Keusahawanan", category_blog_path(filter: :entrepreneurship)
-          %li= link_to_unless_current "Pemasaran", category_blog_path(filter: :marketing)
+          - filter_key = params[:filter]
+          = content_tag('li',(link_to "Semua", blogs_path), class: ( filter_key.nil? ? 'active' : '' ))
+          = content_tag('li',(link_to "Umum", blogs_path(filter: :general)), class: ( filter_key == 'general' ? 'active' : '' ))
+          = content_tag('li',(link_to "Berita", blogs_path(filter: :news)), class: ( filter_key == 'news' ? 'active' : '' ))
+          = content_tag('li',(link_to "Keusahawanan", blogs_path(filter: :entrepreneurship)), class: ( filter_key == 'entrepreneurship' ? 'active' : '' ))
+          = content_tag('li',(link_to "Pemasaran", blogs_path(filter: :marketing)), class: ( filter_key == 'marketing' ? 'active' : '' ))
     %hr.divider
   .table
     .row.table-head
