@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
   load_and_authorize_resource
+  before_filter :get_news
   #layout :resolve_layout
   #layout Proc.new{ ['all'].include?(action_name) ? 'portal' : 'application' }
   # GET /blogs
@@ -98,9 +99,9 @@ class BlogsController < ApplicationController
     end
   end
 
-  # private
+  private
 
-  # def resolve_layout
-    
-  # end
+  def get_news
+    @news = Blog.where(category: 'Berita')
+  end
 end

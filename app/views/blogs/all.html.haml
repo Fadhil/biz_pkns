@@ -54,21 +54,4 @@
                 %small
                   = "Tag : " unless blog.tag_list.blank?
                   = raw blog.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')
-  .four.columns
-    %h5 News &amp; Events
-    %hr.divider
-    .row
-      .eleven.columns
-        %ul
-          - (0..4).each do |i|
-            %li.events
-              .row
-                .two.columns
-                  .date= "#{i+12} Aug"
-                .ten.columns
-                  %p.title
-                    - title = "You can nest grids within grids infinitely"
-                    %small
-                      = link_to title, '#'
-                  %p
-                    %small You can nest grids within grids infinitely, but after a while the columns become too small to be practical
+  = render partial: 'portals/newsbar'

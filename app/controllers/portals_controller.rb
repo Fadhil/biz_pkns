@@ -1,5 +1,6 @@
 class PortalsController < ApplicationController
   layout 'portal'
+  before_filter :get_news
   def home
     @adverts = Advert.active
     @blogs = Blog.all(:order => "created_at DESC", :limit => 5)
@@ -35,5 +36,9 @@ class PortalsController < ApplicationController
 
   def member_page
     @members = User.random_businessmen(8)
+  end
+
+  def get_news
+    @news = Blog.where(category: 'Berita')
   end
 end

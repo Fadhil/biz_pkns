@@ -1,0 +1,18 @@
+.four.columns
+  %h5 News &amp; Events
+  %hr.divider
+  .row
+    .eleven.columns
+      %ul
+        - @news.each do |news|
+          %li.events
+            .row
+              .two.columns
+                .date= news.created_at.strftime('%d <br/> %b').html_safe
+              .ten.columns
+                %p.title
+                  - title = news.title
+                  %small
+                    = link_to title, blog_path(news)
+                %p
+                  %small You can nest grids within grids infinitely, but after a while the columns become too small to be practical
