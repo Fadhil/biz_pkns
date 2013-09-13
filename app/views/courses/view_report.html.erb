@@ -114,24 +114,30 @@
   </div>
 </div>
 <div class="row">
-  <% @course_report.course_photos[0..1].each do |photo| %>
-    <div class="five columns">
-      <%= image_tag(photo.try(:file)) %>
-    </div>
+  <% unless @course_report.course_photos.size < 2 %>
+    <% @course_report.course_photos[0..1].each do |photo| %>
+      <div class="five columns">
+        <%= image_tag(photo.try(:file)) %>
+      </div>
+    <% end %>
   <% end %>
 </div>
 <div class="row">
-  <% @course_report.course_photos[2..3].each do |photo| %>
-    <div class="five columns">
-      <%= image_tag(photo.try(:file)) %>
-    </div>
+  <% unless @course_report.course_photos.size < 4 %>
+    <% @course_report.course_photos[2..3].each do |photo| %>
+      <div class="five columns">
+        <%= image_tag(photo.try(:file)) %>
+      </div>
+    <% end %>
   <% end %>
 </div>
 <div class="row">
-  <% @course_report.course_photos[4..5].each do |photo| %>
-    <div class="five columns">
-      <%= image_tag(photo.try(:file)) %>
-    </div>
+  <% unless @course_report.course_photos.size < 6 %>
+    <% @course_report.course_photos[4..5].each do |photo| %>
+      <div class="five columns">
+        <%= image_tag(photo.try(:file)) %>
+      </div>
+    <% end %>
   <% end %>
 </div>
 
