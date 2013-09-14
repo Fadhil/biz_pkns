@@ -46,6 +46,11 @@
               = link_to t('.business_directory'), business_directory_path
             %li
               = link_to t('.member_directory'), members_path  
+            %li
+              = link_to programs_path do
+                %span.left
+                  %i.icon-briefcase
+                = t('.program')
             %li{:'ui-nav-dropdown' => 'ui-nav-dropdown'}
               = link_to '#' do
                 %span.left
