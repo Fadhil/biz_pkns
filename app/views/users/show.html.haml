@@ -35,7 +35,8 @@
     .age.row
       %span.ten.columns= @user.age
     .phone.row
-      %span.ten.column= "(+6)#{@user.phone}"
+      - if can? :manage , @user
+        %span.ten.column= "(+6)#{@user.phone}"
 
 .row
   .twelve.columns
@@ -64,9 +65,10 @@
                 %tr
                   %th= t('membership_num')
                   %td= @user.membership.member_number
-              %tr
-                %th= t('ic_number')
-                %td= @user.ic_number
+              - if can? :manage, @user
+                %tr
+                  %th= t('ic_number')
+                  %td= @user.ic_number
               %tr
                 %th= t('address')
                 %td
