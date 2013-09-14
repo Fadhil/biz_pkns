@@ -30,9 +30,9 @@
             = "..."
       .two.columns
         = program.active? ? t('active') : t('inactive')
-      .two.columns
-        .row
-          - if can? :manage, :all
+      - if can? :manage, :all
+        .two.columns
+          .row
             .twelve.columns
             .twelve.columns.hide
               %span.pretty.small.btn.info.icon-left.entypo.icon-list-add
