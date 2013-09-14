@@ -1,13 +1,14 @@
 %header.navbar
-  .row
-    %h5.nine.columns.logo
-      .six.columns
-        = image_tag 'pknslogo.png'
+  .row 
+    .three.columns.less-right-margin
+      = image_tag 'logoPKNS.png', height: '40px;'
+    %h4.six.columns.logo
+      .four.columns.less-left-margin
         - if current_user
-          = link_to 'PKNS BIZ DATA', '/home'
+          = link_to 'BIZ DATA', '/home'
         - else
-          = link_to 'PKNS BIZ DATA', root_url
-      .five.columns.small
+          = link_to 'BIZ DATA', root_url
+      .three.columns.small
         = session[:current_program_name] unless session[:current_program_name].nil?#, '#'
     / %ul.three.columns.small
     /   = session[:current_program_name] unless session[:current_program_name].nil?#, '#'

@@ -921,3 +921,15 @@ body {
     font-style: italic;
   }
 }
+
+.less-left-margin {
+  a {
+  
+    padding-left: 0;
+  }
+
+}
+.less-right-margin {
+  margin-right: 0;
+  padding-right: 0;
+}
