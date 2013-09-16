@@ -9,7 +9,7 @@
       %h6.title= t('program_name')
     .two.columns
       %h6.title= t('status')
-  - current_user.courses.each_with_index do |course, i|
+  - current_user.courses.order('start_date desc').each_with_index do |course, i|
     .row.table-rows
       .six.columns
         %p
@@ -28,7 +28,8 @@
           = course.program.name unless course.program.nil?
       .two.columns
         %p
-          - attended = course.attendees.where('user_id = ?',current_user.id).first.attended? rescue nil
+          - attendee = course.attendees.where('user_id = ?',current_user.id).first
+          - attended = attendee.attended? rescue nil
           - case attended
             - when nil?
               - if course.start_date < Date.today
@@ -36,6 +37,9 @@
               - else
                 = t('upcoming')
             - when true
-              = t('present')
+              - if attendee.attendance_status == 'cannot_attend'
+                Tidak Layak Hadir
+              - elsif attendee.attendance_status == 'present'
+                Hadir
             - when false
               = t('not_present')
