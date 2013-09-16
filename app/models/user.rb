@@ -62,12 +62,12 @@ class User < ActiveRecord::Base
   attr_accessible :twitter_handle, :facebook_handle, :current_employment_status
   attr_accessible :education_background_attributes, :experience_attributes, :businesses_attributes, :role_id
   attr_accessible :staff_number, :section, :unit, :is_active, :office_phone
-  attr_accessible :walk_in_first_time, :confirmed, :membership_attributes
+  attr_accessible :walk_in_first_time, :confirmed, :membership_attributes, :terms_of_service
 
   validates_uniqueness_of :ic_number
   validates_format_of :ic_number, with:  /^\d{6}\-\d{2}\-\d{4}$/, :message => I18n.t('errors.ic_format')
   validates_format_of :phone, with:  /^\d*$/, :message => I18n.t('errors.phone_number')
-
+  #validates :terms_of_service, acceptance: true
   validates :password, :presence => true, :on => :create
 
   has_many :business_profiles, dependent: :destroy

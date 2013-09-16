@@ -994,6 +994,7 @@ bm:
         password: "Kata laluan"
         phone: "No telefon"
         gender: "Jantina"
+        terms_of_service: 'Terma dan Syarat'
       survey:
         title: 'Nama'
       advert:
@@ -1019,6 +1020,8 @@ bm:
               too_short: "terlalu pendek"
             ic_number:
               taken: "yang dimasukkan sudah berdaftar"
+            terms_of_service:
+              accepted: 'perlu diterima.'
         consultant:
           attributes:
             email:
