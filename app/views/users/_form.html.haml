@@ -145,7 +145,7 @@
                         %ul
                           %li.field
                             .picker
-                              = s.select :education_id, options_for_select(Education.all.map{ |a| [a.name,a.id]}, s.object.education_id)
+                              = s.select :education_id, options_for_select(@educations_list, s.object.education_id)
                           %li.field
                             .row
                               .six.columns
@@ -173,7 +173,7 @@
                         %ul
                           %li.field
                             .picker
-                              = s.select :skill_id, options_for_select(Skill.all.map{ |a| [a.name,a.id]}, s.object.skill_id)
+                              = s.select :skill_id, options_for_select(@skills_list, s.object.skill_id)
                           %li.field
                             .row
                               .nine.columns

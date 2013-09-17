@@ -56,6 +56,17 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    @educations_list = Education.all.map{ |a| [a.name,a.id]}.sort.select{ |x| x[0].downcase.strip != 'lain-lain'}
+    @skills_list = Skill.all.map{ |a| [a.name,a.id]}.sort.select{ |x| x[0].downcase.strip != 'lain-lain'}
+    #Add lain lain last
+    if Education.all.map(&:name).include?('Lain-lain')
+      others = Education.where(name: 'Lain-lain').first
+      @educations_list << [ others.name, others.id ]
+    end
+    if Skill.all.map(&:name).include?('Lain-lain')
+      others = skills_list.where(name: 'Lain-lain').first
+      @skills_list << [ others.name, others.id ]
+    end
     if @user.address.nil?
       @user.build_address
     end
