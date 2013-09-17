@@ -91,7 +91,8 @@ class NewslettersController < ApplicationController
         format.html { redirect_to preview_newsletter_path(@newsletter) }
         format.json { render json: @newsletter, status: :created, location: @newsletter }
       else
-        format.html { render action: "new" }
+        flash[:notice] = "Subjek diperlukan"
+        format.html { render action: "use_template" }
         format.json { render json: @newsletter.errors, status: :unprocessable_entity }
       end
     end
@@ -107,7 +108,7 @@ class NewslettersController < ApplicationController
         format.html { redirect_to preview_newsletter_path(@newsletter), notice: 'Buletin berjaya dikemaskini.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render action: "edit", locals:{  newsletter: @newsletter }}
         format.json { render json: @newsletter.errors, status: :unprocessable_entity }
       end
     end

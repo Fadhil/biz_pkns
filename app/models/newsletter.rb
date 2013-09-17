@@ -4,4 +4,6 @@ class Newsletter < ActiveRecord::Base
   scope :latest, order('created_at DESC')
 
   belongs_to :consultant
+
+  validates :subject, presence: true, on: :create
 end
