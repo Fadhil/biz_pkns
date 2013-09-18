@@ -72,7 +72,7 @@ class PagesController < ApplicationController
   end
 
   def business_directory
-    @users = User.joins(:business_profiles)
+    @users = User.nonadmin.joins(:business_profiles)
 
     if params[:search].present?
       unless params[:search][:category] == ''
