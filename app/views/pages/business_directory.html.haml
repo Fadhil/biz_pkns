@@ -36,6 +36,8 @@
       %h6.title= t('business_category')
     .two.columns
       %h6.title= t('customers')
+  - if @users.empty?
+    = t('no_results')
   - @users.each_with_index do |user,i|
     .row.table-rows
       .one.columns
