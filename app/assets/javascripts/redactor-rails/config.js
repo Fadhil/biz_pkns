@@ -13,7 +13,7 @@ $(document).ready(
       "fileGetJson":"/redactor_rails/documents",
       "path":"/assets/redactor-rails",
       "css":"style.css",
-      buttons: ['html', '|', 'formatting', '|', 'bold', 'italic', 'deleted', '|', 
+      buttons: ['html', '|', 'formatting', '|', 'bold', 'italic', 'deleted','underline', '|', 
                 'unorderedlist', 'orderedlist', 'outdent', 'indent', '|',
                 'image', 'table', 'link', '|',
                 'fontcolor', 'backcolor', '|', 'alignment', '|', 'horizontalrule'],
@@ -28,7 +28,7 @@ $(document).ready(
       
       "path":"/assets/redactor-rails",
       "css":"style.css",
-      buttons: ['html', '|', 'formatting', '|', 'bold', 'italic', 'deleted', '|', 
+      buttons: ['html', '|', 'formatting', '|', 'bold', 'italic', 'deleted','underline', '|', 
                 'unorderedlist', 'orderedlist', 'outdent', 'indent', '|',
                 'table', '|',
                 'fontcolor', 'backcolor', '|', 'alignment', '|', 'horizontalrule'],
