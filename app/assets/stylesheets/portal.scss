@@ -64,6 +64,25 @@ body {
         border: none;
         border-radius: 0 0 5px 5px;
         padding: 20px;
+        overflow: hidden;
+
+        .image {
+          height: 100px;
+          overflow: hidden;
+          margin: 0;
+          > img {
+            min-width: 100%;
+            min-height: 100%;
+          }
+          ul {
+            margin: 0;
+            padding: 0;
+            li { padding: 0 }
+          }
+        }
+        .name {
+          min-height: 50px;
+        }
       }
       .blog-list {
         li.panel {
@@ -104,7 +123,7 @@ body {
           }
         }
       }
-      .date {
+      .dates {
         text-align: center;
         padding: 10px 0;
         line-height: 12px;
@@ -117,7 +136,7 @@ body {
       display: inline !important;
       font-size: 12px;
     }
-    .adbox {
+    .adboxs {
       min-height: 300px;
       img {
         min-width: 100%;
@@ -125,7 +144,7 @@ body {
         background: #CCC;
       }
     }
-    .adinfo {
+    .adinfos {
       background: rgba(100, 100, 100, 0.4);
       border-radius: 100%;
       width: 300px;

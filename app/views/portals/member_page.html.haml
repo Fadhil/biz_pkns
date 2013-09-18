@@ -5,7 +5,7 @@
 .row
   %ul.four_up.tiles
     - @members.size.times do |index|
-      %li.panel.center
+      %li.panel
         .image
           - unless @members[index].profile_photo.nil?
             = image_tag(@members[index].try(:profile_photo).try(:file), size: "100x100")
