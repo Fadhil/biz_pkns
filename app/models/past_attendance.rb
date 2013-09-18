@@ -20,6 +20,8 @@ class PastAttendance < ActiveRecord::Base
       self.newly_generated = true
       self.save
     end
+    # Don't send confirmation email for testing
+    user.skip_confirmation!
     user.save
     program = Program.where(name: self.program).first
     course = Course.where(name: self.course, program_id: program.try(:id)).first
