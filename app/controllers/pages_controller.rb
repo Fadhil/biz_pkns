@@ -97,7 +97,7 @@ class PagesController < ApplicationController
         @users = @users.joins(:business_profiles).where('LOWER(business_profiles.company_name) like ?', "%#{business_name}%")
       end
     else
-      @users = User.joins(:business_profiles).uniq
+      @users = User.nonadmin.joins(:business_profiles).uniq
     end
     @users = Kaminari.paginate_array(@users).page(params[:page]).per(6)
   end
