@@ -68,7 +68,7 @@ class LettersController < ApplicationController
 
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render 'generate_letter',layout: 'kpi_report' }# show.html.erb
       format.json { render json: @letter }
       format.pdf do
         #pdf = Prawn::Document.new

@@ -1,15 +1,33 @@
 - model_class = Letter
-.row
-  %h3.twelve.columns
-    = t('.title')
-  %hr.divider
-.row
-  .twelve.columns
-    .letter-format
-      - @users.each do |user|
+/ .row
+/   %h3.twelve.columns
+/     = t('.title')
+/   %hr.divider
+- @users.each_with_index do |user,index|
+  - unless index == 0
+    %h1.break
+  .row
+    %strong
+      'KEJUJURAN DAN KETEKUNAN'
+  .row
+    .eight.columns
+    .two.columns
+      Surat Kami:
+    .two.columns
+  .row
+    .eight.columns
+    .two.columns
+      Tarikh:
+    .two.columns
+      = @letter.date
+  .row
+    .twelve.columns
+      .letter-format
         %p= user.full_name
         %p= full_address(user).html_safe
-        = @letter.date
+        .row
+          %p
+            Tuan/Puan,
         .row
           .twelve.columns
             %h5= "#{t('subject')} : #{@letter.subject}"
@@ -18,10 +36,22 @@
         .row
           .twelve.columns
             %p
-              %small Yang bertugas,
-              %strong.block
-                = current_user.full_name
+              Sekian, terima kasih.
+
+            %strong.block
+              "BERKHIDMAT UNTUK NEGARA"
+
+            %p
+              Saya yang menurut perintah
+            %br
+            %br
+            %br
+            %br
+            %br
+            %strong.block
+              / = current_user.full_name
           %hr.divider
+%h1.break
 .row
   .twelve.columns
     %span.medium.pretty.btn.warning
