@@ -1,28 +1,27 @@
 .row
-  .twelve.columns
-    %h4=t('.title')
-  %hr.divider
-.row
   .nine.columns
-    %ul.three_up.tiles
-      - @members.size.times do |index|
-        %li.panel
-          .image
-            - unless @members[index].profile_photo.nil?
-              = image_tag(@members[index].try(:profile_photo).try(:file), size: "100x100")
-          .name
-            %h5
-              = link_to @members[index].try(:full_name), '#'
-          .status
-            %section.label.info
-              = t("reports.users.employment.#{@members[index].try(:current_employment_status)}")
-          .program
-            %ul
-              - @members[index].try(:programs).try(:uniq).try(:each) do |program|
-                %li
-                  %small= program.name
+    %h4=t('.title')
   .three.columns.center
     %h7
       Bilangan Ahli Terkini
     %h3
-      = User.nonadmin.members.count
+      = User.nonadmin.members.count.to_s.rjust(5,'0')
+  %hr.divider
+.row
+  %ul.four_up.tiles
+    - @members.size.times do |index|
+      %li.panel
+        .image
+          - unless @members[index].profile_photo.nil?
+            = image_tag(@members[index].try(:profile_photo).try(:file), size: "100x100")
+        .name
+          %h5
+            = link_to @members[index].try(:full_name), '#'
+        .status
+          %section.label.info
+            = t("reports.users.employment.#{@members[index].try(:current_employment_status)}")
+        .program
+          %ul
+            - @members[index].try(:programs).try(:uniq).try(:each) do |program|
+              %li
+                %small= program.name
