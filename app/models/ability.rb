@@ -55,6 +55,7 @@ class Ability
         can :manage, AttendanceList, program_id: resource.programs.all.map(&:id)
         can :manage, Survey
         can :manage, Advert, consultant_id: resource.id
+        can :all, Newsletter
         cannot [:edit, :destroy], Survey, sent: true
         cannot [:edit, :update, :destroy], Blog
 
