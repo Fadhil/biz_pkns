@@ -64,7 +64,7 @@ class UsersController < ApplicationController
       @educations_list << [ others.name, others.id ]
     end
     if Skill.all.map(&:name).include?('Lain-lain')
-      others = skills_list.where(name: 'Lain-lain').first
+      others = Skill.where(name: 'Lain-lain').first
       @skills_list << [ others.name, others.id ]
     end
     if @user.address.nil?
