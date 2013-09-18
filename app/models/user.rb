@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
 
-  scope :nonadmin, where(:role_id=> nil)
+  scope :nonadmin, includes(:roles).where('roles.id is null')
   scope :members, joins(:membership)
   scope :nonmembers, joins('left outer join memberships on users.id = memberships.user_id').where('memberships.id is null')
   scope :male, where(gender: 'm')
