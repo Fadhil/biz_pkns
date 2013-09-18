@@ -16,11 +16,11 @@
 .row
   .twelve.columns
     = form_for @survey, url: survey_path do |f|
-      - if !@survey.completed
-        = f.hidden_field :completed, value: 1
-        %span.medium.pretty.btn.info
-          = f.submit t('end_survey')
       - if @survey.sent?
+        - if !@survey.completed
+          = f.hidden_field :completed, value: 1
+          %span.medium.pretty.btn.info
+            = f.submit t('end_survey')
         %span.medium.pretty.btn.info
           = link_to t('report'), report_survey_path
       - unless @survey.sent?
