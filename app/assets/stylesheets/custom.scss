@@ -47,7 +47,7 @@ body {
           ul {
             li {
               a {
-                font-size: 14px;
+                font-size: 1.1em;
                 margin: 0;
                 padding: 0 10px;
                 border: 0;
@@ -55,6 +55,10 @@ body {
                 background-color: rgb(252, 64, 0);
                 color: white;
                 text-shadow: 0 1px #CC3300;
+                &:hover {
+                  color: rgba(61, 51, 61, 0.8);
+                  text-shadow: 0 1px #CC9966;
+                }
               }
             }
           }
@@ -358,12 +362,10 @@ body {
   /* Banner */
   .adbox {
     position: relative;
-    font-family: 'Raleway', sans-serif;
-    text-shadow: 1px 1px 1px #AAA;
-    line-height: -20px;
+    line-height: 1.6em;
     img {
-      height: 200px;
-      width: 100%;
+      min-height: 100%;
+      min-width: 100%;
     }
   }
 
@@ -372,31 +374,33 @@ body {
     color: #FFF;
     position: absolute;
     right: 0;
+    padding: 10px;
   }
 
   .adinfo {
     .title {
       background-color: rgba(0, 0, 0, 0.5);
       font-size: 24px;
-      padding: 8px 10px;
+      padding: 10px;
       text-align: right;
-      font-weight: 100;
-      margin-top: 40px;
-      margin-bottom: 10px;
+      font-weight: 600;
+      letter-spacing: -1px;
     }
-    .venue {
+
+    .venue, .date {
       background-color: rgba(0, 0, 0, 0.3);
-      font-size: 12px;
-      padding: 3px;
-      text-align: center;
+      font-size: 16px;
+      padding: 5px 10px;
+      text-align: right;
       width: 100%;
     }
-    .date {
-      background-color: rgba(0, 0, 0, 0.3);
-      font-size: 12px;
-      padding: 3px;
-      text-align: center;
-      width: 100%;
+
+    &.userselect {
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
   }
 
@@ -404,32 +408,48 @@ body {
     z-index: 1000;
     color: #FFF;
     position: absolute;
-  }
+    padding: 10px;
 
-  .adinfo-product {
     .title {
       background-color: rgba(0, 0, 0, 0.5);
       font-size: 24px;
-      padding: 8px 10px;
-      font-weight: 100;
-      margin-top: 25px;
-      margin-bottom: 10px;
+      padding: 10px;
     }
+
     .content {
       background-color: rgba(0, 0, 0, 0.3);
       font-size: 12px;
-      padding: 8px;
+      padding: 5px 10px;
       max-width: 500px;
       line-height: 25px;
     }
   }
 
-  .userselect {
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+  #slides {
+    .slidesjs-container {}
+    .slidesjs-navigation {
+      &:before {
+        display: inline-block;
+        position: static;
+        min-width: 20px;
+        margin: 0 5px;
+        text-align: center;
+        font-family: "entypo";
+        zoom: 1;
+      }
+      &.slidesjs-previous:before {
+        content: '\23ee';
+      }
+      &.slidesjs-next:before {
+        content: '\23ed';
+      }
+      &.slidesjs-play:before {
+        content: '\25b6';
+      }
+      &.slidesjs-stop:before {
+        content: '\25a0';
+      }
+    }
   }
 
   /* Pagination */
