@@ -1,6 +1,4 @@
-html*, body {
-
-}
+html*, body {}
 
 body {
   font-size: 14px;
@@ -52,8 +50,11 @@ body {
                 font-size: 14px;
                 margin: 0;
                 padding: 0 10px;
-                border: 1px solid #DDD;
-                border-top: none;
+                border: 0;
+                border-bottom: 1px solid #CC3300;
+                background-color: rgb(252, 64, 0);
+                color: white;
+                text-shadow: 0 1px #CC3300;
               }
             }
           }
