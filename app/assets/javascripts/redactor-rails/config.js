@@ -28,7 +28,7 @@ $(document).ready(
       
       "path":"/assets/redactor-rails",
       "css":"style.css",
-      buttons: ['html', '|', 'formatting', '|', 'bold', 'italic', 'deleted','underline', '|', 
+      buttons: ['html', '|', 'formatting', '|', 'bold',  'deleted','underline', '|', 
                 'unorderedlist', 'orderedlist', 'outdent', 'indent', '|',
                 'table', '|',
                 'fontcolor', 'backcolor', '|', 'alignment', '|', 'horizontalrule'],
