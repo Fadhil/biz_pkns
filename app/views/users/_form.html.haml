@@ -209,7 +209,7 @@
                       %th= bp.label t('category')
                       %td
                         .picker
-                          = bp.select(:category, BusinessCategory.order(:name).map{|a| [a.name,a.name]}, {:selected=> bp.object.try(:category), :include_blank => true})
+                          = bp.select(:category, @business_categories_list, {:selected=> bp.object.try(:category), :include_blank => true})
                     %tr
                       %th= bp.label t('description')
                       %td= bp.text_area :description, class: 'textarea input', style: 'height:200px;'

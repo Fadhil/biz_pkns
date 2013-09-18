@@ -58,6 +58,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @educations_list = Education.all.map{ |a| [a.name,a.id]}.sort.select{ |x| x[0].downcase.strip != 'lain-lain'}
     @skills_list = Skill.all.map{ |a| [a.name,a.id]}.sort.select{ |x| x[0].downcase.strip != 'lain-lain'}
+    @business_categories_list = BusinessCategory.order(:name).map{|a| [a.name,a.name]}.sort.select{ |x| x[0].downcase.strip != 'lain-lain'}
     #Add lain lain last
     if Education.all.map(&:name).include?('Lain-lain')
       others = Education.where(name: 'Lain-lain').first
@@ -66,6 +67,10 @@ class UsersController < ApplicationController
     if Skill.all.map(&:name).include?('Lain-lain')
       others = Skill.where(name: 'Lain-lain').first
       @skills_list << [ others.name, others.id ]
+    end
+    if BusinessCategory.all.map(&:name).include?('Lain-lain')
+      others = BusinessCategory.where(name: 'Lain-lain').first
+      @business_categories_list << [ others.name, others.id ]
     end
     if @user.address.nil?
       @user.build_address
