@@ -5,22 +5,23 @@
   %hr.divider
 .row
   .twelve.columns
-    - @users.each do |user|
-      %p= user.full_name
-      %p= full_address(user).html_safe
-      = @letter.date
-      .row
-        .twelve.columns
-          %h5= "#{t('subject')} : #{@letter.subject}"
-          %p
-            =@letter.message.html_safe
-      .row
-        .twelve.columns
-          %p
-            %small Yang bertugas,
-            %strong.block
-              = current_user.full_name
-        %hr.divider
+    .letter-format
+      - @users.each do |user|
+        %p= user.full_name
+        %p= full_address(user).html_safe
+        = @letter.date
+        .row
+          .twelve.columns
+            %h5= "#{t('subject')} : #{@letter.subject}"
+            %p
+              =@letter.message.html_safe
+        .row
+          .twelve.columns
+            %p
+              %small Yang bertugas,
+              %strong.block
+                = current_user.full_name
+          %hr.divider
 .row
   .twelve.columns
     %span.medium.pretty.btn.warning

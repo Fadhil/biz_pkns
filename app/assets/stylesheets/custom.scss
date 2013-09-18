@@ -954,6 +954,13 @@ body {
   margin-right: 0;
   padding-right: 0;
 }
-i {
-  font-style: italic !important;
+.letter-format {
+  i {
+    font-style: italic !important;
+  }
+  b {
+    font-weight: bold;
+  }
+  
+  
 }
