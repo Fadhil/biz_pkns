@@ -3,24 +3,42 @@
     =render partial: 'adverts/banner_slider', locals: { adverts: @adverts , show_banners: true}
 .row
   .twelve.columns
-    %h5 Berita Terkini
-    %hr.divider
-    %ul
-      - @blogs.each do |blog|
-        %li.events
-          .row
-            .one.columns
-              .date
-                = blog.created_at.strftime('%d').html_safe
-                %small= blog.created_at.strftime('%b').html_safe
-            .eleven.columns
-              %h5.title=link_to blog.title, show_blog_path(blog)
-              .content
-                = blog.content.html_safe
-                .info
-                  %small
-                    = link_to t('.read_more'), show_blog_path(blog)
-              %p
-                %small
-                  = "Tag : " unless blog.tag_list.blank?
-                  = raw blog.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')
+    - @news.each do |news|
+      
+      .container
+        %div.adbox
+          %ul
+            %li.events
+              .row
+                .twelve.columns.news_box
+                  .one.columns
+                    .date.news_date
+                      = news.created_at.strftime('%d').html_safe
+                      %small= news.created_at.strftime('%b').html_safe
+                  .one.columns
+                  .eight.columns
+                    = news.content.html_safe
+
+/ .row  
+/   .twelve.columns
+/     %h5 Berita Terkini
+/     %hr.divider
+/     %ul
+/       - @blogs.each do |blog|
+/         %li.events
+/           .row
+/             .one.columns
+/               .date
+/                 = blog.created_at.strftime('%d').html_safe
+/                 %small= blog.created_at.strftime('%b').html_safe
+/             .eleven.columns
+/               %h5.title=link_to blog.title, show_blog_path(blog)
+/               .content
+/                 = blog.content.html_safe
+/                 .info
+/                   %small
+/                     = link_to t('.read_more'), show_blog_path(blog)
+/               %p
+/                 %small
+/                   = "Tag : " unless blog.tag_list.blank?
+/                   = raw blog.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')
