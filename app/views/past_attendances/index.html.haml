@@ -4,43 +4,7 @@
     %h3.ten.columns
       = t('.title', :default => model_class.model_name.human.pluralize)
 
-/
-  .table
-    .row.table-head
-      .five.columns
-        %h6.title= t('attendee')
-      .three.columns
-        %h6.title= t('program')
-      .four.columns
-        %h6.title= t('course')
-    - @past_attendances.each_with_index do |past_attendance,i|
-      .row.table-rows
-        .five.columns
-          %p
-            = link_to "#{past_attendance.first_name} #{past_attendance.last_name}", '#', :class => 'name'
-            = past_attendance.email
-          .label.info
-            %small
-              = "#{t('ic_number')} :"
-            = past_attendance.ic_number
-          .label.info
-            %small
-              = "#{t('phone')} :"
-            = past_attendance.phone
-        .three.columns
-          %p= past_attendance.program
-        .four.columns
-          %h6
-            %strong
-              = past_attendance.course
-          .label.secondary
-            %small
-              = "#{t('venue')} :"
-            = past_attendance.venue
-          .label.secondary
-            %small
-              = "#{t('date_tarikh')} :"
-            = "#{past_attendance.start_date} - #{past_attendance.end_date}"
+
 .row
 = form_for :past_attendance,  :url=>{:controller=>"past_attendances", :action=>"create"}, :html => { :multipart => true } do |f|
   = f.label 'Select a CSV file'  

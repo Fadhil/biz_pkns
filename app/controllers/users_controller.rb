@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     @users = User.nonadmin
     if params[:search].present?
       if params[:search][:name].blank?
-        @users = User.nonadmin.order("id desc")
+        @users = User.nonadmin.order("users.id desc")
       elsif params[:search][:name].present?
         search_terms = params[:search][:name].split(' ').join('%')
         @users = User.nonadmin.where("concat(LOWER(first_name), ' ', LOWER(last_name)) like ?","%#{search_terms}%")
