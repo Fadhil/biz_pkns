@@ -74,6 +74,7 @@ bm:
   my_courses: 'Kursus Saya'
   my_adverts: 'Iklan'
   name: 'Nama'
+  next: 'Seterusnya'
   member: 'Ahli'
   no_results: 'Tiada Hasil Carian'
   nonmember: 'Bukan Ahli'
@@ -654,6 +655,25 @@ bm:
       edit_report: 'Kemaskini Laporan'
       save_report: 'Save'
       course_schedule: 'Jadual Kursus *'
+    general_details_form:
+      course_name: 'Nama Kursus'
+      course_type: 'Jenis Kursus'
+      create_course: 'Cipta Kursus'
+      course_date: 'Tarikh Kursus'
+      course_venue: 'Tempat Kursus'
+      consultant_email: 'Emel Perunding'
+      report_date: 'Tarikh Laporan'
+      targeted_attendees: 'Sasaran Kehadiran'
+      actual_attendees: 'Kehadiran Sebenar'
+      no_of_vips: 'Bil Pensyarah/Jemputan/VIP *'
+      course_summary: 'Rumusan Kursus *'
+      generate_report: 'Jana Laporan'
+      edit_report: 'Kemaskini Laporan'
+      save_report: 'Save'
+      course_schedule: 'Jadual Kursus *'
+    report_csv_form:
+      update_report: 'Jana Laporan'
+      save_report: 'Save'
 
   members:
     index:

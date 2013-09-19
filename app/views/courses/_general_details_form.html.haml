@@ -1,0 +1,86 @@
+- if current_consultant && !session[:current_program_id].present?
+  %h5
+    = t('select_a_program_to_manage')
+- else
+  - the_path = create_report_course_path(@course)
+  = nested_form_for @course_report,url: the_path, method: :post, :html => { :class => 'form-horizontal', multipart: true } do |f|
+    .row
+      %ul
+        %li.field
+          .four.columns
+            = f.label t('.course_name'), :class => 'control-label'
+          .eight.columns
+            = f.text_field :course_title, :class => 'text input', :value => @course.name
+        %li.field
+          .four.columns
+            = f.label t('.course_date'), :class => 'control-label'
+          .eight.columns
+            = f.text_field :course_date, :class => 'text input', :value => @course.start_date
+            = f.hidden_field :course_program, value: @course.program.name
+            = f.hidden_field :course_program_id, value: @course.program.id
+            = f.hidden_field :course_type, value: @course.course_type
+            = f.hidden_field :course_id, value: @course.id
+            = f.hidden_field :consultant_id, value: current_consultant.id
+
+        %li.field
+          .four.columns
+            = f.label t('.course_venue'), :class => 'control-label'
+          .eight.columns
+            = f.text_field :course_venue, :class => 'text input', :value => @course.venue
+        %li.field
+          .four.columns
+            = f.label t('.consultant_email'), :class => 'control-label'
+          .eight.columns
+            = f.text_field :consultant_email, :class => 'text input', :value => current_consultant.email
+        %li.field
+          .four.columns
+            = f.label t('.report_date')
+          .eight.columns
+            = f.text_field :report_date, class: 'text input' , value: Date.today
+        %li.field
+          .four.columns
+            = f.label t('.targeted_attendees')
+          .eight.columns
+            = f.text_field :course_targeted_attendees, class: 'text input' , value: @course.pax 
+        %li.field
+          .four.columns
+            = f.label t('.actual_attendees')
+          .eight.columns
+            = f.text_field :course_actual_attendees, class: 'text input' , value: @course.try(:attendance_list).try(:attendees).try(:count)
+        %li.field
+          .four.columns
+            = f.label t('.no_of_vips')
+          .eight.columns
+            = f.text_field :course_no_of_vips, class: 'text input'
+        %li.field
+          = f.label t('.course_summary')
+          = f.text_area :course_summary, class: 'textarea input redactor',placeholder: '', rows: 10  
+        %li.field
+          - if !@course_report.course_schedule.nil?
+            .four.columns
+              = image_tag(@course_report.course_schedule.file, size: '150x150')
+          .eight.columns
+            = f.fields_for :course_schedule do |cs|
+              = cs.label t('.course_schedule')
+              = cs.file_field :file
+            %small
+              = t('image_should_be_this_size')
+        
+        = f.hidden_field :finalized, value: ''
+        = hidden_field_tag 'step', 'general_details'
+        %li.field
+          %span.medium.pretty.btn.warning
+            / = f.submit t('.create_course')
+            %button{:onClick => 'submit();'}= t('next')
+         
+          / - if !@course_report.finalized? && !@course_report.new_record?
+            
+          /   %span.medium.pretty.btn.warning
+          /     %button{:onClick => 'finalizeCourse();submit();'}= t('.save_report')
+             
+          %span.medium.pretty.btn.default
+            = link_to t('cancel', :default => t("helpers.links.cancel")), my_reports_consultant_path(current_consultant)
+
+
+      
+

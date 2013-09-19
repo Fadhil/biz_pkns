@@ -1,0 +1,40 @@
+- if current_consultant && !session[:current_program_id].present?
+  %h5
+    = t('select_a_program_to_manage')
+- else
+  - the_path = update_report_course_path(@course)
+  = nested_form_for @course_report,url: the_path, :html => { :class => 'form-horizontal', multipart: true } do |f|
+    .row
+      %ul
+        
+        %li.field
+          .row
+            .twelve.columns
+              %h6
+                = t('upload_course_survey')
+          .row
+            .four.columns
+              = f.label t('upload_course_survey_csv')
+              = f.file_field :file
+              = f.hidden_field :finalized, value: ''
+              = f.hidden_field :report_date, value: Date.today
+        = hidden_field_tag 'step', 'report_csv'
+        %li.field
+          - if @course_report.new_record?
+            %span.medium.pretty.btn.warning
+              / = f.submit t('.create_course')
+              %button{:onClick => 'submit();'}= t('.generate_report')
+          - else
+            - if !@course_report.finalized?
+              %span.medium.pretty.btn.warning
+                / = f.submit t('update')
+                %button{:onClick => 'submit();'}= t('.update_report')
+              %span.medium.pretty.btn.warning
+                %button{:onClick => 'finalizeCourse();submit();'}= t('.save_report')
+             
+          %span.medium.pretty.btn.default
+            = link_to t('cancel', :default => t("helpers.links.cancel")), my_reports_consultant_path(current_consultant)
+
+
+      
+

@@ -4,8 +4,11 @@
     - if @course_report.new_record?
       = t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human
     -else
-      Kemaskini Laporan
+      - if @step == 'course_photos'
+        Kemaskini Maklumat Laporan
+      - elsif @step == 'report_csv'
+        Kemaskini Survey Laporan
   %hr.divider
 .row
   .twelve.columns
-    = render :partial => "report_form"
+    = render :partial => "#{@step}_form"

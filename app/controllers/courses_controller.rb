@@ -97,8 +97,9 @@ class CoursesController < ApplicationController
   end
 
   def generate_report
+    @step = params[:step] || 'general_details'
     @course = Course.find(params[:id])
-    @course_report = @course.course_report || CourseReport.new()
+    @course_report = @course.course_report || CourseReport.new(params[:course_report])
     if @course_report.course_schedule.nil?
       @course_report.build_course_schedule
     end
@@ -121,54 +122,90 @@ class CoursesController < ApplicationController
 
     params[:course_report].delete(:file)
 
-    @course_report = CourseReport.new(params[:course_report])
-    @course_report.course_survey = CourseSurvey.new(title: @course.name)
-
-
     respond_to do |format|
-      format.html { 
-        if extension != 'text/csv' && !extension.blank?
-          redirect_to request.referrer, alert: 'Sila muatnaik file CSV dengan format yang betul'
-        elsif @course_report.save
-          @course_report.course_survey.destroy unless @course_report.course_survey.nil?
-          @course_report.course_survey = CourseSurvey.new()
-          @course_report.course_survey.import_survey_data(data) unless data.nil?
-
-          redirect_to my_reports_consultant_path(current_consultant), notice: "Berjaya menjanakan report untuk kursus #{@course.name}"
+      if params[:step] == 'general_details' 
+        if @course.course_report.nil?
+          @course_report = CourseReport.new(params[:course_report])
+          @course_report.course_survey = CourseSurvey.new(title: @course.name)
         else
-          redirect_to generate_report_course_path(@course), notice: "Tidak berjaya mengemaskini report kerana:<br/> #{@course_report.errors.full_messages.join("<br/>")}"
+          @course_report = @course.course_report
         end
-      }
+        format.html {
+          if @course_report.save
+
+            redirect_to generate_report_course_path(step: 'course_photos')
+
+          else
+            redirect_to generate_report_course_path(step: 'general_details', course_report: params[:course_report]), notice: "Tidak berjaya mengemaskini report kerana:<br/> #{@course_report.errors.full_messages.join("<br/>")}"
+          end
+        }
+      else
+
+    
+        format.html { 
+          if extension != 'text/csv' && !extension.blank?
+            redirect_to request.referrer, alert: 'Sila muatnaik file CSV dengan format yang betul'
+          elsif @course_report.save
+            @course_report.course_survey.destroy unless @course_report.course_survey.nil?
+            @course_report.course_survey = CourseSurvey.new()
+            @course_report.course_survey.import_survey_data(data) unless data.nil?
+
+            redirect_to my_reports_consultant_path(current_consultant), notice: "Berjaya menjanakan report untuk kursus #{@course.name}"
+          else
+            redirect_to generate_report_course_path(@course), notice: "Tidak berjaya mengemaskini report kerana:<br/> #{@course_report.errors.full_messages.join("<br/>")}"
+          end
+        }
+      end
     end
   end
 
   def  update_report
     @course = Course.find(params[:id])
     @course_report = @course.course_report
-    
+    data = ''
+    extension = ''
+    if params[:step]=='report_csv'
+      file = params[:course_report][:file]
+      if file
+        data = file.read
+        extension = file.content_type
+      end
 
-    file = params[:course_report][:file]
-    if file
-      data = file.read
-      extension = file.content_type
+      @course_report.course_survey = @course_report.course_survey || CourseSurvey.new()
+      @course_survey = @course_report.course_survey
+      @course_survey.import_survey_data(data) unless data.nil?
+      @course_survey.save
+
     end
 
 
     params[:course_report].delete(:file)
     respond_to do |format|
-      format.html { 
+      format.html {
         if extension != 'text/csv' && !extension.blank?
-          redirect_to request.referrer, alert: 'Sila muatnaik file CSV dengan format yang betul'
-        elsif @course_report.update_attributes(params[:course_report])
-          @course_report.course_survey.destroy unless @course_report.course_survey.nil?
-          @course_report.course_survey = CourseSurvey.create()
-          @course_report.course_survey.import_survey_data(data) unless data.nil?
 
-          redirect_to my_reports_consultant_path(current_consultant), notice: "Berjaya mengemaskini report untuk kursus #{@course.name}"
+            redirect_to request.referrer, alert: 'Sila muatnaik file CSV dengan format yang betul'
+
+        elsif @course_report.update_attributes(params[:course_report])
+          if params[:step] == 'report_csv'
+          
+              redirect_to course_path(@course), notice: "Berjaya mengemaskini report untuk kursus #{@course.name}"
+          
+          elsif params[:step] == 'course_photos'
+         
+              redirect_to generate_report_course_path(@course, step: 'report_csv'), notice: "Berjaya mengemaskini report untuk kursus #{@course.name}"
+         
+          elsif params[:step] == 'general_details'
+      
+              redirect_to generate_report_course_path(@course, step: 'course_photos'), notice: "Tidak berjaya mengemaskini report kerana:<br/> #{@course_report.errors.full_messages.join("<br/>")}"
+          
+            
+          end
         else
-          redirect_to generate_report_course_path(@course), notice: "Tidak berjaya mengemaskini report kerana:<br/> #{@course_report.errors.full_messages.join("<br/>")}"
+          redirect_to generate_report_course_path(@course)
         end
       }
+
     end
   end
 
