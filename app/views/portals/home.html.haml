@@ -1,15 +1,15 @@
 .row
   .twelve.columns
     =render partial: 'adverts/banner_slider', locals: { adverts: @adverts , show_banners: true}
-.row
-  .twelve.columns
-    - @news.each do |news|
-      
-      .container
-        %div.adbox
-          %ul
-            %li.events
-              .row
+
+- @news.each do |news|
+  .row
+    .container
+      %div
+        %ul
+          %li.events
+            .row
+              = link_to show_blog_path(news), class: 'no-padding' do
                 .twelve.columns.news_box
                   .one.columns
                     .date.news_date
