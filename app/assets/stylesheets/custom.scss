@@ -114,6 +114,10 @@ body {
 
         a{
           color: white;
+          &.term {
+            color: orangered;
+            font-size: 0.7em;
+          }
         }
       }
 

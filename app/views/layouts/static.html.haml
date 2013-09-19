@@ -15,7 +15,7 @@
   = csrf_meta_tags
 %body.static{:'ng-app' => 'PKNS'}
   = render '/layouts/header'
-  %section#main.welcome
+  %section#main.welcome{:'ng-controller '=> 'MainCtrl'}
     .row
       .seven.columns.centered
         = render '/layouts/flash'

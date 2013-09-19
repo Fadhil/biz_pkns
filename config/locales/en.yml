@@ -86,6 +86,7 @@ en:
   subject: 'Subject'
   successfully_registered_course: 'Successfully Registered Course'
   successfully_updated_attendance: 'Successfully Updated Attendance'
+  terms: "I am agree with term and condition"
   unit: 'Unit'
   update: 'Update'
   upcoming: 'Upcoming'

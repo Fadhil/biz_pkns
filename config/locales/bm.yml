@@ -166,6 +166,7 @@ bm:
   successfully_rejected_advert: 'Iklan tidak diluluskan, dihantar balik kepada pengguna'
   successfully_sent_newsletter: 'Buletin telah berjaya dihantar'
   successfully_ended_survey: 'Kajiselidik telah berjaya ditamatkan'
+  terms: "Saya setuju dengan Syarat dan Terma"
   take_survey: 'Ambil Survey'
   text: 'Teks'
   thanks_for_completing_our_survey: 'Terima kasih kerana sudi menjawab kajiselidik kami.'

@@ -4,7 +4,7 @@
 .row
   .eight.columns
     .panel
-      = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+      = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :id => 'register') do |f|
         = devise_error_messages!
         %ul
           %li.field
@@ -45,7 +45,12 @@
             = f.label t('password_confirmation')
             = f.password_field :password_confirmation, :class => 'text input'
           %li.field
+            %label.checkbox{ :for => :terms_of_service }
+              = check_box_tag :terms_of_service
+              %span
+              = link_to t('terms'), 'http://www.pkns.gov.my/HTML/disclaimer.html', :class => 'term'
+          %li.field
             = f.hidden_field :is_active, value: true
             %span.pretty.medium.warning.btn
               / = f.submit t('sign_up')
-              %button{:onClick => 'submit();'}=t('sign_up')
+              %button=t('sign_up')

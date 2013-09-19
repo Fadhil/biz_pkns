@@ -43,7 +43,7 @@
                 %li.field
                   .seven.columns
                     - if devise_mapping.rememberable?
-                      = f.label t('remember_me'), :class => 'checkbox checked', :for => 'user_remember_me' do
+                      = f.label t('remember_me'), :class => 'checkbox checked' do
                         = f.check_box :remember_me, :checked => 'checked'
                         %span
                         Remember Me
@@ -55,7 +55,7 @@
               = t('sign_up')
 
           .row
-            = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+            = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :id => 'register') do |f|
               = devise_error_messages!
               %ul.eleven.columns
                 %li.field
@@ -73,9 +73,9 @@
                   = f.password_field :password_confirmation, :placeholder => t('password_confirmation'), :class => 'password input'
                   = f.hidden_field :is_active, value: true
                 %li.field
-                  .seven.columns
-                    = check_box_tag :terms_of_service,1
+                  %label.checkbox{ :for => :terms_of_service }
+                    = check_box_tag :terms_of_service
                     %span
-                    Terma dan Syarat
+                    = link_to t('terms'), 'http://www.pkns.gov.my/HTML/disclaimer.html', :class => 'term'
                 %li.field
                   = f.submit t('sign_up'), :class => ' pretty medium primary btn'

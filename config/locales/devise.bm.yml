@@ -27,6 +27,7 @@ my:
       signed_up: 'Proses pendaftaran berjaya. Link untuk mengaktifkan akaun telah dihantar di e-mail.'
       updated: 'Akaun anda telah dikemaskini'
       destroyed: 'Selamat Tinggal, akaun anda telah ditutup'
+      terms: "Saya setuju dengan Syarat dan Terma"
     unlocks:
       send_instructions: 'Anda akan menerima e-mail mengenai langkah membuka akaun kembali sebentar lagi.'
       unlocked: 'Akun anda telah berjaya dibuka. Anda telah sign in.'

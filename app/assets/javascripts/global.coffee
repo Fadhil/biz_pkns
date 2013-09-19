@@ -7,7 +7,15 @@ PKNS.run([
   '$timeout',
   ($rootScope, $timeout) ->
     $(document).ready ->
-      console.info $rootScope if console?.info
+      # console.info $rootScope if console?.info
+      $('#new_user').delegate 'button, input[type=submit]', 'click', (event) ->
+        form = $('#new_user')
+        cbox = form.find('.checkbox').hasClass 'checked'
+        if cbox
+          return form.submit()
+        else
+          window.alert 'Please agree before proceed'
+          return false;
 ])
 
 PKNS.controller('MainCtrl', [
