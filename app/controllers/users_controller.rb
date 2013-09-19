@@ -3,13 +3,13 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.nonadmin.order(:created_at)
+    @users = User.nonadmin.order('users.created_at desc')
     if params[:search].present?
       if params[:search][:name].blank?
-        @users = User.nonadmin.order("users.id desc").order(:created_at)
+        @users = User.nonadmin.order("users.id desc").order('users.created_at desc')
       elsif params[:search][:name].present?
         search_terms = params[:search][:name].split(' ').join('%')
-        @users = User.nonadmin.where("concat(LOWER(first_name), ' ', LOWER(last_name)) like ?","%#{search_terms}%").order(:created_at)
+        @users = User.nonadmin.where("concat(LOWER(first_name), ' ', LOWER(last_name)) like ?","%#{search_terms}%").order('users.created_at desc')
       end
 
       if params[:search][:ic].present?
