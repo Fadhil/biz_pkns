@@ -117,19 +117,26 @@ body {
       .events {
         padding: 0 0 10px;
         p {
-          line-height: 1em;
+          font-size: 1em;
           small {
             line-height: 1em;
           }
         }
-      }
-      .dates {
-        text-align: center;
-        padding: 10px 0;
-        line-height: 12px;
-        font-weight: 700;
-        color: white;
-        background-color: #2D1610;
+        .date {
+          text-align: center;
+          padding: 10px 0;
+          font-weight: 700;
+          font-size: 1.4em;
+          color: white;
+          background-color: #2D1610;
+          small {
+            display: block;
+            clear: both;
+            font-size: 65%;
+            font-weight: 400;
+            line-height: 1em;
+          }
+        }
       }
     }
     .tag {
