@@ -35,7 +35,10 @@
               - if course.start_date < Date.today
                 = t('not_present')
               - else
-                = t('upcoming')
+                - if attendee.attendance_status == 'cannot_attend'
+                  Tidak Layak Hadir
+                - else
+                  = t('upcoming')
             - when true
               - if attendee.attendance_status == 'cannot_attend'
                 Tidak Layak Hadir
