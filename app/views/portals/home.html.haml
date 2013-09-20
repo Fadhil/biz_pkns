@@ -17,7 +17,7 @@
                       = news.created_at.strftime('%d').html_safe
                       %small= news.created_at.strftime('%b').html_safe
                   .three.columns
-                    = strip_tags(news.content.html_safe)[0..60] + "..."
+                    = strip_tags(news.content)[0..40] + "..."
 
 / .row  
 /   .twelve.columns
