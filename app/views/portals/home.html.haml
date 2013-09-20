@@ -2,12 +2,13 @@
   .twelve.columns
     =render partial: 'adverts/banner_slider', locals: { adverts: @adverts , show_banners: true}
 
-- @news.each do |news|
-  .row
-    .container
-      %div
-        %ul
-          %li.events
+
+.row
+  .container
+    %div
+      %ul
+        %li.events
+          - @news.each do |news|
             .row
               = link_to show_blog_path(news), class: 'no-padding' do
                 .twelve.columns.news_box
@@ -17,7 +18,7 @@
                       %small= news.created_at.strftime('%b').html_safe
                   .one.columns
                   .eight.columns
-                    = news.content.html_safe
+                    = strip_tags(news.content.html_safe)[0..140] + "..."
 
 / .row  
 /   .twelve.columns
