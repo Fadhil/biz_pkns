@@ -8,17 +8,16 @@
     %div
       %ul
         %li.events
-          - @news.each do |news|
-            .row
-              = link_to show_blog_path(news), class: 'no-padding' do
-                .twelve.columns.news_box
+          .row
+            .twelve.columns.news_box
+              - @news.each do |news|
+                = link_to show_blog_path(news), class: 'no-padding' do
                   .one.columns
                     .date.news_date
                       = news.created_at.strftime('%d').html_safe
                       %small= news.created_at.strftime('%b').html_safe
-                  .one.columns
-                  .eight.columns
-                    = strip_tags(news.content.html_safe)[0..140] + "..."
+                  .three.columns
+                    = strip_tags(news.content.html_safe)[0..60] + "..."
 
 / .row  
 /   .twelve.columns

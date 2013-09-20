@@ -39,6 +39,6 @@ class PortalsController < ApplicationController
   end
 
   def get_news
-    @news = Blog.where(category: 'Berita').order('created_at desc').limit(2)
+    @news = Blog.where(category: 'Berita').order('created_at desc').limit(3)
   end
 end
