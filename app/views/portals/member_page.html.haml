@@ -18,7 +18,7 @@
           %h5
             = link_to @members[index].try(:full_name), '#'
         .status
-          %section.label.info
+          %section.label.info.full-height-label
             = t("reports.users.employment.#{@members[index].try(:current_employment_status)}")
         .program
           %ul
