@@ -3,9 +3,9 @@
   .row
     %h3.ten.columns
       = t('.title')
-    .two.columns.action
-      %span.pretty.medium.primary.btn.entypo.icon-left.icon-list-add
-        = link_to t('new', :default => t("helpers.links.new_user")), new_user_path
+    / .two.columns.action
+    /   %span.pretty.medium.primary.btn.entypo.icon-left.icon-list-add
+    /     = link_to t('new', :default => t("helpers.links.new_user")), new_user_path
   .row
     #search-drawer.twelve.columns
       .row
@@ -30,7 +30,7 @@
     .three.columns
       %h6.title= t('program')
     .two.columns
-      %h6.title= t('status')
+      / %h6.title= t('status')
   - if @users.empty?
     = t('no_results')
   - @users.each_with_index do |user,i|
