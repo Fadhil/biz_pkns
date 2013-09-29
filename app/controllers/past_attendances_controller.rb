@@ -22,7 +22,7 @@ class PastAttendancesController < ApplicationController
     extension = params[:past_attendance][:file].content_type
     Rails.logger.info "The extension is: #{extension}\n"
     completed = false
-    if extension == 'text/csv'
+    if extension == 'text/csv' || extension == 'application/octet-stream'
       @parsed_file=CSV.parse(data)
       n=0
       completed = true
