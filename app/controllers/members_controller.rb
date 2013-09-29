@@ -8,7 +8,7 @@ class MembersController < ApplicationController
     @users = User.nonadmin.all
     if params[:search].present?
       if params[:search][:term].blank?
-        @users = User.nonadmin.order("id desc")
+        @users = User.nonadmin.order("users.created_at desc")
       else
         search_terms = params[:search][:term].split(' ').join('%')
         @users = User.nonadmin.where("concat(LOWER(first_name), ' ', LOWER(last_name)) like ?","%#{search_terms}%")
