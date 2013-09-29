@@ -6,7 +6,7 @@ class BlogsController < ApplicationController
   # GET /blogs
   # GET /blogs.json
   def index    
-    @blogs = Blog.send(params[:filter] || 'all')
+    @blogs = Blog.order('created_at desc').send(params[:filter] || 'all')
     
     respond_to do |format|
       format.html { render :layout => 'portal' }# index.html.erb

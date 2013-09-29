@@ -29,7 +29,7 @@
     - @blogs.each_with_index do |blog, i|
       .row.table-rows
         .one.columns
-          %p= blog.id
+          %p= i + 1
         .eight.columns
           %p= link_to blog.title, blog_path(blog), :class => 'name'
           %p
