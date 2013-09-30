@@ -42,7 +42,7 @@ class SurveysController < ApplicationController
         if @survey.completed?
           format.html {redirect_to surveys_path , notice: t('successfully_ended_survey') }
         else
-          format.html { redirect_to @survey, notice: t('successfully_updated_survey') }
+          format.html { redirect_to survey_path(@survey), notice: t('successfully_updated_survey') }
         end
       end
     end
