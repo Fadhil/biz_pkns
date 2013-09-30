@@ -337,6 +337,8 @@ bm:
     index:
       title: 'Senarai Bidang Perniagaan'
       new: 'Tambah Bidang Perniagaan'
+    edit:
+      title: 'Kemaskini Bidang Perniagaan'
     form:
       add_new_business_category: 'Daftar Bidang Perniagaan'
     show:
