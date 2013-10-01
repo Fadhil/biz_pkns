@@ -5,37 +5,38 @@
     %hr.divider
 .twelve.colgrid
   .row
-    - ['Berita', 'Pemasaran', 'Jaringan', 'Strategi'].each_with_index do |title, i|
+    - { news: 'Berita', general: 'Umum', entrepreneurship: 'Keusahawanan', marketing: 'Pemasaran'}.each_with_index do |kvpair, i|
       .three.columns
-        .panel
-          %p=title
-          .image
-            = image_tag "http://lorempixel.com/200/140/business/#{i}"
-          %span.pretty.btn.small.info
-            = link_to 'More', '#'
+        = content_tag( 'a', href: category_blog_path(filter: kvpair[0])) do
+          .panel
+            %p=kvpair[1]
+            .image
+              = image_tag "http://lorempixel.com/200/140/business/#{i}"
+            %br
 .row
   .eight.columns
     .row
       .three.columns
         %h5 Berita Terkini
-      .nine.columns
-        %ul.filter
-          %li= t('.filter')
-          %li
-            %span.round.btn.small.warning
-              = link_to "Semua", category_blog_path
-          %li
-            %span.round.btn.small.warning
-              = link_to_unless_current "Umum", category_blog_path(filter: :general)
-          %li
-            %span.round.btn.small.warning
-              = link_to_unless_current "Berita", category_blog_path(filter: :news)
-          %li
-            %span.round.btn.small.warning
-              = link_to_unless_current "Keusahawanan", category_blog_path(filter: :entrepreneurship)
-          %li
-            %span.round.btn.small.warning
-              = link_to_unless_current "Pemasaran", category_blog_path(filter: :marketing)
+      /
+        .nine.columns
+          %ul.filter
+            %li= t('.filter')
+            %li
+              %span.round.btn.small.warning
+                = link_to "Semua", category_blog_path
+            %li
+              %span.round.btn.small.warning
+                = link_to_unless_current "Umum", category_blog_path(filter: :general)
+            %li
+              %span.round.btn.small.warning
+                = link_to_unless_current "Berita", category_blog_path(filter: :news)
+            %li
+              %span.round.btn.small.warning
+                = link_to_unless_current "Keusahawanan", category_blog_path(filter: :entrepreneurship)
+            %li
+              %span.round.btn.small.warning
+                = link_to_unless_current "Pemasaran", category_blog_path(filter: :marketing)
       %hr.divider
 
     .row
