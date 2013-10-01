@@ -12,8 +12,8 @@
             - unless @members[index].profile_photo.nil?
               = image_tag(@members[index].try(:profile_photo).try(:file), size: "100x100")
           .name
-            %h5
-              = link_to @members[index].try(:full_name), '#'
+            %h5{style: "color:#c03d20;"}
+              = @members[index].try(:full_name)
           .status
             %section.label.info.full-height-label
               = t("reports.users.employment.#{@members[index].try(:current_employment_status)}")
