@@ -5,7 +5,7 @@
       = link_to path do
         = image_tag 'logoPKNSBIZ.png', height: '68'
     %h4.six.columns
-      .three.columns.small
+      .five.columns.small
         = session[:current_program_name] unless session[:current_program_name].nil?
     %ul.three.columns
       = render 'layouts/navigation'
