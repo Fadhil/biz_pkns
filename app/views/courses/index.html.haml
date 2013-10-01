@@ -24,7 +24,7 @@
     - @courses.each_with_index do |course, i|
       .row.table-rows
         .one.columns
-          = i + 1
+          = i + 1 + 10 * @page_offset
         .six.columns
           %p
             = link_to course.name, course_path(course), :class => 'name'

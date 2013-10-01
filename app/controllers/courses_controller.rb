@@ -3,6 +3,8 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
+    @page_offset = 0
+    @page_offset = params[:page].to_i - 1 unless params[:page].nil? || params[:page] == 1
     if current_user && ( current_user.admin? )
       @courses = Course.latest.order(:status).page(params[:page])
     elsif current_consultant
