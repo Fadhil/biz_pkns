@@ -27,9 +27,11 @@ class CoursesController < ApplicationController
   # GET /courses/1.json
   def show
     @course = Course.find(params[:id])
-    if @course.end_date < Date.today
-      @course.status = false
-      @course.save
+    unless @course.end_date.nil?
+      if @course.end_date < Date.today
+        @course.status = false
+        @course.save
+      end
     end
     @attendance_list = @course.attendance_list
     respond_to do |format|
