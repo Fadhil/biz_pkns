@@ -121,7 +121,7 @@ class CoursesController < ApplicationController
     file = params[:course_report][:file]
     if file
       data = file.read
-      extension = file.content_type
+      extension = File.extname(file.original_filename)
     end
 
     params[:course_report].delete(:file)
@@ -147,7 +147,7 @@ class CoursesController < ApplicationController
 
     
         format.html { 
-          if extension != 'text/csv' && !extension.blank?
+          if extension != '.csv' && !extension.blank?
             redirect_to request.referrer, alert: 'Sila muatnaik file CSV dengan format yang betul'
           elsif @course_report.save
             @course_report.course_survey.destroy unless @course_report.course_survey.nil?
@@ -172,7 +172,7 @@ class CoursesController < ApplicationController
       file = params[:course_report][:file]
       if file
         data = file.read
-        extension = file.content_type
+        extension = File.extname(file.original_filename)
       end
 
       @course_report.course_survey = @course_report.course_survey || CourseSurvey.new()
@@ -186,7 +186,7 @@ class CoursesController < ApplicationController
     params[:course_report].delete(:file)
     respond_to do |format|
       format.html {
-        if extension != 'text/csv' && !extension.blank?
+        if extension != '.csv' && !extension.blank?
 
             redirect_to request.referrer, alert: 'Sila muatnaik file CSV dengan format yang betul'
 

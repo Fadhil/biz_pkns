@@ -58,7 +58,7 @@ class PastAttendancesController < ApplicationController
       end
       notice = t('upload_successful')
     else 
-      if extension != 'text/csv'
+      if extension != '.csv'
         notice = t('please_upload_csv')
       else
         notice = t('upload_unsuccessful')
