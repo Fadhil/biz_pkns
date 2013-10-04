@@ -5,7 +5,7 @@
       = f.text_field :subject, :class => 'text input', :placeholder => t('.subject')
     %li.field
       = f.label t('.message')
-      =# f.text_area :message, :class => 'textarea input redactor'
+      = f.text_area :message, :class => 'textarea input redactor'
       - if current_consultant
         = f.hidden_field :consultant_id, value: current_consultant.id
       
