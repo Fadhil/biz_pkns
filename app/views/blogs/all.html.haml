@@ -47,7 +47,7 @@
               %h5=link_to blog.title, show_blog_path(blog)
               .content
                 /= truncate(blog.content, :length => 500).html_safe
-                = blog.content.html_safe
+                = sanitize(blog.content.html_safe[0..250]) + '...'
                 .info
                   %small
                     = link_to t('.read_more'), show_blog_path(blog)
