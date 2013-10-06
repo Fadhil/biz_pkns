@@ -20,3 +20,11 @@ window.submitReportRequest = (report_name) ->
 window.finalizeCourse = () ->
   course_report_finalized = $('#course_report_finalized')
   course_report_finalized.val(true)
+
+window.hideChart = (chart_name) ->
+  the_chart = $('#' + chart_name)
+  the_chart.hide();
+
+window.showChart = (chart_name) ->
+  the_chart = $('#' + chart_name)
+  the_chart.show();

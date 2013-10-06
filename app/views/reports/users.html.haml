@@ -7,19 +7,19 @@
     %section.vertical.tabs
       %ul.tab-nav.four.columns
         %li.active
-          = link_to t('.user_details'), '#'
+          = link_to t('.user_details'), '#', onClick: 'hideChart("usersprogramchart");'
         / %li
         /   = link_to t('.business_details'), '#'
         %li
-          = link_to t('member_nonmember_by_age'), '#'
+          = link_to t('member_nonmember_by_age'), '#', onClick: 'hideChart("usersprogramchart");'
         %li
-          = link_to t('member_gender_by_age'), '#'
+          = link_to t('member_gender_by_age'), '#', onClick: 'hideChart("usersprogramchart");'
         %li
-          = link_to t('member_by_current_status'), '#'
+          = link_to t('member_by_current_status'), '#', onClick: 'hideChart("usersprogramchart");'
         %li
-          = link_to t('member_by_program'), '#'
+          = link_to t('member_by_program'), '#',onClick: 'showChart("usersprogramchart");'
         %li
-          = link_to t('member_by_business_details'), '#'
+          = link_to t('member_by_business_details'), '#', onClick: 'hideChart("usersprogramchart");'
       .tab-content.eight.columns.active
         = render partial: 'users_members_non_members'
       / .tab-content.eight.columns
@@ -37,4 +37,4 @@
     
 .row
   .twelve.columns
-    #usersprogramchart{style: "width: 900px; height: 800px"}
+    #usersprogramchart.hide{style: "width: 900px; height: 800px"}
