@@ -1,9 +1,10 @@
 %header.navbar
   .row.navigation
-    %h5.one.columns.logo
-      = image_tag 'pknslogo.png', size:'50x50'
-    %h5.two.columns.portal-logo-name
-      = link_to 'PKNS BIZ DATA', portal_home_path
+    %h5.three.columns.biglogo
+      = link_to image_tag('logoPKNSBIZ.png', height: '68'),portal_home_path
+    /
+      %h5.two.columns.portal-logo-name
+        = link_to 'PKNS BIZ DATA', portal_home_path
     %ul.nine.columns
       %li= link_to t('.member_page'), portal_members_path
       %li= link_to t('course'), portal_course_path
