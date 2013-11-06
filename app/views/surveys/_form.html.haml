@@ -1,4 +1,5 @@
-= nested_form_for @survey, url: surveys_path(@survey), :html => { :class => 'form-horizontal' } do |f|
+
+= nested_form_for @survey, :html => { :class => 'form-horizontal' } do |f|
   .field
     = f.label t("name"), :class => 'control-label'
     .controls
