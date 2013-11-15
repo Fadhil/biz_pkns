@@ -1,36 +1,38 @@
+- is_disabled = @newsletter.sent? 
 = form_for @newsletter, :html => { :class => 'form-horizontal' } do |f|
   %ul
     %li.field
       = f.label t('.subject')
-      = f.text_field :subject, :class => 'text input', :placeholder => t('.subject')
+      = f.text_field :subject, :class => 'text input', :placeholder => t('.subject'), disabled: is_disabled
     %li.field
       = f.label t('.message')
-      = f.text_area :message, :class => 'textarea input redactor'
+      = f.text_area :message, :class => 'textarea input redactor', disabled: is_disabled
       - if current_consultant
         = f.hidden_field :consultant_id, value: current_consultant.id
-      
-    %li.field
-      = f.label t('.send_to')
-    /
-      .controls
-        =# form_for '' do |f|
-        - if current_user
-          - if current_user.admin?
-            = select_tag 'newsletter_user_select', options_for_select([[t('.all_users'),'all_users'],[t('.members'),'members'], [t('.nonmembers'),'nonmembers'],[t('.users_by_program'), 'users_by_program'],[t('.users_by_course'),'users_by_course']])
-        - elsif current_consultant
-          = select_tag 'newsletter_user_select', options_for_select([[t('.users_by_program'), 'users_by_program'],[t('.users_by_course'),'users_by_course']])
-        - if current_consultant
-          = select_tag 'newsletter_program_select', options_for_select(current_consultant.programs.all.map{|a| [a.name, a.id]}), disabled: false
-          = select_tag 'newsletter_course_select', options_for_select(Course.where(program_id: current_consultant.programs.first.id).map{ |a| [a.name,a.id]}), disabled: true, class: 'hide'
-        - else
-          = select_tag 'newsletter_program_select', options_for_select(Program.all.map{|a| [a.name, a.id]}), disabled: true, class: 'hide'
-          = select_tag 'newsletter_course_select', options_for_select(Course.where(program_id: Program.first.id).map{ |a| [a.name,a.id]}), disabled: true, class: 'hide'
-    %li.field
-      %span.medium.pretty.btn.warning
-        / = f.submit t('.create')
-        - if @newsletter.new_record?
-          %button{:onClick => 'submit();'}=t('.create')
-        - else
-          %button{:onClick => 'submit();'}=t('.preview')
-      %span.medium.pretty.btn.default
-        = link_to t('cancel', :default => t("helpers.links.cancel")), newsletters_path
+    
+    - unless @newsletter.sent?  
+      %li.field
+        = f.label t('.send_to')
+      /
+        .controls
+          =# form_for '' do |f|
+          - if current_user
+            - if current_user.admin?
+              = select_tag 'newsletter_user_select', options_for_select([[t('.all_users'),'all_users'],[t('.members'),'members'], [t('.nonmembers'),'nonmembers'],[t('.users_by_program'), 'users_by_program'],[t('.users_by_course'),'users_by_course']])
+          - elsif current_consultant
+            = select_tag 'newsletter_user_select', options_for_select([[t('.users_by_program'), 'users_by_program'],[t('.users_by_course'),'users_by_course']])
+          - if current_consultant
+            = select_tag 'newsletter_program_select', options_for_select(current_consultant.programs.all.map{|a| [a.name, a.id]}), disabled: false
+            = select_tag 'newsletter_course_select', options_for_select(Course.where(program_id: current_consultant.programs.first.id).map{ |a| [a.name,a.id]}), disabled: true, class: 'hide'
+          - else
+            = select_tag 'newsletter_program_select', options_for_select(Program.all.map{|a| [a.name, a.id]}), disabled: true, class: 'hide'
+            = select_tag 'newsletter_course_select', options_for_select(Course.where(program_id: Program.first.id).map{ |a| [a.name,a.id]}), disabled: true, class: 'hide'
+      %li.field
+        %span.medium.pretty.btn.warning
+          / = f.submit t('.create')
+          - if @newsletter.new_record?
+            %button{:onClick => 'submit();'}=t('.create')
+          - else
+            %button{:onClick => 'submit();'}=t('.preview')
+        %span.medium.pretty.btn.default
+          = link_to t('cancel', :default => t("helpers.links.cancel")), newsletters_path
