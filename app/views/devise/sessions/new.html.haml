@@ -21,7 +21,7 @@
                     = f.label t('remember_me'), :class => 'checkbox checked', :for => 'user_remember_me' do
                       = f.check_box :remember_me, :checked => 'checked'
                       %span
-                      Remember Me
+                      = t('remember_me')
                 .four.columns
                   = f.submit t('login'), :class => ' pretty medium warning btn'
     = render "devise/shared/links"

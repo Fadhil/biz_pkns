@@ -28,3 +28,5 @@ window.hideChart = (chart_name) ->
 window.showChart = (chart_name) ->
   the_chart = $('#' + chart_name)
   the_chart.show();
+
+$('#user_profile_photo_attributes_file')

@@ -22,7 +22,7 @@
           %section.pill.tabs
             %ul.tab-nav
               %li.active
-                = link_to 'Latarbelakang Individu', '#'
+                = link_to 'Latar Belakang Individu', '#'
               %li
                 = link_to 'Perniagaan 1', '#'
               %li
@@ -54,16 +54,29 @@
                     %td= f.text_field :email, :class => 'text input'
                   %tr
                     %th= f.label t('ic_number')
-                    %td= f.text_field :ic_number, :class => 'text input'
+                    %td
+                      %div
+                        =f.text_field :ic_number, :class => 'text input'
+                      %small
+                        = t('mykad_example')
                   %tr
                     %th= f.label t('password')
-                    %td= f.password_field :password, :class => 'input text input'
+
+                    %td
+                      %div
+                        = f.password_field :password, :class => 'input text input'
+                      %small
+                        = t('password_length_hint')
                   %tr
                     %th= f.label t('password_confirmation')
                     %td= f.password_field :password_confirmation, :class => 'input text input'
                   %tr
                     %th= f.label t('phone')
-                    %td= f.text_field :phone, :class => 'text input'
+                    %td
+                      %div
+                        = f.text_field :phone, :class => 'text input'
+                      %small
+                        = t('phone_number_hint')
                   %tr
                     %th= f.label t('.twitter_handle')
                     %td= f.text_field :twitter_handle, :class => 'text input'
@@ -137,7 +150,7 @@
                 %tbody
                   %tr
                     %th{:colspan => 2}
-                      %h5 Tambah Latarbelakang Pendidikan
+                      %h5 Tambah Latar Belakang Pendidikan
                       %hr
                   %tr
                     %td

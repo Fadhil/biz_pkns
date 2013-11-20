@@ -26,6 +26,7 @@ bm:
   end_course: 'Kursus Tamat'
   end_survey: 'Kajiselidik Tamat'
   extra: 'Tambahan'
+  fill_all_fields_hint: '* Sila isi semua maklumat dengan lengkap'
   view: 'Papar'
   bio_data: 'Biodata'
   business: 'Perniagaan'
@@ -71,8 +72,10 @@ bm:
   make_member: 'Jadikan Ahli'
   make_request: 'Permohonan Iklan'
   message: 'Mesej'
+  mobile_phone: 'Telefon bimbit'
   my_courses: 'Kursus Saya'
   my_adverts: 'Iklan'
+  mykad_example: 'Contoh: 801231-12-1234'
   name: 'Nama'
   next: 'Seterusnya'
   member: 'Ahli'
@@ -84,13 +87,17 @@ bm:
   new: 'Baru'
   new_consultant: 'Daftar Perunding'
   new_business_category: 'Daftar Bidang Perniagaan'
-  office_phone: 'No Tel Pejabat'
+  office_phone: 'Nombor Telefon Pejabat'
+  office: 'Pejabat'
   old: 'Lama'
   paid_for: 'Berbayar'
   pax: 'Jumlah peserta'
   password: 'Kata Laluan'
   password_confirmation: 'Pengesahan Kata Laluan'
+  password_length_hint: '8-12 huruf/nombor'
+  password_leave_empty_hint: 'Kosongkan sekiranya mahu kekal dengan yang asal'
   percentage: 'Peratusan'
+  phone_number_hint: 'Contoh: 0101234567, 0351222222'
   current_password: 'Katalaluan semasa'
   new_password_confirmation: 'Sahkan kata laluan baru'
   preattendance_list: 'Senarai Pra-Kedatangan'
@@ -100,7 +107,7 @@ bm:
   option2: 'Pilihan Jawapan 2'
   option3: 'Pilihan Jawapan 3'
   option4: 'Pilihan Jawapan 4'
-  phone: 'No Tel'
+  phone: 'Nombor Telefon'
   postcode: 'Poskod'
   platinum: 'Platinum'
   please_change_default_password: "Kata Laluan anda sekarang ialah 'password'. Sila tukarkan kata laluan di Profil anda"
@@ -120,7 +127,7 @@ bm:
   register_course: 'Daftar Kursus'
   registered_on: 'Didaftar pada'
   registered_year: 'Tahun Daftar'
-  remember_me: 'Simpan Maklumat Saya'
+  remember_me: 'Ingati Saya'
   remove_program: 'Padam Program'
   report: 'Laporan'
   resend_confirmation: 'Hantar arahan pengesahan'
@@ -131,10 +138,11 @@ bm:
   search_by_state: 'Carian mengikut negeri'
   search_by_skill: 'Carian mengikut kemahiran'
   search_by_company_name: 'Carian Nama Syarikat'
-  search_by_ic_number: 'Carian Nombor KP'
+  search_by_ic_number: 'Carian Nombor MyKad'
   section: 'Bahagian'
   select_a_program: 'Pilih Program'
   select_a_program_to_manage: 'Sila Pilih Program Untuk Diurus Dahulu'
+  select_csv_file: 'Pilih fail CSV'
   send: 'Hantar'
   send_password_instructions: "Hantarkan arahan tukar kata laluan"
   setting: 'Tetapan'
@@ -177,6 +185,7 @@ bm:
   total_inactive_consultants: 'Bilangan Perunding Yang Tidak Aktif'
   unit: 'Unit'
   update: 'Kemaskini'
+  upload_database_csv_button: 'Program Yang Pernah Dihadiri'
   upcoming: 'Akan Datang'
   upload_successful: 'Muat naik berjaya'
   upload_unsuccessful: 'Muat naik tidak berjaya, sila semak data anda'
@@ -218,11 +227,11 @@ bm:
   first_name: 'Nama'
   last_name: 'Nama Bapa'
   email: 'Email'
-  ic_number: 'No KP'
+  ic_number: 'MyKad'
   gender: 'Jantina'
   age: 'Umur'
   address: 'Alamat'
-  phone_number: 'No Tel'
+  phone_number: 'Nombor Telefon'
   membership_status: 'Status keahlian'
 
   successfully_updated: "%{resource} berjaya dikemaskini."
@@ -298,9 +307,9 @@ bm:
       customers2: ' Pelanggan #2'
       customers3: ' Pelanggan #3'
     admin_edit:
-      title: 'Kemaskini Profil Admin'
+      title: 'Kemaskini Profil Pentadbir'
     admin_show:
-      title: 'Profil Admin'
+      title: 'Profil Pentadbir'
       staff_details: 'Maklumat Staf'
     surveys:
       title: 'Kajiselidik Saya'
@@ -325,7 +334,7 @@ bm:
     address_fields:
       line1: 'Baris 1'
       line2: 'Baris 2'
-      phone: 'No Tel'
+      phone: 'Nombor Telefon'
       fax: 'Faks'
       city: 'Bandar'
       postcode: 'Poskod'
@@ -353,11 +362,11 @@ bm:
       first_name: 'Nama'
       last_name: 'Nama Bapa'
       email: 'Emel'
-      ic_number: 'No KP'
+      ic_number: 'MyKad'
       gender: 'Jantina'
       age: 'Umur'
       address: 'Alamat'
-      phone_number: 'No Tel'
+      phone_number: 'Nombor Telefon'
       membership_status: 'Status keahlian'
       password: 'Kata Laluan'
       password_confirmation: 'Pengesahan Kata Laluan'
@@ -690,11 +699,11 @@ bm:
       title: 'Urus Operator PKNS'
     new:
       title: 'Tambah Operator PKNS'
-      ic_number: 'No KP'
+      ic_number: 'MyKad'
     show:
       title: 'Operator PKNS'
     form:
-      ic_number: 'No KP'
+      ic_number: 'MyKad'
 
   surveys:
     index:
@@ -1015,7 +1024,7 @@ bm:
       user: 
         ic_number: "No IC"
         password: "Kata laluan"
-        phone: "No telefon"
+        phone: "Nombor Telefonefon"
         gender: "Jantina"
         terms_of_service: 'Terma dan Syarat'
       survey:

@@ -28,7 +28,7 @@
                   %span
                   Perempuan
               .six.columns
-                = f.label t('ic_number'), "No KP"
+                = f.label t('ic_number'), t('ic_number')
                 = f.text_field :ic_number, :class => 'text input', value: @user.ic_number
                 %small (contoh : 800101-01-5000)
           %li.field
@@ -41,6 +41,8 @@
           %li.field
             = f.label t('password')
             = f.password_field :password, :class => 'text input'
+            %small
+              = t('password_length_hint')
           %li.field
             = f.label t('password_confirmation')
             = f.password_field :password_confirmation, :class => 'text input'
@@ -48,7 +50,7 @@
             %label.checkbox{ :for => :terms_of_service }
               = check_box_tag :terms_of_service
               %span
-              = link_to t('terms'), 'http://www.pkns.gov.my/HTML/disclaimer.html', :class => 'term'
+              = link_to t('terms'), 'http://www.pkns.gov.my/HTML/disclaimer.html', :class => 'term', onClick: 'window.open("http://www.pkns.gov.my/HTML/disclaimer.html","_blank");'
           %li.field
             = f.hidden_field :is_active, value: true
             %span.pretty.medium.warning.btn

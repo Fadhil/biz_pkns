@@ -30,17 +30,25 @@
       %li.field
         = f.label t('ic_number')
         = f.text_field :ic_number, :class => 'text input', :placeholder => ''
+        %small
+          =t('mykad_example')
       %li.field
         .row
           .six.columns
             = f.label t('phone')
             = f.text_field :phone, :class => 'phone input', :placeholder => ''
+            %small
+              =t('phone_number_hint')
           .six.columns
             = f.label t('office_phone')
             = f.text_field :office_phone, :class => 'phone input', :placeholder => ''
+            %small
+              =t('phone_number_hint')
       %li.field
         = f.label t('password'), :class => 'control-label'
         = f.password_field :password, :class => 'text input'
+        %small 
+          = t('password_length_hint')
       %li.field
         = f.label t('password_confirmation'), :class => 'control-label'
         = f.password_field :password_confirmation, :class => 'text input'

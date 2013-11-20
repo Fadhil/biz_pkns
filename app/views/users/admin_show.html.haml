@@ -27,12 +27,12 @@
         = @user.email
     .phone.row
       .six.columns
-        %small.label.info Mobile
+        %small.label.info=t('mobile_phone')
         = @user.phone
     .phone.row
       .six.columns
         %small.label.info.entypo.icon-left.icon-phone
-          Office
+          = t('office')
         = @user.office_phone
   %hr.divider
 .row

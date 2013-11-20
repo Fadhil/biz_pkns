@@ -7,9 +7,40 @@
 
 .row
 = form_for :past_attendance,  :url=>{:controller=>"past_attendances", :action=>"create"}, :html => { :multipart => true } do |f|
-  = f.label 'Select a CSV file'  
+  = f.label t('select_csv_file')  
   = f.file_field :file
   %span.medium.pretty.btn.primary
-    = f.submit class: 'btn btn-mini'
+    = f.submit t('upload_database_csv_button'),class: 'btn btn-mini'
+%br
+%br
 
-=# link_to t('new_past_attendance'), new_past_attendance_path,:class => 'btn btn-primary'
+.row
+  %h5
+    *Perhatian:
+  %small
+    %ol
+      %li
+        Sila guna fail CSV yang betul
+      %li
+        Sila pastikan setiap sel dalam fail CSV itu mengikut format yang betul.
+        %ul
+          Contoh:
+          %ul
+            %li
+              No KP   (800101-01-5000)
+            %li
+              No Tel  (124567890, tanpa nombor '0' di hadapan dan tiada '-')
+            %li
+              Program (sama seperti nama Program dalam sistem)
+            %li
+              Kursus  (sama seperti nama Kursus dalam sistem)
+      %li
+        Sila pastikan Program dan Kursus sudah didaftarkan sebelum muat naik fail 
+        CSV dalam Database
+      %li
+        Setiap sel dalam fail CSV perlu diisi. Jika tiada data dalam sel, pilihan 
+        tanda ialah letak '-' (sengkang)
+      %li
+        Tujuan muat naik fail CSV dalam Database ialah untuk mengemaskini maklumat
+        yang lepas tetapi tarikh yang dipaparkan untuk maklumat kursus pada sistem
+        merupakan tarikh kursus didaftarkan.

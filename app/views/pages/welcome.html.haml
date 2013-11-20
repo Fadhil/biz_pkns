@@ -76,6 +76,6 @@
                   %label.checkbox{ :for => :terms_of_service }
                     = check_box_tag :terms_of_service
                     %span
-                    = link_to t('terms'), 'http://www.pkns.gov.my/HTML/disclaimer.html', :class => 'term'
+                    = link_to t('terms'), 'http://www.pkns.gov.my/HTML/disclaimer.html', :class => 'term', onClick: 'window.open("http://www.pkns.gov.my/HTML/disclaimer.html","_blank");'
                 %li.field
                   = f.submit t('sign_up'), :class => ' pretty medium primary btn'
