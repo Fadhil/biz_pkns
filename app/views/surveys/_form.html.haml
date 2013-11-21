@@ -6,9 +6,9 @@
   - the_method = :put
 = nested_form_for @survey, url: the_path, :html => { :class => 'form-horizontal' }, method: the_method do |f|
   .field
-    = f.label t("name"), :class => 'control-label'
+    = f.label t(".name"), :class => 'control-label'
     .controls
-      = f.text_field :title, :class => 'text input', :placeholder => :title
+      = f.text_field :title, :class => 'text input', :placeholder => t('title')
   .field
     = f.label t('description'), class: 'control-label'
     = f.text_area :description, class: 'input textarea redactor', :rows => '7'
@@ -79,7 +79,7 @@
               = q.label t('option4'), class: 'control-label'
               = q.text_field :option4, class: 'text input', :placeholder => ''
 
-        = q.link_to_remove 'Remove'
+        = q.link_to_remove t('remove')
     = f.link_to_add :questions, :class => 'add-question' do
       %i.icon-plus-circled
       = t('add_questions')

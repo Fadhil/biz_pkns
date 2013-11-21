@@ -2,6 +2,8 @@
 .row
   %h3.twelve.columns
     = t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human
+  %small  
+    = t('fill_all_fields_hint')
   %hr
 .row
   .twelve.columns

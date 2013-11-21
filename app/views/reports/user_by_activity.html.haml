@@ -1,5 +1,8 @@
+
 .row
   .twelve.columns
+    %h6
+      = "Bilangan Peserta Yang Mengikuti Aktiviti Dalam Program #{@result_set['program_name']}"
     .table
       .row.table-head
         .six.columns
@@ -23,7 +26,7 @@
             .three.columns.center
               %p
                 = @result_set['grand_total']
-        - else
+        - elsif course_type != 'program_name'
           .row.table-row
             .six.columns{style: "background-color:#F88158"}
               %p

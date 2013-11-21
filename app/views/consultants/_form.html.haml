@@ -27,6 +27,8 @@
         = f.fields_for :profile_photo do |pp|
           = pp.label t('.upload_company_logo')
           = pp.file_field :file, :class => 'file input'
+        %small
+          = t('image_should_be_this_size', size: '240x160')
       %li.field
         = f.label 'Latar Belakang Syarikat'
         = f.text_area :bio_data, :class => 'textarea input redactor', :rows => '5'
@@ -44,6 +46,8 @@
           .six.columns
             = f.label t('phone')
             = f.text_field :phone, :class => 'text input', :placeholder => t('phone')
+            %small
+              = t('phone_number_hint')
           .six.columns
             = f.label t('email')
             = f.text_field :email, :class => 'text input', :placeholder => t('email')
@@ -51,6 +55,8 @@
         %li.field
           = f.label t('password')
           = f.password_field :password, :class => 'password input', :placeholder => t('password')
+          %small
+            = t('password_length_hint')
         %li.field
           = f.label t('password_confirmation')
           = f.password_field :password_confirmation, :class => 'password input', :placeholder => t('password_confirmation')

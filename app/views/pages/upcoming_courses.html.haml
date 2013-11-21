@@ -9,13 +9,23 @@
   .row
     #search-drawer.twelve.columns
       .row
-        .four.columns.field
-          = label :search, :terms, t('search_courses_by_title')
-          = text_field :search, :terms, :placeholder => "Search", :class => 'text input'
+        .five.columns.field
+          = label :search, :terms, t('.search_courses_by_title')
+          = text_field :search, :terms, :placeholder => "Carian...", :class => 'text input'
       .row
         .two.columns
           %span.pretty.medium.primary.btn.entypo.icon-left.icon-search
             = button_tag t('search'), onClick: "submit();"
+  %br
+  .row
+    %small
+      %ul
+        %li
+          * Kursus perlu didaftarkan lebih awal sehari sebelum tarikh kursus dijalankan
+        %li
+          * Kursus yang telah dijalankan, sila muat naik fail CSV (Kehadiran Peserta) di bahagian Urus Ahli -> Database
+    
+
 
 .table
   .row.table-head

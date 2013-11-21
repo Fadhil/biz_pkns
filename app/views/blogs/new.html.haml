@@ -1,4 +1,6 @@
 - model_class = Blog
 .page-header
   %h1=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human
+  %small
+    = t('fill_all_fields_hint')
 = render :partial => "form"

@@ -18,6 +18,7 @@
       = f.text_area :content, :class => 'text_area redactor'
   .form-actions
     %span.medium.pretty.btn.primary
-      = f.submit nil, :class => 'btn btn-primary'
+      - button_name = @blog.new_record? ? t('create_blog') : t('update_blog')
+      = f.submit button_name, :class => 'btn btn-primary'
     %span.medium.pretty.btn.default
       = link_to t('back', :default => t("helpers.links.cancel")), blogs_path

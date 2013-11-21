@@ -16,6 +16,8 @@
     %li.field
       = f.label t('password')
       = f.password_field :password, :class => 'password input', :placeholder => t('password')
+      %small
+        = t('password_length_hint')
   .row
     .twelve.columns
       = f.label 'Pilih Program'

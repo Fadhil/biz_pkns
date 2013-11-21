@@ -10,6 +10,7 @@ bm:
   inactive_adverts: 'Iklan Tidak Aktif'
   pending_adverts: 'Iklan Belum Diluluskan'
   activate: 'Aktifkan'
+  action: 'Tindakan'
   attendee: 'Penghadir'
   add_program: 'Tambah Program'
   add_attendee: 'Daftar Ahli'
@@ -24,9 +25,8 @@ bm:
   back: 'Kembali'
   edit: 'Kemaskini'
   end_course: 'Kursus Tamat'
-  end_survey: 'Kajiselidik Tamat'
+  end_survey: 'Kaji Selidik Tamat'
   extra: 'Tambahan'
-  fill_all_fields_hint: '* Sila isi semua maklumat dengan lengkap'
   view: 'Papar'
   bio_data: 'Biodata'
   business: 'Perniagaan'
@@ -55,18 +55,23 @@ bm:
   create_advert: 'Cipta Iklan'
   create_course: 'Cipta Kursus'
   create_user: 'Daftar Ahli'
+  create_blog: 'Cipta Blog'
   customers: 'Pelanggan'
   current_employment_status: 'Status Semasa'
   current_status: 'Status Semasa'
   date_tarikh: 'Tarikh'
+  date_requested: 'Tarikh Permohonan'
   description: 'Huraian'
   did_not_receive_confirmation: "Tidak terima arahan pengesahan?"
   forgot_your_password: 'Lupa kata laluan?'
   filter_all: "Paparkan Semua Pengguna" 
   filter_by_member: "Paparkan Ahli"
   filter_by_non_member: 'Paparkan Bukan Ahli'
+  fill_all_fields_hint: '* Sila isi semua maklumat dengan lengkap'
+  fill_all_fields_correctly_hint: '* Sila isi semua maklumat dengan lengkap dan tepat'
+  fill_all_profile_fields_hint: '* Sila isi semua maklumat profile (kecuali twitter dan facebook) untuk menggunakan sistem sepenuhnya.'
   gold: 'Gold'
-  image_should_be_this_size: 'Pastikan imej bersaiz dimensi 100x200'
+  image_should_be_this_size: 'Pastikan imej bersaiz dimensi %{size}'
   invalid_request: 'Permintaan Tidak Sah'
   login: 'Masuk'
   make_member: 'Jadikan Ahli'
@@ -115,6 +120,8 @@ bm:
   consultant_please_complete_profile: 'Sila lengkapkan profil anda.'
   please_become_a_member: 'Sila jadi ahli untuk akses maklumat dalam sistem.'
   please_upload_csv: 'Sila pastikan anda memuatnaik fail csv'
+  please_contact_admin_for_advert_status: '* Sila berhubung dengan Pentadbir PKNS untuk kelulusan dan kemaskini status iklan'
+  please_contact_admin_for_advert_status_2: '* Kemaskini status iklan baru kepada pemohon sama ada lulus atau tidak lulus'
   present: 'Hadir'
   not_present: 'Tidak Hadir'
   will_attend: 'Akan Hadir'
@@ -128,6 +135,7 @@ bm:
   registered_on: 'Didaftar pada'
   registered_year: 'Tahun Daftar'
   remember_me: 'Ingati Saya'
+  remove: 'Padam'
   remove_program: 'Padam Program'
   report: 'Laporan'
   resend_confirmation: 'Hantar arahan pengesahan'
@@ -144,6 +152,7 @@ bm:
   select_a_program_to_manage: 'Sila Pilih Program Untuk Diurus Dahulu'
   select_csv_file: 'Pilih fail CSV'
   send: 'Hantar'
+  send_survey_to: 'Hantar Kaji Selidik Ke'
   send_password_instructions: "Hantarkan arahan tukar kata laluan"
   setting: 'Tetapan'
   my_course: 'Kursus Saya'
@@ -161,9 +170,9 @@ bm:
   successfully_registered_pkns_user: 'Pendaftaran Ahli PKNS berjaya'
   successfully_updated_attendance: 'Kehadiran Berjaya Dikemaskini'
   successfully_created_pkns_user: 'Berjaya mendaftarkan pengguna PKNS'
-  successfully_created_survey: 'Berjaya mendaftarkan kajiselidik'
-  successfully_updated_survey: 'Berjaya mengemaskini kajiselidik'
-  successfully_sent_survey: 'Kajiselidik berjaya dihantar'
+  successfully_created_survey: 'Berjaya mendaftarkan Kaji Selidik'
+  successfully_updated_survey: 'Berjaya mengemaskini Kaji Selidik'
+  successfully_sent_survey: 'Kaji Selidik berjaya dihantar'
   successfully_created_business: 'Jenis perniagaan berjaya didaftar'
   successfully_updated_business: 'Jenis perniagaan berjaya dikemaskini'  
   successfully_created_business_category: 'Bidang perniagaan berjaya didaftar'
@@ -174,17 +183,19 @@ bm:
   successfully_requested_advert: 'Berjaya menghantar iklan untuk pengaktifan'
   successfully_rejected_advert: 'Iklan tidak diluluskan, dihantar balik kepada pengguna'
   successfully_sent_newsletter: 'Buletin telah berjaya dihantar'
-  successfully_ended_survey: 'Kajiselidik telah berjaya ditamatkan'
+  successfully_ended_survey: 'Kaji Selidik telah berjaya ditamatkan'
   terms: "Saya setuju dengan Syarat dan Terma"
   take_survey: 'Ambil Survey'
   text: 'Teks'
-  thanks_for_completing_our_survey: 'Terima kasih kerana sudi menjawab kajiselidik kami.'
-  this_survey_has_been_sent: '*Kajiselidik ini sudah pernah dihantar'
+  thanks_for_completing_our_survey: 'Terima kasih kerana sudi menjawab Kaji Selidik kami.'
+  this_survey_has_been_sent: '*Kaji Selidik ini sudah pernah dihantar'
+  title: 'Tajuk'
   total: 'Jumlah'
   total_active_consultants: 'Bilangan Perunding Yang Aktif'
   total_inactive_consultants: 'Bilangan Perunding Yang Tidak Aktif'
   unit: 'Unit'
   update: 'Kemaskini'
+  update_blog: 'Kemaskini Blog'
   upload_database_csv_button: 'Program Yang Pernah Dihadiri'
   upcoming: 'Akan Datang'
   upload_successful: 'Muat naik berjaya'
@@ -194,10 +205,10 @@ bm:
   venue: 'Tempat'
   weight: 'Turutan'
   years: 'tahun'
-  you_have_new_surveys_here: 'Jawab kajiselidik terbaru anda di sini:'
-  you_were_invited_to_do_a_survey: 'Anda telah dijemput untuk menjawab kajiselidik'
+  you_have_new_surveys_here: 'Jawab Kaji Selidik terbaru anda di sini:'
+  you_were_invited_to_do_a_survey: 'Anda telah dijemput untuk menjawab Kaji Selidik'
 
-  member_nonmember_by_age: 'Pecahan Julat Umur'
+  member_nonmember_by_age: 'Pecahan Julat Umur Pengguna'
   member_gender_by_age: 'Pecahan Ikut Jantina'
   member_by_current_status: 'Pecahan Status Semasa'
   member_by_business_details: 'Pecahan Perniagaan'
@@ -312,7 +323,7 @@ bm:
       title: 'Profil Pentadbir'
       staff_details: 'Maklumat Staf'
     surveys:
-      title: 'Kajiselidik Saya'
+      title: 'Kaji Selidik Saya'
     letters:
       title: 'Arkib Surat'
       subject: 'Perkara Surat'
@@ -380,7 +391,7 @@ bm:
     show:
       title: 'Perunding'
     new:
-      title: 'Daftar perunding baru'
+      title: 'Daftar Perunding Baru'
     my_adverts:
       title: 'Iklan Saya'
 
@@ -481,10 +492,10 @@ bm:
       title: 'Bidang Pendidikan Baru'
     index:
       title: 'Senarai Bidang Pendidikan'
-      name: 'Nama Pendidikan'
+      name: 'Bidang Pendidikan'
       edit: 'Sunting'
       destroy: 'Padam'
-      new: 'Tambah Pendidikan Baru'
+      new: 'Tambah Bidang Pendidikan Baru'
     show:
       title: 'Pendidikan'
       name: 'Nama'
@@ -498,12 +509,12 @@ bm:
       edit: 'Kemaskini'
       name: 'Nama'
       cancel: 'Batal'
-      new: 'Tambah Pendidikan Baru'
+      new: 'Tambah Bidang Pendidikan Baru'
 
   pages:
     upcoming_courses:
-      title: 'Kursus Akan Datang'
-      search_courses_by_title: 'Carian Kursus'
+      title: 'Senarai Kursus Akan Datang'
+      search_courses_by_title: 'Carian Kursus dengan Tajuk'
 
     business_directory:
       title: 'Direktori Perniagaan'
@@ -521,7 +532,7 @@ bm:
   businesses:
     index:
       title: 'Senarai Jenis Perniagaan'
-      name: 'Nama Jenis Perniagaan'
+      name: 'Jenis Perniagaan'
       edit: 'Sunting'
       destroy: 'Padam'
       new: 'Tambah Jenis Perniagaan Baru'
@@ -532,7 +543,7 @@ bm:
       create: 'Kemaskini'
 
     form:
-      name: 'Nama bidang'
+      name: 'Nama'
       create: 'Tambah'
       cancel: 'Batal'
       add_new_business: 'Tambah Jenis Perniagaan Baru'
@@ -571,12 +582,12 @@ bm:
 
   newsletters:
     index:
-      title: 'Buletin'
+      title: 'Karang Buletin'
       name: 'Nama'
       use_this: 'Karang guna templat ini'
     edit:
     new:
-      title: 'Karang Buletin baru'
+      title: 'Karang Buletin Baru'
       subject: 'Subjek'
       message: 'Mesej'
       send_to: 'Hantar buletin kepada'
@@ -604,7 +615,7 @@ bm:
       view: 'Papar'
       new: 'Karang Buletin'
     use_template:
-      title: 'Karang Buletin baru'
+      title: 'Karang Buletin Baru'
       subject: 'Subjek'
       message: 'Mesej'
       send_to: 'Hantar buletin kepada'
@@ -707,23 +718,25 @@ bm:
 
   surveys:
     index:
-      title: 'Senarai kajiselidik'
-      new: 'Kajiselidik Baru'
+      title: 'Senarai Kaji Selidik'
+      new: 'Kaji Selidik Baru'
     new:
-      title: 'Kajiselidik Baru'
+      title: 'Kaji Selidik Baru'
     form:
-      title: 'Daftar kajiselidik Baru'
-      create: 'Daftar kajiselidik'
+      name: 'Nama Kaji Selidik'
+      title: 'Daftar Kaji Selidik Baru'
+      create: 'Daftar Kaji Selidik'
     edit: 
-      title: 'Kemaskini kajiselidik'
+      title: 'Kemaskini Kaji Selidik'
     show:
+      name: 'Nama Kaji Selidik'
       all_users: 'Semua Pengguna'
       members: 'Ahli'
       nonmembers: 'Bukan Ahli'
       users_by_program: 'Pengguna mengikut Program'
       users_by_course: 'Pengguna mengikut Kursus'
     take:
-      title: 'Jawab kajiselidik'
+      title: 'Jawab Kaji Selidik'
     report:
       answered: 'Dijawab'
       requested: 'Dihantar'
@@ -889,11 +902,11 @@ bm:
       program_listing: 'Senarai Program'
       consultant: 'Perunding'
       course: 'Kursus'
-      course_listing: 'Senarai Kursus'
+      course_listing: 'Senarai Kursus Akan Datang'
       program_member: 'Ahli Program'
-      surveys: 'Kajiselidik'
-      list_surveys: 'Senarai kajiselidik'
-      new_survey: 'Kajiselidik Baru'
+      surveys: 'Kaji Selidik'
+      list_surveys: 'Senarai Kaji Selidik'
+      new_survey: 'Kaji Selidik Baru'
       list_adverts: 'Senarai Iklan'
       user_reports: 'Laporan Pengguna'
       program_reports: 'Laporan Program'

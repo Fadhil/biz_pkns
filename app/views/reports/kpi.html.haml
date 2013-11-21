@@ -2,8 +2,16 @@
   %span.medium.btn.default
     = button_tag 'Cetak', onClick: 'print();'
 .row
-  %h3.twelve.columns
+  %h3.three.columns
     =t '.title'
+  .nine.columns
+    %small
+      %ul
+        %li
+          * Sila cetak laporan KPI sebelum bulan Disember setiap tahun.
+        %li
+          * Laporan KPI akan menyimpan data program dan kursus untuk 1 tahun.
+.row
   %p 
     = "Tarikh Laporan: #{@the_date}"
 %table.table.kpi

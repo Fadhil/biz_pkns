@@ -50,9 +50,15 @@ class AdvertsController < ApplicationController
 
     respond_to do |format|
       if @advert.save 
+
+        the_notice = t('successfully_activated_advert')
+        the_notice += '<br/>'
+        the_notice += t('please_contact_admin_for_advert_status')
+        the_notice += '<br/>'
+        the_notice += t('please_contact_admin_for_advert_status_2')
         if @advert.update_attributes(@the_params)
         
-          format.html { redirect_to @advert, notice: t('successfully_created_advert') }
+          format.html { redirect_to @advert, notice: the_notice }
           format.json { head :no_content }
         else
 

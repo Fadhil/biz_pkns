@@ -5,7 +5,7 @@
   %hr.divider
 .row
   .twelve.columns
-    %strong= t('name')
+    %strong= t('.name')
     %h5
       = @survey.title
 .row
@@ -32,7 +32,7 @@
 .row
   - unless @survey.sent?
     .twelve.columns
-      %h5 Hantar Survey Ke
+      %h5=t('send_survey_to')
       = form_for '',url: send_user_survey_path do |f|
         %ul
           - if current_user

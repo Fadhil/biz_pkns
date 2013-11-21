@@ -36,7 +36,7 @@
               = p.label t('.upload_photo'), class: 'control-label'
               = p.file_field :file, :class => 'file input'
               %small
-                = t('image_should_be_this_size')
+                = t('image_should_be_this_size', size: '200x600')
           %li.field
             .rows
               .six.columns
@@ -70,7 +70,7 @@
               = p.label t('.upload_photo'), class: 'control-label'
               = p.file_field :file, :class => 'file'
               %small
-                = t('image_should_be_this_size')
+                = t('image_should_be_this_size', size: '200x600')
           %li.field
             = f.label t('.select_course'), class: 'control-label'
             .row

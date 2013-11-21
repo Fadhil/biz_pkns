@@ -37,6 +37,7 @@ class Program < ActiveRecord::Base
       grand_total += total_users
     end
     result_set['grand_total'] = grand_total
+    result_set['program_name'] = self.name
     result_set
   end
 

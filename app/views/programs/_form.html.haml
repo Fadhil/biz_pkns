@@ -9,6 +9,8 @@
         = f.fields_for :logo do |l|
           = l.label 'Muatnaik logo' do
             = l.file_field :file, class: 'file input'
+        %small
+          = t('image_should_be_this_size', size: '240x160')
       %li.field
         = f.label t('description')
         = f.text_area :description, class: 'textarea input redactor-less', :placeholder => '', :rows => 5 
@@ -24,6 +26,16 @@
       %li.field
         %h6
           Sasaran Kursus
+        %small
+          *Perhatian PENTING:
+        %small
+          %ol
+            %li
+              1. Sasaran kursus perlu diisi dengan tepat dan hanya dibuat pada pendaftaran program baru sahaja.
+            %li
+              2. Sasaran kursus yang dibuat TIDAK boleh ditukar setelah pendaftaran program baru.
+            %li
+              3. Sasaran kursus ini bertujuan untuk pengisian dalam laporan KPJ Tahunan
     .table
       .row.table-head
         .four.columns
