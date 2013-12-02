@@ -78,11 +78,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  #   def redactor_authenticate_user!
-  #   authenticate_admin_user! # devise before_filter
-  # end
+    def redactor_authenticate_user!
+    super || authenticate_consultant_user! # devise before_filter
+  end
 
-  # def redactor_current_user
-  #   current_admin_user # devise user helper
-  # end
+  def redactor_current_user
+    super || current_consultant_user # devise user helper
+  end
 end
