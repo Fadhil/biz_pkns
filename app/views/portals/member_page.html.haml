@@ -1,13 +1,20 @@
 .row
   .nine.columns
+    %br
     %h4=t('.title')
     %small
       * Untuk dapatkan maklumat lanjut mengenai Program dan Kursus, sila mendaftar untuk menjadi Ahli BizData di 
       = link_to 'sini', new_user_registration_path
+  .three.columns.center
+ 
+    %h7
+      Bilangan Ahli Terkini
+    %h3
+      = User.nonadmin.members.count.to_s.rjust(5,'0')
   %hr.divider
 .row
-  .nine.columns
-    %ul.three_up.tiles
+  .twelve.columns
+    %ul.four_up.tiles
       - @members.size.times do |index|
         %li.panel
           .image
@@ -24,10 +31,4 @@
               - @members[index].try(:programs).try(:uniq).try(:each) do |program|
                 %li
                   %small= program.name
-  .three.columns.center
-    %br
-    %br
-    %h7
-      Bilangan Ahli Terkini
-    %h3
-      = User.nonadmin.members.count.to_s.rjust(5,'0')
+  
