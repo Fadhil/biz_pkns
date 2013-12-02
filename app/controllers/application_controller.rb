@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_filter :authenticate
+  before_filter :authenticate_the_thing
   before_filter :check_status
 
   protect_from_forgery
@@ -49,7 +49,7 @@ class ApplicationController < ActionController::Base
   #Temp authentication. Removed this before sign off.
   protected
 
-  def authenticate
+  def authenticate_the_thing
     authenticate_or_request_with_http_basic do |username, password|
       username == "big" && password == "boss"
     end
@@ -76,5 +76,13 @@ class ApplicationController < ActionController::Base
         flash.now[:notice] = t('consultant_please_complete_profile', href: link_to('sini', edit_consultant_path(current_consultant)) )
       end
     end
+  end
+
+    def redactor_authenticate_user!
+    authenticate_admin_user! # devise before_filter
+  end
+
+  def redactor_current_user
+    current_admin_user # devise user helper
   end
 end
