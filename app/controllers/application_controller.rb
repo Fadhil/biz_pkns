@@ -60,7 +60,7 @@ class ApplicationController < ActionController::Base
       if current_user.walk_in_first_time?
         flash.now[:notice] = t('please_change_default_password')
       elsif current_user.membership.nil? && !current_user.admin?
-          flash.now[:notice] = t('please_become_a_member')
+          flash.now[:notice] = t('please_become_a_member', href: link_to('sini', edit_user_path(current_user)))
       elsif current_user.confirmed && !current_user.profile_complete? 
         unless current_user.admin?
           flash.now[:notice] = t('please_complete_your_profile')
@@ -73,7 +73,7 @@ class ApplicationController < ActionController::Base
     end
     if current_consultant
       if !current_consultant.profile_complete?
-        flash.now[:notice] = t('consultant_please_complete_profile')
+        flash.now[:notice] = t('consultant_please_complete_profile', href: link_to('sini', edit_consultant_path(current_consultant)) )
       end
     end
   end

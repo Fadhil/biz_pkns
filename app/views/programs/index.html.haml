@@ -6,6 +6,12 @@
     - if can? :manage, :all
       %span.pretty.medium.primary.btn.entypo.icon-left.icon-list-add
         = link_to t('new', :default => t("helpers.links.new_user")), new_program_path
+
+- if cannot? :manage, :all
+  .row
+    
+    %small
+      = "* Sila layari #{link_to 'www.pknsbizpoint.com','http://www.pknsbizpoint.com'} untuk lihat program yang lain".html_safe
 .table
   .row.table-head
     .one.columns

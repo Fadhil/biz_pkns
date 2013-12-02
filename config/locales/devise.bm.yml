@@ -33,7 +33,7 @@ my:
       unlocked: 'Akun anda telah berjaya dibuka. Anda telah sign in.'
     mailer:
       confirmation_instructions:
-        subject: 'Arahan proses pengesahan'
+        subject: 'Arahan Proses Pengesahan Sistem PKNS Bizdata'
       reset_password_instructions:
         subject: 'Arahan mengubah password'
       unlock_instructions:

@@ -142,6 +142,9 @@
             = f.hidden_field :completed, value: 1
             %span.pretty.medium.btn.warning
               %button{:onClick => "submit();"}= t('end_course')
+        .row
+          %small
+            * Kursus tidak boleh dikemas kini jika anda telah menamatkannya
         .row.print-disabled
           .twelve.columns
             %h5

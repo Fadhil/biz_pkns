@@ -23,7 +23,7 @@ bm:
   is_active: 'Aktif'
   are_you_sure: 'And pasti?'
   back: 'Kembali'
-  edit: 'Kemaskini'
+  edit: 'Kemas Kini'
   end_course: 'Kursus Tamat'
   end_survey: 'Kaji Selidik Tamat'
   extra: 'Tambahan'
@@ -117,11 +117,12 @@ bm:
   platinum: 'Platinum'
   please_change_default_password: "Kata Laluan anda sekarang ialah 'password'. Sila tukarkan kata laluan di Profil anda"
   please_complete_your_profile: 'Sila lengkapkan profil anda untuk menikmati sistem ini sepenuhnya.'
-  consultant_please_complete_profile: 'Sila lengkapkan profil anda.'
-  please_become_a_member: 'Sila jadi ahli untuk akses maklumat dalam sistem.'
+  consultant_please_complete_profile: 'Klik %{href} untuk kemas kini profil perunding.'
+  please_become_a_member: "* Klik %{href} untuk kemas kini profil dan menggunakan sistem sepenuhnya."
   please_upload_csv: 'Sila pastikan anda memuatnaik fail csv'
-  please_contact_admin_for_advert_status: '* Sila berhubung dengan Pentadbir PKNS untuk kelulusan dan kemaskini status iklan'
-  please_contact_admin_for_advert_status_2: '* Kemaskini status iklan baru kepada pemohon sama ada lulus atau tidak lulus'
+  please_contact_admin_for_advert_status: '* Sila berhubung dengan Pentadbir PKNS untuk kelulusan dan kemas kini status iklan'
+  please_contact_admin_for_advert_status_2: '* Kemas kini status iklan baru kepada pemohon sama ada lulus atau tidak lulus'
+  please_contact_admin_for_advert_status_3: '* Jika anda buat permohonan iklan, sila berhubung dengan Pentadbir PKNS untuk kelulusan dan kemaskini status iklan.'
   present: 'Hadir'
   not_present: 'Tidak Hadir'
   will_attend: 'Akan Hadir'
@@ -168,7 +169,7 @@ bm:
   submit: 'Hantar'
   successfully_registered_course: 'Pendaftaran Kursus Berjaya.'
   successfully_registered_pkns_user: 'Pendaftaran Ahli PKNS berjaya'
-  successfully_updated_attendance: 'Kehadiran Berjaya Dikemaskini'
+  successfully_updated_attendance: 'Kehadiran berjaya dikemaskini'
   successfully_created_pkns_user: 'Berjaya mendaftarkan pengguna PKNS'
   successfully_created_survey: 'Berjaya mendaftarkan Kaji Selidik'
   successfully_updated_survey: 'Berjaya mengemaskini Kaji Selidik'
@@ -194,8 +195,8 @@ bm:
   total_active_consultants: 'Bilangan Perunding Yang Aktif'
   total_inactive_consultants: 'Bilangan Perunding Yang Tidak Aktif'
   unit: 'Unit'
-  update: 'Kemaskini'
-  update_blog: 'Kemaskini Blog'
+  update: 'Kemas Kini'
+  update_blog: 'Kemas Kini Blog'
   upload_database_csv_button: 'Program Yang Pernah Dihadiri'
   upcoming: 'Akan Datang'
   upload_successful: 'Muat naik berjaya'
@@ -209,9 +210,9 @@ bm:
   you_were_invited_to_do_a_survey: 'Anda telah dijemput untuk menjawab Kaji Selidik'
 
   member_nonmember_by_age: 'Pecahan Julat Umur Pengguna'
-  member_gender_by_age: 'Pecahan Ikut Jantina'
-  member_by_current_status: 'Pecahan Status Semasa'
-  member_by_business_details: 'Pecahan Perniagaan'
+  member_gender_by_age: 'Pecahan Ikut Jantina Ahli'
+  member_by_current_status: 'Pecahan Status Semasa Ahli'
+  member_by_business_details: 'Pecahan Perniagaan Ahli'
   member_by_program: 'Pecahan Ahli Berniaga'
   yes_no: 'Ya/Tidak'
   yes_answer: 'Ya'
@@ -245,7 +246,7 @@ bm:
   phone_number: 'Nombor Telefon'
   membership_status: 'Status keahlian'
 
-  successfully_updated: "%{resource} berjaya dikemaskini."
+  successfully_updated: "%{resource} berjaya dikemas kini."
   successfully_created: "%{resource} telah berjaya dicipta."
   successfully_registered: "%{resource} telah berjaya didaftar."
 
@@ -259,7 +260,7 @@ bm:
     new:
       title: 'Daftar Ahli'
     edit:
-      title: 'Kemaskini Profil'
+      title: 'Kemas Kini Profil'
     form:
       twitter_handle: 'ID Twitter'
       facebook_handle: 'ID Facebook'
@@ -287,7 +288,7 @@ bm:
       upload_business_photo: 'Muat Naik Gambar Perniagaan (PNG dan JPG sahaja)'
       business_registered: 'Perniagaan Berdaftar'
       registration_number: 'No. Pendaftaran Syarikat'
-      update_user: 'Kemaskini'   
+      update_user: 'Kemas Kini'   
       customers1: ' #1'
       customers2: ' #2'
       customers3: ' #3'
@@ -318,7 +319,7 @@ bm:
       customers2: ' Pelanggan #2'
       customers3: ' Pelanggan #3'
     admin_edit:
-      title: 'Kemaskini Profil Pentadbir'
+      title: 'Kemas Kini Profil Pentadbir'
     admin_show:
       title: 'Profil Pentadbir'
       staff_details: 'Maklumat Staf'
@@ -358,7 +359,7 @@ bm:
       title: 'Senarai Bidang Perniagaan'
       new: 'Tambah Bidang Perniagaan'
     edit:
-      title: 'Kemaskini Bidang Perniagaan'
+      title: 'Kemas Kini Bidang Perniagaan'
     form:
       add_new_business_category: 'Daftar Bidang Perniagaan'
     show:
@@ -369,7 +370,7 @@ bm:
       title: 'Senarai Perunding'
     form:
       cancel: 'Batal'
-      update: 'Kemaskini'
+      update: 'Kemas Kini'
       first_name: 'Nama'
       last_name: 'Nama Bapa'
       email: 'Emel'
@@ -387,7 +388,7 @@ bm:
     form_new:
       create_consultant: 'Daftar Perunding'
     edit:
-      title: 'Kemaskini Profil'
+      title: 'Kemas Kini Profil'
     show:
       title: 'Perunding'
     new:
@@ -404,10 +405,10 @@ bm:
       title: 'Surat Baru'
     show:
       print: 'Cetak PDF'
-      edit: 'Kemaskini'
+      edit: 'Kemas Kini'
       destroy: 'Padam'
     edit:
-      title: 'Kemaskini Surat'
+      title: 'Kemas Kini Surat'
     form:
       recipient: 'Penerima'
       address: 'Alamat'
@@ -419,7 +420,7 @@ bm:
       state: 'Negeri'
       subject: 'Perkara'
       message: 'Kandungan Surat'
-      update: 'Kemaskini Surat'
+      update: 'Kemas Kini Surat'
       cancel: 'Batal'
       create_letter: 'Cipta Surat'
     compose:
@@ -483,7 +484,7 @@ bm:
       title: 'Sunting kemahiran'
     form:
       back: 'Balik'
-      edit: 'Kemaskini'
+      edit: 'Kemas Kini'
       name: 'Nama'
       create: 'Tambah Kemahiran Baru'
 
@@ -500,13 +501,13 @@ bm:
       title: 'Pendidikan'
       name: 'Nama'
       back: 'Balik'
-      edit: 'Kemaskini'
+      edit: 'Kemas Kini'
       destroy: 'Padam'
     edit:
       title: 'Sunting Pendidikan'
     form:
       back: 'Balik'
-      edit: 'Kemaskini'
+      edit: 'Kemas Kini'
       name: 'Nama'
       cancel: 'Batal'
       new: 'Tambah Bidang Pendidikan Baru'
@@ -540,7 +541,7 @@ bm:
       title: 'Jenis Perniagaan Baru'
     edit:
       title: 'Sunting Jenis Perniagaan'
-      create: 'Kemaskini'
+      create: 'Kemas Kini'
 
     form:
       name: 'Nama'
@@ -551,9 +552,9 @@ bm:
       title: 'Bidang Perniagaan'
       name: 'Nama'
       back: 'Balik'
-      edit: 'Kemaskini'
+      edit: 'Kemas Kini'
       destroy: 'Padam'
-      update: 'Kemaskini'
+      update: 'Kemas Kini'
 
   past_attendances:
     index:
@@ -569,8 +570,8 @@ bm:
       new: 'Daftar Program Baru'
       show: 'Papar'
     edit:
-      title: 'Kemaskini Program'
-      update: 'Kemaskini'
+      title: 'Kemas Kini Program'
+      update: 'Kemas Kini'
     form:
       add_new_course: 'Tambah Kursus Baru'
       courses: 'Kursus'
@@ -600,7 +601,7 @@ bm:
       title: 'Buletin'
       subject: 'Subjek'
       message: 'Mesej'
-      edit: 'Kemaskini'
+      edit: 'Kemas Kini'
       destroy: 'Padam'
     form:
       subject: 'Subjek'
@@ -649,17 +650,17 @@ bm:
       course_type: 'Jenis Kursus'
       create_course: 'Cipta Kursus'
     edit: 
-      title: 'Kemaskini kursus'
+      title: 'Kemas kini kursus'
     show:
       preattendance_list: 'Senarai Pra-Kedatangan'
       attendance_list: 'Senarai Kedatangan'
       generate_report: 'Jana Laporan'
-      edit_report: 'Kemaskini Laporan'
+      edit_report: 'Kemas Kini Laporan'
       save_report: 'Finalize'
       view_report: 'Papar Laporan'
     generate_report:
       title: 'Jana Laporan Kursus'
-      edit_report: 'Kemaskini Laporan'
+      edit_report: 'Kemas Kini Laporan'
       save_report: 'Finalize'
     report_form:
       course_name: 'Nama Kursus'
@@ -674,7 +675,7 @@ bm:
       no_of_vips: 'Bil Pensyarah/Jemputan/VIP *'
       course_summary: 'Rumusan Kursus *'
       generate_report: 'Jana Laporan'
-      edit_report: 'Kemaskini Laporan'
+      edit_report: 'Kemas Kini Laporan'
       save_report: 'Save'
       course_schedule: 'Jadual Kursus *'
     general_details_form:
@@ -690,7 +691,7 @@ bm:
       no_of_vips: 'Bil Pensyarah/Jemputan/VIP *'
       course_summary: 'Rumusan Kursus *'
       generate_report: 'Jana Laporan'
-      edit_report: 'Kemaskini Laporan'
+      edit_report: 'Kemas Kini Laporan'
       save_report: 'Save'
       course_schedule: 'Jadual Kursus *'
     report_csv_form:
@@ -727,7 +728,7 @@ bm:
       title: 'Daftar Kaji Selidik Baru'
       create: 'Daftar Kaji Selidik'
     edit: 
-      title: 'Kemaskini Kaji Selidik'
+      title: 'Kemas Kini Kaji Selidik'
     show:
       name: 'Nama Kaji Selidik'
       all_users: 'Semua Pengguna'
@@ -747,7 +748,7 @@ bm:
     index:
       title: 'Urus blog'
       new: 'Cipta Blog'
-      edit: 'Kemaskini'
+      edit: 'Kemas Kini'
       destroy: 'Padam'
       cancel: 'Batal'
       subject: 'Tajuk'
@@ -760,14 +761,14 @@ bm:
       content: 'Kandungan'
       cancel: 'Batal'
     edit:
-      title: 'Kemaskini blog'
+      title: 'Kemas Kini blog'
     show:
-      edit: 'Kemaskini'
+      edit: 'Kemas Kini'
       destroy: 'Padam'
     all:
       title: 'Berita & Artikel'
       new: 'Cipta Blog'
-      edit: 'Kemaskini'
+      edit: 'Kemas Kini'
       destroy: 'Padam'
       cancel: 'Batal'
       subject: 'Tajuk'
@@ -796,7 +797,7 @@ bm:
     new:
       title: 'Iklan Baru'
     edit:
-      title: 'Kemaskini Iklan'
+      title: 'Kemas Kini Iklan'
     index:
       title: 'Senarai Iklan'
       new: 'Iklan Baru'
@@ -819,6 +820,7 @@ bm:
       product_advert: 'Iklan Produk/Servis'
       select_advert_type: 'Pilih Jenis Iklan'
       select_course: 'Pilih Kursus'  
+      up_to_140_chars_only: 'Maksimum 140 huruf sahaja'
 
   reports:
     users:
@@ -872,7 +874,7 @@ bm:
   layouts:
     sidebar:
       member_directory: 'Direktori Ahli'
-      list_of_courses: 'Senarai Kursus'
+      list_of_courses: 'Senarai Kursus Akan Datang'
       upcoming_courses: 'Kursus Akan Datang'
       add_modify_courses: 'Cipta/Edit Kursus'
       business_directory: 'Direktori Perniagaan'
@@ -884,7 +886,7 @@ bm:
       my_program: 'Kursus Saya'
       my_adverts: 'Iklan'
       my_courses: 'Kursus Saya'
-      my_reports: 'Laporan Saya'
+      my_reports: 'Laporan Wajib'
       all_reports: 'Laporan Perunding'
       administrate_user: 'Urus Ahli'
       administrate_pkns_user: 'Urus Operator PKNS'
@@ -973,14 +975,14 @@ bm:
       confirmed: 'Akaun anda telah berjaya disahkan. Anda telah sign in.'
     registrations:
       signed_up: 'Proses pendaftaran berjaya. Link untuk mengaktifkan akaun telah dihantar di e-mail.'
-      updated: 'Akaun anda telah dikemaskini'
+      updated: 'Akaun anda telah diKemas Kini'
       destroyed: 'Selamat tinggal, akaun anda telah ditutup'
     unlocks:
       send_instructions: 'Anda akan menerima e-mail mengenai langkah membuka akaun kembali sebentar lagi.'
       unlocked: 'Akun anda telah berjaya dibuka. Anda telah sign in.'
     mailer:
       confirmation_instructions:
-        subject: 'Arahan proses pengesahan'
+        subject: 'Arahan Proses Pengesahan Sistem PKNS Bizdata'
       reset_password_instructions:
         subject: 'Arahan mengubah kata laluan'
       unlock_instructions:

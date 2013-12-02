@@ -6,19 +6,19 @@
     %hr
     %section.vertical.tabs
       %ul.tab-nav.four.columns
-        %li.active
+        %li.active.smallfonts
           = link_to t('.user_details'), '#', onClick: 'hideChart("usersprogramchart");'
         / %li
         /   = link_to t('.business_details'), '#'
-        %li
+        %li.smallfonts
           = link_to t('member_nonmember_by_age'), '#', onClick: 'hideChart("usersprogramchart");'
-        %li
+        %li.smallfonts
           = link_to t('member_gender_by_age'), '#', onClick: 'hideChart("usersprogramchart");'
-        %li
+        %li.smallfonts
           = link_to t('member_by_current_status'), '#', onClick: 'hideChart("usersprogramchart");'
-        %li
+        %li.smallfonts
           = link_to t('member_by_program'), '#',onClick: 'showChart("usersprogramchart");'
-        %li
+        %li.smallfonts
           = link_to t('member_by_business_details'), '#', onClick: 'hideChart("usersprogramchart");'
       .tab-content.eight.columns.active
         = render partial: 'users_members_non_members'
