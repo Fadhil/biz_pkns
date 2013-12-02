@@ -5,6 +5,7 @@ BizPkns::Application.routes.draw do
   mount RedactorRails::Engine => '/redactor_rails'
 
   localized do
+    get 'terms_and_conditions' => 'pages#terms_and_conditions', as: 'tnc'
     get "reports/users" => 'reports#users'
     get "reports/consultants" => 'reports#consultants'
     get "reports/programs" => 'reports#programs'

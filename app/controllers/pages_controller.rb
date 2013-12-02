@@ -1,11 +1,15 @@
 class PagesController < ApplicationController
-
+  layout 'kpi_report', only: :terms_and_conditions
   def welcome
     render :layout => 'static'
   end
 
   def home
     @adverts = Advert.active
+  end
+
+  def terms_and_conditions
+    
   end
 
   def consultation

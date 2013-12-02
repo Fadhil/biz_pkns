@@ -50,7 +50,7 @@
             %label.checkbox{ :for => :terms_of_service }
               = check_box_tag :terms_of_service
               %span
-              = link_to t('terms'), 'http://www.pkns.gov.my/HTML/disclaimer.html', :class => 'term', onClick: 'window.open("http://www.pkns.gov.my/HTML/disclaimer.html","_blank");'
+              = link_to t('terms'), tnc_path, :class => 'term', onClick: "window.open('#{tnc_path}','_blank')";
           %li.field
             = f.hidden_field :is_active, value: true
             %span.pretty.medium.warning.btn
