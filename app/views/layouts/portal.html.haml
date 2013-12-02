@@ -23,6 +23,6 @@
             = yield
         .row
           .twelve.columns
-            = image_tag('fb.jpg')
-            = image_tag('twitter.jpg')
+            = link_to image_tag('fb.jpg'), 'https://www.facebook.com/PKNSBizData'
+            = link_to image_tag('ico-youtube.png', size: '33x33'), 'https://www.youtube.com/user/PKNSBizData'
     = render partial: "/layouts/footer"
