@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_filter :authenticate_the_thing
+  #before_filter :authenticate_the_thing
   before_filter :check_status
 
   protect_from_forgery
@@ -78,11 +78,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-    def redactor_authenticate_user!
-    super || authenticate_consultant_user! # devise before_filter
-  end
+  # def redactor_authenticate_user!
+  #   super || authenticate_consultant_user! # devise before_filter
+  # end
 
-  def redactor_current_user
-    super || current_consultant_user # devise user helper
-  end
+  # def redactor_current_user
+  #   super || current_consultant_user # devise user helper
+  # end
 end
