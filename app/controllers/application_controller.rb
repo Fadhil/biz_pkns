@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+
   #before_filter :authenticate_the_thing
   before_filter :check_status
 
