@@ -8,7 +8,7 @@ gem 'rails', '3.2.6'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 # User registration/login
-gem 'devise'
+gem 'devise', '2.2.4'
 
 # Photo Upload
 gem 'carrierwave'
@@ -86,7 +86,7 @@ group :production do
 end
 
 gem 'jquery-rails'
-gem 'redactor-rails'
+gem 'redactor-rails', '0.3.5'
 gem 'prawn'#, :git => 'git@github.com:epireve/prawn.git'
 gem 'delayed_job_active_record'
 gem 'daemons'

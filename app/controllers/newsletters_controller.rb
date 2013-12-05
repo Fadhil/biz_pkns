@@ -29,10 +29,7 @@ class NewslettersController < ApplicationController
   # GET /newsletters/new
   # GET /newsletters/new.json
   def new
-    logger.info('In Newsletter new\n')
-    logger.info sign_in(:user, Admin.find_by_email('admin@admin.com'))
-    logger.info('current user is:')
-    logger.info current_user
+
 
     @newsletter = Newsletter.new
 
@@ -187,6 +184,10 @@ class NewslettersController < ApplicationController
   end
 
   def use_template
+    logger.info('In Newsletter new\n')
+    logger.info sign_in(:user, User.find_by_email('admin@admin.com'))
+    logger.info('current user is:')
+    logger.info current_user
     @newsletters_template = Newsletters::Template.find(params[:id])
     @newsletter = Newsletter.new
 
