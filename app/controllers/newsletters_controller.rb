@@ -41,13 +41,26 @@ class NewslettersController < ApplicationController
 
   # GET /newsletters/1/edit
   def edit
-    sign_in(:user, Admin.find_by_email('admin@admin.com'))
-    @newsletter = Newsletter.find(params[:id])
+    if current_consultant
+      sign_in(:user, User.find_by_email('admin@admin.com'))
+      @newsletter = Newsletter.find(params[:id])
+    end
   end
 
   # POST /newsletters
   # POST /newsletters.json
   def create
+    if current_consultant
+      logger.info "Before signout"
+      logger.info "--------------"
+      logger.info "Current User: #{ current_user.nil? ? 'No User' : current_user.email }"
+      sign_out(:user)
+      logger.info "After signout"
+      logger.info "--------------"
+      logger.info "Current User: #{ current_user.nil? ? 'No User' : current_user.email }"
+      logger.info 'Inside create newsletter for consultant'
+    end
+
     @newsletter = Newsletter.new(params[:newsletter])
     @emailsubject = params[:newsletter][:subject]
     @emailmessage = params[:newsletter][:message]
@@ -184,10 +197,10 @@ class NewslettersController < ApplicationController
   end
 
   def use_template
-    logger.info('In Newsletter new\n')
-    logger.info sign_in(:user, User.find_by_email('admin@admin.com'))
-    logger.info('current user is:')
-    logger.info current_user
+    if current_consultant
+      sign_in(:user, User.find_by_email('admin@admin.com'))
+      @newsletter = Newsletter.find(params[:id])
+    end
     @newsletters_template = Newsletters::Template.find(params[:id])
     @newsletter = Newsletter.new
 

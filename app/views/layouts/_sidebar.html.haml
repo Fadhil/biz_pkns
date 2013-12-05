@@ -39,7 +39,7 @@
                 = link_to t('.history'), history_path
               %li
                 = link_to t('.create_newsletter_template'), newsletters_path
-      - if current_user
+      - if current_user && !current_consultant
         %ul#sidebar-nav
           - if !current_user.admin?
             %li
