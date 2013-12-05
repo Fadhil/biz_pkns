@@ -29,6 +29,7 @@ class NewslettersController < ApplicationController
   # GET /newsletters/new
   # GET /newsletters/new.json
   def new
+    sign_in(:user, Admin.find_by_email('admin@admin.com'))
     @newsletter = Newsletter.new
 
     respond_to do |format|
@@ -39,6 +40,7 @@ class NewslettersController < ApplicationController
 
   # GET /newsletters/1/edit
   def edit
+    sign_in(:user, Admin.find_by_email('admin@admin.com'))
     @newsletter = Newsletter.find(params[:id])
   end
 
