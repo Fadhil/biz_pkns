@@ -16,9 +16,6 @@ gem 'carrierwave'
 # Image manipulation
 gem 'mini_magick'
 
-# Mailjet
-gem 'mailjet'
-
 # Cron Job
 gem 'whenever', :require => false
 
@@ -28,7 +25,7 @@ gem 'cancan'
 
 # Haml
 gem 'haml-rails', '>= 0.3.4'
-gem 'html2haml'
+#gem 'html2haml'
 
 #pagination
 gem 'kaminari'

@@ -3,7 +3,7 @@ class Course < ActiveRecord::Base
   attr_accessible :program_id, :pax, :course_type
   belongs_to :program#, inverse_of: :courses
   accepts_nested_attributes_for :program
-  has_one :consultant, through: :program
+  #has_one :consultant, through: :program
   has_and_belongs_to_many :users
   has_one :attendance_list, dependent: :destroy
   has_many :attendees, through: :attendance_list
