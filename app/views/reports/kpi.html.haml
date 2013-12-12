@@ -61,7 +61,7 @@
 
   - previous = ''
   - @kpi_results.each do |key, value| 
-    - rowspan = value['number_of_course_types']
+    - rowspan = value['number_of_course_types'] unless value.nil?
     - unless key == 'current_month'
       - header_colour = ( i%2==0 ? '#f88158' : '#ffffff')
       %tr
