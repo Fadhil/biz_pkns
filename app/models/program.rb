@@ -91,7 +91,7 @@ class Program < ActiveRecord::Base
       'Oktober'
     when 11
       'November'
-    when 11
+    when 12
       'Disember'
     end
   end
