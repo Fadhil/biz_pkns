@@ -1,16 +1,15 @@
 - model_class = Advert
 .row
-  %h3.nine.columns
+  %h3.three.columns
     =t '.title', :default => model_class.model_name.human.pluralize
-  %small
-    =t('please_contact_admin_for_advert_status_3')
-  .three.columns.action
+
+  .push_six.three.columns.action
     %span.pretty.medium.primary.btn.entypo.icon-left.icon-list-add
       = link_to t('create_advert', :default => t("helpers.links.new")), new_advert_path
 .row
-
   %small
-    = t('please_contact_admin_for_advert_status_3')
+    =t('please_contact_admin_for_advert_status_3')
+
 .row
   .twelve.columns
     .table

@@ -122,7 +122,7 @@ bm:
   please_upload_csv: 'Sila pastikan anda memuatnaik fail csv'
   please_contact_admin_for_advert_status: '* Sila berhubung dengan Pentadbir PKNS untuk kelulusan dan kemas kini status iklan'
   please_contact_admin_for_advert_status_2: '* Kemas kini status iklan baru kepada pemohon sama ada lulus atau tidak lulus'
-  please_contact_admin_for_advert_status_3: '* Jika anda buat permohonan iklan, sila berhubung dengan Pentadbir PKNS untuk kelulusan dan kemaskini status iklan.'
+  please_contact_admin_for_advert_status_3: '* Jika anda buat permohonan iklan, sila berhubung dengan Pentadbir PKNS untuk kelulusan dan kemas kini status iklan.'
   present: 'Hadir'
   not_present: 'Tidak Hadir'
   will_attend: 'Akan Hadir'

@@ -24,8 +24,8 @@
         %h6.title= "Bil"
       .eight.columns
         %h6.title= t('.subject')
-      .one.columns
-      .one.columns
+      .three.columns
+      /.one.columns
     - @blogs.each_with_index do |blog, i|
       .row.table-rows
         .one.columns
@@ -36,10 +36,10 @@
             %small
               %span.label.info Tag :
               = raw blog.tag_list.map { |t| link_to t, tag_path(t), :class => 'tag' }.join(', ')
-        .one.columns
+        .three.columns
           %span.small.pretty.btn.warning
             = link_to t('.edit', :default => t("helpers.links.edit")), edit_blog_path(blog)
-        .one.columns
+
           %span.small.pretty.btn.default
             = link_to t('.destroy', :default => t("helpers.links.destroy")), blog_path(blog), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }
 
