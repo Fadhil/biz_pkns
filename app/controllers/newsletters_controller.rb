@@ -121,7 +121,7 @@ class NewslettersController < ApplicationController
 
     respond_to do |format|
       if @newsletter.update_attributes(params[:newsletter])
-        format.html { redirect_to preview_newsletter_path(@newsletter), notice: 'Buletin berjaya dikemaskini.' }
+        format.html { redirect_to preview_newsletter_path(@newsletter), notice: 'Buletin berjaya dikemas kini.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit", locals:{  newsletter: @newsletter }}
