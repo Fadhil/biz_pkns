@@ -43,8 +43,8 @@ class NewslettersController < ApplicationController
   def edit
     if current_consultant
       sign_in(:user, User.find_by_email('admin@admin.com'))
-      @newsletter = Newsletter.find(params[:id])
     end
+    @newsletter = Newsletter.find(params[:id])
   end
 
   # POST /newsletters
