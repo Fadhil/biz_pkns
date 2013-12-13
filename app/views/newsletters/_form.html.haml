@@ -1,4 +1,5 @@
-- is_disabled = @newsletter.sent? 
+- is_disabled = false
+- is_disabled = @newsletter.sent? unless @newsletter.nil?
 = form_for @newsletter, :html => { :class => 'form-horizontal' } do |f|
   %ul
     %li.field
@@ -10,7 +11,7 @@
       - if current_consultant
         = f.hidden_field :consultant_id, value: current_consultant.id
     
-    - unless @newsletter.sent?  
+    - unless is_disabled 
       %li.field
         = f.label t('.send_to')
       /

@@ -54,8 +54,12 @@ class AdvertsController < ApplicationController
         the_notice = t('successfully_activated_advert')
         the_notice += '<br/>'
         the_notice += t('please_contact_admin_for_advert_status')
-        the_notice += '<br/>'
-        the_notice += t('please_contact_admin_for_advert_status_2')
+        if current_user
+          if current_user.admin?
+            the_notice += '<br/>'
+            the_notice += t('please_contact_admin_for_advert_status_2')
+          end
+        end
         if @advert.update_attributes(@the_params)
         
           format.html { redirect_to @advert, notice: the_notice }
