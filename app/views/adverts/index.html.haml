@@ -65,7 +65,7 @@
               .one.columns
                 = form_for advert, url: activate_advert_path(advert) do |f|
                   = f.select :weight, options_for_select(['1','2','3','4','5','7','8','9','10'], selected: advert.weight ),{} ,{ onChange: "submit();", class: 'short-select'}
-              .one.columns
+              .two.columns
                 .row
                   .twelve.columns
                   .twelve.columns.hide
@@ -108,7 +108,7 @@
                 .one.columns
                   = form_for advert, url: activate_advert_path(advert) do |f|
                     = f.select :weight, options_for_select(['1','2','3','4','5','7','8','9','10'], selected: advert.weight ),{} ,{ onChange: "submit();", class: 'short-select'}
-                .one.columns
+                .two.columns
                   .row
                     .twelve.columns
                     .twelve.columns.hide
@@ -162,7 +162,7 @@
               .one.columns
                 = form_for advert, url: activate_advert_path(advert) do |f|
                   = f.select :weight, options_for_select(['1','2','3','4','5','7','8','9','10'], selected: advert.weight ),{} ,{ onChange: "submit();", class: 'short-select'}
-              .one.columns
+              .two.columns
                 .row
                   .twelve.columns
                   .twelve.columns.hide
@@ -216,7 +216,7 @@
               .one.columns
                 = form_for advert, url: activate_advert_path(advert) do |f|
                   = f.select :weight, options_for_select(['1','2','3','4','5','7','8','9','10'], selected: advert.weight ),{} ,{ onChange: "submit();", class: 'short-select'}
-              .one.columns
+              .two.columns
                 .row
                   .twelve.columns
                   .twelve.columns.hide
