@@ -135,6 +135,7 @@ BizPkns::Application.routes.draw do
     # end
 
     scope '/portal' do
+      get '' => 'portals#home'
       get 'home' => 'portals#home', as: :portal_home
       get 'contact' => 'portals#contact', as: :portal_contact
       get 'course' => 'portals#course', as: :portal_course
