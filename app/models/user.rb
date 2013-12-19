@@ -188,7 +188,6 @@ class User < ActiveRecord::Base
       self.membership.member_number = generate_member_id(self.membership.id)
       self.membership.save
       self.confirmed = true
-      logger.info "Made user with ID: #{self.id} a member with member_id: #{self.membership.id}\n"
     end
   end
 
@@ -209,21 +208,14 @@ class User < ActiveRecord::Base
 
   def self.remove_inactive_users
     inactive_users = User.where('confirmed <> ? and created_at < ?', true, 90.days.ago)
-    logger.info "Found #{inactive_users.count} inactive users\n"
     if !inactive_users.empty?
-      logger.info "These users are about to be deleted:\n"
       inactive_users.each_with_index do |u,i|
-        logger.info "#{i+1}. UserID: #{u.id}, Name: #{u.full_name}\n"
       end
-      logger.info "Deleting...\n"
       inactive_users.delete_all
       if inactive_users.empty?
-        logger.info "Inactive users all deleted\n"
       else
-        logger.info "Something must've gone wrong\n"
       end
     else
-      logger.info "No users to delete"
     end
 
     logger.info "Finished task remove inactive users"

@@ -22,10 +22,8 @@ class PastAttendance < ActiveRecord::Base
     end
     # Don't send confirmation email for testing
     user.skip_confirmation!
-    Rails.logger.info "Saving user: #{user.email}...\n"
     #user.save
     if user.save
-      Rails.logger.info "User #{user.email} saved\n"
     end
     program = Program.where(name: self.program).first
     course = Course.where(name: self.course, program_id: program.try(:id)).first

@@ -19,7 +19,6 @@ class PastAttendancesController < ApplicationController
     PastAttendance.make_all_old
     data = params[:past_attendance][:file].read
     extension = File.extname(params[:past_attendance][:file].original_filename)
-    Rails.logger.info "The extension is: #{extension}\n"
     completed = false
     if extension == '.csv'
       @parsed_file=CSV.parse(data)

@@ -101,8 +101,6 @@ layout 'report_layout'
             year = start_year
 
             course_types = @program.course_types(year)
-            Rails.logger.info "Course Types"
-            Rails.logger.info(course_types)
             @result_set = @program.count_users_by_course(course_types, year)
         end
     end

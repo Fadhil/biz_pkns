@@ -51,14 +51,7 @@ class NewslettersController < ApplicationController
   # POST /newsletters.json
   def create
     if current_consultant
-      logger.info "Before signout"
-      logger.info "--------------"
-      logger.info "Current User: #{ current_user.nil? ? 'No User' : current_user.email }"
       sign_out(:user)
-      logger.info "After signout"
-      logger.info "--------------"
-      logger.info "Current User: #{ current_user.nil? ? 'No User' : current_user.email }"
-      logger.info 'Inside create newsletter for consultant'
     end
 
     @newsletter = Newsletter.new(params[:newsletter])
