@@ -123,7 +123,7 @@ class LettersController < ApplicationController
 
     respond_to do |format|
       if @letter.update_attributes(params[:letter])
-        format.html { redirect_to preview_letter_path(@letter), notice: 'Surat berjaya dikemaskini.' }
+        format.html { redirect_to preview_letter_path(@letter), notice: 'Surat berjaya dikemas kini.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

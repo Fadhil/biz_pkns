@@ -25,7 +25,7 @@ my:
       confirmed: 'Akaun anda telah berjaya disahkan. Anda telah sign in.'
     registrations:
       signed_up: 'Proses pendaftaran berjaya. Link untuk mengaktifkan akaun telah dihantar di e-mail.'
-      updated: 'Akaun anda telah dikemaskini'
+      updated: 'Akaun anda telah dikemas kini'
       destroyed: 'Selamat Tinggal, akaun anda telah ditutup'
       terms: "Saya setuju dengan Syarat dan Terma"
     unlocks:
