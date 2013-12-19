@@ -17,6 +17,8 @@ my:
     sessions:
       signed_in: 'Proses log masuk berjaya.'
       signed_out: 'Proses log keluar berjaya.'
+      user:
+        not_admin:  "Hanya Pengurus dibenarkan daftar masuk dari sini. Sila ke <a href='/users/login'>sini</a> untuk daftar masuk sebagai pengguna."
     passwords:
       send_instructions: 'Anda akan menerima e-mail mengenai langkah mengubah password sebentar lagi.'
       updated: 'Password anda telah berjaya diubah. Anda telah sign in.'
@@ -31,6 +33,7 @@ my:
     unlocks:
       send_instructions: 'Anda akan menerima e-mail mengenai langkah membuka akaun kembali sebentar lagi.'
       unlocked: 'Akun anda telah berjaya dibuka. Anda telah sign in.'
+
     mailer:
       confirmation_instructions:
         subject: 'Arahan Proses Pengesahan Sistem PKNS Bizdata'

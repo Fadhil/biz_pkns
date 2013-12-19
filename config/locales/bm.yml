@@ -962,7 +962,7 @@ bm:
       user:
         not_found_in_database: 'Pengguna tersebut tidak tersenarai dalam database.'
       consultant:
-        not_found_in_database: 'Pengguna tersebut tidak tersenarai dalam database.'
+        not_found_in_database: 'Perunding tersebut tidak tersenarai dalam database.'
     sessions:
       signed_in: 'Proses log masuk berjaya.'
       signed_out: 'Proses log keluar berjaya.'

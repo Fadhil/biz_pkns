@@ -43,10 +43,11 @@ BizPkns::Application.routes.draw do
     get 'city_dropdown' => 'application#city_dropdown', as: :city_dropdown
     get 'course_dropdown' => 'application#course_dropdown', as: :course_dropdown
     devise_for :users, path_names: {sign_in: "login", sign_out: "logout", sign_up: "signup"},
-                        controllers: {registrations: 'registrations', confirmations: 'confirmations'}
+                        controllers: {registrations: 'registrations', confirmations: 'confirmations', sessions: 'sessions'}
     devise_for :consultants, path_names: {sign_in: "login",  sign_out: "logout"}
-    devise_for :users do
-      get "/admin/login" => "devise/sessions#new"
+    devise_scope :user do
+      get "/admin/login" => "sessions#new_admin"
+      post "/user/sign_in" => "sessions#create"
     end
     
     resources :reports, only: [] do
