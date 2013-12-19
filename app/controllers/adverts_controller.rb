@@ -51,9 +51,18 @@ class AdvertsController < ApplicationController
     respond_to do |format|
       if @advert.save 
 
-        the_notice = t('successfully_activated_advert')
-        the_notice += '<br/>'
-        the_notice += t('please_contact_admin_for_advert_status')
+        the_notice = t('successfully_created_advert')
+
+        if current_user
+            if !current_user.admin?
+              the_notice += '<br/>'
+              the_notice += t('please_contact_admin_for_advert_status')
+            end
+        end
+        if current_consultant
+          the_notice += '<br/>'
+          the_notice += t('please_contact_admin_for_advert_status')
+        end
         if current_user
           if current_user.admin?
             the_notice += '<br/>'

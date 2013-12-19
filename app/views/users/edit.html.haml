@@ -2,9 +2,9 @@
 .row
   %h3.twelve.columns
     = t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human
-  - unless @user.is_member?
-    %small
-      = t('fill_all_profile_fields_hint')
+
+  %small
+    = t('fill_all_profile_fields_hint')
 
   %hr.divider
 .row

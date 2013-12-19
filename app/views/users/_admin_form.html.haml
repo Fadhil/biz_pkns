@@ -14,7 +14,7 @@
           = pp.label t('upload_profile_photo') do
             = pp.file_field :file, :class => 'file input'
           %small
-            = t('image_should_be_this_size')
+            = t('image_should_be_this_size', size: '240x160')
       %li.field
         = f.label t('email')
         = f.text_field :email, :class => 'email input', :placeholder => ''
@@ -24,6 +24,8 @@
       %li.field
         = f.label t('password_confirmation')
         = f.password_field :password_confirmation, :class => 'email input', :placeholder => ''
+        %small 
+          = t('password_length_hint')
       %li.field
         .row
           .six.columns
@@ -38,14 +40,20 @@
       %li.field
         = f.label t('ic_number')
         = f.text_field :ic_number, :class => 'text input', :placeholder => ''
+        %small
+          =t('mykad_example')
       %li.field
         .row
           .six.columns
             = f.label t('phone')
             = f.text_field :phone, :class => 'phone input', :placeholder => ''
+            %small
+              =t('phone_number_hint')
           .six.columns
             = f.label t('office_phone')
             = f.text_field :office_phone, :class => 'phone input', :placeholder => ''
+            %small
+              =t('phone_number_hint2')
       %li.field
         %span.medium.pretty.btn.warning
           / = f.submit t('update')
