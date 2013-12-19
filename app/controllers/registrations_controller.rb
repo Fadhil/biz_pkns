@@ -8,7 +8,6 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create
     @user = User.new(params[:user])
-    #@business_profile = @user.build_business_profile
     if @user.save
       if request.referrer == courses_path
         flash[:notice] = 'successfully added walk ins'

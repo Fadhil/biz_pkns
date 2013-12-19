@@ -23,14 +23,6 @@ class CourseSurvey < Survey
    
             question = self.questions[index]
             question.responses << Response.create(answer: column) 
-            # if question.question_type == nil
-            #   if column == 'ya'
-            #     question.question_type = 'yes_no'
-            #   else
-            #     question.question_type = 'scale'
-            #   end
-            #   question.save
-            # end
        
         end
       end

@@ -99,12 +99,6 @@ class UsersController < ApplicationController
       end
     end
 
-    # if @user.business_profile.address.nil?
-    #   @user.business_profile.build_address
-    # end
-    # if @user.business_profile.address.city.nil?
-    #   @user.business_profile.address.build_city
-    # end
 
     if @user.profile_photo.nil?
       @user.build_profile_photo
@@ -126,7 +120,6 @@ class UsersController < ApplicationController
   def create
     city_id = params[:user_city]
     @user = User.new(params[:user])
-    #@business_profile = @user.build_business_profile
 
     respond_to do |format|
       if @user.save
@@ -219,11 +212,6 @@ class UsersController < ApplicationController
   def letters
     @user = User.find(params[:id])
     @letters = Letter.where(:user_id => @user.id)
-    # respond_to do |format|
-    #   format.html # index.html.erb
-    #   format.json { render json: @letters }
-    # end
-
   end
 
   def my_adverts

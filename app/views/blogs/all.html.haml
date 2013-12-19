@@ -18,25 +18,7 @@
     .row
       .three.columns
         %h5 Berita Terkini
-      /
-        .nine.columns
-          %ul.filter
-            %li= t('.filter')
-            %li
-              %span.round.btn.small.warning
-                = link_to "Semua", category_blog_path
-            %li
-              %span.round.btn.small.warning
-                = link_to_unless_current "Umum", category_blog_path(filter: :general)
-            %li
-              %span.round.btn.small.warning
-                = link_to_unless_current "Berita", category_blog_path(filter: :news)
-            %li
-              %span.round.btn.small.warning
-                = link_to_unless_current "Keusahawanan", category_blog_path(filter: :entrepreneurship)
-            %li
-              %span.round.btn.small.warning
-                = link_to_unless_current "Pemasaran", category_blog_path(filter: :marketing)
+
       %hr.divider
 
     .row

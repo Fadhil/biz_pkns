@@ -97,9 +97,6 @@ class ConsultantsController < ApplicationController
   def contact
     @consultant = Consultant.find(params[:id])
     @sender = current_user.email
-    #authorize! :contact, { unless :current_user }
-    #ConsultantMailer.contact(@consultant).deliver
-    #format.html { redirect_to @consultant, notice: 'Your message has been sent to respective consultant.' }
   end
 
   def sent

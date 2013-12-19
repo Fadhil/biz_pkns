@@ -1,8 +1,6 @@
 class BlogsController < ApplicationController
   #load_and_authorize_resource
   before_filter :get_news
-  #layout :resolve_layout
-  #layout Proc.new{ ['all'].include?(action_name) ? 'portal' : 'application' }
   # GET /blogs
   # GET /blogs.json
   def index    

@@ -153,14 +153,10 @@ class LettersController < ApplicationController
       format.html # new.html.erb
       format.json { render json: @letter }
     end
-    #authorize! :contact, { unless :current_user }
-    #ConsultantMailer.contact(@consultant).deliver
-    #format.html { redirect_to @consultant, notice: 'Your message has been sent to respective consultant.' }
   end
 
   def history
     @letters = Letter.order("created_at DESC").all
-    #@newsletters_templates = Newsletters::Template.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -195,9 +191,6 @@ class LettersController < ApplicationController
     end
     if !users.empty?
       users.uniq.each do |user|
-        #@newsletter.users << user unless @newsletter.users.include?(user)
-        #NewsletterMailer.mailer_newsletter(user, @emailsubject, @emailmessage).deliver
-        #-NewsletterMailer.delay(:run_at => 3.minutes.from_now).mailer_newsletter(user, @emailsubject, @emailmessage)
       end
     end
     respond_to do |format|
@@ -208,7 +201,6 @@ class LettersController < ApplicationController
   def list
     @adverts = Advert.active
     @letters = Letter.order("created_at DESC")
-    #@newsletters_templates = Newsletters::Template.all
 
     respond_to do |format|
       format.html # index.html.erb

@@ -16,6 +16,4 @@ class CourseReport < ActiveRecord::Base
 
   validates :course_no_of_vips, presence: true
   validates :course_summary, presence: true
-  #validates_with CourseImageValidator
-  #validates_with CourseScheduleValidator
 end

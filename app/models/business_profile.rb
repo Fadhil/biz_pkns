@@ -5,11 +5,8 @@ class BusinessProfile < ActiveRecord::Base
   attr_accessible :customer1, :customer2, :customer3
   attr_accessible :line1, :line2, :postcode, :city_id, :phone, :fax
 
-  #after_initialize :initialize_photos
   belongs_to :user
 
-  # has_one :address, as: :addressable, dependent: :destroy
-  # accepts_nested_attributes_for :address, allow_destroy: true
 
   belongs_to :city 
   has_one :business_logo, as: :attachable, dependent: :destroy
@@ -20,7 +17,6 @@ class BusinessProfile < ActiveRecord::Base
 
   default_scope order('id ASC')
 
-  #after_initialize :initialize_address
 
   def set_city(city_id)
     city = City.find(city_id)

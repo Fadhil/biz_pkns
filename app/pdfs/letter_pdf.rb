@@ -39,9 +39,6 @@ include ApplicationHelper
         move_down 10
  
         text "Saya yang menurut perintah"
-
-        # move_down 3
-        # text sender.full_name
         start_new_page
     end
   end

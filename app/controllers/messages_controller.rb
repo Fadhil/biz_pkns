@@ -11,7 +11,6 @@ class MessagesController < ApplicationController
       content = params[:message][:content]
       
       ContactFormMailer.contact(name, email, content).deliver
-      #ConsultantMailer.contact(@email).deliver
       redirect_to root_url, notice: "Message sent! Thank you for contacting us."
     else
       render "new"

@@ -8,8 +8,6 @@
       %ul.tab-nav.four.columns
         %li.active.smallfonts
           = link_to t('.user_details'), '#', onClick: 'hideChart("usersprogramchart");'
-        / %li
-        /   = link_to t('.business_details'), '#'
         %li.smallfonts
           = link_to t('member_nonmember_by_age'), '#', onClick: 'hideChart("usersprogramchart");'
         %li.smallfonts
@@ -22,8 +20,6 @@
           = link_to t('member_by_business_details'), '#', onClick: 'hideChart("usersprogramchart");'
       .tab-content.eight.columns.active
         = render partial: 'users_members_non_members'
-      / .tab-content.eight.columns
-      /   = render partial: 'users_with_business'
       .tab-content.eight.columns
         = render partial: 'users_by_age'
       .tab-content.eight.columns

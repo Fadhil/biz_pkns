@@ -19,26 +19,3 @@
                   .three.columns
                     = strip_tags(news.content.gsub('&nbsp',' '))[0..40] + "..."
 
-/ .row  
-/   .twelve.columns
-/     %h5 Berita Terkini
-/     %hr.divider
-/     %ul
-/       - @blogs.each do |blog|
-/         %li.events
-/           .row
-/             .one.columns
-/               .date
-/                 = blog.created_at.strftime('%d').html_safe
-/                 %small= blog.created_at.strftime('%b').html_safe
-/             .eleven.columns
-/               %h5.title=link_to blog.title, show_blog_path(blog)
-/               .content
-/                 = blog.content.html_safe
-/                 .info
-/                   %small
-/                     = link_to t('.read_more'), show_blog_path(blog)
-/               %p
-/                 %small
-/                   = "Tag : " unless blog.tag_list.blank?
-/                   = raw blog.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')

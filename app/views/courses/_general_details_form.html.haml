@@ -70,14 +70,7 @@
         = hidden_field_tag 'step', 'general_details'
         %li.field
           %span.medium.pretty.btn.warning
-            / = f.submit t('.create_course')
             %button{:onClick => 'submit();'}= t('next')
-         
-          / - if !@course_report.finalized? && !@course_report.new_record?
-            
-          /   %span.medium.pretty.btn.warning
-          /     %button{:onClick => 'finalizeCourse();submit();'}= t('.save_report')
-             
           %span.medium.pretty.btn.default
             = link_to t('cancel', :default => t("helpers.links.cancel")), my_reports_consultant_path(current_consultant)
 

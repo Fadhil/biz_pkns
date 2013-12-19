@@ -22,12 +22,10 @@
         %li.field
           - if @course_report.new_record?
             %span.medium.pretty.btn.warning
-              / = f.submit t('.create_course')
               %button{:onClick => 'submit();'}= t('.generate_report')
           - else
             - if !@course_report.finalized?
               %span.medium.pretty.btn.warning
-                / = f.submit t('update')
                 %button{:onClick => 'submit();'}= t('.update_report')
               %span.medium.pretty.btn.warning
                 %button{:onClick => 'finalizeCourse();submit();'}= t('.save_report')

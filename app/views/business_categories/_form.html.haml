@@ -6,7 +6,7 @@
   .form-actions
     - if f.object.new_record?
       %span.medium.pretty.btn.primary
-        = f.submit t('.add_new_business_category')#, :class => 'btn btn-primary'
+        = f.submit t('.add_new_business_category')
     - else
       %span.medium.pretty.btn.secondary
-        = f.submit t('update')#, class: 'btn btn-primary'
+        = f.submit t('update')

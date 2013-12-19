@@ -3,7 +3,6 @@ class PastAttendancesController < ApplicationController
 
 
   def index
-    #@past_attendances = PastAttendance.successful
     @past_attendances = [PastAttendance.first, PastAttendance.last]
   end
 

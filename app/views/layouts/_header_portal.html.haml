@@ -2,14 +2,11 @@
   .row.navigation
     %h5.three.columns.biglogo
       = link_to image_tag('logoPKNSBIZ.png', height: '68'),portal_home_path
-    /
-      %h5.two.columns.portal-logo-name
-        = link_to 'PKNS BIZ DATA', portal_home_path
+
     %ul.nine.columns
       %li= link_to t('.member_page'), portal_members_path
       %li= link_to t('course'), portal_course_path
       %li= link_to t('.blog'), category_blog_path
-      /%li= link_to t('.faq'), portal_faq_path
       %li= link_to t('.contact'), portal_contact_path
       %li
         = link_to '#' do
@@ -27,4 +24,3 @@
                 %li.field
                   %span.pretty.medium.info.btn
                     %button{:onClick => 'submit();'}=t('login')
-                    / = f.submit t('login'), :class => ' pretty medium primary btn'

@@ -1,6 +1,5 @@
 class Membership < ActiveRecord::Base
   attr_accessible :member_number, :user_id, :category
-  #belongs_to :user
 
   after_create :set_default_category
 

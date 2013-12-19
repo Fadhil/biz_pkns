@@ -36,12 +36,7 @@
         %li.field
           - if @course_report.new_record? || @step == 'course_photos'
             %span.medium.pretty.btn.warning
-              / = f.submit t('.create_course')
               %button{:onClick => 'submit();'}= t('next')
-     
-          / - if !@course_report.finalized?
-          /   %span.medium.pretty.btn.warning
-          /     %button{:onClick => 'finalizeCourse();submit();'}= t('save')
              
           %span.medium.pretty.btn.default
             = link_to t('cancel', :default => t("helpers.links.cancel")), my_reports_consultant_path(current_consultant)

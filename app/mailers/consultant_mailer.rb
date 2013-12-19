@@ -1,11 +1,6 @@
 class ConsultantMailer < ActionMailer::Base
   default from: "\"PKNS BIZ DATA\" <admin@pknsbizclub.com>"
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.consultant_mailer.signup_notification.subject
-  #
   def signup_notification(consultant)
     @consultant = consultant
     @greeting = "Hi"

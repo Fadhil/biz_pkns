@@ -39,19 +39,7 @@ class Consultant < ActiveRecord::Base
 
   has_many :course_reports, through: :courses
 
-  # include MailForm::Delivery
 
-  # # #append :remote_ip, :user_agent, :session
-  #  attributes :name, :from, :subject, :message, :created_at
-
-  # # scope :active, where(active: true)
-
-  # def headers
-  #   {
-  #     :to => self.email,
-  #     :from => "Test" #User.name#%("#{User.name}" <#{User.email}>)
-  #   }
-  # end
 
   def active_for_authentication?
     super && self.is_active?

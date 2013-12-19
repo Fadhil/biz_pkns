@@ -7,7 +7,6 @@
     = form_tag '', method: :get, :class => 'custom form' do
       %ul
         %li.field
-          / = label :search, :terms, t('.search_courses_by_title')
           = text_field :search, :terms, :placeholder => 'Carian kursus dengan tajuk...', class: 'text input wide'
           %span.pretty.medium.btn.warning
             = button_tag( t('search'))

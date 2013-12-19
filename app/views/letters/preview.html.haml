@@ -34,7 +34,6 @@
         %li.field
           %hr.divider
           %span.medium.pretty.btn.warning
-            / = f.submit t('.print_pdf')
             %button{:onClick => 'submit();'}= t('.print_pdf')
           %span.medium.pretty.btn.warning
             = link_to t('edit', :default => t("helpers.links.edit")), edit_letter_path(@letter)

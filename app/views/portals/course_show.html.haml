@@ -8,7 +8,6 @@
         = form_tag user_course_registration_path({id: @course.id, user_id: current_user.id}), method: :put, :class => 'right' do
           %span.pretty.medium.btn.warning
             %button{:data => {:confirm => t('confirm_register_course')} , :onClick => 'submit();'}=t('register_course')
-          /= button_tag t('register_course'), data: { confirm: t('confirm_register_course') }, class: 'pretty medium warning btn'
   %hr.divider
 .row.print-disabled
   .twelve.columns

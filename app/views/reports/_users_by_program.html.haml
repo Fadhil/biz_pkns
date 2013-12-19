@@ -2,8 +2,6 @@
 = form_tag 'programs', id: 'user_program_report_form' do
      = "Bilangan Ahli Yang Mengikuti Program"
      %br
-     / = select :user_program, :program, Program.order(:name).map{|a| [a.name,a.id]}, {:include_blank => true, selected: params[:program] || ''}
-     / %br
      = "Dari tahun"
      = select :user_program, :start_year, (2000..2030), {selected: params[:start_year] || 1.year.ago.year }
      = "ke tahun"
