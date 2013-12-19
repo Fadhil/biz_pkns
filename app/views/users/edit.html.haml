@@ -2,11 +2,10 @@
 .row
   %h3.twelve.columns
     = t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human
-  %small
-    = t('fill_all_profile_fields_hint')
   - unless @user.is_member?
     %small
-      * Sila isi semua maklumat profil (kecuali twitter dan facebook) untuk menggunakan sistem sepenuhnya.
+      = t('fill_all_profile_fields_hint')
+
   %hr.divider
 .row
   .twelve.columns

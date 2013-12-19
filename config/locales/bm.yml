@@ -103,6 +103,7 @@ bm:
   password_leave_empty_hint: 'Kosongkan sekiranya mahu kekal dengan yang asal'
   percentage: 'Peratusan'
   phone_number_hint: 'Contoh: 0101234567, 0351222222'
+  phone_number_hint2: 'Contoh: 0351222222'
   current_password: 'Katalaluan semasa'
   new_password_confirmation: 'Sahkan kata laluan baru'
   preattendance_list: 'Senarai Pra-Kedatangan'

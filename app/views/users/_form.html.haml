@@ -230,11 +230,21 @@
                     = bp.fields_for :business_logo do |bpl|
                       %tr
                         %th= bpl.label t('.upload_business_logo')
-                        %td= bpl.file_field :file, class: 'text input'
+                        %td
+                          %div
+                            = bpl.file_field :file, class: 'text input'
+   
+                            %small
+                              = t('image_should_be_this_size', size: '240x160')
                     = bp.fields_for :business_photo do |bph|
                       %tr
                         %th= bph.label t('.upload_business_photo')
-                        %td= bph.file_field :file, class: 'text input'
+                        %td
+                          %div
+                            = bph.file_field :file, class: 'text input'
+
+                            %small
+                              = t('image_should_be_this_size', size: '240x160')
                       %tr
                         %th= bp.label "Penerangan Gambar"
                         %td= bph.text_field :caption, class: 'textarea input', :"data-limit" => 200
@@ -276,7 +286,12 @@
                           = select_tag "businessprofile_state#{i}", options_for_select(City.order(:state_name).map{ |a| [a.state_name]}.uniq, {selected: selected_state})
                     %tr
                       %th= bp.label t('office_phone')
-                      %td= bp.text_field :phone, :class => 'text input'
+                      %td
+                        %div
+                          = bp.text_field :phone, :class => 'text input'
+
+                          %small
+                            = t('phone_number_hint2')
                     - i = i + 1
                     %tr
                       %th.header{:colspan => "2"}
