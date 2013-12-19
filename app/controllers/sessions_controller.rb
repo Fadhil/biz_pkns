@@ -17,7 +17,7 @@ class SessionsController < Devise::SessionsController
         if !resource.admin?
           sign_out(resource_name)
           #set_flash_message(:notice, :not_admin)
-          flash[:notice] = "Hanya Pengurus dibenarkan daftar masuk dari sini. Sila ke <a href='/users/login' color:'red;'>#{root_url}/users/login</a> untuk daftar masuk sebagai pengguna."
+          flash[:notice] = "Hanya Pengurus dibenarkan daftar masuk dari sini. Sila ke <a href='/users/login' color:'red;'>#{root_url}users/login</a> untuk daftar masuk sebagai pengguna."
           redirect_to '/admin/login'
         else
           set_flash_message(:notice, :signed_in) if is_navigational_format?
