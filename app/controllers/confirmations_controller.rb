@@ -17,12 +17,13 @@ class ConfirmationsController < Devise::ConfirmationsController
 
   # GET /resource/confirmation?confirmation_token=abcdef
   def show
+    logger.info "IN confirmation"
     self.resource = resource_class.confirm_by_token(params[:confirmation_token])
 
     if resource.errors.empty?
-      if params[:make_member].present?
         resource.make_member
-      end
+        resource.save
+
       set_flash_message(:notice, :confirmed) if is_navigational_format?
       sign_in(resource_name, resource)
       respond_with_navigational(resource){ redirect_to after_confirmation_path_for(resource_name, resource) }
