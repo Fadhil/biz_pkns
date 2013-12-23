@@ -37,6 +37,7 @@ class Ability
           cannot :all, :pages
           cannot :all, :admins
           cannot :index, User
+          can [:index, :show], Program
           can [:take], Survey
           can :finish_survey, Survey
           cannot [:index, :edit, :update, :destroy], Survey
