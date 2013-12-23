@@ -160,6 +160,10 @@ class User < ActiveRecord::Base
       month_of_birth = '12'
     end
 
+    logger.info "This guys birthday:"
+    logger.info year_of_birth + "Year"
+    logger.info month_of_birth + "month"
+    logger.info day_of_birth + "day"
 
       
     date_of_birth = Time.new(year_of_birth, month_of_birth, 1)
