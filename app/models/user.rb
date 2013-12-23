@@ -158,7 +158,14 @@ class User < ActiveRecord::Base
 
     if month_of_birth.to_i > 12
       month_of_birth = '12'
+    elsif month_of_birth.to_i < 1
+      month_of_birth = '1'
     end
+
+    if day_of_birth.to_i < 1
+      day_of_birth = '1'
+    end
+
 
     logger.info "This guys birthday:"
     logger.info year_of_birth + "Year"
