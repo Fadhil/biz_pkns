@@ -14,7 +14,7 @@
         * Kursus perlu didaftarkan lebih awal sehari sebelum tarikh kursus dijalankan
       - unless current_consultant
         %li
-          * Kursus yang telah dijalankan, sila muat naik fail CSV (Kehadiran Peserta) di bahagian Urus Ahli -> Database
+          =t('please_upload_csv_accordingly')
     
 .table
   - if current_consultant && session[:current_program_id].nil?
