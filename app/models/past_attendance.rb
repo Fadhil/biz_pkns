@@ -21,7 +21,7 @@ class PastAttendance < ActiveRecord::Base
       self.save
     end
     # Don't send confirmation email for testing
-    user.skip_confirmation!
+    #user.skip_confirmation!
     #user.save
     if user.save
     end

@@ -889,7 +889,7 @@ bm:
       my_courses: 'Kursus Saya'
       my_reports: 'Laporan Wajib'
       all_reports: 'Laporan Perunding'
-      administrate_user: 'Urus Ahli'
+      administrate_user: 'Urus Pengguna'
       administrate_pkns_user: 'Urus Operator PKNS'
       directory: 'Direktori'
       new_letter: 'Surat'
