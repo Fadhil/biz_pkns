@@ -153,7 +153,7 @@ class NewslettersController < ApplicationController
   def use_template
     if current_consultant
       sign_in(:user, User.find_by_email('admin@admin.com'))
-      @newsletter = Newsletter.find(params[:id])
+      #@newsletter = Newsletter.find(params[:id])
     end
     @newsletters_template = Newsletters::Template.find(params[:id])
     @newsletter = Newsletter.new
