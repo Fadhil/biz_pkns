@@ -827,7 +827,7 @@ bm:
   reports:
     users:
       title: 'Laporan Pengguna'
-      number_of_members: 'Jumlah Ahli Aktik'
+      number_of_members: 'Jumlah Ahli Aktif'
       number_of_nonmembers: 'Jumlah Ahli Tidak Aktif'
       number_of_users: 'Jumlah Ahli'
       user_details: 'Pecahan Ahli'
@@ -890,7 +890,7 @@ bm:
       my_courses: 'Kursus Saya'
       my_reports: 'Laporan Wajib'
       all_reports: 'Laporan Rakan Strategik'
-      administrate_user: 'Urus Ahli
+      administrate_user: 'Urus Ahli'
       administrate_pkns_user: 'Urus Operator PKNS'
       directory: 'Direktori'
       new_letter: 'Surat'
