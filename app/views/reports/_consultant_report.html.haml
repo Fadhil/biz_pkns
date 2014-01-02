@@ -1,6 +1,6 @@
 
 = form_tag 'programs', id: 'consultant_list_report_form' do
-     = "Senarai Perunding di Bawah BPU PKNS"
+     = "Senarai Rakan Strategik di Bawah BPU PKNS"
      %br
      = "Dari tahun"
      = select :consultant_list, :start_year, (2000..2030), {selected: params[:start_year] || 1.year.ago.year }

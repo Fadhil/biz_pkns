@@ -67,7 +67,7 @@
               = cs.label t('.course_schedule')
               = cs.file_field :file
             %small
-              = t('image_should_be_this_size')
+              = t('image_should_be_this_size', size: '200x600')
         %li.field
           .row
             .twelve.columns
@@ -86,7 +86,7 @@
                 = cp.label "Muatnaik Gambar"
                 = cp.file_field :file
                 %small
-                  = t('image_should_be_this_size')
+                  = t('image_should_be_this_size', size: '200x600')
             - i+=1
         %li.field
           .row

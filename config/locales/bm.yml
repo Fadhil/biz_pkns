@@ -48,10 +48,10 @@ bm:
   city: 'Bandar'
   company_name: 'Nama Syarikat'
   confirmation_sent: 'Email pengesahan telah dihantar ke email anda %{email}.'
-  consultant: 'Perunding'
-  consultant_name: 'Nama Perunding'
+  consultant: 'Rakan Strategik'
+  consultant_name: 'Nama Rakan Strategik'
   contact: 'Hubungi'
-  contact_consultant: 'Email kepada perunding'
+  contact_consultant: 'Email kepada Rakan Strategik'
   create_advert: 'Cipta Iklan'
   create_course: 'Cipta Kursus'
   create_user: 'Daftar Ahli'
@@ -87,10 +87,10 @@ bm:
   no_results: 'Tiada Hasil Carian'
   nonmember: 'Bukan Ahli'
   number_of_members: 'Bil Ahli'
-  number_of_consultants: 'Senarai Perunding'
+  number_of_consultants: 'Senarai Rakan Strategik'
   membership_num: 'No Keahlian'
   new: 'Baru'
-  new_consultant: 'Daftar Perunding'
+  new_consultant: 'Daftar Rakan Strategik'
   new_business_category: 'Daftar Bidang Perniagaan'
   office_phone: 'Nombor Telefon Pejabat'
   office: 'Pejabat'
@@ -118,7 +118,7 @@ bm:
   platinum: 'Platinum'
   please_change_default_password: "Kata Laluan anda sekarang ialah 'password'. Sila tukarkan kata laluan di Profil anda"
   please_complete_your_profile: 'Sila lengkapkan profil anda untuk menikmati sistem ini sepenuhnya.'
-  consultant_please_complete_profile: 'Klik %{href} untuk kemas kini profil perunding.'
+  consultant_please_complete_profile: 'Klik %{href} untuk kemas kini profil rakan strategik.'
   please_become_a_member: "* Klik %{href} untuk kemas kini profil dan menggunakan sistem sepenuhnya."
   please_upload_csv: 'Sila pastikan anda memuatnaik fail csv'
   please_upload_csv_accordingly: '* Kursus yang telah dijalankan, sila muat naik fail CSV (Kehadiran Peserta) di bahagian Urus Pengguna -> Database'
@@ -194,8 +194,8 @@ bm:
   this_survey_has_been_sent: '*Kaji Selidik ini sudah pernah dihantar'
   title: 'Tajuk'
   total: 'Jumlah'
-  total_active_consultants: 'Bilangan Perunding Yang Aktif'
-  total_inactive_consultants: 'Bilangan Perunding Yang Tidak Aktif'
+  total_active_consultants: 'Bilangan Rakan Strategik Yang Aktif'
+  total_inactive_consultants: 'Bilangan Rakan Strategik Yang Tidak Aktif'
   unit: 'Unit'
   update: 'Kemas Kini'
   update_blog: 'Kemas Kini Blog'
@@ -369,7 +369,7 @@ bm:
 
   consultants:
     index:
-      title: 'Senarai Perunding'
+      title: 'Senarai Rakan Strategik'
     form:
       cancel: 'Batal'
       update: 'Kemas Kini'
@@ -388,13 +388,13 @@ bm:
       profile_photo: 'Muatnaik gambar'     
       upload_company_logo: 'Muat Naik Logo Syarikat'
     form_new:
-      create_consultant: 'Daftar Perunding'
+      create_consultant: 'Daftar Rakan Strategik'
     edit:
       title: 'Kemas Kini Profil'
     show:
-      title: 'Perunding'
+      title: 'Rakan Strategik'
     new:
-      title: 'Daftar Perunding Baru'
+      title: 'Daftar Rakan Strategik Baru'
     my_adverts:
       title: 'Iklan Saya'
 
@@ -525,8 +525,8 @@ bm:
       business_category: 'Bidang Perniagaan'
 
     consultation:
-      title: 'Perunding'
-      name: 'Nama Perunding'
+      title: 'Rakan Strategik'
+      name: 'Nama Rakan Strategik'
     my_courses:
       title: 'Kursus Yang Saya Hadiri'
     contact:
@@ -612,7 +612,7 @@ bm:
       create: 'Cipta Buletin'
       preview: 'Prebiu'
     history:
-      title: 'Arkib Buletin'
+      title: 'Buletin'
       subject: 'Subjek'
       created_at: 'Dicipta pada'
       view: 'Papar'
@@ -670,7 +670,7 @@ bm:
       create_course: 'Cipta Kursus'
       course_date: 'Tarikh Kursus'
       course_venue: 'Tempat Kursus'
-      consultant_email: 'Emel Perunding'
+      consultant_email: 'Emel Rakan Strategik'
       report_date: 'Tarikh Laporan'
       targeted_attendees: 'Sasaran Kehadiran'
       actual_attendees: 'Kehadiran Sebenar'
@@ -686,7 +686,7 @@ bm:
       create_course: 'Cipta Kursus'
       course_date: 'Tarikh Kursus'
       course_venue: 'Tempat Kursus'
-      consultant_email: 'Emel Perunding'
+      consultant_email: 'Emel Rakan Strategik'
       report_date: 'Tarikh Laporan'
       targeted_attendees: 'Sasaran Kehadiran'
       actual_attendees: 'Kehadiran Sebenar'
@@ -865,12 +865,12 @@ bm:
       title: 'Laporan KPI'
 
     consultants:
-      title: 'Laporan Perunding'
-      consultant_details: 'Pecahan Perunding'
-      number_of_consultants: 'Jumlah Perunding'
-      number_of_active_consultants: 'Jumlah Perunding Aktif'
-      number_of_inactive_consultants: 'Jumlah Perunding Tidak Aktif'
-      individual_consultant_report: 'Laporan Individu Perunding'
+      title: 'Laporan Rakan Strategik'
+      consultant_details: 'Pecahan Rakan Strategik'
+      number_of_consultants: 'Jumlah Rakan Strategik'
+      number_of_active_consultants: 'Jumlah Rakan Strategik Aktif'
+      number_of_inactive_consultants: 'Jumlah Rakan Strategik Tidak Aktif'
+      individual_consultant_report: 'Laporan Individu Rakan Strategik'
 
   #Stuff in the header
   layouts:
@@ -880,21 +880,21 @@ bm:
       upcoming_courses: 'Kursus Akan Datang'
       add_modify_courses: 'Cipta/Edit Kursus'
       business_directory: 'Direktori Perniagaan'
-      consultation: 'Perunding'
+      consultation: 'Rakan Strategik'
       profile: 'Profil'
       database: 'Database'
       blog: 'Urus Blog'
-      consultant_profile: 'Profil Perunding'
+      consultant_profile: 'Profil Rakan Strategik'
       my_program: 'Kursus Saya'
       my_adverts: 'Iklan'
       my_courses: 'Kursus Saya'
       my_reports: 'Laporan Wajib'
-      all_reports: 'Laporan Perunding'
+      all_reports: 'Laporan Rakan Strategik'
       administrate_user: 'Urus Ahli
       administrate_pkns_user: 'Urus Operator PKNS'
       directory: 'Direktori'
       new_letter: 'Surat'
-      new_consultant: 'Daftar Perunding'
+      new_consultant: 'Daftar Rakan Strategik'
       new_education: 'Daftar Bidang Pendidikan'
       new_business: 'Daftar Jenis Perniagaan'
       new_skill: 'Daftar Kemahiran'
@@ -904,7 +904,7 @@ bm:
       members: 'Ahli'
       program: 'Program'
       program_listing: 'Senarai Program'
-      consultant: 'Perunding'
+      consultant: 'Rakan Strategik'
       course: 'Kursus'
       course_listing: 'Senarai Kursus Akan Datang'
       program_member: 'Ahli Program'
@@ -916,14 +916,14 @@ bm:
       program_reports: 'Laporan Program'
       kpi_reports: 'Laporan KPI'
       newsletters: 'Buletin'
-      history: 'Arkib Buletin'
+      history: 'Buletin'
       letters: 'Surat'
       history_letter: 'Arkib Surat'
       create_newsletter: 'Karang Buletin'
       create_newsletter_template: 'Karang Buletin'
     navigation: 
       my_program: 'Program Saya'
-      consultant_profile: 'Profil Perunding'
+      consultant_profile: 'Profil Rakan Strategik'
     header_portal:
       contact: 'Hubungi Kami'
       faq: 'FAQ'
@@ -963,7 +963,7 @@ bm:
       user:
         not_found_in_database: 'Pengguna tersebut tidak tersenarai dalam database.'
       consultant:
-        not_found_in_database: 'Perunding tersebut tidak tersenarai dalam database.'
+        not_found_in_database: 'Rakan Strategik tersebut tidak tersenarai dalam database.'
     sessions:
       signed_in: 'Proses log masuk berjaya.'
       signed_out: 'Proses log keluar berjaya.'
@@ -1008,10 +1008,10 @@ bm:
     pkns_users: 'pengguna_pkns'
     business_categories: 'bidang_perniagaan'
     users: 'pengguna'
-    consultants: 'perunding'
+    consultants: 'rakan_strategik'
 
   resources: 
-    consultants: 'perunding'
+    consultants: 'rakan_strategik'
     users: 'pengguna'
     programs: 'program'
     courses: 'kursus'

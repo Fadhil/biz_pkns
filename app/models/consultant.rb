@@ -56,7 +56,7 @@ class Consultant < ActiveRecord::Base
   end
 
   def create_default_name
-    self.first_name = 'Perunding'
+    self.first_name = 'Rakan Strategik'
     self.last_name = 'Baru'
   end
 
