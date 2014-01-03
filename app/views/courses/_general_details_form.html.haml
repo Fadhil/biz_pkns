@@ -58,13 +58,13 @@
         %li.field
           - if !@course_report.course_schedule.nil?
             .four.columns
-              = image_tag(@course_report.course_schedule.file, size: '150x150')
+              = image_tag(@course_report.course_schedule.file)
           .eight.columns
             = f.fields_for :course_schedule do |cs|
               = cs.label t('.course_schedule')
               = cs.file_field :file
             %small
-              = t('image_should_be_this_size')
+              = t('image_should_be_this_size', size: '200x600')
         
         = f.hidden_field :finalized, value: ''
         = hidden_field_tag 'step', 'general_details'
