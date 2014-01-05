@@ -46,7 +46,8 @@ hAxis: {textPosition: 'out'}, vAxis: {textPosition: 'in'},
         var options = {
           title: 'Pecahan Status Semasa Keseluruhan Ahli',
           width: '600',
-          height: '400'
+          height: '400',
+      chartArea: { width: 600, height: 600 }, backgroundColor: 'lightgray'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('statusoverallchart'));
