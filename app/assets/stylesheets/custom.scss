@@ -1,4 +1,10 @@
-html*, body {}
+* {
+  margin: 0;
+}
+
+html*, body {
+  height: 100%;
+}
 
 body {
   font-size: 14px;
@@ -14,7 +20,7 @@ body {
   header {
     &.navbar {
       margin: 0;
-      background: #FFDB58;
+      background: #2B547E;
       // border-bottom: 3px solid #C73100;
       .small { font-size:12px; text-align:right; margin-left: 20px;}
       .avatar {
@@ -52,7 +58,7 @@ body {
                 padding: 0 10px;
                 border: 0;
                 border-bottom: 1px solid #CC3300;
-                background-color: #FFDB58;
+                background-color: #2B547E;
                 color: white;
                 text-shadow: 0 1px #CC3300;
                 &:hover {
@@ -97,6 +103,10 @@ body {
 
   section {
     &#main {
+      min-height: 100%;
+      height: auto !important;
+      height: 100%;
+      margin: 0 auto -4em;
       padding: 1em 0;
       &.welcome,
       &.registrations,
@@ -334,11 +344,16 @@ body {
     }
   }
 
+  footer, .push  {
+    height: 8em;
+  }
+
   footer {
     position: relative;
+    margin-bottom: -15px;
     z-index: 3;
     &#footer {
-      background: rgba(255, 255, 255, 1);
+      background: #2B547E;
       padding-top: 1em;
       border-top: 1px solid #DDD;
       position: relative;
