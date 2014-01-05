@@ -697,7 +697,7 @@ bm:
       save_report: 'Save'
       course_schedule: 'Jadual Kursus *'
     report_csv_form:
-      update_report: 'Jana Laporan'
+      update_report: 'Kemas Kini Laporan'
       save_report: 'Save'
 
   members:
