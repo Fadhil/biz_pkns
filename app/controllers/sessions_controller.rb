@@ -28,8 +28,20 @@ class SessionsController < Devise::SessionsController
         respond_with resource, :location => after_sign_in_path_for(resource)
       end
     else
-      set_flash_message(:notice, :signed_in) if is_navigational_format?
-      respond_with resource, :location => after_sign_in_path_for(resource)
+      if resource.class == User
+        if resource.admin?
+          sign_out(resource_name)
+          #set_flash_message(:notice, :not_admin)
+          flash[:notice] = "Hanya Ahli biasa dibenarkan daftar masuk dari sini. Sila ke <a href='/admin/login' color:'red;'>#{root_url}admin/login</a> untuk daftar masuk sebagai pengurus."
+          redirect_to '/admin/login'
+        else
+          set_flash_message(:notice, :signed_in) if is_navigational_format?
+          respond_with resource, :location => after_sign_in_path_for(resource)
+        end
+      else
+        set_flash_message(:notice, :signed_in) if is_navigational_format?
+        respond_with resource, :location => after_sign_in_path_for(resource)
+      end
     end
   end
 end
