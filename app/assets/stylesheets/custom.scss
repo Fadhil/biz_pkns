@@ -23,6 +23,7 @@ body {
       background: #2B547E;
       // border-bottom: 3px solid #C73100;
       .small { font-size:12px; text-align:right; margin-left: 20px;}
+      .program-name { color: #c03d20;}
       .avatar {
         margin: 13px 13px 0 0;
         float: left;
@@ -352,6 +353,10 @@ body {
     position: relative;
     margin-bottom: -15px;
     z-index: 3;
+    .copyright {
+      color: #c03d20;
+    }
+
     &#footer {
       background: #2B547E;
       padding-top: 1em;
