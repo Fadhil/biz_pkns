@@ -166,7 +166,7 @@
         google.setOnLoadCallback(<%= "drawChart#{i}" %>);
         function <%= "drawChart#{i}" %>() {
           var data = google.visualization.arrayToDataTable([
-            ['Pilihan', 'Jawapan'],
+            ['Pilihan', 'Jumlah'],
             ['Ya',  <%= q.responses.where('answer = ?','ya').count %>],
             ['Tidak', <%= q.responses.where('answer <> ? or answer is NULL','ya').count %>]
           ]);
@@ -175,8 +175,7 @@
             title: 'Pecahan Ahli Mengikut Umur',
             isStacked: true,
             height: '300',
-            width: '500',
-            hAxis: {title: 'Umur', titleTextStyle: {color: 'red'}}
+            width: '500'
           };
 
           var chart = new google.visualization.ColumnChart(document.getElementById('resultchart<%=i%>'));
@@ -212,7 +211,7 @@
         google.setOnLoadCallback(<%= "drawChart#{i}" %>);
         function <%= "drawChart#{i}" %>() {
           var data = google.visualization.arrayToDataTable([
-            ['Skala', 'Pilihan'],
+            ['Skala', 'Jumlah'],
             ['1', <%= q.responses.where('answer = ?','1').count %>],
             ['2', <%= q.responses.where('answer = ?','2').count %>],
             ['3', <%= q.responses.where('answer = ?','3').count %>],
@@ -223,8 +222,7 @@
           var options = {
             
             height: '300',
-            width: '500',
-            hAxis: {title: 'Umur', titleTextStyle: {color: 'red'}}
+            width: '500'
           };
 
           var chart = new google.visualization.ColumnChart(document.getElementById('resultchart<%=i%>'));
