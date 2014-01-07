@@ -5,9 +5,11 @@
 .table
   .row.table-head
     .four.columns
-      Nama Kursus
+      %h6
+        Nama Kursus
     .four.columns
-      Tarikh Laporan Dijana
+      %h6
+        Tarikh Laporan Dijana
   - current_consultant.course_reports.each do |course_report|
     .row.table-rows
       .four.columns
