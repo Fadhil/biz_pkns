@@ -18,13 +18,17 @@
       .table
         .row.table-head
           .four.columns
-            = t('course_type')
+            %h6
+              = t('course_type')
           .three.columns
-            Sasaran Bilangan Kursus
+            %h6
+              Sasaran Bilangan Kursus
           .three.columns
-            Sasaran Peserta Setiap Kursus
+            %h6
+              Sasaran Peserta Setiap Kursus
           .two.columns
-            Tahun
+            %h6
+              Tahun
         - last_target = ''
         - @program.targets.each do |target|
           .row.table-data
