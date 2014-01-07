@@ -115,6 +115,9 @@ BizPkns::Application.routes.draw do
     end
     resources :business_categories
     resources :letters do
+      collection do 
+        get '' => 'letters#list'
+      end
       member do
         post 'send_letter' => 'letters#send_letter', as: :send_user
         match 'generate_letter' => 'letters#generate_letter', as: :generate
