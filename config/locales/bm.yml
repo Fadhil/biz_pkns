@@ -702,7 +702,7 @@ bm:
 
   members:
     index:
-      title: 'Direktori Ahli'
+      title: 'Direktori Pengguna'
       search_member: 'Carian Ahli'
     program_member_list: 
       title: 'Ahli Program'
