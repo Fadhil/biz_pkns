@@ -122,7 +122,7 @@ bm:
   please_become_a_member: "* Klik %{href} untuk kemas kini profil dan menggunakan sistem sepenuhnya."
   please_upload_csv: 'Sila pastikan anda memuatnaik fail csv'
   please_upload_csv_accordingly: '* Kursus yang telah dijalankan, sila muat naik fail CSV (Kehadiran Peserta) di bahagian Urus Pengguna -> Database'
-  please_contact_admin_for_advert_status: '* Sila berhubung dengan Pentadbir PKNS untuk kelulusan dan kemas kini status iklan'
+  please_contact_admin_for_advert_status: '* Iklan akan diproses dalam tempoh 3 hari dan pihak Admin PKNS BizData akan beri email  kepada pemohon jika tidak berjaya.'
   please_contact_admin_for_advert_status_2: '* Kemas kini status iklan baru kepada pemohon sama ada lulus atau tidak lulus'
   please_contact_admin_for_advert_status_3: '* Jika anda buat permohonan iklan, sila berhubung dengan Pentadbir PKNS untuk kelulusan dan kemas kini status iklan.'
   present: 'Hadir'
