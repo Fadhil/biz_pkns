@@ -710,12 +710,12 @@ bm:
 
   pkns_users:
     index:
-      title: 'Urus Operator PKNS'
+      title: 'Urus Pentadbir PKNS'
     new:
-      title: 'Tambah Operator PKNS'
+      title: 'Tambah Pentadbir PKNS'
       ic_number: 'MyKad'
     show:
-      title: 'Operator PKNS'
+      title: 'Pentadbir PKNS'
     form:
       ic_number: 'MyKad'
 
@@ -875,7 +875,7 @@ bm:
   #Stuff in the header
   layouts:
     sidebar:
-      member_directory: 'Direktori Ahli'
+      member_directory: 'Direktori Pengguna'
       list_of_courses: 'Senarai Kursus Akan Datang'
       upcoming_courses: 'Kursus Akan Datang'
       add_modify_courses: 'Cipta/Edit Kursus'
@@ -890,8 +890,8 @@ bm:
       my_courses: 'Kursus Saya'
       my_reports: 'Laporan Wajib'
       all_reports: 'Laporan Rakan Strategik'
-      administrate_user: 'Urus Ahli'
-      administrate_pkns_user: 'Urus Operator PKNS'
+      administrate_user: 'Urus Pengguna'
+      administrate_pkns_user: 'Urus Pentadbir PKNS'
       directory: 'Direktori'
       new_letter: 'Surat'
       new_consultant: 'Daftar Rakan Strategik'
