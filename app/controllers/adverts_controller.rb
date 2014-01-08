@@ -49,7 +49,9 @@ class AdvertsController < ApplicationController
     
 
     respond_to do |format|
-      if @advert.save 
+      if @advert.advert_type == 'Course' && params[:advert_course_select].blank?
+        format.html { redirect_to new_advert_path, notice: 'Sila pilih kursus untuk dijadikan iklan' }
+      elsif @advert.save 
 
         the_notice = t('successfully_created_advert')
 
