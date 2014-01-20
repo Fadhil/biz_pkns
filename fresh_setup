@@ -1,0 +1,5 @@
+rake db:seed
+rake generate_course_categories
+rake roles
+console: User.create(email: 'admin@admin.com', password:<password>, password_confirmation:<password>, ic_number: '800829-12-5231')
+
