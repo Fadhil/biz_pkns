@@ -11,6 +11,9 @@
   /Scripts
   = javascript_include_tag "application"
   = csrf_meta_tags
+  
+  
+  = render '/layouts/analytics'
 %body.home{:'ng-app' => 'PKNS'}
   = render '/layouts/header'
   %section#main{:'ng-controller' => 'MainCtrl', :class => controller.controller_name}
@@ -24,6 +27,4 @@
         = yield
     .push
   = render '/layouts/footer'
-  
-  = render '/layouts/analytics'
 

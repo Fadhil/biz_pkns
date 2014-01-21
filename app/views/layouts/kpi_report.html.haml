@@ -12,6 +12,8 @@
   = javascript_include_tag "application"
   %script{ :src => 'http://www.google.com/jsapi', :type => 'text/javascript', :charset => 'utf-8' }
   = csrf_meta_tags
+  
+  = render '/layouts/analytics'
 %body.home{:'ng-app' => 'PKNS'}
   = render '/layouts/header'
   %section#main{:'ng-controller' => 'MainCtrl', :class => controller.controller_name}
@@ -20,5 +22,3 @@
     
     .push
   = render '/layouts/footer'
-  
-  = render '/layouts/analytics'

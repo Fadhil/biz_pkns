@@ -11,6 +11,7 @@
     %link{:href => "http://fonts.googleapis.com/css?family=Roboto:400,100,500,300", :rel => "stylesheet", :type => "text/css"}/
     %link{:href => "http://fonts.googleapis.com/css?family=Raleway:400,100", :rel => "stylesheet", :type => "text/css"}/
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    = render '/layouts/analytics'
   %body.portal.static
     = render partial: "/layouts/header_portal"
     %section#main.container
@@ -27,4 +28,3 @@
             = link_to image_tag('ico-youtube.png', size: '33x33'), 'https://www.youtube.com/user/PKNSBizData'
     = render partial: "/layouts/footer"
     
-    = render '/layouts/analytics'
