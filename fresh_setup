@@ -1,5 +1,9 @@
 rake db:seed
 rake generate_course_categories
 rake roles
-console: User.create(email: 'admin@admin.com', password:<password>, password_confirmation:<password>, ic_number: '800829-12-5231')
+console: u = User.new(email: 'admin@admin.com', password:'Admin123', password_confirmation:'Admin123', ic_number: '800829-12-5231')
+u.skip_confirmation!
+u.is_active = true
+u.add_role('Admin')
+u.save
 
