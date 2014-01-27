@@ -7,3 +7,16 @@ u.is_active = true
 u.add_role('Admin')
 u.save
 
+
+=== pkns Config Vars
+AMAZON_ACCESS_KEY:            AKIAISPD5EULHSZ6UU2Q
+AMAZON_SECRET_KEY:            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
+AMAZON_SES_ACCESS_KEY:        AKIAJNHIISHPT6R4MCKA
+AMAZON_SES_SECRET_KEY:        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
+DATABASE_URL:                 postgres://jugnsjmcksggjw:yC46DtMR4e5HxtMu-Xr7uH0HLJ@ec2-54-225-101-64.compute-1.amazonaws.com:5432/d6rvpmcad8muor
+GMAIL_SMTP_PASSWORD:          hentamsajaLah
+GMAIL_SMTP_USER:              pkns@iedwrites.com
+HEROKU_POSTGRESQL_VIOLET_URL: postgres://jugnsjmcksggjw:yC46DtMR4e5HxtMu-Xr7uH0HLJ@ec2-54-225-101-64.compute-1.amazonaws.com:5432/d6rvpmcad8muor
+PGBACKUPS_URL:                https://430808:v6702s2tb47avu0zt3qbcr6b@pgbackups.herokuapp.com/client
+S3_BUCKET_NAME:               pknsbizclublive
+TZ:                           Asia/Kuala_Lumpur
