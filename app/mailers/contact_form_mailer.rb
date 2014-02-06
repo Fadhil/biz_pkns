@@ -1,5 +1,5 @@
 class ContactFormMailer < ActionMailer::Base
-  default from: "\"PKNS BIZ DATA\" <admin@pknsbizclub.com>"
+  default from: "pkns@iedwrites.com" #"\"PKNS BIZ DATA\" <admin@pknsbizclub.com>"
 
   def contact(name, email, content)
     @name = name

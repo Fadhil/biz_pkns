@@ -1,5 +1,5 @@
 class ConsultantMailer < ActionMailer::Base
-  default from: "\"PKNS BIZ DATA\" <admin@pknsbizclub.com>"
+  default from: "pkns@iedwrites.com" #"\"PKNS BIZ DATA\" <admin@pknsbizclub.com>"
 
   def signup_notification(consultant)
     @consultant = consultant

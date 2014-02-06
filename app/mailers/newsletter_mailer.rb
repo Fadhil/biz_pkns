@@ -1,5 +1,5 @@
 class NewsletterMailer < ActionMailer::Base
-  default from: "\"PKNS BIZ DATA\" <admin@pknsbizclub.com>"
+  default from: "pkns@iedwrites.com" #"\"PKNS BIZ DATA\" <admin@pknsbizclub.com>"
 
   def mailer_newsletter(user, subject, message)
     @user = user
