@@ -56,7 +56,7 @@ BizPkns::Application.configure do
     :address      => 'smtp.mandrillapp.com',
     :port         => 587,
     :domain       => 'iedwrites.com',
-    :user_name    => ENV['MANDRILL_USERNAME']
+    :user_name    => ENV['MANDRILL_USERNAME'],
     :password     =>  ENV['MANDRILL_APIKEY'],
     :authentication => 'login',
     :enable_starttls_auto => true
