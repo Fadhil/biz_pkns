@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "pkns@iedwrites.com" #"\"PKNS BIZ DATA\" <admin@pknsbizclub.com>"
+  default from: "\"PKNS BIZ DATA\" <admin@pknsbizclub.com>"
 
   def mail_survey_invite(user, survey)
     @user = user
