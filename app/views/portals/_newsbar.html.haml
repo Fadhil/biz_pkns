@@ -15,4 +15,4 @@
                   %small
                     = link_to title, blog_path(news)
                 %p
-                  %small You can nest grids within grids infinitely, but after a while the columns become too small to be practical
+                  %small= news.content[0..100] + '...'
