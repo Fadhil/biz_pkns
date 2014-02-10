@@ -148,8 +148,9 @@
               .three.columns
                 %p
                   = link_to advert.title, advert_path(advert), :class => 'name'
-                  .row
-                    .date= "#{advert.start_date.to_formatted_s(:rfc822)} - #{advert.end_date.to_formatted_s(:rfc822)}"
+                  - if advert.start_date && advert.end_date
+                    .row
+                      .date= "#{advert.start_date.to_formatted_s(:rfc822)} - #{advert.end_date.to_formatted_s(:rfc822)}"
               .two.columns
                 %p
                   = advert.advert_type
