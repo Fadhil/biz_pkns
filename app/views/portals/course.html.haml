@@ -44,5 +44,5 @@
           .row
             .twelve.columns
               %span.pretty.small.btn.default.icon-left.entypo.icon-mail
-                = mail_to "example@example.com", t('share'), :subject => "Ada kursus menarik dari PKNS - #{course.try(:program).try(:name)}", :body => "Ada kursus menarik dari PKNS. Sila lewati #{"http://"+request.host+course_path(course)}. \n\nAnda perlu berdaftar dengan Biz Data untuk hadiri kursus di #{new_user_registration_url}. \n\nMaklumat Kursus \nKursus : #{course.try(:program).try(:name)} \nHuraian : #{course.try(:program).try(:description)} \nTarikh : #{course.start_date}"
+                = mail_to "example@example.com", t('share'), :subject => "Ada kursus menarik dari PKNS - #{course.try(:program).try(:name)}", :body => "Ada kursus menarik dari PKNS. Sila lewati #{"http://"+request.host+course_path(course)}. \n\nAnda perlu berdaftar dengan Biz Data untuk hadiri kursus di #{new_user_registration_url}. \n\nMaklumat Kursus \nKursus : #{course.try(:program).try(:name)} \nHuraian : #{ActionView::Base.full_sanitizer.sanitize(course.try(:program).try(:description))[0..300] + '...'} \nTarikh : #{course.start_date}"
     = paginate @courses
