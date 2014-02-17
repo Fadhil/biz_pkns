@@ -1,5 +1,5 @@
 class ConsultantMailer < ActionMailer::Base
-  default from: "\"PKNS BIZ DATA\" <admin@pknsbizclub.com>"
+  default from: "\"PKNS BIZ DATA\" <admin@pknsbizdata.com>"
 
   def signup_notification(consultant)
     @consultant = consultant
@@ -15,6 +15,6 @@ class ConsultantMailer < ActionMailer::Base
     @emailsender = from
     @emailsubject = subject
     @emailmessage = message
-    mail to: consultant.email, subject: @emailsubject, cc: "1.shahida@gmail.com" #, from: "\"#{@emailname}\" <#{@emailsender}>"
+    mail to: consultant.email, subject: @emailsubject, cc: "murni@asl-solutions.com" #, from: "\"#{@emailname}\" <#{@emailsender}>"
   end
 end
