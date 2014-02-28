@@ -153,6 +153,10 @@ class User < ActiveRecord::Base
       year_of_birth = "20#{year_of_birth}"
     end
 
+    if self.ic_number[0..5] == '000000'
+      year_of_birth = '1960'
+    end
+
     month_of_birth = self.ic_number[2..3]
     day_of_birth = self.ic_number[4..5]
 
