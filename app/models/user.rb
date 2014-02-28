@@ -166,7 +166,7 @@ class User < ActiveRecord::Base
       day_of_birth = '1'
     end
 
-
+    logger.info "email: #{self.email}\n\n"
     logger.info "This guys birthday:"
     logger.info year_of_birth + "Year"
     logger.info month_of_birth + "month"
