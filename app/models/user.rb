@@ -170,6 +170,7 @@ class User < ActiveRecord::Base
       day_of_birth = '1'
     end
 
+    logger.info "the ic: #{self.ic_number}\n\n"
     logger.info "email: #{self.email}\n\n"
     logger.info "This guys birthday:"
     logger.info year_of_birth + "Year"
