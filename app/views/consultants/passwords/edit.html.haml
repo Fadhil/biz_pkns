@@ -17,4 +17,9 @@
               = f.password_field :password_confirmation, :class => 'password input'
             %li.field
               = f.submit t('change_your_password'), :class => ' pretty medium warning btn'
+            .hide
+              %li.field
+                %label.checkbox{ :for => :terms_of_service }
+                  = check_box_tag :terms_of_service, 1, true, class: 'checked'
+                  %span
     = render "devise/shared/links"
