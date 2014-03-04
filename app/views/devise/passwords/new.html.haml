@@ -13,4 +13,9 @@
               = f.email_field :email, :autofocus => true, :class => 'email input'
             %li.field
               = f.submit t('send_password_instructions'), :class => ' pretty medium warning btn'
+            .hide
+              %li.field
+                %label.checkbox{ :for => :terms_of_service }
+                  = check_box_tag :terms_of_service, 1, true, class: 'checked'
+                  %span
     = render "devise/shared/links"
