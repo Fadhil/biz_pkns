@@ -146,37 +146,45 @@ class User < ActiveRecord::Base
   end
 
   def age
-    year_of_birth = self.ic_number[0..1]
-    if year_of_birth.to_i >= 60
-      year_of_birth = "19#{year_of_birth}"
+    if self.ic_number[0..5].to_s == '000000' || self.ic_number[0..5].to_s == '100000'
+      logger.info "Invalid IC\n\n"
+      age = 9999
     else
-      year_of_birth = "20#{year_of_birth}"
+      year_of_birth = self.ic_number[0..1]
+      if year_of_birth.to_i >= 60
+        year_of_birth = "19#{year_of_birth}"
+      else
+        year_of_birth = "20#{year_of_birth}"
+      end
+
+
+
+      month_of_birth = self.ic_number[2..3]
+      day_of_birth = self.ic_number[4..5]
+
+      if month_of_birth.to_i > 12
+        month_of_birth = '12'
+      elsif month_of_birth.to_i < 1
+        month_of_birth = '1'
+      end
+
+      if day_of_birth.to_i < 1
+        day_of_birth = '1'
+      end
+
+      # logger.info "the ic: #{self.ic_number}\n\n"
+      # logger.info "email: #{self.email}\n\n"
+      # logger.info "This guys birthday:"
+      # logger.info year_of_birth + "Year"
+      # logger.info month_of_birth + "month"
+      # logger.info day_of_birth + "day"
+
+        
+      date_of_birth = Time.new(year_of_birth, month_of_birth, 1)
+
+      seconds_since_birth = Time.now - date_of_birth
+      age = (seconds_since_birth/SECONDS_IN_A_YEAR).floor
     end
-
-    month_of_birth = self.ic_number[2..3]
-    day_of_birth = self.ic_number[4..5]
-
-    if month_of_birth.to_i > 12
-      month_of_birth = '12'
-    elsif month_of_birth.to_i < 1
-      month_of_birth = '1'
-    end
-
-    if day_of_birth.to_i < 1
-      day_of_birth = '1'
-    end
-
-
-    logger.info "This guys birthday:"
-    logger.info year_of_birth + "Year"
-    logger.info month_of_birth + "month"
-    logger.info day_of_birth + "day"
-
-      
-    date_of_birth = Time.new(year_of_birth, month_of_birth, 1)
-
-    seconds_since_birth = Time.now - date_of_birth
-    age = (seconds_since_birth/SECONDS_IN_A_YEAR).floor
   end
 
   def full_name
