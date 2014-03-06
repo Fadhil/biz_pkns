@@ -135,7 +135,7 @@
               =t('add_attendee')
             %span
               |
-            = link_to 'javascript:', :onClick => 'submit();' do
+            = link_to 'javascript:', :onClick => '$("form")[0].submit();' do
               %i.icon-pencil
               =t('update')
           = form_for @course.attendance_list do |f|
