@@ -35,8 +35,9 @@
         %tr
           %th= t('status')
           %td= !@course.status.blank? || @course.status? ? t('active') : t('inactive')
-.row.print-disabled
-  - if can? :manage, @course
+
+- if can? :manage, @course
+  .row.print-disabled
     %span.pretty.medium.btn.info
       = link_to t('edit', :default => t("helpers.links.edit")), edit_course_path(@course)
     %span.pretty.medium.btn.warning
@@ -59,100 +60,22 @@
           - if current_consultant
             %span.pretty.medium.btn.info
               = link_to t('.generate_report'), generate_report_course_path(@course)
-- if @course.course_report
-  - if @course.course_report.finalized?
-    .row.print-disabled
-      .four.columns
-      .six.columns
-        = "Report kursus dijanakan pada " + @course.course_report.report_date.to_s
-.row.print-section
-  - if @course.attendance_list
-    - if @course.attendance_list.attendees.count > 0 && !@course.attendance_list.completed
-      .row
-        .ten.columns
-          %h5= t('.preattendance_list')
-        .two.columns
-          %span.pretty.medium.btn.info.print-disabled
-            = link_to t('print'), '#', onClick: "print();"
-      %hr.divider
-      %table.table.table-striped
-        %thead
-          %tr
-            %th
-              ID
-            %th
-              Name
-            %th
-              Email
-            %th
-              IC Number
-        %tbody
-          - @course.attendance_list.attendees.each_with_index do |attendee, index|
-            %tr
-              %td
-                = index + 1
-              %td
-                %p= attendee.full_name
-              %td
-                = attendee.email
-              %td
-                = attendee.ic_number
-              %td
-                - if !attendee.attended.nil? && !attendee.attendance_status.nil?
-                  = t(attendee.attendance_status)
-                - else
-                  %ul.print-disabled
-                    %li
-                      %small
-                        = link_to t('present'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: true, attendance_status: 'present'), method: :post
-                    %li
-                      %small
-                        = link_to t('not_present'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: false, attendance_status: 'not_present'), method: :post
-                    %li
-                      %small
-                        = link_to t('cannot_attend'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: false, attendance_status: 'cannot_attend'), method: :post
-          %table.table
-            %tbody
-              - 10.times do |n|
-                %tr
-                  %td.center{style:"border: 1px solid black; width: 30px"}
-                    =@course.attendance_list.attendees.count + n + 1
-                  %td{style:"border: 1px solid black; width: 150px;"}
-                  %td{style:"border: 1px solid black;width: 140px;"}
-                  %td{style:"border: 1px solid black;width: 140px;"}
-                  %td{style:"border: 1px solid black;width: 140px;"}
-        .row.print-disabled
-          = nested_form_for @course.attendance_list do |f|
-            = f.fields_for :attendees do |a|
-              = a.text_field :first_name, value: t('first_name'), :class => 'text input', :placeholder => t('first_name') if a.object.new_record?
-              = a.text_field :last_name, value: t('last_name'), :class => 'text input' if a.object.new_record?
-              = a.text_field :email, value: t('email'), :class => 'text input'if a.object.new_record?
-              = a.text_field :ic_number, value: t('ic_number') , :class => 'text input'if a.object.new_record?
-              = a.link_to_remove t('remove') if a.object.new_record?
-              = a.hidden_field :attended, value: 1
-            = f.link_to_add :attendees do
-              %i.icon-user-add
-              =t('add_attendee')
-            %span
-              |
-            = link_to 'javascript:', :onClick => '$("form")[0].submit();' do
-              %i.icon-pencil
-              =t('update')
-          = form_for @course.attendance_list do |f|
-            = f.hidden_field :completed, value: 1
-            %span.pretty.medium.btn.warning
-              %button{:onClick => "submit();"}= t('end_course')
+  - if @course.course_report
+    - if @course.course_report.finalized?
+      .row.print-disabled
+        .four.columns
+        .six.columns
+          = "Report kursus dijanakan pada " + @course.course_report.report_date.to_s
+  .row.print-section
+    - if @course.attendance_list
+      - if @course.attendance_list.attendees.count > 0 && !@course.attendance_list.completed
         .row
-          %small
-            * Kursus tidak boleh dikemas kini jika anda telah menamatkannya
-        .row.print-disabled
-          .twelve.columns
-            %h5
-              = "#{t('number_of_attendees')} : #{@course.attendance_list.attendees.count}/#{@course.attendance_list.max_attendees}"
-
-    - elsif @course.attendance_list.attendees.count > 0 && @course.attendance_list.completed
-      .preattendance
-        %h5= t('.attendance_list')
+          .ten.columns
+            %h5= t('.preattendance_list')
+          .two.columns
+            %span.pretty.medium.btn.info.print-disabled
+              = link_to t('print'), '#', onClick: "print();"
+        %hr.divider
         %table.table.table-striped
           %thead
             %tr
@@ -170,12 +93,90 @@
                 %td
                   = index + 1
                 %td
-                  = attendee.full_name
+                  %p= attendee.full_name
                 %td
                   = attendee.email
                 %td
                   = attendee.ic_number
                 %td
-                  = attendee.attended? ? t('present') : t('not_present')
+                  - if !attendee.attended.nil? && !attendee.attendance_status.nil?
+                    = t(attendee.attendance_status)
+                  - else
+                    %ul.print-disabled
+                      %li
+                        %small
+                          = link_to t('present'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: true, attendance_status: 'present'), method: :post
+                      %li
+                        %small
+                          = link_to t('not_present'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: false, attendance_status: 'not_present'), method: :post
+                      %li
+                        %small
+                          = link_to t('cannot_attend'), update_attendance_path(user_id: attendee.user_id, attendee_id: attendee.id, course_id: @course.id, attended: false, attendance_status: 'cannot_attend'), method: :post
+            %table.table
+              %tbody
+                - 10.times do |n|
+                  %tr
+                    %td.center{style:"border: 1px solid black; width: 30px"}
+                      =@course.attendance_list.attendees.count + n + 1
+                    %td{style:"border: 1px solid black; width: 150px;"}
+                    %td{style:"border: 1px solid black;width: 140px;"}
+                    %td{style:"border: 1px solid black;width: 140px;"}
+                    %td{style:"border: 1px solid black;width: 140px;"}
+          .row.print-disabled
+            = nested_form_for @course.attendance_list do |f|
+              = f.fields_for :attendees do |a|
+                = a.text_field :first_name, value: t('first_name'), :class => 'text input', :placeholder => t('first_name') if a.object.new_record?
+                = a.text_field :last_name, value: t('last_name'), :class => 'text input' if a.object.new_record?
+                = a.text_field :email, value: t('email'), :class => 'text input'if a.object.new_record?
+                = a.text_field :ic_number, value: t('ic_number') , :class => 'text input'if a.object.new_record?
+                = a.link_to_remove t('remove') if a.object.new_record?
+                = a.hidden_field :attended, value: 1
+              = f.link_to_add :attendees do
+                %i.icon-user-add
+                =t('add_attendee')
+              %span
+                |
+              = link_to 'javascript:', :onClick => '$("form")[0].submit();' do
+                %i.icon-pencil
+                =t('update')
+            = form_for @course.attendance_list do |f|
+              = f.hidden_field :completed, value: 1
+              %span.pretty.medium.btn.warning
+                %button{:onClick => "submit();"}= t('end_course')
+          .row
+            %small
+              * Kursus tidak boleh dikemas kini jika anda telah menamatkannya
+          .row.print-disabled
+            .twelve.columns
+              %h5
+                = "#{t('number_of_attendees')} : #{@course.attendance_list.attendees.count}/#{@course.attendance_list.max_attendees}"
+
+      - elsif @course.attendance_list.attendees.count > 0 && @course.attendance_list.completed
+        .preattendance
+          %h5= t('.attendance_list')
+          %table.table.table-striped
+            %thead
+              %tr
+                %th
+                  ID
+                %th
+                  Name
+                %th
+                  Email
+                %th
+                  IC Number
+            %tbody
+              - @course.attendance_list.attendees.each_with_index do |attendee, index|
+                %tr
+                  %td
+                    = index + 1
+                  %td
+                    = attendee.full_name
+                  %td
+                    = attendee.email
+                  %td
+                    = attendee.ic_number
+                  %td
+                    = attendee.attended? ? t('present') : t('not_present')
 
 
