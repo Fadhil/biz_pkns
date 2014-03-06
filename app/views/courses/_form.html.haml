@@ -21,7 +21,7 @@
             - elsif current_consultant
               .picker
                 = select 'disabled', 'program_id', options_for_select(Program.all.map{|a| [a.name, a.id]}, session[:current_program_id]),{}, { disabled: true }
-                = hidden_field_tag :course_program_id, current_consultant.try(:programs).first.try(:id), name: 'course[program_id]'
+                = hidden_field_tag :course_program_id, session[:current_program_id], name: 'course[program_id]'
 
       %li.field
         = f.label t('description'), :class => 'control-label'
