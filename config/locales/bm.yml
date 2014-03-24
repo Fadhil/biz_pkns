@@ -1063,6 +1063,7 @@ bm:
               blank: "diperlukan"
               taken: "yang dimasukkan sudah berdaftar"
               not_found: "email tersebut dijumpai."
+              already_confirmed: 'email tersebut sudah pernah disahkan.'
             password: 
               blank: "diperlukan"
               confirmation: "yang dimasukkan tidak sama"
