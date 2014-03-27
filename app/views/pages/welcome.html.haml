@@ -49,6 +49,8 @@
                         = f.check_box :remember_me, :checked => 'checked'
                         %span
                         = t('remember_me')
+                    = link_to t('forgot_your_password'), new_password_path(resource_name), style: 'color: gray;'
+
                   .five.columns
                     = f.submit t('login'), :class => ' pretty medium primary btn'
         .panel
