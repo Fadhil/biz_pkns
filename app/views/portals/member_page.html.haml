@@ -17,9 +17,9 @@
     %ul.four_up.tiles
       - @members.size.times do |index|
         %li.panel
-          .image
+          .member_image
             - unless @members[index].profile_photo.nil?
-              = image_tag(@members[index].try(:profile_photo).try(:file), size: "100x100")
+              = image_tag(@members[index].try(:profile_photo).try(:file), size: "300x300")
           .name
             %h5{style: "color:#c03d20;"}
               = @members[index].try(:full_name)

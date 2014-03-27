@@ -64,7 +64,23 @@ body {
         border: none;
         border-radius: 0 0 5px 5px;
         padding: 20px;
-        overflow: hidden;
+        /*overflow: hidden;*/
+
+
+        .member_image {
+          /*height: 280px;
+          overflow: hidden;*/
+          margin: 0;
+          > img {
+            min-width: 100%;
+            /*min-height: 100%;*/
+          }
+          ul, ul ul {
+            margin: 0;
+            padding: 0;
+            li { padding: 0 }
+          }
+        }
 
         .image {
           height: 100px;
@@ -173,8 +189,8 @@ body {
     }
     .tiles {
       .panel {
-        max-height: 260px;
-        min-height: 260px;
+        max-height: 380px;
+        min-height: 380px;
       }
     }
     footer {
