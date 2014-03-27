@@ -11,7 +11,7 @@
           .panel
             %p=kvpair[1]
             .image
-              = image_tag "http://lorempixel.com/200/140/business/#{i}"
+              = image_tag "#{kvpair[1].to_s.downcase}.png"
             %br
 .row
   .eight.columns
