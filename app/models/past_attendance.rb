@@ -25,8 +25,8 @@ class PastAttendance < ActiveRecord::Base
     # Don't send confirmation email for testing
     #user.skip_confirmation!
     #user.save
-    if user.save
-    end
+    user.save
+    
     program = Program.where(name: self.program).first
     course = Course.where(name: self.course, program_id: program.try(:id)).first
 
