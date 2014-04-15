@@ -69,7 +69,7 @@ bm:
   filter_by_non_member: 'Paparkan Bukan Ahli'
   fill_all_fields_hint: '* Sila isi semua maklumat dengan lengkap'
   fill_all_fields_correctly_hint: '* Sila isi semua maklumat dengan lengkap dan tepat'
-  fill_all_profile_fields_hint: '* Sila isi semua maklumat profile (kecuali twitter dan facebook) untuk menggunakan sistem sepenuhnya.'
+  fill_all_profile_fields_hint: '*Sila isi semua maklumat profil ( kecuali Twitter dan Facebook) untuk menggunakan sistem sepenuhnya.'
   gold: 'Gold'
   image_should_be_this_size: 'Pastikan imej bersaiz dimensi %{size}'
   invalid_request: 'Permintaan Tidak Sah'
@@ -117,7 +117,7 @@ bm:
   postcode: 'Poskod'
   platinum: 'Platinum'
   please_change_default_password: "Kata Laluan anda sekarang ialah 'password'. Sila tukarkan kata laluan di Profil anda"
-  please_complete_your_profile: 'Sila lengkapkan profil anda untuk menikmati sistem ini sepenuhnya.'
+  please_complete_your_profile: "* Klik %{href} untuk kemas kini profil dan menggunakan sistem sepenuhnya."
   consultant_please_complete_profile: 'Klik %{href} untuk kemas kini profil rakan strategik.'
   please_become_a_member: "* Klik %{href} untuk kemas kini profil dan menggunakan sistem sepenuhnya."
   please_upload_csv: 'Sila pastikan anda memuatnaik fail csv'

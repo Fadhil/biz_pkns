@@ -64,7 +64,7 @@ class ApplicationController < ActionController::Base
           flash.now[:notice] = t('please_become_a_member', href: "<a href='#{edit_user_path(current_user)}'>sini</a>")
       elsif current_user.confirmed && !current_user.profile_complete? 
         unless current_user.admin?
-          flash.now[:notice] = t('please_complete_your_profile')
+          flash.now[:notice] = t('please_complete_your_profile', href: "<a href='#{edit_user_path(current_user)}'>sini</a>")
         end
       elsif !current_user.unfinished_surveys.empty?
         unless current_user.admin?
