@@ -24,3 +24,6 @@
                 %li.field
                   %span.pretty.medium.info.btn
                     %button{:onClick => 'submit();'}=t('login')
+
+              .pull_left
+                = link_to t('forgot_your_password'), new_password_path(resource_name)
