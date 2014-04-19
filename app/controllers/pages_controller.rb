@@ -12,6 +12,10 @@ class PagesController < ApplicationController
     
   end
 
+  def faq
+    render layout: 'application'
+  end
+
   def consultation
     authorize! :consultation, :pages, message: 'Anda perlu menjadi ahli untuk menggunakan perkhidmatan ini.'
     @consultants = Consultant.all

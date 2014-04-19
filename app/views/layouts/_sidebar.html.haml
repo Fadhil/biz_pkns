@@ -39,6 +39,11 @@
                 = link_to t('.history'), history_path
               %li
                 = link_to t('.create_newsletter_template'), newsletters_path
+          %li
+            = link_to faq_path do
+              %span.left
+                %i.icon-key
+              FAQ
       - if current_user && !current_consultant
         %ul#sidebar-nav
           - if !current_user.admin?
@@ -73,6 +78,11 @@
                 = link_to t('.consultation'), consultation_path
               %li
                 = link_to t('.my_adverts'), my_adverts_user_path(current_user)
+            %li
+              = link_to faq_path do
+                %span.left
+                  %i.icon-key
+                FAQ
           - if current_user.admin?
             %li{:'ui-nav-dropdown' => 'ui-nav-dropdown'}
               = link_to '#' do
@@ -168,3 +178,8 @@
                   = link_to t('.history'), history_path
                 %li
                   = link_to t('.create_newsletter_template'), newsletters_path
+            %li
+              = link_to faq_path do
+                %span.left
+                  %i.icon-key
+                FAQ
