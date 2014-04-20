@@ -96,6 +96,9 @@ gem 'has_scope'
 gem 'active_attr'
 # gem 'roo', '~> 1.9.5'
 
+#ironmq delayed job
+gem 'delayed_job_ironmq'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
