@@ -85,8 +85,8 @@ end
 gem 'jquery-rails'
 gem 'redactor-rails', '0.3.5'
 gem 'prawn'#, :git => 'git@github.com:epireve/prawn.git'
-#gem 'delayed_job_active_record'
-gem 'delayed_job'
+gem 'delayed_job_active_record'
+#gem 'delayed_job'
 gem 'daemons'
 gem 'delayed_job_web'
 gem 'foreman'
@@ -98,7 +98,7 @@ gem 'active_attr'
 # gem 'roo', '~> 1.9.5'
 
 #ironmq delayed job
-gem 'delayed_job_ironmq'
+#gem 'delayed_job_ironmq'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
