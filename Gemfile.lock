@@ -73,9 +73,6 @@ GEM
     database_cleaner (1.2.0)
     delayed_job (3.0.5)
       activesupport (~> 3.0)
-    delayed_job_active_record (4.0.1)
-      activerecord (>= 3.0, < 4.2)
-      delayed_job (>= 3.0, < 4.1)
     delayed_job_ironmq (1.0.1)
       delayed_job (~> 3.0.0)
       iron_mq (>= 4.0.0)
@@ -292,7 +289,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   daemons
   database_cleaner
-  delayed_job_active_record
+  delayed_job
   delayed_job_ironmq
   delayed_job_web
   devise (= 2.2.4)
