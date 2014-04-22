@@ -17,7 +17,7 @@ task :delete_users => :environment do
     f.readlines[0].split.each do |a|
       u = User.where(email: a.strip).first
       unless u.nil? 
-        puts "Found user #{u.full_name}. Deleting\n"
+        puts "Found user #{u.full_name}.\n Email: #{u.email}\n Deleting\n"
         if u.delete
           puts "Successfully deleted user\n"
           success_count += 1
