@@ -1,4 +1,3 @@
-# encoding: UTF-8
 
 class PastAttendance < ActiveRecord::Base
   attr_accessible :course, :email, :end_date, :first_name, :ic_number, :last_name, :phone, :program, :start_date, :venue
