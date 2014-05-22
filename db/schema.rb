@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131115121557) do
+ActiveRecord::Schema.define(:version => 20140522052040) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -447,12 +447,14 @@ ActiveRecord::Schema.define(:version => 20131115121557) do
     t.datetime "created_at"
   end
 
-  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], :name => "taggings_idx", :unique => true
 
   create_table "tags", :force => true do |t|
-    t.string "name"
+    t.string  "name"
+    t.integer "taggings_count", :default => 0
   end
+
+  add_index "tags", ["name"], :name => "index_tags_on_name", :unique => true
 
   create_table "targets", :force => true do |t|
     t.integer  "course_category_id"
@@ -503,6 +505,13 @@ ActiveRecord::Schema.define(:version => 20131115121557) do
     t.boolean  "walk_in_first_time"
     t.boolean  "profile_complete"
     t.string   "type"
+    t.text     "bio_data"
+    t.string   "company_name"
+    t.boolean  "active"
+    t.string   "active_from"
+    t.string   "date"
+    t.date     "active_to"
+    t.string   "register_date"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
