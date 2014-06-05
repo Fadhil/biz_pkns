@@ -122,9 +122,6 @@
               = link_to 'javascript:', :onClick => '$("#attendance_list_form").submit();' do
                 %i.icon-pencil
                 =t('update')
-              /
-                %span.pretty.small.btn.info
-                  %button{:onClick => "submit();"}= t('update')
             = form_for @course.attendance_list do |f|
               = f.hidden_field :completed, value: 1
               %span.pretty.medium.btn.warning
