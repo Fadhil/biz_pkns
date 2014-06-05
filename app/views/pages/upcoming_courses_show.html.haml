@@ -100,7 +100,7 @@
                     %td{style:"border: 1px solid black;width: 140px;"}
                     %td{style:"border: 1px solid black;width: 140px;"}
           .row.print-disabled
-            = nested_form_for @course.attendance_list do |f|
+            = nested_form_for @course.attendance_list, id: attendance_list_form do |f|
               = f.fields_for :attendees do |a|
                 %ul
                   %li.field
@@ -119,7 +119,7 @@
                 =t('add_attendee')
               %span
                 |
-              = link_to 'javascript:', :onClick => 'submit();' do
+              = link_to 'javascript:', :onClick => '$("#attendance_list_form").submit();' do
                 %i.icon-pencil
                 =t('update')
               /
