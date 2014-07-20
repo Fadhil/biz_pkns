@@ -4,17 +4,17 @@ layout 'report_layout'
 
   def users
     @nonadmin_users = User.nonadmin
-    @number_of_users = @nonadmin_users.count
-    @number_of_users_male = @nonadmin_users.male.count
-    @number_of_users_female = @nonadmin_users.female.count
+    @number_of_users = @nonadmin_users.uniq.count
+    @number_of_users_male = @nonadmin_users.male.uniq.count
+    @number_of_users_female = @nonadmin_users.female.uniq.count
     @member_users = @nonadmin_users.members
-    @number_of_members = @member_users.count
-    @number_of_members_male = @member_users.male.count
-    @number_of_members_female = @member_users.female.count
+    @number_of_members = @member_users.uniq.count
+    @number_of_members_male = @member_users.male.uniq.count
+    @number_of_members_female = @member_users.female.uniq.count
     @nonmember_users = @nonadmin_users.nonmembers
-    @number_of_nonmembers = @nonmember_users.count
-    @number_of_nonmembers_male = @nonmember_users.male.count
-    @number_of_nonmembers_female = @nonmember_users.female.count
+    @number_of_nonmembers = @nonmember_users.uniq.count
+    @number_of_nonmembers_male = @nonmember_users.male.uniq.count
+    @number_of_nonmembers_female = @nonmember_users.female.uniq.count
 
     @percent_members = ( (@number_of_members.to_f / @number_of_users.to_f ) * 100 ).round(2).to_s + "%"
     @percent_nonmembers = ( ( @number_of_nonmembers.to_f / @number_of_users.to_f ) * 100 ).round(2).to_s + "%"
@@ -25,15 +25,15 @@ layout 'report_layout'
 
     @business_categories = BusinessCategory.all.map(&:name).uniq
 
-    @users_with_business = User.joins(:business_profiles).where('business_profiles.category in (?)',@business_categories).count
+    @users_with_business = User.joins(:business_profiles).where('business_profiles.category in (?)',@business_categories).uniq.count
     @business_categories_users = {}
     
     
     @total_businesses = 0
     @business_categories.each do |b|
       @business_categories_users[b] = {} unless @business_categories_users[b]
-      @business_categories_users[b]['count'] = @members.joins(:business_profiles).where('business_profiles.category = ?', b ).count 
-      @total_businesses += @members.joins(:business_profiles).where('business_profiles.category = ?', b ).count 
+      @business_categories_users[b]['count'] = @members.joins(:business_profiles).where('business_profiles.category = ?', b ).uniq.count 
+      @total_businesses += @members.joins(:business_profiles).where('business_profiles.category = ?', b ).uniq.count 
     end
 
     @business_categories_users.each do |key,value|
