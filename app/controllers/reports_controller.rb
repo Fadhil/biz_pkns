@@ -25,7 +25,7 @@ layout 'report_layout'
 
     @business_categories = BusinessCategory.all.map(&:name).uniq
 
-    @users_with_business = User.joins(:business_profiles).where('business_profiles.category in (?)',@business_categories).uniq.count
+    @users_with_business = @nonadmin_users.joins(:business_profiles).where('business_profiles.category in (?)',@business_categories).uniq.count
     @business_categories_users = {}
     
     

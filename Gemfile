@@ -82,6 +82,9 @@ group :production do
   gem 'fog', "~>1.3.1"
 end
 
+#iron.io
+gem 'iron_worker_ng'
+
 gem 'jquery-rails'
 gem 'redactor-rails', '0.3.5'
 gem 'prawn'#, :git => 'git@github.com:epireve/prawn.git'
