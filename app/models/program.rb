@@ -62,7 +62,7 @@ class Program < ActiveRecord::Base
       without_business_total += the_data[program.name]['without_business']
 
     end
-    the_data['Jumlah']= {'with_business'=> with_business_total, 'without_business' => without_business_total }
+    the_data['Jumlah']= {'with_business'=> User.members.joins(:business_profiles).uniq.to_a.size, 'without_business' => (User.members.size - User.members.joins(:business_profiles).uniq.to_a.size) }
 
     the_data
   end
