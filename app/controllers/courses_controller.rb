@@ -104,6 +104,9 @@ class CoursesController < ApplicationController
     @step = params[:step] || 'general_details'
     @course = Course.find(params[:id])
     @course_report = @course.course_report || CourseReport.new(params[:course_report])
+    if !@course.new_record?
+      @course.update_attributes(params[:course_report])
+    end
     if @course_report.course_schedule.nil?
       @course_report.build_course_schedule
     end
