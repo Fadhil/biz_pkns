@@ -25,7 +25,7 @@ layout 'report_layout'
 
     @business_categories = BusinessCategory.all.map(&:name).uniq
 
-    @users_with_business = @nonadmin_users.joins(:business_profiles).where('business_profiles.category in (?)',@business_categories).uniq.count
+    @users_with_business = @members.joins(:business_profiles).where('business_profiles.category in (?)',@business_categories).uniq.count
     @business_categories_users = {}
     
     
@@ -40,7 +40,7 @@ layout 'report_layout'
         @business_categories_users[key]['percentage'] = ((@business_categories_users[key]['count'].to_f / @total_businesses.to_f) * 100 ).round(2).to_s + "%"
     end
 
-    @by_program_data = Program.users_by_program
+    @by_program_data = Program.users_by_program(@business_categories)
     
 
 

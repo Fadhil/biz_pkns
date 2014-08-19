@@ -49,20 +49,23 @@ class Program < ActiveRecord::Base
     end
   end
 
-  def self.users_by_program
+  def self.users_by_program(business_categories)
     the_data = {}
     with_business_total = 0
     without_business_total = 0
     active.each do |program|
       the_data[program.name] = {} unless the_data[program.name]
       p_member_count = program.users.members.count
-      the_data[program.name]['with_business'] = program.users.members.joins(:business_profiles).uniq.to_a.size
+      the_data[program.name]['with_business'] = program.users.members.joins(:business_profiles).where('business_profiles.category in (?)',business_categories).uniq.to_a.size
       the_data[program.name]['without_business'] = ( p_member_count - the_data[program.name]['with_business'] ) 
       with_business_total += the_data[program.name]['with_business']
       without_business_total += the_data[program.name]['without_business']
 
     end
-    the_data['Jumlah']= {'with_business'=> User.members.joins(:business_profiles).uniq.to_a.size, 'without_business' => (User.members.size - User.members.joins(:business_profiles).uniq.to_a.size) }
+
+    users_with_business_who_joined_programs_count = User.nonadmin.members.joins(:programs).joins(:business_profiles).where('business_profiles.category <> ?','').uniq.to_a.size
+    users_who_joined_programs_count = User.nonadmin.members.joins(:programs).uniq.count
+    the_data['Jumlah']= {'with_business'=> users_with_business_who_joined_programs_count, 'without_business' => (users_who_joined_programs_count - users_with_business_who_joined_programs_count) }
 
     the_data
   end
@@ -166,5 +169,9 @@ class Program < ActiveRecord::Base
     end
 
     kpi_results
+  end
+
+  def self.search(name)
+    where('name like ?',"%#{name}%").first
   end
 end
