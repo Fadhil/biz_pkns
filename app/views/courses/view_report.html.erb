@@ -168,7 +168,7 @@
           var data = google.visualization.arrayToDataTable([
             ['Pilihan', 'Jumlah'],
             ['Ya',  <%= q.responses.where('answer = ?','ya').count %>],
-            ['Tidak', <%= q.responses.where('answer <> ? or answer is NULL','ya').count %>]
+            ['Tidak', <%= q.responses.where('answer <> ?','ya').count %>]
           ]);
 
           var options = {
