@@ -25,15 +25,16 @@ layout 'report_layout'
 
     @business_categories = BusinessCategory.all.map(&:name).uniq
 
-    @users_with_business = @members.joins(:business_profiles).where('business_profiles.category in (?)',@business_categories).uniq.count
+    @users_with_business = BusinessProfile.where('category in (?)',@business_categories).where('company_name != ?','').where('user_id in (?)',@members.map(&:id)).map(&:user_id).uniq.count
     @business_categories_users = {}
     
     
     @total_businesses = 0
     @business_categories.each do |b|
       @business_categories_users[b] = {} unless @business_categories_users[b]
-      @business_categories_users[b]['count'] = @members.joins(:business_profiles).where('business_profiles.category = ?', b ).uniq.count 
-      @total_businesses += @members.joins(:business_profiles).where('business_profiles.category = ?', b ).uniq.count 
+      @business_categories_users[b]['count'] = BusinessProfile.where('category = ?',b).where('company_name != ?','').where('user_id in (?)',@members.map(&:id)).map(&:user_id).uniq.count 
+      @total_businesses += @business_categories_users[b]['count']
+      
     end
 
     @business_categories_users.each do |key,value|
