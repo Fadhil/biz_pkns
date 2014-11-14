@@ -21,6 +21,7 @@ class Ability
           cannot :all, :admins
           can :consultation, :pages
           cannot :index, User
+          cannot :inactive, User
           can [:take], Survey
           can :finish_survey, Survey
           cannot [:index, :edit, :update, :destroy], Survey
@@ -37,6 +38,7 @@ class Ability
           cannot :all, :pages
           cannot :all, :admins
           cannot :index, User
+          cannot :inactive, User
           can [:index, :show], Program
           can [:take], Survey
           can :finish_survey, Survey
@@ -49,6 +51,7 @@ class Ability
         can :manage, Consultant, id: resource.id
         can :consultation, :pages
         can :read, User
+        cannot :inactive, User
         can :manage, Course, program_id: resource.programs.all.map(&:id)
         can :create, Course
         can :manage, AttendanceList, program_id: resource.programs.all.map(&:id)
@@ -60,6 +63,7 @@ class Ability
 
       else 
         cannot :index, :course
+        cannot :all,  User
         can [:all, :index, :show], Blog
       end
   end

@@ -24,10 +24,12 @@
   .row.table-head
     .one.columns
       Bil
-    .four.columns
+    .three.columns
       %h6.title= t('name')
-    .four.columns
+    .three.columns
       %h6.title= t('email')
+    .three.columns
+      %h6.title=t('ic_number')
     .two.columns
       / %h6.title= t('status')
   - if @users.empty?
@@ -38,13 +40,16 @@
         - page_count = params[:page] || 1
         = i + 1 + (( page_count.to_i - 1) * SystemConstant.small_page_size )
 
-      .four.columns
+      .three.columns
         %p
           = link_to "#{user.first_name} #{user.last_name}", user_path(user), :class => 'name'
         
-      .four.columns
+      .three.columns
         
-        %p= user.email
+        %p= user.email      
+      .three.columns
+        %p= user.ic_number  
+        
       .two.columns
         .row
           .twelve.columns
