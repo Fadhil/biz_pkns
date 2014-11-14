@@ -222,6 +222,6 @@ class UsersController < ApplicationController
 
   def inactive
     @users = User.nonmembers
-    @users = Kaminari.paginate_array(@users).page(params[:page]).per(20)
+    @users = Kaminari.paginate_array(@users).page(params[:page]).per(200)
   end
 end
