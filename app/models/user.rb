@@ -226,7 +226,7 @@ class User < ActiveRecord::Base
   end
 
   def self.remove_inactive_users
-    inactive_users = User.where('confirmed <> ? and created_at < ?', true, 90.days.ago)
+    inactive_users = User.where('confirmed <> ? and created_at < ? and email <> ?', true, 90.days.ago, 'admin@admin.com')
     if !inactive_users.empty?
       inactive_users.each_with_index do |u,i|
       end

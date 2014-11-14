@@ -137,7 +137,7 @@ class AdvertsController < ApplicationController
     @advert = Advert.find(params[:id])
     respond_to do |format|
       if @advert.update_attributes(params[:advert])
-        if !Advert.pending.empty?
+        if Advert.active.count >= 10
           the_notice = t('activated_adverts_full')
         else
           the_notice = t('successfully_activated_advert')
