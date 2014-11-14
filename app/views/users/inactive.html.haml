@@ -1,0 +1,61 @@
+- model_class = User
+= form_tag '', method: :get do
+  .row
+    %h3.ten.columns
+      "Pengguna Tidak Aktif"
+    / .two.columns.action
+    /   %span.pretty.medium.primary.btn.entypo.icon-left.icon-list-add
+    /     = link_to t('new', :default => t("helpers.links.new_user")), new_user_path
+  .row
+    #search-drawer.twelve.columns
+      .row
+        .four.columns.field
+          = label :search, :name, t('search_by_name')
+          = text_field_tag 'search_name','', name: 'search[name]', :placeholder => 'Carian..', :class => 'text input'
+        .four.columns.field
+          = label :search, :ic, t('search_by_ic_number')
+          = text_field_tag 'search_ic','', name: 'search[ic]', :placeholder => 'Carian..', :class => 'text input'
+      .row
+        .two.columns
+          %span.pretty.medium.primary.btn.entypo.icon-left.icon-search
+            = button_tag t('search'), onClick: 'submit();'
+
+.table
+  .row.table-head
+    .one.columns
+      Bil
+    .four.columns
+      %h6.title= t('name')
+    .four.columns
+      %h6.title= t('email')
+    .two.columns
+      / %h6.title= t('status')
+  - if @users.empty?
+    = t('no_results')
+  - @users.each_with_index do |user,i|
+    .row.table-rows
+      .one.columns
+        - page_count = params[:page] || 1
+        = i + 1 + (( page_count.to_i - 1) * SystemConstant.small_page_size )
+
+      .four.columns
+        %p
+          = link_to "#{user.first_name} #{user.last_name}", user_path(user), :class => 'name'
+        
+      .four.columns
+        
+        %p= user.email
+      .two.columns
+        .row
+          .twelve.columns
+          .twelve.columns.hide
+            %span.pretty.small.btn.info.icon-left.entypo.icon-list-add
+              = link_to t('view', :default => t("helpers.links.edit")), user_path(user)
+          .twelve.columns
+            %span.pretty.small.btn.danger.icon-left.entypo.icon-trash
+              =link_to t('destroy', :default => t("helpers.links.destroy")),
+                          user_path(user),
+                          :method => :delete,
+                          :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => t('are_you_sure'))) }
+  = paginate @users
+  

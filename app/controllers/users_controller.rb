@@ -219,4 +219,9 @@ class UsersController < ApplicationController
       @my_adverts = current_user.adverts.latest
     end
   end
+
+  def inactive
+    @users = User.inactive
+    @users = Kaminari.paginate_array(@users).page(params[:page]).per(20)
+  end
 end

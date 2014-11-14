@@ -81,6 +81,9 @@ BizPkns::Application.routes.draw do
         get 'letters', as: :letter_user
         match 'my_adverts', as: :my_adverts
       end 
+      collection do
+        get 'inactive' => 'users#inactive'
+      end
     end
     resources :programs
     resources :courses do

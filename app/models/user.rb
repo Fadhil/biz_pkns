@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   scope :age_19_24, Proc.new { select { |u| u.age > 18 && u.age <= 24} }
   scope :age_25_40, Proc.new { select { |u| u.age > 24 && u.age <= 40} }
   scope :age_41_above, Proc.new { select { |u| u.age > 40 } }
+  scope :inactive, where('confirmed <> ? and created_at < ? and email <> ?', true, 90.days.ago, 'admin@admin.com')
 
   scope :own_business, where( current_employment_status: 'own_business')
   scope :working_studying, where( current_employment_status: 'working_studying')
@@ -226,7 +227,7 @@ class User < ActiveRecord::Base
   end
 
   def self.remove_inactive_users
-    inactive_users = User.where('confirmed <> ? and created_at < ? and email <> ?', true, 90.days.ago, 'admin@admin.com')
+    inactive_users = User.inactive
     if !inactive_users.empty?
       inactive_users.each_with_index do |u,i|
       end
