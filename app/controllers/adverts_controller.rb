@@ -136,15 +136,15 @@ class AdvertsController < ApplicationController
   def activate
     @advert = Advert.find(params[:id])
     respond_to do |format|
-      if @advert.update_attributes(params[:advert])
         if Advert.active.count >= 10
           the_notice = t('activated_adverts_full')
         else
+
+          @advert.update_attributes(active: true)
           the_notice = t('successfully_activated_advert')
         end
         format.html { redirect_to adverts_path, notice: the_notice }
       end
-    end
   end
 
   def assign_weight
